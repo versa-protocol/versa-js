@@ -1,0 +1,2 @@
+npx lint-staged
+# npx ts-node --project scripts/tsconfig.json scripts/valjean.ts packages/ui/examples/receipts

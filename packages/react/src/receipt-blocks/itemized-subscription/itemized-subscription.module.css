@@ -1,0 +1,11 @@
+.subscriptionWrap {
+  margin: 0 1.5rem;
+  border-bottom: 1px solid var(--light-stroke);
+}
+
+.subscriptionNote {
+  border: 1px solid var(--light-stroke);
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border-radius: 0.75rem;
+}

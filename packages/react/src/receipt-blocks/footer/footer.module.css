@@ -1,0 +1,61 @@
+.finePrintWrap {
+  margin: 0 1.5rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--light-stroke);
+}
+
+.finePrintWrap ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.finePrintContent {
+  font-size: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  color: var(--foreground-tertiary);
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.finePrintContent a {
+  color: var(--foreground-tertiary);
+}
+
+.mapLabel {
+  margin-right: 0.5rem;
+}
+
+.mapAttribution ul {
+  display: inline-flex;
+}
+
+.mapAttribution li::after {
+  content: "·";
+  padding: 0 0.5rem;
+}
+
+.mapAttribution li:last-child::after {
+  content: none;
+}
+
+.downloadBlock {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.downloadBlock > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.downloadBlock > div > svg {
+  margin-right: 0.5rem;
+}
+
+.downloadBlock > div:first-child {
+  border-right: 1px solid var(--light-stroke);
+}

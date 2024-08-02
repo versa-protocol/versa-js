@@ -1,0 +1,24 @@
+.printWrap {
+  position: relative;
+  background-color: white;
+  color: black;
+  margin: 4rem auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 11in;
+  max-width: 8.5in;
+}
+
+.fullScreenActions {
+  display: flex;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  list-style: none;
+  column-gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  @media print {
+    display: none;
+  }
+}

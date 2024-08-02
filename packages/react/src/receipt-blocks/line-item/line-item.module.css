@@ -1,0 +1,84 @@
+.lineItemsWrap {
+  margin: 0 1.5rem;
+}
+
+.lineItemsWrap table {
+  margin: 2rem 0;
+  display: block;
+}
+
+.lineItemTable {
+  width: 100%;
+}
+
+.lineItemReg tr,
+.lineItemReg tr td {
+  border: none;
+}
+
+.lineItem {
+  display: flex;
+  margin: 1.5rem 0;
+}
+
+.lineItem:first-child {
+  margin-top: 0;
+}
+
+.lineItem:last-child {
+  margin-bottom: 0;
+}
+
+.lineItemPhoto {
+  width: 4rem;
+  height: 4rem;
+  margin-right: 1.5rem;
+  background-color: var(--light-stroke);
+  border-radius: 0.25rem;
+  overflow: hidden;
+  min-width: 4rem;
+  min-height: 4rem;
+}
+
+.lineItemDetails {
+  display: flex;
+  align-items: end;
+  margin-top: 0.25rem;
+}
+
+.lineItemText {
+  width: 100%;
+}
+
+.lineItemMetadata {
+  flex-grow: 1;
+  font-size: 0.875rem;
+}
+
+.lineItemMetadata > div {
+  margin-top: 0.25rem;
+}
+
+.lineItemTotal {
+  font-weight: 800;
+}
+
+.lineItemTextSimple {
+  display: flex;
+  width: 100%;
+}
+
+.lineItemTextSimple .description {
+  flex-grow: 1;
+}
+
+.groupTitle td {
+  font-size: 0.875rem;
+
+  color: var(--foreground-secondary);
+}
+
+.lineItemReg .groupTitle td {
+  margin: 0 1.5rem;
+  padding: 0;
+}

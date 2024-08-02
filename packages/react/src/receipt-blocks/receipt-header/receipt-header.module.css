@@ -1,0 +1,50 @@
+.receiptHeader {
+  display: flex;
+  align-items: center;
+  margin: 1.5rem;
+  padding: 0 0 1.5rem 0;
+  border-bottom: 1px solid var(--light-stroke);
+}
+
+.receiptHeader h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.receiptHeader h1,
+.receiptHeader h2,
+.receiptHeader h3 {
+  font-family: "SF Pro", sans-serif;
+}
+
+.receiptHeader .headerText {
+  margin-top: 0.25rem;
+}
+
+.logo {
+  width: 4rem;
+  height: 4rem;
+  background-color: var(--background-block);
+  margin-right: 1.5rem;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  min-width: 4rem;
+  min-height: 4rem;
+  position: relative;
+}
+
+.logo::after {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  box-shadow: inset 0 0 0 1px rgba(var(--foreground-alpha), 0.08);
+  border-radius: 0.75rem;
+}
+
+.logo svg {
+  width: 4rem;
+  height: 4rem;
+}

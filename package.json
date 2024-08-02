@@ -1,0 +1,48 @@
+{
+  "name": "web",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@9.6.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev --no-cache --parallel",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "lint": "turbo run lint",
+    "preinstall": "npx only-allow pnpm",
+    "prepare": "husky install",
+    "test": "turbo test",
+    "publish-packages": "turbo run build lint test && changeset version && changeset publish"
+  },
+  "author": "thomasmost",
+  "license": "ISC",
+  "engines": {
+    "pnpm": ">=9.0.0",
+    "node": ">=14.0.0"
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx,css,md,yml,json,html}": "prettier --write"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.7",
+    "@types/react": "^18.3.3",
+    "eslint": "^8.57.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^12.5.0",
+    "nodemon": "^3.1.4",
+    "prettier": "^2.8.8",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "ts-node": "^10.9.2",
+    "turbo": "^2.0.11",
+    "typescript": "^5.5.4"
+  }
+}

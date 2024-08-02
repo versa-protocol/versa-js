@@ -1,0 +1,33 @@
+.row {
+  display: flex;
+  margin: 0.25rem 0;
+  align-items: center;
+}
+
+.blockLabel {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  text-transform: capitalize;
+}
+
+.blockLabel svg {
+  margin-left: 0.25rem;
+}
+
+.grandTotal {
+  border-top: 1px solid var(--light-stroke);
+  border-bottom: 1px solid var(--light-stroke);
+  margin: 0 1.5rem;
+  padding: 1.5rem 0;
+}
+
+.totalBlock {
+  display: flex;
+  margin: 0.25rem 0;
+}
+
+.bottomLine .blockLabel,
+.bottomLine .blockValue {
+  font-weight: 800;
+}
