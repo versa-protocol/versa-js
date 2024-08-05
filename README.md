@@ -17,3 +17,10 @@ A utility library containiing common functions and helpers for working with Vers
 ### React
 
 A ReactJS component library for displaying Versa receipts
+
+## Package Management
+
+We use [changesets](https://github.com/changesets/changesets) for package management.
+
+- `changeset version` Bump the package versions
+- `changeset publish` Publish the packages to npm
