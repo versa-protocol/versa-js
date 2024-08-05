@@ -1,5 +1,5 @@
 import { formatDateTime } from "@versaprotocol/belt";
-import styles from "./itemizedLodging.module.css";
+import styles from "./itemized-lodging.module.css";
 
 export function ItemizedLodging({ data, theme }: { data: any; theme: any }) {
   return data.lodging_items.map((data: any) => (

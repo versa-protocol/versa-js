@@ -1,5 +1,5 @@
-import styles from "./thirdParty.module.css";
-import Image from "next/image";
+import styles from "./third-party.module.css";
+// import Image from "next/image";
 import { Merchant, Receipt } from "versa_unstable_sdk";
 
 export function ThirdParty({
@@ -18,7 +18,7 @@ export function ThirdParty({
           </div>
           {third_party.merchant.logo && (
             <div className={styles.logo}>
-              <Image
+              <img
                 src={third_party.merchant.logo}
                 width={48}
                 height={48}

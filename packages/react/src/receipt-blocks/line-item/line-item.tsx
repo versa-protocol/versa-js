@@ -1,5 +1,5 @@
 import { formatUSD } from "@versaprotocol/belt";
-import styles from "./lineItem.module.css";
+import styles from "./line-item.module.css";
 // import Image from "next/image";
 
 export function LineItem({ li }: { li: any }) {

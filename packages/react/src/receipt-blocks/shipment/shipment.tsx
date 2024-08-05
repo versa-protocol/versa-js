@@ -1,6 +1,6 @@
-import { Circle, Copy } from "react-feather";
+import { Circle } from "react-feather";
 import styles from "./shipment.module.css";
-import { formatDateTime, formatTimeRange } from "belt/format";
+import { formatDateTime } from "@versaprotocol/belt";
 
 export function Shipment({ data, brandColor }: { data: any; brandColor: any }) {
   return (

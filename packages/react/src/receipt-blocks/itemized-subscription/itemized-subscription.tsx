@@ -1,5 +1,5 @@
 import { formatDateTime, formatUSD } from "@versaprotocol/belt";
-import styles from "./itemizedSubscription.module.css";
+import styles from "./itemized-subscription.module.css";
 import { Subscription } from "versa_unstable_sdk";
 
 export function ItemizedSubscription({

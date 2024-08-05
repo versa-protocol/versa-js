@@ -22,5 +22,6 @@ A ReactJS component library for displaying Versa receipts
 
 We use [changesets](https://github.com/changesets/changesets) for package management.
 
+- `pnpm run build` Build the distributable packages
 - `changeset version` Bump the package versions
 - `changeset publish` Publish the packages to npm

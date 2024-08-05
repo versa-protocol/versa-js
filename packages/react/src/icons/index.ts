@@ -24,4 +24,4 @@ export * from "./travelLodging";
 export * from "./utilities";
 export * from "./visa";
 export * from "./wallet";
-export * from "./yc.tsx";
+export * from "./yc";

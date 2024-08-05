@@ -1,7 +1,7 @@
 import { Playground } from "./playground";
 import { renderText } from "@versaprotocol/belt";
 
-export function Page() {
+export default function Page() {
   return (
     <div>
       <h1>Playground</h1>

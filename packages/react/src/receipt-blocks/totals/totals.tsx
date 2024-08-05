@@ -1,4 +1,4 @@
-import { formatUSD } from "belt/format";
+import { formatUSD } from "@versaprotocol/belt";
 import styles from "./totals.module.css";
 import { ChevronDown } from "react-feather";
 import { Adjustment, Receipt, Tax } from "versa_unstable_sdk";
