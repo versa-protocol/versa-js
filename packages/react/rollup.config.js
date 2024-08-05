@@ -10,6 +10,7 @@ module.exports = {
   input: "src/index.ts",
   output: [
     {
+      // interop: "compat",
       dir: "dist",
       format: "cjs",
       sourcemap: true,
