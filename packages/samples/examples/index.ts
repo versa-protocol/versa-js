@@ -7,7 +7,9 @@ import bend from "./senders/bend.json";
 import untypedRideshare from "./receipts/rideshare_polyline.json";
 import untypedSimple from "./receipts/simple.json";
 import untypedSubscription from "./receipts/subscription.json";
+import untypedRail from "./receipts/rail.json";
 
+const rail = untypedRail as Receipt;
 const rideshare = untypedRideshare as Receipt;
 const simple = untypedSimple as Receipt;
 const subscription = untypedSubscription as Receipt;
@@ -20,4 +22,5 @@ export const receipts: Record<string, Receipt> = {
   rideshare,
   simple,
   subscription,
+  rail,
 };

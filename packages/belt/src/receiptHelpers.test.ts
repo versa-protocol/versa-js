@@ -6,10 +6,9 @@ import {
 } from "./receiptHelpers";
 
 // This is a duplicate of the example in the examples dir; we should probably break those out into a separate shared module
-import rail from "./rail.json";
-import { Receipt } from "versa_unstable_sdk";
+import { receipts } from "samples";
 
-const railReceipt = rail as Receipt;
+const railReceipt = receipts.rail;
 
 const testData = {
   general: null,
