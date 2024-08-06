@@ -5,7 +5,7 @@
     "build": {
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**", "build/**", "dist/**"],
-      "env": []
+      "env": ["MAPBOX_TOKEN"]
     },
     "test": {
       "dependsOn": [],

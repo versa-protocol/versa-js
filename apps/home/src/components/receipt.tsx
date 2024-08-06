@@ -1,9 +1,11 @@
 "use client";
-import { ReceiptDisplay } from "@versaprotocol/react";
+import { ReceiptDisplay, VersaContext } from "@versaprotocol/react";
 import { receipts, senders } from "samples";
 
 export const DemoReceipt = () => {
   return (
-    <ReceiptDisplay merchant={senders.bend} receipt={receipts.subscription} />
+    <VersaContext.Provider value={{ mapbox_token: process.env.MAPBOX_TOKEN }}>
+      <ReceiptDisplay merchant={senders.bend} receipt={receipts.rideshare} />
+    </VersaContext.Provider>
   );
 };
