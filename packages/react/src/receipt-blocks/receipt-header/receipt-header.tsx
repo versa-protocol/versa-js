@@ -1,6 +1,5 @@
 import { formatDateTime, formatUSD } from "@versaprotocol/belt";
 import styles from "./receipt-header.module.css";
-// import Image from "next/image";
 import { Merchant, Receipt } from "versa_unstable_sdk";
 import { Merchant as PlaceholderGraphic } from "../../icons/merchant";
 

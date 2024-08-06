@@ -5,7 +5,6 @@ import {
   sameDay,
 } from "@versaprotocol/belt";
 import styles from "./itemized-transit-route.module.css";
-// import Image from "next/image";
 import { ItemMetadata, Receipt, TransitRoute } from "versa_unstable_sdk";
 import { organizeTransitRoutes } from "@versaprotocol/belt";
 import { VersaContext } from "../../context";

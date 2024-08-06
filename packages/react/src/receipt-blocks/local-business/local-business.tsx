@@ -1,5 +1,4 @@
 import styles from "./local-business.module.css";
-// import Image from "next/image";
 import { Place } from "versa_unstable_sdk";
 import { VersaContext } from "../../context";
 

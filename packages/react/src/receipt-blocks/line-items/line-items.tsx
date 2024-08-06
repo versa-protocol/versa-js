@@ -1,6 +1,5 @@
 import { formatUSD } from "@versaprotocol/belt";
 import styles from "./line-items.module.css";
-// import Image from "next/image";
 import { LineItem } from "./../line-item";
 import { ItemMetadata } from "versa_unstable_sdk";
 import { groupItems, someItemsGrouped } from "@versaprotocol/belt";

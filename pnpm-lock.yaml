@@ -206,21 +206,9 @@ importers:
 
   packages/react:
     dependencies:
-      '@cfworker/json-schema':
-        specifier: ^1.12.8
-        version: 1.12.8
-      '@types/object-hash':
-        specifier: ^3.0.6
-        version: 3.0.6
       '@versaprotocol/belt':
         specifier: workspace:*
         version: link:../belt
-      date-fns:
-        specifier: ^2.28.0
-        version: 2.30.0
-      object-hash:
-        specifier: ^3.0.0
-        version: 3.0.0
       react:
         specifier: ^18.2.0
         version: 18.3.1

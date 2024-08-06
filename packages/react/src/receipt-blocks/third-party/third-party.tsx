@@ -1,5 +1,4 @@
 import styles from "./third-party.module.css";
-// import Image from "next/image";
 import { Merchant, Receipt } from "versa_unstable_sdk";
 
 export function ThirdParty({
