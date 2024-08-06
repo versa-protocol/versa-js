@@ -1,4 +1,4 @@
-import { Receipt } from "versa_unstable_sdk";
+import { Receipt } from "@versaprotocol/schema";
 
 export enum ActivityType {
   Shipped = "Shipped",

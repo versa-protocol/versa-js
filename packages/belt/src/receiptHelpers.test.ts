@@ -297,7 +297,7 @@ const testData = {
 
 describe("aggregateTaxes", () => {
   it("should work", () => {
-    let result = aggregateTaxes(testData);
+    let result = aggregateTaxes(testData as any); // TODO
     expect(result[0].name).toBe("US Transportation Tax");
     expect(result[0].amount).toBe(23229);
     expect(result[3].name).toBe("US Flight Segment Tax");
@@ -306,7 +306,7 @@ describe("aggregateTaxes", () => {
 });
 
 describe("aggregateTicketFares", () => {
-  const organizedTickets = organizeFlightTickets(testData.flight);
+  const organizedTickets = organizeFlightTickets(testData.flight as any); // TODO
   // This is sort of just a reducer but that's fine
   it("should work", () => {
     let result = aggregateTicketFares(organizedTickets[0]);

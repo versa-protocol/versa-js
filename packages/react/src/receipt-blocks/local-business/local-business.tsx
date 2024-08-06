@@ -1,5 +1,5 @@
 import styles from "./local-business.module.css";
-import { Place } from "versa_unstable_sdk";
+import { Place } from "@versaprotocol/schema";
 import { VersaContext } from "../../context";
 
 export function LocalBusiness({

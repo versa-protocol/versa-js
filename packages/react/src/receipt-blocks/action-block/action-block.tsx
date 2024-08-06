@@ -1,5 +1,5 @@
 import styles from "./action-block.module.css";
-import { Receipt } from "versa_unstable_sdk";
+import { Receipt } from "@versaprotocol/schema";
 
 export function ActionBlock({
   actions,

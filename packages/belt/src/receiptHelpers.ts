@@ -9,7 +9,7 @@ import {
   TransitRoute,
   FlightSegment,
   FlightTicket,
-} from "versa_unstable_sdk";
+} from "@versaprotocol/schema";
 import hash from "object-hash";
 
 export function aggregateTaxes(itemization: Itemization): Tax[] {

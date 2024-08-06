@@ -1,6 +1,6 @@
 import { formatDateTime, formatUSD } from "@versaprotocol/belt";
 import styles from "./itemized-flight.module.css";
-import { Flight } from "versa_unstable_sdk";
+import { Flight } from "@versaprotocol/schema";
 import {
   aggregateTicketFares,
   organizeFlightTickets,

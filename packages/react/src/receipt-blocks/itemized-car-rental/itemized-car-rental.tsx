@@ -1,6 +1,6 @@
 import { formatDateTime } from "@versaprotocol/belt";
 import styles from "./itemized-car-rental.module.css";
-import { CarRental } from "versa_unstable_sdk";
+import { CarRental } from "@versaprotocol/schema";
 
 export function ItemizedCarRental({ car_rental }: { car_rental: CarRental }) {
   return (

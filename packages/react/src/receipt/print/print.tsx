@@ -1,4 +1,4 @@
-import { Merchant, Receipt } from "versa_unstable_sdk";
+import { Merchant, Receipt } from "@versaprotocol/schema";
 import { ReceiptDisplay } from "./../receipt";
 import styles from "./print.module.css";
 

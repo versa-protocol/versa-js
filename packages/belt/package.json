@@ -16,7 +16,7 @@
     "date-fns": "^2.28.0",
     "object-hash": "^3.0.0",
     "react": "^18.2.0",
-    "versa_unstable_sdk": "^0.1.30"
+    "@versaprotocol/schema": "workspace:*"
   },
   "devDependencies": {
     "@types/jest": "^28.1.3",

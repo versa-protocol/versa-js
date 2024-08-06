@@ -14,7 +14,7 @@
     "@versaprotocol/belt": "workspace:*",
     "react": "^18.2.0",
     "react-feather": "^2.0.10",
-    "versa_unstable_sdk": "^0.1.30"
+    "@versaprotocol/schema": "workspace:*"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^26.0.1",

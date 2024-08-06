@@ -1,7 +1,7 @@
 import { formatUSD } from "@versaprotocol/belt";
 import styles from "./line-items.module.css";
 import { LineItem } from "./../line-item";
-import { ItemMetadata } from "versa_unstable_sdk";
+import { ItemMetadata } from "@versaprotocol/schema";
 import { groupItems, someItemsGrouped } from "@versaprotocol/belt";
 import React from "react";
 

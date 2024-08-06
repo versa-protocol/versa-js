@@ -1,4 +1,4 @@
-import { Receipt } from "versa_unstable_sdk";
+import { Receipt } from "@versaprotocol/schema";
 import { compare, compareSeries } from "./receiptComparator";
 
 describe("receiptComparator", () => {

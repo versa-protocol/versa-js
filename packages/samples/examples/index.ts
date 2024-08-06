@@ -1,4 +1,4 @@
-import { Merchant, Receipt } from "versa_unstable_sdk";
+import { Merchant, Receipt } from "@versaprotocol/schema";
 
 // DEMO
 import rocketco from "./senders/rocketco.json";
@@ -11,8 +11,8 @@ import untypedSubscription from "./receipts/subscription.json";
 import untypedRail from "./receipts/rail.json";
 
 const flight = untypedFlight as Receipt;
-const rail = untypedRail as Receipt;
-const rideshare = untypedRideshare as Receipt;
+const rail = untypedRail as unknown as Receipt; // TODO(why?)
+const rideshare = untypedRideshare as unknown as Receipt; // TODO(why?)
 const simple = untypedSimple as Receipt;
 const subscription = untypedSubscription as Receipt;
 
