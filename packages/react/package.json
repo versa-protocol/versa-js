@@ -30,7 +30,6 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "ts-jest": "^28.0.5",
-    "tsconfig": "workspace:*",
-    "tsup": "^8.2.4"
+    "tsconfig": "workspace:*"
   }
 }

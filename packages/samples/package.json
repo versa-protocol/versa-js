@@ -1,9 +1,22 @@
 {
   "name": "samples",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.0.0",
+  "main": "./index.tsx",
+  "types": "./index.tsx",
   "license": "MIT",
-  "publishConfig": {
-    "access": "public"
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.2",
+    "@types/react": "18.0.21",
+    "@types/react-dom": "^18.2.0",
+    "@types/react-transition-group": "^4.4.4",
+    "identity-obj-proxy": "^3.0.0",
+    "tsconfig": "workspace:*",
+    "typescript": "5.4.5"
+  },
+  "dependencies": {
+    "versa_unstable_sdk": "^0.1.30"
   }
 }

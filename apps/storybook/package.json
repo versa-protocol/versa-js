@@ -1,5 +1,5 @@
 {
-  "name": "storybook",
+  "name": "versa-storybook",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -14,7 +14,8 @@
   "dependencies": {
     "@versaprotocol/react": "workspace:*",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "storybook": "^8.2.7"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.6.1",
@@ -35,7 +36,7 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
     "eslint-plugin-storybook": "^0.8.0",
-    "storybook": "^0.1.0",
+    "tsconfig": "workspace:*",
     "typescript": "^5.2.2",
     "vite": "^5.3.4"
   }
