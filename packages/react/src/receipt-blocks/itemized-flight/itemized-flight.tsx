@@ -49,14 +49,14 @@ export function ItemizedFlight({ flight }: { flight: Flight }) {
               </div>
             </div>
           ))}
-          <div className={styles.keyValuePairs}>
-            {t.passenger_count > 1 && (
+          {t.passenger_count > 1 && (
+            <div className={styles.keyValuePairs}>
               <div className={styles.row}>
                 <div className={styles.key}>Passengers</div>
                 <div className={styles.value}>{t.passenger_count}</div>
               </div>
-            )}
-          </div>
+            </div>
+          )}
           {t.passengers.map((p, index) => (
             <div key={index} className={styles.passengerKeyValuePairs}>
               <div>
