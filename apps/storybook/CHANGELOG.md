@@ -1,5 +1,12 @@
 # storybook
 
+## 0.1.3
+
+### Patch Changes
+
+- Updated dependencies [3454ab2]
+  - @versaprotocol/react@1.0.1
+
 ## 0.1.2
 
 ### Patch Changes
