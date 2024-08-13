@@ -1,5 +1,13 @@
 # @versaprotocol/belt
 
+## 1.0.3
+
+### Patch Changes
+
+- Fix flight passenger display organization
+- Updated dependencies
+  - @versaprotocol/schema@1.0.3
+
 ## 1.0.2
 
 ### Patch Changes
