@@ -1,0 +1,34 @@
+.receiptWrap {
+  --dark0: white;
+  --dark03: hsl(210, 30%, 97%);
+  --dark08: hsl(210, 20%, 92%);
+  --dark15: hsl(210, 10%, 85%);
+  --dark20: hsl(210, 10%, 80%);
+  --dark25: hsl(210, 10%, 75%);
+  --dark40: hsl(210, 10%, 60%);
+  --dark50: hsl(210, 10%, 50%);
+  --dark60: hsl(210, 10%, 40%);
+  --dark75: hsl(210, 10%, 25%);
+  --dark80: hsl(210, 10%, 20%);
+  --dark85: hsl(210, 10%, 15%);
+  --dark92: hsl(210, 20%, 8%);
+  --dark97: hsl(210, 30%, 3%);
+  --dark100: black;
+  --blue: hsl(212, 100%, 41%);
+  --background: var(--dark0);
+  --foreground: var(--dark100);
+  --foreground-soft: var(--dark85);
+  --background-block: var(--dark03);
+  --background-block-contrast: var(--dark08);
+  --foreground-secondary: var(--dark60);
+  --foreground-tertiary: var(--dark25);
+  --background-contrast: var(--dark0);
+  --light-stroke: var(--dark15);
+  --dark-stroke: var(--dark25);
+  --foreground-alpha: 0, 0, 0;
+  --background-alpha-tint: 200, 200, 200;
+  --yellow120: hsl(54, 79%, 42%);
+  --yellow10: hsl(53, 82%, 96%);
+  --brand: #802363;
+  --header-height: 65px;
+}

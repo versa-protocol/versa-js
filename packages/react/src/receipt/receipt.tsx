@@ -21,6 +21,7 @@ import {
   aggregateEcommerceItems,
   aggregateTaxes,
 } from "@versaprotocol/belt";
+import styles from "./base_receipt.module.css";
 
 export function ReceiptDisplay({
   receipt,
@@ -63,7 +64,7 @@ export function ReceiptDisplay({
   }
 
   return (
-    <>
+    <div className={styles.receiptWrap}>
       {/* Header */}
 
       <ReceiptHeader merchant={merchant} header={data.header} />
@@ -164,7 +165,7 @@ export function ReceiptDisplay({
             : false
         }
       />
-    </>
+    </div>
   );
 }
 
