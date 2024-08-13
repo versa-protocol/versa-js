@@ -173,13 +173,13 @@ export function aggregateAdjustments(itemization: Itemization) {
   return null;
 }
 
-interface TransitRoutePassengerWidget {
+interface OrganizedTransitRoutePassenger {
   passenger: string | null;
   fare: number;
   passenger_metadata: ItemMetadata[];
 }
 
-interface TransitRouteWidget {
+interface OrganizedTransitRoute {
   departure_location: null | Place;
   arrival_location: null | Place;
   departure_at: number | null;
@@ -187,7 +187,7 @@ interface TransitRouteWidget {
   polyline: null | string;
   shared_metadata: ItemMetadata[];
   passenger_count: number;
-  passengers: TransitRoutePassengerWidget[];
+  passengers: OrganizedTransitRoutePassenger[];
   mode?: ("car" | "taxi" | "rail" | "bus" | "ferry" | "other") | null;
 }
 
@@ -196,8 +196,8 @@ interface TransitRouteWidget {
 // even if all the remaining passengers have the same value
 export function organizeTransitRoutes(
   transitRoute: TransitRoute
-): TransitRouteWidget[] {
-  const organizedRoutes: Record<string, TransitRouteWidget> = {};
+): OrganizedTransitRoute[] {
+  const organizedRoutes: Record<string, OrganizedTransitRoute> = {};
 
   const allPassengerMetadata: Record<string, Record<string, string>> = {};
   let doNotShareMetadata = false;
@@ -303,20 +303,18 @@ export function organizeTransitRoutes(
   return Object.values(organizedRoutes);
 }
 
-interface FlightTicketPassengerWidget {
+interface OrganizedFlightTicketPassenger {
   passenger: string | null;
-  passenger_metadata: null | ItemMetadata[];
 }
 
-interface FlightTicketWidget {
+interface OrganizedFlightTicket {
   segments: FlightSegment[];
-  shared_metadata: ItemMetadata[];
   passenger_count: number;
-  passengers: FlightTicketPassengerWidget[];
+  passengers: OrganizedFlightTicketPassenger[];
 }
 
-export function organizeFlightTickets(flight: Flight): FlightTicketWidget[] {
-  const organizedTickets: Record<string, FlightTicketWidget> = {};
+export function organizeFlightTickets(flight: Flight): OrganizedFlightTicket[] {
+  const organizedTickets: Record<string, OrganizedFlightTicket> = {};
   for (const ticket of flight.tickets) {
     const { segments } = ticket;
     const dedupeKey = hash({
@@ -324,16 +322,18 @@ export function organizeFlightTickets(flight: Flight): FlightTicketWidget[] {
     });
     if (organizedTickets[dedupeKey]) {
       organizedTickets[dedupeKey].passenger_count++;
-      // the hard part
+      if (ticket.passenger) {
+        organizedTickets[dedupeKey].passengers.push({
+          passenger: ticket.passenger,
+        });
+      }
     } else {
       organizedTickets[dedupeKey] = {
         segments,
-        shared_metadata: [],
         passenger_count: 1,
         passengers: [
           {
             passenger: ticket.passenger,
-            passenger_metadata: [],
           },
         ],
       };
@@ -342,7 +342,7 @@ export function organizeFlightTickets(flight: Flight): FlightTicketWidget[] {
   return Object.values(organizedTickets);
 }
 
-export function aggregateTicketFares(ticket: FlightTicketWidget) {
+export function aggregateTicketFares(ticket: OrganizedFlightTicket) {
   let aggregatedTicketFares: number = 0;
   for (const segment of ticket.segments) {
     aggregatedTicketFares += segment.fare;

@@ -1,5 +1,14 @@
 # @versaprotocol/react
 
+## 1.0.2
+
+### Patch Changes
+
+- Secondary update to padding bug
+- Updated dependencies
+  - @versaprotocol/belt@1.0.2
+  - @versaprotocol/schema@1.0.2
+
 ## 1.0.1
 
 ### Patch Changes

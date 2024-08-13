@@ -1,5 +1,14 @@
 # home
 
+## 0.2.4
+
+### Patch Changes
+
+- Updated dependencies
+  - @versaprotocol/belt@1.0.2
+  - @versaprotocol/react@1.0.2
+  - samples@0.0.3
+
 ## 0.2.3
 
 ### Patch Changes

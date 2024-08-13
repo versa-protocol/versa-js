@@ -3,9 +3,9 @@
   "header": {
     "receipt_id": "auth_1MzFN1K8F4fqH0lBmFq8CjbU",
     "currency": "usd",
-    "total": 70020,
-    "subtotal": 60931,
-    "paid": 70020,
+    "total": 140040,
+    "subtotal": 121862,
+    "paid": 140040,
     "invoiced_at": 1713295619,
     "mcc": null,
     "third_party": null,
@@ -154,7 +154,142 @@
           ],
           "number": "0062698215636",
           "record_locator": "CU9GEF",
-          "passenger": "Amelia Earhart"
+          "passenger": "Jimmy Dean"
+        },
+        {
+          "segments": [
+            {
+              "fare": 15233,
+              "departure_airport_code": "SEA",
+              "arrival_airport_code": "MSP",
+              "departure_at": 1713196492,
+              "arrival_at": 1713197752,
+              "flight_number": "DL 1768",
+              "class_of_service": "t",
+              "taxes": [
+                {
+                  "amount": 1142,
+                  "rate": 0.075,
+                  "name": "US Transportation Tax"
+                },
+                {
+                  "amount": 280,
+                  "rate": null,
+                  "name": "US September 11th Security Fee"
+                },
+                {
+                  "amount": 450,
+                  "rate": null,
+                  "name": "US Passenger Facility Charge"
+                },
+                {
+                  "amount": 400,
+                  "rate": null,
+                  "name": "US Flight Segment Tax"
+                }
+              ],
+              "adjustments": null
+            },
+            {
+              "fare": 12186,
+              "departure_airport_code": "MSP",
+              "arrival_airport_code": "GFK",
+              "departure_at": 1713196492,
+              "arrival_at": 1713197752,
+              "flight_number": "OO 4656",
+              "class_of_service": "t",
+              "taxes": [
+                {
+                  "amount": 914,
+                  "rate": 0.075,
+                  "name": "US Transportation Tax"
+                },
+                {
+                  "amount": 224,
+                  "rate": null,
+                  "name": "US September 11th Security Fee"
+                },
+                {
+                  "amount": 360,
+                  "rate": null,
+                  "name": "US Passenger Facility Charge"
+                },
+                {
+                  "amount": 400,
+                  "rate": null,
+                  "name": "US Flight Segment Tax"
+                }
+              ],
+              "adjustments": null
+            },
+            {
+              "fare": 14014,
+              "departure_airport_code": "GFK",
+              "arrival_airport_code": "MSP",
+              "departure_at": 1713196492,
+              "arrival_at": 1713197752,
+              "flight_number": "OO 4656",
+              "class_of_service": "t",
+              "taxes": [
+                {
+                  "amount": 1051,
+                  "rate": 0.075,
+                  "name": "US Transportation Tax"
+                },
+                {
+                  "amount": 258,
+                  "rate": null,
+                  "name": "US September 11th Security Fee"
+                },
+                {
+                  "amount": 414,
+                  "rate": null,
+                  "name": "US Passenger Facility Charge"
+                },
+                {
+                  "amount": 400,
+                  "rate": null,
+                  "name": "US Flight Segment Tax"
+                }
+              ],
+              "adjustments": null
+            },
+            {
+              "fare": 19498,
+              "departure_airport_code": "MSP",
+              "arrival_airport_code": "SEA",
+              "departure_at": 1713196492,
+              "arrival_at": 1713197752,
+              "flight_number": "DL 2536",
+              "class_of_service": "t",
+              "taxes": [
+                {
+                  "amount": 1462,
+                  "rate": 0.075,
+                  "name": "US Transportation Tax"
+                },
+                {
+                  "amount": 358,
+                  "rate": null,
+                  "name": "US September 11th Security Fee"
+                },
+                {
+                  "amount": 576,
+                  "rate": null,
+                  "name": "US Passenger Facility Charge"
+                },
+                {
+                  "amount": 400,
+                  "rate": null,
+                  "name": "US Flight Segment Tax"
+                }
+              ],
+              "adjustments": null
+            }
+          ],
+          "number": "0062698215637",
+          "record_locator": "CU9GEF",
+          "passenger": "John Smith"
         }
       ],
       "itinerary_locator": "1122337694093",

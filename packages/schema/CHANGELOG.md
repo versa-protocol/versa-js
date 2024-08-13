@@ -1,5 +1,11 @@
 # @versaprotocol/schema
 
+## 1.0.2
+
+### Patch Changes
+
+- Secondary update to padding bug
+
 ## 1.0.1
 
 ### Patch Changes
