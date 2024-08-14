@@ -175,18 +175,15 @@ importers:
       '@cfworker/json-schema':
         specifier: ^1.12.8
         version: 1.12.8
-      '@types/object-hash':
-        specifier: ^3.0.6
-        version: 3.0.6
       '@versaprotocol/schema':
         specifier: workspace:*
         version: link:../schema
+      canonicalize:
+        specifier: ^2.0.0
+        version: 2.0.0
       date-fns:
         specifier: ^2.28.0
         version: 2.30.0
-      object-hash:
-        specifier: ^3.0.0
-        version: 3.0.0
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -196,13 +193,13 @@ importers:
         version: 28.1.8
       jest:
         specifier: ^28.1.1
-        version: 28.1.3(@types/node@22.1.0)(ts-node@10.9.2(@swc/core@1.7.11)(@types/node@22.1.0)(typescript@5.5.4))
+        version: 28.1.3(@types/node@20.14.14)(ts-node@10.9.2(@swc/core@1.7.11)(@types/node@20.14.14)(typescript@5.5.4))
       samples:
         specifier: workspace:*
         version: link:../samples
       ts-jest:
         specifier: ^28.0.5
-        version: 28.0.8(@babel/core@7.25.2)(@jest/types@28.1.3)(babel-jest@28.1.3(@babel/core@7.25.2))(esbuild@0.23.0)(jest@28.1.3(@types/node@22.1.0)(ts-node@10.9.2(@swc/core@1.7.11)(@types/node@22.1.0)(typescript@5.5.4)))(typescript@5.5.4)
+        version: 28.0.8(@babel/core@7.25.2)(@jest/types@28.1.3)(babel-jest@28.1.3(@babel/core@7.25.2))(esbuild@0.23.0)(jest@28.1.3(@types/node@20.14.14)(ts-node@10.9.2(@swc/core@1.7.11)(@types/node@20.14.14)(typescript@5.5.4)))(typescript@5.5.4)
       tsconfig:
         specifier: workspace:*
         version: link:../tsconfig
@@ -218,6 +215,9 @@ importers:
       '@versaprotocol/schema':
         specifier: workspace:*
         version: link:../schema
+      canonicalize:
+        specifier: ^2.0.0
+        version: 2.0.0
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -275,7 +275,7 @@ importers:
         version: link:../samples
       ts-jest:
         specifier: ^28.0.5
-        version: 28.0.8(@babel/core@7.25.2)(@jest/types@28.1.3)(babel-jest@28.1.3(@babel/core@7.25.2))(jest@28.1.3(@types/node@20.14.14)(ts-node@10.9.2(@swc/core@1.7.11)(@types/node@20.14.14)(typescript@5.5.4)))(typescript@5.5.4)
+        version: 28.0.8(@babel/core@7.25.2)(@jest/types@28.1.3)(babel-jest@28.1.3(@babel/core@7.25.2))(esbuild@0.23.0)(jest@28.1.3(@types/node@20.14.14)(ts-node@10.9.2(@swc/core@1.7.11)(@types/node@20.14.14)(typescript@5.5.4)))(typescript@5.5.4)
       tsconfig:
         specifier: workspace:*
         version: link:../tsconfig
@@ -324,7 +324,7 @@ importers:
         version: 14.1.0
       ts-jest:
         specifier: ^28.0.5
-        version: 28.0.8(@babel/core@7.25.2)(@jest/types@28.1.3)(babel-jest@28.1.3(@babel/core@7.25.2))(esbuild@0.23.0)(jest@28.1.3(@types/node@22.1.0)(ts-node@10.9.2(@swc/core@1.7.11)(@types/node@22.1.0)(typescript@5.5.4)))(typescript@5.5.4)
+        version: 28.0.8(@babel/core@7.25.2)(@jest/types@28.1.3)(babel-jest@28.1.3(@babel/core@7.25.2))(jest@28.1.3(@types/node@22.1.0)(ts-node@10.9.2(@swc/core@1.7.11)(@types/node@22.1.0)(typescript@5.5.4)))(typescript@5.5.4)
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@swc/core@1.7.11)(@types/node@22.1.0)(typescript@5.5.4)
@@ -2192,9 +2192,6 @@ packages:
   '@types/node@22.1.0':
     resolution: {integrity: sha512-AOmuRF0R2/5j1knA3c6G3HOk523Ga+l+ZXltX8SF1+5oqcXijjfTd8fY3XRZqSihEu9XhtQnKYLmkFaoxgsJHw==}
 
-  '@types/object-hash@3.0.6':
-    resolution: {integrity: sha512-fOBV8C1FIu2ELinoILQ+ApxcUKz4ngq+IWUYrxSGjXzzjUALijilampwkMgEtJ+h2njAW3pi853QpzNVCHB73w==}
-
   '@types/parse-json@4.0.2':
     resolution: {integrity: sha512-dISoDXWWQwUquiKsyZ4Ng+HX2KsPL7LyHKHQwgGFEA3IaKac4Obd+h2a/a6waisAoepJlBcx9paWqjA8/HVjCw==}
 
@@ -2784,6 +2781,9 @@ packages:
 
   caniuse-lite@1.0.30001646:
     resolution: {integrity: sha512-dRg00gudiBDDTmUhClSdv3hqRfpbOnU28IpI1T6PBTLWa+kOj0681C8uML3PifYfREuBrVjDGhL3adYpBT6spw==}
+
+  canonicalize@2.0.0:
+    resolution: {integrity: sha512-ulDEYPv7asdKvqahuAY35c1selLdzDwHqugK92hfkzvlDCwXRRelDkR+Er33md/PtnpqHemgkuDPanZ4fiYZ8w==}
 
   case-sensitive-paths-webpack-plugin@2.4.0:
     resolution: {integrity: sha512-roIFONhcxog0JSSWbvVAh3OocukmSgpqOH6YpMkCvav/ySIV3JKg4Dc8vYtQjYi/UxpNE36r/9v+VqTQqgkYmw==}
@@ -4881,10 +4881,6 @@ packages:
   object-assign@4.1.1:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
     engines: {node: '>=0.10.0'}
-
-  object-hash@3.0.0:
-    resolution: {integrity: sha512-RSn9F68PjH9HqtltsSnqYC1XXoWe9Bju5+213R98cNGttag9q9yAOTzdbsqvIa7aNm5WffBZFpWYr2aWrklWAw==}
-    engines: {node: '>= 6'}
 
   object-inspect@1.13.2:
     resolution: {integrity: sha512-IRZSRuzJiynemAXPYtPe5BoI/RESNYR7TYm50MC5Mqbd3Jmw5y790sErYw3V6SryFJD64b74qQQs9wn5Bg/k3g==}
@@ -8893,8 +8889,6 @@ snapshots:
     dependencies:
       undici-types: 6.13.0
 
-  '@types/object-hash@3.0.6': {}
-
   '@types/parse-json@4.0.2': {}
 
   '@types/prettier@2.7.3': {}
@@ -9630,6 +9624,8 @@ snapshots:
       lodash.uniq: 4.5.0
 
   caniuse-lite@1.0.30001646: {}
+
+  canonicalize@2.0.0: {}
 
   case-sensitive-paths-webpack-plugin@2.4.0: {}
 
@@ -12366,8 +12362,6 @@ snapshots:
 
   object-assign@4.1.1: {}
 
-  object-hash@3.0.0: {}
-
   object-inspect@1.13.2: {}
 
   object-is@1.1.6:
@@ -13669,11 +13663,11 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
-  ts-jest@28.0.8(@babel/core@7.25.2)(@jest/types@28.1.3)(babel-jest@28.1.3(@babel/core@7.25.2))(esbuild@0.23.0)(jest@28.1.3(@types/node@22.1.0)(ts-node@10.9.2(@swc/core@1.7.11)(@types/node@22.1.0)(typescript@5.5.4)))(typescript@5.5.4):
+  ts-jest@28.0.8(@babel/core@7.25.2)(@jest/types@28.1.3)(babel-jest@28.1.3(@babel/core@7.25.2))(esbuild@0.23.0)(jest@28.1.3(@types/node@20.14.14)(ts-node@10.9.2(@swc/core@1.7.11)(@types/node@20.14.14)(typescript@5.5.4)))(typescript@5.5.4):
     dependencies:
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
-      jest: 28.1.3(@types/node@22.1.0)(ts-node@10.9.2(@swc/core@1.7.11)(@types/node@22.1.0)(typescript@5.5.4))
+      jest: 28.1.3(@types/node@20.14.14)(ts-node@10.9.2(@swc/core@1.7.11)(@types/node@20.14.14)(typescript@5.5.4))
       jest-util: 28.1.3
       json5: 2.2.3
       lodash.memoize: 4.1.2
@@ -13687,11 +13681,11 @@ snapshots:
       babel-jest: 28.1.3(@babel/core@7.25.2)
       esbuild: 0.23.0
 
-  ts-jest@28.0.8(@babel/core@7.25.2)(@jest/types@28.1.3)(babel-jest@28.1.3(@babel/core@7.25.2))(jest@28.1.3(@types/node@20.14.14)(ts-node@10.9.2(@swc/core@1.7.11)(@types/node@20.14.14)(typescript@5.5.4)))(typescript@5.5.4):
+  ts-jest@28.0.8(@babel/core@7.25.2)(@jest/types@28.1.3)(babel-jest@28.1.3(@babel/core@7.25.2))(jest@28.1.3(@types/node@22.1.0)(ts-node@10.9.2(@swc/core@1.7.11)(@types/node@22.1.0)(typescript@5.5.4)))(typescript@5.5.4):
     dependencies:
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
-      jest: 28.1.3(@types/node@20.14.14)(ts-node@10.9.2(@swc/core@1.7.11)(@types/node@20.14.14)(typescript@5.5.4))
+      jest: 28.1.3(@types/node@22.1.0)(ts-node@10.9.2(@swc/core@1.7.11)(@types/node@22.1.0)(typescript@5.5.4))
       jest-util: 28.1.3
       json5: 2.2.3
       lodash.memoize: 4.1.2

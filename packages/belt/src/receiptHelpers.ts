@@ -10,7 +10,7 @@ import {
   FlightSegment,
   FlightTicket,
 } from "@versaprotocol/schema";
-import hash from "object-hash";
+import canonicalize from "canonicalize";
 
 export function aggregateTaxes(itemization: Itemization): Tax[] {
   const aggregatedTaxes: Record<string, Tax> = {};
@@ -212,12 +212,14 @@ export function organizeTransitRoutes(
       polyline,
       mode,
     } = item;
-    const dedupeKey = hash({
-      departure_location,
-      arrival_location,
-      departure_at,
-      arrival_at,
-    });
+    const dedupeKey = canonicalize(
+      JSON.stringify({
+        departure_location,
+        arrival_location,
+        departure_at,
+        arrival_at,
+      })
+    ) as string;
     if (organizedRoutes[dedupeKey]) {
       organizedRoutes[dedupeKey].passenger_count++;
       if (item.passenger) {
@@ -317,9 +319,11 @@ export function organizeFlightTickets(flight: Flight): OrganizedFlightTicket[] {
   const organizedTickets: Record<string, OrganizedFlightTicket> = {};
   for (const ticket of flight.tickets) {
     const { segments } = ticket;
-    const dedupeKey = hash({
-      segments,
-    });
+    const dedupeKey = canonicalize(
+      JSON.stringify({
+        segments,
+      })
+    ) as string;
     if (organizedTickets[dedupeKey]) {
       organizedTickets[dedupeKey].passenger_count++;
       if (ticket.passenger) {

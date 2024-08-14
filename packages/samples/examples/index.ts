@@ -3,6 +3,7 @@ import { Merchant, Receipt } from "@versaprotocol/schema";
 // DEMO
 import rocketco from "./senders/rocketco.json";
 import bend from "./senders/bend.json";
+import jetblue from "./senders/jetblue.json";
 
 import untypedFlight from "./receipts/flight.json";
 import untypedFlightMultiple from "./receipts/flight_multiple.json";
@@ -19,6 +20,7 @@ const simple = untypedSimple as Receipt;
 const subscription = untypedSubscription as Receipt;
 
 export const senders: Record<string, Merchant> = {
+  jetblue,
   rocketco,
   bend,
 };

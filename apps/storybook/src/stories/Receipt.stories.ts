@@ -5,7 +5,7 @@ import { senders, receipts } from "samples";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: "ReceiptDisplay",
+  title: "receipt/ReceiptDisplay",
   component: ReceiptDisplay,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
@@ -32,7 +32,7 @@ export const Subscription: Story = {
 
 export const Flight: Story = {
   args: {
-    merchant: senders.rocketco,
+    merchant: senders.jetblue,
     receipt: receipts.flightMultiple,
   },
 };
