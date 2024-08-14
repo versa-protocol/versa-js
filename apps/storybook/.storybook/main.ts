@@ -1,5 +1,4 @@
-import type { StorybookConfig } from "@storybook/react-vite";
-
+import { StorybookConfig } from "@storybook/react-webpack5";
 import { join, dirname } from "path";
 
 /**
@@ -17,10 +16,8 @@ const config: StorybookConfig = {
     getAbsolutePath("@storybook/addon-essentials"),
     getAbsolutePath("@chromatic-com/storybook"),
     getAbsolutePath("@storybook/addon-interactions"),
+    "@storybook/addon-webpack5-compiler-swc",
   ],
-  framework: {
-    name: getAbsolutePath("@storybook/react-vite"),
-    options: {},
-  },
+  framework: "@storybook/react-webpack5",
 };
 export default config;
