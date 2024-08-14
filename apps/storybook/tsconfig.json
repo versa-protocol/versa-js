@@ -1,7 +1,13 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+  "extends": "tsconfig/react-library.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "resolveJsonModule": true,
+    "paths": {
+      "react": ["../../node_modules/@types/react"]
+    },
+    "lib": ["dom", "dom.iterable", "esnext"]
+  },
+  "include": [".", "env.d.ts"],
+  "exclude": ["dist", "build", "node_modules"]
 }
