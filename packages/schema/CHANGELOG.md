@@ -1,5 +1,11 @@
 # @versaprotocol/schema
 
+## 1.1.0
+
+### Minor Changes
+
+- Add departure_timezone and arrival_timezone to flights
+
 ## 1.0.3
 
 ### Patch Changes
