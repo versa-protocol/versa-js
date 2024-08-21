@@ -49,5 +49,16 @@
     { "name": "Manage Subscription", "url": "https://versa.org/" },
     { "name": "Contact Support", "url": "https://versa.org/" }
   ],
-  "payments": null
+  "payments": [
+    {
+      "paid_at": 1679609767,
+      "payment_type": "card",
+      "amount": 234,
+      "card_payment": {
+        "last_four": "7806",
+        "network": "mastercard"
+      },
+      "ach_payment": null
+    }
+  ]
 }

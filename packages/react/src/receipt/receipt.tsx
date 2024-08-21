@@ -22,6 +22,7 @@ import {
   aggregateTaxes,
 } from "@versaprotocol/belt";
 import styles from "./base_receipt.module.css";
+import { Payments } from "../receipt-blocks/payments";
 
 export function ReceiptDisplay({
   receipt,
@@ -149,6 +150,10 @@ export function ReceiptDisplay({
           brandColor={colors.brandHighContrast}
         />
       )}
+
+      {/* Payments */}
+
+      {data.payments && <Payments payments={data.payments} />}
 
       {/* Activity */}
 
