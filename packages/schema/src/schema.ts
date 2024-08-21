@@ -50,11 +50,7 @@ export interface Receipt {
         name: string;
         url: string;
       }[];
-  payments:
-    | null
-    | {
-        [k: string]: unknown;
-      }[];
+  payments: null | Payment[];
 }
 export interface Merchant {
   name: string;
@@ -237,8 +233,35 @@ export interface FlightSegment {
   arrival_airport_code: string;
   departure_at: null | number;
   arrival_at: null | number;
+  departure_timezone: null | string;
+  arrival_timezone: null | string;
   flight_number: null | string;
   class_of_service: null | string;
   taxes: null | Tax[];
   adjustments: null | Adjustment[];
+}
+export interface Payment {
+  amount: number;
+  paid_at: number;
+  payment_type: "card" | "ach";
+  card_payment: null | CardPayment;
+  ach_payment: null | AchPayment;
+}
+export interface CardPayment {
+  last_four: string;
+  network:
+    | (
+        | "amex"
+        | "diners"
+        | "discover"
+        | "eftpos_au"
+        | "jcb"
+        | "mastercard"
+        | "unionpay"
+        | "visa"
+      )
+    | null;
+}
+export interface AchPayment {
+  routing_number: string;
 }

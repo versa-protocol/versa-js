@@ -31,7 +31,13 @@ export function ItemizedFlight({ flight }: { flight: Flight }) {
                   <div>{s.departure_airport_code}</div>
                   {s.departure_at && (
                     <div className={styles.time}>
-                      {formatDateTime(s.departure_at, false, true)}
+                      {formatDateTime(
+                        s.departure_at,
+                        false,
+                        true,
+                        false,
+                        s.departure_timezone
+                      )}
                     </div>
                   )}
                 </div>
@@ -42,7 +48,13 @@ export function ItemizedFlight({ flight }: { flight: Flight }) {
                   <div>{s.arrival_airport_code}</div>
                   {s.arrival_at && (
                     <div className={styles.time}>
-                      {formatDateTime(s.arrival_at, false, true)}
+                      {formatDateTime(
+                        s.arrival_at,
+                        false,
+                        true,
+                        false,
+                        s.arrival_timezone
+                      )}
                     </div>
                   )}
                 </div>

@@ -29,6 +29,8 @@
               "arrival_airport_code": "MSP",
               "departure_at": 1713196492,
               "arrival_at": 1713197752,
+              "departure_timezone": "America/Chicago",
+              "arrival_timezone": "America/Chicago",
               "flight_number": "DL 1768",
               "class_of_service": "t",
               "taxes": [
@@ -61,6 +63,8 @@
               "arrival_airport_code": "GFK",
               "departure_at": 1713196492,
               "arrival_at": 1713197752,
+              "departure_timezone": "America/Chicago",
+              "arrival_timezone": "America/Chicago",
               "flight_number": "OO 4656",
               "class_of_service": "t",
               "taxes": [
@@ -93,6 +97,8 @@
               "arrival_airport_code": "MSP",
               "departure_at": 1713196492,
               "arrival_at": 1713197752,
+              "departure_timezone": "America/Chicago",
+              "arrival_timezone": "America/Chicago",
               "flight_number": "OO 4656",
               "class_of_service": "t",
               "taxes": [
@@ -125,6 +131,8 @@
               "arrival_airport_code": "SEA",
               "departure_at": 1713196492,
               "arrival_at": 1713197752,
+              "departure_timezone": "America/Chicago",
+              "arrival_timezone": "America/Chicago",
               "flight_number": "DL 2536",
               "class_of_service": "t",
               "taxes": [
@@ -164,6 +172,8 @@
               "arrival_airport_code": "MSP",
               "departure_at": 1713196492,
               "arrival_at": 1713197752,
+              "departure_timezone": "America/Chicago",
+              "arrival_timezone": "America/Chicago",
               "flight_number": "DL 1768",
               "class_of_service": "t",
               "taxes": [
@@ -196,6 +206,8 @@
               "arrival_airport_code": "GFK",
               "departure_at": 1713196492,
               "arrival_at": 1713197752,
+              "departure_timezone": "America/Chicago",
+              "arrival_timezone": "America/Chicago",
               "flight_number": "OO 4656",
               "class_of_service": "t",
               "taxes": [
@@ -228,6 +240,8 @@
               "arrival_airport_code": "MSP",
               "departure_at": 1713196492,
               "arrival_at": 1713197752,
+              "departure_timezone": "America/Chicago",
+              "arrival_timezone": "America/Chicago",
               "flight_number": "OO 4656",
               "class_of_service": "t",
               "taxes": [
@@ -260,6 +274,8 @@
               "arrival_airport_code": "SEA",
               "departure_at": 1713196492,
               "arrival_at": 1713197752,
+              "departure_timezone": "America/Chicago",
+              "arrival_timezone": "America/Chicago",
               "flight_number": "DL 2536",
               "class_of_service": "t",
               "taxes": [
@@ -297,9 +313,18 @@
     }
   },
   "actions": [
-    { "name": "Manage Booking", "url": "https://versa.org/" },
-    { "name": "Contact Support", "url": "https://versa.org/" },
-    { "name": "Loyalty", "url": "https://versa.org/" }
+    {
+      "name": "Manage Booking",
+      "url": "https://versa.org/"
+    },
+    {
+      "name": "Contact Support",
+      "url": "https://versa.org/"
+    },
+    {
+      "name": "Loyalty",
+      "url": "https://versa.org/"
+    }
   ],
   "payments": null
 }

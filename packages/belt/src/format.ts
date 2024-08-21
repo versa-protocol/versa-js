@@ -46,7 +46,8 @@ export function formatDateTime(
   secondsSinceEpoch: number,
   utc: boolean = false,
   includeTime: boolean = false,
-  includeDOW: boolean = false
+  includeDOW: boolean = false,
+  iataTimezone?: string | null
 ) {
   var d = new Date(secondsSinceEpoch * 1000);
   var options: Intl.DateTimeFormatOptions;
@@ -64,6 +65,8 @@ export function formatDateTime(
   }
   if (utc) {
     options.timeZone = "UTC";
+  } else if (iataTimezone) {
+    options.timeZone = iataTimezone;
   }
   if (includeTime) {
     options.hour = "numeric";
