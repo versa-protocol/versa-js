@@ -9,7 +9,7 @@
  * A Versa itemized receipt
  */
 export interface Receipt {
-  version: string;
+  schema_version: string;
   header: {
     receipt_id: string;
     /**

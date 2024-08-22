@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "schema_version": "1.1.1",
   "header": {
     "receipt_id": "auth_1MzFN1K8F4fqH0lBmFq8CjbU",
     "currency": "usd",
