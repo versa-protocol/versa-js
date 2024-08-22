@@ -153,7 +153,9 @@ export function ReceiptDisplay({
 
       {/* Payments */}
 
-      {data.payments && <Payments payments={data.payments} />}
+      {data.payments && (
+        <Payments payments={data.payments} header={data.header} />
+      )}
 
       {/* Activity */}
 
