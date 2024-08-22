@@ -1,5 +1,13 @@
 # @versaprotocol/belt
 
+## 1.1.1
+
+### Patch Changes
+
+- Corrected the property name of a receipt's "schema_version" (expected "schema_version", not "version"
+- Updated dependencies
+  - @versaprotocol/schema@1.1.1
+
 ## 1.1.0
 
 ### Minor Changes
