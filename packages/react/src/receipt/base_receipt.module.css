@@ -30,5 +30,21 @@
   --yellow120: hsl(54, 79%, 42%);
   --yellow10: hsl(53, 82%, 96%);
   --brand: #802363;
-  --header-height: 65px;
+}
+
+[data-theme="dark"] .receiptWrap {
+  --background: var(--dark92);
+  --foreground: var(--dark0);
+  --foreground-soft: var(--dark15);
+  --background-block: var(--dark85);
+  --background-block-contrast: var(--dark80);
+  --foreground-secondary: var(--dark40);
+  --foreground-tertiary: var(--dark75);
+  --light-stroke: var(--dark80);
+  --dark-stroke: var(--dark60);
+  --background-contrast: var(--dark100);
+  --foreground-alpha: 255, 255, 255;
+  --background-alpha-tint: 5, 5, 5;
+  --yellow120: hsl(54, 79%, 42%);
+  --yellow10: hsl(53, 82%, 96%);
 }
