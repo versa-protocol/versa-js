@@ -1,5 +1,11 @@
 # @versaprotocol/react
 
+## 1.2.4
+
+### Patch Changes
+
+- explicitly ignore src files and package the dist directory
+
 ## 1.2.2
 
 ### Patch Changes
