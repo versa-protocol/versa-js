@@ -160,7 +160,9 @@ export function ReceiptDisplay({
 
       {/* Parties */}
 
-      {data.header.customer && <Parties header={data.header} />}
+      {(data.header.customer || merchant.address) && (
+        <Parties customer={data.header.customer} merchant={merchant} />
+      )}
 
       {/* Activity */}
 
