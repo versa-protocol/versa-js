@@ -14,6 +14,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo run lint",
     "preinstall": "npx only-allow pnpm",
+    "prepublish": "pnpm build-clean",
     "prepare": "husky install",
     "test": "turbo test",
     "publish-packages": "turbo run build lint test --no-cache && changeset version && changeset publish"
