@@ -13,5 +13,6 @@
     "lat": null,
     "lon": null,
     "tz": "America/Los_Angeles"
-  }
+  },
+  "vat_number": null
 }
