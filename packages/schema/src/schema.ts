@@ -11,7 +11,7 @@
 export interface Receipt {
   schema_version: string;
   header: {
-    receipt_id: string;
+    invoice_number: string | null;
     /**
      * ISO 4217 currency code
      */
@@ -40,6 +40,7 @@ export interface Receipt {
       email: string | null;
       address: null | Address;
       phone: string | null;
+      metadata: ItemMetadata[];
     } | null;
     location: Place | null;
   };
@@ -57,6 +58,8 @@ export interface Merchant {
   brand_color: string | null;
   logo: string | null;
   website: string | null;
+  vat_number: string | null;
+  address: null | Address;
 }
 export interface Address {
   street_address: string | null;
@@ -66,6 +69,11 @@ export interface Address {
   postal_code: string | null;
   lat: number | null;
   lon: number | null;
+  tz: string | null;
+}
+export interface ItemMetadata {
+  key: string;
+  value: string;
 }
 export interface Place {
   name: string | null;
@@ -89,29 +97,25 @@ export interface GeneralItemization {
    * @minItems 1
    */
   line_items: Item[];
-  invoice_level_adjustments: null | Adjustment[];
+  invoice_level_adjustments: Adjustment[];
 }
 export interface Item {
   description: string;
-  total: number;
+  subtotal: number;
   quantity?: null | number;
   unit_cost?: null | number;
   unit?: null | string;
-  taxes?: null | Tax[];
-  metadata?: null | ItemMetadata[];
+  taxes?: Tax[];
+  metadata?: ItemMetadata[];
   product_image?: null | string;
   group?: null | string;
   url?: null | string;
-  adjustments?: null | Adjustment[];
+  adjustments?: Adjustment[];
 }
 export interface Tax {
   amount: number;
   rate: number | null;
   name: string;
-}
-export interface ItemMetadata {
-  key: string;
-  value: string;
 }
 export interface Adjustment {
   amount: number;
@@ -124,7 +128,7 @@ export interface Lodging {
    * @minItems 1
    */
   lodging_items: LodgingItem[];
-  invoice_level_adjustments: null | Adjustment[];
+  invoice_level_adjustments: Adjustment[];
 }
 export interface LodgingItem {
   check_in: number;
@@ -136,23 +140,21 @@ export interface LodgingItem {
   items: Item[];
   room?: null | string;
   guests?: null | string;
-  metadata?: null | ItemMetadata[];
+  metadata?: ItemMetadata[];
 }
 export interface Ecommerce {
-  shipments:
-    | null
-    | {
-        /**
-         * @minItems 1
-         */
-        items: Item[];
-        tracking_number: string | null;
-        expected_delivery_at: number | null;
-        shipment_status: ("prep" | "in_transit" | "delivered") | null;
-        destination_address: null | Address;
-      }[];
-  invoice_level_line_items: null | Item[];
-  invoice_level_adjustments: null | Adjustment[];
+  shipments: {
+    /**
+     * @minItems 1
+     */
+    items: Item[];
+    tracking_number: string | null;
+    expected_delivery_at: number | null;
+    shipment_status: ("prep" | "in_transit" | "delivered") | null;
+    destination_address: null | Address;
+  }[];
+  invoice_level_line_items: Item[];
+  invoice_level_adjustments: Adjustment[];
 }
 export interface CarRental {
   rental_at: number;
@@ -170,7 +172,7 @@ export interface CarRental {
    * @minItems 1
    */
   items: Item[];
-  invoice_level_adjustments: null | Adjustment[];
+  invoice_level_adjustments: Adjustment[];
 }
 export interface TransitRoute {
   /**
@@ -182,20 +184,20 @@ export interface TransitRoute {
     departure_at: number | null;
     arrival_at: number | null;
     polyline: null | string;
-    taxes: null | Tax[];
-    metadata: null | ItemMetadata[];
+    taxes: Tax[];
+    metadata: ItemMetadata[];
     fare: number;
     passenger: string | null;
     mode?: ("car" | "taxi" | "rail" | "bus" | "ferry" | "other") | null;
   }[];
-  invoice_level_adjustments: null | Adjustment[];
+  invoice_level_adjustments: Adjustment[];
 }
 export interface Subscription {
   /**
    * @minItems 1
    */
   subscription_items: {
-    total: number;
+    subtotal: number;
     subscription_type: "one_time" | "recurring";
     description: string;
     interval: null | ("day" | "week" | "month" | "year");
@@ -204,11 +206,11 @@ export interface Subscription {
     current_period_end: number | null;
     quantity: number | null;
     unit_cost: number | null;
-    taxes: null | Tax[];
-    metadata: null | ItemMetadata[];
-    adjustments: null | Adjustment[];
+    taxes: Tax[];
+    metadata: ItemMetadata[];
+    adjustments: Adjustment[];
   }[];
-  invoice_level_adjustments: null | Adjustment[];
+  invoice_level_adjustments: Adjustment[];
 }
 export interface Flight {
   /**
@@ -216,7 +218,7 @@ export interface Flight {
    */
   tickets: FlightTicket[];
   itinerary_locator: null | string;
-  invoice_level_adjustments: null | Adjustment[];
+  invoice_level_adjustments: Adjustment[];
 }
 export interface FlightTicket {
   /**
@@ -233,12 +235,12 @@ export interface FlightSegment {
   arrival_airport_code: string;
   departure_at: null | number;
   arrival_at: null | number;
-  departure_timezone: null | string;
-  arrival_timezone: null | string;
+  departure_tz: null | string;
+  arrival_tz: null | string;
   flight_number: null | string;
   class_of_service: null | string;
-  taxes: null | Tax[];
-  adjustments: null | Adjustment[];
+  taxes: Tax[];
+  adjustments: Adjustment[];
 }
 export interface Payment {
   amount: number;

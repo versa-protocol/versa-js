@@ -32,7 +32,7 @@ describe("receiptComparator", () => {
     },
     version: "",
     header: {
-      receipt_id: "",
+      invoice_number: "",
       currency: "usd",
       total: 0,
       subtotal: 0,
@@ -77,7 +77,7 @@ describe("receiptComparator", () => {
     },
     version: "",
     header: {
-      receipt_id: "",
+      invoice_number: "",
       currency: "usd",
       total: 0,
       subtotal: 0,
@@ -108,7 +108,7 @@ describe("receiptComparator", () => {
     },
     version: "",
     header: {
-      receipt_id: "",
+      invoice_number: "",
       currency: "usd",
       total: 0,
       subtotal: 0,

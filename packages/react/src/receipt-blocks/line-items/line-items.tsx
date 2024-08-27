@@ -1,23 +1,11 @@
 import { formatUSD } from "@versaprotocol/belt";
 import styles from "./line-items.module.css";
 import { LineItem } from "./../line-item";
-import { ItemMetadata } from "@versaprotocol/schema";
+import { Item } from "@versaprotocol/schema";
 import { groupItems, someItemsGrouped } from "@versaprotocol/belt";
 import React from "react";
 
-interface BaseItem {
-  description: string;
-  total: number;
-  quantity?: null | number;
-  unit_cost?: null | number;
-  unit?: null | string;
-  metadata?: null | ItemMetadata[];
-  product_image?: null | string;
-  group?: null | string;
-  url?: null | string;
-}
-
-function Item({ li }: { li: BaseItem }) {
+function ItemRow({ li }: { li: Item }) {
   return (
     <div className={styles.lineItem}>
       {li.product_image && (
@@ -51,7 +39,7 @@ function Item({ li }: { li: BaseItem }) {
               </div>
             </div>
             <div className={styles.lineItemTotal}>
-              {formatUSD(li.total / 100)}
+              {formatUSD(li.subtotal / 100)}
             </div>
           </div>
         </div>
@@ -59,7 +47,7 @@ function Item({ li }: { li: BaseItem }) {
         <div className={styles.lineItemTextSimple}>
           <div className={styles.description}>{li.description}</div>
           <div className={styles.lineItemTotal}>
-            {formatUSD(li.total / 100)}
+            {formatUSD(li.subtotal / 100)}
           </div>
         </div>
       )}
@@ -67,7 +55,7 @@ function Item({ li }: { li: BaseItem }) {
   );
 }
 
-export function LineItems({ items }: { items: BaseItem[] }) {
+export function LineItems({ items }: { items: Item[] }) {
   const hasGroupField = someItemsGrouped(items);
   const groupedItems = groupItems(items);
   return (

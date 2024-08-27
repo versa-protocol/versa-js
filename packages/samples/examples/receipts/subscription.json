@@ -1,7 +1,7 @@
 {
-  "schema_version": "1.1.1",
+  "schema_version": "1.2.0",
   "header": {
-    "receipt_id": "auth_1MzFN1K8F4fqH0lBmFq8CjbU",
+    "invoice_number": "1MzFN1K8F4fqH0lBmFq8CjbU",
     "currency": "usd",
     "total": 8069,
     "subtotal": 7420,
@@ -22,7 +22,8 @@
         "lat": null,
         "lon": null,
         "tz": null
-      }
+      },
+      "metadata": []
     },
     "location": null
   },
@@ -37,7 +38,7 @@
         {
           "subscription_type": "recurring",
           "description": "Starter monthly plan",
-          "total": 7420,
+          "subtotal": 7420,
           "interval": "month",
           "interval_count": 1,
           "current_period_start": 1679609767,
@@ -51,11 +52,11 @@
               "name": "Sales Tax"
             }
           ],
-          "metadata": null,
-          "adjustments": null
+          "metadata": [],
+          "adjustments": []
         }
       ],
-      "invoice_level_adjustments": null
+      "invoice_level_adjustments": []
     },
     "flight": null
   },

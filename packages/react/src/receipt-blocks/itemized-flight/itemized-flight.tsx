@@ -36,7 +36,7 @@ export function ItemizedFlight({ flight }: { flight: Flight }) {
                         false,
                         true,
                         false,
-                        s.departure_timezone
+                        s.departure_tz
                       )}
                     </div>
                   )}
@@ -53,7 +53,7 @@ export function ItemizedFlight({ flight }: { flight: Flight }) {
                         false,
                         true,
                         false,
-                        s.arrival_timezone
+                        s.arrival_tz
                       )}
                     </div>
                   )}

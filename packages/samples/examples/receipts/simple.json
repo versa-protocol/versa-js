@@ -1,7 +1,7 @@
 {
-  "schema_version": "1.1.1",
+  "schema_version": "1.2.0",
   "header": {
-    "receipt_id": "auth_1MzFN1K8F4fqH0lBmFq8CjbU",
+    "invoice_number": "1MzFN1K8F4fqH0lBmFq8CjbU",
     "currency": "usd",
     "total": 2212,
     "subtotal": 1780,
@@ -17,7 +17,7 @@
       "line_items": [
         {
           "description": "Widget",
-          "total": 1780,
+          "subtotal": 1780,
           "quantity": 10,
           "unit_cost": 178,
           "unit": null,
@@ -28,14 +28,14 @@
               "name": "GST"
             }
           ],
-          "metadata": null,
+          "metadata": [],
           "product_image": null,
           "group": null,
           "url": null,
-          "adjustments": null
+          "adjustments": []
         }
       ],
-      "invoice_level_adjustments": null
+      "invoice_level_adjustments": []
     },
     "lodging": null,
     "ecommerce": null,
@@ -49,5 +49,5 @@
     { "name": "Contact Support", "url": "https://versa.org/" },
     { "name": "Specials & Offers", "url": "https://versa.org/" }
   ],
-  "payments": null
+  "payments": []
 }

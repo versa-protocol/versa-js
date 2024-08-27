@@ -4,5 +4,7 @@
   "name": "RocketCo",
   "website": "rocketco.com",
   "brand_color": "#6c6dd8",
-  "logo": "/rocket_co.png"
+  "logo": "/rocket_co.png",
+  "vat_number": null,
+  "address": null
 }

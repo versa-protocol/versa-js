@@ -1,7 +1,7 @@
 {
-  "schema_version": "1.1.1",
+  "schema_version": "1.2.0",
   "header": {
-    "receipt_id": "auth_1MzFN1K8F4fqH0lBmFq8CjbU",
+    "invoice_number": "1MzFN1K8F4fqH0lBmFq8CjbU",
     "currency": "usd",
     "total": 140040,
     "subtotal": 121862,
@@ -29,6 +29,8 @@
               "arrival_airport_code": "MSP",
               "departure_at": 1713196492,
               "arrival_at": 1713197752,
+              "departure_tz": "America/Los_Angeles",
+              "arrival_tz": "America/Chicago",
               "flight_number": "DL 1768",
               "class_of_service": "t",
               "taxes": [
@@ -53,7 +55,7 @@
                   "name": "US Flight Segment Tax"
                 }
               ],
-              "adjustments": null
+              "adjustments": []
             },
             {
               "fare": 12186,
@@ -61,6 +63,8 @@
               "arrival_airport_code": "GFK",
               "departure_at": 1713196492,
               "arrival_at": 1713197752,
+              "departure_tz": "America/Chicago",
+              "arrival_tz": "America/Chicago",
               "flight_number": "OO 4656",
               "class_of_service": "t",
               "taxes": [
@@ -85,7 +89,7 @@
                   "name": "US Flight Segment Tax"
                 }
               ],
-              "adjustments": null
+              "adjustments": []
             },
             {
               "fare": 14014,
@@ -93,6 +97,8 @@
               "arrival_airport_code": "MSP",
               "departure_at": 1713196492,
               "arrival_at": 1713197752,
+              "departure_tz": "America/Chicago",
+              "arrival_tz": "America/Chicago",
               "flight_number": "OO 4656",
               "class_of_service": "t",
               "taxes": [
@@ -117,7 +123,7 @@
                   "name": "US Flight Segment Tax"
                 }
               ],
-              "adjustments": null
+              "adjustments": []
             },
             {
               "fare": 19498,
@@ -125,6 +131,8 @@
               "arrival_airport_code": "SEA",
               "departure_at": 1713196492,
               "arrival_at": 1713197752,
+              "departure_tz": "America/Chicago",
+              "arrival_tz": "America/Chicago",
               "flight_number": "DL 2536",
               "class_of_service": "t",
               "taxes": [
@@ -149,7 +157,7 @@
                   "name": "US Flight Segment Tax"
                 }
               ],
-              "adjustments": null
+              "adjustments": []
             }
           ],
           "number": "0062698215636",
@@ -164,6 +172,8 @@
               "arrival_airport_code": "MSP",
               "departure_at": 1713196492,
               "arrival_at": 1713197752,
+              "departure_tz": "America/Chicago",
+              "arrival_tz": "America/Chicago",
               "flight_number": "DL 1768",
               "class_of_service": "t",
               "taxes": [
@@ -188,7 +198,7 @@
                   "name": "US Flight Segment Tax"
                 }
               ],
-              "adjustments": null
+              "adjustments": []
             },
             {
               "fare": 12186,
@@ -196,6 +206,8 @@
               "arrival_airport_code": "GFK",
               "departure_at": 1713196492,
               "arrival_at": 1713197752,
+              "departure_tz": "America/Chicago",
+              "arrival_tz": "America/Chicago",
               "flight_number": "OO 4656",
               "class_of_service": "t",
               "taxes": [
@@ -220,7 +232,7 @@
                   "name": "US Flight Segment Tax"
                 }
               ],
-              "adjustments": null
+              "adjustments": []
             },
             {
               "fare": 14014,
@@ -228,6 +240,8 @@
               "arrival_airport_code": "MSP",
               "departure_at": 1713196492,
               "arrival_at": 1713197752,
+              "departure_tz": "America/Chicago",
+              "arrival_tz": "America/Chicago",
               "flight_number": "OO 4656",
               "class_of_service": "t",
               "taxes": [
@@ -252,7 +266,7 @@
                   "name": "US Flight Segment Tax"
                 }
               ],
-              "adjustments": null
+              "adjustments": []
             },
             {
               "fare": 19498,
@@ -260,6 +274,8 @@
               "arrival_airport_code": "SEA",
               "departure_at": 1713196492,
               "arrival_at": 1713197752,
+              "departure_tz": "America/Chicago",
+              "arrival_tz": "America/Los_Angeles",
               "flight_number": "DL 2536",
               "class_of_service": "t",
               "taxes": [
@@ -284,7 +300,7 @@
                   "name": "US Flight Segment Tax"
                 }
               ],
-              "adjustments": null
+              "adjustments": []
             }
           ],
           "number": "0062698215637",
@@ -293,7 +309,7 @@
         }
       ],
       "itinerary_locator": "1122337694093",
-      "invoice_level_adjustments": null
+      "invoice_level_adjustments": []
     }
   },
   "actions": [
@@ -301,5 +317,5 @@
     { "name": "Contact Support", "url": "https://versa.org/" },
     { "name": "Loyalty", "url": "https://versa.org/" }
   ],
-  "payments": null
+  "payments": []
 }

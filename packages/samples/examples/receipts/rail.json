@@ -1,7 +1,7 @@
 {
-  "schema_version": "1.1.1",
+  "schema_version": "1.2.0",
   "header": {
-    "receipt_id": "IAFO44",
+    "invoice_number": "IAFO44",
     "currency": "usd",
     "total": 43500,
     "subtotal": 43500,
@@ -64,7 +64,7 @@
             { "key": "Class", "value": "Coach" },
             { "key": "Category", "value": "Adult" }
           ],
-          "adjustments": null
+          "adjustments": []
         },
         {
           "departure_location": {
@@ -111,7 +111,7 @@
             { "key": "Class", "value": "Coach" },
             { "key": "Category", "value": "Adult" }
           ],
-          "adjustments": null
+          "adjustments": []
         },
         {
           "departure_location": {
@@ -158,10 +158,10 @@
             { "key": "Class", "value": "Coach" },
             { "key": "Category", "value": "Child" }
           ],
-          "adjustments": null
+          "adjustments": []
         }
       ],
-      "invoice_level_adjustments": null,
+      "invoice_level_adjustments": [],
       "tip": null
     },
     "subscription": null,
@@ -171,5 +171,5 @@
     { "name": "Loyalty Program", "url": "https://versa.org" },
     { "name": "Rebook", "url": "https://versa.org" }
   ],
-  "payments": null
+  "payments": []
 }
