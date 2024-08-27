@@ -1,5 +1,11 @@
 # @versaprotocol/react
 
+## 1.2.1
+
+### Patch Changes
+
+- Fix any-typing in line item renderer that borked the display of itemized subtotals"
+
 ## 1.2.0
 
 ### Minor Changes
