@@ -2,8 +2,11 @@
   "name": "@versaprotocol/react",
   "version": "1.2.3",
   "main": "./dist/index.js",
-  "module": "./dist/index.js",
+  "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "license": "MIT",
   "scripts": {
     "build": "rollup -c",

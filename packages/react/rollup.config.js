@@ -7,6 +7,8 @@ const resolve = require("@rollup/plugin-node-resolve").default;
 const commonjs = require("@rollup/plugin-commonjs");
 const del = require("rollup-plugin-delete");
 
+const packageJson = require("./package.json");
+
 module.exports = {
   input: "src/index.ts",
   output: [
@@ -14,6 +16,12 @@ module.exports = {
       // interop: "compat",
       dir: "dist",
       format: "cjs",
+      sourcemap: true,
+    },
+    {
+      file: packageJson.module,
+      format: "es",
+      exports: "named",
       sourcemap: true,
     },
   ],
