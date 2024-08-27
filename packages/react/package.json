@@ -30,6 +30,7 @@
     "jest": "^28.1.1",
     "jest-environment-jsdom": "^29.7.0",
     "rollup": "^4.19.2",
+    "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "samples": "workspace:*",
