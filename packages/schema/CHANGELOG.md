@@ -1,5 +1,11 @@
 # @versaprotocol/schema
 
+## 1.2.0
+
+### Minor Changes
+
+- Standardize timezones, replace receipt_id with invoice_number, rename item 'totals' to item.subtotal, other usability improvements
+
 ## 1.1.1
 
 ### Patch Changes

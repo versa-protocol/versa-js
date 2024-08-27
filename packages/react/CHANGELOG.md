@@ -1,5 +1,17 @@
 # @versaprotocol/react
 
+## 1.2.0
+
+### Minor Changes
+
+- Standardize timezones, replace receipt_id with invoice_number, rename item 'totals' to item.subtotal, other usability improvements
+
+### Patch Changes
+
+- Updated dependencies
+  - @versaprotocol/schema@1.2.0
+  - @versaprotocol/belt@1.2.0
+
 ## 1.1.1
 
 ### Patch Changes
