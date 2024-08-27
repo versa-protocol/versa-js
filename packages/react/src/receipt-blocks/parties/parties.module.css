@@ -1,0 +1,12 @@
+.partiesWrap {
+  border-top: 1px solid var(--light-stroke);
+  border-bottom: 1px solid var(--light-stroke);
+  margin: -1px 1.5rem 0 1.5rem;
+  padding: 1.5rem 0;
+}
+
+.partyHeader {
+  color: var(--foreground-secondary);
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+}

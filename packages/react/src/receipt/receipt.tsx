@@ -23,6 +23,7 @@ import {
 } from "@versaprotocol/belt";
 import styles from "./base_receipt.module.css";
 import { Payments } from "../receipt-blocks/payments";
+import { Parties } from "../receipt-blocks/parties/parties";
 
 export function ReceiptDisplay({
   receipt,
@@ -156,6 +157,10 @@ export function ReceiptDisplay({
       {data.payments && (
         <Payments payments={data.payments} header={data.header} />
       )}
+
+      {/* Parties */}
+
+      {data.header.customer && <Parties header={data.header} />}
 
       {/* Activity */}
 

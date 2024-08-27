@@ -17,10 +17,10 @@ export function aggregateTaxes(itemization: Itemization): Tax[] {
   if (itemization.transit_route) {
     for (const item of itemization.transit_route.transit_route_items) {
       for (const tax of item.taxes || []) {
-        if (aggregatedTaxes[tax.name]) {
-          aggregatedTaxes[tax.name].amount += tax.amount;
+        if (aggregatedTaxes[tax.name + tax.rate]) {
+          aggregatedTaxes[tax.name + tax.rate].amount += tax.amount;
         } else {
-          aggregatedTaxes[tax.name] = { ...tax };
+          aggregatedTaxes[tax.name + tax.rate] = { ...tax };
         }
       }
     }
@@ -29,10 +29,10 @@ export function aggregateTaxes(itemization: Itemization): Tax[] {
     for (const subscription_item of itemization.subscription
       .subscription_items) {
       for (const tax of subscription_item.taxes || []) {
-        if (aggregatedTaxes[tax.name]) {
-          aggregatedTaxes[tax.name].amount += tax.amount;
+        if (aggregatedTaxes[tax.name + tax.rate]) {
+          aggregatedTaxes[tax.name + tax.rate].amount += tax.amount;
         } else {
-          aggregatedTaxes[tax.name] = { ...tax };
+          aggregatedTaxes[tax.name + tax.rate] = { ...tax };
         }
       }
     }
@@ -41,10 +41,10 @@ export function aggregateTaxes(itemization: Itemization): Tax[] {
     for (const ticket of itemization.flight.tickets) {
       for (const segment of ticket.segments) {
         for (const tax of segment.taxes || []) {
-          if (aggregatedTaxes[tax.name]) {
-            aggregatedTaxes[tax.name].amount += tax.amount;
+          if (aggregatedTaxes[tax.name + tax.rate]) {
+            aggregatedTaxes[tax.name + tax.rate].amount += tax.amount;
           } else {
-            aggregatedTaxes[tax.name] = { ...tax };
+            aggregatedTaxes[tax.name + tax.rate] = { ...tax };
           }
         }
       }
@@ -53,10 +53,10 @@ export function aggregateTaxes(itemization: Itemization): Tax[] {
   if (itemization.car_rental) {
     for (const item of itemization.car_rental.items) {
       for (const tax of item.taxes || []) {
-        if (aggregatedTaxes[tax.name]) {
-          aggregatedTaxes[tax.name].amount += tax.amount;
+        if (aggregatedTaxes[tax.name + tax.rate]) {
+          aggregatedTaxes[tax.name + tax.rate].amount += tax.amount;
         } else {
-          aggregatedTaxes[tax.name] = { ...tax };
+          aggregatedTaxes[tax.name + tax.rate] = { ...tax };
         }
       }
     }
@@ -65,10 +65,10 @@ export function aggregateTaxes(itemization: Itemization): Tax[] {
     for (const lodging_item of itemization.lodging.lodging_items) {
       for (const item of lodging_item.items) {
         for (const tax of item.taxes || []) {
-          if (aggregatedTaxes[tax.name]) {
-            aggregatedTaxes[tax.name].amount += tax.amount;
+          if (aggregatedTaxes[tax.name + tax.rate]) {
+            aggregatedTaxes[tax.name + tax.rate].amount += tax.amount;
           } else {
-            aggregatedTaxes[tax.name] = { ...tax };
+            aggregatedTaxes[tax.name + tax.rate] = { ...tax };
           }
         }
       }
@@ -78,10 +78,10 @@ export function aggregateTaxes(itemization: Itemization): Tax[] {
     if (itemization.ecommerce.invoice_level_line_items) {
       for (const item of itemization.ecommerce.invoice_level_line_items) {
         for (const tax of item.taxes || []) {
-          if (aggregatedTaxes[tax.name]) {
-            aggregatedTaxes[tax.name].amount += tax.amount;
+          if (aggregatedTaxes[tax.name + tax.rate]) {
+            aggregatedTaxes[tax.name + tax.rate].amount += tax.amount;
           } else {
-            aggregatedTaxes[tax.name] = { ...tax };
+            aggregatedTaxes[tax.name + tax.rate] = { ...tax };
           }
         }
       }
@@ -90,10 +90,10 @@ export function aggregateTaxes(itemization: Itemization): Tax[] {
       for (const shipment of itemization.ecommerce.shipments) {
         for (const item of shipment.items) {
           for (const tax of item.taxes || []) {
-            if (aggregatedTaxes[tax.name]) {
-              aggregatedTaxes[tax.name].amount += tax.amount;
+            if (aggregatedTaxes[tax.name + tax.rate]) {
+              aggregatedTaxes[tax.name + tax.rate].amount += tax.amount;
             } else {
-              aggregatedTaxes[tax.name] = { ...tax };
+              aggregatedTaxes[tax.name + tax.rate] = { ...tax };
             }
           }
         }
@@ -103,10 +103,10 @@ export function aggregateTaxes(itemization: Itemization): Tax[] {
   if (itemization.general) {
     for (const item of itemization.general.line_items) {
       for (const tax of item.taxes || []) {
-        if (aggregatedTaxes[tax.name]) {
-          aggregatedTaxes[tax.name].amount += tax.amount;
+        if (aggregatedTaxes[tax.name + tax.rate]) {
+          aggregatedTaxes[tax.name + tax.rate].amount += tax.amount;
         } else {
-          aggregatedTaxes[tax.name] = { ...tax };
+          aggregatedTaxes[tax.name + tax.rate] = { ...tax };
         }
       }
     }

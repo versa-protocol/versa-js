@@ -9,7 +9,21 @@
     "invoiced_at": 1713295619,
     "mcc": null,
     "third_party": null,
-    "customer": null,
+    "customer": {
+      "name": "Theodore Power",
+      "email": "ted@bend.green",
+      "phone": null,
+      "address": {
+        "street_address": "33-45 9th St.",
+        "city": "Astoria",
+        "region": "NY",
+        "country": "US",
+        "postal_code": "11106",
+        "lat": null,
+        "lon": null,
+        "tz": null
+      }
+    },
     "location": null
   },
   "itemization": {
