@@ -37,9 +37,16 @@ export function Totals({
         ))}
       {taxes && (
         <div className={`tft-row ${styles.taxesFeesTipWrap}`}>
-          {taxes.map((tft: any, index: number) => (
+          {taxes.map((tft: Tax, index: number) => (
             <div key={index} className={styles.row}>
-              <div className={styles.blockLabel}>{tft.name}</div>
+              <div className={styles.blockLabel}>
+                <div>
+                  <span>{tft.name}</span>{" "}
+                  {tft.rate && (
+                    <span className={styles.tax}>({tft.rate * 100}%)</span>
+                  )}
+                </div>
+              </div>
               <div className={styles.blockValue}>
                 {formatUSD(tft.amount / 100)}
               </div>

@@ -31,3 +31,7 @@
 .bottomLine .blockValue {
   font-weight: 800;
 }
+
+.tax {
+  color: var(--foreground-secondary);
+}
