@@ -1,7 +1,8 @@
 import { formatUSD } from "@versaprotocol/belt";
 import styles from "./line-item.module.css";
+import { Item } from "@versaprotocol/schema";
 
-export function LineItem({ li }: { li: any }) {
+export function LineItem({ li }: { li: Item }) {
   return (
     <div className={styles.lineItem}>
       {li.product_image && (
@@ -38,7 +39,7 @@ export function LineItem({ li }: { li: any }) {
               )}
             </div>
             <div className={styles.lineItemTotal}>
-              {formatUSD(li.total / 100)}
+              {formatUSD(li.subtotal / 100)}
             </div>
           </div>
         </div>
@@ -46,7 +47,7 @@ export function LineItem({ li }: { li: any }) {
         <div className={styles.lineItemTextSimple}>
           <div className={styles.description}>{li.description}</div>
           <div className={styles.lineItemTotal}>
-            {formatUSD(li.total / 100)}
+            {formatUSD(li.subtotal / 100)}
           </div>
         </div>
       )}
