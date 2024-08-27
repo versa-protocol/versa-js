@@ -9,13 +9,14 @@
   ],
   "scripts": {
     "build": "turbo build",
+    "build-clean": "turbo build --no-cache",
     "dev": "turbo dev --no-cache --parallel",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo run lint",
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky install",
     "test": "turbo test",
-    "publish-packages": "turbo run build lint test && changeset version && changeset publish"
+    "publish-packages": "turbo run build --no-cache lint test && changeset version && changeset publish"
   },
   "author": "thomasmost",
   "license": "ISC",

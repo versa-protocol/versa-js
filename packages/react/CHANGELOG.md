@@ -1,5 +1,11 @@
 # @versaprotocol/react
 
+## 1.2.2
+
+### Patch Changes
+
+- Fixed defects in build process
+
 ## 1.2.1
 
 ### Patch Changes
