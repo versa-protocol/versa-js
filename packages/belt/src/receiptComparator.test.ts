@@ -19,7 +19,7 @@ describe("receiptComparator", () => {
               {
                 quantity: 1,
                 description: "",
-                total: 0,
+                subtotal: 0,
               },
             ],
             tracking_number: null,
@@ -30,7 +30,7 @@ describe("receiptComparator", () => {
         ],
       },
     },
-    version: "",
+    schema_version: "1.2.0",
     header: {
       invoice_number: "",
       currency: "usd",
@@ -64,7 +64,7 @@ describe("receiptComparator", () => {
               {
                 quantity: 1,
                 description: "",
-                total: 0,
+                subtotal: 0,
               },
             ],
             tracking_number: null,
@@ -75,7 +75,7 @@ describe("receiptComparator", () => {
         ],
       },
     },
-    version: "",
+    schema_version: "1.2.0",
     header: {
       invoice_number: "",
       currency: "usd",
@@ -106,7 +106,7 @@ describe("receiptComparator", () => {
         shipments: [],
       },
     },
-    version: "",
+    schema_version: "1.2.0",
     header: {
       invoice_number: "",
       currency: "usd",
