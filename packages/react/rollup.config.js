@@ -26,7 +26,7 @@ module.exports = {
     },
   ],
   plugins: [
-    del({ targets: "dist/*" }),
+    del({ targets: "dist/*", runOnce: true }),
     peerDepsExternal(),
     resolve(),
     typescript(),
