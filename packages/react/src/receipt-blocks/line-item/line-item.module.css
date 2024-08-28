@@ -1,24 +1,11 @@
-.lineItemsWrap {
-  margin: 0 1.5rem;
-}
-
-.lineItemsWrap table {
-  margin: 2rem 0;
-  display: block;
-}
-
-.lineItemTable {
-  width: 100%;
-}
-
-.lineItemReg tr,
-.lineItemReg tr td {
-  border: none;
-}
-
 .lineItem {
   display: flex;
   margin: 1.5rem 0;
+}
+
+.lineItemCompact {
+  display: flex;
+  margin: 0.75rem 0;
 }
 
 .lineItem:first-child {
@@ -70,15 +57,4 @@
 
 .lineItemTextSimple .description {
   flex-grow: 1;
-}
-
-.groupTitle td {
-  font-size: 0.875rem;
-
-  color: var(--foreground-secondary);
-}
-
-.lineItemReg .groupTitle td {
-  margin: 0 1.5rem;
-  padding: 0;
 }

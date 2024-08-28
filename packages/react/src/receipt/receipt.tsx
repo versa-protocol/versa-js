@@ -154,7 +154,7 @@ export function ReceiptDisplay({
 
       {/* Payments */}
 
-      {data.payments && (
+      {data.payments && data.payments.length > 0 && (
         <Payments payments={data.payments} header={data.header} />
       )}
 

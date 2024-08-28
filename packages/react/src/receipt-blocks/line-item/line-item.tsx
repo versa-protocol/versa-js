@@ -4,7 +4,7 @@ import { Item } from "@versaprotocol/schema";
 
 export function LineItem({ li }: { li: Item }) {
   return (
-    <div className={styles.lineItem}>
+    <div className={li.unit_cost ? styles.lineItem : styles.lineItemCompact}>
       {li.product_image && (
         <img
           src={li.product_image}

@@ -1,3 +1,10 @@
+.grandTotal {
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--light-stroke);
+  border-bottom: 1px solid var(--light-stroke);
+  margin: -1px 1.5rem 0 1.5rem;
+}
+
 .row {
   display: flex;
   margin: 0.25rem 0;
@@ -13,13 +20,6 @@
 
 .blockLabel svg {
   margin-left: 0.25rem;
-}
-
-.grandTotal {
-  border-top: 1px solid var(--light-stroke);
-  border-bottom: 1px solid var(--light-stroke);
-  margin: 0 1.5rem;
-  padding: 1.5rem 0;
 }
 
 .totalBlock {
