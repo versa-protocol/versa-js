@@ -10,12 +10,9 @@ export default function Home() {
         width={96}
         height={25}
         alt=""
+        className={styles.logo}
       />
       <div className={styles.demo}>
-        <div className={styles.intro}>
-          <h1>Home</h1>
-          <p>Welcome to the Versa JS landing page.</p>
-        </div>
         <div className={styles.receiptWrap}>
           <DemoReceipt />
         </div>

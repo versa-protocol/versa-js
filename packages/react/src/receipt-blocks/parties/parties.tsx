@@ -55,34 +55,26 @@ export function Parties({
           )}
         </div>
       )}
-      {merchant && (
+      {merchant?.address && (
         <div>
           <div className={styles.partyHeader}>{merchant.name}</div>
-          {merchant?.address && (
-            <>
-              {merchant.address.street_address && (
-                <div>{merchant.address.street_address}</div>
-              )}
-              {(merchant.address.city ||
-                merchant.address.region ||
-                merchant.address.postal_code) && (
-                <div>
-                  {merchant.address.city && (
-                    <span>{merchant.address.city}, </span>
-                  )}
-                  {merchant.address.region && (
-                    <span>{merchant.address.region} </span>
-                  )}
-                  {merchant.address.postal_code && (
-                    <span>{merchant.address.postal_code}</span>
-                  )}
-                </div>
-              )}
-              {merchant.address.country && (
-                <div>{merchant.address.country}</div>
-              )}
-            </>
+          {merchant.address.street_address && (
+            <div>{merchant.address.street_address}</div>
           )}
+          {(merchant.address.city ||
+            merchant.address.region ||
+            merchant.address.postal_code) && (
+            <div>
+              {merchant.address.city && <span>{merchant.address.city}, </span>}
+              {merchant.address.region && (
+                <span>{merchant.address.region} </span>
+              )}
+              {merchant.address.postal_code && (
+                <span>{merchant.address.postal_code}</span>
+              )}
+            </div>
+          )}
+          {merchant.address.country && <div>{merchant.address.country}</div>}
         </div>
       )}
     </div>
