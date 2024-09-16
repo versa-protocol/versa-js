@@ -1,3 +1,5 @@
+/* Mobile */
+
 .actionBlock {
   padding: 0.875rem 0;
   margin: -1px 1.5rem 0 1.5rem;
@@ -25,16 +27,22 @@
   border-radius: 0.75rem;
 }
 
-.iconWrap {
-  position: absolute;
-  left: 1rem;
-  top: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  opacity: 0.4;
-}
+/* Full Width */
 
-.iconWrap svg {
-  stroke-width: 3px;
+@media (min-width: 800px) {
+  .actionBlock {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .actionButton {
+    background-color: transparent !important;
+    color: var(--foreground-secondary) !important;
+    display: inline;
+    padding: 0;
+  }
+
+  .actionButton::after {
+    box-shadow: none;
+  }
 }

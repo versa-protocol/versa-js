@@ -1,4 +1,5 @@
 .receiptWrap {
+  position: relative;
   --dark0: white;
   --dark03: hsl(210, 30%, 97%);
   --dark08: hsl(210, 20%, 92%);

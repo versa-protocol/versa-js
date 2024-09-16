@@ -3,6 +3,7 @@ import {
   ActionBlock,
   ActivityBlock,
   Footer,
+  FullscreenHeader,
   ItemizedCarRental,
   ItemizedFlight,
   ItemizedLodging,
@@ -69,7 +70,11 @@ export function ReceiptDisplay({
     <div className={styles.receiptWrap}>
       {/* Header */}
 
-      <ReceiptHeader merchant={merchant} header={data.header} />
+      <ReceiptHeader
+        merchant={merchant}
+        header={data.header}
+        brandColor={colors.brand}
+      />
 
       {/* Itemization */}
 
