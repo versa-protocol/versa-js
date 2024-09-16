@@ -49,3 +49,9 @@
   --yellow120: hsl(54, 79%, 42%);
   --yellow10: hsl(53, 82%, 96%);
 }
+
+@media (min-width: 800px) {
+  .fullPageHide {
+    display: none;
+  }
+}

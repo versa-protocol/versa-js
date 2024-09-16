@@ -25,10 +25,15 @@ export function ReceiptHeader({
           }}
         ></div>
         <h1>{header.total === header.paid ? "Receipt" : "Invoice"}</h1>
-        {header.invoice_number && (
-          <div>Invoice Number: {header.invoice_number}</div>
+        <div className={styles.headerChunk}>
+          {header.invoice_number && (
+            <div>Invoice Number: {header.invoice_number}</div>
+          )}
+          <div>Date: {formatDateTime(header.invoiced_at)}</div>
+        </div>
+        {(header.customer || merchant.address) && (
+          <Parties customer={header.customer} merchant={merchant} />
         )}
-        <div>Date: {formatDateTime(header.invoiced_at)}</div>
 
         <div className={styles.logo}>
           {merchant.logo && (

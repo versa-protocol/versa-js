@@ -2,8 +2,8 @@ import { Merchant, Receipt } from "@versaprotocol/schema";
 import {
   ActionBlock,
   ActivityBlock,
+  BlockWrap,
   Footer,
-  FullscreenHeader,
   ItemizedCarRental,
   ItemizedFlight,
   ItemizedLodging,
@@ -140,11 +140,13 @@ export function ReceiptDisplay({
       {/* Actions */}
 
       {data.actions && (
-        <ActionBlock
-          actions={data.actions}
-          brandTheme={colors.brand}
-          brandThemeContrastLight={colors.brandThemeLight}
-        />
+        <BlockWrap>
+          <ActionBlock
+            actions={data.actions}
+            brandTheme={colors.brand}
+            brandThemeContrastLight={colors.brandThemeLight}
+          />
+        </BlockWrap>
       )}
 
       {/* Local Transaction */}
@@ -166,7 +168,11 @@ export function ReceiptDisplay({
       {/* Parties */}
 
       {(data.header.customer || merchant.address) && (
-        <Parties customer={data.header.customer} merchant={merchant} />
+        <div className={styles.fullPageHide}>
+          <BlockWrap>
+            <Parties customer={data.header.customer} merchant={merchant} />
+          </BlockWrap>
+        </div>
       )}
 
       {/* Activity */}

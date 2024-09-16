@@ -3,7 +3,6 @@
 export * from "./action-block";
 export * from "./activity-block";
 export * from "./footer";
-export * from "./fullscreen-header";
 export * from "./itemized-car-rental";
 export * from "./itemized-flight";
 export * from "./itemized-lodging";
@@ -16,3 +15,4 @@ export * from "./receipt-header";
 export * from "./shipment";
 export * from "./third-party";
 export * from "./totals";
+export * from "./block-wrap";
