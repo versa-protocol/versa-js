@@ -1,9 +1,3 @@
-.shipmentWrap {
-  margin: 1.5rem;
-  border-bottom: 1px solid var(--light-stroke);
-  padding: 0 0 1.5rem 0;
-}
-
 .shipmentCard {
   border-radius: 0.75rem;
   border: 1px solid var(--light-stroke);

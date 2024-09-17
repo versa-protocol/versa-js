@@ -1,3 +1,9 @@
+.totalsWrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  page-break-inside: avoid;
+}
+
 .row {
   display: flex;
   margin-bottom: 0.5rem;
@@ -29,12 +35,7 @@
   color: var(--foreground-secondary);
 }
 
-.totalsWrap {
-  display: grid;
-  grid-template-columns: 1fr;
-}
-
-@media (min-width: 800px) {
+@media (min-width: 768px), print {
   .totalsWrap {
     grid-template-columns: 1fr 1fr;
   }

@@ -50,8 +50,16 @@
   --yellow10: hsl(53, 82%, 96%);
 }
 
-@media (min-width: 800px) {
+@media (min-width: 768px), print {
   .fullPageHide {
     display: none;
   }
 }
+
+/* @page {
+  size: 8.5in 11in;
+  margin: 0.25in;
+  @bottom-right {
+    content: counter(page) " of " counter(pages);
+  }
+} */

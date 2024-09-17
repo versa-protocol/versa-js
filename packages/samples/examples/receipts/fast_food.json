@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.2.0",
+  "header": {
+    "invoice_number": "auth_1MzFN1K8F4fqH0lBmFq8CjbU",
+    "currency": "usd",
+    "total": 559,
+    "subtotal": 514,
+    "paid": 559,
+    "invoiced_at": 1713295619,
+    "mcc": null,
+    "third_party": null,
+    "customer": null,
+    "location": {
+      "google_place_id": null,
+      "name": null,
+      "url": null,
+      "address": {
+        "street_address": "893 Manhattan Ave",
+        "city": "Brooklyn",
+        "region": "NY",
+        "country": "US",
+        "postal_code": "11222",
+        "lat": 40.72436386660593,
+        "lon": -73.95114406900547,
+        "tz": null
+      },
+      "phone": "(718) 472-3745",
+      "image": null
+    }
+  },
+  "itemization": {
+    "general": {
+      "line_items": [
+        {
+          "quantity": 1,
+          "description": "Original Blend Coffee",
+          "unit_cost": 315,
+          "taxes": [
+            {
+              "amount": 28,
+              "rate": 0.0875,
+              "name": "Sales Tax"
+            }
+          ],
+          "subtotal": 315,
+          "metadata": [{ "key": "options", "value": "Medium black" }],
+          "product_image": "https://versa.org/temp_demo_assets/dunkin/hot-coffee.png"
+        },
+        {
+          "quantity": 1,
+          "description": "Classic Donut",
+          "unit_cost": 199,
+          "taxes": [
+            {
+              "amount": 17,
+              "rate": 0.0875,
+              "name": "Sales Tax"
+            }
+          ],
+          "subtotal": 199,
+          "metadata": [
+            { "key": "options", "value": "Vanilla frosted sprinkles" }
+          ],
+          "product_image": "https://versa.org/temp_demo_assets/dunkin/VanillaFrostedSprinklesDonut_570x570.png"
+        }
+      ],
+      "invoice_level_adjustments": []
+    },
+    "lodging": null,
+    "ecommerce": null,
+    "car_rental": null,
+    "transit_route": null,
+    "subscription": null,
+    "flight": null
+  },
+  "actions": [
+    { "name": "View Rewards", "url": "https://versa.org/" },
+    { "name": "Rebuy", "url": "https://versa.org/" }
+  ],
+  "payments": null
+}

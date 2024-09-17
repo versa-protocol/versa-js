@@ -17,7 +17,6 @@
   gap: 0.25rem;
   color: var(--foreground-tertiary);
   align-items: center;
-  margin-top: 1.5rem;
 }
 
 .finePrintContent a {
@@ -44,6 +43,7 @@
 .downloadBlock {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  margin-bottom: 1.5rem;
 }
 
 .downloadBlock > div {
@@ -58,4 +58,10 @@
 
 .downloadBlock > div:first-child {
   border-right: 1px solid var(--light-stroke);
+}
+
+@media (min-width: 768px), print {
+  .downloadBlock {
+    display: none;
+  }
 }

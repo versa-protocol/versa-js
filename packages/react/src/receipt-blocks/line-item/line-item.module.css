@@ -3,6 +3,16 @@
   margin: 1.5rem 0;
 }
 
+.lineItem:first-child,
+.lineItemCompact:first-child {
+  margin-top: 0;
+}
+
+.lineItem:last-child,
+.lineItemCompact:last-child {
+  margin-bottom: 0;
+}
+
 .lineItemCompact {
   display: flex;
   margin: 0.75rem 0;

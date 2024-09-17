@@ -49,7 +49,7 @@
   display: none;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 768px), print {
   .fullPage {
     display: block;
   }

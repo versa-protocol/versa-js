@@ -79,53 +79,84 @@ export function ReceiptDisplay({
       {/* Itemization */}
 
       {data.header.third_party && !data.header.third_party.make_primary && (
-        <ThirdParty third_party={data.header.third_party} merchant={merchant} />
+        <BlockWrap>
+          <ThirdParty
+            third_party={data.header.third_party}
+            merchant={merchant}
+          />
+        </BlockWrap>
       )}
       {data.itemization.subscription && (
         <>
-          <ItemizedSubscription subscription={data.itemization.subscription} />
-          <LineItems items={data.itemization.subscription.subscription_items} />
+          <BlockWrap>
+            <ItemizedSubscription
+              subscription={data.itemization.subscription}
+            />
+          </BlockWrap>
+          <BlockWrap>
+            <LineItems
+              items={data.itemization.subscription.subscription_items}
+            />
+          </BlockWrap>
         </>
       )}
       {data.itemization.car_rental && (
         <>
-          <ItemizedCarRental car_rental={data.itemization.car_rental} />
-          <LineItems items={data.itemization.car_rental.items} />
+          <BlockWrap>
+            <ItemizedCarRental car_rental={data.itemization.car_rental} />
+          </BlockWrap>
+          <BlockWrap>
+            <LineItems items={data.itemization.car_rental.items} />
+          </BlockWrap>
         </>
       )}
       {data.itemization.ecommerce && (
         <>
           {data.itemization.ecommerce.shipments && (
-            <Shipment
-              data={data.itemization.ecommerce.shipments}
-              brandColor={colors.brand}
-            />
+            <BlockWrap>
+              <Shipment
+                data={data.itemization.ecommerce.shipments}
+                brandColor={colors.brand}
+              />
+            </BlockWrap>
           )}
-          <LineItems
-            items={aggregateEcommerceItems(data.itemization.ecommerce)}
-          />
+          <BlockWrap>
+            <LineItems
+              items={aggregateEcommerceItems(data.itemization.ecommerce)}
+            />
+          </BlockWrap>
         </>
       )}
       {data.itemization.lodging && (
         <>
-          <ItemizedLodging data={data.itemization.lodging} theme={theme} />
+          <BlockWrap>
+            <ItemizedLodging data={data.itemization.lodging} theme={theme} />
+          </BlockWrap>
           {data.itemization.lodging.lodging_items.map((item) => (
-            <LineItems items={item.items} />
+            <BlockWrap>
+              <LineItems items={item.items} />
+            </BlockWrap>
           ))}
         </>
       )}
       {data.itemization.flight && (
-        <ItemizedFlight flight={data.itemization.flight} />
+        <BlockWrap>
+          <ItemizedFlight flight={data.itemization.flight} />
+        </BlockWrap>
       )}
       {data.itemization.transit_route && (
-        <ItemizedTransitRoute
-          transit_route={data.itemization.transit_route}
-          header={data.header}
-          theme={theme}
-        />
+        <BlockWrap>
+          <ItemizedTransitRoute
+            transit_route={data.itemization.transit_route}
+            header={data.header}
+            theme={theme}
+          />
+        </BlockWrap>
       )}
       {data.itemization.general && (
-        <LineItems items={(data.itemization.general as any).line_items} />
+        <BlockWrap>
+          <LineItems items={(data.itemization.general as any).line_items} />
+        </BlockWrap>
       )}
 
       {/* Totals: Taxes, Fees, Tip */}
@@ -153,11 +184,13 @@ export function ReceiptDisplay({
       {/* Local Transaction */}
 
       {data.header.location && (
-        <LocalBusiness
-          location={data.header.location}
-          theme={theme}
-          brandColor={colors.brandHighContrast}
-        />
+        <BlockWrap>
+          <LocalBusiness
+            location={data.header.location}
+            theme={theme}
+            brandColor={colors.brandHighContrast}
+          />
+        </BlockWrap>
       )}
 
       {/* Payments */}
@@ -180,7 +213,11 @@ export function ReceiptDisplay({
 
       {/* Activity */}
 
-      {!!activities?.length && <ActivityBlock activities={activities} />}
+      {!!activities?.length && (
+        <BlockWrap>
+          <ActivityBlock activities={activities} />
+        </BlockWrap>
+      )}
 
       {/* Footer */}
 

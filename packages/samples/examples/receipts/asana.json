@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.2.0",
+  "header": {
+    "invoice_number": "INV03284849",
+    "currency": "usd",
+    "total": 7344,
+    "subtotal": 6745,
+    "paid": 7344,
+    "invoiced_at": 1713295619,
+    "mcc": null,
+    "third_party": null,
+    "customer": {
+      "name": "Theodore Power",
+      "email": "ted@bend.green",
+      "phone": null,
+      "address": {
+        "street_address": "33-45 9th St.",
+        "city": "Astoria",
+        "region": "NY",
+        "country": "US",
+        "postal_code": "11106",
+        "lat": null,
+        "lon": null,
+        "tz": null
+      },
+      "metadata": [{ "key": "Account Number", "value": "A01320949" }]
+    },
+    "location": null
+  },
+  "itemization": {
+    "general": null,
+    "lodging": null,
+    "ecommerce": null,
+    "car_rental": null,
+    "transit_route": null,
+    "subscription": {
+      "subscription_items": [
+        {
+          "subscription_type": "recurring",
+          "description": "Starter monthly plan",
+          "subtotal": 6745,
+          "interval": "month",
+          "interval_count": 1,
+          "current_period_start": 1679609767,
+          "current_period_end": 1682288167,
+          "quantity": 5,
+          "unit_cost": 1349,
+          "taxes": [
+            {
+              "amount": 25,
+              "rate": 0.00375,
+              "name": "Metropolitan commuter transportation mobility tax"
+            },
+            {
+              "amount": 304,
+              "rate": 0.045,
+              "name": "New York"
+            },
+            {
+              "amount": 270,
+              "rate": 0.04,
+              "name": "New York"
+            }
+          ],
+          "metadata": [],
+          "adjustments": []
+        }
+      ],
+      "invoice_level_adjustments": []
+    },
+    "flight": null
+  },
+  "actions": [
+    { "name": "Billing Inquiries", "url": "https://asana.com/support" }
+  ],
+  "payments": [
+    {
+      "paid_at": 1679609767,
+      "payment_type": "card",
+      "amount": 7344,
+      "card_payment": {
+        "last_four": "7585",
+        "network": "mastercard"
+      },
+      "ach_payment": null
+    }
+  ]
+}
