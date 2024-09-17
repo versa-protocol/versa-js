@@ -20,23 +20,21 @@ export function Payments({
   header: Receipt["header"];
 }) {
   return (
-    <div className={styles.paymentsWrap}>
+    <div>
       {payments.length == 1 && payments[0].amount == header.total ? (
-        <>
-          <div className={styles.payment}>
-            {payments[0].payment_type == "card" && (
-              <div className={styles.paymentType}>
-                {payments[0].card_payment?.network && (
-                  <>{prettyNetwork(payments[0].card_payment.network)}</>
-                )}
-                <span className={styles.lastFour}>
-                  ··· {payments[0].card_payment?.last_four}
-                </span>
-              </div>
-            )}
-            <div>{formatDateTime(payments[0].paid_at, true, true)}</div>
-          </div>
-        </>
+        <div className={styles.payment}>
+          {payments[0].payment_type == "card" && (
+            <div className={styles.paymentType}>
+              {payments[0].card_payment?.network && (
+                <>{prettyNetwork(payments[0].card_payment.network)}</>
+              )}
+              <span className={styles.lastFour}>
+                ··· {payments[0].card_payment?.last_four}
+              </span>
+            </div>
+          )}
+          <div>{formatDateTime(payments[0].paid_at, true, true)}</div>
+        </div>
       ) : (
         <>
           {payments.map((payment, i) => (

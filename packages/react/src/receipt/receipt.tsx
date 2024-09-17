@@ -129,13 +129,14 @@ export function ReceiptDisplay({
       )}
 
       {/* Totals: Taxes, Fees, Tip */}
-
-      <Totals
-        taxes={aggregateTaxes(data.itemization)}
-        header={receipt.header}
-        adjustments={aggregateAdjustments(data.itemization)}
-        colors={colors}
-      />
+      <BlockWrap>
+        <Totals
+          taxes={aggregateTaxes(data.itemization)}
+          header={receipt.header}
+          adjustments={aggregateAdjustments(data.itemization)}
+          colors={colors}
+        />
+      </BlockWrap>
 
       {/* Actions */}
 
@@ -162,7 +163,9 @@ export function ReceiptDisplay({
       {/* Payments */}
 
       {data.payments && data.payments.length > 0 && (
-        <Payments payments={data.payments} header={data.header} />
+        <BlockWrap>
+          <Payments payments={data.payments} header={data.header} />
+        </BlockWrap>
       )}
 
       {/* Parties */}
