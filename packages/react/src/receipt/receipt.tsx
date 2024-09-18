@@ -171,7 +171,7 @@ export function ReceiptDisplay({
 
       {/* Actions */}
 
-      {data.actions && (
+      {data.actions && data.actions.length > 0 && (
         <BlockWrap>
           <ActionBlock
             actions={data.actions}

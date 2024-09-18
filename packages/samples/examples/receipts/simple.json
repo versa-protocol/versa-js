@@ -44,10 +44,6 @@
     "subscription": null,
     "flight": null
   },
-  "actions": [
-    { "name": "Manage Order", "url": "https://versa.org/" },
-    { "name": "Contact Support", "url": "https://versa.org/" },
-    { "name": "Specials & Offers", "url": "https://versa.org/" }
-  ],
+  "actions": [],
   "payments": []
 }
