@@ -1,5 +1,11 @@
 # @versaprotocol/react
 
+## 1.3.1
+
+### Patch Changes
+
+- Clean build of react lib
+
 ## 1.3.0
 
 ### Minor Changes
