@@ -1,5 +1,11 @@
 # @versaprotocol/react
 
+## 1.3.0
+
+### Minor Changes
+
+- Added full-page styles to receipt display
+
 ## 1.2.4
 
 ### Patch Changes
