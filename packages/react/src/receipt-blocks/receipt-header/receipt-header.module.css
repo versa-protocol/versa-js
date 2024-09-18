@@ -49,7 +49,17 @@
   display: none;
 }
 
-@media (min-width: 768px), print {
+@media print {
+  .fullPage {
+    display: block;
+  }
+
+  .compact {
+    display: none;
+  }
+}
+
+@container receipt (width > 768px) {
   .fullPage {
     display: block;
   }

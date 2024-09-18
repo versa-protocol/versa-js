@@ -60,7 +60,13 @@
   border-right: 1px solid var(--light-stroke);
 }
 
-@media (min-width: 768px), print {
+@media print {
+  .downloadBlock {
+    display: none;
+  }
+}
+
+@container receipt (width > 768px) {
   .downloadBlock {
     display: none;
   }

@@ -1,4 +1,6 @@
 .receiptWrap {
+  container-name: receipt;
+  container-type: inline-size;
   position: relative;
   --dark0: white;
   --dark03: hsl(210, 30%, 97%);
@@ -50,7 +52,13 @@
   --yellow10: hsl(53, 82%, 96%);
 }
 
-@media (min-width: 768px), print {
+@media print {
+  .fullPageHide {
+    display: none;
+  }
+}
+
+@container receipt (width > 768px) {
   .fullPageHide {
     display: none;
   }

@@ -35,7 +35,13 @@
   color: var(--foreground-secondary);
 }
 
-@media (min-width: 768px), print {
+@media print {
+  .totalsWrap {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@container receipt (width > 768px) {
   .totalsWrap {
     grid-template-columns: 1fr 1fr;
   }
