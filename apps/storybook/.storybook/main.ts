@@ -16,8 +16,8 @@ const config: StorybookConfig = {
     getAbsolutePath("@storybook/addon-essentials"),
     getAbsolutePath("@chromatic-com/storybook"),
     getAbsolutePath("@storybook/addon-interactions"),
-    "@storybook/addon-webpack5-compiler-swc",
+    getAbsolutePath("@storybook/addon-webpack5-compiler-swc"),
   ],
-  framework: "@storybook/react-webpack5",
+  framework: getAbsolutePath("@storybook/react-webpack5"),
 };
 export default config;
