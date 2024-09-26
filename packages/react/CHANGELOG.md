@@ -1,5 +1,14 @@
 # @versaprotocol/react
 
+## 1.3.2
+
+### Patch Changes
+
+- Update to schema_version 1.3.0"
+- Updated dependencies
+  - @versaprotocol/belt@1.3.0
+  - @versaprotocol/schema@1.3.0
+
 ## 1.3.1
 
 ### Patch Changes

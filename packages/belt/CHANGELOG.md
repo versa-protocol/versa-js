@@ -1,5 +1,16 @@
 # @versaprotocol/belt
 
+## 1.3.0
+
+### Minor Changes
+
+- Update to schema_version 1.3.0"
+
+### Patch Changes
+
+- Updated dependencies
+  - @versaprotocol/schema@1.3.0
+
 ## 1.2.0
 
 ### Minor Changes
