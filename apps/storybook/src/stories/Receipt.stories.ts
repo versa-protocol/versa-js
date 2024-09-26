@@ -36,3 +36,10 @@ export const Flight: Story = {
     receipt: receipts.flightMultiple,
   },
 };
+
+export const Lodging: Story = {
+  args: {
+    merchant: senders.sonesta,
+    receipt: receipts.lodging,
+  },
+};
