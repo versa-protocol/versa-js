@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "types": ["node"],
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "strictNullChecks": false,
+    "noImplicitAny": false
+  },
+  "include": ["."],
+  "exclude": ["dist", "build", "node_modules"]
+}

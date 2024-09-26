@@ -16,6 +16,7 @@
     "preinstall": "npx only-allow pnpm",
     "prepublish": "pnpm build-clean",
     "prepare": "husky install",
+    "pre-commit": "lint-staged",
     "test": "turbo test",
     "publish-packages": "turbo run build lint test --no-cache && changeset version && changeset publish"
   },
@@ -36,6 +37,8 @@
   "devDependencies": {
     "@changesets/cli": "^2.27.7",
     "@types/react": "^18.3.4",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
     "eslint": "^8.57.0",
     "husky": "^9.1.5",
     "lint-staged": "^12.5.0",
