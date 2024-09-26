@@ -50,6 +50,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 1rem;
 }
 
 .downloadBlock > div > svg {
@@ -70,4 +71,19 @@
   .downloadBlock {
     display: none;
   }
+}
+
+@container receipt (width < 360px) {
+  .downloadBlock {
+    grid-template-columns: 1fr;
+  }
+
+  .downloadBlock > div:first-child {
+    border-right: none;
+    margin-bottom: 1rem;
+  }
+}
+
+.finePrintWrap > div:last-child {
+  margin-bottom: 0;
 }

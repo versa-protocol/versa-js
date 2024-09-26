@@ -133,6 +133,11 @@ export function someItemsGrouped(items: Item[]) {
   return items.some(hasGroup);
 }
 
+export function someItemsWithDate(items: Item[]) {
+  const hasDate = (item: Item) => item.date != null;
+  return items.some(hasDate);
+}
+
 export function groupItems(items: Item[]) {
   const groupedItems: Record<string, Item[]> = {};
   for (const item of items) {
@@ -143,6 +148,24 @@ export function groupItems(items: Item[]) {
     }
   }
   return groupedItems;
+}
+
+export function sortItemsByDate(items: Item[]) {
+  const sortedItems: Record<string, Item[]> = {};
+  const sorted = items.sort((a, b) => {
+    if (a.date === null && b.date === null) return 0;
+    if (a.date === null) return 1;
+    if (b.date === null) return -1;
+    return new Date(a.date ?? 0).getTime() - new Date(b.date ?? 0).getTime();
+  });
+  sorted.forEach((item) => {
+    const dateKey = item.date ?? "other";
+    if (!sortedItems[dateKey]) {
+      sortedItems[dateKey] = [];
+    }
+    sortedItems[dateKey].push(item);
+  });
+  return sortedItems;
 }
 
 export function aggregateAdjustments(itemization: Itemization) {

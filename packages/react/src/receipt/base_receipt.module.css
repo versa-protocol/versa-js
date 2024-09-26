@@ -1,6 +1,7 @@
 .receiptWrap {
   container-name: receipt;
   container-type: inline-size;
+  min-width: 320px;
   position: relative;
   --dark0: white;
   --dark03: hsl(210, 30%, 97%);

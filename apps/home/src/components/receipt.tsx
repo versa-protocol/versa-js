@@ -5,7 +5,7 @@ import { receipts, senders } from "samples";
 export const DemoReceipt = () => {
   return (
     <VersaContext.Provider value={{ mapbox_token: process.env.MAPBOX_TOKEN }}>
-      <ReceiptDisplay merchant={senders.bend} receipt={receipts.simple} />
+      <ReceiptDisplay merchant={senders.bend} receipt={receipts.lodging} />
     </VersaContext.Provider>
   );
 };
