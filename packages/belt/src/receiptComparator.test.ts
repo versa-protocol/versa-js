@@ -43,8 +43,8 @@ describe("receiptComparator", () => {
       customer: null,
       location: null,
     },
-    actions: null,
-    payments: null,
+    actions: [],
+    payments: [],
   };
 
   const previousReceiptWithShipment: Receipt = {
@@ -88,8 +88,8 @@ describe("receiptComparator", () => {
       customer: null,
       location: null,
     },
-    actions: null,
-    payments: null,
+    actions: [],
+    payments: [],
   };
 
   const previousReceiptWithoutShipment: Receipt = {
@@ -119,8 +119,8 @@ describe("receiptComparator", () => {
       customer: null,
       location: null,
     },
-    actions: null,
-    payments: null,
+    actions: [],
+    payments: [],
   };
   describe("compare function", () => {
     it("should not return a shipment event for identical receipts", () => {
