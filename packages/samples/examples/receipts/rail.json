@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "header": {
     "invoice_number": "IAFO44",
     "currency": "usd",
@@ -28,7 +28,8 @@
               "country": "US",
               "postal_code": "10001",
               "lat": 40.7518924492056,
-              "lon": -73.99572743676399
+              "lon": -73.99572743676399,
+              "tz": null
             },
             "name": "Moynihan Train Hall at Penn Sta.",
             "phone": null,
@@ -44,7 +45,8 @@
               "country": "US",
               "postal_code": "02110",
               "lat": 42.3525213445053,
-              "lon": -71.0551130449417
+              "lon": -71.0551130449417,
+              "tz": null
             },
             "name": "South Station",
             "phone": null,
@@ -58,7 +60,7 @@
           "departure_at": 1726854999,
           "arrival_at": 1726867959,
           "polyline": null,
-          "taxes": null,
+          "taxes": [],
           "metadata": [
             { "key": "Ticket", "value": "1210653562276" },
             { "key": "Class", "value": "Coach" },
@@ -75,7 +77,8 @@
               "country": "US",
               "postal_code": "10001",
               "lat": 40.7518924492056,
-              "lon": -73.99572743676399
+              "lon": -73.99572743676399,
+              "tz": null
             },
             "name": "Moynihan Train Hall at Penn Sta.",
             "phone": null,
@@ -91,7 +94,8 @@
               "country": "US",
               "postal_code": "02110",
               "lat": 42.3525213445053,
-              "lon": -71.0551130449417
+              "lon": -71.0551130449417,
+              "tz": null
             },
             "name": "South Station",
             "phone": null,
@@ -105,7 +109,7 @@
           "departure_at": 1726854999,
           "arrival_at": 1726867959,
           "polyline": null,
-          "taxes": null,
+          "taxes": [],
           "metadata": [
             { "key": "Ticket", "value": "1210653562276" },
             { "key": "Class", "value": "Coach" },
@@ -122,7 +126,8 @@
               "country": "US",
               "postal_code": "10001",
               "lat": 40.7518924492056,
-              "lon": -73.99572743676399
+              "lon": -73.99572743676399,
+              "tz": null
             },
             "name": "Moynihan Train Hall at Penn Sta.",
             "phone": null,
@@ -138,7 +143,8 @@
               "country": "US",
               "postal_code": "02110",
               "lat": 42.3525213445053,
-              "lon": -71.0551130449417
+              "lon": -71.0551130449417,
+              "tz": null
             },
             "name": "South Station",
             "phone": null,
@@ -152,7 +158,7 @@
           "departure_at": 1726854999,
           "arrival_at": 1726867959,
           "polyline": null,
-          "taxes": null,
+          "taxes": [],
           "metadata": [
             { "key": "Ticket", "value": "1210653562276" },
             { "key": "Class", "value": "Coach" },

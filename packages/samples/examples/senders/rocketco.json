@@ -6,5 +6,6 @@
   "brand_color": "#6c6dd8",
   "logo": "/rocket_co.png",
   "vat_number": null,
-  "address": null
+  "address": null,
+  "legal_name": null
 }

@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "header": {
     "invoice_number": "auth_1MzFN1K8F4fqH0lBmFq8CjbU",
     "currency": "usd",
@@ -15,160 +15,157 @@
   "itemization": {
     "general": null,
     "lodging": {
-      "lodging_items": [
+      "check_in": 1721667600,
+      "check_out": 1721840400,
+      "room": "0830",
+      "location": {
+        "name": "Courtland Grand Hotel",
+        "address": {
+          "street_address": "165 Courtland Street NE",
+          "city": "Atlanta",
+          "region": "GA",
+          "country": "US",
+          "postal_code": "30303",
+          "lat": null,
+          "lon": null,
+          "tz": null
+        },
+        "phone": "(404) 659-6500",
+        "url": null,
+        "google_place_id": null,
+        "image": null
+      },
+      "items": [
         {
-          "check_in": 1721667600,
-          "check_out": 1721840400,
-          "room": "0830",
-          "location": {
-            "name": "Courtland Grand Hotel",
-            "address": {
-              "street_address": "165 Courtland Street NE",
-              "city": "Atlanta",
-              "region": "GA",
-              "country": "US",
-              "postal_code": "30303",
-              "lat": null,
-              "lon": null,
-              "tz": null
-            },
-            "phone": "(404) 659-6500",
-            "url": null,
-            "google_place_id": null,
-            "image": null
-          },
-          "items": [
+          "date": "2024-07-22",
+          "description": "Room Charge",
+          "subtotal": 18500,
+          "quantity": null,
+          "unit_cost": null,
+          "unit": null,
+          "taxes": [
             {
-              "description": "Room Charge",
-              "subtotal": 18500,
-              "quantity": null,
-              "unit_cost": null,
-              "unit": null,
-              "taxes": [
-                {
-                  "amount": 1647,
-                  "rate": 0.089,
-                  "name": "Sales Tax"
-                },
-                {
-                  "amount": 1480,
-                  "rate": 0.08,
-                  "name": "Occupancy Tax"
-                },
-                {
-                  "amount": 500,
-                  "rate": null,
-                  "name": "State Hotel Fee $5.00 / Night"
-                },
-                {
-                  "amount": 2500,
-                  "rate": null,
-                  "name": "Destination Fee"
-                },
-                {
-                  "amount": 223,
-                  "rate": 0.089,
-                  "name": "Destination Fee - Sales Tax"
-                }
-              ],
-              "metadata": [],
-              "product_image": null,
-              "group": "2024-07-22",
-              "url": null,
-              "adjustments": []
+              "amount": 1647,
+              "rate": 0.089,
+              "name": "Sales Tax"
             },
             {
-              "description": "Mini Bar",
-              "subtotal": 1000,
-              "quantity": null,
-              "unit_cost": null,
-              "unit": null,
-              "taxes": [],
-              "metadata": [],
-              "product_image": null,
-              "group": "2024-07-22",
-              "url": null,
-              "adjustments": []
+              "amount": 1480,
+              "rate": 0.08,
+              "name": "Occupancy Tax"
             },
             {
-              "description": "Room Charge",
-              "subtotal": 18500,
-              "quantity": null,
-              "unit_cost": null,
-              "unit": null,
-              "taxes": [
-                {
-                  "amount": 1647,
-                  "rate": 0.089,
-                  "name": "Sales Tax"
-                },
-                {
-                  "amount": 1480,
-                  "rate": 0.08,
-                  "name": "Occupancy Tax"
-                },
-                {
-                  "amount": 500,
-                  "rate": null,
-                  "name": "State Hotel Fee $5.00 / Night"
-                },
-                {
-                  "amount": 2500,
-                  "rate": null,
-                  "name": "Destination Fee"
-                },
-                {
-                  "amount": 223,
-                  "rate": 0.089,
-                  "name": "Destination Fee - Sales Tax"
-                }
-              ],
-              "metadata": [],
-              "product_image": null,
-              "group": "2024-07-23",
-              "url": null,
-              "adjustments": []
+              "amount": 500,
+              "rate": null,
+              "name": "State Hotel Fee $5.00 / Night"
             },
             {
-              "description": "Room Charge",
-              "subtotal": 18500,
-              "quantity": null,
-              "unit_cost": null,
-              "unit": null,
-              "taxes": [
-                {
-                  "amount": 1647,
-                  "rate": 0.089,
-                  "name": "Sales Tax"
-                },
-                {
-                  "amount": 1480,
-                  "rate": 0.08,
-                  "name": "Occupancy Tax"
-                },
-                {
-                  "amount": 500,
-                  "rate": null,
-                  "name": "State Hotel Fee $5.00 / Night"
-                },
-                {
-                  "amount": 2500,
-                  "rate": null,
-                  "name": "Destination Fee"
-                },
-                {
-                  "amount": 223,
-                  "rate": 0.089,
-                  "name": "Destination Fee - Sales Tax"
-                }
-              ],
-              "metadata": [],
-              "product_image": null,
-              "group": "2024-07-24",
-              "url": null,
-              "adjustments": []
+              "amount": 2500,
+              "rate": null,
+              "name": "Destination Fee"
+            },
+            {
+              "amount": 223,
+              "rate": 0.089,
+              "name": "Destination Fee - Sales Tax"
             }
-          ]
+          ],
+          "metadata": [],
+          "product_image": null,
+          "group": "2024-07-22",
+          "url": null,
+          "adjustments": []
+        },
+        {
+          "description": "Mini Bar",
+          "subtotal": 1000,
+          "quantity": null,
+          "unit_cost": null,
+          "unit": null,
+          "taxes": [],
+          "metadata": [],
+          "product_image": null,
+          "group": "2024-07-22",
+          "url": null,
+          "adjustments": []
+        },
+        {
+          "description": "Room Charge",
+          "subtotal": 18500,
+          "quantity": null,
+          "unit_cost": null,
+          "unit": null,
+          "taxes": [
+            {
+              "amount": 1647,
+              "rate": 0.089,
+              "name": "Sales Tax"
+            },
+            {
+              "amount": 1480,
+              "rate": 0.08,
+              "name": "Occupancy Tax"
+            },
+            {
+              "amount": 500,
+              "rate": null,
+              "name": "State Hotel Fee $5.00 / Night"
+            },
+            {
+              "amount": 2500,
+              "rate": null,
+              "name": "Destination Fee"
+            },
+            {
+              "amount": 223,
+              "rate": 0.089,
+              "name": "Destination Fee - Sales Tax"
+            }
+          ],
+          "metadata": [],
+          "product_image": null,
+          "group": "2024-07-23",
+          "url": null,
+          "adjustments": []
+        },
+        {
+          "description": "Room Charge",
+          "subtotal": 18500,
+          "quantity": null,
+          "unit_cost": null,
+          "unit": null,
+          "taxes": [
+            {
+              "amount": 1647,
+              "rate": 0.089,
+              "name": "Sales Tax"
+            },
+            {
+              "amount": 1480,
+              "rate": 0.08,
+              "name": "Occupancy Tax"
+            },
+            {
+              "amount": 500,
+              "rate": null,
+              "name": "State Hotel Fee $5.00 / Night"
+            },
+            {
+              "amount": 2500,
+              "rate": null,
+              "name": "Destination Fee"
+            },
+            {
+              "amount": 223,
+              "rate": 0.089,
+              "name": "Destination Fee - Sales Tax"
+            }
+          ],
+          "metadata": [],
+          "product_image": null,
+          "group": "2024-07-24",
+          "url": null,
+          "adjustments": []
         }
       ],
       "invoice_level_adjustments": []
@@ -180,9 +177,18 @@
     "flight": null
   },
   "actions": [
-    { "name": "Manage Booking", "url": "https://versa.org/" },
-    { "name": "Contact Support", "url": "https://versa.org/" },
-    { "name": "Loyalty", "url": "https://versa.org/" }
+    {
+      "name": "Manage Booking",
+      "url": "https://versa.org/"
+    },
+    {
+      "name": "Contact Support",
+      "url": "https://versa.org/"
+    },
+    {
+      "name": "Loyalty",
+      "url": "https://versa.org/"
+    }
   ],
-  "payments": null
+  "payments": []
 }

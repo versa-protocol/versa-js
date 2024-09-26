@@ -1,4 +1,4 @@
-import { Merchant, Receipt } from "@versaprotocol/schema";
+import { Org, Receipt } from "@versaprotocol/schema";
 import {
   ActionBlock,
   ActivityBlock,
@@ -32,7 +32,7 @@ export function ReceiptDisplay({
   theme,
   activities,
 }: {
-  merchant: Merchant;
+  merchant: Org;
   receipt: Receipt;
   theme?: string;
   activities?: Activity[];
@@ -132,11 +132,9 @@ export function ReceiptDisplay({
           <BlockWrap>
             <ItemizedLodging data={data.itemization.lodging} theme={theme} />
           </BlockWrap>
-          {data.itemization.lodging.lodging_items.map((item) => (
-            <BlockWrap>
-              <LineItems items={item.items} />
-            </BlockWrap>
-          ))}
+          <BlockWrap>
+            <LineItems items={data.itemization.lodging.items} />
+          </BlockWrap>
         </>
       )}
       {data.itemization.flight && (

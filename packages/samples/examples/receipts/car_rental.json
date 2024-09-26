@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "header": {
     "invoice_number": "auth_1MzFN1K8F4fqH0lBmFq8CjbU",
     "currency": "usd",
@@ -111,5 +111,5 @@
     { "name": "Emergency Roadside Assistance", "url": "https://versa.org/" },
     { "name": "Rebook", "url": "https://versa.org/" }
   ],
-  "payments": null
+  "payments": []
 }

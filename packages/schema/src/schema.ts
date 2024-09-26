@@ -33,7 +33,7 @@ export interface Receipt {
        * Determines whether the merchant or third party gets top billing on the receipt
        */
       make_primary: boolean;
-      merchant: Merchant;
+      merchant: Org;
     } | null;
     customer: {
       name: string;
@@ -45,17 +45,16 @@ export interface Receipt {
     location: Place | null;
   };
   itemization: Itemization;
-  actions:
-    | null
-    | {
-        name: string;
-        url: string;
-      }[];
-  payments: null | Payment[];
+  actions: {
+    name: string;
+    url: string;
+  }[];
+  payments: Payment[];
 }
-export interface Merchant {
+export interface Org {
   name: string;
   brand_color: string | null;
+  legal_name: string | null;
   logo: string | null;
   website: string | null;
   vat_number: string | null;
@@ -100,11 +99,13 @@ export interface GeneralItemization {
   invoice_level_adjustments: Adjustment[];
 }
 export interface Item {
+  date?: null | string;
   description: string;
   subtotal: number;
   quantity?: null | number;
   unit_cost?: null | number;
   unit?: null | string;
+  unspsc?: null | string;
   taxes?: Tax[];
   metadata?: ItemMetadata[];
   product_image?: null | string;
@@ -124,13 +125,6 @@ export interface Adjustment {
   rate: null | number;
 }
 export interface Lodging {
-  /**
-   * @minItems 1
-   */
-  lodging_items: LodgingItem[];
-  invoice_level_adjustments: Adjustment[];
-}
-export interface LodgingItem {
   check_in: number;
   check_out: number;
   location: Place;
@@ -141,6 +135,7 @@ export interface LodgingItem {
   room?: null | string;
   guests?: null | string;
   metadata?: ItemMetadata[];
+  invoice_level_adjustments: Adjustment[];
 }
 export interface Ecommerce {
   shipments: {

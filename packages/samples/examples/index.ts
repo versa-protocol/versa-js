@@ -1,4 +1,4 @@
-import { Merchant, Receipt } from "@versaprotocol/schema";
+import { Org, Receipt } from "@versaprotocol/schema";
 
 // DEMO
 import rocketco from "./senders/rocketco.json";
@@ -30,7 +30,7 @@ const ecommerce = untypedEcommerce as Receipt;
 const fastFood = untypedFastFood as Receipt;
 const foodDelivery = untypedFoodDelivery as Receipt;
 
-export const senders: Record<string, Merchant> = {
+export const senders: Record<string, Org> = {
   jetblue,
   rocketco,
   bend,

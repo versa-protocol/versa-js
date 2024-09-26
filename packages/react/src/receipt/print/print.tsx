@@ -1,13 +1,13 @@
-import { Merchant, Receipt } from "@versaprotocol/schema";
+import { Org, Receipt } from "@versaprotocol/schema";
 import { ReceiptDisplay } from "./../receipt";
 import styles from "./print.module.css";
 
 export type CompositeReceipt = {
   receipt: Receipt;
-  merchant: Merchant;
+  merchant: Org;
 };
 
-export type CollapsedReceipt = Receipt & { merchant: Merchant };
+export type CollapsedReceipt = Receipt & { merchant: Org };
 
 export function Print({
   data,

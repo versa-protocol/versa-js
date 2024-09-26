@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "header": {
     "invoice_number": "auth_1MzFN1K8F4fqH0lBmFq8CjbU",
     "currency": "usd",
@@ -18,7 +18,8 @@
         "brand_color": null,
         "website": null,
         "vat_number": null,
-        "address": null
+        "address": null,
+        "legal_name": null
       },
       "first_party_relation": "delivery_service"
     },
@@ -128,5 +129,5 @@
     { "name": "Manage Order", "url": "https://versa.org/" },
     { "name": "Contact Support", "url": "https://versa.org/" }
   ],
-  "payments": null
+  "payments": []
 }

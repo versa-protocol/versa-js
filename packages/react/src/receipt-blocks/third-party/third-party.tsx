@@ -1,12 +1,12 @@
 import styles from "./third-party.module.css";
-import { Merchant, Receipt } from "@versaprotocol/schema";
+import { Org, Receipt } from "@versaprotocol/schema";
 
 export function ThirdParty({
   third_party,
   merchant,
 }: {
   third_party: Receipt["header"]["third_party"];
-  merchant: Merchant;
+  merchant: Org;
 }) {
   return (
     <>

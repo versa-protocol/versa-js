@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "header": {
     "invoice_number": "IAFO44",
     "currency": "usd",
@@ -28,7 +28,8 @@
               "country": "US",
               "postal_code": "11205",
               "lat": 40.68266,
-              "lon": -73.94237
+              "lon": -73.94237,
+              "tz": null
             },
             "name": null,
             "phone": null,
@@ -44,7 +45,8 @@
               "country": "US",
               "postal_code": "11205",
               "lat": 40.69954,
-              "lon": -73.97064
+              "lon": -73.97064,
+              "tz": null
             },
             "name": null,
             "phone": null,

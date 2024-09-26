@@ -8,7 +8,6 @@ import {
   ItemMetadata,
   TransitRoute,
   FlightSegment,
-  FlightTicket,
 } from "@versaprotocol/schema";
 import canonicalize from "canonicalize";
 
@@ -62,14 +61,12 @@ export function aggregateTaxes(itemization: Itemization): Tax[] {
     }
   }
   if (itemization.lodging) {
-    for (const lodging_item of itemization.lodging.lodging_items) {
-      for (const item of lodging_item.items) {
-        for (const tax of item.taxes || []) {
-          if (aggregatedTaxes[tax.name + tax.rate]) {
-            aggregatedTaxes[tax.name + tax.rate].amount += tax.amount;
-          } else {
-            aggregatedTaxes[tax.name + tax.rate] = { ...tax };
-          }
+    for (const item of itemization.lodging.items) {
+      for (const tax of item.taxes || []) {
+        if (aggregatedTaxes[tax.name + tax.rate]) {
+          aggregatedTaxes[tax.name + tax.rate].amount += tax.amount;
+        } else {
+          aggregatedTaxes[tax.name + tax.rate] = { ...tax };
         }
       }
     }

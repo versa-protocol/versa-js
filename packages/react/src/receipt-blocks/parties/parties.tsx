@@ -1,12 +1,12 @@
 import styles from "./parties.module.css";
-import { Merchant, Receipt } from "@versaprotocol/schema";
+import { Org, Receipt } from "@versaprotocol/schema";
 
 export function Parties({
   customer,
   merchant,
 }: {
   customer: Receipt["header"]["customer"];
-  merchant: Merchant;
+  merchant: Org;
 }) {
   return (
     <div className={styles.partiesWrap}>
