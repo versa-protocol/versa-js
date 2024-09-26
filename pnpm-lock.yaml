@@ -199,13 +199,13 @@ importers:
         version: 28.1.8
       jest:
         specifier: ^28.1.1
-        version: 28.1.3(@types/node@22.1.0)(ts-node@10.9.2(@swc/core@1.7.11(@swc/helpers@0.5.5))(@types/node@22.1.0)(typescript@5.5.4))
+        version: 28.1.3(@types/node@20.14.14)(ts-node@10.9.2(@swc/core@1.7.11(@swc/helpers@0.5.5))(@types/node@20.14.14)(typescript@5.5.4))
       samples:
         specifier: workspace:*
         version: link:../samples
       ts-jest:
-        specifier: ^28.0.5
-        version: 28.0.8(@babel/core@7.25.2)(@jest/types@28.1.3)(babel-jest@28.1.3(@babel/core@7.25.2))(esbuild@0.23.0)(jest@28.1.3(@types/node@22.1.0)(ts-node@10.9.2(@swc/core@1.7.11(@swc/helpers@0.5.5))(@types/node@22.1.0)(typescript@5.5.4)))(typescript@5.5.4)
+        specifier: ^28.0.8
+        version: 28.0.8(@babel/core@7.25.2)(@jest/types@28.1.3)(babel-jest@28.1.3(@babel/core@7.25.2))(esbuild@0.23.0)(jest@28.1.3(@types/node@20.14.14)(ts-node@10.9.2(@swc/core@1.7.11(@swc/helpers@0.5.5))(@types/node@20.14.14)(typescript@5.5.4)))(typescript@5.5.4)
       tsconfig:
         specifier: workspace:*
         version: link:../tsconfig
@@ -281,7 +281,7 @@ importers:
         version: link:../samples
       ts-jest:
         specifier: ^28.0.5
-        version: 28.0.8(@babel/core@7.25.2)(@jest/types@28.1.3)(babel-jest@28.1.3(@babel/core@7.25.2))(jest@28.1.3(@types/node@20.14.14)(ts-node@10.9.2(@swc/core@1.7.11(@swc/helpers@0.5.5))(@types/node@20.14.14)(typescript@5.5.4)))(typescript@5.5.4)
+        version: 28.0.8(@babel/core@7.25.2)(@jest/types@28.1.3)(babel-jest@28.1.3(@babel/core@7.25.2))(esbuild@0.23.0)(jest@28.1.3(@types/node@20.14.14)(ts-node@10.9.2(@swc/core@1.7.11(@swc/helpers@0.5.5))(@types/node@20.14.14)(typescript@5.5.4)))(typescript@5.5.4)
       tsconfig:
         specifier: workspace:*
         version: link:../tsconfig
@@ -330,7 +330,7 @@ importers:
         version: 14.1.0
       ts-jest:
         specifier: ^28.0.5
-        version: 28.0.8(@babel/core@7.25.2)(@jest/types@28.1.3)(babel-jest@28.1.3(@babel/core@7.25.2))(esbuild@0.23.0)(jest@28.1.3(@types/node@22.1.0)(ts-node@10.9.2(@swc/core@1.7.11(@swc/helpers@0.5.5))(@types/node@22.1.0)(typescript@5.5.4)))(typescript@5.5.4)
+        version: 28.0.8(@babel/core@7.25.2)(@jest/types@28.1.3)(babel-jest@28.1.3(@babel/core@7.25.2))(jest@28.1.3(@types/node@22.1.0)(ts-node@10.9.2(@swc/core@1.7.11(@swc/helpers@0.5.5))(@types/node@22.1.0)(typescript@5.5.4)))(typescript@5.5.4)
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@swc/core@1.7.11(@swc/helpers@0.5.5))(@types/node@22.1.0)(typescript@5.5.4)
@@ -11654,11 +11654,11 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
-  ts-jest@28.0.8(@babel/core@7.25.2)(@jest/types@28.1.3)(babel-jest@28.1.3(@babel/core@7.25.2))(esbuild@0.23.0)(jest@28.1.3(@types/node@22.1.0)(ts-node@10.9.2(@swc/core@1.7.11(@swc/helpers@0.5.5))(@types/node@22.1.0)(typescript@5.5.4)))(typescript@5.5.4):
+  ts-jest@28.0.8(@babel/core@7.25.2)(@jest/types@28.1.3)(babel-jest@28.1.3(@babel/core@7.25.2))(esbuild@0.23.0)(jest@28.1.3(@types/node@20.14.14)(ts-node@10.9.2(@swc/core@1.7.11(@swc/helpers@0.5.5))(@types/node@20.14.14)(typescript@5.5.4)))(typescript@5.5.4):
     dependencies:
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
-      jest: 28.1.3(@types/node@22.1.0)(ts-node@10.9.2(@swc/core@1.7.11(@swc/helpers@0.5.5))(@types/node@22.1.0)(typescript@5.5.4))
+      jest: 28.1.3(@types/node@20.14.14)(ts-node@10.9.2(@swc/core@1.7.11(@swc/helpers@0.5.5))(@types/node@20.14.14)(typescript@5.5.4))
       jest-util: 28.1.3
       json5: 2.2.3
       lodash.memoize: 4.1.2
@@ -11672,11 +11672,11 @@ snapshots:
       babel-jest: 28.1.3(@babel/core@7.25.2)
       esbuild: 0.23.0
 
-  ts-jest@28.0.8(@babel/core@7.25.2)(@jest/types@28.1.3)(babel-jest@28.1.3(@babel/core@7.25.2))(jest@28.1.3(@types/node@20.14.14)(ts-node@10.9.2(@swc/core@1.7.11(@swc/helpers@0.5.5))(@types/node@20.14.14)(typescript@5.5.4)))(typescript@5.5.4):
+  ts-jest@28.0.8(@babel/core@7.25.2)(@jest/types@28.1.3)(babel-jest@28.1.3(@babel/core@7.25.2))(jest@28.1.3(@types/node@22.1.0)(ts-node@10.9.2(@swc/core@1.7.11(@swc/helpers@0.5.5))(@types/node@22.1.0)(typescript@5.5.4)))(typescript@5.5.4):
     dependencies:
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
-      jest: 28.1.3(@types/node@20.14.14)(ts-node@10.9.2(@swc/core@1.7.11(@swc/helpers@0.5.5))(@types/node@20.14.14)(typescript@5.5.4))
+      jest: 28.1.3(@types/node@22.1.0)(ts-node@10.9.2(@swc/core@1.7.11(@swc/helpers@0.5.5))(@types/node@22.1.0)(typescript@5.5.4))
       jest-util: 28.1.3
       json5: 2.2.3
       lodash.memoize: 4.1.2
