@@ -24,35 +24,38 @@ export function ReceiptHeader({
             backgroundColor: brandColor,
           }}
         ></div>
-        <h1>{header.total === header.paid ? "Receipt" : "Invoice"}</h1>
-        <div className={styles.headerChunk}>
-          {header.invoice_number && (
-            <div>Invoice Number: {header.invoice_number}</div>
-          )}
-          <div>Date: {formatDateTime(header.invoiced_at)}</div>
-        </div>
-        {(header.customer || merchant.address) && (
-          <Parties customer={header.customer} merchant={merchant} />
-        )}
-
-        <div className={styles.logo}>
-          {merchant.logo && (
-            <img
-              src={
-                (header.third_party &&
-                  header.third_party.make_primary &&
-                  header.third_party.merchant.logo) ||
-                merchant.logo
-              }
-              width={96}
-              height={96}
-              alt={
-                header.third_party && header.third_party.make_primary
-                  ? header.third_party.merchant.name
-                  : merchant.name
-              }
-            />
-          )}
+        <div className={styles.fullPageInner}>
+          <div className={styles.fullPageData}>
+            <h1>{header.total === header.paid ? "Receipt" : "Invoice"}</h1>
+            <div className={styles.headerChunk}>
+              {header.invoice_number && (
+                <div>Invoice Number: {header.invoice_number}</div>
+              )}
+              <div>Date: {formatDateTime(header.invoiced_at)}</div>
+            </div>
+            {(header.customer || merchant.address) && (
+              <Parties customer={header.customer} merchant={merchant} />
+            )}
+          </div>
+          <div className={styles.logo}>
+            {merchant.logo && (
+              <img
+                src={
+                  (header.third_party &&
+                    header.third_party.make_primary &&
+                    header.third_party.merchant.logo) ||
+                  merchant.logo
+                }
+                width={96}
+                height={96}
+                alt={
+                  header.third_party && header.third_party.make_primary
+                    ? header.third_party.merchant.name
+                    : merchant.name
+                }
+              />
+            )}
+          </div>
         </div>
       </div>
 
