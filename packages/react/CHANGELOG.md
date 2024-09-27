@@ -1,5 +1,11 @@
 # @versaprotocol/react
 
+## 1.3.4
+
+### Patch Changes
+
+- Fix responsiveness of ReceiptDisplay
+
 ## 1.3.3
 
 ### Patch Changes
