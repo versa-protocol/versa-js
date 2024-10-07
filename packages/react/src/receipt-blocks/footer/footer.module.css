@@ -41,8 +41,7 @@
 }
 
 .downloadBlock {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   margin-bottom: 1.5rem;
 }
 
@@ -53,6 +52,7 @@
   padding: 0 1rem;
   text-decoration: none;
   color: var(--foreground);
+  flex-grow: 1;
 }
 
 .downloadBlock > a > svg {
@@ -61,6 +61,10 @@
 
 .downloadBlock > a:first-child {
   border-right: 1px solid var(--light-stroke);
+}
+
+.downloadBlock > a:only-child {
+  border-right: none;
 }
 
 @media print {

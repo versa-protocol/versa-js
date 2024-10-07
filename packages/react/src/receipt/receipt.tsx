@@ -66,6 +66,13 @@ export function ReceiptDisplay({
     colors.brandHighContrast = colors.brand;
   }
 
+  const mapAttribution =
+    data.itemization.lodging ||
+    (data.itemization.transit_route &&
+      data.itemization.transit_route.transit_route_items.length < 2)
+      ? true
+      : false;
+
   return (
     <div className={styles.receiptWrap}>
       {/* Header */}
@@ -219,16 +226,11 @@ export function ReceiptDisplay({
 
       {/* Footer */}
 
-      <Footer
-        receiptHeader={data.header}
-        mapAttribution={
-          data.itemization.lodging ||
-          (data.itemization.transit_route &&
-            data.itemization.transit_route.transit_route_items.length < 2)
-            ? true
-            : false
-        }
-      />
+      {(mapAttribution ||
+        data.header.invoice_asset_id ||
+        data.header.receipt_asset_id) && (
+        <Footer receiptHeader={data.header} mapAttribution={mapAttribution} />
+      )}
     </div>
   );
 }

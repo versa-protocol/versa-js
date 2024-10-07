@@ -4,3 +4,7 @@
   margin: -1px 1.5rem 0 1.5rem;
   padding: 1.5rem 0;
 }
+
+.blockWrap:last-child {
+  border-bottom: none;
+}
