@@ -1,5 +1,12 @@
 # samples
 
+## 0.0.9
+
+### Patch Changes
+
+- Updated dependencies
+  - @versaprotocol/schema@1.4.0
+
 ## 0.0.8
 
 ### Patch Changes

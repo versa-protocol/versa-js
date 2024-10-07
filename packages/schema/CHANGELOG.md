@@ -1,5 +1,11 @@
 # @versaprotocol/schema
 
+## 1.4.0
+
+### Minor Changes
+
+- Update to 1.4; adding 'receipt_asset_id' and 'invoice_asset_id' to header
+
 ## 1.3.0
 
 ### Minor Changes

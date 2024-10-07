@@ -1,5 +1,17 @@
 # @versaprotocol/react
 
+## 1.4.0
+
+### Minor Changes
+
+- Update to 1.4; adding 'receipt_asset_id' and 'invoice_asset_id' to header
+
+### Patch Changes
+
+- Updated dependencies
+  - @versaprotocol/belt@1.4.0
+  - @versaprotocol/schema@1.4.0
+
 ## 1.3.4
 
 ### Patch Changes
