@@ -11,7 +11,8 @@
     "third_party": null,
     "customer": null,
     "location": null,
-    "invoice_asset_id": "test_asset"
+    "receipt_asset_id": null,
+    "invoice_asset_id": null
   },
   "itemization": {
     "general": null,

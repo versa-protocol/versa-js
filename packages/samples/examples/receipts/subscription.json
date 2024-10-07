@@ -25,7 +25,9 @@
       },
       "metadata": [{ "key": "Account Number", "value": "A01320949" }]
     },
-    "location": null
+    "location": null,
+    "receipt_asset_id": null,
+    "invoice_asset_id": null
   },
   "itemization": {
     "general": null,

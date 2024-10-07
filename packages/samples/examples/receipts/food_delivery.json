@@ -40,7 +40,9 @@
         "tz": null
       },
       "phone": "(718) 472-3745"
-    }
+    },
+    "receipt_asset_id": null,
+    "invoice_asset_id": null
   },
   "itemization": {
     "general": null,

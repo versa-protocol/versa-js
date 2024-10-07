@@ -10,7 +10,9 @@
     "mcc": null,
     "third_party": null,
     "customer": null,
-    "location": null
+    "location": null,
+    "receipt_asset_id": null,
+    "invoice_asset_id": null
   },
   "itemization": {
     "general": null,
