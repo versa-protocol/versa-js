@@ -46,28 +46,24 @@
   margin-bottom: 1.5rem;
 }
 
-.downloadBlock > div {
+.downloadBlock > a {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 1rem;
+  text-decoration: none;
+  color: var(--foreground);
 }
 
-.downloadBlock > div > svg {
+.downloadBlock > a > svg {
   margin-right: 0.5rem;
 }
 
-.downloadBlock > div:first-child {
+.downloadBlock > a:first-child {
   border-right: 1px solid var(--light-stroke);
 }
 
 @media print {
-  .downloadBlock {
-    display: none;
-  }
-}
-
-@container receipt (width > 768px) {
   .downloadBlock {
     display: none;
   }
@@ -78,7 +74,7 @@
     grid-template-columns: 1fr;
   }
 
-  .downloadBlock > div:first-child {
+  .downloadBlock > a:first-child {
     border-right: none;
     margin-bottom: 1rem;
   }

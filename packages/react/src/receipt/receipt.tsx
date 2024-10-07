@@ -220,6 +220,7 @@ export function ReceiptDisplay({
       {/* Footer */}
 
       <Footer
+        receiptHeader={data.header}
         mapAttribution={
           data.itemization.lodging ||
           (data.itemization.transit_route &&

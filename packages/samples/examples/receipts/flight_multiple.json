@@ -10,7 +10,8 @@
     "mcc": null,
     "third_party": null,
     "customer": null,
-    "location": null
+    "location": null,
+    "invoice_asset_id": "test_asset"
   },
   "itemization": {
     "general": null,
