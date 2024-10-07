@@ -10,46 +10,49 @@
  */
 export interface Receipt {
   schema_version: string;
-  header: {
-    invoice_number: string | null;
-    /**
-     * ISO 4217 currency code
-     */
-    currency: "usd" | "eur" | "jpy" | "gbp" | "aud" | "cad" | "chf" | "cnh";
-    total: number;
-    subtotal: number;
-    paid: number;
-    invoiced_at: number;
-    mcc: string | null;
-    third_party: {
-      first_party_relation:
-        | "bnpl"
-        | "delivery_service"
-        | "marketplace"
-        | "payment_processor"
-        | "platform"
-        | "point_of_sale";
-      /**
-       * Determines whether the merchant or third party gets top billing on the receipt
-       */
-      make_primary: boolean;
-      merchant: Org;
-    } | null;
-    customer: {
-      name: string;
-      email: string | null;
-      address: null | Address;
-      phone: string | null;
-      metadata: ItemMetadata[];
-    } | null;
-    location: Place | null;
-  };
+  header: Header;
   itemization: Itemization;
   actions: {
     name: string;
     url: string;
   }[];
   payments: Payment[];
+}
+export interface Header {
+  invoice_number: string | null;
+  /**
+   * ISO 4217 currency code
+   */
+  currency: "usd" | "eur" | "jpy" | "gbp" | "aud" | "cad" | "chf" | "cnh";
+  total: number;
+  subtotal: number;
+  paid: number;
+  invoiced_at: number;
+  mcc: string | null;
+  third_party: {
+    first_party_relation:
+      | "bnpl"
+      | "delivery_service"
+      | "marketplace"
+      | "payment_processor"
+      | "platform"
+      | "point_of_sale";
+    /**
+     * Determines whether the merchant or third party gets top billing on the receipt
+     */
+    make_primary: boolean;
+    merchant: Org;
+  } | null;
+  customer: {
+    name: string;
+    email: string | null;
+    address: null | Address;
+    phone: string | null;
+    metadata: ItemMetadata[];
+  } | null;
+  location: Place | null;
+  invoice_asset_id?: string | null;
+  receipt_asset_id?: string | null;
 }
 export interface Org {
   name: string;
