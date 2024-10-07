@@ -1,5 +1,11 @@
 # @versaprotocol/react
 
+## 1.4.1
+
+### Patch Changes
+
+- Link to the assets registry from Download Invoice/Receipt buttons
+
 ## 1.4.0
 
 ### Minor Changes
