@@ -16,6 +16,8 @@
   "dependencies": {
     "@versaprotocol/belt": "workspace:*",
     "@versaprotocol/schema": "workspace:*",
+    "jspdf": "^2.5.2",
+    "jspdf-autotable": "^3.8.3",
     "react": "^18.2.0",
     "react-feather": "^2.0.10"
   },
