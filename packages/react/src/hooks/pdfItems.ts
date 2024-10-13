@@ -19,12 +19,6 @@ export function Items(
     [1, "Alice", "alice@example.com", "USA", "192.168.1.1"],
     [2, "Bob", "bob@example.com", "Canada", "192.168.1.2"],
     [3, "Charlie", "charlie@example.com", "UK", "192.168.1.3"],
-    [1, "Alice", "alice@example.com", "USA", "192.168.1.1"],
-    [2, "Bob", "bob@example.com", "Canada", "192.168.1.2"],
-    [3, "Charlie", "charlie@example.com", "UK", "192.168.1.3"],
-    [1, "Alice", "alice@example.com", "USA", "192.168.1.1"],
-    [2, "Bob", "bob@example.com", "Canada", "192.168.1.2"],
-    [3, "Charlie", "charlie@example.com", "UK", "192.168.1.3"],
   ];
 
   autoTable(doc, {
