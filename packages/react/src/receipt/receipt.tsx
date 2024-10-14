@@ -231,17 +231,14 @@ export function ReceiptDisplay({
         </BlockWrap>
       )}
 
+      {/* Download */}
+
       {/* Footer */}
-
-      {(mapAttribution ||
-        data.header.invoice_asset_id ||
-        data.header.receipt_asset_id) && (
-        <Footer receiptHeader={data.header} mapAttribution={mapAttribution} />
-      )}
-
-      <div>
-        <button onClick={() => downloadInvoice()}>Hi</button>
-      </div>
+      <Footer
+        receiptHeader={data.header}
+        mapAttribution={mapAttribution}
+        downloadInvoice={downloadInvoice}
+      />
     </div>
   );
 }
