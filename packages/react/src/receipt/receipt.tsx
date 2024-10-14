@@ -25,6 +25,7 @@ import {
 import styles from "./base_receipt.module.css";
 import { Payments } from "../receipt-blocks/payments";
 import { Parties } from "../receipt-blocks/parties/parties";
+import { usePdfGen } from "../hooks/usePdfGen";
 
 export function ReceiptDisplay({
   receipt,
@@ -72,6 +73,12 @@ export function ReceiptDisplay({
       data.itemization.transit_route.transit_route_items.length < 2)
       ? true
       : false;
+
+  const { downloadReceipt, downloadInvoice } = usePdfGen({
+    merchant: merchant,
+    receipt: data,
+    brandColor: colors.brand,
+  });
 
   return (
     <div className={styles.receiptWrap}>
@@ -224,13 +231,14 @@ export function ReceiptDisplay({
         </BlockWrap>
       )}
 
-      {/* Footer */}
+      {/* Download */}
 
-      {(mapAttribution ||
-        data.header.invoice_asset_id ||
-        data.header.receipt_asset_id) && (
-        <Footer receiptHeader={data.header} mapAttribution={mapAttribution} />
-      )}
+      {/* Footer */}
+      <Footer
+        receiptHeader={data.header}
+        mapAttribution={mapAttribution}
+        downloadInvoice={downloadInvoice}
+      />
     </div>
   );
 }

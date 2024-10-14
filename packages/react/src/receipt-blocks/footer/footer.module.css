@@ -45,7 +45,8 @@
   margin-bottom: 1.5rem;
 }
 
-.downloadBlock > a {
+.downloadBlock > a,
+.downloadBlock > button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,17 +54,23 @@
   text-decoration: none;
   color: var(--foreground);
   flex-grow: 1;
+  background: transparent;
+  border: 0;
+  font-size: 1rem;
 }
 
-.downloadBlock > a > svg {
+.downloadBlock > a > svg,
+.downloadBlock > button > svg {
   margin-right: 0.5rem;
 }
 
-.downloadBlock > a:first-child {
+.downloadBlock > a:first-child,
+.downloadBlock > button:first-child {
   border-right: 1px solid var(--light-stroke);
 }
 
-.downloadBlock > a:only-child {
+.downloadBlock > a:only-child,
+.downloadBlock > button:only-child {
   border-right: none;
 }
 
@@ -78,7 +85,8 @@
     grid-template-columns: 1fr;
   }
 
-  .downloadBlock > a:first-child {
+  .downloadBlock > a:first-child,
+  .downloadBlock > button:first-child {
     border-right: none;
     margin-bottom: 1rem;
   }
