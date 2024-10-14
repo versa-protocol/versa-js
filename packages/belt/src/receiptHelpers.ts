@@ -10,6 +10,7 @@ import {
   FlightSegment,
 } from "@versaprotocol/schema";
 import canonicalize from "canonicalize";
+import { formatUSD } from "./format";
 
 export function aggregateTaxes(itemization: Itemization): Tax[] {
   const aggregatedTaxes: Record<string, Tax> = {};
@@ -372,4 +373,54 @@ export function aggregateTicketFares(ticket: OrganizedFlightTicket) {
     aggregatedTicketFares += segment.fare;
   }
   return aggregatedTicketFares;
+}
+
+export function aggregateItems(itemization: Itemization) {
+  let items: {}[] = [];
+  let head: {} = {};
+  if (itemization.transit_route) {
+    // todo
+  }
+  if (itemization.subscription) {
+    head = {
+      description: { content: "Description" },
+      quantity: { content: "Qty", styles: { halign: "right" } },
+      unit_cost: { content: "Unit Price", styles: { halign: "right" } },
+      subtotal: { content: "Amount", styles: { halign: "right" } },
+    };
+    itemization.subscription.subscription_items.forEach((i) =>
+      items.push({
+        description: { content: i.description },
+        quantity: { content: i.quantity, styles: { halign: "right" } },
+        unit_cost: {
+          content: i.unit_cost ? formatUSD(i.unit_cost / 100) : "",
+          styles: { halign: "right" },
+        },
+        subtotal: {
+          content: formatUSD(i.subtotal / 100),
+          styles: { halign: "right" },
+        },
+      })
+    );
+    // handle adjustments
+    // handle metadata
+    // handle taxes aggregate
+    // hanlde interval
+  }
+  if (itemization.flight) {
+    // todo
+  }
+  if (itemization.car_rental) {
+    // todo
+  }
+  if (itemization.lodging) {
+    // todo
+  }
+  if (itemization.ecommerce) {
+    // todo
+  }
+  if (itemization.general) {
+    // todo
+  }
+  return { head, items };
 }

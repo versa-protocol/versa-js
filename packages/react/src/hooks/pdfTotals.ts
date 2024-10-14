@@ -9,7 +9,7 @@ import {
 
 export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
   const docWidth = doc.internal.pageSize.getWidth();
-  let totalsData = [];
+  let totalsData: {}[] = [];
   totalsData.push({
     description: "Subtotal",
     amount: formatUSD(receipt.header.subtotal / 100),
@@ -38,14 +38,18 @@ export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
       });
     });
   }
-  totalsData.push({
-    description: "Total",
-    amount: formatUSD(receipt.header.total / 100),
-  });
   autoTable(doc, {
     body: totalsData,
-    startY: (doc as jsPDF & { lastAutoTable: { finalY: number } }).lastAutoTable
-      .finalY,
+    foot: [
+      {
+        description: "Total",
+        amount: formatUSD(receipt.header.total / 100),
+      },
+    ],
+    startY:
+      (doc as jsPDF & { lastAutoTable: { finalY: number } }).lastAutoTable
+        .finalY +
+      margin / 2,
     margin: {
       top: margin,
       right: margin,
@@ -53,13 +57,16 @@ export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
       left: docWidth / 2,
     },
     theme: "plain",
-    bodyStyles: {
+    styles: {
       lineColor: 240,
       lineWidth: {
-        bottom: (1 / 72) * 0.75,
+        top: (1 / 72) * 0.75,
       },
       fontSize: 10,
-      cellPadding: 0.125,
+      cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },
+    },
+    footStyles: {
+      fontStyle: "bold",
     },
     columnStyles: {
       amount: {

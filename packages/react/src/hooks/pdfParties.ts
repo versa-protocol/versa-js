@@ -52,18 +52,18 @@ export function Parties(
   // Buyer
   if (header.customer) {
     doc.setPage(twoUpStartPage);
-    let buyerData = [];
+    let buyerData: string[][] = [];
     if (header.customer.name) {
       buyerData.push([header.customer.name]);
+    }
+    if (header.customer.address) {
+      buyerData.push([stringifyAddress(header.customer?.address)]);
     }
     if (header.customer.email) {
       buyerData.push([header.customer.email]);
     }
     if (header.customer.phone) {
       buyerData.push([header.customer.phone]);
-    }
-    if (header.customer.address) {
-      buyerData.push([stringifyAddress(header.customer?.address)]);
     }
 
     autoTable(doc, {

@@ -33,7 +33,7 @@ export const usePdfGen = ({
     let cursor = Parties(doc, merchant, receipt.header, margin);
 
     // Items
-    Items(doc, margin, cursor);
+    Items(doc, receipt, margin, cursor);
 
     // Totals
     Totals(doc, receipt, margin);
