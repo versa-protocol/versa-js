@@ -26,7 +26,7 @@ export function Parties(
     startY: twoUpStartY,
     margin: {
       top: margin,
-      right: docWidth / 2 + margin / 2,
+      right: docWidth / 2 + margin,
       bottom: 2 * margin,
       left: margin,
     },
@@ -72,9 +72,9 @@ export function Parties(
       startY: twoUpStartY,
       margin: {
         top: margin,
-        right: margin,
+        right: margin * 2,
         bottom: 2 * margin,
-        left: docWidth / 2 + margin / 2,
+        left: docWidth / 2,
       },
       theme: "plain",
       showHead: "firstPage",

@@ -11,8 +11,14 @@ export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
   const docWidth = doc.internal.pageSize.getWidth();
   let totalsData: {}[] = [];
   totalsData.push({
-    description: "Subtotal",
-    amount: formatUSD(receipt.header.subtotal / 100),
+    description: { content: "Subtotal" },
+    amount: {
+      content: formatUSD(receipt.header.subtotal / 100),
+      styles: {
+        halign: "right",
+        cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },
+      },
+    },
   });
   const aggregatedAdjustments: Adjustment[] | null = aggregateAdjustments(
     receipt.itemization
@@ -20,8 +26,14 @@ export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
   if (aggregatedAdjustments) {
     aggregatedAdjustments.forEach((a) =>
       totalsData.push({
-        description: a.adjustment_type,
-        amount: formatUSD(a.amount / 100),
+        description: { content: a.adjustment_type },
+        amount: {
+          content: formatUSD(a.amount / 100),
+          styles: {
+            halign: "right",
+            cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },
+          },
+        },
       })
     );
   }
@@ -33,8 +45,14 @@ export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
         taxLabel = taxLabel + " (" + t.rate * 100 + "%)";
       }
       totalsData.push({
-        description: taxLabel,
-        amount: formatUSD(t.amount / 100),
+        description: { content: taxLabel },
+        amount: {
+          content: formatUSD(t.amount / 100),
+          styles: {
+            halign: "right",
+            cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },
+          },
+        },
       });
     });
   }
@@ -42,14 +60,19 @@ export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
     body: totalsData,
     foot: [
       {
-        description: "Total",
-        amount: formatUSD(receipt.header.total / 100),
+        description: { content: "Total" },
+        amount: {
+          content: formatUSD(receipt.header.total / 100),
+          styles: {
+            halign: "right",
+            cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },
+          },
+        },
       },
     ],
     startY:
       (doc as jsPDF & { lastAutoTable: { finalY: number } }).lastAutoTable
-        .finalY +
-      margin / 2,
+        .finalY + margin,
     margin: {
       top: margin,
       right: margin,
@@ -63,15 +86,10 @@ export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
         top: (1 / 72) * 0.75,
       },
       fontSize: 10,
-      cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },
+      cellPadding: { top: 0.09375, right: 0.125, bottom: 0.09375, left: 0 },
     },
     footStyles: {
       fontStyle: "bold",
-    },
-    columnStyles: {
-      amount: {
-        halign: "right",
-      },
     },
   });
 }

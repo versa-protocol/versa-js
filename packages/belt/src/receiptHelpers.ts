@@ -333,6 +333,7 @@ interface OrganizedFlightTicketPassenger {
 interface OrganizedFlightTicket {
   segments: FlightSegment[];
   passenger_count: number;
+  number: string | null;
   passengers: OrganizedFlightTicketPassenger[];
 }
 
@@ -356,6 +357,7 @@ export function organizeFlightTickets(flight: Flight): OrganizedFlightTicket[] {
       organizedTickets[dedupeKey] = {
         segments,
         passenger_count: 1,
+        number: ticket.number,
         passengers: [
           {
             passenger: ticket.passenger,
@@ -386,7 +388,13 @@ export function aggregateItems(itemization: Itemization) {
       description: { content: "Description" },
       quantity: { content: "Qty", styles: { halign: "right" } },
       unit_cost: { content: "Unit Price", styles: { halign: "right" } },
-      subtotal: { content: "Amount", styles: { halign: "right" } },
+      subtotal: {
+        content: "Amount",
+        styles: {
+          halign: "right",
+          cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },
+        },
+      },
     };
     itemization.subscription.subscription_items.forEach((i) =>
       items.push({
@@ -398,7 +406,10 @@ export function aggregateItems(itemization: Itemization) {
         },
         subtotal: {
           content: formatUSD(i.subtotal / 100),
-          styles: { halign: "right" },
+          styles: {
+            halign: "right",
+            cellPadding: { top: 0.125, right: 0, bottom: 0.125, left: 0 },
+          },
         },
       })
     );
@@ -408,13 +419,62 @@ export function aggregateItems(itemization: Itemization) {
     // hanlde interval
   }
   if (itemization.flight) {
-    // todo
+    head = {
+      passenger: { content: "Passenger" },
+      ticket: { content: "Ticket Number" },
+      fare: {
+        content: "Fare",
+        styles: {
+          halign: "right",
+          cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },
+        },
+      },
+    };
+    const organizedFlightTickets = organizeFlightTickets(itemization.flight);
+    organizedFlightTickets.forEach((t) =>
+      t.passengers.forEach((p) =>
+        items.push({
+          passenger: { content: p.passenger },
+          ticket: { content: t.number },
+          fare: {
+            content: formatUSD(aggregateTicketFares(t) / 100),
+            styles: {
+              halign: "right",
+              cellPadding: { top: 0.125, right: 0, bottom: 0.125, left: 0 },
+            },
+          },
+        })
+      )
+    );
   }
   if (itemization.car_rental) {
     // todo
   }
   if (itemization.lodging) {
-    // todo
+    head = {
+      date: { content: "Date" },
+      description: { content: "Description" },
+      subtotal: {
+        content: "Amount",
+        styles: {
+          halign: "right",
+          cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },
+        },
+      },
+    };
+    itemization.lodging.items.forEach((l) =>
+      items.push({
+        date: { content: l.date },
+        description: { content: l.description },
+        subtotal: {
+          content: formatUSD(l.subtotal / 100),
+          styles: {
+            halign: "right",
+            cellPadding: { top: 0.125, right: 0, bottom: 0.125, left: 0 },
+          },
+        },
+      })
+    );
   }
   if (itemization.ecommerce) {
     // todo
