@@ -1,11 +1,11 @@
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
-import { Org, Receipt } from "@versaprotocol/schema";
+import { Org, Receipt, Payment } from "@versaprotocol/schema";
 
 export function Header(
   doc: jsPDF,
   merchant: Org,
-  header: Receipt["header"],
+  receipt: Receipt,
   margin: number,
   brandColor: string
 ) {
@@ -27,11 +27,11 @@ export function Header(
     logo = merchant.logo;
   }
   if (
-    header.third_party &&
-    header.third_party.make_primary &&
-    header.third_party.merchant.logo
+    receipt.header.third_party &&
+    receipt.header.third_party.make_primary &&
+    receipt.header.third_party.merchant.logo
   ) {
-    logo = header.third_party.merchant.logo;
+    logo = receipt.header.third_party.merchant.logo;
   }
   {
     logo && doc.addImage(logo, "JPEG", docWidth - margin - 1, margin, 1, 1);
@@ -41,11 +41,20 @@ export function Header(
 
   // Head Table
   let headTableData: (string | number)[][] = [
-    ["Invoice Date:", formatDate(header.invoiced_at)],
+    ["Invoice Date:", formatDate(receipt.header.invoiced_at)],
   ];
-  if (header.invoice_number) {
-    headTableData.push(["Invoice Number:", header.invoice_number]);
+  if (receipt.header.invoice_number) {
+    headTableData.push(["Invoice Number:", receipt.header.invoice_number]);
   }
+
+  if (
+    receipt.payments.length == 1 &&
+    receipt.payments[0].amount == receipt.header.paid
+  ) {
+    headTableData.push(["Date Paid:", formatDate(receipt.payments[0].paid_at)]);
+    headTableData.push(["Payment Method:", paymentMethod(receipt.payments[0])]);
+  }
+
   autoTable(doc, {
     body: headTableData,
     startY: 1,
@@ -83,4 +92,27 @@ export function formatDate(secondsSinceEpoch: number) {
     day: "numeric",
   };
   return d.toLocaleDateString("en-US", options);
+}
+
+function paymentMethod(p: Payment) {
+  let paymentDescription = "";
+  if (p.payment_type == "card") {
+    if (p.card_payment?.network) {
+      paymentDescription = toTitleCase(p.card_payment.network);
+      if (p.card_payment.last_four) {
+        paymentDescription = paymentDescription.concat(
+          " ··· ",
+          p.card_payment.last_four
+        );
+      }
+    }
+  }
+  return paymentDescription;
+}
+
+function toTitleCase(str: string) {
+  return str.replace(
+    /\w\S*/g,
+    (text) => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
+  );
 }

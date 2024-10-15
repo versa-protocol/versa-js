@@ -12,8 +12,7 @@ export function Parties(
   const docWidth = doc.internal.pageSize.getWidth();
   const twoUpStartY =
     (doc as jsPDF & { lastAutoTable: { finalY: number } }).lastAutoTable
-      .finalY +
-    margin / 2;
+      .finalY + margin;
   const twoUpStartPage = doc.getCurrentPageInfo().pageNumber;
 
   // Seller

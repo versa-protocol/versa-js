@@ -28,7 +28,7 @@ export const usePdfGen = ({
     doc.setLineWidth((1 / 72) * 0.75);
 
     // Header
-    Header(doc, merchant, receipt.header, margin, brandColor);
+    Header(doc, merchant, receipt, margin, brandColor);
 
     // Parties
     let cursor = Parties(doc, merchant, receipt.header, margin);
@@ -40,7 +40,9 @@ export const usePdfGen = ({
     Totals(doc, receipt, margin);
 
     // Totals
-    Payments(doc, receipt.payments, margin);
+    if (receipt.payments.length > 1) {
+      Payments(doc, receipt.payments, margin);
+    }
 
     // Footers
     Footers(doc, margin);

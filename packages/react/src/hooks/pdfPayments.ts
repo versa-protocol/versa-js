@@ -16,15 +16,7 @@ export function Payments(doc: jsPDF, payments: Payment[], margin: number) {
     let paymentType = "";
     if (p.payment_type == "card") {
       paymentType = "Card Payment";
-      if (p.card_payment?.network) {
-        paymentDescription = toTitleCase(p.card_payment.network);
-        if (p.card_payment.last_four) {
-          paymentDescription = paymentDescription.concat(
-            " ··· ",
-            p.card_payment.last_four
-          );
-        }
-      }
+      paymentDescription = paymentMethod(p);
     } else {
       paymentType = "Bank Payment";
     }
@@ -74,4 +66,20 @@ function toTitleCase(str: string) {
     /\w\S*/g,
     (text) => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
   );
+}
+
+function paymentMethod(p: Payment) {
+  let paymentDescription = "";
+  if (p.payment_type == "card") {
+    if (p.card_payment?.network) {
+      paymentDescription = toTitleCase(p.card_payment.network);
+      if (p.card_payment.last_four) {
+        paymentDescription = paymentDescription.concat(
+          " ··· ",
+          p.card_payment.last_four
+        );
+      }
+    }
+  }
+  return paymentDescription;
 }
