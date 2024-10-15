@@ -56,13 +56,27 @@ export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
       });
     });
   }
+  totalsData.push({
+    description: {
+      content: "Total in " + receipt.header.currency.toUpperCase(),
+    },
+    amount: {
+      content: formatUSD(receipt.header.total / 100),
+      styles: {
+        halign: "right",
+        cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },
+      },
+    },
+  });
   autoTable(doc, {
     body: totalsData,
     foot: [
       {
-        description: { content: "Total" },
+        description: {
+          content: "Amount Paid",
+        },
         amount: {
-          content: formatUSD(receipt.header.total / 100),
+          content: formatUSD(receipt.header.paid / 100),
           styles: {
             halign: "right",
             cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },

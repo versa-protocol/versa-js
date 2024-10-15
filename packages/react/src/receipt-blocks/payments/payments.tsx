@@ -2,16 +2,6 @@ import { formatDateTime, formatUSD } from "@versaprotocol/belt";
 import styles from "./payments.module.css";
 import { Payment, Receipt } from "@versaprotocol/schema";
 
-function prettyNetwork(network: string) {
-  if (network == "mastercard") {
-    return "MasterCard";
-  }
-  if (network == "visa") {
-    return "Visa";
-  }
-  return network;
-}
-
 export function Payments({
   payments,
   header,
@@ -26,7 +16,7 @@ export function Payments({
           {payments[0].payment_type == "card" && (
             <div className={styles.paymentType}>
               {payments[0].card_payment?.network && (
-                <>{prettyNetwork(payments[0].card_payment.network)}</>
+                <>{toTitleCase(payments[0].card_payment.network)}</>
               )}
               <span className={styles.lastFour}>
                 ··· {payments[0].card_payment?.last_four}
@@ -43,7 +33,7 @@ export function Payments({
                 <div className={styles.paymentType}>
                   <div>
                     {payment.card_payment?.network && (
-                      <>{prettyNetwork(payment.card_payment.network)}</>
+                      <>{toTitleCase(payment.card_payment.network)}</>
                     )}
                     <span className={styles.lastFour}>
                       ··· {payment.card_payment?.last_four}
@@ -60,5 +50,14 @@ export function Payments({
         </>
       )}
     </div>
+  );
+}
+
+// Helpers
+
+function toTitleCase(str: string) {
+  return str.replace(
+    /\w\S*/g,
+    (text) => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
   );
 }

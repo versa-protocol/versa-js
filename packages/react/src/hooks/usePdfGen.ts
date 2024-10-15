@@ -4,6 +4,7 @@ import { Header } from "./pdfHeader";
 import { Parties } from "./pdfParties";
 import { Items } from "./pdfItems";
 import { Totals } from "./pdfTotals";
+import { Payments } from "./pdfPayments";
 import { Footers } from "./pdfFooters";
 
 export const usePdfGen = ({
@@ -17,7 +18,7 @@ export const usePdfGen = ({
 }) => {
   const margin = 0.375;
 
-  const downloadInvoice = () => {
+  const downloadReceipt = () => {
     // Set up
     const doc = new jsPDF({
       unit: "in",
@@ -38,6 +39,9 @@ export const usePdfGen = ({
     // Totals
     Totals(doc, receipt, margin);
 
+    // Totals
+    Payments(doc, receipt.payments, margin);
+
     // Footers
     Footers(doc, margin);
 
@@ -47,8 +51,8 @@ export const usePdfGen = ({
     );
   };
 
-  const downloadReceipt = () => {
-    alert("Download Receipt");
+  const downloadInvoice = () => {
+    alert("Download INvoice");
   };
 
   return {

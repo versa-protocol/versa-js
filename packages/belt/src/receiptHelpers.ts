@@ -378,8 +378,9 @@ export function aggregateTicketFares(ticket: OrganizedFlightTicket) {
 }
 
 export function aggregateItems(itemization: Itemization) {
-  let items: {}[] = [];
-  let head: {} = {};
+  type Cell = { content: string; styles?: { [key: string]: any } };
+  let items: Record<string, Cell>[] = [];
+  let head: Record<string, Cell> = {};
   if (itemization.transit_route) {
     // todo
   }
@@ -399,7 +400,10 @@ export function aggregateItems(itemization: Itemization) {
     itemization.subscription.subscription_items.forEach((i) =>
       items.push({
         description: { content: i.description },
-        quantity: { content: i.quantity, styles: { halign: "right" } },
+        quantity: {
+          content: i.quantity ? i.quantity.toString() : "",
+          styles: { halign: "right" },
+        },
         unit_cost: {
           content: i.unit_cost ? formatUSD(i.unit_cost / 100) : "",
           styles: { halign: "right" },
@@ -434,8 +438,8 @@ export function aggregateItems(itemization: Itemization) {
     organizedFlightTickets.forEach((t) =>
       t.passengers.forEach((p) =>
         items.push({
-          passenger: { content: p.passenger },
-          ticket: { content: t.number },
+          passenger: { content: p.passenger ? p.passenger : "" },
+          ticket: { content: t.number ? t.number : "" },
           fare: {
             content: formatUSD(aggregateTicketFares(t) / 100),
             styles: {
@@ -464,7 +468,7 @@ export function aggregateItems(itemization: Itemization) {
     };
     itemization.lodging.items.forEach((l) =>
       items.push({
-        date: { content: l.date },
+        date: { content: l.date ? l.date : "" },
         description: { content: l.description },
         subtotal: {
           content: formatUSD(l.subtotal / 100),
@@ -481,6 +485,24 @@ export function aggregateItems(itemization: Itemization) {
   }
   if (itemization.general) {
     // todo
+  }
+
+  // Remove the bottom border from the last item
+  for (const key in items[items.length - 1]) {
+    if (items[items.length - 1].hasOwnProperty(key)) {
+      const item = items[items.length - 1][key] as Cell;
+      if (item.styles) {
+        item.styles.lineWidth = {
+          bottom: 0,
+        };
+      } else {
+        item.styles = {
+          lineWidth: {
+            bottom: 0,
+          },
+        };
+      }
+    }
   }
   return { head, items };
 }

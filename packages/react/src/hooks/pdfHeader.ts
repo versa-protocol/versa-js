@@ -18,8 +18,8 @@ export function Header(
   // Title
   doc.setFont("helvetica", "bold");
   doc.setLineHeightFactor(1.25);
-  doc.setFontSize(24);
-  doc.text("Invoice", margin, margin + 24 / 72);
+  doc.setFontSize(20);
+  doc.text("Receipt", margin, margin + 24 / 72);
 
   // Logo
   let logo = null;

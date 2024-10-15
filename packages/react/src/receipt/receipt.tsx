@@ -237,7 +237,7 @@ export function ReceiptDisplay({
       <Footer
         receiptHeader={data.header}
         mapAttribution={mapAttribution}
-        downloadInvoice={downloadInvoice}
+        downloadReceipt={downloadReceipt}
       />
     </div>
   );

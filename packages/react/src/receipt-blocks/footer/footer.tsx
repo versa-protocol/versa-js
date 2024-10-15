@@ -5,11 +5,11 @@ import { Header } from "@versaprotocol/schema";
 export function Footer({
   mapAttribution,
   receiptHeader,
-  downloadInvoice,
+  downloadReceipt,
 }: {
   mapAttribution: boolean;
   receiptHeader: Header;
-  downloadInvoice: () => void;
+  downloadReceipt: () => void;
 }) {
   return (
     <div className={styles.finePrintWrap}>
@@ -34,8 +34,8 @@ export function Footer({
         </div>
       ) : (
         <div className={styles.downloadBlock}>
-          <button onClick={() => downloadInvoice()}>
-            <Download size={16} /> <div>Download Invoice</div>
+          <button onClick={() => downloadReceipt()}>
+            <Download size={16} /> <div>Download Receipt</div>
           </button>
         </div>
       )}
