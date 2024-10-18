@@ -182,7 +182,7 @@ export function formatTimeRange(
   }
   return (
     ds.toLocaleDateString("en-US", firstDateOptions) +
-    "-" +
+    " - " +
     de.toLocaleDateString("en-US", secondDateOptions)
   );
 }

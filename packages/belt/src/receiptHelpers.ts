@@ -10,7 +10,7 @@ import {
   FlightSegment,
 } from "@versaprotocol/schema";
 import canonicalize from "canonicalize";
-import { formatUSD } from "./format";
+import { formatTimeRange, formatUSD } from "./format";
 
 export function aggregateTaxes(itemization: Itemization): Tax[] {
   const aggregatedTaxes: Record<string, Tax> = {};
@@ -381,59 +381,69 @@ export function aggregateItems(itemization: Itemization) {
   type Cell = { content: string; styles?: { [key: string]: any } };
   let items: Record<string, Cell>[] = [];
   let head: Record<string, Cell> = {};
+  head = aggregateItemHeaders(itemization);
+
   if (itemization.transit_route) {
     // todo
   }
   if (itemization.subscription) {
-    head = {
-      description: { content: "Description" },
-      quantity: { content: "Qty", styles: { halign: "right" } },
-      unit_cost: { content: "Unit Price", styles: { halign: "right" } },
-      subtotal: {
-        content: "Amount",
-        styles: {
-          halign: "right",
-          cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },
-        },
-      },
-    };
-    itemization.subscription.subscription_items.forEach((i) =>
-      items.push({
-        description: { content: i.description },
-        quantity: {
-          content: i.quantity ? i.quantity.toString() : "",
-          styles: { halign: "right" },
-        },
-        unit_cost: {
-          content: i.unit_cost ? formatUSD(i.unit_cost / 100) : "",
-          styles: { halign: "right" },
-        },
-        subtotal: {
-          content: formatUSD(i.subtotal / 100),
-          styles: {
-            halign: "right",
-            cellPadding: { top: 0.125, right: 0, bottom: 0.125, left: 0 },
-          },
-        },
-      })
-    );
-    // handle adjustments
-    // handle metadata
-    // handle taxes aggregate
-    // hanlde interval
+    itemization.subscription.subscription_items.forEach((i) => {
+      let row: { [key: string]: any } = {};
+      Object.keys(head).forEach((key) => {
+        if (key == "description") {
+          let descriptionString: string = "";
+          descriptionString = i.description;
+          if (i.current_period_start && i.current_period_end) {
+            descriptionString = descriptionString.concat(
+              "\n",
+              formatTimeRange(i.current_period_start, i.current_period_end)
+            );
+          }
+          row.description = { content: descriptionString };
+        } else if (key == "subtotal") {
+          row.subtotal = {
+            content: formatUSD(i.subtotal / 100),
+            styles: {
+              halign: "right",
+              cellPadding: { top: 0.125, right: 0, bottom: 0.125, left: 0 },
+            },
+          };
+          // todo: handle adjustments here
+        } else if (key == "quantity") {
+          row.quantity = {
+            content: i.quantity ? i.quantity.toString() : "",
+            styles: { halign: "right" },
+          };
+        } else if (key == "unit_cost") {
+          row.unit_cost = {
+            content: i.unit_cost ? formatUSD(i.unit_cost / 100) : "",
+            styles: { halign: "right" },
+          };
+        } else if (key == "taxes") {
+          let combinedTaxRate = 0;
+          i.taxes.forEach((t) => {
+            if (t.rate) {
+              combinedTaxRate += t.rate;
+            }
+          });
+          row.taxes = {
+            content: combinedTaxRate * 100 + "%",
+            styles: { halign: "right" },
+          };
+        } else {
+          if (i.metadata && i.metadata.length > 0) {
+            i.metadata.forEach((m) => {
+              if (key == m.key) {
+                row[m.key] = { content: m.value };
+              }
+            });
+          }
+        }
+      });
+      items.push(row);
+    });
   }
   if (itemization.flight) {
-    head = {
-      passenger: { content: "Passenger" },
-      ticket: { content: "Ticket Number" },
-      fare: {
-        content: "Fare",
-        styles: {
-          halign: "right",
-          cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },
-        },
-      },
-    };
     const organizedFlightTickets = organizeFlightTickets(itemization.flight);
     organizedFlightTickets.forEach((t) =>
       t.passengers.forEach((p) =>
@@ -455,17 +465,6 @@ export function aggregateItems(itemization: Itemization) {
     // todo
   }
   if (itemization.lodging) {
-    head = {
-      date: { content: "Date" },
-      description: { content: "Description" },
-      subtotal: {
-        content: "Amount",
-        styles: {
-          halign: "right",
-          cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },
-        },
-      },
-    };
     itemization.lodging.items.forEach((l) =>
       items.push({
         date: { content: l.date ? l.date : "" },
@@ -505,4 +504,128 @@ export function aggregateItems(itemization: Itemization) {
     }
   }
   return { head, items };
+}
+
+function aggregateItemHeaders(itemization: Itemization) {
+  type Cell = { content: string; styles?: { [key: string]: any } };
+  let head: Record<string, Cell> = {};
+
+  if (itemization.transit_route) {
+    // todo
+  }
+  if (itemization.subscription) {
+    head = { description: { content: "Description" } };
+    itemization.subscription.subscription_items.forEach((i) => {
+      if (i.quantity !== null && !head.quantity) {
+        head.quantity = { content: "Qty", styles: { halign: "right" } };
+        head.unit_cost = { content: "Unit Price", styles: { halign: "right" } };
+      }
+    });
+    itemization.subscription.subscription_items.forEach((i) => {
+      if (i.metadata && i.metadata.length > 0) {
+        i.metadata.forEach((m) => {
+          if (!head[m.key]) {
+            head[m.key] = { content: m.key };
+          }
+        });
+      }
+    });
+    const allTaxesAreRateBased =
+      itemization.subscription.subscription_items.every(
+        (i) => i.taxes && i.taxes.every((t) => t.rate !== null)
+      );
+    if (allTaxesAreRateBased) {
+      head.taxes = { content: "Tax", styles: { halign: "right" } };
+    }
+    head.subtotal = {
+      content: "Amount",
+      styles: {
+        halign: "right",
+        cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },
+      },
+    };
+  }
+  if (itemization.flight) {
+    // Rough
+    head = {
+      passenger: { content: "Passenger" },
+      ticket: { content: "Ticket Number" },
+      fare: {
+        content: "Fare",
+        styles: {
+          halign: "right",
+          cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },
+        },
+      },
+    };
+  }
+  if (itemization.car_rental) {
+    // todo
+  }
+  if (itemization.lodging) {
+    head = aggregateGenericItemHeaders(itemization.lodging.items);
+  }
+  if (itemization.ecommerce) {
+    let aggregatedEcommerceItems =
+      itemization.ecommerce.invoice_level_line_items;
+    if (
+      itemization.ecommerce.shipments &&
+      itemization.ecommerce.shipments.length > 0
+    ) {
+      itemization.ecommerce.shipments.forEach((s) => {
+        aggregatedEcommerceItems.push(...s.items);
+      });
+    }
+    head = aggregateGenericItemHeaders(aggregatedEcommerceItems);
+  }
+  if (itemization.general) {
+    head = aggregateGenericItemHeaders(itemization.general.line_items);
+  }
+  return head;
+}
+
+function aggregateGenericItemHeaders(items: Item[]) {
+  type Cell = { content: string; styles?: { [key: string]: any } };
+  let head: Record<string, Cell> = {};
+  items.forEach((i) => {
+    if (i.date !== null && !head.date) {
+      head.date = { content: "Date" };
+    }
+  });
+  head.description = { content: "Description" };
+  items.forEach((i) => {
+    if (i.quantity !== null && !head.quantity) {
+      head.quantity = { content: "Qty", styles: { halign: "right" } };
+      head.unit_cost = { content: "Unit Price", styles: { halign: "right" } };
+    }
+  });
+  items.forEach((i) => {
+    if (i.metadata && i.metadata.length > 0) {
+      i.metadata.forEach((m) => {
+        if (!head[m.key]) {
+          head[m.key] = { content: m.key };
+        }
+      });
+    }
+  });
+  items.forEach((i) => {
+    if (i.unspsc && !head.unspsc) {
+      head.unspsc = { content: "UNSPSC" };
+    }
+  });
+  const allTaxesAreRateBased = items.every(
+    (i) => i.taxes && i.taxes.every((t) => t.rate !== null)
+  );
+  if (allTaxesAreRateBased) {
+    head.taxes = { content: "Tax", styles: { halign: "right" } };
+  }
+  head.subtotal = {
+    content: "Amount",
+    styles: {
+      halign: "right",
+      cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },
+    },
+  };
+  // Handle groups
+  return head;
 }

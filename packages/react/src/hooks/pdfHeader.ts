@@ -101,7 +101,7 @@ function paymentMethod(p: Payment) {
       paymentDescription = toTitleCase(p.card_payment.network);
       if (p.card_payment.last_four) {
         paymentDescription = paymentDescription.concat(
-          " ··· ",
+          " - ",
           p.card_payment.last_four
         );
       }

@@ -39,7 +39,7 @@ export const usePdfGen = ({
     // Totals
     Totals(doc, receipt, margin);
 
-    // Totals
+    // Payments
     if (receipt.payments.length > 1) {
       Payments(doc, receipt.payments, margin);
     }
