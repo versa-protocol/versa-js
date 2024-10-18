@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.4.0",
+  "schema_version": "1.5.1",
   "header": {
     "invoice_number": "INV03284849",
     "currency": "usd",
