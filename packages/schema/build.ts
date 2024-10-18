@@ -8,7 +8,7 @@ const { compileFromFile } = require("json-schema-to-typescript");
 async function main() {
   // TODO Latest semver of schema should likely be stored in an environment variable or other central config
   const res = await fetch(
-    "https://raw.githubusercontent.com/versa-protocol/schema/1.4.0/data/receipt.schema.json"
+    "https://raw.githubusercontent.com/versa-protocol/schema/1.5.1/data/receipt.schema.json"
   );
   const schema = await res.text();
 

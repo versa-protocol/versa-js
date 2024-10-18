@@ -5,7 +5,7 @@ import {
   sameDay,
 } from "@versaprotocol/belt";
 import styles from "./itemized-transit-route.module.css";
-import { ItemMetadata, Receipt, TransitRoute } from "@versaprotocol/schema";
+import { Metadatum, Receipt, TransitRoute } from "@versaprotocol/schema";
 import { organizeTransitRoutes } from "@versaprotocol/belt";
 import { VersaContext } from "../../context";
 
@@ -138,7 +138,7 @@ export function ItemizedTransitRoute({
                     </div>
                   )}
                   {item.shared_metadata &&
-                    item.shared_metadata.map((m: ItemMetadata, index) => (
+                    item.shared_metadata.map((m: Metadatum, index) => (
                       <div className={styles.row} key={index}>
                         <div className={styles.key}>{m.key}</div>
                         <div className={styles.value}>{m.value}</div>
@@ -169,14 +169,12 @@ export function ItemizedTransitRoute({
                           </div>
                         )}
                         {item.passenger_metadata &&
-                          item.passenger_metadata.map(
-                            (m: ItemMetadata, index) => (
-                              <div className={styles.row} key={index}>
-                                <div className={styles.key}>{m.key}</div>
-                                <div className={styles.value}>{m.value}</div>
-                              </div>
-                            )
-                          )}
+                          item.passenger_metadata.map((m: Metadatum, index) => (
+                            <div className={styles.row} key={index}>
+                              <div className={styles.key}>{m.key}</div>
+                              <div className={styles.value}>{m.value}</div>
+                            </div>
+                          ))}
                         <div className={styles.row}>
                           <div className={styles.key}>Fare</div>
                           <div className={styles.value}>

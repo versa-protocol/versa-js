@@ -5,7 +5,7 @@ import {
   Item,
   Ecommerce,
   Place,
-  ItemMetadata,
+  Metadatum,
   TransitRoute,
   FlightSegment,
 } from "@versaprotocol/schema";
@@ -195,18 +195,18 @@ export function aggregateAdjustments(itemization: Itemization) {
 }
 
 interface OrganizedTransitRoutePassenger {
-  passenger: string | null;
+  passenger: string | null | undefined;
   fare: number;
-  passenger_metadata: ItemMetadata[];
+  passenger_metadata: Metadatum[];
 }
 
 interface OrganizedTransitRoute {
-  departure_location: null | Place;
-  arrival_location: null | Place;
-  departure_at: number | null;
-  arrival_at: number | null;
-  polyline: null | string;
-  shared_metadata: ItemMetadata[];
+  departure_location: null | Place | undefined;
+  arrival_location: null | Place | undefined;
+  departure_at: number | null | undefined;
+  arrival_at: number | null | undefined;
+  polyline: null | string | undefined;
+  shared_metadata: Metadatum[];
   passenger_count: number;
   passengers: OrganizedTransitRoutePassenger[];
   mode?: ("car" | "taxi" | "rail" | "bus" | "ferry" | "other") | null;
@@ -327,13 +327,13 @@ export function organizeTransitRoutes(
 }
 
 interface OrganizedFlightTicketPassenger {
-  passenger: string | null;
+  passenger: string | null | undefined;
 }
 
 interface OrganizedFlightTicket {
   segments: FlightSegment[];
   passenger_count: number;
-  number: string | null;
+  number: string | null | undefined;
   passengers: OrganizedFlightTicketPassenger[];
 }
 

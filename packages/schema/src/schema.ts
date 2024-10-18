@@ -5,31 +5,42 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
+export type SchemaVersion = string;
+/**
+ * ISO 4217 currency code
+ */
+export type Currency =
+  | "usd"
+  | "eur"
+  | "jpy"
+  | "gbp"
+  | "aud"
+  | "cad"
+  | "chf"
+  | "cnh";
+export type AdjustmentType = "discount" | "tip" | "fee" | "other";
+export type SubscriptionType = "one_time" | "recurring";
+export type Interval = "day" | "week" | "month" | "year";
+
 /**
  * A Versa itemized receipt
  */
 export interface Receipt {
-  schema_version: string;
+  schema_version: SchemaVersion;
   header: Header;
   itemization: Itemization;
-  actions: {
-    name: string;
-    url: string;
-  }[];
+  actions: Action[];
   payments: Payment[];
 }
 export interface Header {
-  invoice_number: string | null;
-  /**
-   * ISO 4217 currency code
-   */
-  currency: "usd" | "eur" | "jpy" | "gbp" | "aud" | "cad" | "chf" | "cnh";
+  invoice_number?: string | null;
+  currency: Currency;
   total: number;
   subtotal: number;
   paid: number;
   invoiced_at: number;
-  mcc: string | null;
-  third_party: {
+  mcc?: string | null;
+  third_party?: {
     first_party_relation:
       | "bnpl"
       | "delivery_service"
@@ -43,25 +54,19 @@ export interface Header {
     make_primary: boolean;
     merchant: Org;
   } | null;
-  customer: {
-    name: string;
-    email: string | null;
-    address: null | Address;
-    phone: string | null;
-    metadata: ItemMetadata[];
-  } | null;
-  location: Place | null;
+  customer?: Customer | null;
+  location?: Place | null;
   invoice_asset_id?: string | null;
   receipt_asset_id?: string | null;
 }
 export interface Org {
   name: string;
-  brand_color: string | null;
-  legal_name: string | null;
-  logo: string | null;
-  website: string | null;
-  vat_number: string | null;
-  address: null | Address;
+  brand_color?: string | null;
+  legal_name?: string | null;
+  logo?: string | null;
+  website?: string | null;
+  vat_number?: string | null;
+  address?: null | Address;
 }
 export interface Address {
   street_address: string | null;
@@ -73,10 +78,20 @@ export interface Address {
   lon: number | null;
   tz: string | null;
 }
-export interface ItemMetadata {
+export interface Customer {
+  name: string;
+  email: string | null;
+  address: null | Address;
+  phone: string | null;
+  metadata: Metadatum[];
+}
+export interface Metadatum {
   key: string;
   value: string;
 }
+/**
+ * The physical or online location where a transaction occurred
+ */
 export interface Place {
   name: string | null;
   address: null | Address;
@@ -86,13 +101,13 @@ export interface Place {
   image: null | string;
 }
 export interface Itemization {
-  general: GeneralItemization | null;
-  lodging: Lodging | null;
-  ecommerce: Ecommerce | null;
-  car_rental: CarRental | null;
-  transit_route: TransitRoute | null;
-  subscription: Subscription | null;
-  flight: Flight | null;
+  general?: GeneralItemization | null;
+  lodging?: Lodging | null;
+  ecommerce?: Ecommerce | null;
+  car_rental?: CarRental | null;
+  transit_route?: TransitRoute | null;
+  subscription?: Subscription | null;
+  flight?: Flight | null;
 }
 export interface GeneralItemization {
   /**
@@ -110,7 +125,7 @@ export interface Item {
   unit?: null | string;
   unspsc?: null | string;
   taxes?: Tax[];
-  metadata?: ItemMetadata[];
+  metadata?: Metadatum[];
   product_image?: null | string;
   group?: null | string;
   url?: null | string;
@@ -124,7 +139,7 @@ export interface Tax {
 export interface Adjustment {
   amount: number;
   name: null | string;
-  adjustment_type: "discount" | "tip" | "fee" | "other";
+  adjustment_type: AdjustmentType;
   rate: null | number;
 }
 export interface Lodging {
@@ -137,29 +152,30 @@ export interface Lodging {
   items: Item[];
   room?: null | string;
   guests?: null | string;
-  metadata?: ItemMetadata[];
+  metadata?: Metadatum[];
   invoice_level_adjustments: Adjustment[];
 }
 export interface Ecommerce {
-  shipments: {
-    /**
-     * @minItems 1
-     */
-    items: Item[];
-    tracking_number: string | null;
-    expected_delivery_at: number | null;
-    shipment_status: ("prep" | "in_transit" | "delivered") | null;
-    destination_address: null | Address;
-  }[];
+  shipments: Shipment[];
   invoice_level_line_items: Item[];
   invoice_level_adjustments: Adjustment[];
+}
+export interface Shipment {
+  /**
+   * @minItems 1
+   */
+  items: Item[];
+  tracking_number?: string | null;
+  expected_delivery_at?: number | null;
+  shipment_status?: ("prep" | "in_transit" | "delivered") | null;
+  destination_address?: null | Address;
 }
 export interface CarRental {
   rental_at: number;
   return_at: number;
   rental_location: Place;
   return_location: Place;
-  vehicle: {
+  vehicle?: {
     description: string;
     image: string | null;
   } | null;
@@ -176,46 +192,49 @@ export interface TransitRoute {
   /**
    * @minItems 1
    */
-  transit_route_items: {
-    departure_location: null | Place;
-    arrival_location: null | Place;
-    departure_at: number | null;
-    arrival_at: number | null;
-    polyline: null | string;
-    taxes: Tax[];
-    metadata: ItemMetadata[];
-    fare: number;
-    passenger: string | null;
-    mode?: ("car" | "taxi" | "rail" | "bus" | "ferry" | "other") | null;
-  }[];
+  transit_route_items: TransitRouteItem[];
   invoice_level_adjustments: Adjustment[];
+}
+export interface TransitRouteItem {
+  departure_location?: null | Place;
+  arrival_location?: null | Place;
+  departure_at?: number | null;
+  arrival_at?: number | null;
+  polyline?: null | string;
+  adjustments: Adjustment[];
+  taxes: Tax[];
+  metadata: Metadatum[];
+  fare: number;
+  passenger?: string | null;
+  mode?: ("car" | "taxi" | "rail" | "bus" | "ferry" | "other") | null;
 }
 export interface Subscription {
   /**
    * @minItems 1
    */
-  subscription_items: {
-    subtotal: number;
-    subscription_type: "one_time" | "recurring";
-    description: string;
-    interval: null | ("day" | "week" | "month" | "year");
-    interval_count: number | null;
-    current_period_start: number | null;
-    current_period_end: number | null;
-    quantity: number | null;
-    unit_cost: number | null;
-    taxes: Tax[];
-    metadata: ItemMetadata[];
-    adjustments: Adjustment[];
-  }[];
+  subscription_items: SubscriptionItem[];
   invoice_level_adjustments: Adjustment[];
+}
+export interface SubscriptionItem {
+  subtotal: number;
+  subscription_type: SubscriptionType;
+  description: string;
+  interval?: null | Interval;
+  interval_count?: number | null;
+  current_period_start?: number | null;
+  current_period_end?: number | null;
+  quantity?: number | null;
+  unit_cost?: number | null;
+  taxes: Tax[];
+  metadata: Metadatum[];
+  adjustments: Adjustment[];
 }
 export interface Flight {
   /**
    * @minItems 1
    */
   tickets: FlightTicket[];
-  itinerary_locator: null | string;
+  itinerary_locator?: null | string;
   invoice_level_adjustments: Adjustment[];
 }
 export interface FlightTicket {
@@ -223,9 +242,9 @@ export interface FlightTicket {
    * @minItems 1
    */
   segments: FlightSegment[];
-  number: null | string;
-  record_locator: null | string;
-  passenger: null | string;
+  number?: null | string;
+  record_locator?: null | string;
+  passenger?: null | string;
 }
 export interface FlightSegment {
   fare: number;
@@ -240,12 +259,16 @@ export interface FlightSegment {
   taxes: Tax[];
   adjustments: Adjustment[];
 }
+export interface Action {
+  name: string;
+  url: string;
+}
 export interface Payment {
   amount: number;
   paid_at: number;
   payment_type: "card" | "ach";
-  card_payment: null | CardPayment;
-  ach_payment: null | AchPayment;
+  card_payment?: null | CardPayment;
+  ach_payment?: null | AchPayment;
 }
 export interface CardPayment {
   last_four: string;

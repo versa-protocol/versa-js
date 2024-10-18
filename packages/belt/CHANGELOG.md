@@ -1,5 +1,16 @@
 # @versaprotocol/belt
 
+## 1.5.0
+
+### Minor Changes
+
+- Update in accordance with schema version 1.5.1, accepting omitted keys as equivalent to null keys
+
+### Patch Changes
+
+- Updated dependencies
+  - @versaprotocol/schema@1.5.0
+
 ## 1.4.0
 
 ### Minor Changes
