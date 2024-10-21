@@ -377,10 +377,16 @@ export function aggregateTicketFares(ticket: OrganizedFlightTicket) {
   return aggregatedTicketFares;
 }
 
+// For PDF Export
+
+type pdfItem = Record<
+  string,
+  { content: string; styles?: { [key: string]: any } }
+>;
+
 export function aggregateItems(itemization: Itemization) {
-  type Cell = { content: string; styles?: { [key: string]: any } };
-  let items: Record<string, Cell>[] = [];
-  let head: Record<string, Cell> = {};
+  let items: pdfItem[] = [];
+  let head: pdfItem = {};
   head = aggregateItemHeaders(itemization);
 
   if (itemization.transit_route) {
@@ -465,31 +471,30 @@ export function aggregateItems(itemization: Itemization) {
     // todo
   }
   if (itemization.lodging) {
-    itemization.lodging.items.forEach((l) =>
-      items.push({
-        date: { content: l.date ? l.date : "" },
-        description: { content: l.description },
-        subtotal: {
-          content: formatUSD(l.subtotal / 100),
-          styles: {
-            halign: "right",
-            cellPadding: { top: 0.125, right: 0, bottom: 0.125, left: 0 },
-          },
-        },
-      })
-    );
+    items = aggregateGenericItemRows(itemization.lodging.items, head);
   }
   if (itemization.ecommerce) {
-    // todo
+    // This should probably respect the shipment breakdown differently
+    let aggregatedEcommerceItems =
+      itemization.ecommerce.invoice_level_line_items;
+    if (
+      itemization.ecommerce.shipments &&
+      itemization.ecommerce.shipments.length > 0
+    ) {
+      itemization.ecommerce.shipments.forEach((s) => {
+        aggregatedEcommerceItems.push(...s.items);
+      });
+    }
+    items = aggregateGenericItemRows(aggregatedEcommerceItems, head);
   }
   if (itemization.general) {
-    // todo
+    items = aggregateGenericItemRows(itemization.general.line_items, head);
   }
 
   // Remove the bottom border from the last item
   for (const key in items[items.length - 1]) {
     if (items[items.length - 1].hasOwnProperty(key)) {
-      const item = items[items.length - 1][key] as Cell;
+      const item = items[items.length - 1][key];
       if (item.styles) {
         item.styles.lineWidth = {
           bottom: 0,
@@ -506,9 +511,8 @@ export function aggregateItems(itemization: Itemization) {
   return { head, items };
 }
 
-function aggregateItemHeaders(itemization: Itemization) {
-  type Cell = { content: string; styles?: { [key: string]: any } };
-  let head: Record<string, Cell> = {};
+function aggregateItemHeaders(itemization: Itemization): pdfItem {
+  let head: pdfItem = {};
 
   if (itemization.transit_route) {
     // todo
@@ -566,6 +570,7 @@ function aggregateItemHeaders(itemization: Itemization) {
     head = aggregateGenericItemHeaders(itemization.lodging.items);
   }
   if (itemization.ecommerce) {
+    // This should probably respect the shipment breakdown differently
     let aggregatedEcommerceItems =
       itemization.ecommerce.invoice_level_line_items;
     if (
@@ -584,22 +589,21 @@ function aggregateItemHeaders(itemization: Itemization) {
   return head;
 }
 
-function aggregateGenericItemHeaders(items: Item[]) {
-  type Cell = { content: string; styles?: { [key: string]: any } };
-  let head: Record<string, Cell> = {};
-  items.forEach((i) => {
+function aggregateGenericItemHeaders(rows: Item[]): pdfItem {
+  let head: pdfItem = {};
+  rows.forEach((i) => {
     if (i.date !== null && !head.date) {
       head.date = { content: "Date" };
     }
   });
   head.description = { content: "Description" };
-  items.forEach((i) => {
+  rows.forEach((i) => {
     if (i.quantity !== null && !head.quantity) {
       head.quantity = { content: "Qty", styles: { halign: "right" } };
       head.unit_cost = { content: "Unit Price", styles: { halign: "right" } };
     }
   });
-  items.forEach((i) => {
+  rows.forEach((i) => {
     if (i.metadata && i.metadata.length > 0) {
       i.metadata.forEach((m) => {
         if (!head[m.key]) {
@@ -608,12 +612,12 @@ function aggregateGenericItemHeaders(items: Item[]) {
       });
     }
   });
-  items.forEach((i) => {
+  rows.forEach((i) => {
     if (i.unspsc && !head.unspsc) {
       head.unspsc = { content: "UNSPSC" };
     }
   });
-  const allTaxesAreRateBased = items.every(
+  const allTaxesAreRateBased = rows.every(
     (i) => i.taxes && i.taxes.every((t) => t.rate !== null)
   );
   if (allTaxesAreRateBased) {
@@ -628,4 +632,62 @@ function aggregateGenericItemHeaders(items: Item[]) {
   };
   // Handle groups
   return head;
+}
+
+function aggregateGenericItemRows(rows: Item[], head: pdfItem): pdfItem[] {
+  let items: pdfItem[] = [];
+  rows.forEach((i) => {
+    let row: { [key: string]: any } = {};
+    Object.keys(head).forEach((key) => {
+      if (key == "date") {
+        row.date = {
+          content: i.date ? i.date : "",
+        };
+      } else if (key == "description") {
+        let descriptionString: string = "";
+        descriptionString = i.description;
+        row.description = { content: descriptionString };
+      } else if (key == "subtotal") {
+        row.subtotal = {
+          content: formatUSD(i.subtotal / 100),
+          styles: {
+            halign: "right",
+            cellPadding: { top: 0.125, right: 0, bottom: 0.125, left: 0 },
+          },
+        };
+        // todo: handle adjustments here
+      } else if (key == "quantity") {
+        row.quantity = {
+          content: i.quantity ? i.quantity.toString() : "",
+          styles: { halign: "right" },
+        };
+      } else if (key == "unit_cost") {
+        row.unit_cost = {
+          content: i.unit_cost ? formatUSD(i.unit_cost / 100) : "",
+          styles: { halign: "right" },
+        };
+      } else if (key == "taxes" && i.taxes) {
+        let combinedTaxRate = 0;
+        i.taxes.forEach((t) => {
+          if (t.rate) {
+            combinedTaxRate += t.rate;
+          }
+        });
+        row.taxes = {
+          content: combinedTaxRate * 100 + "%",
+          styles: { halign: "right" },
+        };
+      } else {
+        if (i.metadata && i.metadata.length > 0) {
+          i.metadata.forEach((m) => {
+            if (key == m.key) {
+              row[m.key] = { content: m.value };
+            }
+          });
+        }
+      }
+    });
+    items.push(row);
+  });
+  return items;
 }
