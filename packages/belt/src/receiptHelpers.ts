@@ -10,7 +10,7 @@ import {
   FlightSegment,
 } from "@versaprotocol/schema";
 import canonicalize from "canonicalize";
-import { formatTimeRange, formatUSD } from "./format";
+import { formatDateTime, formatTimeRange, formatUSD } from "./format";
 
 export function aggregateTaxes(itemization: Itemization): Tax[] {
   const aggregatedTaxes: Record<string, Tax> = {};
@@ -389,9 +389,50 @@ export function aggregateItems(itemization: Itemization) {
   let head: pdfItem = {};
   head = aggregateItemHeaders(itemization);
 
+  // Transit Route
   if (itemization.transit_route) {
-    // todo
+    itemization.transit_route.transit_route_items.forEach((i) => {
+      let row: { [key: string]: any } = {};
+      Object.keys(head).forEach((key) => {
+        if (key == "departure") {
+          let departureString = "";
+          if (i.departure_location) {
+            departureString = stringifyPlace(i.departure_location);
+            if (i.departure_at) {
+              departureString =
+                departureString +
+                "\n" +
+                formatDateTime(i.departure_at, false, true);
+            }
+          }
+          row.departure = { content: departureString };
+        } else if (key == "arrival") {
+          let arrivalString = "";
+          if (i.arrival_location) {
+            arrivalString = stringifyPlace(i.arrival_location);
+            if (i.arrival_at) {
+              arrivalString =
+                arrivalString +
+                "\n" +
+                formatDateTime(i.arrival_at, false, true);
+            }
+          }
+          row.arrival = { content: arrivalString };
+        } else if (key == "fare") {
+          row.fare = {
+            content: formatUSD(i.fare / 100),
+            styles: {
+              halign: "right",
+              cellPadding: { top: 0.125, right: 0, bottom: 0.125, left: 0 },
+            },
+          };
+        }
+      });
+      items.push(row);
+    });
   }
+
+  // Subscription
   if (itemization.subscription) {
     itemization.subscription.subscription_items.forEach((i) => {
       let row: { [key: string]: any } = {};
@@ -449,7 +490,10 @@ export function aggregateItems(itemization: Itemization) {
       items.push(row);
     });
   }
+
+  // Flight
   if (itemization.flight) {
+    // Rough
     const organizedFlightTickets = organizeFlightTickets(itemization.flight);
     organizedFlightTickets.forEach((t) =>
       t.passengers.forEach((p) =>
@@ -467,12 +511,18 @@ export function aggregateItems(itemization: Itemization) {
       )
     );
   }
+
+  // Car Rental
   if (itemization.car_rental) {
-    // todo
+    items = aggregateGenericItemRows(itemization.car_rental.items, head);
   }
+
+  // Lodging
   if (itemization.lodging) {
     items = aggregateGenericItemRows(itemization.lodging.items, head);
   }
+
+  // Ecommerce
   if (itemization.ecommerce) {
     // This should probably respect the shipment breakdown differently
     let aggregatedEcommerceItems =
@@ -514,9 +564,21 @@ export function aggregateItems(itemization: Itemization) {
 function aggregateItemHeaders(itemization: Itemization): pdfItem {
   let head: pdfItem = {};
 
+  // Transit
   if (itemization.transit_route) {
-    // todo
+    head.departure = { content: "Departure" };
+    head.arrival = { content: "Arrival" };
+    // todo: handle metadata
+    head.fare = {
+      content: "Fare",
+      styles: {
+        halign: "right",
+        cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },
+      },
+    };
   }
+
+  // Subscription
   if (itemization.subscription) {
     head = { description: { content: "Description" } };
     itemization.subscription.subscription_items.forEach((i) => {
@@ -549,6 +611,8 @@ function aggregateItemHeaders(itemization: Itemization): pdfItem {
       },
     };
   }
+
+  // Flight
   if (itemization.flight) {
     // Rough
     head = {
@@ -563,12 +627,18 @@ function aggregateItemHeaders(itemization: Itemization): pdfItem {
       },
     };
   }
+
+  // Car Rental
   if (itemization.car_rental) {
-    // todo
+    head = aggregateGenericItemHeaders(itemization.car_rental.items);
   }
+
+  // Lodging
   if (itemization.lodging) {
     head = aggregateGenericItemHeaders(itemization.lodging.items);
   }
+
+  // Ecommerce
   if (itemization.ecommerce) {
     // This should probably respect the shipment breakdown differently
     let aggregatedEcommerceItems =
@@ -583,6 +653,8 @@ function aggregateItemHeaders(itemization: Itemization): pdfItem {
     }
     head = aggregateGenericItemHeaders(aggregatedEcommerceItems);
   }
+
+  // General
   if (itemization.general) {
     head = aggregateGenericItemHeaders(itemization.general.line_items);
   }
@@ -592,7 +664,7 @@ function aggregateItemHeaders(itemization: Itemization): pdfItem {
 function aggregateGenericItemHeaders(rows: Item[]): pdfItem {
   let head: pdfItem = {};
   rows.forEach((i) => {
-    if (i.date !== null && !head.date) {
+    if (i.date && !head.date) {
       head.date = { content: "Date" };
     }
   });
@@ -617,10 +689,7 @@ function aggregateGenericItemHeaders(rows: Item[]): pdfItem {
       head.unspsc = { content: "UNSPSC" };
     }
   });
-  const allTaxesAreRateBased = rows.every(
-    (i) => i.taxes && i.taxes.every((t) => t.rate !== null)
-  );
-  if (allTaxesAreRateBased) {
+  if (rows.every((i) => i.taxes && i.taxes.every((t) => t.rate !== null))) {
     head.taxes = { content: "Tax", styles: { halign: "right" } };
   }
   head.subtotal = {
@@ -641,7 +710,7 @@ function aggregateGenericItemRows(rows: Item[], head: pdfItem): pdfItem[] {
     Object.keys(head).forEach((key) => {
       if (key == "date") {
         row.date = {
-          content: i.date ? i.date : "",
+          content: i.date ? i.date.toString() : "",
         };
       } else if (key == "description") {
         let descriptionString: string = "";
@@ -690,4 +759,26 @@ function aggregateGenericItemRows(rows: Item[], head: pdfItem): pdfItem[] {
     items.push(row);
   });
   return items;
+}
+
+function stringifyPlace(place: Place): string {
+  let placeString = "";
+  if (place.name) {
+    placeString = place.name;
+  }
+  if (place.name && place.address) {
+    placeString = placeString + ", ";
+  }
+  if (place.address) {
+    if (place.address.street_address) {
+      placeString = placeString + place.address.street_address;
+    }
+    if (place.address.city) {
+      placeString = placeString + ", " + place.address.city;
+    }
+    if (place.address.region) {
+      placeString = placeString + ", " + place.address.region;
+    }
+  }
+  return placeString;
 }

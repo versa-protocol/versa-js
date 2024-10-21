@@ -43,3 +43,45 @@ export const Lodging: Story = {
     receipt: receipts.lodging,
   },
 };
+
+export const Car_Rental: Story = {
+  args: {
+    merchant: senders.sonesta,
+    receipt: receipts.carRental,
+  },
+};
+
+export const Rideshare: Story = {
+  args: {
+    merchant: senders.sonesta,
+    receipt: receipts.rideshare,
+  },
+};
+
+export const Ecommerce: Story = {
+  args: {
+    merchant: senders.sonesta,
+    receipt: receipts.ecommerce,
+  },
+};
+
+export const Rail: Story = {
+  args: {
+    merchant: senders.sonesta,
+    receipt: receipts.rail,
+  },
+};
+
+export const FoodDelivery: Story = {
+  args: {
+    merchant: senders.sonesta,
+    receipt: receipts.foodDelivery,
+  },
+};
+
+export const FastFood: Story = {
+  args: {
+    merchant: senders.sonesta,
+    receipt: receipts.fastFood,
+  },
+};

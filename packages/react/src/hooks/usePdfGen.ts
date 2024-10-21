@@ -2,6 +2,7 @@ import { Org, Receipt } from "@versaprotocol/schema";
 import { jsPDF } from "jspdf";
 import { Header } from "./pdfHeader";
 import { Parties } from "./pdfParties";
+import { TypeSubHeader } from "./pdfTypeSubHeader";
 import { Items } from "./pdfItems";
 import { Totals } from "./pdfTotals";
 import { Payments } from "./pdfPayments";
@@ -32,6 +33,9 @@ export const usePdfGen = ({
 
     // Parties
     let cursor = Parties(doc, merchant, receipt.header, margin);
+
+    // Type-Specific Sub-Headers
+    cursor = TypeSubHeader(doc, receipt, margin, cursor);
 
     // Items
     Items(doc, receipt, margin, cursor);
