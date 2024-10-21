@@ -339,6 +339,20 @@ interface OrganizedFlightTicket {
 
 const twentyFourHours = 24 * 60 * 60;
 
+function dateStringFromUnixWithTimezone(
+  unix_timestamp: number,
+  tz: string | null | undefined
+) {
+  const utcDate = new Date(unix_timestamp * 1000);
+  const timezone = tz || "UTC";
+  const adjustedDate = new Date(
+    utcDate.toLocaleDateString("en-US", {
+      timeZone: timezone,
+    })
+  );
+  return adjustedDate.toISOString().split("T")[0];
+}
+
 export interface GroupedItinerary {
   departure_at: number | null | undefined;
   departure_date: string; // YYYY-MM-DD
@@ -375,7 +389,10 @@ export function organizeSegmentedItineraries(
         groupedItineraries[itineraryKey].arrival_city =
           lastSegment.arrival_airport_code || "";
         groupedItineraries[itineraryKey].arrival_date = lastSegment.arrival_at
-          ? new Date(lastSegment.arrival_at * 1000).toISOString().split("T")[0]
+          ? dateStringFromUnixWithTimezone(
+              lastSegment.arrival_at,
+              lastSegment.arrival_tz
+            )
           : "";
         itineraryKey++;
       }
@@ -383,14 +400,10 @@ export function organizeSegmentedItineraries(
 
     if (!groupedItineraries[itineraryKey]) {
       // get day from departure_at and timezone
-      const departureDate = new Date((segment.departure_at || 0) * 1000);
-      const departureTimezone = segment.departure_tz || "UTC";
-      const departureDay = new Date(
-        departureDate.toLocaleDateString("en-US", {
-          timeZone: departureTimezone,
-        })
+      const dateKey = dateStringFromUnixWithTimezone(
+        segment.departure_at || 0,
+        segment.departure_tz
       );
-      const dateKey = departureDay.toISOString().split("T")[0];
 
       itineraryKeys[itineraryKey] = dateKey;
       groupedItineraries.push({
@@ -411,7 +424,10 @@ export function organizeSegmentedItineraries(
     groupedItineraries[itineraryKey].arrival_city =
       finalSegment.arrival_airport_code || "";
     groupedItineraries[itineraryKey].arrival_date = finalSegment.arrival_at
-      ? new Date(finalSegment.arrival_at * 1000).toISOString().split("T")[0]
+      ? dateStringFromUnixWithTimezone(
+          finalSegment.arrival_at,
+          finalSegment.arrival_tz
+        )
       : "";
   }
 
