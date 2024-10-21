@@ -8,7 +8,7 @@ const config: Config = {
       "<rootDir>/__mocks__/fileMock.js",
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
   },
-
+  setupFiles: ["jest-canvas-mock"],
   // Note that this is no longer bundled in jest
   // jest-environment-jsdom must be installed separately
   testEnvironment: "jsdom",
