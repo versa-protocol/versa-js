@@ -394,6 +394,11 @@ describe("organizeSegmentedItineraries", () => {
 
     expect(organized).toBeTruthy();
     expect(organized.length).toBe(2);
-    console.log("HEY", JSON.stringify(organized, null, 2));
+    expect(organized[0].departure_at).toBe(1713186492);
+    expect(organized[0].departure_city).toBe("SEA");
+    expect(organized[0].arrival_city).toBe("GFK");
+    expect(organized[1].departure_at).toBe(1713900952);
+    expect(organized[1].departure_city).toBe("GFK");
+    expect(organized[1].arrival_city).toBe("SEA");
   });
 });

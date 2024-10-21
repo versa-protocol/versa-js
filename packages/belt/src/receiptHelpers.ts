@@ -340,6 +340,7 @@ interface OrganizedFlightTicket {
 const twentyFourHours = 24 * 60 * 60;
 
 export interface GroupedItinerary {
+  departure_at: number | null | undefined;
   departure_date: string; // YYYY-MM-DD
   arrival_date: string; // YYYY-MM-DD
   departure_city: string;
@@ -393,6 +394,7 @@ export function organizeSegmentedItineraries(
 
       itineraryKeys[itineraryKey] = dateKey;
       groupedItineraries.push({
+        departure_at: segment.departure_at,
         departure_date: dateKey,
         arrival_date: "",
         departure_city: segment.departure_airport_code || "",
