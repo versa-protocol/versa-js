@@ -331,10 +331,89 @@ interface OrganizedFlightTicketPassenger {
 }
 
 interface OrganizedFlightTicket {
-  segments: FlightSegment[];
+  itineraries: GroupedItinerary[];
   passenger_count: number;
   number: string | null | undefined;
   passengers: OrganizedFlightTicketPassenger[];
+}
+
+const twentyFourHours = 24 * 60 * 60;
+
+export interface GroupedItinerary {
+  departure_date: string; // YYYY-MM-DD
+  arrival_date: string; // YYYY-MM-DD
+  departure_city: string;
+  arrival_city: string;
+  segments: FlightSegment[];
+}
+
+export function organizeSegmentedItineraries(
+  segments: FlightSegment[]
+): GroupedItinerary[] {
+  const sortedSegments: FlightSegment[] = segments.sort(
+    (a, b) => (a.departure_at || 0) - (b.departure_at || 0)
+  );
+
+  const groupedItineraries: GroupedItinerary[] = [];
+
+  // numbered itinerary to departure date mapping
+  const itineraryKeys: Record<number, string> = {};
+  let itineraryKey = 0;
+  let i = 0;
+  for (const segment of sortedSegments) {
+    if (groupedItineraries[itineraryKey]?.segments?.length) {
+      const lastSegment =
+        groupedItineraries[itineraryKey].segments[
+          groupedItineraries[itineraryKey].segments.length - 1
+        ];
+      if (
+        (lastSegment.departure_at || 0) + twentyFourHours <
+        (segment.departure_at || 0)
+      ) {
+        // we've reached the end of one "itinerary"
+        groupedItineraries[itineraryKey].arrival_city =
+          lastSegment.arrival_airport_code || "";
+        groupedItineraries[itineraryKey].arrival_date = lastSegment.arrival_at
+          ? new Date(lastSegment.arrival_at * 1000).toISOString().split("T")[0]
+          : "";
+        itineraryKey++;
+      }
+    }
+
+    if (!groupedItineraries[itineraryKey]) {
+      // get day from departure_at and timezone
+      const departureDate = new Date((segment.departure_at || 0) * 1000);
+      const departureTimezone = segment.departure_tz || "UTC";
+      const departureDay = new Date(
+        departureDate.toLocaleDateString("en-US", {
+          timeZone: departureTimezone,
+        })
+      );
+      const dateKey = departureDay.toISOString().split("T")[0];
+
+      itineraryKeys[itineraryKey] = dateKey;
+      groupedItineraries.push({
+        departure_date: dateKey,
+        arrival_date: "",
+        departure_city: segment.departure_airport_code || "",
+        arrival_city: "",
+        segments: [segment],
+      });
+    } else {
+      groupedItineraries[itineraryKey].segments.push(segment);
+    }
+  }
+
+  const finalSegment = segments[segments.length - 1];
+  if (groupedItineraries[itineraryKey]) {
+    groupedItineraries[itineraryKey].arrival_city =
+      finalSegment.arrival_airport_code || "";
+    groupedItineraries[itineraryKey].arrival_date = finalSegment.arrival_at
+      ? new Date(finalSegment.arrival_at * 1000).toISOString().split("T")[0]
+      : "";
+  }
+
+  return Object.values(groupedItineraries);
 }
 
 export function organizeFlightTickets(flight: Flight): OrganizedFlightTicket[] {
@@ -355,7 +434,7 @@ export function organizeFlightTickets(flight: Flight): OrganizedFlightTicket[] {
       }
     } else {
       organizedTickets[dedupeKey] = {
-        segments,
+        itineraries: organizeSegmentedItineraries(segments),
         passenger_count: 1,
         number: ticket.number,
         passengers: [
@@ -371,8 +450,10 @@ export function organizeFlightTickets(flight: Flight): OrganizedFlightTicket[] {
 
 export function aggregateTicketFares(ticket: OrganizedFlightTicket) {
   let aggregatedTicketFares: number = 0;
-  for (const segment of ticket.segments) {
-    aggregatedTicketFares += segment.fare;
+  for (const itinerary of ticket.itineraries) {
+    for (const segment of itinerary.segments) {
+      aggregatedTicketFares += segment.fare;
+    }
   }
   return aggregatedTicketFares;
 }

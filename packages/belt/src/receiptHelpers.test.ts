@@ -1,7 +1,9 @@
+import { Receipt } from "@versaprotocol/schema";
 import {
   aggregateTaxes,
   aggregateTicketFares,
   organizeFlightTickets,
+  organizeSegmentedItineraries,
   organizeTransitRoutes,
 } from "./receiptHelpers";
 
@@ -376,5 +378,22 @@ describe("organizeTransitRoutes", () => {
     expect(reorganizedRoutes[0].passengers[2].passenger_metadata[0].value).toBe(
       "Child"
     );
+  });
+});
+
+describe("organizeSegmentedItineraries", () => {
+  it("should organized itineraries into two grouped itineraries for an outgoing itinerary and a return", () => {
+    const receipt = receipts.flightMultiple as Receipt;
+
+    let ticket = receipt?.itemization?.flight?.tickets[0];
+    if (!ticket || !ticket.segments) {
+      throw Error("Bad test data");
+    }
+
+    const organized = organizeSegmentedItineraries(ticket?.segments);
+
+    expect(organized).toBeTruthy();
+    expect(organized.length).toBe(2);
+    console.log("HEY", JSON.stringify(organized, null, 2));
   });
 });

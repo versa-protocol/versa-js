@@ -24,41 +24,56 @@ export function ItemizedFlight({ flight }: { flight: Flight }) {
     <>
       {organizeFlightTickets(flight).map((t, index) => (
         <div key={`flight-${index}`} className={styles.flightWrap}>
-          {t.segments.map((s, index) => (
-            <div className={styles.segmentWrap} key={`segment-${index}`}>
-              <div className={styles.segment}>
-                <div className={styles.location}>
-                  <div>{s.departure_airport_code}</div>
-                  {s.departure_at && (
-                    <div className={styles.time}>
-                      {formatDateTime(
-                        s.departure_at,
-                        false,
-                        true,
-                        false,
-                        s.departure_tz
-                      )}
-                    </div>
+          {t.itineraries.map((itinerary, itinerary_index) => (
+            <div key={itinerary_index}>
+              <div>
+                <div className={styles.startAndEndDate}>
+                  {itinerary.departure_date}
+                  {itinerary.arrival_date != itinerary.departure_date && (
+                    <span> - {itinerary.arrival_date}</span>
                   )}
                 </div>
-                <div className={styles.inAir}>
-                  <PlaneIcon />
-                </div>
-                <div className={styles.location}>
-                  <div>{s.arrival_airport_code}</div>
-                  {s.arrival_at && (
-                    <div className={styles.time}>
-                      {formatDateTime(
-                        s.arrival_at,
-                        false,
-                        true,
-                        false,
-                        s.arrival_tz
-                      )}
-                    </div>
-                  )}
+                <div className={styles.startAndEndCity}>
+                  {itinerary.departure_city} → {itinerary.arrival_city}
                 </div>
               </div>
+              {itinerary.segments.map((s, index) => (
+                <div className={styles.segmentWrap} key={`segment-${index}`}>
+                  <div className={styles.segment}>
+                    <div className={styles.location}>
+                      <div>{s.departure_airport_code}</div>
+                      {s.departure_at && (
+                        <div className={styles.time}>
+                          {formatDateTime(
+                            s.departure_at,
+                            false,
+                            true,
+                            false,
+                            s.departure_tz
+                          )}
+                        </div>
+                      )}
+                    </div>
+                    <div className={styles.inAir}>
+                      <PlaneIcon />
+                    </div>
+                    <div className={styles.location}>
+                      <div>{s.arrival_airport_code}</div>
+                      {s.arrival_at && (
+                        <div className={styles.time}>
+                          {formatDateTime(
+                            s.arrival_at,
+                            false,
+                            true,
+                            false,
+                            s.arrival_tz
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           ))}
           {t.passenger_count > 1 && (
