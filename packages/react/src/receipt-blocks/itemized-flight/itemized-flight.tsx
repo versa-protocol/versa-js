@@ -5,7 +5,6 @@ import {
   aggregateTicketFares,
   organizeFlightTickets,
 } from "@versaprotocol/belt";
-import { formatDate } from "../../hooks/pdfHeader";
 
 function PlaneIcon() {
   return (
@@ -26,15 +25,16 @@ export function ItemizedFlight({ flight }: { flight: Flight }) {
       {organizeFlightTickets(flight).map((t, index) => (
         <div key={`flight-${index}`} className={styles.flightWrap}>
           {t.itineraries.map((itinerary, itinerary_index) => (
-            <div key={itinerary_index}>
+            <div key={itinerary_index} className={styles.itineraryWrap}>
               <div className={styles.itineraryHead}>
                 <div>
                   {!!itinerary.departure_at &&
-                    formatDate(itinerary.departure_at)}
+                    formatDateTime(itinerary.departure_at)}
                 </div>
-                •
+                <span> • </span>
                 <div className={styles.startAndEndCity}>
-                  <span>{itinerary.departure_city}</span> →{" "}
+                  <span>{itinerary.departure_city}</span>
+                  <span> → </span>
                   <span>{itinerary.arrival_city}</span>
                 </div>
               </div>

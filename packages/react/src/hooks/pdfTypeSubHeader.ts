@@ -22,8 +22,6 @@ export function TypeSubHeader(
           year: "numeric",
           month: "long",
           day: "numeric",
-          hour: "numeric",
-          minute: "numeric",
         }),
       ]);
       typeSubHeaderData.push([
@@ -34,8 +32,6 @@ export function TypeSubHeader(
           year: "numeric",
           month: "long",
           day: "numeric",
-          hour: "numeric",
-          minute: "numeric",
         }),
       ]);
       if (receipt.itemization.lodging.guests) {

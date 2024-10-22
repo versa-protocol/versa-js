@@ -4,9 +4,16 @@ import { ReceiptDisplay } from "@versaprotocol/react";
 import { senders, receipts } from "samples";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
-const meta = {
+const meta: Meta<typeof ReceiptDisplay> = {
   title: "receipt/ReceiptDisplay",
   component: ReceiptDisplay,
+  decorators: [
+    (Story) => (
+      <div style={{ width: "480px" }}>
+        <Story />
+      </div>
+    ),
+  ],
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: "centered",

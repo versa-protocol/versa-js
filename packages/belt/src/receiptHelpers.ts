@@ -10,7 +10,12 @@ import {
   FlightSegment,
 } from "@versaprotocol/schema";
 import canonicalize from "canonicalize";
-import { formatDateTime, formatTimeRange, formatUSD } from "./format";
+import {
+  formatDateTime,
+  formatTimeRange,
+  formatUSD,
+  airportLookup,
+} from "./format";
 
 export function aggregateTaxes(itemization: Itemization): Tax[] {
   const aggregatedTaxes: Record<string, Tax> = {};
@@ -377,23 +382,25 @@ export function organizeSegmentedItineraries(
   let i = 0;
   for (const segment of sortedSegments) {
     if (groupedItineraries[itineraryKey]?.segments?.length) {
-      const lastSegment =
+      const previousSegment =
         groupedItineraries[itineraryKey].segments[
           groupedItineraries[itineraryKey].segments.length - 1
         ];
       if (
-        (lastSegment.departure_at || 0) + twentyFourHours <
+        (previousSegment.departure_at || 0) + twentyFourHours <
         (segment.departure_at || 0)
       ) {
         // we've reached the end of one "itinerary"
-        groupedItineraries[itineraryKey].arrival_city =
-          lastSegment.arrival_airport_code || "";
-        groupedItineraries[itineraryKey].arrival_date = lastSegment.arrival_at
-          ? dateStringFromUnixWithTimezone(
-              lastSegment.arrival_at,
-              lastSegment.arrival_tz
-            )
-          : "";
+        groupedItineraries[itineraryKey].arrival_city = airportLookup(
+          previousSegment.arrival_airport_code
+        ).municipality;
+        groupedItineraries[itineraryKey].arrival_date =
+          previousSegment.arrival_at
+            ? dateStringFromUnixWithTimezone(
+                previousSegment.arrival_at,
+                previousSegment.arrival_tz
+              )
+            : "";
         itineraryKey++;
       }
     }
@@ -410,7 +417,8 @@ export function organizeSegmentedItineraries(
         departure_at: segment.departure_at,
         departure_date: dateKey,
         arrival_date: "",
-        departure_city: segment.departure_airport_code || "",
+        departure_city: airportLookup(segment.departure_airport_code)
+          .municipality,
         arrival_city: "",
         segments: [segment],
       });
@@ -421,14 +429,15 @@ export function organizeSegmentedItineraries(
 
   const finalSegment = segments[segments.length - 1];
   if (groupedItineraries[itineraryKey]) {
-    groupedItineraries[itineraryKey].arrival_city =
-      finalSegment.arrival_airport_code || "";
-    groupedItineraries[itineraryKey].arrival_date = finalSegment.arrival_at
-      ? dateStringFromUnixWithTimezone(
-          finalSegment.arrival_at,
-          finalSegment.arrival_tz
-        )
-      : "";
+    (groupedItineraries[itineraryKey].arrival_city = airportLookup(
+      finalSegment.arrival_airport_code
+    ).municipality),
+      (groupedItineraries[itineraryKey].arrival_date = finalSegment.arrival_at
+        ? dateStringFromUnixWithTimezone(
+            finalSegment.arrival_at,
+            finalSegment.arrival_tz
+          )
+        : "");
   }
 
   return Object.values(groupedItineraries);

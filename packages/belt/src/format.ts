@@ -216,3 +216,16 @@ export function flightClass(flightClass: string) {
     return "Main Cabin";
   }
 }
+
+import { airports } from "./airports";
+
+export function airportLookup(iataCode: string) {
+  if (airports[iataCode as keyof typeof airports]) {
+    return airports[iataCode as keyof typeof airports];
+  } else {
+    return {
+      municipality: iataCode,
+      tz: "UTC",
+    };
+  }
+}
