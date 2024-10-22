@@ -1,5 +1,11 @@
 # @versaprotocol/belt
 
+## 1.5.1
+
+### Patch Changes
+
+- Use the municipality instead of the airport code for itineray headings in flight receipts
+
 ## 1.5.0
 
 ### Minor Changes
