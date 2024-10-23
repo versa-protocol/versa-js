@@ -6,7 +6,7 @@ import styles from "./interactiveStudio.module.css";
 import { StudioErrorBoundary } from "./interactiveStudioErrorBoundary";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
-import * as examples from "samples";
+import * as examples from "examples";
 import { Org as Merchant, Org, Receipt } from "@versaprotocol/schema";
 import {
   FileText,
@@ -53,8 +53,7 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
     : examples.senders[senderKey] || examples.senders.generic;
   let defaultData = examples.receipts[receipt];
 
-  const receiver: Receiver = { name: "AcmeCo", logo: "", logo_dark: "" };
-  // const receiver = examples.receivers[receiverKey];
+  const receiver = examples.receivers[receiverKey];
 
   if (!defaultData) {
     console.error("Invalid receipt:", receipt);

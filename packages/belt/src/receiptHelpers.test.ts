@@ -8,7 +8,7 @@ import {
 } from "./receiptHelpers";
 
 // This is a duplicate of the example in the examples dir; we should probably break those out into a separate shared module
-import { receipts } from "samples";
+import { receipts } from "examples";
 
 const railReceipt = receipts.rail;
 
@@ -383,7 +383,7 @@ describe("organizeTransitRoutes", () => {
 
 describe("organizeSegmentedItineraries", () => {
   it("should organized itineraries into two grouped itineraries for an outgoing itinerary and a return", () => {
-    const receipt = receipts.flightMultiple as Receipt;
+    const receipt = receipts.flight as Receipt;
 
     let ticket = receipt?.itemization?.flight?.tickets[0];
     if (!ticket || !ticket.segments) {

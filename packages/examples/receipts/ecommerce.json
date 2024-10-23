@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.5.1",
+  "header": {
+    "invoice_number": "auth_1MzFN1K8F4fqH0lBmFq8CjbU",
+    "currency": "usd",
+    "total": 7029,
+    "subtotal": 5928,
+    "paid": 7029,
+    "invoiced_at": 1713295619,
+    "mcc": null,
+    "third_party": null,
+    "customer": null,
+    "location": null,
+    "invoice_asset_id": null,
+    "receipt_asset_id": null
+  },
+  "itemization": {
+    "general": null,
+    "lodging": null,
+    "ecommerce": {
+      "invoice_level_line_items": [],
+      "invoice_level_adjustments": [],
+      "shipments": [
+        {
+          "tracking_number": "1ZB8C753YW32357707",
+          "expected_delivery_at": 1713801600,
+          "destination_address": {
+            "street_address": "33-45 9th St.",
+            "city": "Astoria",
+            "region": "NY",
+            "country": "US",
+            "postal_code": "11106",
+            "lat": null,
+            "lon": null,
+            "tz": null
+          },
+          "shipment_status": "in_transit",
+          "items": [
+            {
+              "quantity": 10,
+              "description": "Product Image Grip-Rite 1/2 in. x 8 in. Hot Galvanized Anchor Bolt (1-Pack)",
+              "unit_cost": 178,
+              "subtotal": 1780,
+              "metadata": [{ "key": "SKU", "value": "524959" }],
+              "product_image": "https://versa.org/temp_demo_assets/homedepot/hd1.jpg",
+              "taxes": [
+                {
+                  "amount": 367,
+                  "rate": 0.0875,
+                  "name": "Sales Tax"
+                }
+              ]
+            },
+            {
+              "quantity": 3,
+              "description": "Red Head 1/2 in. x 3 in. Zinc-Plated Steel Hex-Nut-Head Sleeve Anchor",
+              "unit_cost": 267,
+              "subtotal": 801,
+              "metadata": [{ "key": "SKU", "value": "941157" }],
+              "product_image": "https://versa.org/temp_demo_assets/homedepot/hd2.jpg",
+              "taxes": [
+                {
+                  "amount": 367,
+                  "rate": 0.0875,
+                  "name": "Sales Tax"
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "description": "Tapcon 1/4 in. x 2-3/4 in. Hex-Washer-Head Concrete Anchors (75-Pack)",
+              "unit_cost": 3347,
+              "subtotal": 3347,
+              "metadata": [{ "key": "SKU", "value": "165739" }],
+              "product_image": "https://versa.org/temp_demo_assets/homedepot/hd3.jpg",
+              "taxes": [
+                {
+                  "amount": 367,
+                  "rate": 0.0875,
+                  "name": "Sales Tax"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "car_rental": null,
+    "transit_route": null,
+    "subscription": null,
+    "flight": null
+  },
+  "actions": [
+    { "name": "Manage Order", "url": "https://versa.org/" },
+    { "name": "Contact Support", "url": "https://versa.org/" }
+  ],
+  "payments": []
+}

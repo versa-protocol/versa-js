@@ -3,7 +3,7 @@ import { ReceiptDisplay } from "./receipt";
 import "@testing-library/jest-dom/jest-globals";
 import "@testing-library/jest-dom";
 
-import { receipts, senders } from "samples";
+import { receipts, senders } from "examples";
 
 describe("Receipt UI", () => {
   it("should render the flight segment tax", () => {

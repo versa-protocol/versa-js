@@ -1,0 +1,18 @@
+{
+  "name": "Asana",
+  "brand_color": "#690031",
+  "logo": "/temp_demo_assets/asana/asana.jpg",
+  "website": "asana.com",
+  "vat_number": null,
+  "address": {
+    "street_address": "633 Folsom St.",
+    "city": "San Francisco",
+    "region": "CA",
+    "postal_code": "94107",
+    "country": "US",
+    "lat": null,
+    "lon": null,
+    "tz": "America/Los_Angeles"
+  },
+  "legal_name": null
+}

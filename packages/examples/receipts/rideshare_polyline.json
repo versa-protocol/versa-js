@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.5.1",
+  "header": {
+    "invoice_number": "IAFO44",
+    "currency": "usd",
+    "total": 4806,
+    "subtotal": 3167,
+    "paid": 4806,
+    "invoiced_at": 1715810036,
+    "mcc": "4121",
+    "third_party": null,
+    "customer": null,
+    "location": null,
+    "invoice_asset_id": null,
+    "receipt_asset_id": null
+  },
+  "itemization": {
+    "general": null,
+    "lodging": null,
+    "ecommerce": null,
+    "car_rental": null,
+    "transit_route": {
+      "transit_route_items": [
+        {
+          "departure_location": {
+            "address": {
+              "street_address": "273 Halsey St",
+              "city": "Brooklyn",
+              "region": "NY",
+              "country": "US",
+              "postal_code": "11205",
+              "lat": 40.68266,
+              "lon": -73.94237,
+              "tz": null
+            },
+            "name": null,
+            "phone": null,
+            "url": null,
+            "google_place_id": null,
+            "image": null
+          },
+          "arrival_location": {
+            "address": {
+              "street_address": "141 Flushing Ave",
+              "city": "Brooklyn",
+              "region": "NY",
+              "country": "US",
+              "postal_code": "11205",
+              "lat": 40.69954,
+              "lon": -73.97064,
+              "tz": null
+            },
+            "name": null,
+            "phone": null,
+            "url": null,
+            "google_place_id": null,
+            "image": null
+          },
+          "fare": 3167,
+          "mode": "car",
+          "passenger": null,
+          "departure_at": 1713196492,
+          "arrival_at": 1713197752,
+          "polyline": "syhwFxzhbMrFtdAmpAhOlGzmAi%5CdEaGEDgEoAEMfK",
+          "taxes": [
+            {
+              "amount": 694,
+              "rate": null,
+              "name": "Toll"
+            },
+            {
+              "amount": 367,
+              "rate": 0.0875,
+              "name": "Sales Tax"
+            },
+            {
+              "amount": 275,
+              "rate": null,
+              "name": "Congestion Surcharge"
+            },
+            {
+              "amount": 103,
+              "rate": null,
+              "name": "Workers Comp"
+            }
+          ],
+          "metadata": [
+            { "key": "Driver", "value": "Ranjit" },
+            { "key": "Driver Number", "value": "05716916" },
+            { "key": "Vehicle", "value": "T737583C" },
+            { "key": "Vehicle Type", "value": "SUV" }
+          ],
+          "adjustments": []
+        }
+      ],
+      "invoice_level_adjustments": [
+        { "amount": 200, "adjustment_type": "tip", "name": null, "rate": null }
+      ]
+    },
+    "subscription": null,
+    "flight": null
+  },
+  "actions": [
+    { "name": "Rate Driver", "url": "https://versa.org" },
+    { "name": "Find Lost Item", "url": "https://versa.org" },
+    { "name": "Rebook", "url": "https://versa.org" }
+  ],
+  "payments": []
+}

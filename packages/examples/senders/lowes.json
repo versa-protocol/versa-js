@@ -1,0 +1,11 @@
+{
+  "id": "abc123",
+  "slug": "lowes",
+  "name": "Lowe's",
+  "website": "lowes.com",
+  "brand_color": "#01216a",
+  "logo": "/temp_demo_assets/lowes/lowes.jpg",
+  "vat_number": null,
+  "address": null,
+  "legal_name": null
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.5.1",
+  "header": {
+    "invoice_number": "auth_1MzFN1K8F4fqH0lBmFq8CjbU",
+    "currency": "usd",
+    "total": 8069,
+    "subtotal": 7420,
+    "paid": 8069,
+    "invoiced_at": 1713295619,
+    "mcc": null,
+    "third_party": null,
+    "customer": null,
+    "location": null,
+    "invoice_asset_id": null,
+    "receipt_asset_id": null
+  },
+  "itemization": {
+    "general": null,
+    "lodging": null,
+    "ecommerce": null,
+    "car_rental": null,
+    "transit_route": null,
+    "subscription": {
+      "subscription_items": [
+        {
+          "subscription_type": "recurring",
+          "description": "Starter monthly plan",
+          "subtotal": 7420,
+          "interval": "month",
+          "interval_count": 1,
+          "current_period_start": 1679609767,
+          "current_period_end": 1682288167,
+          "quantity": 10,
+          "unit_cost": 742,
+          "taxes": [
+            {
+              "amount": 649,
+              "rate": 0.0875,
+              "name": "Sales Tax"
+            }
+          ],
+          "metadata": [],
+          "adjustments": []
+        }
+      ],
+      "invoice_level_adjustments": []
+    },
+    "flight": null
+  },
+  "actions": [
+    { "name": "Manage Subscription", "url": "https://versa.org/" },
+    { "name": "Contact Support", "url": "https://versa.org/" }
+  ],
+  "payments": []
+}

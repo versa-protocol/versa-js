@@ -1,0 +1,173 @@
+{
+  "schema_version": "1.5.1",
+  "header": {
+    "invoice_number": "auth_1MzFN1K8F4fqH0lBmFq8CjbU",
+    "currency": "usd",
+    "total": 74550,
+    "paid": 74550,
+    "subtotal": 55500,
+    "invoiced_at": 1721840400,
+    "mcc": null,
+    "third_party": null,
+    "customer": null,
+    "location": null,
+    "invoice_asset_id": "asset_6dbca44449094eb28aaa6b3c6b2aa4",
+    "receipt_asset_id": "asset_6dbca44449094eb28aaa6b3c6b2aa4"
+  },
+  "itemization": {
+    "general": null,
+    "lodging": {
+      "check_in": 1721667600,
+      "check_out": 1721840400,
+      "room": "0830",
+      "location": {
+        "name": "Courtland Grand Hotel",
+        "address": {
+          "street_address": "165 Courtland Street NE",
+          "city": "Atlanta",
+          "region": "GA",
+          "country": "US",
+          "postal_code": "30303",
+          "lat": null,
+          "lon": null,
+          "tz": null
+        },
+        "phone": "(404) 659-6500",
+        "url": null,
+        "google_place_id": null,
+        "image": null
+      },
+      "items": [
+        {
+          "description": "Room Charge",
+          "subtotal": 18500,
+          "quantity": null,
+          "unit_cost": null,
+          "unit": null,
+          "taxes": [
+            {
+              "amount": 1647,
+              "rate": 0.089,
+              "name": "Sales Tax"
+            },
+            {
+              "amount": 1480,
+              "rate": 0.08,
+              "name": "Occupancy Tax"
+            },
+            {
+              "amount": 500,
+              "rate": null,
+              "name": "State Hotel Fee $5.00 / Night"
+            },
+            {
+              "amount": 2500,
+              "rate": null,
+              "name": "Destination Fee"
+            },
+            {
+              "amount": 223,
+              "rate": 0.089,
+              "name": "Destination Fee - Sales Tax"
+            }
+          ],
+          "metadata": [],
+          "product_image": null,
+          "date": "2024-07-22",
+          "url": null,
+          "adjustments": []
+        },
+        {
+          "description": "Room Charge",
+          "subtotal": 18500,
+          "quantity": null,
+          "unit_cost": null,
+          "unit": null,
+          "taxes": [
+            {
+              "amount": 1647,
+              "rate": 0.089,
+              "name": "Sales Tax"
+            },
+            {
+              "amount": 1480,
+              "rate": 0.08,
+              "name": "Occupancy Tax"
+            },
+            {
+              "amount": 500,
+              "rate": null,
+              "name": "State Hotel Fee $5.00 / Night"
+            },
+            {
+              "amount": 2500,
+              "rate": null,
+              "name": "Destination Fee"
+            },
+            {
+              "amount": 223,
+              "rate": 0.089,
+              "name": "Destination Fee - Sales Tax"
+            }
+          ],
+          "metadata": [],
+          "product_image": null,
+          "date": "2024-07-23",
+          "url": null,
+          "adjustments": []
+        },
+        {
+          "description": "Room Charge",
+          "subtotal": 18500,
+          "quantity": null,
+          "unit_cost": null,
+          "unit": null,
+          "taxes": [
+            {
+              "amount": 1647,
+              "rate": 0.089,
+              "name": "Sales Tax"
+            },
+            {
+              "amount": 1480,
+              "rate": 0.08,
+              "name": "Occupancy Tax"
+            },
+            {
+              "amount": 500,
+              "rate": null,
+              "name": "State Hotel Fee $5.00 / Night"
+            },
+            {
+              "amount": 2500,
+              "rate": null,
+              "name": "Destination Fee"
+            },
+            {
+              "amount": 223,
+              "rate": 0.089,
+              "name": "Destination Fee - Sales Tax"
+            }
+          ],
+          "metadata": [],
+          "product_image": null,
+          "date": "2024-07-24",
+          "url": null,
+          "adjustments": []
+        }
+      ],
+      "invoice_level_adjustments": []
+    },
+    "ecommerce": null,
+    "car_rental": null,
+    "transit_route": null,
+    "subscription": null,
+    "flight": null
+  },
+  "actions": [
+    { "name": "Manage Booking", "url": "https://versa.org/" },
+    { "name": "Contact Support", "url": "https://versa.org/" },
+    { "name": "Loyalty", "url": "https://versa.org/" }
+  ],
+  "payments": []
+}
