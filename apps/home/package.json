@@ -9,19 +9,23 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@cfworker/json-schema": "^1.12.8",
     "@versaprotocol/belt": "workspace:*",
     "@versaprotocol/react": "workspace:*",
-    "samples": "workspace:*",
+    "@versaprotocol/schema": "^1.5.0",
+    "next": "^14.2.10",
+    "next-themes": "^0.3.0",
     "react": "^18",
     "react-dom": "^18",
-    "next": "^14.2.10"
+    "react-feather": "^2.0.10",
+    "samples": "workspace:*"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
-    "eslint-config-next": "14.2.5"
+    "eslint-config-next": "14.2.5",
+    "typescript": "^5"
   }
 }

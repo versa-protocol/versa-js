@@ -1,0 +1,13 @@
+.themeToggleButton {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  display: block;
+}
+
+.themeToggleButton svg {
+  fill: var(--foreground);
+  stroke: var(--foreground);
+  display: block;
+}

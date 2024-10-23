@@ -5,6 +5,7 @@ import bend from "./senders/bend.json";
 import jetblue from "./senders/jetblue.json";
 import rocketco from "./senders/rocketco.json";
 import sonesta from "./senders/sonesta.json";
+import generic from "./senders/generic.json";
 
 import untypedFlight from "./receipts/flight.json";
 import untypedFlightMultiple from "./receipts/flight_multiple.json";
@@ -36,6 +37,7 @@ export const senders: Record<string, Org> = {
   jetblue,
   rocketco,
   sonesta,
+  generic,
 };
 export const receipts: Record<string, Receipt> = {
   flight,

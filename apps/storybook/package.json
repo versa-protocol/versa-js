@@ -4,7 +4,7 @@
   "version": "0.0.15",
   "type": "module",
   "scripts": {
-    "dev": "storybook dev -p 6006",
+    "dev": "echo Skipping Storybook # storybook dev -p 6006",
     "build": "tsc -b && pnpm run build-storybook",
     "lint": "eslint .",
     "storybook": "storybook dev -p 6006",
