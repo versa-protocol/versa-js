@@ -1,5 +1,5 @@
 import styles from "./page.module.css";
-import InteractiveStudio from "@/components/studio/interactiveStudio";
+import { Studio } from "@/components/studio/interactiveStudio";
 import Image from "next/image";
 
 export default function Home() {
@@ -12,7 +12,7 @@ export default function Home() {
         alt=""
         className={styles.logo}
       />
-      <InteractiveStudio />
+      <Studio />
     </main>
   );
 }

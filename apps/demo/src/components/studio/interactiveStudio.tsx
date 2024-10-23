@@ -22,6 +22,7 @@ import { formatDateTime, formatUSD } from "@versaprotocol/belt";
 import { useValidator } from "./useValidator";
 import { ReceiptDisplay, VersaContext } from "@versaprotocol/react";
 import { ThemeToggle } from "../theme/themeToggle";
+import { Suspense } from "react";
 
 interface Receiver {
   name: string;
@@ -29,7 +30,7 @@ interface Receiver {
   logo_dark: string;
 }
 
-export const InteractiveStudio = ({ org }: { org?: Org }) => {
+const InteractiveStudio = ({ org }: { org?: Org }) => {
   const [viewCode, setViewCode] = useState(true);
   const { validator } = useValidator();
 
@@ -364,4 +365,8 @@ const skeletonTx = (
   </div>
 );
 
-export default InteractiveStudio;
+export const Studio = () => (
+  <Suspense>
+    <InteractiveStudio />
+  </Suspense>
+);
