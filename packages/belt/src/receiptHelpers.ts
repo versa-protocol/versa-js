@@ -818,7 +818,7 @@ function aggregateGenericItemRows(rows: Item[], head: pdfItem): pdfItem[] {
     Object.keys(head).forEach((key) => {
       if (key == "date") {
         row.date = {
-          content: i.date ? i.date.toString() : "",
+          content: i.date ? formatISODate(i.date.toString()) : "",
         };
       } else if (key == "description") {
         let descriptionString: string = "";
@@ -869,7 +869,7 @@ function aggregateGenericItemRows(rows: Item[], head: pdfItem): pdfItem[] {
   return items;
 }
 
-function stringifyPlace(place: Place): string {
+export function stringifyPlace(place: Place): string {
   let placeString = "";
   if (place.name) {
     placeString = place.name;
@@ -889,4 +889,14 @@ function stringifyPlace(place: Place): string {
     }
   }
   return placeString;
+}
+
+function formatISODate(dateString: string): string {
+  const date = new Date(dateString);
+  const options: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  return date.toLocaleDateString("en-US", options);
 }

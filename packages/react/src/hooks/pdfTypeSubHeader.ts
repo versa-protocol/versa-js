@@ -1,7 +1,7 @@
-import { formatDateTime } from "@versaprotocol/belt";
 import { Receipt } from "@versaprotocol/schema";
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
+import { stringifyPlace } from "@versaprotocol/belt";
 
 export function TypeSubHeader(
   doc: jsPDF,
@@ -76,6 +76,24 @@ export function TypeSubHeader(
           minute: "numeric",
         }),
       ]);
+      if (
+        receipt.itemization.car_rental.rental_location ==
+        receipt.itemization.car_rental.return_location
+      ) {
+        typeSubHeaderData.push([
+          "Location:",
+          stringifyPlace(receipt.itemization.car_rental.rental_location),
+        ]);
+      } else {
+        typeSubHeaderData.push([
+          "Rental Location:",
+          stringifyPlace(receipt.itemization.car_rental.rental_location),
+        ]);
+        typeSubHeaderData.push([
+          "Return Location:",
+          stringifyPlace(receipt.itemization.car_rental.return_location),
+        ]);
+      }
       if (receipt.itemization.car_rental.driver_name) {
         typeSubHeaderData.push([
           "Driver:",
