@@ -4,7 +4,7 @@ import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 import { FlightDetails } from "./pdfFlightDetails";
 
-export function Items(
+export async function Items(
   doc: jsPDF,
   receipt: Receipt,
   margin: number,
@@ -12,7 +12,7 @@ export function Items(
 ) {
   doc.setPage(cursor.page);
   if (receipt.itemization.flight) {
-    FlightDetails(doc, receipt.itemization.flight, margin, cursor);
+    await FlightDetails(doc, receipt.itemization.flight, margin, cursor);
   } else {
     const aggregatedItems = aggregateItems(receipt.itemization);
     autoTable(doc, {

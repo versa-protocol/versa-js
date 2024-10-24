@@ -9,7 +9,7 @@ import { jsPDF } from "jspdf";
 import "svg2pdf.js";
 import autoTable from "jspdf-autotable";
 
-export function FlightDetails(
+export async function FlightDetails(
   doc: jsPDF,
   flight: Flight,
   margin: number,
