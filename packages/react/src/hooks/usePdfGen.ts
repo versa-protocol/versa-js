@@ -19,7 +19,7 @@ export const usePdfGen = ({
 }) => {
   const margin = 0.375;
 
-  const downloadReceipt = async () => {
+  const downloadReceipt = () => {
     // Set up
     const doc = new jsPDF({
       unit: "in",
@@ -38,7 +38,7 @@ export const usePdfGen = ({
     cursor = TypeSubHeader(doc, receipt, margin, cursor);
 
     // Items
-    await Items(doc, receipt, margin, cursor);
+    Items(doc, receipt, margin, cursor);
 
     // Totals
     Totals(doc, receipt, margin);
