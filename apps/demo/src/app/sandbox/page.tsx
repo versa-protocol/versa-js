@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import { DemoReceipt } from "@/components/receipt";
+import { DemoReceipt } from "@/components/staticDemoReceipt";
 
 export default function Home() {
   return (

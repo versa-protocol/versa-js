@@ -40,7 +40,7 @@ export const Subscription: Story = {
 export const Flight: Story = {
   args: {
     merchant: senders.jetblue,
-    receipt: receipts.flightMultiple,
+    receipt: receipts.flight,
   },
 };
 
@@ -54,7 +54,7 @@ export const Lodging: Story = {
 export const Car_Rental: Story = {
   args: {
     merchant: senders.sonesta,
-    receipt: receipts.carRental,
+    receipt: receipts.car_rental,
   },
 };
 
@@ -76,19 +76,5 @@ export const Rail: Story = {
   args: {
     merchant: senders.sonesta,
     receipt: receipts.rail,
-  },
-};
-
-export const FoodDelivery: Story = {
-  args: {
-    merchant: senders.sonesta,
-    receipt: receipts.foodDelivery,
-  },
-};
-
-export const FastFood: Story = {
-  args: {
-    merchant: senders.sonesta,
-    receipt: receipts.fastFood,
   },
 };

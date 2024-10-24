@@ -39,10 +39,15 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
   const [viewMode, setViewMode] = useState("narrow");
   const searchParams = useSearchParams();
 
-  const receipt = searchParams.get("receipt") || "simple";
-  const previousReceipt = searchParams.get("previousReceipt");
-  const senderKey = searchParams.get("sender") || "generic";
-  const receiverKey = searchParams.get("receiver") || "acme";
+  const receipt = (searchParams.get("receipt") ||
+    "simple") as keyof typeof examples.receipts;
+  const previousReceipt = searchParams.get("previousReceipt") as
+    | keyof typeof examples.receipts
+    | undefined;
+  const senderKey = (searchParams.get("sender") ||
+    "generic") as keyof typeof examples.senders;
+  const receiverKey = (searchParams.get("receiver") ||
+    "acme") as keyof typeof examples.receivers;
 
   useEffect(() => {
     setClientLoaded(true);

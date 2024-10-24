@@ -1,4 +1,4 @@
-interface Receiver {
+interface DemoReceiver {
   name: string;
   logo: string;
   logo_dark: string;
@@ -224,7 +224,7 @@ import shell from "./senders/shell.json";
 import singapore_airlines from "./senders/singapore_airlines.json";
 import sixt_se from "./senders/sixt_se.json";
 import skyteam_delta_partners from "./senders/skyteam_delta_partners.json";
-import sonesta_international_hotels from "./senders/sonesta_international_hotels.json";
+import sonesta from "./senders/sonesta_international_hotels.json";
 import southwest_airlines from "./senders/southwest_airlines.json";
 import spotnana from "./senders/spotnana.json";
 import ssn_hotels from "./senders/ssn_hotels.json";
@@ -304,7 +304,7 @@ import traxo from "./receivers/traxo.json";
 import chrome_river from "./receivers/chrome_river.json";
 import airbase from "./receivers/airbase.json";
 
-export const senders: Record<string, Org> = {
+const untypedSenders = {
   rocketco,
   curb,
   uber,
@@ -516,7 +516,7 @@ export const senders: Record<string, Org> = {
   singapore_airlines,
   sixt_se,
   skyteam_delta_partners,
-  sonesta_international_hotels,
+  sonesta,
   southwest_airlines,
   spotnana,
   ssn_hotels,
@@ -579,19 +579,19 @@ export const senders: Record<string, Org> = {
   asana,
 };
 
-export const receipts: Record<string, Receipt> = {
-  rideshare: rideshare_receipt as any as Receipt,
-  rideshare_polyline: rideshare_polyline_receipt as any as Receipt,
-  lodging: lodging_receipt as any as Receipt,
-  flight: flight_receipt as any as Receipt,
-  subscription: subscription_receipt as any as Receipt,
-  simple: simple_receipt as any as Receipt,
-  car_rental: car_rental_receipt as any as Receipt,
-  ecommerce: ecommerce_receipt as any as Receipt,
-  rail: rail_receipt as any as Receipt,
+export const untypedReceipts = {
+  rideshare: rideshare_receipt,
+  rideshare_polyline: rideshare_polyline_receipt,
+  lodging: lodging_receipt,
+  flight: flight_receipt,
+  subscription: subscription_receipt,
+  simple: simple_receipt,
+  car_rental: car_rental_receipt,
+  ecommerce: ecommerce_receipt,
+  rail: rail_receipt,
 };
 
-export const receivers: Record<string, Receiver> = {
+export const untypedReceivers = {
   brex,
   ramp,
   navan,
@@ -600,3 +600,9 @@ export const receivers: Record<string, Receiver> = {
   chrome_river,
   airbase,
 };
+
+export const senders: Record<keyof typeof untypedSenders, Org> = untypedSenders;
+export const receivers: Record<keyof typeof untypedReceivers, DemoReceiver> =
+  untypedReceivers;
+export const receipts: Record<keyof typeof untypedReceipts, Receipt> =
+  untypedReceipts as any;
