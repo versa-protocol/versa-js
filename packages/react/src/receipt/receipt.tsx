@@ -74,11 +74,13 @@ export function ReceiptDisplay({
       ? true
       : false;
 
-  const { downloadReceipt, downloadInvoice } = usePdfGen({
-    merchant: merchant,
-    receipt: data,
-    brandColor: colors.brand,
-  });
+  // const { downloadReceipt, downloadInvoice } = usePdfGen({
+  //   merchant: merchant,
+  //   receipt: data,
+  //   brandColor: colors.brand,
+  // });
+
+  const downloadReceipt = () => {};
 
   return (
     <div className={styles.receiptWrap}>

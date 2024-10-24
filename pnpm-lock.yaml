@@ -273,6 +273,9 @@ importers:
       react-feather:
         specifier: ^2.0.10
         version: 2.0.10(react@18.3.1)
+      svg2pdf.js:
+        specifier: ^2.2.4
+        version: 2.2.4(jspdf@2.5.2)
     devDependencies:
       '@rollup/plugin-commonjs':
         specifier: ^26.0.1
@@ -3396,6 +3399,9 @@ packages:
   flatted@3.3.1:
     resolution: {integrity: sha512-X8cqMLLie7KsNUDSdzeN8FYK9rEt4Dt67OsG/DNGnYTSDBG4uFAJFBnUeiV+zCVAvwFy56IjM9sH51jVaEhNxw==}
 
+  font-family-papandreou@0.2.0-patch2:
+    resolution: {integrity: sha512-l/YiRdBSH/eWv6OF3sLGkwErL+n0MqCICi9mppTZBOCL5vixWGDqCYvRcuxB2h7RGCTzaTKOHT2caHvCXQPRlw==}
+
   for-each@0.3.3:
     resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}
 
@@ -5390,6 +5396,10 @@ packages:
   spawndamnit@2.0.0:
     resolution: {integrity: sha512-j4JKEcncSjFlqIwU5L/rp2N5SIPsdxaRsIv678+TZxZ0SRDJTm8JrxJMjE/XuiEZNEir3S8l0Fa3Ke339WI4qA==}
 
+  specificity@0.4.1:
+    resolution: {integrity: sha512-1klA3Gi5PD1Wv9Q0wUoOQN1IWAuPu0D1U03ThXTr0cJ20+/iq2tHSDnK7Kk/0LXJ1ztUB2/1Os0wKmfyNgUQfg==}
+    hasBin: true
+
   sprintf-js@1.0.3:
     resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
 
@@ -5554,10 +5564,18 @@ packages:
     resolution: {integrity: sha512-qsjeeq5YjBZ5eMdFuUa4ZosMLxgr5RZ+F+Y1OrDhuOCEInRMA3x74XdBtggJcj9kOeInz0WE+LgCPDkZFlBYJw==}
     engines: {node: '>=12.0.0'}
 
+  svg2pdf.js@2.2.4:
+    resolution: {integrity: sha512-ujf+KqVpwAk/MPpTQqv4psV5eVLX/SoIJVHqe2ZhcqZfLd4DF48TzJBC95dVyoZSLqGbXp+GnfwotvCsJwrXXQ==}
+    peerDependencies:
+      jspdf: ^2.0.0
+
   svgo@2.8.0:
     resolution: {integrity: sha512-+N/Q9kV1+F+UeWYoSiULYo4xYSDQlTgb+ayMobAXPwMnLvop7oxKMo9OzIrX5x3eS4L4f2UHhc9axXwY8DpChg==}
     engines: {node: '>=10.13.0'}
     hasBin: true
+
+  svgpath@2.6.0:
+    resolution: {integrity: sha512-OIWR6bKzXvdXYyO4DK/UWa1VA1JeKq8E+0ug2DG98Y/vOmMpfZNj+TIG988HjfYSqtcy/hFOtZq/n/j5GSESNg==}
 
   swc-loader@0.2.6:
     resolution: {integrity: sha512-9Zi9UP2YmDpgmQVbyOPJClY0dwf58JDyDMQ7uRc4krmc72twNI2fvlBWHLqVekBpPc7h5NJkGVT1zNDxFrqhvg==}
@@ -9979,6 +9997,8 @@ snapshots:
 
   flatted@3.3.1: {}
 
+  font-family-papandreou@0.2.0-patch2: {}
+
   for-each@0.3.3:
     dependencies:
       is-callable: 1.2.7
@@ -12356,6 +12376,8 @@ snapshots:
       cross-spawn: 5.1.0
       signal-exit: 3.0.7
 
+  specificity@0.4.1: {}
+
   sprintf-js@1.0.3: {}
 
   stable@0.1.8: {}
@@ -12523,6 +12545,14 @@ snapshots:
   svg-pathdata@6.0.3:
     optional: true
 
+  svg2pdf.js@2.2.4(jspdf@2.5.2):
+    dependencies:
+      cssesc: 3.0.0
+      font-family-papandreou: 0.2.0-patch2
+      jspdf: 2.5.2
+      specificity: 0.4.1
+      svgpath: 2.6.0
+
   svgo@2.8.0:
     dependencies:
       '@trysound/sax': 0.2.0
@@ -12532,6 +12562,8 @@ snapshots:
       csso: 4.2.0
       picocolors: 1.1.1
       stable: 0.1.8
+
+  svgpath@2.6.0: {}
 
   swc-loader@0.2.6(@swc/core@1.7.26(@swc/helpers@0.5.5))(webpack@5.95.0(@swc/core@1.7.26(@swc/helpers@0.5.5))(esbuild@0.23.1)):
     dependencies:
