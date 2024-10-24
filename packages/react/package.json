@@ -11,7 +11,8 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c --watch",
-    "test": "jest"
+    "test": "jest",
+    "prepublish": "pnpm build"
   },
   "dependencies": {
     "@versaprotocol/belt": "workspace:*",

@@ -19,7 +19,7 @@ const config: StorybookConfig = {
     getAbsolutePath("@storybook/addon-webpack5-compiler-swc"),
   ],
   framework: {
-    name: "@storybook/react-webpack5",
+    name: getAbsolutePath("@storybook/react-webpack5"),
     options: {
       builder: {
         useSWC: true,

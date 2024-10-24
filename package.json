@@ -10,7 +10,7 @@
   "scripts": {
     "build": "turbo build",
     "build-clean": "turbo build --no-cache",
-    "dev": "turbo dev --no-cache --parallel",
+    "dev": "turbo dev --no-cache",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo run lint",
     "preinstall": "npx only-allow pnpm",
