@@ -68,22 +68,24 @@ export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
       },
     },
   });
+  totalsData.push({
+    description: {
+      content: "Amount Paid",
+      styles: {
+        fontStyle: "bold",
+      },
+    },
+    amount: {
+      content: formatUSD(receipt.header.paid / 100),
+      styles: {
+        halign: "right",
+        fontStyle: "bold",
+        cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },
+      },
+    },
+  });
   autoTable(doc, {
     body: totalsData,
-    foot: [
-      {
-        description: {
-          content: "Amount Paid",
-        },
-        amount: {
-          content: formatUSD(receipt.header.paid / 100),
-          styles: {
-            halign: "right",
-            cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },
-          },
-        },
-      },
-    ],
     startY:
       (doc as jsPDF & { lastAutoTable: { finalY: number } }).lastAutoTable
         .finalY + margin,
@@ -102,8 +104,6 @@ export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
       fontSize: 10,
       cellPadding: { top: 0.09375, right: 0.125, bottom: 0.09375, left: 0 },
     },
-    footStyles: {
-      fontStyle: "bold",
-    },
+    pageBreak: "avoid",
   });
 }

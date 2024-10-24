@@ -7,7 +7,8 @@ export function Header(
   merchant: Org,
   receipt: Receipt,
   margin: number,
-  brandColor: string
+  brandColor: string,
+  showSellerinHeader: boolean
 ) {
   // Brand stripe
   const docWidth = doc.internal.pageSize.getWidth();
@@ -19,7 +20,17 @@ export function Header(
   doc.setFont("helvetica", "bold");
   doc.setLineHeightFactor(1.25);
   doc.setFontSize(20);
-  doc.text("Receipt", margin, margin + 24 / 72);
+  doc.text("Receipt", margin, margin + 20 / 72);
+
+  // Condensed Seller
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(10);
+  if (showSellerinHeader) {
+    const sellerTitle = merchant.legal_name
+      ? merchant.legal_name
+      : merchant.name;
+    doc.text(sellerTitle, margin, margin + 20 / 72 + margin + 10 / 72);
+  }
 
   // Logo
   let logo = null;
@@ -40,13 +51,11 @@ export function Header(
   doc.rect(docWidth - margin - 1, margin, 1, 1, "S");
 
   // Head Table
-  let headTableData: (string | number)[][] = [
-    ["Invoice Date:", formatDate(receipt.header.invoiced_at)],
-  ];
+  let headTableData: (string | number)[][] = [];
+  headTableData.push(["Invoice Date:", formatDate(receipt.header.invoiced_at)]);
   if (receipt.header.invoice_number) {
     headTableData.push(["Invoice Number:", receipt.header.invoice_number]);
   }
-
   if (
     receipt.payments.length == 1 &&
     receipt.payments[0].amount == receipt.header.paid
@@ -57,7 +66,7 @@ export function Header(
 
   autoTable(doc, {
     body: headTableData,
-    startY: 1,
+    startY: margin + 20 / 72 + margin + 10 / 72 + margin * 0.5,
     margin: { top: margin, right: margin, bottom: 2 * margin, left: margin },
     theme: "plain",
     tableWidth: "wrap",
