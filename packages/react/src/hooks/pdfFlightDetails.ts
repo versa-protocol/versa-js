@@ -1,5 +1,6 @@
 import {
   aggregateTicketFares,
+  airportLookup,
   formatDateTime,
   formatUSD,
   organizeFlightTickets,
@@ -28,27 +29,90 @@ export async function FlightDetails(
         itineraryString += formatDateTime(itinerary.departure_at);
       }
       itineraryString +=
-        "    " + itinerary.departure_city + " - " + itinerary.arrival_city;
+        "  -  " + itinerary.departure_city + " to " + itinerary.arrival_city;
       cursor.y += margin;
       doc.setFontSize(10);
       doc.setFont("helvetica", "normal");
       doc.text(itineraryString, margin, cursor.y);
       cursor.y += 10 / 72 + margin / 4;
       let segmentCount = 0;
+      const segmentHeight = 1.25;
       itinerary.segments.forEach((s) => {
         doc.setDrawColor(200);
         const leftOffset =
           margin + ((docWidth - 2 * margin) / 2 + margin / 4) * segmentCount;
         const width = (docWidth - 2 * margin) / 2 - margin / 4;
-        doc.rect(leftOffset, cursor.y, width, 1);
-        let segmentString =
-          s.departure_airport_code + " - " + s.arrival_airport_code;
+        doc.rect(leftOffset, cursor.y, width, segmentHeight);
+        doc.setFontSize(15);
         doc.text(
-          segmentString,
-          margin * 0.25 + leftOffset,
-          cursor.y + margin * 0.25 + 10 / 72
+          s.departure_airport_code,
+          margin * 0.5 + leftOffset,
+          cursor.y + margin * 0.375 + 15 / 72
         );
-        cursor.y += 1 * Math.ceil(segmentCount / 2);
+        doc.text(
+          s.arrival_airport_code,
+          leftOffset + width - margin * 0.5,
+          cursor.y + margin * 0.375 + 15 / 72,
+          { align: "right" }
+        );
+        doc.setFontSize(10);
+        if (
+          s.departure_airport_code !==
+          airportLookup(s.departure_airport_code).municipality
+        ) {
+          doc.text(
+            airportLookup(s.departure_airport_code).municipality,
+            margin * 0.5 + leftOffset,
+            cursor.y + margin * 0.375 + 15 / 72 + margin * 0.1875 + 10 / 72
+          );
+        }
+        if (s.departure_at) {
+          doc.text(
+            formatDateTime(s.departure_at, false, true, false, s.departure_tz),
+            margin * 0.5 + leftOffset,
+            cursor.y +
+              margin * 0.375 +
+              15 / 72 +
+              2 * (margin * 0.1875) +
+              2 * (10 / 72)
+          );
+        }
+        if (s.arrival_at) {
+          doc.text(
+            formatDateTime(s.arrival_at, false, true, false, s.arrival_tz),
+            leftOffset + width - margin * 0.5,
+            cursor.y +
+              margin * 0.375 +
+              15 / 72 +
+              2 * (margin * 0.1875) +
+              2 * (10 / 72),
+            { align: "right" }
+          );
+        }
+        if (s.flight_number) {
+          doc.text(
+            s.flight_number,
+            margin * 0.5 + leftOffset,
+            cursor.y +
+              margin * 0.375 +
+              15 / 72 +
+              3 * (margin * 0.1875) +
+              3 * (10 / 72)
+          );
+        }
+        if (
+          s.arrival_airport_code !==
+          airportLookup(s.arrival_airport_code).municipality
+        ) {
+          doc.text(
+            airportLookup(s.arrival_airport_code).municipality,
+            leftOffset + width - margin * 0.5,
+            cursor.y + margin * 0.375 + 15 / 72 + margin * 0.1875 + 10 / 72,
+            { align: "right" }
+          );
+        }
+
+        cursor.y += segmentHeight * Math.ceil(segmentCount / 2);
         segmentCount++;
       });
     });
