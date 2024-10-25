@@ -360,6 +360,7 @@ function dateStringFromUnixWithTimezone(
 
 export interface GroupedItinerary {
   departure_at: number | null | undefined;
+  departure_tz: string | null;
   departure_date: string; // YYYY-MM-DD
   arrival_date: string; // YYYY-MM-DD
   departure_city: string;
@@ -415,6 +416,7 @@ export function organizeSegmentedItineraries(
       itineraryKeys[itineraryKey] = dateKey;
       groupedItineraries.push({
         departure_at: segment.departure_at,
+        departure_tz: segment.departure_tz,
         departure_date: dateKey,
         arrival_date: "",
         departure_city: airportLookup(segment.departure_airport_code)

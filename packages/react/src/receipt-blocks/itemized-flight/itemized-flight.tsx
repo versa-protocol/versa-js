@@ -1,4 +1,8 @@
-import { formatDateTime, formatUSD } from "@versaprotocol/belt";
+import {
+  formatDateComparison,
+  formatDateTime,
+  formatUSD,
+} from "@versaprotocol/belt";
 import styles from "./itemized-flight.module.css";
 import { Flight } from "@versaprotocol/schema";
 import {
@@ -31,10 +35,10 @@ export function ItemizedFlight({ flight }: { flight: Flight }) {
                   {!!itinerary.departure_at &&
                     formatDateTime(itinerary.departure_at)}
                 </div>
-                <span> • </span>
+                <span> - </span>
                 <div className={styles.startAndEndCity}>
                   <span>{itinerary.departure_city}</span>
-                  <span> → </span>
+                  <span> to </span>
                   <span>{itinerary.arrival_city}</span>
                 </div>
               </div>
@@ -45,12 +49,27 @@ export function ItemizedFlight({ flight }: { flight: Flight }) {
                       <div>{s.departure_airport_code}</div>
                       {s.departure_at && (
                         <div className={styles.time}>
-                          {formatDateTime(
-                            s.departure_at,
-                            false,
-                            true,
-                            false,
-                            s.departure_tz
+                          {itinerary.departure_at &&
+                          itinerary.departure_tz &&
+                          s.departure_tz ? (
+                            <>
+                              {formatDateComparison(
+                                itinerary.departure_at,
+                                itinerary.departure_tz,
+                                s.departure_at,
+                                s.departure_tz
+                              )}
+                            </>
+                          ) : (
+                            <>
+                              {formatDateTime(
+                                s.departure_at,
+                                false,
+                                true,
+                                false,
+                                s.departure_tz
+                              )}
+                            </>
                           )}
                         </div>
                       )}
@@ -62,12 +81,27 @@ export function ItemizedFlight({ flight }: { flight: Flight }) {
                       <div>{s.arrival_airport_code}</div>
                       {s.arrival_at && (
                         <div className={styles.time}>
-                          {formatDateTime(
-                            s.arrival_at,
-                            false,
-                            true,
-                            false,
-                            s.arrival_tz
+                          {itinerary.departure_at &&
+                          itinerary.departure_tz &&
+                          s.arrival_tz ? (
+                            <>
+                              {formatDateComparison(
+                                itinerary.departure_at,
+                                itinerary.departure_tz,
+                                s.arrival_at,
+                                s.arrival_tz
+                              )}
+                            </>
+                          ) : (
+                            <>
+                              {formatDateTime(
+                                s.arrival_at,
+                                false,
+                                true,
+                                false,
+                                s.arrival_tz
+                              )}
+                            </>
                           )}
                         </div>
                       )}

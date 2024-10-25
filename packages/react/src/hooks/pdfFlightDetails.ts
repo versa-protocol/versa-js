@@ -1,6 +1,7 @@
 import {
   aggregateTicketFares,
   airportLookup,
+  formatDateComparison,
   formatDateTime,
   formatUSD,
   GroupedItinerary,
@@ -18,13 +19,14 @@ export async function FlightDetails(
   cursor: { y: number; page: number }
 ) {
   const docWidth = doc.internal.pageSize.getWidth();
+  const docHeight = doc.internal.pageSize.getHeight();
   const organizedFlightTickets = organizeFlightTickets(flight);
   const segmentLeftRightPad = margin * 0.5;
   const segmentTopBottomPad = margin * 0.375;
   const linePad = margin * 0.1875;
   const bigFontSize = 15;
   const regFontSize = 10;
-  let iconCoordinates: { x: number; y: number }[] = [];
+  let iconCoordinates: { x: number; y: number; page: number }[] = [];
   organizedFlightTickets.forEach((ticketGroup) => {
     let ticketSummary: Record<
       string,
@@ -37,28 +39,33 @@ export async function FlightDetails(
       bigFontSize,
       regFontSize
     );
+    cursor.y += margin / 2;
     ticketGroup.itineraries.forEach((itinerary) => {
+      doc.setPage(cursor.page);
       let itineraryString = "";
       if (itinerary.departure_at) {
         itineraryString += formatDateTime(itinerary.departure_at);
       }
       itineraryString +=
         "  -  " + itinerary.departure_city + " to " + itinerary.arrival_city;
-      cursor.y += 1.5 * margin;
-      doc.setFontSize(10);
+      cursor.y += margin;
+      doc.setFontSize(regFontSize);
       doc.setFont("helvetica", "normal");
       doc.text(itineraryString, margin, cursor.y);
       cursor.y += margin / 2;
       let segmentCount = 0;
       itinerary.segments.forEach((s) => {
-        doc.setDrawColor(200);
+        doc.setPage(cursor.page);
+        doc.setDrawColor(210);
         const leftOffset =
-          margin + ((docWidth - 2 * margin) / 2 + margin / 4) * segmentCount;
+          margin +
+          ((docWidth - 2 * margin) / 2 + margin / 4) * (segmentCount % 2);
         const width = (docWidth - 2 * margin) / 2 - margin / 4;
         doc.rect(leftOffset, cursor.y, width, segmentHeight);
         iconCoordinates.push({
           x: leftOffset + width / 2,
           y: cursor.y + margin * 0.5,
+          page: doc.getCurrentPageInfo().pageNumber,
         });
         doc.setFontSize(15);
         doc.text(
@@ -88,8 +95,29 @@ export async function FlightDetails(
           );
         }
         if (s.departure_at) {
+          let departureTime = "";
+          if (
+            itinerary.departure_at &&
+            itinerary.departure_tz &&
+            s.departure_tz
+          ) {
+            departureTime = formatDateComparison(
+              itinerary.departure_at,
+              itinerary.departure_tz,
+              s.departure_at,
+              s.departure_tz
+            );
+          } else {
+            departureTime = formatDateTime(
+              s.departure_at,
+              false,
+              true,
+              false,
+              s.departure_tz
+            );
+          }
           doc.text(
-            formatDateTime(s.departure_at, false, true, false, s.departure_tz),
+            departureTime,
             segmentLeftRightPad + leftOffset,
             cursor.y +
               segmentTopBottomPad +
@@ -99,8 +127,29 @@ export async function FlightDetails(
           );
         }
         if (s.arrival_at) {
+          let arrivatlTime = "";
+          if (
+            itinerary.departure_at &&
+            itinerary.departure_tz &&
+            s.arrival_tz
+          ) {
+            arrivatlTime = formatDateComparison(
+              itinerary.departure_at,
+              itinerary.departure_tz,
+              s.arrival_at,
+              s.arrival_tz
+            );
+          } else {
+            arrivatlTime = formatDateTime(
+              s.arrival_at,
+              false,
+              true,
+              false,
+              s.arrival_tz
+            );
+          }
           doc.text(
-            formatDateTime(s.arrival_at, false, true, false, s.arrival_tz),
+            arrivatlTime,
             leftOffset + width - segmentLeftRightPad,
             cursor.y +
               segmentTopBottomPad +
@@ -136,9 +185,40 @@ export async function FlightDetails(
             { align: "right" }
           );
         }
-        cursor.y += segmentHeight * Math.ceil(segmentCount / 2);
         segmentCount++;
+        if (segmentCount % 2 === 0) {
+          cursor.y += segmentHeight + margin / 2;
+          if (
+            cursor.y +
+              segmentHeight +
+              margin / 2 +
+              margin +
+              regFontSize / 72 +
+              margin / 2 >
+            docHeight
+          ) {
+            doc.addPage();
+            cursor.y = margin;
+            cursor.page = cursor.page + 1;
+          }
+        }
       });
+      if (segmentCount % 2 === 1) {
+        cursor.y += segmentHeight + margin / 2;
+        if (
+          cursor.y +
+            segmentHeight +
+            margin / 2 +
+            margin +
+            regFontSize / 72 +
+            margin / 2 >
+          docHeight
+        ) {
+          doc.addPage();
+          cursor.y = margin;
+          cursor.page = cursor.page + 1;
+        }
+      }
     });
     ticketGroup.passengers.forEach((p) =>
       ticketSummary.push({
@@ -205,18 +285,50 @@ export async function FlightDetails(
         cellPadding: { top: 0.125, right: 0.125, bottom: 0.125, left: 0 },
       },
     });
+
+    cursor = {
+      y: (doc as jsPDF & { lastAutoTable: { finalY: number } }).lastAutoTable
+        .finalY,
+      page: doc.getCurrentPageInfo().pageNumber,
+    };
+    if (
+      cursor.y +
+        segmentHeight +
+        margin / 2 +
+        margin +
+        regFontSize / 72 +
+        margin / 2 >
+      docHeight
+    ) {
+      doc.addPage();
+      cursor.y = margin;
+      cursor.page = cursor.page + 1;
+    }
   });
 
   const svgString = planeIcon();
   const svgElement = createSVGElement(svgString);
   const svgLength = 0.25;
   for (let i = 0; i < iconCoordinates.length; i++) {
+    doc.setPage(iconCoordinates[i].page);
     await doc.svg(svgElement, {
       x: iconCoordinates[i].x - svgLength / 2,
       y: iconCoordinates[i].y,
       width: svgLength,
       height: svgLength,
     });
+    doc.line(
+      iconCoordinates[i].x - svgLength - svgLength,
+      iconCoordinates[i].y + svgLength / 2,
+      iconCoordinates[i].x - svgLength,
+      iconCoordinates[i].y + svgLength / 2
+    );
+    doc.line(
+      iconCoordinates[i].x + svgLength,
+      iconCoordinates[i].y + svgLength / 2,
+      iconCoordinates[i].x + svgLength + svgLength,
+      iconCoordinates[i].y + svgLength / 2
+    );
   }
 }
 
@@ -259,7 +371,7 @@ function getSegmentHeight(
       thisHeight = 0;
       thisHeight += segmentTopBottomPad * 2;
       thisHeight += bigFontSize / 72;
-      thisHeight += 0.075; // Lines plus grace
+      thisHeight += 0.1; // Lines plus grace
       if (
         s.departure_airport_code !==
         airportLookup(s.departure_airport_code).municipality
