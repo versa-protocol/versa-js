@@ -255,7 +255,7 @@ export async function FlightDetails(
         },
       ],
       body: ticketSummary,
-      startY: cursor.y + margin,
+      startY: cursor.y + margin / 2,
       margin: {
         top: margin,
         right: margin,
