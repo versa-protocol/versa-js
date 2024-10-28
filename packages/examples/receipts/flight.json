@@ -34,7 +34,7 @@
               "departure_tz": "America/Chicago",
               "arrival_tz": "America/Chicago",
               "flight_number": "DL 1768",
-              "class_of_service": "t",
+              "class_of_service": "k",
               "taxes": [
                 {
                   "amount": 1142,
@@ -68,7 +68,7 @@
               "departure_tz": "America/Chicago",
               "arrival_tz": "America/Chicago",
               "flight_number": "OO 4656",
-              "class_of_service": "t",
+              "class_of_service": "k",
               "taxes": [
                 {
                   "amount": 914,
@@ -102,7 +102,7 @@
               "departure_tz": "America/Chicago",
               "arrival_tz": "America/Chicago",
               "flight_number": "OO 4656",
-              "class_of_service": "t",
+              "class_of_service": "k",
               "taxes": [
                 {
                   "amount": 1051,
@@ -136,7 +136,7 @@
               "departure_tz": "America/Chicago",
               "arrival_tz": "America/Chicago",
               "flight_number": "DL 2536",
-              "class_of_service": "t",
+              "class_of_service": "k",
               "taxes": [
                 {
                   "amount": 1462,
@@ -177,7 +177,7 @@
               "departure_tz": "America/Chicago",
               "arrival_tz": "America/Chicago",
               "flight_number": "DL 1768",
-              "class_of_service": "t",
+              "class_of_service": "k",
               "taxes": [
                 {
                   "amount": 1142,
@@ -211,7 +211,7 @@
               "departure_tz": "America/Chicago",
               "arrival_tz": "America/Chicago",
               "flight_number": "OO 4656",
-              "class_of_service": "t",
+              "class_of_service": "k",
               "taxes": [
                 {
                   "amount": 914,
@@ -245,7 +245,7 @@
               "departure_tz": "America/Chicago",
               "arrival_tz": "America/Chicago",
               "flight_number": "OO 4656",
-              "class_of_service": "t",
+              "class_of_service": "k",
               "taxes": [
                 {
                   "amount": 1051,
@@ -279,7 +279,7 @@
               "departure_tz": "America/Chicago",
               "arrival_tz": "America/Chicago",
               "flight_number": "DL 2536",
-              "class_of_service": "t",
+              "class_of_service": "k",
               "taxes": [
                 {
                   "amount": 1462,

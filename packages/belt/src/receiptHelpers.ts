@@ -15,6 +15,7 @@ import {
   formatTimeRange,
   formatUSD,
   airportLookup,
+  flightClass,
 } from "./format";
 
 export function aggregateTaxes(itemization: Itemization): Tax[] {
@@ -333,12 +334,14 @@ export function organizeTransitRoutes(
 
 interface OrganizedFlightTicketPassenger {
   passenger: string | null | undefined;
+  ticket_number: string | null | undefined;
+  ticket_class: string | null; // only used if all class values are equal for ticket
+  passenger_metadata: Metadatum[];
 }
 
 interface OrganizedFlightTicket {
   itineraries: GroupedItinerary[];
   passenger_count: number;
-  number: string | null | undefined;
   passengers: OrganizedFlightTicketPassenger[];
 }
 
@@ -454,21 +457,32 @@ export function organizeFlightTickets(flight: Flight): OrganizedFlightTicket[] {
         segments,
       })
     ) as string;
+    const allClassValuesEqualForPassenger = allClassValuesEqual(segments);
+
     if (organizedTickets[dedupeKey]) {
       organizedTickets[dedupeKey].passenger_count++;
       if (ticket.passenger) {
         organizedTickets[dedupeKey].passengers.push({
           passenger: ticket.passenger,
+          ticket_number: ticket.number,
+          ticket_class: allClassValuesEqualForPassenger
+            ? segments[0].class_of_service
+            : null,
+          passenger_metadata: [],
         });
       }
     } else {
       organizedTickets[dedupeKey] = {
         itineraries: organizeSegmentedItineraries(segments),
         passenger_count: 1,
-        number: ticket.number,
         passengers: [
           {
             passenger: ticket.passenger,
+            ticket_number: ticket.number,
+            ticket_class: allClassValuesEqualForPassenger
+              ? segments[0].class_of_service
+              : null,
+            passenger_metadata: [],
           },
         ],
       };
@@ -609,7 +623,6 @@ export function aggregateItems(itemization: Itemization) {
       t.passengers.forEach((p) =>
         items.push({
           passenger: { content: p.passenger ? p.passenger : "" },
-          ticket: { content: t.number ? t.number : "" },
           fare: {
             content: formatUSD(aggregateTicketFares(t) / 100),
             styles: {
@@ -901,4 +914,75 @@ function formatISODate(dateString: string): string {
     day: "numeric",
   };
   return date.toLocaleDateString("en-US", options);
+}
+
+function allClassValuesEqual(segments: FlightSegment[]): boolean {
+  if (segments.length === 0) return false;
+  const firstValue = segments[0].class_of_service;
+  return (
+    firstValue !== null &&
+    segments.every((s) => s.class_of_service === firstValue)
+  );
+}
+
+export function aggregateFlight(organizedTicket: OrganizedFlightTicket) {
+  let organized_ticket: pdfItem[] = [];
+  let organized_ticket_head: pdfItem = {};
+  organized_ticket_head = aggregateFlightHeaders(organizedTicket.passengers);
+  organizedTicket.passengers.forEach((p) => {
+    let row: { [key: string]: any } = {};
+    Object.keys(organized_ticket_head).forEach((key) => {
+      if (key == "passenger") {
+        row.passenger = { content: p.passenger };
+      } else if (key == "ticket_number") {
+        row.ticket_number = { content: p.ticket_number };
+      } else if (key == "ticket_class") {
+        if (p.ticket_class && flightClass(p.ticket_class)) {
+          const class_string =
+            flightClass(p.ticket_class) + " (" + p.ticket_class + ")";
+          row.ticket_class = { content: class_string };
+        } else {
+          row.ticket_class = { content: p.ticket_class };
+        }
+      } else if (key == "fare") {
+        row.fare = {
+          content: formatUSD(aggregateTicketFares(organizedTicket) / 100),
+          styles: {
+            halign: "right",
+            cellPadding: { top: 0.125, right: 0, bottom: 0.125, left: 0 },
+          },
+        };
+      }
+    });
+    organized_ticket.push(row);
+  });
+  return { organized_ticket_head, organized_ticket };
+}
+
+function aggregateFlightHeaders(
+  passengers: OrganizedFlightTicketPassenger[]
+): pdfItem {
+  let ticketSummaryHead: pdfItem = {};
+  if (passengers.every((value) => value.passenger != null)) {
+    ticketSummaryHead.passenger = { content: "Passenger" };
+  }
+  if (passengers.some((value) => value.ticket_number != null)) {
+    ticketSummaryHead.ticket_number = { content: "Ticket" };
+  }
+  if (passengers.every((value) => value.ticket_class != null)) {
+    ticketSummaryHead.ticket_class = { content: "Class" };
+  }
+  ticketSummaryHead.fare = {
+    content: "Fare",
+    styles: {
+      halign: "right",
+      cellPadding: {
+        top: 0.09375,
+        right: 0,
+        bottom: 0.09375,
+        left: 0,
+      },
+    },
+  };
+  return ticketSummaryHead;
 }

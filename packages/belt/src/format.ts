@@ -206,15 +206,16 @@ export function flightClass(flightClass: string) {
     "B",
     "X",
   ];
-  if (first.includes(flightClass)) {
+  if (first.includes(flightClass.toUpperCase())) {
     return "First Class";
   }
-  if (business.includes(flightClass)) {
+  if (business.includes(flightClass.toUpperCase())) {
     return "Business Class";
   }
-  if (economy.includes(flightClass)) {
+  if (economy.includes(flightClass.toUpperCase())) {
     return "Main Cabin";
   }
+  return null;
 }
 
 import { airports } from "./airports";

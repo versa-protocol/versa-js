@@ -1,13 +1,12 @@
 import {
-  aggregateTicketFares,
   airportLookup,
   formatDateComparison,
   formatDateTime,
-  formatUSD,
   GroupedItinerary,
   organizeFlightTickets,
+  aggregateFlight,
 } from "@versaprotocol/belt";
-import { Flight } from "@versaprotocol/schema";
+import { Flight, FlightSegment } from "@versaprotocol/schema";
 import { jsPDF } from "jspdf";
 import "svg2pdf.js";
 import autoTable from "jspdf-autotable";
@@ -28,10 +27,6 @@ export async function FlightDetails(
   const regFontSize = 10;
   let iconCoordinates: { x: number; y: number; page: number }[] = [];
   organizedFlightTickets.forEach((ticketGroup) => {
-    let ticketSummary: Record<
-      string,
-      { content: string; styles?: { [key: string]: any } }
-    >[] = [];
     const segmentHeight = getSegmentHeight(
       ticketGroup.itineraries,
       segmentTopBottomPad,
@@ -220,41 +215,58 @@ export async function FlightDetails(
         }
       }
     });
-    ticketGroup.passengers.forEach((p) =>
-      ticketSummary.push({
-        passenger: { content: p.passenger ? p.passenger : "" },
-        ticket: { content: ticketGroup.number ? ticketGroup.number : "" },
-        fare: {
-          content: formatUSD(aggregateTicketFares(ticketGroup) / 100),
-          styles: {
-            halign: "right",
-            cellPadding: { top: 0.125, right: 0, bottom: 0.125, left: 0 },
-          },
-        },
-      })
-    );
+
+    // // Move this class stuff to receiptHelpers
+    // let allClassValuesEqualByPassenger: boolean[] = [];
+    // flight.tickets.forEach((t) => {
+    //   allClassValuesEqualByPassenger.push(allClassValuesEqual(t.segments));
+    // });
+    // let ticketSummaryHead: pdfItem = {};
+    // // const includeClass = allClassValuesEqualByPassenger.every(
+    // //   (value) => value === true
+    // // );
+    // ticketSummaryHead.passenger = { content: "Passenger" };
+    // if (includeClass) {
+    //   ticketSummaryHead.class = { content: "Class" };
+    // }
+    // ticketSummaryHead.ticket = { content: "Ticket" };
+    // ticketSummaryHead.fare = {
+    //   content: "Fare",
+    //   styles: {
+    //     halign: "right",
+    //     cellPadding: {
+    //       top: 0.09375,
+    //       right: 0,
+    //       bottom: 0.09375,
+    //       left: 0,
+    //     },
+    //   },
+    // };
+    // ticketGroup.passengers.forEach((p) => {
+    //   let ticketItem: pdfItem = {};
+    //   ticketItem.passenger = { content: p.passenger ? p.passenger : "" };
+    //   ticketItem.ticket = {
+    //     content: ticketGroup.number ? ticketGroup.number : "",
+    //   };
+    //   // if (includeClass) {
+    //   //   ticketItem.class = { content: "First Class" };
+    //   // }
+    //   ticketItem.fare = {
+    //     content: formatUSD(aggregateTicketFares(ticketGroup) / 100),
+    //     styles: {
+    //       halign: "right",
+    //       cellPadding: { top: 0.125, right: 0, bottom: 0.125, left: 0 },
+    //     },
+    //   };
+    //   ticketSummary.push(ticketItem);
+    // });
+
+    const ticketSummary = aggregateFlight(ticketGroup);
 
     // Ticket Summary
     autoTable(doc, {
-      head: [
-        {
-          passenger: { content: "Passenger" },
-          ticket: { content: "Ticket" },
-          fare: {
-            content: "Fare",
-            styles: {
-              halign: "right",
-              cellPadding: {
-                top: 0.09375,
-                right: 0,
-                bottom: 0.09375,
-                left: 0,
-              },
-            },
-          },
-        },
-      ],
-      body: ticketSummary,
+      head: [ticketSummary.organized_ticket_head],
+      body: ticketSummary.organized_ticket,
       startY: cursor.y + margin / 2,
       margin: {
         top: margin,
@@ -389,3 +401,17 @@ function getSegmentHeight(
   });
   return maxHeight;
 }
+
+function allClassValuesEqual(segments: FlightSegment[]): boolean {
+  if (segments.length === 0) return false;
+  const firstValue = segments[0].class_of_service;
+  return (
+    firstValue !== null &&
+    segments.every((s) => s.class_of_service === firstValue)
+  );
+}
+
+type pdfItem = Record<
+  string,
+  { content: string; styles?: { [key: string]: any } }
+>;
