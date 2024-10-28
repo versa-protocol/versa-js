@@ -32,6 +32,7 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Subscription: Story = {
   args: {
+    schemaVersion: "1.5.1",
     merchant: senders.bend,
     receipt: receipts.subscription,
   },
@@ -39,6 +40,7 @@ export const Subscription: Story = {
 
 export const Flight: Story = {
   args: {
+    schemaVersion: "1.5.1",
     merchant: senders.jetblue,
     receipt: receipts.flight,
   },
@@ -46,6 +48,7 @@ export const Flight: Story = {
 
 export const Lodging: Story = {
   args: {
+    schemaVersion: "1.5.1",
     merchant: senders.sonesta,
     receipt: receipts.lodging,
   },
@@ -53,6 +56,7 @@ export const Lodging: Story = {
 
 export const Car_Rental: Story = {
   args: {
+    schemaVersion: "1.5.1",
     merchant: senders.sonesta,
     receipt: receipts.car_rental,
   },
@@ -60,6 +64,7 @@ export const Car_Rental: Story = {
 
 export const Rideshare: Story = {
   args: {
+    schemaVersion: "1.5.1",
     merchant: senders.sonesta,
     receipt: receipts.rideshare,
   },
@@ -67,6 +72,7 @@ export const Rideshare: Story = {
 
 export const Ecommerce: Story = {
   args: {
+    schemaVersion: "1.5.1",
     merchant: senders.sonesta,
     receipt: receipts.ecommerce,
   },
@@ -74,6 +80,7 @@ export const Ecommerce: Story = {
 
 export const Rail: Story = {
   args: {
+    schemaVersion: "1.5.1",
     merchant: senders.sonesta,
     receipt: receipts.rail,
   },

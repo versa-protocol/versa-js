@@ -27,18 +27,31 @@ import { Payments } from "../receipt-blocks/payments";
 import { Parties } from "../receipt-blocks/parties/parties";
 import { usePdfGen } from "../hooks/usePdfGen";
 
+import { LTS_VERSIONS } from "@versaprotocol/schema";
+
 export function ReceiptDisplay({
   receipt,
+  schemaVersion,
   merchant,
-  theme,
   activities,
+  theme,
 }: {
-  merchant: Org;
   receipt: Receipt;
-  theme?: string;
+  schemaVersion: string;
+  merchant: Org;
   activities?: Activity[];
+  theme?: string;
 }) {
   const data = receipt;
+
+  if (!LTS_VERSIONS.includes(schemaVersion)) {
+    return (
+      <div>
+        Receipt schema version {schemaVersion} is not supported by this display
+        library.
+      </div>
+    );
+  }
 
   // Theming
   const colors = {

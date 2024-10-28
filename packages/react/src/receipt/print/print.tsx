@@ -11,14 +11,20 @@ export type CollapsedReceipt = Receipt & { merchant: Org };
 
 export function Print({
   data,
+  schemaVersion,
   onClose,
 }: {
   data: CompositeReceipt;
+  schemaVersion: string;
   onClose: () => void;
 }) {
   return (
     <div className={styles.printWrap}>
-      <ReceiptDisplay merchant={data.merchant} receipt={data.receipt} />
+      <ReceiptDisplay
+        merchant={data.merchant}
+        receipt={data.receipt}
+        schemaVersion={schemaVersion}
+      />
       <ul className={styles.fullScreenActions}>
         <li>
           <button>Download PDF</button>

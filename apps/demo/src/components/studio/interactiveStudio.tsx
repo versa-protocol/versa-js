@@ -335,6 +335,7 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
                       >
                         <ReceiptDisplay
                           receipt={parsedReceipt}
+                          schemaVersion="1.5.1"
                           merchant={parsedMerchant}
                           theme={simplifiedTheme}
                           activities={[]}
