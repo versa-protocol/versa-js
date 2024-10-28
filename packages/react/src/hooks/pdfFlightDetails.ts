@@ -216,54 +216,8 @@ export async function FlightDetails(
       }
     });
 
-    // // Move this class stuff to receiptHelpers
-    // let allClassValuesEqualByPassenger: boolean[] = [];
-    // flight.tickets.forEach((t) => {
-    //   allClassValuesEqualByPassenger.push(allClassValuesEqual(t.segments));
-    // });
-    // let ticketSummaryHead: pdfItem = {};
-    // // const includeClass = allClassValuesEqualByPassenger.every(
-    // //   (value) => value === true
-    // // );
-    // ticketSummaryHead.passenger = { content: "Passenger" };
-    // if (includeClass) {
-    //   ticketSummaryHead.class = { content: "Class" };
-    // }
-    // ticketSummaryHead.ticket = { content: "Ticket" };
-    // ticketSummaryHead.fare = {
-    //   content: "Fare",
-    //   styles: {
-    //     halign: "right",
-    //     cellPadding: {
-    //       top: 0.09375,
-    //       right: 0,
-    //       bottom: 0.09375,
-    //       left: 0,
-    //     },
-    //   },
-    // };
-    // ticketGroup.passengers.forEach((p) => {
-    //   let ticketItem: pdfItem = {};
-    //   ticketItem.passenger = { content: p.passenger ? p.passenger : "" };
-    //   ticketItem.ticket = {
-    //     content: ticketGroup.number ? ticketGroup.number : "",
-    //   };
-    //   // if (includeClass) {
-    //   //   ticketItem.class = { content: "First Class" };
-    //   // }
-    //   ticketItem.fare = {
-    //     content: formatUSD(aggregateTicketFares(ticketGroup) / 100),
-    //     styles: {
-    //       halign: "right",
-    //       cellPadding: { top: 0.125, right: 0, bottom: 0.125, left: 0 },
-    //     },
-    //   };
-    //   ticketSummary.push(ticketItem);
-    // });
-
-    const ticketSummary = aggregateFlight(ticketGroup);
-
     // Ticket Summary
+    const ticketSummary = aggregateFlight(ticketGroup);
     autoTable(doc, {
       head: [ticketSummary.organized_ticket_head],
       body: ticketSummary.organized_ticket,
@@ -401,17 +355,3 @@ function getSegmentHeight(
   });
   return maxHeight;
 }
-
-function allClassValuesEqual(segments: FlightSegment[]): boolean {
-  if (segments.length === 0) return false;
-  const firstValue = segments[0].class_of_service;
-  return (
-    firstValue !== null &&
-    segments.every((s) => s.class_of_service === firstValue)
-  );
-}
-
-type pdfItem = Record<
-  string,
-  { content: string; styles?: { [key: string]: any } }
->;
