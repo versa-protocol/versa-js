@@ -78,3 +78,21 @@ export const Rail: Story = {
     receipt: receipts.rail,
   },
 };
+
+/** LTS Stories */
+
+import { v1_5_1 } from "examples";
+
+export const Lts1_5_1_Flight: Story = {
+  args: {
+    merchant: senders.jetblue,
+    receipt: v1_5_1.flight as any,
+  },
+};
+
+export const Lts1_5_1_Simple: Story = {
+  args: {
+    merchant: senders.shopify,
+    receipt: v1_5_1.simple as any,
+  },
+};

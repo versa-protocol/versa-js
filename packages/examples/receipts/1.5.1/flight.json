@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.6.0",
+  "schema_version": "1.5.1",
   "header": {
     "invoice_number": "1MzFN1K8F4fqH0lBmFq8CjbU",
     "currency": "usd",
@@ -57,8 +57,7 @@
                   "name": "US Flight Segment Tax"
                 }
               ],
-              "adjustments": [],
-              "metadata": []
+              "adjustments": []
             },
             {
               "fare": 12186,
@@ -92,8 +91,7 @@
                   "name": "US Flight Segment Tax"
                 }
               ],
-              "adjustments": [],
-              "metadata": []
+              "adjustments": []
             },
             {
               "fare": 14014,
@@ -127,8 +125,7 @@
                   "name": "US Flight Segment Tax"
                 }
               ],
-              "adjustments": [],
-              "metadata": []
+              "adjustments": []
             },
             {
               "fare": 19498,
@@ -162,14 +159,12 @@
                   "name": "US Flight Segment Tax"
                 }
               ],
-              "adjustments": [],
-              "metadata": []
+              "adjustments": []
             }
           ],
           "number": "0062698215636",
           "record_locator": "CU9GEF",
-          "passenger": "Jimmy Dean",
-          "metadata": []
+          "passenger": "Jimmy Dean"
         },
         {
           "segments": [
@@ -205,8 +200,7 @@
                   "name": "US Flight Segment Tax"
                 }
               ],
-              "adjustments": [],
-              "metadata": []
+              "adjustments": []
             },
             {
               "fare": 12186,
@@ -240,8 +234,7 @@
                   "name": "US Flight Segment Tax"
                 }
               ],
-              "adjustments": [],
-              "metadata": []
+              "adjustments": []
             },
             {
               "fare": 14014,
@@ -275,8 +268,7 @@
                   "name": "US Flight Segment Tax"
                 }
               ],
-              "adjustments": [],
-              "metadata": []
+              "adjustments": []
             },
             {
               "fare": 19498,
@@ -310,14 +302,12 @@
                   "name": "US Flight Segment Tax"
                 }
               ],
-              "adjustments": [],
-              "metadata": []
+              "adjustments": []
             }
           ],
           "number": "0062698215637",
           "record_locator": "CU9GEF",
-          "passenger": "John Smith",
-          "metadata": []
+          "passenger": "John Smith"
         }
       ],
       "itinerary_locator": "1122337694093",

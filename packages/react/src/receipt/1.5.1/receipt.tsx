@@ -1,4 +1,4 @@
-import { Org, Receipt } from "@versaprotocol/schema";
+import { Org, Receipt, Subscription, lts } from "@versaprotocol/schema";
 import {
   ActionBlock,
   ActivityBlock,
@@ -36,7 +36,7 @@ export function ReceiptDisplay({
   activities,
   theme,
 }: {
-  receipt: Receipt;
+  receipt: lts.v1_5_1.Receipt;
   schemaVersion: string;
   merchant: Org;
   activities?: Activity[];
@@ -89,7 +89,7 @@ export function ReceiptDisplay({
 
   const { downloadReceipt, downloadInvoice } = usePdfGen({
     merchant: merchant,
-    receipt: data,
+    receipt: data as Receipt,
     brandColor: colors.brand,
   });
 
@@ -130,7 +130,9 @@ export function ReceiptDisplay({
       {data.itemization.car_rental && (
         <>
           <BlockWrap>
-            <ItemizedCarRental car_rental={data.itemization.car_rental} />
+            <ItemizedCarRental
+              car_rental={data.itemization.car_rental as any}
+            />
           </BlockWrap>
           <BlockWrap>
             <LineItems items={data.itemization.car_rental.items} />
@@ -180,7 +182,7 @@ export function ReceiptDisplay({
       )}
       {data.itemization.general && (
         <BlockWrap>
-          <LineItems items={(data.itemization.general as any).line_items} />
+          <LineItems items={data.itemization.general.line_items} />
         </BlockWrap>
       )}
 

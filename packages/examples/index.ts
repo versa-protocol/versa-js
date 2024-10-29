@@ -606,3 +606,13 @@ export const receivers: Record<keyof typeof untypedReceivers, DemoReceiver> =
   untypedReceivers;
 export const receipts: Record<keyof typeof untypedReceipts, Receipt> =
   untypedReceipts as any;
+
+/** LTS */
+
+import flight_1_5_1 from "./receipts/1.5.1/flight.json";
+import simple_1_5_1 from "./receipts/1.5.1/simple.json";
+
+export const v1_5_1 = {
+  flight: flight_1_5_1,
+  simple: simple_1_5_1,
+};

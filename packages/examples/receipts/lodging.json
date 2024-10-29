@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.5.1",
+  "schema_version": "1.6.0",
   "header": {
     "invoice_number": "auth_1MzFN1K8F4fqH0lBmFq8CjbU",
     "currency": "usd",
@@ -40,7 +40,7 @@
       "items": [
         {
           "description": "Room Charge",
-          "subtotal": 18500,
+          "amount": 18500,
           "quantity": null,
           "unit_cost": null,
           "unit": null,
@@ -79,7 +79,7 @@
         },
         {
           "description": "Room Charge",
-          "subtotal": 18500,
+          "amount": 18500,
           "quantity": null,
           "unit_cost": null,
           "unit": null,
@@ -118,7 +118,7 @@
         },
         {
           "description": "Room Charge",
-          "subtotal": 18500,
+          "amount": 18500,
           "quantity": null,
           "unit_cost": null,
           "unit": null,

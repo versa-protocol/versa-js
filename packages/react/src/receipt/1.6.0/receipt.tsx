@@ -180,7 +180,7 @@ export function ReceiptDisplay({
       )}
       {data.itemization.general && (
         <BlockWrap>
-          <LineItems items={(data.itemization.general as any).line_items} />
+          <LineItems items={data.itemization.general.items} />
         </BlockWrap>
       )}
 
