@@ -19,13 +19,7 @@ import { ReceiptDisplay, VersaContext } from "@versaprotocol/react";
 import { receipts, senders } from "data";
 
 export const Receipt = () => {
-  return (
-    <ReceiptDisplay
-      merchant={senders.bend}
-      receipt={receipts.lodging}
-      schemaVersion={"1.5.1"}
-    />
-  );
+  return <ReceiptDisplay merchant={senders.bend} receipt={receipts.lodging} />;
 };
 ```
 
@@ -38,11 +32,7 @@ import { receipts, senders } from "data";
 export const Receipt = () => {
   return (
     <VersaContext.Provider value={{ mapbox_token: process.env.MAPBOX_TOKEN }}>
-      <ReceiptDisplay
-        merchant={senders.bend}
-        receipt={receipts.lodging}
-        schemaVersion={"1.5.1"}
-      />
+      <ReceiptDisplay merchant={senders.bend} receipt={receipts.lodging} />
     </VersaContext.Provider>
   );
 };

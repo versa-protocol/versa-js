@@ -1,3 +1,3 @@
-export function renderText () {
-    return "Hello World";
+export function renderText() {
+  return "Hello World";
 }
