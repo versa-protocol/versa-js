@@ -9,7 +9,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "rollup -c &&",
+    "build": "rollup -c",
     "dev": "rollup -c --watch",
     "test": "jest",
     "prepublish": "pnpm build"
