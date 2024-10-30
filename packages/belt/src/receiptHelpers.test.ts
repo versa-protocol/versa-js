@@ -1,4 +1,4 @@
-import { lts } from "@versaprotocol/schema";
+import { lts, Receipt } from "@versaprotocol/schema";
 import {
   aggregateTaxes,
   aggregateTicketFares,
@@ -383,7 +383,7 @@ describe("organizeTransitRoutes", () => {
 
 describe("organizeSegmentedItineraries", () => {
   it("should organized itineraries into two grouped itineraries for an outgoing itinerary and a return", () => {
-    const receipt = receipts.flight as lts.v1_5_1.Receipt;
+    const receipt = receipts.flight as Receipt;
 
     let ticket = receipt?.itemization?.flight?.tickets[0];
     if (!ticket || !ticket.segments) {

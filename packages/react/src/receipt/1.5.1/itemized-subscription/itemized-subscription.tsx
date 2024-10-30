@@ -5,7 +5,7 @@ import { lts } from "@versaprotocol/schema";
 export function ItemizedSubscription({
   subscription,
 }: {
-  subscription: Subscription;
+  subscription: lts.v1_5_1.Subscription;
 }) {
   return (
     <div className={styles.subscriptionWrap}>
