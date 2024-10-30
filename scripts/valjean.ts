@@ -35,7 +35,10 @@ async function main(): Promise<void> {
     console.log("Validating against schema found at", schemaUrl);
     const validate = ajv.compile(JSON.parse(schema));
     for (const targetDir of targetDirs) {
-      const files = fs.readdirSync(targetDir);
+      const files = fs
+        .readdirSync(targetDir, { withFileTypes: true })
+        .filter((dirent) => dirent.isFile())
+        .map((dirent) => dirent.name);
       for (const file of files) {
         const content = fs.readFileSync(`${targetDir}/${file}`, "utf-8");
         process.stdout.write(`Validating ${targetDir}/${file}...`);
