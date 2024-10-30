@@ -7,7 +7,7 @@ export function LineItem({ li }: { li: lts.v1_5_1.Item }) {
     <div className={li.unit_cost ? styles.lineItem : styles.lineItemCompact}>
       {li.product_image && (
         <img
-          src={li.product_image}
+          src={`https://registry.versa.org/asset/${li.product_image}`}
           width={64}
           height={64}
           alt={li.description}

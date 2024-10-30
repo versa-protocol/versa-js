@@ -1,15 +1,13 @@
 import styles from "./line-items.module.css";
-import { LineItem } from "../line-item/line-item";
-import { Item } from "@versaprotocol/schema";
-import {
-  groupItems,
-  someItemsGrouped,
-  someItemsWithDate,
-  sortItemsByDate,
-} from "@versaprotocol/belt";
+import { LineItem } from "./../line-item";
+import { lts } from "@versaprotocol/schema";
+import { lts_v1_5_1 } from "@versaprotocol/belt";
 import React from "react";
 
-export function LineItems({ items }: { items: Item[] }) {
+const { groupItems, someItemsGrouped, someItemsWithDate, sortItemsByDate } =
+  lts_v1_5_1;
+
+export function LineItems({ items }: { items: lts.v1_5_1.Item[] }) {
   const hasGroupField = someItemsGrouped(items);
   const groupedItems = groupItems(items);
   const hasDateField = someItemsWithDate(items);

@@ -92,7 +92,7 @@ export const Lts1_5_1_Flight: Story = {
 
 export const Lts1_5_1_Simple: Story = {
   args: {
-    merchant: senders.shopify,
+    merchant: senders.bend,
     receipt: v1_5_1.simple as any,
   },
 };

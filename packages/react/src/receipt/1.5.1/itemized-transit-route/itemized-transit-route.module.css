@@ -1,0 +1,94 @@
+.routeOutter {
+  border: 1px solid var(--light-stroke);
+  border-radius: 0.75rem;
+}
+
+.routeWrap {
+  position: relative;
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+  overflow: hidden;
+  margin-top: -1px;
+  margin-left: -1px;
+  width: calc(100% + 2px);
+}
+
+.routeWrap img {
+  display: block;
+}
+
+.routeWrap::after {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  box-shadow: inset 0 0 0 1px rgba(var(--foreground-alpha), 0.08);
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+}
+
+.routeDescription {
+  border-bottom-left-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+  padding: 0;
+  overflow: hidden;
+}
+
+.routePoint {
+  display: flex;
+  padding: 0 1rem;
+}
+
+.routePoint:first-child {
+  border-right: 1px solid var(--light-stroke);
+}
+
+.routeAddress {
+  flex-grow: 1;
+}
+
+.routeLabel {
+  font-size: 0.875rem;
+  color: var(--foreground-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.fromTo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 1rem 0;
+}
+
+.time {
+  color: var(--foreground-secondary);
+}
+
+.datetime {
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  color: var(--foreground-secondary);
+}
+
+.keyValuePairs,
+.passengerKeyValuePairs {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  border-top: 1px solid var(--light-stroke);
+}
+
+.keyValuePairs > div,
+.passengerKeyValuePairs > div {
+  display: flex;
+  margin: 0.5rem 1rem;
+}
+
+.keyValuePairs .key,
+.passengerKeyValuePairs .key {
+  flex-grow: 1;
+}
+
+.passengerKeyValuePairs {
+  background-color: var(--background-block);
+}

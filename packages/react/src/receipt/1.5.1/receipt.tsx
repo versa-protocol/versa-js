@@ -1,33 +1,35 @@
-import { Org, Receipt, Subscription, lts } from "@versaprotocol/schema";
+import { Org, Receipt, lts } from "@versaprotocol/schema";
 import {
   ActionBlock,
   ActivityBlock,
   BlockWrap,
   Footer,
-  ItemizedCarRental,
-  ItemizedFlight,
-  ItemizedLodging,
-  ItemizedSubscription,
-  ItemizedTransitRoute,
-  LineItems,
   LocalBusiness,
   ReceiptHeader,
   Shipment,
   ThirdParty,
   Totals,
 } from "./../../receipt-blocks";
-import {
-  Activity,
-  aggregateAdjustments,
-  aggregateEcommerceItems,
-  aggregateTaxes,
-} from "@versaprotocol/belt";
 import styles from "./../base_receipt.module.css";
 import { Payments } from "../../receipt-blocks/payments";
 import { Parties } from "../../receipt-blocks/parties/parties";
 import { usePdfGen } from "../../hooks/usePdfGen";
 
 import { LTS_VERSIONS } from "@versaprotocol/schema";
+
+import { Activity, lts_v1_5_1 } from "@versaprotocol/belt";
+
+const { aggregateAdjustments, aggregateEcommerceItems, aggregateTaxes } =
+  lts_v1_5_1;
+
+import {
+  ItemizedCarRental,
+  ItemizedFlight,
+  ItemizedLodging,
+  ItemizedSubscription,
+  ItemizedTransitRoute,
+  LineItems,
+} from "./";
 
 export function ReceiptDisplay({
   receipt,
