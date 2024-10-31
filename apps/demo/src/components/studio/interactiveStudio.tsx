@@ -6,7 +6,7 @@ import styles from "./interactiveStudio.module.css";
 import { StudioErrorBoundary } from "./interactiveStudioErrorBoundary";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
-import * as examples from "examples";
+import * as examples from "@versaprotocol/examples";
 import { Org as Merchant, Org, Receipt } from "@versaprotocol/schema";
 import {
   FileText,

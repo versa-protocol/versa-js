@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 // import { fn } from '@storybook/test';
 import { ReceiptDisplay } from "@versaprotocol/react";
-import { senders, receipts } from "examples";
+import { senders, receipts } from "@versaprotocol/examples";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<typeof ReceiptDisplay> = {
@@ -81,7 +81,7 @@ export const Rail: Story = {
 
 /** LTS Stories */
 
-import { v1_5_1 } from "examples";
+import { v1_5_1 } from "@versaprotocol/examples";
 
 export const Lts1_5_1_Flight: Story = {
   args: {

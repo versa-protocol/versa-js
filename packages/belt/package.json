@@ -19,8 +19,8 @@
   },
   "devDependencies": {
     "@types/jest": "^28.1.3",
+    "@versaprotocol/examples": "workspace:*",
     "jest": "^28.1.3",
-    "examples": "workspace:*",
     "ts-jest": "^28.0.8",
     "tsconfig": "workspace:*",
     "tsup": "^8.2.4"
