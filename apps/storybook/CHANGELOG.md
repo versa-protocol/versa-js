@@ -1,5 +1,13 @@
 # versa-storybook
 
+## 0.0.17
+
+### Patch Changes
+
+- Updated dependencies
+  - @versaprotocol/examples@1.6.1
+  - @versaprotocol/react@1.6.0
+
 ## 0.0.16
 
 ### Patch Changes

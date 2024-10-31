@@ -1,10 +1,14 @@
 {
   "name": "@versaprotocol/examples",
-  "version": "1.6.0",
-  "main": "./index.ts",
-  "types": "./index.ts",
+  "version": "1.6.1",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "license": "MIT",
   "scripts": {
+    "build": "tsc",
     "lint": "eslint ."
   },
   "devDependencies": {

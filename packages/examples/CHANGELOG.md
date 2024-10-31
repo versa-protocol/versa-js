@@ -1,5 +1,11 @@
 # @versaprotocol/examples
 
+## 1.6.1
+
+### Patch Changes
+
+- Introduce a build step for the examples package
+
 ## 1.6.0
 
 ### Minor Changes

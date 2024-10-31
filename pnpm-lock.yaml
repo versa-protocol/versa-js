@@ -69,8 +69,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/react
       '@versaprotocol/schema':
-        specifier: ^1.5.0
-        version: 1.5.0
+        specifier: ^1.6.0
+        version: 1.6.0
       next:
         specifier: ^14.2.10
         version: 14.2.14(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -1991,8 +1991,8 @@ packages:
   '@ungap/structured-clone@1.2.0':
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
 
-  '@versaprotocol/schema@1.5.0':
-    resolution: {integrity: sha512-btWaVRguos/oL61ScUPJkjgLWRwgnxwgRQwtSfVpgaKgIK45LDWvDSbROfX6m3JkVaeNsp1MREwokIKAcrmmLw==}
+  '@versaprotocol/schema@1.6.0':
+    resolution: {integrity: sha512-YrNaVvEPrAaB0SjYRHi9SZnsbK0ZjCyrX2GbM/qTTFLCXbj30nkAumcw16f88bAmBv9OZY2fCVtmVQ2yu5Qu2w==}
 
   '@vitest/expect@2.0.5':
     resolution: {integrity: sha512-yHZtwuP7JZivj65Gxoi8upUN2OzHTi3zVfjwdpu2WrvCZPLwsJ2Ey5ILIPccoW23dd/zQBlJ4/dhi7DWNyXCpA==}
@@ -7788,7 +7788,7 @@ snapshots:
 
   '@ungap/structured-clone@1.2.0': {}
 
-  '@versaprotocol/schema@1.5.0': {}
+  '@versaprotocol/schema@1.6.0': {}
 
   '@vitest/expect@2.0.5':
     dependencies:
