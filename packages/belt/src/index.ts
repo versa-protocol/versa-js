@@ -2,6 +2,6 @@ export * from "./receiptComparator";
 export * from "./receiptHelpers";
 export * from "./ymdToMonth";
 
-// Test
 export * from "./format";
-export * from "./example";
+
+export * as lts_v1_5_1 from "./lts/1.5.1";

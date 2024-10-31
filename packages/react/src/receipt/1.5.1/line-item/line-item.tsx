@@ -1,13 +1,13 @@
 import { formatUSD } from "@versaprotocol/belt";
 import styles from "./line-item.module.css";
-import { Item } from "@versaprotocol/schema";
+import { lts } from "@versaprotocol/schema";
 
-export function LineItem({ li }: { li: Item }) {
+export function LineItem({ li }: { li: lts.v1_5_1.Item }) {
   return (
     <div className={li.unit_cost ? styles.lineItem : styles.lineItemCompact}>
-      {li.product_image_asset_id && (
+      {li.product_image && (
         <img
-          src={`https://registry.versa.org/asset/${li.product_image_asset_id}`}
+          src={`https://registry.versa.org/asset/${li.product_image}`}
           width={64}
           height={64}
           alt={li.description}
@@ -39,7 +39,7 @@ export function LineItem({ li }: { li: Item }) {
               )}
             </div>
             <div className={styles.lineItemTotal}>
-              {formatUSD(li.amount / 100)}
+              {formatUSD(li.subtotal / 100)}
             </div>
           </div>
         </div>
@@ -47,7 +47,7 @@ export function LineItem({ li }: { li: Item }) {
         <div className={styles.lineItemTextSimple}>
           <div className={styles.description}>{li.description}</div>
           <div className={styles.lineItemTotal}>
-            {formatUSD(li.amount / 100)}
+            {formatUSD(li.subtotal / 100)}
           </div>
         </div>
       )}

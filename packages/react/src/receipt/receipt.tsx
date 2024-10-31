@@ -1,5 +1,6 @@
-import { Org, Receipt } from "@versaprotocol/schema";
+import { lts, Org, Receipt } from "@versaprotocol/schema";
 import { ReceiptDisplay as R_1_5_1 } from "./1.5.1/receipt";
+import { ReceiptLatest } from "./latest/receipt";
 
 import { LTS_VERSIONS } from "@versaprotocol/schema";
 import { Activity } from "@versaprotocol/belt";
@@ -27,8 +28,20 @@ export function ReceiptDisplay({
     );
   }
 
+  if (schemaVersion === "1.5.1") {
+    return (
+      <R_1_5_1
+        receipt={data as lts.v1_5_1.Receipt}
+        schemaVersion={schemaVersion}
+        merchant={merchant}
+        activities={activities}
+        theme={theme}
+      />
+    );
+  }
+
   return (
-    <R_1_5_1
+    <ReceiptLatest
       receipt={data}
       schemaVersion={schemaVersion}
       merchant={merchant}

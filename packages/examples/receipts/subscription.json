@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.5.1",
+  "schema_version": "1.6.0",
   "header": {
     "invoice_number": "auth_1MzFN1K8F4fqH0lBmFq8CjbU",
     "currency": "usd",
@@ -25,7 +25,7 @@
         {
           "subscription_type": "recurring",
           "description": "Starter monthly plan",
-          "subtotal": 7420,
+          "amount": 7420,
           "interval": "month",
           "interval_count": 1,
           "current_period_start": 1679609767,

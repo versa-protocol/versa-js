@@ -1,15 +1,27 @@
-import { Org, Receipt, lts } from "@versaprotocol/schema";
+import { Org, Receipt } from "@versaprotocol/schema";
 import {
   ActionBlock,
   ActivityBlock,
   BlockWrap,
   Footer,
+  ItemizedCarRental,
+  ItemizedFlight,
+  ItemizedLodging,
+  ItemizedSubscription,
+  ItemizedTransitRoute,
+  LineItems,
   LocalBusiness,
   ReceiptHeader,
   Shipment,
   ThirdParty,
   Totals,
-} from "./../../receipt-blocks";
+} from "../../receipt-blocks";
+import {
+  Activity,
+  aggregateAdjustments,
+  aggregateEcommerceItems,
+  aggregateTaxes,
+} from "@versaprotocol/belt";
 import styles from "./../base_receipt.module.css";
 import { Payments } from "../../receipt-blocks/payments";
 import { Parties } from "../../receipt-blocks/parties/parties";
@@ -17,28 +29,14 @@ import { usePdfGen } from "../../hooks/usePdfGen";
 
 import { LTS_VERSIONS } from "@versaprotocol/schema";
 
-import { Activity, lts_v1_5_1 } from "@versaprotocol/belt";
-
-const { aggregateAdjustments, aggregateEcommerceItems, aggregateTaxes } =
-  lts_v1_5_1;
-
-import {
-  ItemizedCarRental,
-  ItemizedFlight,
-  ItemizedLodging,
-  ItemizedSubscription,
-  ItemizedTransitRoute,
-  LineItems,
-} from "./";
-
-export function ReceiptDisplay({
+export function ReceiptLatest({
   receipt,
   schemaVersion,
   merchant,
   activities,
   theme,
 }: {
-  receipt: lts.v1_5_1.Receipt;
+  receipt: Receipt;
   schemaVersion: string;
   merchant: Org;
   activities?: Activity[];
@@ -91,7 +89,7 @@ export function ReceiptDisplay({
 
   const { downloadReceipt, downloadInvoice } = usePdfGen({
     merchant: merchant,
-    receipt: data as Receipt,
+    receipt: data,
     brandColor: colors.brand,
   });
 
@@ -132,9 +130,7 @@ export function ReceiptDisplay({
       {data.itemization.car_rental && (
         <>
           <BlockWrap>
-            <ItemizedCarRental
-              car_rental={data.itemization.car_rental as any}
-            />
+            <ItemizedCarRental car_rental={data.itemization.car_rental} />
           </BlockWrap>
           <BlockWrap>
             <LineItems items={data.itemization.car_rental.items} />
@@ -184,7 +180,7 @@ export function ReceiptDisplay({
       )}
       {data.itemization.general && (
         <BlockWrap>
-          <LineItems items={data.itemization.general.line_items} />
+          <LineItems items={data.itemization.general.items} />
         </BlockWrap>
       )}
 

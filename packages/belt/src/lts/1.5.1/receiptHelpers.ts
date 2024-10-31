@@ -1,14 +1,4 @@
-import {
-  Itemization,
-  Tax,
-  Flight,
-  Item,
-  Ecommerce,
-  Place,
-  Metadatum,
-  TransitRoute,
-  FlightSegment,
-} from "@versaprotocol/schema";
+import { lts } from "@versaprotocol/schema";
 import canonicalize from "canonicalize";
 import {
   formatDateTime,
@@ -16,7 +6,17 @@ import {
   formatUSD,
   airportLookup,
   flightClass,
-} from "./format";
+} from "../../format";
+
+type Itemization = lts.v1_5_1.Itemization;
+type Tax = lts.v1_5_1.Tax;
+type Flight = lts.v1_5_1.Flight;
+type Item = lts.v1_5_1.Item;
+type Ecommerce = lts.v1_5_1.Ecommerce;
+type Place = lts.v1_5_1.Place;
+type Metadatum = lts.v1_5_1.Metadatum;
+type TransitRoute = lts.v1_5_1.TransitRoute;
+type FlightSegment = lts.v1_5_1.FlightSegment;
 
 export function aggregateTaxes(itemization: Itemization): Tax[] {
   const aggregatedTaxes: Record<string, Tax> = {};
@@ -105,7 +105,7 @@ export function aggregateTaxes(itemization: Itemization): Tax[] {
     }
   }
   if (itemization.general) {
-    for (const item of itemization.general.items) {
+    for (const item of itemization.general.line_items) {
       for (const tax of item.taxes || []) {
         if (aggregatedTaxes[tax.name + tax.rate]) {
           aggregatedTaxes[tax.name + tax.rate].amount += tax.amount;
@@ -418,8 +418,8 @@ export function organizeSegmentedItineraries(
 
       itineraryKeys[itineraryKey] = dateKey;
       groupedItineraries.push({
-        departure_at: segment.departure_at || null,
-        departure_tz: segment.departure_tz || null,
+        departure_at: segment.departure_at,
+        departure_tz: segment.departure_tz,
         departure_date: dateKey,
         arrival_date: "",
         departure_city: airportLookup(segment.departure_airport_code)
@@ -466,7 +466,7 @@ export function organizeFlightTickets(flight: Flight): OrganizedFlightTicket[] {
           passenger: ticket.passenger,
           ticket_number: ticket.number,
           ticket_class: allClassValuesEqualForPassenger
-            ? segments[0].class_of_service || null
+            ? segments[0].class_of_service
             : null,
           passenger_metadata: [],
         });
@@ -480,7 +480,7 @@ export function organizeFlightTickets(flight: Flight): OrganizedFlightTicket[] {
             passenger: ticket.passenger,
             ticket_number: ticket.number,
             ticket_class: allClassValuesEqualForPassenger
-              ? segments[0].class_of_service || null
+              ? segments[0].class_of_service
               : null,
             passenger_metadata: [],
           },
@@ -571,9 +571,9 @@ export function aggregateItems(itemization: Itemization) {
             );
           }
           row.description = { content: descriptionString };
-        } else if (key == "amount") {
-          row.amount = {
-            content: formatUSD(i.amount / 100),
+        } else if (key == "subtotal") {
+          row.subtotal = {
+            content: formatUSD(i.subtotal / 100),
             styles: {
               halign: "right",
               cellPadding: { top: 0.125, right: 0, bottom: 0.125, left: 0 },
@@ -661,7 +661,7 @@ export function aggregateItems(itemization: Itemization) {
     items = aggregateGenericItemRows(aggregatedEcommerceItems, head);
   }
   if (itemization.general) {
-    items = aggregateGenericItemRows(itemization.general.items, head);
+    items = aggregateGenericItemRows(itemization.general.line_items, head);
   }
 
   // Remove the bottom border from the last item
@@ -726,7 +726,7 @@ function aggregateItemHeaders(itemization: Itemization): pdfItem {
     if (allTaxesAreRateBased) {
       head.taxes = { content: "Tax", styles: { halign: "right" } };
     }
-    head.amount = {
+    head.subtotal = {
       content: "Amount",
       styles: {
         halign: "right",
@@ -779,7 +779,7 @@ function aggregateItemHeaders(itemization: Itemization): pdfItem {
 
   // General
   if (itemization.general) {
-    head = aggregateGenericItemHeaders(itemization.general.items);
+    head = aggregateGenericItemHeaders(itemization.general.line_items);
   }
   return head;
 }
@@ -815,7 +815,7 @@ function aggregateGenericItemHeaders(rows: Item[]): pdfItem {
   if (rows.every((i) => i.taxes && i.taxes.every((t) => t.rate !== null))) {
     head.taxes = { content: "Tax", styles: { halign: "right" } };
   }
-  head.amount = {
+  head.subtotal = {
     content: "Amount",
     styles: {
       halign: "right",
@@ -839,9 +839,9 @@ function aggregateGenericItemRows(rows: Item[], head: pdfItem): pdfItem[] {
         let descriptionString: string = "";
         descriptionString = i.description;
         row.description = { content: descriptionString };
-      } else if (key == "amount") {
-        row.amount = {
-          content: formatUSD(i.amount / 100),
+      } else if (key == "subtotal") {
+        row.subtotal = {
+          content: formatUSD(i.subtotal / 100),
           styles: {
             halign: "right",
             cellPadding: { top: 0.125, right: 0, bottom: 0.125, left: 0 },

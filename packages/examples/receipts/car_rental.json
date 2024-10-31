@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.5.1",
+  "schema_version": "1.6.0",
   "header": {
     "invoice_number": "auth_1MzFN1K8F4fqH0lBmFq8CjbU",
     "currency": "usd",
@@ -70,7 +70,7 @@
           "description": "Daily rate",
           "unit_cost": 9045,
           "unit": "day",
-          "subtotal": 27135,
+          "amount": 27135,
           "taxes": [
             {
               "name": "Sales Tax",
@@ -100,7 +100,7 @@
           "description": "Child seat daily rate",
           "unit_cost": 1399,
           "unit": "day",
-          "subtotal": 4197,
+          "amount": 4197,
           "adjustments": []
         }
       ]

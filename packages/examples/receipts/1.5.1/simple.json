@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.6.0",
+  "schema_version": "1.5.1",
   "header": {
     "invoice_number": "auth_1MzFN1K8F4fqH0lBmFq8CjbU",
     "currency": "usd",
@@ -16,10 +16,10 @@
   },
   "itemization": {
     "general": {
-      "items": [
+      "line_items": [
         {
           "description": "Widget",
-          "amount": 1780,
+          "subtotal": 1780,
           "quantity": 10,
           "unit_cost": 178,
           "unit": null,
