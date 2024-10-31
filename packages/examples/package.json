@@ -8,7 +8,8 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
+    "build": "tsup index.ts --format cjs,esm --dts",
+    "dev": "tsup index.ts --format cjs,esm --dts --watch",
     "lint": "eslint ."
   },
   "devDependencies": {
@@ -18,7 +19,8 @@
     "@types/react-transition-group": "^4.4.4",
     "identity-obj-proxy": "^3.0.0",
     "tsconfig": "workspace:*",
-    "typescript": "5.4.5"
+    "typescript": "5.4.5",
+    "tsup": "^8.2.4"
   },
   "dependencies": {
     "@versaprotocol/schema": "workspace:*"

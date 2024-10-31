@@ -7,7 +7,6 @@ import {
   organizeTransitRoutes,
 } from "./receiptHelpers";
 
-// This is a duplicate of the example in the examples dir; we should probably break those out into a separate shared module
 import { receipts } from "@versaprotocol/examples";
 
 const railReceipt = receipts.rail;

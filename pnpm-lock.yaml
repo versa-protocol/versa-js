@@ -249,6 +249,9 @@ importers:
       tsconfig:
         specifier: workspace:*
         version: link:../tsconfig
+      tsup:
+        specifier: ^8.2.4
+        version: 8.2.4(@swc/core@1.7.26(@swc/helpers@0.5.5))(jiti@1.21.6)(postcss@8.4.47)(typescript@5.4.5)(yaml@2.5.0)
       typescript:
         specifier: 5.4.5
         version: 5.4.5
@@ -12049,6 +12052,34 @@ snapshots:
       strip-bom: 3.0.0
 
   tslib@2.8.0: {}
+
+  tsup@8.2.4(@swc/core@1.7.26(@swc/helpers@0.5.5))(jiti@1.21.6)(postcss@8.4.47)(typescript@5.4.5)(yaml@2.5.0):
+    dependencies:
+      bundle-require: 5.0.0(esbuild@0.23.0)
+      cac: 6.7.14
+      chokidar: 3.6.0
+      consola: 3.2.3
+      debug: 4.3.6
+      esbuild: 0.23.0
+      execa: 5.1.1
+      globby: 11.1.0
+      joycon: 3.1.1
+      picocolors: 1.0.1
+      postcss-load-config: 6.0.1(jiti@1.21.6)(postcss@8.4.47)(yaml@2.5.0)
+      resolve-from: 5.0.0
+      rollup: 4.24.0
+      source-map: 0.8.0-beta.0
+      sucrase: 3.35.0
+      tree-kill: 1.2.2
+    optionalDependencies:
+      '@swc/core': 1.7.26(@swc/helpers@0.5.5)
+      postcss: 8.4.47
+      typescript: 5.4.5
+    transitivePeerDependencies:
+      - jiti
+      - supports-color
+      - tsx
+      - yaml
 
   tsup@8.2.4(@swc/core@1.7.26(@swc/helpers@0.5.5))(jiti@1.21.6)(postcss@8.4.47)(typescript@5.6.3)(yaml@2.5.0):
     dependencies:
