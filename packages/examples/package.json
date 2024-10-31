@@ -1,6 +1,6 @@
 {
   "name": "@versaprotocol/examples",
-  "version": "1.0.0",
+  "version": "1.6.0",
   "main": "./index.ts",
   "types": "./index.ts",
   "private": true,
