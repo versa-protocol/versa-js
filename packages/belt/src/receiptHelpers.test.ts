@@ -10,7 +10,7 @@ import {
 // This is a duplicate of the example in the examples dir; we should probably break those out into a separate shared module
 import { receipts } from "examples";
 
-const railReceipt = receipts.rail as Receipt;
+const railReceipt = receipts.rail;
 
 const testData = {
   general: null,
