@@ -1,6 +1,6 @@
 import { lts, Org, Receipt } from "@versaprotocol/schema";
 import { ReceiptDisplay as R_1_5_1 } from "./1.5.1/receipt";
-import { ReceiptDisplay as R_1_6_0 } from "./1.6.0/receipt";
+import { ReceiptLatest } from "./latest/receipt";
 
 import { LTS_VERSIONS } from "@versaprotocol/schema";
 import { Activity } from "@versaprotocol/belt";
@@ -41,7 +41,7 @@ export function ReceiptDisplay({
   }
 
   return (
-    <R_1_6_0
+    <ReceiptLatest
       receipt={data}
       schemaVersion={schemaVersion}
       merchant={merchant}

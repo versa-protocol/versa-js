@@ -1,8 +1,8 @@
-import { lts } from "@versaprotocol/schema";
+import { Receipt } from "@versaprotocol/schema";
 import { compare, compareSeries } from "./receiptComparator";
 
 describe("receiptComparator", () => {
-  const latestReceipt: lts.v1_5_1.Receipt = {
+  const latestReceipt: Receipt = {
     itemization: {
       general: null,
       lodging: null,
@@ -19,7 +19,7 @@ describe("receiptComparator", () => {
               {
                 quantity: 1,
                 description: "",
-                subtotal: 0,
+                amount: 0,
               },
             ],
             tracking_number: null,
@@ -47,7 +47,7 @@ describe("receiptComparator", () => {
     payments: [],
   };
 
-  const previousReceiptWithShipment: lts.v1_5_1.Receipt = {
+  const previousReceiptWithShipment: Receipt = {
     itemization: {
       general: null,
       lodging: null,
@@ -64,7 +64,7 @@ describe("receiptComparator", () => {
               {
                 quantity: 1,
                 description: "",
-                subtotal: 0,
+                amount: 0,
               },
             ],
             tracking_number: null,
@@ -92,7 +92,7 @@ describe("receiptComparator", () => {
     payments: [],
   };
 
-  const previousReceiptWithoutShipment: lts.v1_5_1.Receipt = {
+  const previousReceiptWithoutShipment: Receipt = {
     itemization: {
       general: null,
       lodging: null,

@@ -1,4 +1,4 @@
-import { lts, Receipt } from "@versaprotocol/schema";
+import { Receipt } from "@versaprotocol/schema";
 import {
   aggregateTaxes,
   aggregateTicketFares,
@@ -10,7 +10,7 @@ import {
 // This is a duplicate of the example in the examples dir; we should probably break those out into a separate shared module
 import { receipts } from "examples";
 
-const railReceipt = receipts.rail as lts.v1_5_1.Receipt;
+const railReceipt = receipts.rail as Receipt;
 
 const testData = {
   general: null,

@@ -29,7 +29,7 @@ import { usePdfGen } from "../../hooks/usePdfGen";
 
 import { LTS_VERSIONS } from "@versaprotocol/schema";
 
-export function ReceiptDisplay({
+export function ReceiptLatest({
   receipt,
   schemaVersion,
   merchant,

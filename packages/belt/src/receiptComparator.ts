@@ -1,4 +1,4 @@
-import { lts } from "@versaprotocol/schema";
+import { Receipt } from "@versaprotocol/schema";
 
 export enum ActivityType {
   Shipped = "Shipped",
@@ -15,7 +15,7 @@ export interface ReceiptDiff {
 }
 
 export interface ReceiptWithProtocolTimestamp {
-  receipt: lts.v1_5_1.Receipt;
+  receipt: Receipt;
   protocolTimestamp: number;
 }
 
