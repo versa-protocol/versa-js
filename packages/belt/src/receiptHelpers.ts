@@ -448,13 +448,25 @@ export function organizeSegmentedItineraries(
   return Object.values(groupedItineraries);
 }
 
+function uniqueSegment(segment: FlightSegment) {
+  return {
+    departure_airport_code: segment.departure_airport_code,
+    arrival_airport_code: segment.arrival_airport_code,
+    departure_at: segment.departure_at,
+    arrival_at: segment.arrival_at,
+    departure_tz: segment.departure_tz,
+    arrival_tz: segment.arrival_tz,
+    flight_number: segment.flight_number,
+  };
+}
+
 export function organizeFlightTickets(flight: Flight): OrganizedFlightTicket[] {
   const organizedTickets: Record<string, OrganizedFlightTicket> = {};
   for (const ticket of flight.tickets) {
     const { segments } = ticket;
     const dedupeKey = canonicalize(
       JSON.stringify({
-        segments,
+        segments: segments.map(uniqueSegment),
       })
     ) as string;
     const allClassValuesEqualForPassenger = allClassValuesEqual(segments);

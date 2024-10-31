@@ -35,6 +35,7 @@
               "arrival_tz": "America/Chicago",
               "flight_number": "DL 1768",
               "class_of_service": "k",
+              "seat": "15F",
               "taxes": [
                 {
                   "amount": 1142,
@@ -70,6 +71,7 @@
               "arrival_tz": "America/Chicago",
               "flight_number": "OO 4656",
               "class_of_service": "k",
+              "seat": "10A",
               "taxes": [
                 {
                   "amount": 914,
@@ -105,6 +107,7 @@
               "arrival_tz": "America/Chicago",
               "flight_number": "OO 4656",
               "class_of_service": "k",
+              "seat": "17A",
               "taxes": [
                 {
                   "amount": 1051,
@@ -140,6 +143,7 @@
               "arrival_tz": "America/Chicago",
               "flight_number": "DL 2536",
               "class_of_service": "k",
+              "seat": "12B",
               "taxes": [
                 {
                   "amount": 1462,
@@ -183,6 +187,7 @@
               "arrival_tz": "America/Chicago",
               "flight_number": "DL 1768",
               "class_of_service": "k",
+              "seat": "14F",
               "taxes": [
                 {
                   "amount": 1142,
@@ -218,6 +223,7 @@
               "arrival_tz": "America/Chicago",
               "flight_number": "OO 4656",
               "class_of_service": "k",
+              "seat": "11A",
               "taxes": [
                 {
                   "amount": 914,
@@ -253,6 +259,7 @@
               "arrival_tz": "America/Chicago",
               "flight_number": "OO 4656",
               "class_of_service": "k",
+              "seat": "11A",
               "taxes": [
                 {
                   "amount": 1051,
@@ -288,6 +295,7 @@
               "arrival_tz": "America/Chicago",
               "flight_number": "DL 2536",
               "class_of_service": "k",
+              "seat": "16C",
               "taxes": [
                 {
                   "amount": 1462,
