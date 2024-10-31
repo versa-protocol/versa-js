@@ -172,8 +172,8 @@
           ],
           "number": "0062698215636",
           "record_locator": "CU9GEF",
-          "passenger": "Jimmy Dean",
-          "metadata": []
+          "passenger": "Susy Smith",
+          "metadata": [{ "key": "AAdvantage #", "value": "TH4700" }]
         },
         {
           "segments": [
@@ -325,7 +325,7 @@
           "number": "0062698215637",
           "record_locator": "CU9GEF",
           "passenger": "John Smith",
-          "metadata": []
+          "metadata": [{ "key": "AAdvantage #", "value": "TH4703" }]
         }
       ],
       "itinerary_locator": "1122337694093",

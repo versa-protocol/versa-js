@@ -125,6 +125,14 @@ export function ItemizedFlight({ flight }: { flight: Flight }) {
                 <div className={styles.key}>Passenger</div>
                 <div className={styles.value}>{p.passenger}</div>
               </div>
+              {p.passenger_metadata.map((m) => {
+                return (
+                  <div>
+                    <div className={styles.key}>{m.key}</div>
+                    <div className={styles.value}>{m.value}</div>
+                  </div>
+                );
+              })}
               <div>
                 <div className={styles.key}>Fare</div>
                 <div className={styles.value}>
