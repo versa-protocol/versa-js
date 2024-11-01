@@ -1,0 +1,25 @@
+name: Validation
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  validate_receipts:
+    name: Validate Receipt Templates
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate
+        uses: thomasmost/gha-valjean@main
+        with:
+          schema-url: https://raw.githubusercontent.com/versa-protocol/schema/1.6.0/data/receipt.schema.json
+          target-dir: packages/examples/receipts
+          all-errors: true
