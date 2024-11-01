@@ -1,5 +1,11 @@
 # @versaprotocol/examples
 
+## 1.6.3
+
+### Patch Changes
+
+- Remove actions from most receipt json examples
+
 ## 1.6.2
 
 ### Patch Changes
