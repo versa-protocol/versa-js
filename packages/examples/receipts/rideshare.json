@@ -95,10 +95,6 @@
     "subscription": null,
     "flight": null
   },
-  "actions": [
-    { "name": "Rate Driver", "url": "https://versa.org" },
-    { "name": "Find Lost Item", "url": "https://versa.org" },
-    { "name": "Rebook", "url": "https://versa.org" }
-  ],
+  "actions": [],
   "payments": []
 }

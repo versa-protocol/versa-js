@@ -175,9 +175,6 @@
     "subscription": null,
     "flight": null
   },
-  "actions": [
-    { "name": "Loyalty Program", "url": "https://versa.org" },
-    { "name": "Rebook", "url": "https://versa.org" }
-  ],
+  "actions": [],
   "payments": []
 }

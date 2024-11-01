@@ -332,19 +332,6 @@
       "invoice_level_adjustments": []
     }
   },
-  "actions": [
-    {
-      "name": "Manage Booking",
-      "url": "https://versa.org/"
-    },
-    {
-      "name": "Contact Support",
-      "url": "https://versa.org/"
-    },
-    {
-      "name": "Loyalty",
-      "url": "https://versa.org/"
-    }
-  ],
+  "actions": [],
   "payments": []
 }

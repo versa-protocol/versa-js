@@ -109,9 +109,6 @@
     "subscription": null,
     "flight": null
   },
-  "actions": [
-    { "name": "Emergency Roadside Assistance", "url": "https://versa.org/" },
-    { "name": "Rebook", "url": "https://versa.org/" }
-  ],
+  "actions": [],
   "payments": []
 }
