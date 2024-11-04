@@ -44,6 +44,19 @@ export const Flight: Story = {
   },
 };
 
+export const Redeye: Story = {
+  args: {
+    merchant: senders.jetblue,
+    receipt: receipts.redeye,
+  },
+};
+export const FlightMultileg: Story = {
+  args: {
+    merchant: senders.united_airlines,
+    receipt: receipts.flight_multileg,
+  },
+};
+
 export const Lodging: Story = {
   args: {
     merchant: senders.sonesta,

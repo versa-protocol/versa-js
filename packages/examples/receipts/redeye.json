@@ -1,0 +1,173 @@
+{
+  "schema_version": "1.6.0",
+  "header": {
+    "invoice_number": "3kJ9X5Y9L2s8H0kAmN2B7CvW",
+    "currency": "usd",
+    "total": 250000,
+    "subtotal": 220000,
+    "paid": 250000,
+    "invoiced_at": 1713295619,
+    "mcc": null,
+    "third_party": null,
+    "customer": null,
+    "location": null,
+    "receipt_asset_id": null,
+    "invoice_asset_id": null
+  },
+  "itemization": {
+    "general": null,
+    "lodging": null,
+    "ecommerce": null,
+    "car_rental": null,
+    "transit_route": null,
+    "subscription": null,
+    "flight": {
+      "tickets": [
+        {
+          "segments": [
+            {
+              "fare": 45000,
+              "departure_airport_code": "SEA",
+              "arrival_airport_code": "LHR",
+              "departure_at": 1713744800,
+              "arrival_at": 1713766400,
+              "departure_tz": "America/Los_Angeles",
+              "arrival_tz": "Europe/London",
+              "flight_number": "BA 0048",
+              "class_of_service": "y",
+              "seat": "23A",
+              "taxes": [
+                {
+                  "amount": 3400,
+                  "rate": 0.075,
+                  "name": "US Transportation Tax"
+                },
+                {
+                  "amount": 500,
+                  "rate": null,
+                  "name": "International Departure Tax"
+                },
+                {
+                  "amount": 300,
+                  "rate": null,
+                  "name": "Passenger Facility Charge"
+                }
+              ],
+              "adjustments": [],
+              "metadata": []
+            },
+            {
+              "fare": 45000,
+              "departure_airport_code": "LHR",
+              "arrival_airport_code": "SEA",
+              "departure_at": 1713897600,
+              "arrival_at": 1713919200,
+              "departure_tz": "Europe/London",
+              "arrival_tz": "America/Los_Angeles",
+              "flight_number": "BA 0049",
+              "class_of_service": "y",
+              "seat": "23B",
+              "taxes": [
+                {
+                  "amount": 3400,
+                  "rate": 0.075,
+                  "name": "UK Departure Tax"
+                },
+                {
+                  "amount": 500,
+                  "rate": null,
+                  "name": "International Arrival Tax"
+                },
+                {
+                  "amount": 300,
+                  "rate": null,
+                  "name": "Passenger Facility Charge"
+                }
+              ],
+              "adjustments": [],
+              "metadata": []
+            }
+          ],
+          "number": "0087654321098",
+          "record_locator": "RED123",
+          "passenger": "Alice Johnson",
+          "metadata": [{ "key": "Frequent Flyer #", "value": "BA1093" }]
+        },
+        {
+          "segments": [
+            {
+              "fare": 45000,
+              "departure_airport_code": "SEA",
+              "arrival_airport_code": "LHR",
+              "departure_at": 1713744800,
+              "arrival_at": 1713766400,
+              "departure_tz": "America/Los_Angeles",
+              "arrival_tz": "Europe/London",
+              "flight_number": "BA 0048",
+              "class_of_service": "y",
+              "seat": "24A",
+              "taxes": [
+                {
+                  "amount": 3400,
+                  "rate": 0.075,
+                  "name": "US Transportation Tax"
+                },
+                {
+                  "amount": 500,
+                  "rate": null,
+                  "name": "International Departure Tax"
+                },
+                {
+                  "amount": 300,
+                  "rate": null,
+                  "name": "Passenger Facility Charge"
+                }
+              ],
+              "adjustments": [],
+              "metadata": []
+            },
+            {
+              "fare": 45000,
+              "departure_airport_code": "LHR",
+              "arrival_airport_code": "SEA",
+              "departure_at": 1713897600,
+              "arrival_at": 1713919200,
+              "departure_tz": "Europe/London",
+              "arrival_tz": "America/Los_Angeles",
+              "flight_number": "BA 0049",
+              "class_of_service": "y",
+              "seat": "24B",
+              "taxes": [
+                {
+                  "amount": 3400,
+                  "rate": 0.075,
+                  "name": "UK Departure Tax"
+                },
+                {
+                  "amount": 500,
+                  "rate": null,
+                  "name": "International Arrival Tax"
+                },
+                {
+                  "amount": 300,
+                  "rate": null,
+                  "name": "Passenger Facility Charge"
+                }
+              ],
+              "adjustments": [],
+              "metadata": []
+            }
+          ],
+          "number": "0087654321099",
+          "record_locator": "RED124",
+          "passenger": "Bob Johnson",
+          "metadata": [{ "key": "Frequent Flyer #", "value": "BA1094" }]
+        }
+      ],
+      "itinerary_locator": "2233445566778",
+      "invoice_level_adjustments": []
+    }
+  },
+  "actions": [],
+  "payments": []
+}

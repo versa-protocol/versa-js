@@ -1,0 +1,297 @@
+{
+  "schema_version": "1.6.0",
+  "header": {
+    "invoice_number": "4Jk9H2X7L8m2G1nPoK3U1DcQ",
+    "currency": "usd",
+    "total": 300000,
+    "subtotal": 260000,
+    "paid": 300000,
+    "invoiced_at": 1713395619,
+    "mcc": null,
+    "third_party": null,
+    "customer": null,
+    "location": null,
+    "receipt_asset_id": null,
+    "invoice_asset_id": null
+  },
+  "itemization": {
+    "general": null,
+    "lodging": null,
+    "ecommerce": null,
+    "car_rental": null,
+    "transit_route": null,
+    "subscription": null,
+    "flight": {
+      "tickets": [
+        {
+          "segments": [
+            {
+              "fare": 12500,
+              "departure_airport_code": "SEA",
+              "arrival_airport_code": "DEN",
+              "departure_at": 1713724800,
+              "arrival_at": 1713732000,
+              "departure_tz": "America/Los_Angeles",
+              "arrival_tz": "America/Denver",
+              "flight_number": "UA 1021",
+              "class_of_service": "y",
+              "seat": "21A",
+              "taxes": [
+                {
+                  "amount": 938,
+                  "rate": 0.075,
+                  "name": "US Transportation Tax"
+                },
+                {
+                  "amount": 400,
+                  "rate": null,
+                  "name": "US Flight Segment Tax"
+                },
+                {
+                  "amount": 200,
+                  "rate": null,
+                  "name": "Passenger Facility Charge"
+                }
+              ],
+              "adjustments": [],
+              "metadata": []
+            },
+            {
+              "fare": 13000,
+              "departure_airport_code": "DEN",
+              "arrival_airport_code": "IND",
+              "departure_at": 1713746400,
+              "arrival_at": 1713757200,
+              "departure_tz": "America/Denver",
+              "arrival_tz": "America/Indiana/Indianapolis",
+              "flight_number": "UA 1309",
+              "class_of_service": "y",
+              "seat": "21B",
+              "taxes": [
+                {
+                  "amount": 975,
+                  "rate": 0.075,
+                  "name": "US Transportation Tax"
+                },
+                {
+                  "amount": 400,
+                  "rate": null,
+                  "name": "US Flight Segment Tax"
+                },
+                {
+                  "amount": 200,
+                  "rate": null,
+                  "name": "Passenger Facility Charge"
+                }
+              ],
+              "adjustments": [],
+              "metadata": []
+            },
+            {
+              "fare": 13500,
+              "departure_airport_code": "IND",
+              "arrival_airport_code": "ATL",
+              "departure_at": 1713926400,
+              "arrival_at": 1713933600,
+              "departure_tz": "America/Indiana/Indianapolis",
+              "arrival_tz": "America/New_York",
+              "flight_number": "DL 1202",
+              "class_of_service": "y",
+              "seat": "22A",
+              "taxes": [
+                {
+                  "amount": 1012,
+                  "rate": 0.075,
+                  "name": "US Transportation Tax"
+                },
+                {
+                  "amount": 400,
+                  "rate": null,
+                  "name": "US Flight Segment Tax"
+                },
+                {
+                  "amount": 200,
+                  "rate": null,
+                  "name": "Passenger Facility Charge"
+                }
+              ],
+              "adjustments": [],
+              "metadata": []
+            },
+            {
+              "fare": 14000,
+              "departure_airport_code": "ATL",
+              "arrival_airport_code": "MIA",
+              "departure_at": 1713937200,
+              "arrival_at": 1713940800,
+              "departure_tz": "America/New_York",
+              "arrival_tz": "America/New_York",
+              "flight_number": "DL 0456",
+              "class_of_service": "y",
+              "seat": "22B",
+              "taxes": [
+                {
+                  "amount": 1050,
+                  "rate": 0.075,
+                  "name": "US Transportation Tax"
+                },
+                {
+                  "amount": 400,
+                  "rate": null,
+                  "name": "US Flight Segment Tax"
+                },
+                {
+                  "amount": 200,
+                  "rate": null,
+                  "name": "Passenger Facility Charge"
+                }
+              ],
+              "adjustments": [],
+              "metadata": []
+            }
+          ],
+          "number": "0098765432101",
+          "record_locator": "MULTI123",
+          "passenger": "Alex Smith",
+          "metadata": [{ "key": "Frequent Flyer #", "value": "UA3490" }]
+        },
+        {
+          "segments": [
+            {
+              "fare": 12500,
+              "departure_airport_code": "SEA",
+              "arrival_airport_code": "DEN",
+              "departure_at": 1713724800,
+              "arrival_at": 1713732000,
+              "departure_tz": "America/Los_Angeles",
+              "arrival_tz": "America/Denver",
+              "flight_number": "UA 1021",
+              "class_of_service": "y",
+              "seat": "21C",
+              "taxes": [
+                {
+                  "amount": 938,
+                  "rate": 0.075,
+                  "name": "US Transportation Tax"
+                },
+                {
+                  "amount": 400,
+                  "rate": null,
+                  "name": "US Flight Segment Tax"
+                },
+                {
+                  "amount": 200,
+                  "rate": null,
+                  "name": "Passenger Facility Charge"
+                }
+              ],
+              "adjustments": [],
+              "metadata": []
+            },
+            {
+              "fare": 13000,
+              "departure_airport_code": "DEN",
+              "arrival_airport_code": "IND",
+              "departure_at": 1713746400,
+              "arrival_at": 1713757200,
+              "departure_tz": "America/Denver",
+              "arrival_tz": "America/Indiana/Indianapolis",
+              "flight_number": "UA 1309",
+              "class_of_service": "y",
+              "seat": "21D",
+              "taxes": [
+                {
+                  "amount": 975,
+                  "rate": 0.075,
+                  "name": "US Transportation Tax"
+                },
+                {
+                  "amount": 400,
+                  "rate": null,
+                  "name": "US Flight Segment Tax"
+                },
+                {
+                  "amount": 200,
+                  "rate": null,
+                  "name": "Passenger Facility Charge"
+                }
+              ],
+              "adjustments": [],
+              "metadata": []
+            },
+            {
+              "fare": 13500,
+              "departure_airport_code": "IND",
+              "arrival_airport_code": "ATL",
+              "departure_at": 1713926400,
+              "arrival_at": 1713933600,
+              "departure_tz": "America/Indiana/Indianapolis",
+              "arrival_tz": "America/New_York",
+              "flight_number": "DL 1202",
+              "class_of_service": "y",
+              "seat": "22C",
+              "taxes": [
+                {
+                  "amount": 1012,
+                  "rate": 0.075,
+                  "name": "US Transportation Tax"
+                },
+                {
+                  "amount": 400,
+                  "rate": null,
+                  "name": "US Flight Segment Tax"
+                },
+                {
+                  "amount": 200,
+                  "rate": null,
+                  "name": "Passenger Facility Charge"
+                }
+              ],
+              "adjustments": [],
+              "metadata": []
+            },
+            {
+              "fare": 14000,
+              "departure_airport_code": "ATL",
+              "arrival_airport_code": "MIA",
+              "departure_at": 1713937200,
+              "arrival_at": 1713940800,
+              "departure_tz": "America/New_York",
+              "arrival_tz": "America/New_York",
+              "flight_number": "DL 0456",
+              "class_of_service": "y",
+              "seat": "22D",
+              "taxes": [
+                {
+                  "amount": 1050,
+                  "rate": 0.075,
+                  "name": "US Transportation Tax"
+                },
+                {
+                  "amount": 400,
+                  "rate": null,
+                  "name": "US Flight Segment Tax"
+                },
+                {
+                  "amount": 200,
+                  "rate": null,
+                  "name": "Passenger Facility Charge"
+                }
+              ],
+              "adjustments": [],
+              "metadata": []
+            }
+          ],
+          "number": "0098765432102",
+          "record_locator": "MULTI124",
+          "passenger": "Jamie Lee",
+          "metadata": [{ "key": "Frequent Flyer #", "value": "UA3491" }]
+        }
+      ],
+      "itinerary_locator": "3344556677889",
+      "invoice_level_adjustments": []
+    }
+  },
+  "actions": [],
+  "payments": []
+}

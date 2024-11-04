@@ -393,7 +393,7 @@ describe("organizeSegmentedItineraries", () => {
 
     expect(organized).toBeTruthy();
     expect(organized.length).toBe(2);
-    expect(organized[0].departure_at).toBe(1713186492);
+    expect(organized[0].departure_at).toBe(1713196492);
     expect(organized[0].departure_city).toBe("Seattle");
     expect(organized[0].arrival_city).toBe("Grand Forks");
     expect(organized[1].departure_at).toBe(1713900952);

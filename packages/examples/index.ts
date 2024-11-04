@@ -289,6 +289,8 @@ import rideshare_receipt from "./receipts/rideshare.json";
 import rideshare_polyline_receipt from "./receipts/rideshare_polyline.json";
 import lodging_receipt from "./receipts/lodging.json";
 import flight_receipt from "./receipts/flight.json";
+import redeye_receipt from "./receipts/redeye.json";
+import flight_multileg_receipt from "./receipts/flight_multileg.json";
 import subscription_receipt from "./receipts/subscription.json";
 import simple_receipt from "./receipts/simple.json";
 import car_rental_receipt from "./receipts/car_rental.json";
@@ -584,6 +586,8 @@ export const untypedReceipts = {
   rideshare_polyline: rideshare_polyline_receipt,
   lodging: lodging_receipt,
   flight: flight_receipt,
+  redeye: redeye_receipt,
+  flight_multileg: flight_multileg_receipt,
   subscription: subscription_receipt,
   simple: simple_receipt,
   car_rental: car_rental_receipt,
