@@ -471,9 +471,12 @@ export function organizeFlightTickets(flight: Flight): OrganizedFlightTicket[] {
     ) as string;
     const allClassValuesEqualForPassenger = allClassValuesEqual(segments);
 
+    const passengerKey =
+      ticket.passenger || ticket.record_locator || ticket.metadata.length;
+
     if (organizedTickets[dedupeKey]) {
       organizedTickets[dedupeKey].passenger_count++;
-      if (ticket.passenger) {
+      if (passengerKey) {
         organizedTickets[dedupeKey].passengers.push({
           passenger: ticket.passenger,
           ticket_number: ticket.number,
