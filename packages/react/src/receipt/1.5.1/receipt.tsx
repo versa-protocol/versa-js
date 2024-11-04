@@ -29,7 +29,7 @@ import {
   ItemizedSubscription,
   ItemizedTransitRoute,
   LineItems,
-} from "./";
+} from "./receipt-blocks";
 
 export function ReceiptDisplay({
   receipt,

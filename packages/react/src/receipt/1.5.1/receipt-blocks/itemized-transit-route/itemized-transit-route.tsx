@@ -7,7 +7,7 @@ import {
 import styles from "./itemized-transit-route.module.css";
 import { Header, lts, Metadatum } from "@versaprotocol/schema";
 import { organizeTransitRoutes } from "@versaprotocol/belt";
-import { VersaContext } from "../../../context";
+import { VersaContext } from "../../../../context";
 
 export function ItemizedTransitRoute({
   transit_route,
