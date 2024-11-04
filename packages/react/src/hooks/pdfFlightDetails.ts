@@ -39,10 +39,10 @@ export async function FlightDetails(
       doc.setPage(cursor.page);
       let itineraryString = "";
       if (itinerary.departure_at) {
-        itineraryString += formatDateTime(itinerary.departure_at);
+        itineraryString += formatDateTime(itinerary.departure_at) + " - ";
       }
       itineraryString +=
-        "  -  " + itinerary.departure_city + " to " + itinerary.arrival_city;
+        itinerary.departure_city + " to " + itinerary.arrival_city;
       cursor.y += margin;
       doc.setFontSize(regFontSize);
       doc.setFont("helvetica", "normal");
@@ -263,7 +263,8 @@ export async function FlightDetails(
         margin / 2 +
         margin +
         regFontSize / 72 +
-        margin / 2 >
+        margin / 2 +
+        (margin * 1.5 - 10 / 72) > // Footer
       docHeight
     ) {
       doc.addPage();

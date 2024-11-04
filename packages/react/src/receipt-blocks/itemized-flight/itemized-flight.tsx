@@ -31,16 +31,12 @@ export function ItemizedFlight({ flight }: { flight: Flight }) {
           {t.itineraries.map((itinerary, itinerary_index) => (
             <div key={itinerary_index} className={styles.itineraryWrap}>
               <div className={styles.itineraryHead}>
-                <div>
-                  {!!itinerary.departure_at &&
-                    formatDateTime(itinerary.departure_at)}
-                </div>
-                <span> - </span>
-                <div className={styles.startAndEndCity}>
-                  <span>{itinerary.departure_city}</span>
-                  <span> to </span>
-                  <span>{itinerary.arrival_city}</span>
-                </div>
+                {!!itinerary.departure_at && (
+                  <span>{formatDateTime(itinerary.departure_at)} - </span>
+                )}
+                <span>
+                  {itinerary.departure_city} to {itinerary.arrival_city}
+                </span>
               </div>
               {itinerary.segments.map((s, index) => (
                 <div className={styles.segmentWrap} key={`segment-${index}`}>
