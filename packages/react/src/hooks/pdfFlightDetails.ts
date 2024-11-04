@@ -49,7 +49,7 @@ export async function FlightDetails(
       doc.text(itineraryString, margin, cursor.y);
       cursor.y += margin / 2;
       let segmentCount = 0;
-      itinerary.segments.forEach((s) => {
+      itinerary.segments.forEach((s, index) => {
         doc.setPage(cursor.page);
         doc.setDrawColor(210);
         const leftOffset =
@@ -96,9 +96,19 @@ export async function FlightDetails(
             itinerary.departure_tz &&
             s.departure_tz
           ) {
+            let previousEpoch: number =
+              itinerary.segments[index - 1]?.arrival_at ||
+              itinerary.departure_at ||
+              0;
+            let previousTz: string =
+              itinerary.segments[index - 1]?.arrival_tz ||
+              itinerary.departure_tz ||
+              "";
             departureTime = formatDateComparison(
               itinerary.departure_at,
               itinerary.departure_tz,
+              previousEpoch,
+              previousTz,
               s.departure_at,
               s.departure_tz
             );
@@ -122,20 +132,30 @@ export async function FlightDetails(
           );
         }
         if (s.arrival_at) {
-          let arrivatlTime = "";
+          let arrivalTime = "";
           if (
             itinerary.departure_at &&
             itinerary.departure_tz &&
             s.arrival_tz
           ) {
-            arrivatlTime = formatDateComparison(
+            let previousEpoch: number =
+              itinerary.segments[index - 1]?.arrival_at ||
+              itinerary.departure_at ||
+              0;
+            let previousTz: string =
+              itinerary.segments[index - 1]?.arrival_tz ||
+              itinerary.departure_tz ||
+              "";
+            arrivalTime = formatDateComparison(
               itinerary.departure_at,
               itinerary.departure_tz,
+              previousEpoch,
+              previousTz,
               s.arrival_at,
               s.arrival_tz
             );
           } else {
-            arrivatlTime = formatDateTime(
+            arrivalTime = formatDateTime(
               s.arrival_at,
               false,
               true,
@@ -144,7 +164,7 @@ export async function FlightDetails(
             );
           }
           doc.text(
-            arrivatlTime,
+            arrivalTime,
             leftOffset + width - segmentLeftRightPad,
             cursor.y +
               segmentTopBottomPad +

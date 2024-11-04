@@ -1,5 +1,13 @@
 # @versaprotocol/react
 
+## 1.6.1
+
+### Patch Changes
+
+- Improvements to flight receipt organization and date formatting
+- Updated dependencies
+  - @versaprotocol/belt@1.6.1
+
 ## 1.6.0
 
 ### Minor Changes

@@ -234,20 +234,22 @@ export function airportLookup(iataCode: string) {
 /**
  * Formats a comparison timestamp relative to an initial timestamp, showing just the time if on the same day,
  * or including the date and a relative day indicator if on different days
- * @param initialEpoch - Initial timestamp in epoch milliseconds
- * @param initialTimezone - IANA timezone for initial date (e.g. "America/New_York")
- * @param comparisonEpoch - Comparison timestamp in epoch milliseconds
- * @param comparisonTimezone - IANA timezone for comparison date
+ * @param originalEpoch - Initial timestamp in epoch milliseconds
+ * @param originalTimezone - IANA timezone for initial date (e.g. "America/New_York")
+ * @param targetEpoch - Comparison timestamp in epoch milliseconds
+ * @param targetTimezone - IANA timezone for comparison date
  * @returns Formatted string indicating the time and relative day difference if applicable
  */
 export function formatDateComparison(
-  initialEpoch: number,
-  initialTimezone: string,
-  comparisonEpoch: number,
-  comparisonTimezone: string
+  originalEpoch: number,
+  originalTimezone: string,
+  previousEpoch: number,
+  previousTimezone: string,
+  targetEpoch: number,
+  targetTimezone: string
 ): string {
-  if (comparisonEpoch < initialEpoch) {
-    throw new Error("Comparison date must be after initial date");
+  if (targetEpoch < originalEpoch || targetEpoch < previousEpoch) {
+    throw new Error("Target date must be after comparison dates");
   }
 
   // Create formatters with respective timezones
@@ -255,13 +257,13 @@ export function formatDateComparison(
     hour: "numeric",
     minute: "2-digit",
     hour12: true,
-    timeZone: comparisonTimezone,
+    timeZone: targetTimezone,
   };
 
   const dateOptions: Intl.DateTimeFormatOptions = {
     month: "short",
     day: "numeric",
-    timeZone: comparisonTimezone,
+    timeZone: targetTimezone,
   };
 
   // Get dates in their respective timezones
@@ -269,21 +271,32 @@ export function formatDateComparison(
     year: "numeric",
     month: "numeric",
     day: "numeric",
-    timeZone: initialTimezone,
+    timeZone: originalTimezone,
   });
 
-  const comparisonFormatter = new Intl.DateTimeFormat("en-US", {
+  // Get dates in their respective timezones
+  const previousFormatter = new Intl.DateTimeFormat("en-US", {
     year: "numeric",
     month: "numeric",
     day: "numeric",
-    timeZone: comparisonTimezone,
+    timeZone: previousTimezone,
+  });
+
+  const targetFormatter = new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+    timeZone: targetTimezone,
   });
 
   const initialParts = initialFormatter.formatToParts(
-    new Date(initialEpoch * 1000)
+    new Date(originalEpoch * 1000)
   );
-  const comparisonParts = comparisonFormatter.formatToParts(
-    new Date(comparisonEpoch * 1000)
+  const previousParts = previousFormatter.formatToParts(
+    new Date(previousEpoch * 1000)
+  );
+  const targetParts = targetFormatter.formatToParts(
+    new Date(targetEpoch * 1000)
   );
 
   // Extract dates for comparison
@@ -295,29 +308,38 @@ export function formatDateComparison(
   };
 
   const initialDateStr = getDateFromParts(initialParts);
-  const comparisonDateStr = getDateFromParts(comparisonParts);
+  const previousDateStr = getDateFromParts(previousParts);
+  const targetDateStr = getDateFromParts(targetParts);
 
   // Check if dates are on the same day
-  if (initialDateStr === comparisonDateStr) {
+  if (initialDateStr === targetDateStr) {
     return new Intl.DateTimeFormat("en-US", timeOptions).format(
-      new Date(comparisonEpoch * 1000)
+      new Date(targetEpoch * 1000)
     );
   }
 
   // Calculate days difference using the formatted dates to respect timezones
   const initialDate = new Date(initialDateStr);
-  const comparisonDate = new Date(comparisonDateStr);
+  const previousDate = new Date(previousDateStr);
+  const targetDate = new Date(targetDateStr);
   const daysDiff = Math.round(
-    (comparisonDate.getTime() - initialDate.getTime()) / (1000 * 60 * 60 * 24)
+    (targetDate.getTime() - initialDate.getTime()) / (1000 * 60 * 60 * 24)
+  );
+  const sequentialDiff = Math.round(
+    (targetDate.getTime() - previousDate.getTime()) / (1000 * 60 * 60 * 24)
   );
 
   const dateTimeStr = `${new Intl.DateTimeFormat("en-US", dateOptions).format(
-    new Date(comparisonEpoch * 1000)
+    new Date(targetEpoch * 1000)
   )}, ${new Intl.DateTimeFormat("en-US", timeOptions).format(
-    new Date(comparisonEpoch * 1000)
+    new Date(targetEpoch * 1000)
   )}`;
 
   return `${dateTimeStr} ${
-    daysDiff === 1 ? "(next day)" : `(${daysDiff}d later)`
+    sequentialDiff === 0
+      ? ""
+      : sequentialDiff === 1
+      ? "(next day)"
+      : `(${sequentialDiff}d later)`
   }`;
 }

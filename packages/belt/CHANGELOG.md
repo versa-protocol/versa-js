@@ -1,5 +1,11 @@
 # @versaprotocol/belt
 
+## 1.6.1
+
+### Patch Changes
+
+- Improvements to flight receipt organization and date formatting
+
 ## 1.6.0
 
 ### Minor Changes

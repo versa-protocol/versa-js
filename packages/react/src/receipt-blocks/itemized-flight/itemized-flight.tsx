@@ -38,73 +38,87 @@ export function ItemizedFlight({ flight }: { flight: Flight }) {
                   {itinerary.departure_city} to {itinerary.arrival_city}
                 </span>
               </div>
-              {itinerary.segments.map((s, index) => (
-                <div className={styles.segmentWrap} key={`segment-${index}`}>
-                  <div className={styles.segment}>
-                    <div className={styles.location}>
-                      <div>{s.departure_airport_code}</div>
-                      {s.departure_at && (
-                        <div className={styles.time}>
-                          {itinerary.departure_at &&
-                          itinerary.departure_tz &&
-                          s.departure_tz ? (
-                            <>
-                              {formatDateComparison(
-                                itinerary.departure_at,
-                                itinerary.departure_tz,
-                                s.departure_at,
-                                s.departure_tz
-                              )}
-                            </>
-                          ) : (
-                            <>
-                              {formatDateTime(
-                                s.departure_at,
-                                false,
-                                true,
-                                false,
-                                s.departure_tz
-                              )}
-                            </>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                    <div className={styles.inAir}>
-                      <PlaneIcon />
-                    </div>
-                    <div className={styles.location}>
-                      <div>{s.arrival_airport_code}</div>
-                      {s.arrival_at && (
-                        <div className={styles.time}>
-                          {itinerary.departure_at &&
-                          itinerary.departure_tz &&
-                          s.arrival_tz ? (
-                            <>
-                              {formatDateComparison(
-                                itinerary.departure_at,
-                                itinerary.departure_tz,
-                                s.arrival_at,
-                                s.arrival_tz
-                              )}
-                            </>
-                          ) : (
-                            <>
-                              {formatDateTime(
-                                s.arrival_at,
-                                false,
-                                true,
-                                false,
-                                s.arrival_tz
-                              )}
-                            </>
-                          )}
-                        </div>
-                      )}
+              {itinerary.segments.map((s, index) => {
+                let previousEpoch: number =
+                  itinerary.segments[index - 1]?.arrival_at ||
+                  itinerary.departure_at ||
+                  0;
+                let previousTz: string =
+                  itinerary.segments[index - 1]?.arrival_tz ||
+                  itinerary.departure_tz ||
+                  "";
+                return (
+                  <div className={styles.segmentWrap} key={`segment-${index}`}>
+                    <div className={styles.segment}>
+                      <div className={styles.location}>
+                        <div>{s.departure_airport_code}</div>
+                        {s.departure_at && (
+                          <div className={styles.time}>
+                            {itinerary.departure_at &&
+                            itinerary.departure_tz &&
+                            s.departure_tz ? (
+                              <>
+                                {formatDateComparison(
+                                  itinerary.departure_at,
+                                  itinerary.departure_tz,
+                                  previousEpoch,
+                                  previousTz,
+                                  s.departure_at,
+                                  s.departure_tz
+                                )}
+                              </>
+                            ) : (
+                              <>
+                                {formatDateTime(
+                                  s.departure_at,
+                                  false,
+                                  true,
+                                  false,
+                                  s.departure_tz
+                                )}
+                              </>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                      <div className={styles.inAir}>
+                        <PlaneIcon />
+                      </div>
+                      <div className={styles.location}>
+                        <div>{s.arrival_airport_code}</div>
+                        {s.arrival_at && (
+                          <div className={styles.time}>
+                            {itinerary.departure_at &&
+                            itinerary.departure_tz &&
+                            s.arrival_tz ? (
+                              <>
+                                {formatDateComparison(
+                                  itinerary.departure_at,
+                                  itinerary.departure_tz,
+                                  previousEpoch,
+                                  previousTz,
+                                  s.arrival_at,
+                                  s.arrival_tz
+                                )}
+                              </>
+                            ) : (
+                              <>
+                                {formatDateTime(
+                                  s.arrival_at,
+                                  false,
+                                  true,
+                                  false,
+                                  s.arrival_tz
+                                )}
+                              </>
+                            )}
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           ))}
           {t.passenger_count > 1 && (
