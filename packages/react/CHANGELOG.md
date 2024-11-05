@@ -1,5 +1,11 @@
 # @versaprotocol/react
 
+## 1.6.2
+
+### Patch Changes
+
+- Correctly flag 'react' as an external dependency
+
 ## 1.6.1
 
 ### Patch Changes
