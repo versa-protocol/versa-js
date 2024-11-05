@@ -24,9 +24,18 @@ export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
     receipt.itemization
   );
   if (aggregatedAdjustments) {
-    aggregatedAdjustments.forEach((a) =>
+    aggregatedAdjustments.forEach((a) => {
+      let description = "";
+      if (a.name) {
+        description = capitalizeFirstLetter(a.name);
+      } else {
+        description = capitalizeFirstLetter(a.adjustment_type);
+      }
+      if (a.rate) {
+        description += " (" + a.rate * 100 + "%)";
+      }
       totalsData.push({
-        description: { content: a.adjustment_type },
+        description: { content: description },
         amount: {
           content: formatUSD(a.amount / 100),
           styles: {
@@ -34,8 +43,8 @@ export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
             cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },
           },
         },
-      })
-    );
+      });
+    });
   }
   const aggregatedTaxes: Tax[] = aggregateTaxes(receipt.itemization);
   if (aggregatedTaxes) {
@@ -106,4 +115,8 @@ export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
     },
     pageBreak: "avoid",
   });
+}
+
+function capitalizeFirstLetter(val: string) {
+  return String(val).charAt(0).toUpperCase() + String(val).slice(1);
 }

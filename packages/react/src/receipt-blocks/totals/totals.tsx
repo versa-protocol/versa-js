@@ -33,7 +33,14 @@ export function Totals({
         {adjustments &&
           adjustments.map((a: any, index: any) => (
             <div className={styles.row} key={index}>
-              <div className={styles.blockLabel}>{a.adjustment_type}</div>
+              <div className={styles.blockLabel}>
+                <div>
+                  <span>{a.name ? a.name : a.adjustment_type}</span>{" "}
+                  {a.rate && (
+                    <span className={styles.tax}>({a.rate * 100}%)</span>
+                  )}
+                </div>
+              </div>
               <div className={styles.blockValue}>
                 {formatUSD(a.amount / 100)}
               </div>
