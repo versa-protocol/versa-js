@@ -121,7 +121,7 @@ export function aggregateTaxes(itemization: Itemization): Tax[] {
 
 export function aggregateEcommerceItems(ecommerce: Ecommerce) {
   let aggregatedEcommerceItems: Item[] = [];
-  if (ecommerce.invoice_level_line_items) {
+  if (ecommerce.invoice_level_line_items.length > 0) {
     for (const item of ecommerce.invoice_level_line_items) {
       aggregatedEcommerceItems.push(item);
     }
@@ -663,19 +663,13 @@ export function aggregateItems(itemization: Itemization) {
 
   // Ecommerce
   if (itemization.ecommerce) {
-    // This should probably respect the shipment breakdown differently
-    let aggregatedEcommerceItems =
-      itemization.ecommerce.invoice_level_line_items;
-    if (
-      itemization.ecommerce.shipments &&
-      itemization.ecommerce.shipments.length > 0
-    ) {
-      itemization.ecommerce.shipments.forEach((s) => {
-        aggregatedEcommerceItems.push(...s.items);
-      });
-    }
-    items = aggregateGenericItemRows(aggregatedEcommerceItems, head);
+    items = aggregateGenericItemRows(
+      aggregateEcommerceItems(itemization.ecommerce),
+      head
+    );
   }
+
+  // General
   if (itemization.general) {
     items = aggregateGenericItemRows(itemization.general.items, head);
   }
@@ -779,18 +773,9 @@ function aggregateItemHeaders(itemization: Itemization): pdfItem {
 
   // Ecommerce
   if (itemization.ecommerce) {
-    // This should probably respect the shipment breakdown differently
-    let aggregatedEcommerceItems =
-      itemization.ecommerce.invoice_level_line_items;
-    if (
-      itemization.ecommerce.shipments &&
-      itemization.ecommerce.shipments.length > 0
-    ) {
-      itemization.ecommerce.shipments.forEach((s) => {
-        aggregatedEcommerceItems.push(...s.items);
-      });
-    }
-    head = aggregateGenericItemHeaders(aggregatedEcommerceItems);
+    head = aggregateGenericItemHeaders(
+      aggregateEcommerceItems(itemization.ecommerce)
+    );
   }
 
   // General
