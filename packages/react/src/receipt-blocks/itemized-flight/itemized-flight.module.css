@@ -15,15 +15,31 @@
   margin: 0 1rem;
 }
 
-.segmentWrap::before {
-  content: " ";
-  height: 1px;
-  background-color: var(--light-stroke);
+.inAir {
+  position: absolute;
+  top: 0;
   left: 0;
   right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.line {
+  height: 1px;
+  background-color: var(--light-stroke);
+  left: 6rem;
+  right: 6rem;
   bottom: 50%;
   position: absolute;
   z-index: 0;
+}
+
+.inAir svg {
+  background-color: var(--background);
+  width: 3rem;
+  fill: var(--light-stroke);
+  z-index: 1;
 }
 
 .segment {
@@ -33,15 +49,9 @@
   position: relative;
 }
 
-.inAir {
+.stretcher {
   flex-grow: 1;
   text-align: center;
-}
-
-.inAir svg {
-  background-color: var(--background);
-  width: 3rem;
-  fill: var(--light-stroke);
 }
 
 .segment .location:first-child {
@@ -52,10 +62,6 @@
 .segment .location:last-child {
   padding-left: 1rem;
   text-align: right;
-}
-
-.segment .location {
-  background-color: var(--background);
 }
 
 .segment .time {
