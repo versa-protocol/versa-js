@@ -1,14 +1,14 @@
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 import { Org, Receipt, Payment } from "@versaprotocol/schema";
+import { capitalize } from "@versaprotocol/belt";
 
 export function Header(
   doc: jsPDF,
   merchant: Org,
   receipt: Receipt,
   margin: number,
-  brandColor: string,
-  showSellerinHeader: boolean
+  brandColor: string
 ) {
   // Brand stripe
   const docWidth = doc.internal.pageSize.getWidth();
@@ -21,16 +21,6 @@ export function Header(
   doc.setLineHeightFactor(1.25);
   doc.setFontSize(20);
   doc.text("Receipt", margin, margin + 20 / 72);
-
-  // Condensed Seller
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(10);
-  if (showSellerinHeader) {
-    const sellerTitle = merchant.legal_name
-      ? merchant.legal_name
-      : merchant.name;
-    doc.text(sellerTitle, margin, margin + 20 / 72 + margin + 10 / 72);
-  }
 
   // Logo
   let logo = null;
@@ -66,7 +56,7 @@ export function Header(
 
   autoTable(doc, {
     body: headTableData,
-    startY: margin + 20 / 72 + margin + 10 / 72 + margin * 0.5,
+    startY: margin + 20 / 72 + margin,
     margin: { top: margin, right: margin, bottom: 2 * margin, left: margin },
     theme: "plain",
     tableWidth: "wrap",
@@ -107,7 +97,7 @@ function paymentMethod(p: Payment) {
   let paymentDescription = "";
   if (p.payment_type == "card") {
     if (p.card_payment?.network) {
-      paymentDescription = toTitleCase(p.card_payment.network);
+      paymentDescription = capitalize(p.card_payment.network);
       if (p.card_payment.last_four) {
         paymentDescription = paymentDescription.concat(
           " - ",
@@ -117,11 +107,4 @@ function paymentMethod(p: Payment) {
     }
   }
   return paymentDescription;
-}
-
-function toTitleCase(str: string) {
-  return str.replace(
-    /\w\S*/g,
-    (text) => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
-  );
 }

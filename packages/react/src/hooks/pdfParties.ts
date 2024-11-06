@@ -4,57 +4,64 @@ import { Org, Receipt, Address } from "@versaprotocol/schema";
 
 export function Parties(
   doc: jsPDF,
-  sellerTitle: string,
-  sellerAddress: string,
-  buyerData: string[][],
+  merchant: Org,
+  receipt: Receipt,
   margin: number
 ): { y: number; page: number } {
   // Set up
   const docWidth = doc.internal.pageSize.getWidth();
-  const twoUpStartY =
+  const partiesStartY =
     (doc as jsPDF & { lastAutoTable: { finalY: number } }).lastAutoTable
       .finalY + margin;
-  const twoUpStartPage = doc.getCurrentPageInfo().pageNumber;
+  const partiesStartPage = doc.getCurrentPageInfo().pageNumber;
+  const sellerTitle = merchant.legal_name ? merchant.legal_name : merchant.name;
+  const sellerAddress = stringifyAddress(merchant.address);
+  const billTo: string[][] = getBillTo(receipt.header);
+  const shipTo: string[][] = getShipTo(receipt.itemization);
 
-  if (sellerAddress.length > 0 || buyerData.length > 0) {
-    // Seller
-    autoTable(doc, {
-      head: [[sellerTitle]],
-      body: [[sellerAddress]],
-      startY: twoUpStartY,
-      margin: {
-        top: margin,
-        right: docWidth / 2 + margin,
-        bottom: 2 * margin,
-        left: margin,
+  // Seller
+  autoTable(doc, {
+    head: [[sellerTitle]],
+    body: [[sellerAddress]],
+    startY: partiesStartY,
+    margin: {
+      top: margin,
+      right: docWidth / 2 + margin / 2,
+      bottom: 2 * margin,
+      left: margin,
+    },
+    theme: "plain",
+    showHead: "firstPage",
+    styles: {
+      fontSize: 10,
+      cellPadding: {
+        top: 0,
+        right: 0.125,
+        bottom: 0.0625,
+        left: 0,
       },
-      theme: "plain",
-      showHead: "firstPage",
-      styles: {
-        fontSize: 10,
-        cellPadding: {
-          top: 0,
-          right: 0.125,
-          bottom: 0.0625,
-          left: 0,
-        },
-      },
-    });
-    let cursor = {
-      y: (doc as jsPDF & { lastAutoTable: { finalY: number } }).lastAutoTable
-        .finalY,
-      page: doc.getCurrentPageInfo().pageNumber,
-    };
+    },
+  });
+  let cursor = {
+    y: (doc as jsPDF & { lastAutoTable: { finalY: number } }).lastAutoTable
+      .finalY,
+    page: doc.getCurrentPageInfo().pageNumber,
+  };
 
-    // Buyer
-    doc.setPage(twoUpStartPage);
+  // Bill To
+  if (billTo.length > 0) {
+    doc.setPage(partiesStartPage);
+    let rightOffset = margin + margin / 2;
+    if (shipTo.length > 0) {
+      rightOffset = docWidth / 4 + margin;
+    }
     autoTable(doc, {
       head: [["Bill To"]],
-      body: buyerData,
-      startY: twoUpStartY,
+      body: billTo,
+      startY: partiesStartY,
       margin: {
         top: margin,
-        right: margin * 2,
+        right: rightOffset,
         bottom: 2 * margin,
         left: docWidth / 2,
       },
@@ -78,12 +85,110 @@ export function Parties(
       ),
       page: Math.max(cursor.page, doc.getCurrentPageInfo().pageNumber),
     };
-    return cursor;
-  } else {
-    return {
-      y: (doc as jsPDF & { lastAutoTable: { finalY: number } }).lastAutoTable
-        .finalY,
-      page: doc.getCurrentPageInfo().pageNumber,
+  }
+
+  // Ship To
+  if (shipTo.length > 0) {
+    doc.setPage(partiesStartPage);
+    let leftOffset = docWidth / 2;
+    if (billTo.length > 0) {
+      leftOffset += docWidth / 4 - margin / 2;
+    }
+    autoTable(doc, {
+      head: [["Ship To"]],
+      body: shipTo,
+      startY: partiesStartY,
+      margin: {
+        top: margin,
+        right: margin + margin / 2,
+        bottom: 2 * margin,
+        left: leftOffset,
+      },
+      theme: "plain",
+      showHead: "firstPage",
+      styles: {
+        fontSize: 10,
+        cellPadding: {
+          top: 0,
+          right: 0.125,
+          bottom: 0.0625,
+          left: 0,
+        },
+      },
+    });
+    cursor = {
+      y: Math.max(
+        cursor.y,
+        (doc as jsPDF & { lastAutoTable: { finalY: number } }).lastAutoTable
+          .finalY
+      ),
+      page: Math.max(cursor.page, doc.getCurrentPageInfo().pageNumber),
     };
   }
+
+  return cursor;
+}
+
+function stringifyAddress(address: Address | null | undefined): string {
+  let addressString = "";
+  if (address) {
+    if (address.street_address) {
+      addressString = addressString.concat(address.street_address);
+    }
+    if (address.city || address.region || address.postal_code) {
+      addressString = addressString.concat("\n");
+      if (address.city) {
+        addressString = addressString.concat(address.city);
+      }
+      if (address.region) {
+        addressString = addressString.concat(", ", address.region);
+      }
+      if (address.postal_code) {
+        addressString = addressString.concat(" ", address.postal_code);
+      }
+    }
+    if (address.country) {
+      addressString = addressString.concat("\n", address.country);
+    }
+  }
+  return addressString;
+}
+
+function getBillTo(header: Receipt["header"]) {
+  let billTo: string[][] = [];
+  if (header.customer) {
+    if (header.customer.name) {
+      billTo.push([header.customer.name]);
+    }
+    if (header.customer.address) {
+      billTo.push([stringifyAddress(header.customer?.address)]);
+    }
+    if (header.customer.email) {
+      billTo.push([header.customer.email]);
+    }
+    if (header.customer.phone) {
+      billTo.push([header.customer.phone]);
+    }
+    if (header.customer.metadata.length > 0) {
+      header.customer.metadata.forEach((m) => {
+        billTo.push([m.key + ": " + m.value]);
+      });
+    }
+  }
+  return billTo;
+}
+
+function getShipTo(itemization: Receipt["itemization"]) {
+  let shipTo: string[][] = [];
+  if (
+    itemization.ecommerce &&
+    itemization.ecommerce.shipments &&
+    itemization.ecommerce.shipments.length === 1 &&
+    itemization.ecommerce.shipments[0].destination_address
+  ) {
+    shipTo.push([
+      stringifyAddress(itemization.ecommerce.shipments[0].destination_address),
+    ]);
+  }
+  return shipTo;
 }

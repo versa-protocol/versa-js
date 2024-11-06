@@ -12,7 +12,7 @@ export function Parties({
     <div className={styles.partiesWrap}>
       {customer && (
         <div>
-          <div className={styles.partyHeader}>Bill to</div>
+          <div className={styles.partyHeader}>Bill To</div>
           {customer.name && <div>{customer.name}</div>}
           {customer.email && <div>{customer.email}</div>}
           {customer.phone && <div>{customer.phone}</div>}
