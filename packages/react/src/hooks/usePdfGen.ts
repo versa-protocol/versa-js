@@ -124,6 +124,11 @@ function getBuyerData(header: Receipt["header"]) {
     if (header.customer.phone) {
       buyerData.push([header.customer.phone]);
     }
+    if (header.customer.metadata.length > 0) {
+      header.customer.metadata.forEach((m) => {
+        buyerData.push([m.key + ": " + m.value]);
+      });
+    }
   }
   return buyerData;
 }
