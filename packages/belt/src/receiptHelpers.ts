@@ -8,6 +8,7 @@ import {
   Metadatum,
   TransitRoute,
   FlightSegment,
+  Adjustment,
 } from "@versaprotocol/schema";
 import canonicalize from "canonicalize";
 import {
@@ -1004,4 +1005,14 @@ function aggregateFlightHeaders(
     },
   };
   return ticketSummaryHead;
+}
+
+export function netAdjustments(adjustments: Adjustment[] | undefined): number {
+  let net = 0;
+  if (adjustments) {
+    adjustments.forEach((a) => {
+      net += a.amount;
+    });
+  }
+  return net;
 }

@@ -56,8 +56,19 @@
   margin-top: 0.25rem;
 }
 
+.totalWrap {
+  text-align: right;
+}
+
 .lineItemTotal {
   font-weight: 800;
+}
+
+.adjustmentCalc {
+  color: var(--foreground-secondary);
+  text-decoration: line-through;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
 }
 
 .lineItemTextSimple {

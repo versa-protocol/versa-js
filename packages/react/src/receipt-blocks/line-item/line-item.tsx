@@ -1,6 +1,6 @@
-import { formatUSD } from "@versaprotocol/belt";
+import { formatUSD, netAdjustments } from "@versaprotocol/belt";
 import styles from "./line-item.module.css";
-import { Item } from "@versaprotocol/schema";
+import { Adjustment, Item, Metadatum } from "@versaprotocol/schema";
 
 export function LineItem({ li }: { li: Item }) {
   return (
@@ -14,14 +14,16 @@ export function LineItem({ li }: { li: Item }) {
           className={styles.lineItemPhoto}
         />
       )}
-      {li.unit_cost || (li.metadata && li.metadata.length > 0) ? (
+      {li.unit_cost ||
+      (li.metadata && li.metadata.length > 0) ||
+      (li.adjustments && li.adjustments.length > 0) ? (
         <div className={styles.lineItemText}>
           <div>{li.description}</div>
           <div className={styles.lineItemDetails}>
             <div className={styles.lineItemMetadata}>
               {li.metadata && li.metadata.length > 0 && (
                 <>
-                  {li.metadata.map((m: any, index: number) => (
+                  {li.metadata.map((m: Metadatum, index: number) => (
                     <div className="secondaryText">
                       {m.key && <>{m.key}: </>}
                       {m.value}
@@ -37,9 +39,32 @@ export function LineItem({ li }: { li: Item }) {
                   {li.unit && <> per {li.unit}</>}
                 </div>
               )}
+              {li.adjustments && li.adjustments.length > 0 && (
+                <>
+                  {li.adjustments.map((a: Adjustment, index: number) => (
+                    <div className="secondaryText">
+                      {a.name ? a.name : a.adjustment_type}{" "}
+                      {a.rate ? (
+                        <>({a.rate * 100}%)</>
+                      ) : (
+                        <>({formatUSD(a.amount / 100)})</>
+                      )}
+                    </div>
+                  ))}
+                </>
+              )}
             </div>
-            <div className={styles.lineItemTotal}>
-              {formatUSD(li.amount / 100)}
+            <div className={styles.totalWrap}>
+              {li.adjustments && (
+                <div className={styles.adjustmentCalc}>
+                  {formatUSD(
+                    (li.amount - netAdjustments(li.adjustments)) / 100
+                  )}
+                </div>
+              )}
+              <div className={styles.lineItemTotal}>
+                {formatUSD(li.amount / 100)}
+              </div>
             </div>
           </div>
         </div>
