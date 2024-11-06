@@ -17,6 +17,7 @@ import {
   formatUSD,
   airportLookup,
   flightClass,
+  capitalize,
 } from "./format";
 
 export function aggregateTaxes(itemization: Itemization): Tax[] {
@@ -839,6 +840,24 @@ function aggregateGenericItemRows(rows: Item[], head: pdfItem): pdfItem[] {
       } else if (key == "description") {
         let descriptionString: string = "";
         descriptionString = i.description;
+        if (i.adjustments && i.adjustments.length > 0) {
+          i.adjustments.forEach((a) => {
+            let adjustmentString = "";
+            if (a.name) {
+              adjustmentString += a.name + " applied";
+            } else {
+              adjustmentString += capitalize(a.adjustment_type) + " applied";
+            }
+            if (a.rate) {
+              adjustmentString += " (" + a.rate * 100 + "%)";
+            } else {
+              adjustmentString += " (" + formatUSD(a.amount / 100) + ")";
+            }
+            descriptionString = descriptionString.concat(
+              "\n" + adjustmentString
+            );
+          });
+        }
         row.description = { content: descriptionString };
       } else if (key == "amount") {
         row.amount = {

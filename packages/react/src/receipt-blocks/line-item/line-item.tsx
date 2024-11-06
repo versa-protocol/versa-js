@@ -1,4 +1,4 @@
-import { formatUSD, netAdjustments } from "@versaprotocol/belt";
+import { capitalize, formatUSD, netAdjustments } from "@versaprotocol/belt";
 import styles from "./line-item.module.css";
 import { Adjustment, Item, Metadatum } from "@versaprotocol/schema";
 
@@ -43,7 +43,7 @@ export function LineItem({ li }: { li: Item }) {
                 <>
                   {li.adjustments.map((a: Adjustment, index: number) => (
                     <div className="secondaryText">
-                      {a.name ? a.name : a.adjustment_type}{" "}
+                      {a.name ? a.name : capitalize(a.adjustment_type)}{" "}
                       {a.rate ? (
                         <>({a.rate * 100}%)</>
                       ) : (
@@ -55,7 +55,7 @@ export function LineItem({ li }: { li: Item }) {
               )}
             </div>
             <div className={styles.totalWrap}>
-              {li.adjustments && (
+              {li.adjustments && li.adjustments.length > 0 && (
                 <div className={styles.adjustmentCalc}>
                   {formatUSD(
                     (li.amount - netAdjustments(li.adjustments)) / 100

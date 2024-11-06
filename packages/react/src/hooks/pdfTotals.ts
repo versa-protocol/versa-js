@@ -4,6 +4,7 @@ import { Receipt, Adjustment, Tax } from "@versaprotocol/schema";
 import {
   aggregateAdjustments,
   aggregateTaxes,
+  capitalize,
   formatUSD,
 } from "@versaprotocol/belt";
 
@@ -27,9 +28,9 @@ export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
     aggregatedAdjustments.forEach((a) => {
       let description = "";
       if (a.name) {
-        description = capitalizeFirstLetter(a.name);
+        description = capitalize(a.name);
       } else {
-        description = capitalizeFirstLetter(a.adjustment_type);
+        description = capitalize(a.adjustment_type);
       }
       if (a.rate) {
         description += " (" + a.rate * 100 + "%)";
@@ -115,8 +116,4 @@ export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
     },
     pageBreak: "avoid",
   });
-}
-
-function capitalizeFirstLetter(val: string) {
-  return String(val).charAt(0).toUpperCase() + String(val).slice(1);
 }
