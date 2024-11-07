@@ -1,4 +1,4 @@
-import { Address, Org, Receipt } from "@versaprotocol/schema";
+import { Org, Receipt } from "@versaprotocol/schema";
 import { jsPDF } from "jspdf";
 import { Header } from "./pdfHeader";
 import { Parties } from "./pdfParties";
@@ -7,6 +7,7 @@ import { Items } from "./pdfItems";
 import { Totals } from "./pdfTotals";
 import { Payments } from "./pdfPayments";
 import { Footers } from "./pdfFooters";
+import { SupplementalText } from "./pdfSupplementalText";
 
 export const usePdfGen = ({
   merchant,
@@ -48,7 +49,12 @@ export const usePdfGen = ({
       Payments(doc, receipt.payments, margin);
     }
 
-    // Footers
+    // Supplemental Text
+    if (receipt.footer.supplemental_text) {
+      SupplementalText(doc, receipt.footer.supplemental_text, margin);
+    }
+
+    // Page number footer
     Footers(doc, margin);
 
     // Save

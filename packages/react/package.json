@@ -15,7 +15,6 @@
     "prepublish": "pnpm build"
   },
   "dependencies": {
-    "@ezpaarse-project/jspdf-md": "^1.1.0",
     "@versaprotocol/belt": "workspace:*",
     "@versaprotocol/schema": "workspace:*",
     "jspdf": "^2.5.2",
@@ -23,6 +22,7 @@
     "react": "^18.2.0",
     "react-feather": "^2.0.10",
     "react-markdown": "^9.0.1",
+    "remove-markdown": "^0.5.5",
     "svg2pdf.js": "^2.2.4"
   },
   "devDependencies": {
