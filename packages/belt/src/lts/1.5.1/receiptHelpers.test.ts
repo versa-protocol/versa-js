@@ -9,7 +9,7 @@ import {
 
 import { receipts } from "@versaprotocol/examples";
 
-const railReceipt = receipts.rail as lts.v1_5_1.Receipt;
+const railReceipt = receipts.rail as unknown as lts.v1_5_1.Receipt;
 
 const testData = {
   general: null,
@@ -382,7 +382,7 @@ describe("organizeTransitRoutes", () => {
 
 describe("organizeSegmentedItineraries", () => {
   it("should organized itineraries into two grouped itineraries for an outgoing itinerary and a return", () => {
-    const receipt = receipts.flight as lts.v1_5_1.Receipt;
+    const receipt = receipts.flight as unknown as lts.v1_5_1.Receipt;
 
     let ticket = receipt?.itemization?.flight?.tickets[0];
     if (!ticket || !ticket.segments) {

@@ -43,7 +43,9 @@ describe("receiptComparator", () => {
       customer: null,
       location: null,
     },
-    actions: [],
+    footer: {
+      actions: [],
+    },
     payments: [],
   };
 
@@ -88,7 +90,9 @@ describe("receiptComparator", () => {
       customer: null,
       location: null,
     },
-    actions: [],
+    footer: {
+      actions: [],
+    },
     payments: [],
   };
 
@@ -119,7 +123,9 @@ describe("receiptComparator", () => {
       customer: null,
       location: null,
     },
-    actions: [],
+    footer: {
+      actions: [],
+    },
     payments: [],
   };
   describe("compare function", () => {
