@@ -3,7 +3,7 @@ import {
   ActionBlock,
   ActivityBlock,
   BlockWrap,
-  Footer,
+  ExportOptions,
   ItemizedCarRental,
   ItemizedFlight,
   ItemizedLodging,
@@ -13,6 +13,7 @@ import {
   LocalBusiness,
   ReceiptHeader,
   Shipment,
+  SupplementalText,
   ThirdParty,
   Totals,
 } from "../../receipt-blocks";
@@ -245,9 +246,14 @@ export function ReceiptLatest({
       )}
 
       {/* Download */}
+      {!!data.footer.supplemental_text && (
+        <BlockWrap>
+          <SupplementalText text={data.footer.supplemental_text} />
+        </BlockWrap>
+      )}
 
-      {/* Footer */}
-      <Footer
+      {/* ExportOptions */}
+      <ExportOptions
         receiptHeader={data.header}
         mapAttribution={mapAttribution}
         downloadReceipt={downloadReceipt}

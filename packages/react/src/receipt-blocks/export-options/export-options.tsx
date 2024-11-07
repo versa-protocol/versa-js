@@ -1,8 +1,8 @@
 import { Download } from "react-feather";
-import styles from "./footer.module.css";
+import styles from "./export-options.module.css";
 import { Header } from "@versaprotocol/schema";
 
-export function Footer({
+export function ExportOptions({
   mapAttribution,
   receiptHeader,
   downloadReceipt,

@@ -3,7 +3,7 @@ import {
   ActionBlock,
   ActivityBlock,
   BlockWrap,
-  Footer,
+  ExportOptions,
   LocalBusiness,
   ReceiptHeader,
   Shipment,
@@ -251,7 +251,7 @@ export function ReceiptDisplay({
       {/* Download */}
 
       {/* Footer */}
-      <Footer
+      <ExportOptions
         receiptHeader={data.header}
         mapAttribution={mapAttribution}
         downloadReceipt={downloadReceipt}
