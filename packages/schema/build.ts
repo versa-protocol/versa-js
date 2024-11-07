@@ -13,7 +13,7 @@ async function main() {
   }
   const latestVersion = LTS_VERSIONS[LTS_VERSIONS.length - 1];
 
-  let index = "/* This file is auto-generated, do not modify */";
+  let index = "/* This file is auto-generated, do not modify */\n";
 
   if (!fs.existsSync("src/lts")) {
     fs.mkdirSync("src/lts", { recursive: true });
@@ -22,7 +22,7 @@ async function main() {
   for (const version of LTS_VERSIONS) {
     const safeVersion = version.replace(/\./g, "_");
     await generate(version);
-    index += `\nexport * as v${safeVersion} from "./${version}";`;
+    index += `export * as v${safeVersion} from "./${version}";\n`;
   }
 
   fs.writeFileSync(`src/lts/index.ts`, index);

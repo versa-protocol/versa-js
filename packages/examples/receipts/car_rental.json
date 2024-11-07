@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.6.0",
+  "schema_version": "1.7.0",
   "header": {
     "invoice_number": "auth_1MzFN1K8F4fqH0lBmFq8CjbU",
     "currency": "usd",
@@ -109,6 +109,8 @@
     "subscription": null,
     "flight": null
   },
-  "actions": [],
+  "footer": {
+    "actions": []
+  },
   "payments": []
 }

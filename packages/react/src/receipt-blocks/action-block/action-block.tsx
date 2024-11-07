@@ -1,12 +1,12 @@
 import styles from "./action-block.module.css";
-import { Receipt } from "@versaprotocol/schema";
+import { Action } from "@versaprotocol/schema";
 
 export function ActionBlock({
   actions,
   brandTheme,
   brandThemeContrastLight,
 }: {
-  actions: Receipt["actions"];
+  actions: Action[];
   brandTheme: any;
   brandThemeContrastLight: boolean;
 }) {

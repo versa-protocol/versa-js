@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.6.0",
+  "schema_version": "1.7.0",
   "header": {
     "invoice_number": "3kJ9X5Y9L2s8H0kAmN2B7CvW",
     "currency": "usd",
@@ -168,6 +168,8 @@
       "invoice_level_adjustments": []
     }
   },
-  "actions": [],
+  "footer": {
+    "actions": []
+  },
   "payments": []
 }

@@ -1,4 +1,4 @@
-import { Org, Receipt } from "@versaprotocol/schema";
+import { Org, Receipt, lts } from "@versaprotocol/schema";
 import {
   ActionBlock,
   ActivityBlock,
@@ -16,27 +16,27 @@ import {
   ThirdParty,
   Totals,
 } from "../../receipt-blocks";
-import {
-  Activity,
-  aggregateAdjustments,
-  aggregateEcommerceItems,
-  aggregateTaxes,
-} from "@versaprotocol/belt";
 import styles from "./../base_receipt.module.css";
 import { Payments } from "../../receipt-blocks/payments";
 import { Parties } from "../../receipt-blocks/parties/parties";
 import { usePdfGen } from "../../hooks/usePdfGen";
 
 import { LTS_VERSIONS } from "@versaprotocol/schema";
+import {
+  Activity,
+  aggregateAdjustments,
+  aggregateEcommerceItems,
+  aggregateTaxes,
+} from "@versaprotocol/belt";
 
-export function ReceiptLatest({
+export function ReceiptDisplay({
   receipt,
   schemaVersion,
   merchant,
   activities,
   theme,
 }: {
-  receipt: Receipt;
+  receipt: lts.v1_6_0.Receipt;
   schemaVersion: string;
   merchant: Org;
   activities?: Activity[];
@@ -89,7 +89,7 @@ export function ReceiptLatest({
 
   const { downloadReceipt, downloadInvoice } = usePdfGen({
     merchant: merchant,
-    receipt: data,
+    receipt: data as unknown as Receipt,
     brandColor: colors.brand,
   });
 
@@ -130,7 +130,9 @@ export function ReceiptLatest({
       {data.itemization.car_rental && (
         <>
           <BlockWrap>
-            <ItemizedCarRental car_rental={data.itemization.car_rental} />
+            <ItemizedCarRental
+              car_rental={data.itemization.car_rental as any}
+            />
           </BlockWrap>
           <BlockWrap>
             <LineItems items={data.itemization.car_rental.items} />
@@ -196,10 +198,10 @@ export function ReceiptLatest({
 
       {/* Actions */}
 
-      {data.footer.actions && data.footer.actions.length > 0 && (
+      {data.actions && data.actions.length > 0 && (
         <BlockWrap>
           <ActionBlock
-            actions={data.footer.actions}
+            actions={data.actions}
             brandTheme={colors.brand}
             brandThemeContrastLight={colors.brandThemeLight}
           />
