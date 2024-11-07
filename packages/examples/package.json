@@ -10,7 +10,8 @@
   "scripts": {
     "build": "tsup index.ts --format cjs,esm --dts",
     "dev": "tsup index.ts --format cjs,esm --dts --watch",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "prepare": "pnpm build"
   },
   "devDependencies": {
     "@types/node": "^20.5.2",

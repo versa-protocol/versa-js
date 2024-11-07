@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "build": "ts-node build.ts && tsup src/index.ts --format cjs,esm --dts",
-    "dev": "ts-node build.ts && tsup src/index.ts --format cjs,esm --dts"
+    "dev": "ts-node build.ts && tsup src/index.ts --format cjs,esm --dts",
+    "prepare": "pnpm build"
   },
   "devDependencies": {
     "@types/jest": "^28.1.3",
