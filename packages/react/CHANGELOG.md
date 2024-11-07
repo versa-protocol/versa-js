@@ -1,5 +1,11 @@
 # @versaprotocol/react
 
+## 1.7.1
+
+### Patch Changes
+
+- Fix typings generation
+
 ## 1.7.0
 
 ### Minor Changes
