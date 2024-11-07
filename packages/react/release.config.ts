@@ -28,7 +28,7 @@ const config: RollupOptions = {
     del({ targets: "dist/*", runOnce: true }),
     (peerDepsExternal as any)(),
     resolve(),
-    typescript(),
+    typescript({ tsconfig: "tsconfig.build.json" }),
     commonjs(),
     postcss({
       modules: true,

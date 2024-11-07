@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "build": "rollup -c",
-    "build-clean": "rollup --config release.config.ts --configPlugin typescript",
+    "build-clean": "rollup -c release.config.ts --configPlugin typescript",
     "dev": "rollup -c --watch",
     "test": "jest",
     "prepare": "pnpm build"
