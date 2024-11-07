@@ -1,5 +1,17 @@
 # @versaprotocol/react
 
+## 1.7.0
+
+### Minor Changes
+
+- Update for schema version 1.7.0
+
+### Patch Changes
+
+- Updated dependencies
+  - @versaprotocol/belt@1.7.0
+  - @versaprotocol/schema@1.7.0
+
 ## 1.6.2
 
 ### Patch Changes
