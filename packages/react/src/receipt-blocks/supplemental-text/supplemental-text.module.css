@@ -6,10 +6,10 @@
 .supplementalText h2,
 .supplementalText h3,
 .supplementalText h4 {
-  font-size: 1rem;
+  font-size: 0.875rem;
 }
 
 .supplementalText ol li,
 .supplementalText ul li {
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
 }
