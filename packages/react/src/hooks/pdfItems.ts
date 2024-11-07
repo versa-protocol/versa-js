@@ -18,7 +18,7 @@ export async function Items(
     autoTable(doc, {
       head: [aggregatedItems.head],
       body: aggregatedItems.items,
-      startY: cursor.y + margin,
+      startY: cursor.y + margin / 2,
       margin: { top: margin, right: margin, bottom: 2 * margin, left: margin },
       theme: "plain",
       headStyles: {

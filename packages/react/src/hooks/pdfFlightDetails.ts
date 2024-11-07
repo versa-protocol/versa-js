@@ -34,7 +34,6 @@ export async function FlightDetails(
       bigFontSize,
       regFontSize
     );
-    cursor.y += margin / 2;
     ticketGroup.itineraries.forEach((itinerary) => {
       doc.setPage(cursor.page);
       let itineraryString = "";
@@ -43,7 +42,7 @@ export async function FlightDetails(
       }
       itineraryString +=
         itinerary.departure_city + " to " + itinerary.arrival_city;
-      cursor.y += margin;
+      cursor.y += margin / 2;
       doc.setFontSize(regFontSize);
       doc.setFont("helvetica", "normal");
       doc.text(itineraryString, margin, cursor.y);

@@ -125,7 +125,6 @@ export function Parties(
       page: Math.max(cursor.page, doc.getCurrentPageInfo().pageNumber),
     };
   }
-
   return cursor;
 }
 
