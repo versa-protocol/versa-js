@@ -1,3 +1,8 @@
 .supplementalText {
   font-size: 0.875rem;
 }
+
+.supplementalText ol li,
+.supplementalText ul li {
+  margin-bottom: 0.25rem;
+}
