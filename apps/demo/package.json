@@ -13,7 +13,7 @@
     "@versaprotocol/belt": "workspace:*",
     "@versaprotocol/examples": "workspace:*",
     "@versaprotocol/react": "workspace:*",
-    "@versaprotocol/schema": "^1.7.0",
+    "@versaprotocol/schema": "workspace:*",
     "next-themes": "^0.3.0",
     "next": "^14.2.10",
     "react-dom": "^18",
