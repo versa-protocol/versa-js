@@ -91,7 +91,7 @@ export function ReceiptDisplay({
 
   const { downloadReceipt, downloadInvoice } = usePdfGen({
     merchant: merchant,
-    receipt: data as Receipt,
+    receipt: data as unknown as Receipt,
     brandColor: colors.brand,
   });
 

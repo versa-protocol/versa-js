@@ -620,3 +620,11 @@ export const v1_5_1 = {
   flight: flight_1_5_1,
   simple: simple_1_5_1,
 };
+
+import flight_1_6_0 from "./receipts/1.5.1/flight.json";
+import simple_1_6_0 from "./receipts/1.5.1/simple.json";
+
+export const v1_6_0 = {
+  flight: flight_1_6_0,
+  simple: simple_1_6_0,
+};
