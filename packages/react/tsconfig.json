@@ -8,6 +8,6 @@
     },
     "lib": ["dom", "dom.iterable", "esnext"]
   },
-  "include": ["src/index.ts", "env.d.ts"],
+  "include": ["src/index.ts", "env.d.ts", "release.config.ts"],
   "exclude": ["dist", "build", "node_modules"]
 }
