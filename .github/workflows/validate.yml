@@ -20,6 +20,6 @@ jobs:
       - name: Validate
         uses: thomasmost/gha-valjean@main
         with:
-          schema-url: https://raw.githubusercontent.com/versa-protocol/schema/1.6.0/data/receipt.schema.json
+          schema-url: https://raw.githubusercontent.com/versa-protocol/schema/1.7.0/data/receipt.schema.json
           target-dir: packages/examples/receipts
           all-errors: true
