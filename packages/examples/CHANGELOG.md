@@ -1,5 +1,11 @@
 # @versaprotocol/examples
 
+## 1.7.1
+
+### Patch Changes
+
+- Updated flight receipt json
+
 ## 1.7.0
 
 ### Minor Changes
