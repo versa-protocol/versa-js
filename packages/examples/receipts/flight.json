@@ -334,7 +334,15 @@
   },
   "footer": {
     "actions": [],
-    "supplemental_text": "## Terms and Conditions\n\nThis receipt confirms your booking with American Airlines. Please review the following terms and conditions carefully.\n\n1. **Ticket Validity and Non-Transferability:** Your ticket is valid only for the person named on the receipt and is non-transferable. Changes to the reservation may incur additional charges as per American Airlines’ policies.\n2. **Refund and Cancellation Policy:** Refunds and cancellations are subject to the fare rules applicable at the time of booking. Some tickets are non-refundable. If eligible for a refund, please allow up to 7 business days for processing. For further assistance, please refer to American Airlines' Refund Policy.\n3. **Baggage Allowance and Liability:** American Airlines' baggage policies, including fees, allowances, and size/weight limits, apply. For details, visit Baggage Policy. The airline's liability for lost, delayed, or damaged baggage is limited as per U.S. Department of Transportation regulations and international agreements such as the Montreal Convention."
+    "supplemental_text": "You have 24 hours from the time you first buy your ticket to make changes or cancel for a refund if you booked at least 2 days before departure."
   },
-  "payments": []
+  "payments": [
+    {
+      "amount": 140040,
+      "paid_at": 1713295619,
+      "payment_type": "card",
+      "card_payment": { "last_four": "4886", "network": "mastercard" },
+      "ach_payment": null
+    }
+  ]
 }
