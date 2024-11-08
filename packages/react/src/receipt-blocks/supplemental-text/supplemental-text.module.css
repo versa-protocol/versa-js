@@ -1,15 +1,77 @@
-.supplementalText {
+.supplementalTextWrap {
+  overflow: hidden;
+  position: relative;
+}
+
+.content {
+  max-height: 80px;
+  overflow: hidden;
+  transition: height 0.3s ease;
+  position: relative;
+}
+
+.expanded .content {
+  max-height: none;
+  height: auto;
+}
+
+.toggleButton {
+  display: block;
+  margin: 10px 0;
+  padding: 0;
+  font-size: 14px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--foreground-secondary);
+}
+
+.toggleButton:hover {
+  text-decoration: underline;
+}
+
+.content {
   font-size: 0.875rem;
 }
 
-.supplementalText h1,
-.supplementalText h2,
-.supplementalText h3,
-.supplementalText h4 {
+.content h1,
+.content h2,
+.content h3,
+.content h4 {
   font-size: 0.875rem;
+  font-weight: bold;
 }
 
-.supplementalText ol li,
-.supplementalText ul li {
+.content ol li,
+.content ul li {
   margin-bottom: 0.5rem;
+}
+
+.content a {
+  color: var(--foreground-secondary);
+}
+
+.buttonWrap {
+  display: flex;
+  justify-content: end;
+}
+
+.fadeOut .content::after {
+  content: " ";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2.5rem; /* The height of the fading gradient */
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--background-alpha), 0) 0%,
+    var(--background) 100%
+  );
+  pointer-events: none; /* Prevent interaction with the overlay */
+  z-index: 1;
+}
+
+.expanded.fadeOut .content::after {
+  display: none;
 }

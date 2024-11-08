@@ -31,6 +31,7 @@
   --dark-stroke: var(--dark25);
   --foreground-alpha: 0, 0, 0;
   --background-alpha-tint: 200, 200, 200;
+  --background-alpha: 255, 255, 255;
   --yellow120: hsl(54, 79%, 42%);
   --yellow10: hsl(53, 82%, 96%);
   --brand: #802363;
@@ -49,6 +50,7 @@
   --background-contrast: var(--dark100);
   --foreground-alpha: 255, 255, 255;
   --background-alpha-tint: 5, 5, 5;
+  --background-alpha: 0, 0, 0;
   --yellow120: hsl(54, 79%, 42%);
   --yellow10: hsl(53, 82%, 96%);
 }
