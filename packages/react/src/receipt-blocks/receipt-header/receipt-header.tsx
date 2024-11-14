@@ -37,8 +37,8 @@ export function ReceiptHeader({
               <Parties customer={header.customer} merchant={merchant} />
             )}
           </div>
-          <div className={styles.logo}>
-            {merchant.logo && (
+          {merchant.logo && (
+            <div className={styles.logo}>
               <img
                 src={
                   (header.third_party &&
@@ -54,8 +54,8 @@ export function ReceiptHeader({
                     : merchant.name
                 }
               />
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
 
@@ -79,7 +79,9 @@ export function ReceiptHeader({
               }
             />
           ) : (
-            <PlaceholderGraphic />
+            <div className={styles.logo}>
+              <PlaceholderGraphic />
+            </div>
           )}
         </div>
         <div className={styles.headerText}>

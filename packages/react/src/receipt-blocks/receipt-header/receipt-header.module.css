@@ -27,6 +27,8 @@
   min-width: 4rem;
   min-height: 4rem;
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .compact .logo::after {
@@ -41,8 +43,10 @@
 }
 
 .compact .logo svg {
-  width: 4rem;
-  height: 4rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--foreground-secondary);
+  margin: auto;
 }
 
 .fullPage {
