@@ -1,5 +1,5 @@
 {
   "name": "Ramp",
-  "logo": "/temp_demo_assets/ramp/ramp.svg",
-  "logo_dark": "/temp_demo_assets/ramp/ramp-darkmode.svg"
+  "logo": "https://versa.org/studio/ramp/ramp.svg",
+  "logo_dark": "https://versa.org/studio/ramp/ramp-darkmode.svg"
 }

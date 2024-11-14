@@ -1,5 +1,5 @@
 {
   "name": "Traxo",
-  "logo": "/temp_demo_assets/traxo/traxo.svg",
-  "logo_dark": "/temp_demo_assets/traxo/traxo-darkmode.svg"
+  "logo": "https://versa.org/studio/traxo/traxo.svg",
+  "logo_dark": "https://versa.org/studio/traxo/traxo-darkmode.svg"
 }

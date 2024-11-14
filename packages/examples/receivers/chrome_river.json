@@ -1,5 +1,5 @@
 {
   "name": "Chrome River",
-  "logo": "/temp_demo_assets/chrome/chrome.svg",
-  "logo_dark": "/temp_demo_assets/chrome/chrome-darkmode.svg"
+  "logo": "https://versa.org/studio/chrome/chrome.svg",
+  "logo_dark": "https://versa.org/studio/chrome/chrome-darkmode.svg"
 }

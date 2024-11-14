@@ -1,5 +1,5 @@
 {
   "name": "Acme Bank",
-  "logo": "/temp_demo_assets/acme/acme.svg",
-  "logo_dark": "/temp_demo_assets/acme/acme-darkmode.svg"
+  "logo": "https://versa.org/studio/acme/acme.svg",
+  "logo_dark": "https://versa.org/studio/acme/acme-darkmode.svg"
 }

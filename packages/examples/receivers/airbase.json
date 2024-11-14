@@ -1,5 +1,5 @@
 {
   "name": "Airbase",
-  "logo": "/temp_demo_assets/airbase/airbase.svg",
-  "logo_dark": "/temp_demo_assets/airbase/airbase-darkmode.svg"
+  "logo": "https://versa.org/studio/airbase/airbase.svg",
+  "logo_dark": "https://versa.org/studio/airbase/airbase-darkmode.svg"
 }
