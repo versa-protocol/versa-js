@@ -1,5 +1,12 @@
 # @versaprotocol/react
 
+## 1.7.2
+
+### Patch Changes
+
+- Minor UI improvements
+  - @versaprotocol/belt@1.7.0
+
 ## 1.7.1
 
 ### Patch Changes

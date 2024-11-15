@@ -1,5 +1,11 @@
 # @versaprotocol/examples
 
+## 1.7.2
+
+### Patch Changes
+
+- Minor UI improvements
+
 ## 1.7.1
 
 ### Patch Changes
