@@ -1,5 +1,11 @@
 # @versaprotocol/react
 
+## 1.8.1
+
+### Patch Changes
+
+- Fix typings
+
 ## 1.8.0
 
 ### Minor Changes
