@@ -1,5 +1,11 @@
 # @versaprotocol/schema
 
+## 1.8.0
+
+### Minor Changes
+
+- Update to schema version 1.8.0; adding aircraft_type to flight segments
+
 ## 1.7.0
 
 ### Minor Changes

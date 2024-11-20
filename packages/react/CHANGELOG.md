@@ -1,5 +1,17 @@
 # @versaprotocol/react
 
+## 1.8.0
+
+### Minor Changes
+
+- Update to schema version 1.8.0; adding aircraft_type to flight segments
+
+### Patch Changes
+
+- Updated dependencies
+  - @versaprotocol/belt@1.8.0
+  - @versaprotocol/schema@1.8.0
+
 ## 1.7.2
 
 ### Patch Changes
