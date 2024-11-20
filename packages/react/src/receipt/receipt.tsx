@@ -53,6 +53,8 @@ export function ReceiptDisplay({
     );
   }
 
+  // The 1.8.0 react display is compatible with 1.7.0
+
   return (
     <ReceiptLatest
       receipt={data}

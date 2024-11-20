@@ -125,3 +125,12 @@ export const Lts1_6_0_Simple: Story = {
     receipt: v1_6_0.simple as any,
   },
 };
+
+import { v1_7_0 } from "@versaprotocol/examples";
+
+export const Lts1_7_0_Flight: Story = {
+  args: {
+    merchant: senders.jetblue,
+    receipt: v1_7_0.flight as any,
+  },
+};

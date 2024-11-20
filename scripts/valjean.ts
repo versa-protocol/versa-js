@@ -3,7 +3,7 @@ import Ajv2020 from "ajv/dist/2020";
 import addFormats from "ajv-formats";
 
 const schemaUrl =
-  "https://raw.githubusercontent.com/versa-protocol/schema/1.7.0/data/receipt.schema.json";
+  "https://raw.githubusercontent.com/versa-protocol/schema/1.8.0/data/receipt.schema.json";
 
 /**
  * The main function for the action.
