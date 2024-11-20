@@ -25,7 +25,7 @@ module.exports = {
   plugins: [
     peerDepsExternal(),
     resolve(),
-    typescript(),
+    typescript({ tsconfig: "tsconfig.build.json" }),
     commonjs(),
     postcss({
       modules: true,
