@@ -231,6 +231,16 @@ export function airportLookup(iataCode: string) {
   }
 }
 
+import { aircraft } from "./aircraft";
+
+export function aircraftLookup(icaoCode: string) {
+  if (aircraft[icaoCode as keyof typeof aircraft]) {
+    return aircraft[icaoCode as keyof typeof aircraft].model;
+  } else {
+    return icaoCode;
+  }
+}
+
 /**
  * Formats a comparison timestamp relative to an initial timestamp, showing just the time if on the same day,
  * or including the date and a relative day indicator if on different days

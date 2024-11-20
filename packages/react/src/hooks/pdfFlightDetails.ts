@@ -5,6 +5,7 @@ import {
   GroupedItinerary,
   organizeFlightTickets,
   aggregateFlight,
+  aircraftLookup,
 } from "@versaprotocol/belt";
 import { Flight, FlightSegment } from "@versaprotocol/schema";
 import { jsPDF } from "jspdf";
@@ -173,9 +174,17 @@ export async function FlightDetails(
             { align: "right" }
           );
         }
-        if (s.flight_number) {
+        if (s.flight_number || s.aircraft_type) {
+          let flightDescription = "";
+          flightDescription += s.flight_number;
+          if (s.flight_number && s.aircraft_type) {
+            flightDescription += " - ";
+          }
+          if (s.aircraft_type) {
+            flightDescription += aircraftLookup(s.aircraft_type);
+          }
           doc.text(
-            s.flight_number,
+            flightDescription,
             segmentLeftRightPad + leftOffset,
             cursor.y +
               segmentTopBottomPad +
