@@ -1,5 +1,11 @@
 # @versaprotocol/examples
 
+## 1.8.1
+
+### Patch Changes
+
+- updated schema_versions for 1.8 examples
+
 ## 1.8.0
 
 ### Minor Changes

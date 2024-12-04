@@ -7,7 +7,7 @@ import {
   aggregateFlight,
   aircraftLookup,
 } from "@versaprotocol/belt";
-import { Flight, FlightSegment } from "@versaprotocol/schema";
+import { Flight } from "@versaprotocol/schema";
 import { jsPDF } from "jspdf";
 import "svg2pdf.js";
 import autoTable from "jspdf-autotable";

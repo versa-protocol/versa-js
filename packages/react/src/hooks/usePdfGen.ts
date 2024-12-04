@@ -1,13 +1,5 @@
 import { Org, Receipt } from "@versaprotocol/schema";
-import { jsPDF } from "jspdf";
-import { Header } from "./pdfHeader";
-import { Parties } from "./pdfParties";
-import { TypeSubHeader } from "./pdfTypeSubHeader";
-import { Items } from "./pdfItems";
-import { Totals } from "./pdfTotals";
-import { Payments } from "./pdfPayments";
-import { Footers } from "./pdfFooters";
-import { SupplementalText } from "./pdfSupplementalText";
+import { createReceiptDoc } from "@versaprotocol/pdfgen";
 
 export const usePdfGen = ({
   merchant,
@@ -18,46 +10,12 @@ export const usePdfGen = ({
   receipt: Receipt;
   brandColor: string;
 }) => {
-  const margin = 0.375;
-
   const downloadReceipt = async () => {
-    // Doc set up
-    const doc = new jsPDF({
-      unit: "in",
-      format: "letter",
-      orientation: "portrait",
+    const doc = await createReceiptDoc({
+      merchant,
+      receipt,
+      brandColor,
     });
-    doc.setLineWidth((1 / 72) * 0.75);
-
-    // Header
-    Header(doc, merchant, receipt, margin, brandColor);
-
-    // Parties
-    let cursor = Parties(doc, merchant, receipt, margin);
-
-    // Type-Specific Sub-Headers
-    cursor = TypeSubHeader(doc, receipt, margin, cursor);
-
-    // Items
-    await Items(doc, receipt, margin, cursor);
-
-    // Totals
-    Totals(doc, receipt, margin);
-
-    // Payments
-    if (receipt.payments.length > 1) {
-      Payments(doc, receipt.payments, margin);
-    }
-
-    // Supplemental Text
-    if (receipt.footer.supplemental_text) {
-      SupplementalText(doc, receipt.footer.supplemental_text, margin);
-    }
-
-    // Page number footer
-    Footers(doc, margin);
-
-    // Save
     doc.save(
       merchant.name + " Invoice " + epochToISO8601(receipt.header.invoiced_at)
     );
