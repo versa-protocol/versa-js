@@ -1,5 +1,13 @@
 # @versaprotocol/react
 
+## 1.8.6
+
+### Patch Changes
+
+- Patch bug where pdf generation short circuits on an image fetch error, e.g. CSP violation
+- Updated dependencies
+  - @versaprotocol/pdfgen@1.8.9
+
 ## 1.8.1
 
 ### Patch Changes

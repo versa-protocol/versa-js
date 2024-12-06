@@ -42,8 +42,12 @@ export async function Header(
         "User-Agent": "versa-pdfgen",
       },
     };
-    const base64Image = await encode(logo, options);
-    doc.addImage(base64Image, "JPEG", docWidth - margin - 1, margin, 1, 1);
+    try {
+      const base64Image = await encode(logo, options);
+      doc.addImage(base64Image, "JPEG", docWidth - margin - 1, margin, 1, 1);
+    } catch (e) {
+      console.warn("Error fetching and encoding image:", e);
+    }
   }
   doc.setDrawColor(240);
   doc.rect(docWidth - margin - 1, margin, 1, 1, "S");
