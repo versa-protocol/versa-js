@@ -33,7 +33,7 @@ const config: RollupOptions = {
     postcss({
       modules: true,
     }),
-    bundleStats(),
+    bundleStats({ baseline: true }),
   ],
   external: ["react"],
 };
