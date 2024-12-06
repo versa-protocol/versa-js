@@ -13,7 +13,7 @@
     "build-clean": "rollup -c release.config.ts --configPlugin typescript",
     "dev": "rollup -c --watch",
     "test": "jest",
-    "prepare": "pnpm build"
+    "prepublish": "pnpm build-clean"
   },
   "dependencies": {
     "@versaprotocol/belt": "workspace:*",
