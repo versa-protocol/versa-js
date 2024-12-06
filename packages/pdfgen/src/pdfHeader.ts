@@ -2,8 +2,9 @@ import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 import { Org, Receipt, Payment } from "@versaprotocol/schema";
 import { capitalize } from "@versaprotocol/belt";
+import { encode } from "./encodeImage";
 
-export function Header(
+export async function Header(
   doc: jsPDF,
   merchant: Org,
   receipt: Receipt,
@@ -34,8 +35,15 @@ export function Header(
   ) {
     logo = receipt.header.third_party.merchant.logo;
   }
-  {
-    logo && doc.addImage(logo, "JPEG", docWidth - margin - 1, margin, 1, 1);
+  if (logo) {
+    const options = {
+      string: true,
+      headers: {
+        "User-Agent": "versa-pdfgen",
+      },
+    };
+    const base64Image = await encode(logo, options);
+    doc.addImage(base64Image, "JPEG", docWidth - margin - 1, margin, 1, 1);
   }
   doc.setDrawColor(240);
   doc.rect(docWidth - margin - 1, margin, 1, 1, "S");

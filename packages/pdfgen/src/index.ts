@@ -33,7 +33,7 @@ export const createReceiptDoc = async ({
   doc.setLineWidth((1 / 72) * 0.75);
 
   // Header
-  Header(doc, merchant, receipt, margin, brandColor);
+  await Header(doc, merchant, receipt, margin, brandColor);
 
   // Parties
   let cursor = Parties(doc, merchant, receipt, margin);
