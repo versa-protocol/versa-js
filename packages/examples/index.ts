@@ -34,6 +34,7 @@ import airfrance from "./senders/airfrance.json";
 import singapore_air from "./senders/singapore_air.json";
 import amtrak from "./senders/amtrak.json";
 import avis from "./senders/avis.json";
+import sixt from "./senders/sixt.json";
 
 // Rail
 import caltrain from "./senders/caltrain.json";
@@ -579,6 +580,7 @@ const untypedSenders = {
   carey,
   lowes,
   asana,
+  sixt,
 };
 
 export const untypedReceipts = {
