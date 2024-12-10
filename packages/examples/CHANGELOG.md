@@ -1,5 +1,11 @@
 # @versaprotocol/examples
 
+## 1.8.2
+
+### Patch Changes
+
+- add Sixt to examples
+
 ## 1.8.1
 
 ### Patch Changes
