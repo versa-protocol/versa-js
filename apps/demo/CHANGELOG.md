@@ -1,5 +1,12 @@
 # home
 
+## 0.2.36
+
+### Patch Changes
+
+- Updated dependencies
+  - @versaprotocol/react@1.8.7
+
 ## 0.2.35
 
 ### Patch Changes

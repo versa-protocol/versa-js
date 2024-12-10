@@ -1,5 +1,11 @@
 # @versaprotocol/react
 
+## 1.8.7
+
+### Patch Changes
+
+- Update to react 18.3
+
 ## 1.8.6
 
 ### Patch Changes
