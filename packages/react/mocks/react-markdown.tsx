@@ -1,4 +1,4 @@
-import React from "react";
+import React, { JSX } from "react";
 
 const ReactMarkdown = ({ children }: { children: JSX.Element }) => {
   return <>{children}</>;

@@ -1,0 +1,15 @@
+{
+  "mode": "pre",
+  "tag": "alpha",
+  "initialVersions": {
+    "demo": "0.2.36",
+    "versa-storybook": "0.0.31",
+    "@versaprotocol/belt": "1.8.0",
+    "@versaprotocol/examples": "1.8.2",
+    "@versaprotocol/pdfgen": "1.8.9",
+    "@versaprotocol/react": "1.8.7",
+    "@versaprotocol/schema": "1.8.0",
+    "tsconfig": "0.0.0"
+  },
+  "changesets": ["hungry-cougars-sparkle"]
+}
