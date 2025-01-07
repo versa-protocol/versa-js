@@ -5,10 +5,7 @@ import {
 } from "@versaprotocol/belt";
 import styles from "./itemized-flight.module.css";
 import { Flight } from "@versaprotocol/schema";
-import {
-  aggregateTicketFares,
-  organizeFlightTickets,
-} from "@versaprotocol/belt";
+import { organizeFlightTickets } from "@versaprotocol/belt";
 
 function PlaneIcon() {
   return (
@@ -147,9 +144,7 @@ export function ItemizedFlight({ flight }: { flight: Flight }) {
               })}
               <div>
                 <div className={styles.key}>Fare</div>
-                <div className={styles.value}>
-                  {formatUSD(aggregateTicketFares(t) / 100)}
-                </div>
+                <div className={styles.value}>{formatUSD(p.fare / 100)}</div>
               </div>
             </div>
           ))}

@@ -1,7 +1,7 @@
 import { Receipt } from "@versaprotocol/schema";
 import {
   aggregateTaxes,
-  aggregateTicketFares,
+  determineTicketFare,
   organizeFlightTickets,
   organizeSegmentedItineraries,
   organizeTransitRoutes,
@@ -21,9 +21,13 @@ const testData = {
   flight: {
     tickets: [
       {
+        fare: 123, // silly data, but an important edgecase to test
+        taxes: [],
+        metadata: [],
         segments: [
           {
             fare: 15233,
+            metadata: [],
             departure_airport_code: "SEA",
             arrival_airport_code: "MSP",
             departure_at: 1713196492,
@@ -52,10 +56,11 @@ const testData = {
                 name: "US Flight Segment Tax",
               },
             ],
-            adjustments: null,
+            adjustments: [],
           },
           {
             fare: 12186,
+            metadata: [],
             departure_airport_code: "MSP",
             arrival_airport_code: "GFK",
             departure_at: 1713196492,
@@ -84,10 +89,11 @@ const testData = {
                 name: "US Flight Segment Tax",
               },
             ],
-            adjustments: null,
+            adjustments: [],
           },
           {
             fare: 14014,
+            metadata: [],
             departure_airport_code: "GFK",
             arrival_airport_code: "MSP",
             departure_at: 1713196492,
@@ -116,10 +122,11 @@ const testData = {
                 name: "US Flight Segment Tax",
               },
             ],
-            adjustments: null,
+            adjustments: [],
           },
           {
             fare: 19498,
+            metadata: [],
             departure_airport_code: "MSP",
             arrival_airport_code: "SEA",
             departure_at: 1713196492,
@@ -148,7 +155,7 @@ const testData = {
                 name: "US Flight Segment Tax",
               },
             ],
-            adjustments: null,
+            adjustments: [],
           },
         ],
         number: "0062698215636",
@@ -156,9 +163,12 @@ const testData = {
         passenger: "Jimmy Dean",
       },
       {
+        taxes: [],
+        metadata: [],
         segments: [
           {
             fare: 15233,
+            metadata: [],
             departure_airport_code: "SEA",
             arrival_airport_code: "MSP",
             departure_at: 1713196492,
@@ -187,10 +197,11 @@ const testData = {
                 name: "US Flight Segment Tax",
               },
             ],
-            adjustments: null,
+            adjustments: [],
           },
           {
             fare: 12186,
+            metadata: [],
             departure_airport_code: "MSP",
             arrival_airport_code: "GFK",
             departure_at: 1713196492,
@@ -219,10 +230,11 @@ const testData = {
                 name: "US Flight Segment Tax",
               },
             ],
-            adjustments: null,
+            adjustments: [],
           },
           {
             fare: 14014,
+            metadata: [],
             departure_airport_code: "GFK",
             arrival_airport_code: "MSP",
             departure_at: 1713196492,
@@ -251,10 +263,11 @@ const testData = {
                 name: "US Flight Segment Tax",
               },
             ],
-            adjustments: null,
+            adjustments: [],
           },
           {
             fare: 19498,
+            metadata: [],
             departure_airport_code: "MSP",
             arrival_airport_code: "SEA",
             departure_at: 1713196492,
@@ -283,7 +296,7 @@ const testData = {
                 name: "US Flight Segment Tax",
               },
             ],
-            adjustments: null,
+            adjustments: [],
           },
         ],
         number: "0062698215637",
@@ -292,7 +305,7 @@ const testData = {
       },
     ],
     itinerary_locator: "1122337694093",
-    invoice_level_adjustments: null,
+    invoice_level_adjustments: [],
   },
 };
 
@@ -306,12 +319,14 @@ describe("aggregateTaxes", () => {
   });
 });
 
-describe("aggregateTicketFares", () => {
-  const organizedTickets = organizeFlightTickets(testData.flight as any); // TODO
+describe("determineTicketFare", () => {
+  const organizedTickets = organizeFlightTickets(testData.flight); // TODO
   // This is sort of just a reducer but that's fine
   it("should work", () => {
-    let result = aggregateTicketFares(organizedTickets[0]);
+    let result = determineTicketFare(testData.flight.tickets[1]);
     expect(result).toBe(60931);
+    expect(organizedTickets[0].passengers[0].fare).toBe(123);
+    expect(organizedTickets[0].passengers[1].fare).toBe(60931);
   });
 });
 
@@ -399,5 +414,17 @@ describe("organizeSegmentedItineraries", () => {
     expect(organized[1].departure_at).toBe(1713900952);
     expect(organized[1].departure_city).toBe("Grand Forks");
     expect(organized[1].arrival_city).toBe("Seattle");
+  });
+});
+
+describe("determineTicketFare", () => {
+  // This is sort of just a reducer but that's fine
+  it("should aggregate segment level data", () => {
+    let result = determineTicketFare(testData.flight.tickets[1]);
+    expect(result).toBe(60931);
+  });
+  it("should use ticket fare if populated", () => {
+    let result = determineTicketFare(testData.flight.tickets[0]);
+    expect(result).toBe(123);
   });
 });

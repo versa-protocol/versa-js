@@ -9,6 +9,7 @@ import {
   TransitRoute,
   FlightSegment,
   Adjustment,
+  FlightTicket,
 } from "@versaprotocol/schema";
 import canonicalize from "canonicalize";
 import {
@@ -47,6 +48,16 @@ export function aggregateTaxes(itemization: Itemization): Tax[] {
   }
   if (itemization.flight) {
     for (const ticket of itemization.flight.tickets) {
+      if (ticket.taxes.length > 0) {
+        for (const tax of ticket.taxes) {
+          if (aggregatedTaxes[tax.name + tax.rate]) {
+            aggregatedTaxes[tax.name + tax.rate].amount += tax.amount;
+          } else {
+            aggregatedTaxes[tax.name + tax.rate] = { ...tax };
+          }
+        }
+        continue;
+      }
       for (const segment of ticket.segments) {
         for (const tax of segment.taxes || []) {
           if (aggregatedTaxes[tax.name + tax.rate]) {
@@ -335,6 +346,7 @@ export function organizeTransitRoutes(
 }
 
 interface OrganizedFlightTicketPassenger {
+  fare: number;
   passenger: string | null | undefined;
   ticket_number: string | null | undefined;
   ticket_class: string | null; // only used if all class values are equal for ticket
@@ -342,7 +354,6 @@ interface OrganizedFlightTicketPassenger {
 }
 
 interface OrganizedFlightTicket {
-  fare: number | null | undefined;
   itineraries: GroupedItinerary[];
   passenger_count: number;
   passengers: OrganizedFlightTicketPassenger[];
@@ -481,6 +492,7 @@ export function organizeFlightTickets(flight: Flight): OrganizedFlightTicket[] {
       organizedTickets[dedupeKey].passenger_count++;
       if (passengerKey) {
         organizedTickets[dedupeKey].passengers.push({
+          fare: determineTicketFare(ticket),
           passenger: ticket.passenger,
           ticket_number: ticket.number,
           ticket_class: allClassValuesEqualForPassenger
@@ -491,11 +503,11 @@ export function organizeFlightTickets(flight: Flight): OrganizedFlightTicket[] {
       }
     } else {
       organizedTickets[dedupeKey] = {
-        fare: ticket.fare,
         itineraries: organizeSegmentedItineraries(segments),
         passenger_count: 1,
         passengers: [
           {
+            fare: determineTicketFare(ticket),
             passenger: ticket.passenger,
             ticket_number: ticket.number,
             ticket_class: allClassValuesEqualForPassenger
@@ -510,17 +522,13 @@ export function organizeFlightTickets(flight: Flight): OrganizedFlightTicket[] {
   return Object.values(organizedTickets);
 }
 
-export function aggregateTicketFares(ticket: OrganizedFlightTicket) {
+export function determineTicketFare(ticket: FlightTicket) {
+  if (ticket.fare !== null && ticket.fare !== undefined) {
+    return ticket.fare;
+  }
   let aggregatedTicketFares: number = 0;
-  for (const itinerary of ticket.itineraries) {
-    for (const segment of itinerary.segments) {
-      if (segment.fare === null || segment.fare === undefined) {
-        if (ticket.fare !== null && ticket.fare !== undefined) {
-          return ticket.fare;
-        }
-      }
-      aggregatedTicketFares += segment.fare || 0;
-    }
+  for (const segment of ticket.segments) {
+    aggregatedTicketFares += segment.fare || 0;
   }
   return aggregatedTicketFares;
 }
@@ -648,7 +656,7 @@ export function aggregateItems(itemization: Itemization) {
         items.push({
           passenger: { content: p.passenger ? p.passenger : "" },
           fare: {
-            content: formatUSD(aggregateTicketFares(t) / 100),
+            content: formatUSD(p.fare / 100),
             styles: {
               halign: "right",
               cellPadding: { top: 0.125, right: 0, bottom: 0.125, left: 0 },
@@ -968,7 +976,7 @@ export function aggregateFlight(organizedTicket: OrganizedFlightTicket) {
       row.ticket_class = { content: p.ticket_class };
     }
     row.fare = {
-      content: formatUSD(aggregateTicketFares(organizedTicket) / 100),
+      content: formatUSD(p.fare / 100),
       styles: {
         halign: "right",
         cellPadding: { top: 0.125, right: 0, bottom: 0.125, left: 0 },

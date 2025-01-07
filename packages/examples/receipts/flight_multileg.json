@@ -34,7 +34,7 @@
               "arrival_at": 1713732000,
               "departure_tz": "America/Los_Angeles",
               "arrival_tz": "America/Denver",
-              "flight_number": "UA 1021",
+              "flight_number": "UA1021",
               "class_of_service": "y",
               "seat": "21A",
               "taxes": [
@@ -65,7 +65,7 @@
               "arrival_at": 1713757200,
               "departure_tz": "America/Denver",
               "arrival_tz": "America/Indiana/Indianapolis",
-              "flight_number": "UA 1309",
+              "flight_number": "UA1309",
               "class_of_service": "y",
               "seat": "21B",
               "taxes": [
@@ -96,7 +96,7 @@
               "arrival_at": 1713933600,
               "departure_tz": "America/Indiana/Indianapolis",
               "arrival_tz": "America/New_York",
-              "flight_number": "DL 1202",
+              "flight_number": "DL1202",
               "class_of_service": "y",
               "seat": "22A",
               "taxes": [
@@ -127,7 +127,7 @@
               "arrival_at": 1713940800,
               "departure_tz": "America/New_York",
               "arrival_tz": "America/New_York",
-              "flight_number": "DL 0456",
+              "flight_number": "DL0456",
               "class_of_service": "y",
               "seat": "22B",
               "taxes": [
@@ -167,7 +167,7 @@
               "arrival_at": 1713732000,
               "departure_tz": "America/Los_Angeles",
               "arrival_tz": "America/Denver",
-              "flight_number": "UA 1021",
+              "flight_number": "UA1021",
               "class_of_service": "y",
               "seat": "21C",
               "taxes": [
@@ -198,7 +198,7 @@
               "arrival_at": 1713757200,
               "departure_tz": "America/Denver",
               "arrival_tz": "America/Indiana/Indianapolis",
-              "flight_number": "UA 1309",
+              "flight_number": "UA1309",
               "class_of_service": "y",
               "seat": "21D",
               "taxes": [
@@ -229,7 +229,7 @@
               "arrival_at": 1713933600,
               "departure_tz": "America/Indiana/Indianapolis",
               "arrival_tz": "America/New_York",
-              "flight_number": "DL 1202",
+              "flight_number": "DL1202",
               "class_of_service": "y",
               "seat": "22C",
               "taxes": [
@@ -260,7 +260,7 @@
               "arrival_at": 1713940800,
               "departure_tz": "America/New_York",
               "arrival_tz": "America/New_York",
-              "flight_number": "DL 0456",
+              "flight_number": "DL0456",
               "class_of_service": "y",
               "seat": "22D",
               "taxes": [
