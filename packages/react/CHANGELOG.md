@@ -1,5 +1,11 @@
 # @versaprotocol/react
 
+## 1.9.0
+
+### Minor Changes
+
+- Update to schema version 1.9, fix fare display bug
+
 ## 1.8.8
 
 ### Patch Changes
