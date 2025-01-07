@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.9.0",
+  "schema_version": "1.8.0",
   "header": {
     "invoice_number": "4Jk9H2X7L8m2G1nPoK3U1DcQ",
     "currency": "usd",
@@ -24,7 +24,6 @@
     "flight": {
       "tickets": [
         {
-          "taxes": [],
           "segments": [
             {
               "fare": 12500,
@@ -157,7 +156,6 @@
           "metadata": [{ "key": "Frequent Flyer #", "value": "UA3490" }]
         },
         {
-          "taxes": [],
           "segments": [
             {
               "fare": 12500,

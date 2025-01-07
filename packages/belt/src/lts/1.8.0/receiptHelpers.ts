@@ -1,15 +1,4 @@
-import {
-  Itemization,
-  Tax,
-  Flight,
-  Item,
-  Ecommerce,
-  Place,
-  Metadatum,
-  TransitRoute,
-  FlightSegment,
-  Adjustment,
-} from "@versaprotocol/schema";
+import { Adjustment, lts } from "@versaprotocol/schema";
 import canonicalize from "canonicalize";
 import {
   formatDateTime,
@@ -18,7 +7,17 @@ import {
   airportLookup,
   flightClass,
   capitalize,
-} from "./format";
+} from "../../format";
+
+type Itemization = lts.v1_8_0.Itemization;
+type Tax = lts.v1_8_0.Tax;
+type Flight = lts.v1_8_0.Flight;
+type Item = lts.v1_8_0.Item;
+type Ecommerce = lts.v1_8_0.Ecommerce;
+type Place = lts.v1_8_0.Place;
+type Metadatum = lts.v1_8_0.Metadatum;
+type TransitRoute = lts.v1_8_0.TransitRoute;
+type FlightSegment = lts.v1_8_0.FlightSegment;
 
 export function aggregateTaxes(itemization: Itemization): Tax[] {
   const aggregatedTaxes: Record<string, Tax> = {};
@@ -342,7 +341,6 @@ interface OrganizedFlightTicketPassenger {
 }
 
 interface OrganizedFlightTicket {
-  fare: number | null | undefined;
   itineraries: GroupedItinerary[];
   passenger_count: number;
   passengers: OrganizedFlightTicketPassenger[];
@@ -491,7 +489,6 @@ export function organizeFlightTickets(flight: Flight): OrganizedFlightTicket[] {
       }
     } else {
       organizedTickets[dedupeKey] = {
-        fare: ticket.fare,
         itineraries: organizeSegmentedItineraries(segments),
         passenger_count: 1,
         passengers: [
@@ -514,11 +511,6 @@ export function aggregateTicketFares(ticket: OrganizedFlightTicket) {
   let aggregatedTicketFares: number = 0;
   for (const itinerary of ticket.itineraries) {
     for (const segment of itinerary.segments) {
-      if (segment.fare === null || segment.fare === undefined) {
-        if (ticket.fare !== null && ticket.fare !== undefined) {
-          return ticket.fare;
-        }
-      }
       aggregatedTicketFares += segment.fare || 0;
     }
   }

@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.9.0",
+  "schema_version": "1.8.0",
   "header": {
     "invoice_number": "1MzFN1K8F4fqH0lBmFq8CjbU",
     "currency": "usd",
@@ -24,7 +24,6 @@
     "flight": {
       "tickets": [
         {
-          "taxes": [],
           "segments": [
             {
               "fare": 15233,
@@ -181,8 +180,6 @@
           "metadata": [{ "key": "AAdvantage #", "value": "TH4700" }]
         },
         {
-          "taxes": [],
-          "taxes": [],
           "segments": [
             {
               "fare": 15233,

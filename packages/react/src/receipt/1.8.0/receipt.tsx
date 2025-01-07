@@ -15,7 +15,6 @@ import {
   ThirdParty,
   Totals,
 } from "../../receipt-blocks";
-import { ItemizedFlight } from "./receipt-blocks";
 import styles from "./../base_receipt.module.css";
 import { Payments } from "../../receipt-blocks/payments";
 import { Parties } from "../../receipt-blocks/parties/parties";
@@ -23,6 +22,7 @@ import { usePdfGen } from "../../hooks/usePdfGen";
 
 import { LTS_VERSIONS } from "@versaprotocol/schema";
 import { Activity, lts_v1_8_0 } from "@versaprotocol/belt";
+import { ItemizedFlight } from "./receipt-blocks/itemized-flight";
 
 const { aggregateAdjustments, aggregateEcommerceItems, aggregateTaxes } =
   lts_v1_8_0;
@@ -34,7 +34,7 @@ export function ReceiptDisplay({
   activities,
   theme,
 }: {
-  receipt: lts.v1_6_0.Receipt;
+  receipt: lts.v1_8_0.Receipt;
   schemaVersion: string;
   merchant: Org;
   activities?: Activity[];
@@ -196,10 +196,10 @@ export function ReceiptDisplay({
 
       {/* Actions */}
 
-      {data.actions && data.actions.length > 0 && (
+      {data.footer.actions && data.footer.actions.length > 0 && (
         <BlockWrap>
           <ActionBlock
-            actions={data.actions}
+            actions={data.footer.actions}
             brandTheme={colors.brand}
             brandThemeContrastLight={colors.brandThemeLight}
           />

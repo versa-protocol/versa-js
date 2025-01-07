@@ -1,5 +1,14 @@
 # @versaprotocol/react
 
+## 1.8.8
+
+### Patch Changes
+
+- Updated dependencies
+  - @versaprotocol/schema@1.9.0
+  - @versaprotocol/belt@1.9.0
+  - @versaprotocol/pdfgen@1.9.0
+
 ## 1.8.7
 
 ### Patch Changes
