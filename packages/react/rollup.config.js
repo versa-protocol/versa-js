@@ -12,11 +12,6 @@ module.exports = {
   output: [
     {
       dir: "dist",
-      format: "cjs",
-      sourcemap: true,
-    },
-    {
-      dir: "dist",
       format: "es",
       exports: "named",
       sourcemap: true,
