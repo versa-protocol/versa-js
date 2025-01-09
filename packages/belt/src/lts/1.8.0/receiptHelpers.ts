@@ -1,16 +1,4 @@
-import {
-  Itemization,
-  Tax,
-  Flight,
-  Item,
-  Ecommerce,
-  Place,
-  Metadatum,
-  TransitRoute,
-  FlightSegment,
-  Adjustment,
-  FlightTicket,
-} from "@versaprotocol/schema";
+import { Adjustment, lts } from "@versaprotocol/schema";
 import canonicalize from "canonicalize";
 import {
   formatDateTime,
@@ -19,7 +7,17 @@ import {
   airportLookup,
   flightClass,
   capitalize,
-} from "./format";
+} from "../../format";
+
+type Itemization = lts.v1_8_0.Itemization;
+type Tax = lts.v1_8_0.Tax;
+type Flight = lts.v1_8_0.Flight;
+type Item = lts.v1_8_0.Item;
+type Ecommerce = lts.v1_8_0.Ecommerce;
+type Place = lts.v1_8_0.Place;
+type Metadatum = lts.v1_8_0.Metadatum;
+type TransitRoute = lts.v1_8_0.TransitRoute;
+type FlightSegment = lts.v1_8_0.FlightSegment;
 
 export function aggregateTaxes(itemization: Itemization): Tax[] {
   const aggregatedTaxes: Record<string, Tax> = {};
@@ -48,16 +46,6 @@ export function aggregateTaxes(itemization: Itemization): Tax[] {
   }
   if (itemization.flight) {
     for (const ticket of itemization.flight.tickets) {
-      if (ticket.taxes.length > 0) {
-        for (const tax of ticket.taxes) {
-          if (aggregatedTaxes[tax.name + tax.rate]) {
-            aggregatedTaxes[tax.name + tax.rate].amount += tax.amount;
-          } else {
-            aggregatedTaxes[tax.name + tax.rate] = { ...tax };
-          }
-        }
-        continue;
-      }
       for (const segment of ticket.segments) {
         for (const tax of segment.taxes || []) {
           if (aggregatedTaxes[tax.name + tax.rate]) {
@@ -346,7 +334,6 @@ export function organizeTransitRoutes(
 }
 
 interface OrganizedFlightTicketPassenger {
-  fare: number;
   passenger: string | null | undefined;
   ticket_number: string | null | undefined;
   ticket_class: string | null; // only used if all class values are equal for ticket
@@ -492,7 +479,6 @@ export function organizeFlightTickets(flight: Flight): OrganizedFlightTicket[] {
       organizedTickets[dedupeKey].passenger_count++;
       if (passengerKey) {
         organizedTickets[dedupeKey].passengers.push({
-          fare: determineTicketFare(ticket),
           passenger: ticket.passenger,
           ticket_number: ticket.number,
           ticket_class: allClassValuesEqualForPassenger
@@ -507,7 +493,6 @@ export function organizeFlightTickets(flight: Flight): OrganizedFlightTicket[] {
         passenger_count: 1,
         passengers: [
           {
-            fare: determineTicketFare(ticket),
             passenger: ticket.passenger,
             ticket_number: ticket.number,
             ticket_class: allClassValuesEqualForPassenger
@@ -522,13 +507,12 @@ export function organizeFlightTickets(flight: Flight): OrganizedFlightTicket[] {
   return Object.values(organizedTickets);
 }
 
-export function determineTicketFare(ticket: FlightTicket) {
-  if (ticket.fare !== null && ticket.fare !== undefined) {
-    return ticket.fare;
-  }
+export function aggregateTicketFares(ticket: OrganizedFlightTicket) {
   let aggregatedTicketFares: number = 0;
-  for (const segment of ticket.segments) {
-    aggregatedTicketFares += segment.fare || 0;
+  for (const itinerary of ticket.itineraries) {
+    for (const segment of itinerary.segments) {
+      aggregatedTicketFares += segment.fare || 0;
+    }
   }
   return aggregatedTicketFares;
 }
@@ -656,7 +640,7 @@ export function aggregateItems(itemization: Itemization) {
         items.push({
           passenger: { content: p.passenger ? p.passenger : "" },
           fare: {
-            content: formatUSD(p.fare / 100),
+            content: formatUSD(aggregateTicketFares(t) / 100),
             styles: {
               halign: "right",
               cellPadding: { top: 0.125, right: 0, bottom: 0.125, left: 0 },
@@ -976,7 +960,7 @@ export function aggregateFlight(organizedTicket: OrganizedFlightTicket) {
       row.ticket_class = { content: p.ticket_class };
     }
     row.fare = {
-      content: formatUSD(p.fare / 100),
+      content: formatUSD(aggregateTicketFares(organizedTicket) / 100),
       styles: {
         halign: "right",
         cellPadding: { top: 0.125, right: 0, bottom: 0.125, left: 0 },

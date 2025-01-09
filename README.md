@@ -30,3 +30,17 @@ We use [changesets](https://github.com/changesets/changesets) for package manage
 - `changeset`
 - `changeset version` Bump the package versions
 - `changeset publish` Publish the packages to npm
+
+# Changesets
+
+This repo uses [changesets](https://github.com/changesets/changesets) to manage versioning and publishing of packages.
+
+- changeset
+- changeset version
+- changeset publish
+
+to pre-release
+
+- changeset pre enter alpha
+
+...then perform the steps above

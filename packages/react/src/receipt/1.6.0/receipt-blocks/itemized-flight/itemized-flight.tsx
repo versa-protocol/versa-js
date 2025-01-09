@@ -4,8 +4,10 @@ import {
   formatUSD,
 } from "@versaprotocol/belt";
 import styles from "./itemized-flight.module.css";
-import { Flight } from "@versaprotocol/schema";
-import { organizeFlightTickets } from "@versaprotocol/belt";
+import { lts } from "@versaprotocol/schema";
+import { lts_v1_8_0 } from "@versaprotocol/belt";
+
+const { aggregateTicketFares, organizeFlightTickets } = lts_v1_8_0;
 
 function PlaneIcon() {
   return (
@@ -19,6 +21,8 @@ function PlaneIcon() {
     </svg>
   );
 }
+
+type Flight = lts.v1_8_0.Flight;
 
 export function ItemizedFlight({ flight }: { flight: Flight }) {
   return (
@@ -144,7 +148,9 @@ export function ItemizedFlight({ flight }: { flight: Flight }) {
               })}
               <div>
                 <div className={styles.key}>Fare</div>
-                <div className={styles.value}>{formatUSD(p.fare / 100)}</div>
+                <div className={styles.value}>
+                  {formatUSD(aggregateTicketFares(t) / 100)}
+                </div>
               </div>
             </div>
           ))}

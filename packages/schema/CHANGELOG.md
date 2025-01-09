@@ -1,5 +1,11 @@
 # @versaprotocol/schema
 
+## 1.9.0
+
+### Minor Changes
+
+- Update to schema version 1.9, supporting taxes and fare on the flight ticket level
+
 ## 1.8.0
 
 ### Minor Changes

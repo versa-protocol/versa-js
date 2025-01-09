@@ -32,7 +32,6 @@ interface Receiver {
 
 const InteractiveStudio = ({ org }: { org?: Org }) => {
   const [viewCode, setViewCode] = useState(true);
-  const { validator } = useValidator();
 
   const [clientLoaded, setClientLoaded] = useState(false);
   const [runtimeError, setRuntimeError] = useState<string | null>(null);
@@ -80,6 +79,12 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
 
   const [receiptData, setReceiptData] = useState<string>(startingReceipt);
   const [merchantData, setMerchantData] = useState<string>(startingMerchant);
+
+  let tempParsedReceipt = JSON.parse(receiptData);
+  const receiptSchemaVersion = tempParsedReceipt?.schema_version;
+
+  const { validator } = useValidator(receiptSchemaVersion);
+
   const { systemTheme, theme } = useTheme();
   var simplifiedTheme = theme;
   if (simplifiedTheme == "system") {

@@ -1,11 +1,21 @@
 # home
 
-## 0.2.37-alpha.0
+## 0.2.38
 
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/react@1.8.8-alpha.0
+  - @versaprotocol/react@1.9.0
+
+## 0.2.37
+
+### Patch Changes
+
+- Updated dependencies
+  - @versaprotocol/examples@1.9.0
+  - @versaprotocol/schema@1.9.0
+  - @versaprotocol/belt@1.9.0
+  - @versaprotocol/react@1.8.8
 
 ## 0.2.36
 
