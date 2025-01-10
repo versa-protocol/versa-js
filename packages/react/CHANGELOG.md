@@ -1,5 +1,11 @@
 # @versaprotocol/react
 
+## 1.9.1
+
+### Patch Changes
+
+- Moved 'react' to peerDependencies explicitly, trimmed unused deps that were moved to pdfgen
+
 ## 1.9.0
 
 ### Minor Changes

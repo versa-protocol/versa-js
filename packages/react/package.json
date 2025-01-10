@@ -1,6 +1,6 @@
 {
   "name": "@versaprotocol/react",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "main": "./dist/index.js",
   "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
@@ -15,17 +15,16 @@
     "test": "jest",
     "prepublish": "pnpm build-clean"
   },
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
   "dependencies": {
     "@versaprotocol/belt": "workspace:*",
     "@versaprotocol/schema": "workspace:*",
     "@versaprotocol/pdfgen": "workspace:*",
-    "jspdf": "^2.5.2",
-    "jspdf-autotable": "^3.8.3",
-    "react": "^18.3.1",
     "react-feather": "^2.0.10",
-    "react-markdown": "^9.0.1",
-    "remove-markdown": "^0.5.5",
-    "svg2pdf.js": "^2.2.4"
+    "react-markdown": "^9.0.1"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^26.0.1",
