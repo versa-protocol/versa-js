@@ -27,5 +27,5 @@ module.exports = {
     }),
     bundleStats({ baseline: true }),
   ],
-  external: ["react"],
+  external: ["react", "react-dom"],
 };

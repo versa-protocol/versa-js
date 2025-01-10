@@ -1,5 +1,11 @@
 # @versaprotocol/react
 
+## 1.9.2
+
+### Patch Changes
+
+- Reduce bundle size with terser
+
 ## 1.9.1
 
 ### Patch Changes

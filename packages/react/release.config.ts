@@ -7,6 +7,7 @@ import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import postcss from "rollup-plugin-postcss";
 import resolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
+import { terser } from "rollup-plugin-terser";
 import { RollupOptions } from "rollup";
 
 const config: RollupOptions = {
@@ -22,15 +23,29 @@ const config: RollupOptions = {
   plugins: [
     del({ targets: "dist/*", runOnce: true }),
     (peerDepsExternal as any)(),
-    resolve(),
+    resolve({
+      mainFields: ["module", "main"],
+    }),
     typescript({ tsconfig: "tsconfig.build.json" }),
-    commonjs(),
+    commonjs({
+      include: /node_modules/,
+    }),
     postcss({
       modules: true,
+      minimize: true,
+    }),
+    terser({
+      format: {
+        comments: false,
+      },
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
     }),
     bundleStats({ baseline: true }),
   ],
-  external: ["react"],
+  external: ["react", "react-dom"],
 };
 
 export default config;
