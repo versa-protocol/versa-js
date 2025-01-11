@@ -1,5 +1,23 @@
 # @versaprotocol/react
 
+## 1.9.3
+
+### Patch Changes
+
+- Correctly nest .npmignore in the dist directory to avoid publishing sourcemaps
+
+## 1.9.4
+
+### Patch Changes
+
+- Try again
+
+## 1.9.3
+
+### Patch Changes
+
+- Don't publish source maps to npm
+
 ## 1.9.2
 
 ### Patch Changes

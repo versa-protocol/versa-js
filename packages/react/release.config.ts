@@ -21,7 +21,7 @@ const config: RollupOptions = {
     },
   ],
   plugins: [
-    del({ targets: "dist/*", runOnce: true }),
+    del({ targets: ["dist/**/*.js", "dist/**/*.map"], runOnce: true }),
     (peerDepsExternal as any)(),
     resolve({
       mainFields: ["module", "main"],
