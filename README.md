@@ -30,3 +30,9 @@ We use [changesets](https://github.com/changesets/changesets) for package manage
 - `changeset`
 - `changeset version` Bump the package versions
 - `changeset publish` Publish the packages to npm
+
+## Bundle Analysis
+
+Use `npm pack --dry-run` to view the published contents of packages before publishing. This is useful for verifying that the correct files are being published and for troubleshooting unexpectedly large bundle sizes.
+
+**Remember:** .npmignore files won't override package.json `files` rules from the top level of the package (i.e. on the same level as `package.json`) — for that reason, .npmignore is checked in from within the `dist` directory in @versaprotocol/react, for example
