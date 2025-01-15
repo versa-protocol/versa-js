@@ -1,27 +1,39 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Validator } from "@cfworker/json-schema";
+import { Receipt } from "@versaprotocol/schema";
 
 type InitialValidator = null | Validator;
 
-let validator: InitialValidator = null;
-
 const getValidator = async (schemaVersion: string) => {
-  if (validator) {
-    return validator;
+  if (!schemaVersion.match(/^\d+\.\d+\.\d+$/)) {
+    return null;
   }
   const schemaUrl = `/GITHUB_CONTENT_URL/versa-protocol/schema/${schemaVersion}/data/receipt.schema.json`;
   const schema = await (await fetch(schemaUrl)).text();
-  validator = new Validator(JSON.parse(schema));
-  return validator;
+  return new Validator(JSON.parse(schema));
 };
 
-export const useValidator = (schemaVersion: string) => {
-  const [validator, setValidator] = useState<InitialValidator>();
-  useEffect(() => {
-    (async function () {
-      const v = await getValidator(schemaVersion);
-      setValidator(v);
-    })();
-  }, [setValidator, schemaVersion]);
-  return { validator };
+export const useValidator = () => {
+  const [previousSchemaVersion, setPreviousSchemaVersion] = useState<
+    string | null
+  >(null);
+  const [validator, setValidator] = useState<InitialValidator>(null);
+  const validate = async (obj: Receipt) => {
+    let schemaVersion = obj.schema_version;
+    if (schemaVersion === previousSchemaVersion && !!validator) {
+      return validator.validate(obj);
+    }
+    setPreviousSchemaVersion(schemaVersion);
+    const newValidator = await getValidator(schemaVersion);
+    if (!newValidator) {
+      return {
+        valid: true,
+        errors: [],
+      };
+    }
+    setValidator(newValidator);
+    return newValidator.validate(obj);
+  };
+
+  return { validate };
 };

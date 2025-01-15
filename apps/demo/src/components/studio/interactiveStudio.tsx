@@ -80,10 +80,7 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
   const [receiptData, setReceiptData] = useState<string>(startingReceipt);
   const [merchantData, setMerchantData] = useState<string>(startingMerchant);
 
-  let tempParsedReceipt = JSON.parse(receiptData);
-  const receiptSchemaVersion = tempParsedReceipt?.schema_version;
-
-  const { validator } = useValidator(receiptSchemaVersion);
+  const { validate } = useValidator();
 
   const { systemTheme, theme } = useTheme();
   var simplifiedTheme = theme;
@@ -112,15 +109,14 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
   const onChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
     setRuntimeError(null);
     try {
-      if (validator) {
-        const valid = validator.validate(JSON.parse(e.currentTarget.value));
+      validate(JSON.parse(e.currentTarget.value)).then((valid) => {
         if (!valid.valid) {
           setRuntimeError(
             "Validation errors\n\n" +
               valid.errors.map((e) => JSON.stringify(e, null, 2)).join("\n")
           );
         }
-      }
+      });
       setReceiptData(e.currentTarget.value);
     } catch (e: any) {
       setRuntimeError(e.message);
