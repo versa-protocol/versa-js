@@ -9,14 +9,12 @@ import Image from "next/image";
 import * as examples from "@versaprotocol/examples";
 import { Org as Merchant, Org, Receipt } from "@versaprotocol/schema";
 import {
-  FileText,
   Layout,
   Maximize,
   Maximize2,
   Minimize,
   RotateCw,
   Sidebar,
-  Smartphone,
 } from "react-feather";
 import { formatDateTime, formatUSD } from "@versaprotocol/belt";
 import { useValidator } from "./useValidator";
