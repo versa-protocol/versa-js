@@ -10,11 +10,13 @@ export function ReceiptDisplay({
   receipt,
   merchant,
   activities,
+  history,
   theme,
 }: {
   receipt: Receipt;
   merchant: Org;
   activities?: Activity[];
+  history?: Receipt[];
   theme?: string;
 }) {
   const data = receipt;
@@ -60,6 +62,7 @@ export function ReceiptDisplay({
       receipt={data}
       schemaVersion={schemaVersion}
       merchant={merchant}
+      history={history}
       activities={activities}
       theme={theme}
     />

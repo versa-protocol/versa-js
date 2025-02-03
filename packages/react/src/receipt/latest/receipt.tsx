@@ -35,12 +35,14 @@ export function ReceiptLatest({
   schemaVersion,
   merchant,
   activities,
+  history,
   theme,
 }: {
   receipt: Receipt;
   schemaVersion: string;
   merchant: Org;
   activities?: Activity[];
+  history?: Receipt[];
   theme?: string;
 }) {
   const data = receipt;

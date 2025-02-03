@@ -93,5 +93,13 @@
   "footer": {
     "actions": []
   },
-  "payments": []
+  "payments": [
+    {
+      "amount": 7029,
+      "paid_at": 1713295619,
+      "payment_type": "card",
+      "card_payment": { "last_four": "4886", "network": "mastercard" },
+      "ach_payment": null
+    }
+  ]
 }

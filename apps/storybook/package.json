@@ -13,6 +13,7 @@
   "dependencies": {
     "@versaprotocol/examples": "workspace:*",
     "@versaprotocol/react": "workspace:*",
+    "@versaprotocol/schema": "workspace:*",
     "react-dom": "^18.3.1",
     "react": "^18.3.1"
   },
