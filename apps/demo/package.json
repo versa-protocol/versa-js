@@ -15,17 +15,17 @@
     "@versaprotocol/react": "workspace:*",
     "@versaprotocol/schema": "workspace:*",
     "next-themes": "^0.3.0",
-    "next": "^14.2.10",
-    "react-dom": "^18",
+    "next": "^15",
+    "react-dom": "^19",
     "react-feather": "^2.0.10",
-    "react": "^18"
+    "react": "^19"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^9",
-    "eslint-config-next": "14.2.5",
+    "eslint-config-next": "^15",
     "typescript": "^5"
   }
 }

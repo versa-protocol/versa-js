@@ -1,5 +1,6 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
   env: {
     MAPBOX_TOKEN: process.env.MAPBOX_TOKEN,
   },
@@ -9,7 +10,7 @@ const nextConfig = {
         source: "/GITHUB_CONTENT_URL/:path*",
         destination: "https://raw.githubusercontent.com/:path*",
       },
-    ]
+    ];
   },
   images: {
     domains: [
