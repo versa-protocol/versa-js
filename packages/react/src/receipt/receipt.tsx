@@ -63,7 +63,6 @@ export function ReceiptDisplay({
       schemaVersion={schemaVersion}
       merchant={merchant}
       history={history}
-      activities={activities}
       theme={theme}
     />
   );

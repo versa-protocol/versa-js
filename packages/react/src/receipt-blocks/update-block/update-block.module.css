@@ -1,0 +1,56 @@
+.activityBlockWrap {
+  width: 100%;
+}
+
+.updateCard {
+  border-radius: 4px;
+  padding: 1rem;
+  color: var(--foreground-soft);
+  background-color: var(--background-block);
+}
+
+.viewButton {
+  border: none;
+  border-spacing: 0;
+  text-indent: 0;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  color: var(--foreground-soft);
+  background-color: var(--background);
+  margin-top: 0.5rem;
+}
+
+.buttonReset {
+  border: none;
+  border-spacing: 0;
+  text-indent: 0;
+  cursor: pointer;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.versionWrap {
+  margin-bottom: 1rem;
+}
+
+.versionWrap:last-child {
+  margin-bottom: 0;
+}
+
+.versionWrap svg {
+  width: 1rem;
+}
+
+.updateContent {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: left;
+}
+
+.timestamp {
+  margin-top: 0.5rem;
+  color: var(--foreground-secondary);
+  font-size: 0.75rem;
+}

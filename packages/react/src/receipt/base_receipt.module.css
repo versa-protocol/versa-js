@@ -74,3 +74,17 @@
     content: counter(page) " of " counter(pages);
   }
 } */
+
+.updateBadge {
+  border: none;
+  border-spacing: 0;
+  text-indent: 0;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  color: var(--foreground-soft);
+  background-color: var(--background-block);
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+}

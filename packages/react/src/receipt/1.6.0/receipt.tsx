@@ -1,7 +1,6 @@
 import { Org, Receipt, lts } from "@versaprotocol/schema";
 import {
   ActionBlock,
-  ActivityBlock,
   BlockWrap,
   ExportOptions,
   ItemizedCarRental,
@@ -234,14 +233,6 @@ export function ReceiptDisplay({
             <Parties customer={data.header.customer} merchant={merchant} />
           </BlockWrap>
         </div>
-      )}
-
-      {/* Activity */}
-
-      {!!activities?.length && (
-        <BlockWrap>
-          <ActivityBlock activities={activities} />
-        </BlockWrap>
       )}
 
       {/* Download */}

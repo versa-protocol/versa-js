@@ -1,7 +1,7 @@
 import { Org, Receipt } from "@versaprotocol/schema";
 import {
   ActionBlock,
-  ActivityBlock,
+  UpdateBlock,
   BlockWrap,
   ExportOptions,
   ItemizedCarRental,
@@ -27,24 +27,33 @@ import styles from "./../base_receipt.module.css";
 import { Payments } from "../../receipt-blocks/payments";
 import { Parties } from "../../receipt-blocks/parties/parties";
 import { usePdfGen } from "../../hooks/usePdfGen";
+import { processHistory } from "../../helpers/updates";
 
 import { LTS_VERSIONS } from "@versaprotocol/schema";
+import { GroupedUpdate } from "../../helpers/updates";
+import React from "react";
 
 export function ReceiptLatest({
   receipt,
   schemaVersion,
   merchant,
-  activities,
   history,
   theme,
 }: {
   receipt: Receipt;
   schemaVersion: string;
   merchant: Org;
-  activities?: Activity[];
   history?: Receipt[];
   theme?: string;
 }) {
+  const viewRef = React.useRef<HTMLButtonElement>(null);
+
+  const handleUpdateFocus = () => {
+    if (viewRef.current) {
+      viewRef.current.focus();
+    }
+  };
+
   const data = receipt;
 
   if (!LTS_VERSIONS.includes(schemaVersion)) {
@@ -96,8 +105,20 @@ export function ReceiptLatest({
     brandColor: colors.brand,
   });
 
+  const updates = React.useMemo(() => {
+    if (history && history.length) {
+      return processHistory(receipt, history);
+    }
+    return [];
+  }, [receipt, history]);
+
   return (
     <div className={styles.receiptWrap}>
+      {history && !!history.length && (
+        <button onClick={handleUpdateFocus} className={styles.updateBadge}>{`${
+          history.length
+        } Update${history.length > 1 ? "s" : ""}`}</button>
+      )}
       {/* Header */}
 
       <ReceiptHeader
@@ -241,9 +262,9 @@ export function ReceiptLatest({
 
       {/* Activity */}
 
-      {!!activities?.length && (
+      {!!updates?.length && (
         <BlockWrap>
-          <ActivityBlock activities={activities} />
+          <UpdateBlock updates={updates} viewRef={viewRef} />
         </BlockWrap>
       )}
 

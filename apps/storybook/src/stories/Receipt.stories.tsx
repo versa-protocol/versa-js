@@ -81,7 +81,7 @@ export const Rideshare: Story = {
 
 export const Ecommerce: Story = {
   args: {
-    merchant: senders.sonesta,
+    merchant: senders.amazon,
     receipt: receipts.ecommerce,
   },
 };
@@ -124,23 +124,9 @@ const receiptPriorToPayment: Receipt = {
   payments: [],
 };
 
-export const EcommerceWithShipment: Story = {
-  args: {
-    merchant: senders.sonesta,
-    receipt: receipts.ecommerce,
-    activities: [
-      {
-        type: ActivityType.Shipped,
-        description: "eh",
-        activity_at: 1700000000,
-      },
-    ],
-  },
-};
-
 export const EcommerceWithHistory: Story = {
   args: {
-    merchant: senders.sonesta,
+    merchant: senders.amazon,
     receipt: receipts.ecommerce,
     history: [receiptPriorToShipment, receiptPriorToPayment],
   },

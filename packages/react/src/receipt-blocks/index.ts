@@ -1,7 +1,7 @@
 // Building blocks for rendering a receipt
 
 export * from "./action-block";
-export * from "./activity-block";
+export * from "./update-block";
 export * from "./export-options";
 export * from "./itemized-car-rental";
 export * from "./itemized-flight";
