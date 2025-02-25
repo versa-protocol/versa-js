@@ -20,7 +20,7 @@ export function UpdateBlock({
     <div className={styles.activityBlockWrap}>
       <div className={styles.updateCard}>
         {updates.map((currentUpdate, index) => (
-          <div className={styles.versionWrap}>
+          <div key={index} className={styles.versionWrap}>
             <div key={index} className={styles.updateContent}>
               <Circle />
               <div>
