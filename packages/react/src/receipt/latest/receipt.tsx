@@ -1,7 +1,6 @@
 import { Org, Receipt } from "@versaprotocol/schema";
 import {
   ActionBlock,
-  UpdateBlock,
   BlockWrap,
   ExportOptions,
   ItemizedCarRental,
@@ -18,7 +17,6 @@ import {
   Totals,
 } from "../../receipt-blocks";
 import {
-  Activity,
   aggregateAdjustments,
   aggregateEcommerceItems,
   aggregateTaxes,
@@ -27,33 +25,20 @@ import styles from "./../base_receipt.module.css";
 import { Payments } from "../../receipt-blocks/payments";
 import { Parties } from "../../receipt-blocks/parties/parties";
 import { usePdfGen } from "../../hooks/usePdfGen";
-import { processHistory } from "../../helpers/updates";
 
 import { LTS_VERSIONS } from "@versaprotocol/schema";
-import { GroupedUpdate } from "../../helpers/updates";
-import React from "react";
 
 export function ReceiptLatest({
   receipt,
   schemaVersion,
   merchant,
-  history,
   theme,
 }: {
   receipt: Receipt;
   schemaVersion: string;
   merchant: Org;
-  history?: Receipt[];
   theme?: string;
 }) {
-  const viewRef = React.useRef<HTMLButtonElement>(null);
-
-  const handleUpdateFocus = () => {
-    if (viewRef.current) {
-      viewRef.current.focus();
-    }
-  };
-
   const data = receipt;
 
   if (!LTS_VERSIONS.includes(schemaVersion)) {
@@ -72,11 +57,11 @@ export function ReceiptLatest({
     brandThemeLight: false,
   };
   if (
-    receipt?.header?.third_party &&
-    receipt?.header?.third_party.make_primary &&
-    receipt?.header?.third_party.merchant.brand_color
+    data?.header?.third_party &&
+    data?.header?.third_party.make_primary &&
+    data?.header?.third_party.merchant.brand_color
   ) {
-    colors.brand = receipt?.header?.third_party.merchant.brand_color;
+    colors.brand = data?.header?.third_party.merchant.brand_color;
   } else {
     colors.brand = merchant?.brand_color || "#000000";
   }
@@ -99,26 +84,14 @@ export function ReceiptLatest({
       ? true
       : false;
 
-  const { downloadReceipt, downloadInvoice } = usePdfGen({
+  const { downloadReceipt } = usePdfGen({
     merchant: merchant,
     receipt: data,
     brandColor: colors.brand,
   });
 
-  const updates = React.useMemo(() => {
-    if (history && history.length) {
-      return processHistory(receipt, history);
-    }
-    return [];
-  }, [receipt, history]);
-
   return (
     <div className={styles.receiptWrap}>
-      {history && !!history.length && (
-        <button onClick={handleUpdateFocus} className={styles.updateBadge}>{`${
-          history.length
-        } Update${history.length > 1 ? "s" : ""}`}</button>
-      )}
       {/* Header */}
 
       <ReceiptHeader
@@ -212,7 +185,7 @@ export function ReceiptLatest({
       <BlockWrap>
         <Totals
           taxes={aggregateTaxes(data.itemization)}
-          header={receipt.header}
+          header={data.header}
           adjustments={aggregateAdjustments(data.itemization)}
           colors={colors}
         />
@@ -258,14 +231,6 @@ export function ReceiptLatest({
             <Parties customer={data.header.customer} merchant={merchant} />
           </BlockWrap>
         </div>
-      )}
-
-      {/* Activity */}
-
-      {!!updates?.length && (
-        <BlockWrap>
-          <UpdateBlock updates={updates} viewRef={viewRef} />
-        </BlockWrap>
       )}
 
       {/* Download */}

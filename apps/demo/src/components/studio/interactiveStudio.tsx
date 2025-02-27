@@ -336,7 +336,6 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
                           receipt={parsedReceipt}
                           merchant={parsedMerchant}
                           theme={simplifiedTheme}
-                          activities={[]}
                         />
                       </VersaContext.Provider>
                     </div>

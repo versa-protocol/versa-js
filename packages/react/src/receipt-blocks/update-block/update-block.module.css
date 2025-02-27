@@ -18,7 +18,25 @@
   padding: 0.25rem 0.5rem;
   color: var(--foreground-soft);
   background-color: var(--background);
-  margin-top: 0.5rem;
+}
+
+.updateDescription {
+  font-size: 0.875rem;
+}
+
+.currentlyViewing {
+  font-size: 0.875rem;
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  color: var(--foreground-soft);
+  background-color: #afb;
+}
+
+.subwayStop {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  gap: 0.5rem;
 }
 
 .buttonReset {

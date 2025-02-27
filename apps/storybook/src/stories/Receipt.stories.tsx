@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 // import { fn } from '@storybook/test';
 import { ReceiptDisplay } from "@versaprotocol/react";
-import { Receipt } from "@versaprotocol/schema";
 import { senders, receipts } from "@versaprotocol/examples";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
@@ -93,45 +92,6 @@ export const Rail: Story = {
   },
 };
 
-const receiptPriorToShipment: Receipt = {
-  ...receipts.ecommerce,
-  itemization: {
-    ...receipts.ecommerce.itemization,
-    ecommerce: {
-      ...receipts.ecommerce.itemization.ecommerce,
-      invoice_level_line_items: [
-        ...(receipts.ecommerce.itemization.ecommerce?.shipments[0].items || []),
-      ],
-      invoice_level_adjustments: [],
-      shipments: [],
-    },
-  },
-};
-const receiptPriorToPayment: Receipt = {
-  ...receiptPriorToShipment,
-  itemization: {
-    ...receiptPriorToShipment.itemization,
-    ecommerce: {
-      ...receiptPriorToShipment.itemization.ecommerce,
-      invoice_level_line_items: [
-        ...(receiptPriorToShipment.itemization.ecommerce
-          ?.invoice_level_line_items || []),
-      ],
-      invoice_level_adjustments: [],
-      shipments: [],
-    },
-  },
-  payments: [],
-};
-
-export const EcommerceWithHistory: Story = {
-  args: {
-    merchant: senders.amazon,
-    receipt: receipts.ecommerce,
-    history: [receiptPriorToShipment, receiptPriorToPayment],
-  },
-};
-
 /** LTS Stories */
 
 import { v1_5_1 } from "@versaprotocol/examples";
@@ -167,7 +127,6 @@ export const Lts1_6_0_Simple: Story = {
 };
 
 import { v1_7_0 } from "@versaprotocol/examples";
-import { ActivityType } from "../../../../packages/belt/dist";
 
 export const Lts1_7_0_Flight: Story = {
   args: {

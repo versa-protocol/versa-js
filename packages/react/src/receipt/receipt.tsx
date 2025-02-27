@@ -4,19 +4,14 @@ import { ReceiptDisplay as R_1_6_0 } from "./1.6.0/receipt";
 import { ReceiptLatest } from "./latest/receipt";
 
 import { LTS_VERSIONS } from "@versaprotocol/schema";
-import { Activity } from "@versaprotocol/belt";
 
 export function ReceiptDisplay({
   receipt,
   merchant,
-  activities,
-  history,
   theme,
 }: {
   receipt: Receipt;
   merchant: Org;
-  activities?: Activity[];
-  history?: Receipt[];
   theme?: string;
 }) {
   const data = receipt;
@@ -37,7 +32,6 @@ export function ReceiptDisplay({
         receipt={data as unknown as lts.v1_5_1.Receipt}
         schemaVersion={schemaVersion}
         merchant={merchant}
-        activities={activities}
         theme={theme}
       />
     );
@@ -49,7 +43,6 @@ export function ReceiptDisplay({
         receipt={data as unknown as lts.v1_6_0.Receipt}
         schemaVersion={schemaVersion}
         merchant={merchant}
-        activities={activities}
         theme={theme}
       />
     );
@@ -62,7 +55,6 @@ export function ReceiptDisplay({
       receipt={data}
       schemaVersion={schemaVersion}
       merchant={merchant}
-      history={history}
       theme={theme}
     />
   );
