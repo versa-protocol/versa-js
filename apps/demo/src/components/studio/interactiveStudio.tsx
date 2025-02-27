@@ -125,16 +125,6 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
     setMerchantData(e.currentTarget.value);
   };
 
-  // const registeredReceipt = {
-  //   registration: {
-  //     receipt_id: "",
-  //     transaction_id: "",
-  //     registered_at: Math.floor(new Date().valueOf() / 1000),
-  //     transaction_event_index: 0,
-  //   },
-  //   receipt: parsedReceipt || defaultData,
-  // };
-
   return (
     <div className={styles.styled}>
       <div
