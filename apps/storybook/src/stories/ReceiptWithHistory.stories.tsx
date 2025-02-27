@@ -6,13 +6,14 @@ import { senders, receipts } from "@versaprotocol/examples";
 
 const packageRegisteredReceipt = (
   receipt: Receipt,
-  transaction_event_index = 0
+  transaction_event_index: number,
+  timestamp = Math.floor(new Date().valueOf() / 1000)
 ) => {
   return {
     registration: {
       receipt_id: "",
       transaction_id: "",
-      registered_at: Math.floor(new Date().valueOf() / 1000),
+      registered_at: timestamp,
       transaction_event_index,
     },
     receipt,
@@ -79,10 +80,10 @@ const receiptPriorToPayment: Receipt = {
 export const EcommerceWithHistory: Story = {
   args: {
     merchant: senders.amazon,
-    receipt: packageRegisteredReceipt(receipts.ecommerce, 2),
-    history: [
-      packageRegisteredReceipt(receiptPriorToShipment, 1),
-      packageRegisteredReceipt(receiptPriorToPayment),
+    receipts: [
+      packageRegisteredReceipt(receipts.ecommerce, 2, 1740685304),
+      packageRegisteredReceipt(receiptPriorToShipment, 1, 1739885291),
+      packageRegisteredReceipt(receiptPriorToPayment, 0, 1739685291),
     ],
   },
 };

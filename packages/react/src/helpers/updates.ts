@@ -3,22 +3,23 @@ import { RegisteredReceipt } from "../receipt-history/model";
 
 export interface Update {
   description: string;
-  timestamp?: number;
 }
 
 export interface GroupedUpdate {
   description: string;
   transactionEventIndex: number;
   updates: Update[];
+  registeredAt: number;
 }
 
-export function processHistory(
-  receipt: RegisteredReceipt,
-  history: RegisteredReceipt[]
-): GroupedUpdate[] {
-  let current = receipt;
+// Expects the history to be sorted in reverse-chronological order
+export function processHistory(history: RegisteredReceipt[]): GroupedUpdate[] {
   const updates: GroupedUpdate[] = [];
   const mutableHistory = [...history];
+  let current = mutableHistory.shift();
+  if (!current) {
+    return [];
+  }
   while (mutableHistory.length > 0) {
     const oldReceipt = mutableHistory.shift();
     if (!oldReceipt) {
@@ -30,6 +31,7 @@ export function processHistory(
         description: `Receipt`,
         updates: diff,
         transactionEventIndex: current.registration.transaction_event_index,
+        registeredAt: current.registration.registered_at,
       });
     }
     current = oldReceipt;
@@ -53,7 +55,6 @@ export function diffReceipts(
         description: `Payment added for ${(newPayment.amount / 100).toFixed(
           2
         )} ${newReceipt.receipt.header.currency.toUpperCase()}`,
-        timestamp: newPayment.paid_at,
       });
     }
   }

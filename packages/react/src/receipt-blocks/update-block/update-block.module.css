@@ -20,6 +20,10 @@
   background-color: var(--background);
 }
 
+.updateDescription {
+  font-size: 0.875rem;
+}
+
 .currentlyViewing {
   font-size: 0.875rem;
   border-radius: 4px;

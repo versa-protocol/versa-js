@@ -5,11 +5,13 @@ import React from "react";
 import { Circle } from "react-feather";
 
 export function UpdateBlock({
+  originalRegistrationTimestamp,
   currentTransactionEventIndex,
   updates,
   viewRef,
   onViewPreviousVersion,
 }: {
+  originalRegistrationTimestamp: number;
   currentTransactionEventIndex: number;
   updates: GroupedUpdate[];
   viewRef: React.RefObject<HTMLButtonElement>;
@@ -23,7 +25,7 @@ export function UpdateBlock({
             <div className={styles.subwayStop}>
               <Circle />
               <div className={styles.currentlyViewing}>
-                You are viewing the original
+                You are viewing this version
               </div>
             </div>
           ) : (
@@ -33,10 +35,14 @@ export function UpdateBlock({
                 className={styles.viewButton}
                 onClick={() => onViewPreviousVersion(0)}
               >
-                View original
+                View this version
               </button>
             </div>
           )}
+          <div className={styles.updateDescription}>Initial receipt</div>
+          <div className={styles.timestamp}>
+            {formatDateTime(originalRegistrationTimestamp)}
+          </div>
         </div>
         {updates.map((currentUpdate, index) => (
           <div key={index} className={styles.versionWrap}>
@@ -71,14 +77,14 @@ export function UpdateBlock({
               <div>
                 {currentUpdate.updates.map((u, uindex) => (
                   <div key={uindex} className={styles.activityItem}>
-                    <div>{u.description}</div>
-                    {!!u.timestamp && (
-                      <div className={styles.timestamp}>
-                        {formatDateTime(u.timestamp)}
-                      </div>
-                    )}
+                    <div className={styles.updateDescription}>
+                      {u.description}
+                    </div>
                   </div>
                 ))}
+                <div className={styles.timestamp}>
+                  {formatDateTime(currentUpdate.registeredAt)}
+                </div>
               </div>
             </div>
           </div>

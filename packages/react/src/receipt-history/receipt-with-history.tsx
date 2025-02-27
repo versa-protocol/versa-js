@@ -9,55 +9,53 @@ import React from "react";
 import { ReceiptDisplay } from "../receipt";
 
 export function ReceiptWithHistory({
-  receipt,
   merchant,
-  history,
+  receipts,
   theme,
 }: {
-  receipt: RegisteredReceipt;
   merchant: Org;
-  history?: RegisteredReceipt[];
+  receipts: RegisteredReceipt[];
   theme?: string;
 }) {
+  // First, sort receipts by `registered_at` in reverse-chronological order
+  const history = receipts.sort(
+    (a, b) => b.registration.registered_at - a.registration.registered_at
+  );
+
+  // Set the default receipt to the most recent
   const [currentTransactionEventIndex, setCurrentTransactionEventIndex] =
-    React.useState(receipt.registration.transaction_event_index);
-  const [data, setData] = React.useState(receipt.receipt);
+    React.useState(history[0].registration.transaction_event_index);
+  const [data, setData] = React.useState(history[0].receipt);
+
+  // Configure refs for focus management when user wishes to review past versions
   const updatesIndicatorRef = React.useRef<HTMLButtonElement>(null);
   const viewRef = React.useRef<HTMLButtonElement>(null);
 
+  const totalVersions = history.length;
+  const totalUpdates = totalVersions - 1;
   const getUpdateIndicatorText = () => {
     if (!history) {
       return "";
     }
-    const historyLength = history.length;
-    if (currentTransactionEventIndex === history.length) {
-      return `${historyLength} Update${historyLength > 1 ? "s" : ""}`;
+    if (currentTransactionEventIndex === totalUpdates) {
+      return `${totalUpdates} Update${totalUpdates > 1 ? "s" : ""}`;
     } else {
       for (const event of history) {
         if (
           event.registration.transaction_event_index ===
           currentTransactionEventIndex
         ) {
-          return `Viewing ${formatDateTime(
+          return `Viewing Version ${
+            currentTransactionEventIndex + 1
+          } of ${totalVersions} (${formatDateTime(
             event.registration.registered_at
-          )} Version`;
+          )})`;
         }
       }
     }
   };
 
   const setReceiptView = (index: number) => {
-    if (index === receipt.registration.transaction_event_index) {
-      setData(receipt.receipt);
-      setCurrentTransactionEventIndex(index);
-      if (updatesIndicatorRef.current) {
-        updatesIndicatorRef.current.focus();
-      }
-      return;
-    }
-    if (!history) {
-      return;
-    }
     for (const event of history) {
       if (event.registration.transaction_event_index === index) {
         setData(event.receipt);
@@ -78,10 +76,10 @@ export function ReceiptWithHistory({
 
   const updates = React.useMemo(() => {
     if (history && history.length) {
-      return processHistory(receipt, history);
+      return processHistory(history);
     }
     return [];
-  }, [receipt, history]);
+  }, [history]);
 
   return (
     <div className={styles.receiptHistoryWrap}>
@@ -98,6 +96,9 @@ export function ReceiptWithHistory({
       {!!updates?.length && (
         <BlockWrap>
           <UpdateBlock
+            originalRegistrationTimestamp={
+              history[history.length - 1].registration.registered_at
+            }
             currentTransactionEventIndex={currentTransactionEventIndex}
             updates={updates}
             viewRef={viewRef}
