@@ -1,27 +1,21 @@
-import { lts, Org } from "@versaprotocol/schema";
+import { lts, Org, Receipt } from "@versaprotocol/schema";
 import { ReceiptDisplay as R_1_5_1 } from "./1.5.1/receipt";
 import { ReceiptDisplay as R_1_6_0 } from "./1.6.0/receipt";
 import { ReceiptLatest } from "./latest/receipt";
 
 import { LTS_VERSIONS } from "@versaprotocol/schema";
-import { Activity } from "@versaprotocol/belt";
-import { RegisteredReceipt } from "./model";
 
 export function ReceiptDisplay({
   receipt,
   merchant,
-  activities,
-  history,
   theme,
 }: {
-  receipt: RegisteredReceipt;
+  receipt: Receipt;
   merchant: Org;
-  activities?: Activity[];
-  history?: RegisteredReceipt[];
   theme?: string;
 }) {
   const data = receipt;
-  const schemaVersion = data.receipt.schema_version;
+  const schemaVersion = data.schema_version;
 
   if (!LTS_VERSIONS.includes(schemaVersion)) {
     return (
@@ -35,10 +29,9 @@ export function ReceiptDisplay({
   if (schemaVersion === "1.5.1") {
     return (
       <R_1_5_1
-        receipt={data as unknown as RegisteredReceipt<lts.v1_5_1.Receipt>}
+        receipt={data as unknown as lts.v1_5_1.Receipt}
         schemaVersion={schemaVersion}
         merchant={merchant}
-        activities={activities}
         theme={theme}
       />
     );
@@ -47,10 +40,9 @@ export function ReceiptDisplay({
   if (schemaVersion === "1.6.0") {
     return (
       <R_1_6_0
-        receipt={data as unknown as RegisteredReceipt<lts.v1_6_0.Receipt>}
+        receipt={data as unknown as lts.v1_6_0.Receipt}
         schemaVersion={schemaVersion}
         merchant={merchant}
-        activities={activities}
         theme={theme}
       />
     );
@@ -63,7 +55,6 @@ export function ReceiptDisplay({
       receipt={data}
       schemaVersion={schemaVersion}
       merchant={merchant}
-      history={history}
       theme={theme}
     />
   );

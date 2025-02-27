@@ -125,15 +125,15 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
     setMerchantData(e.currentTarget.value);
   };
 
-  const registeredReceipt = {
-    registration: {
-      receipt_id: "",
-      transaction_id: "",
-      registered_at: Math.floor(new Date().valueOf() / 1000),
-      transaction_event_index: 0,
-    },
-    receipt: parsedReceipt || defaultData,
-  };
+  // const registeredReceipt = {
+  //   registration: {
+  //     receipt_id: "",
+  //     transaction_id: "",
+  //     registered_at: Math.floor(new Date().valueOf() / 1000),
+  //     transaction_event_index: 0,
+  //   },
+  //   receipt: parsedReceipt || defaultData,
+  // };
 
   return (
     <div className={styles.styled}>
@@ -343,10 +343,9 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
                         value={{ mapbox_token: process.env.MAPBOX_TOKEN }}
                       >
                         <ReceiptDisplay
-                          receipt={registeredReceipt}
+                          receipt={parsedReceipt}
                           merchant={parsedMerchant}
                           theme={simplifiedTheme}
-                          activities={[]}
                         />
                       </VersaContext.Provider>
                     </div>

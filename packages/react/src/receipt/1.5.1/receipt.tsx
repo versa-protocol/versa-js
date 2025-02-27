@@ -29,7 +29,6 @@ import {
   ItemizedTransitRoute,
   LineItems,
 } from "./receipt-blocks";
-import { RegisteredReceipt } from "../model";
 
 export function ReceiptDisplay({
   receipt,
@@ -38,13 +37,13 @@ export function ReceiptDisplay({
   activities,
   theme,
 }: {
-  receipt: RegisteredReceipt<lts.v1_5_1.Receipt>;
+  receipt: lts.v1_5_1.Receipt;
   schemaVersion: string;
   merchant: Org;
   activities?: Activity[];
   theme?: string;
 }) {
-  const data = receipt.receipt;
+  const data = receipt;
 
   if (!LTS_VERSIONS.includes(schemaVersion)) {
     return (

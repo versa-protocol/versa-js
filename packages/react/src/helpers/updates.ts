@@ -1,5 +1,5 @@
 import { Receipt } from "@versaprotocol/schema";
-import { RegisteredReceipt } from "../receipt/model";
+import { RegisteredReceipt } from "../receipt-history/model";
 
 export interface Update {
   description: string;

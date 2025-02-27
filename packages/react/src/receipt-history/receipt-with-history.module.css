@@ -1,4 +1,4 @@
-.receiptWrap {
+.receiptHistoryWrap {
   container-name: receipt;
   container-type: inline-size;
   min-width: 320px;
@@ -37,7 +37,7 @@
   --brand: #802363;
 }
 
-[data-theme="dark"] .receiptWrap {
+[data-theme="dark"] .receiptHistoryWrap {
   --background: var(--dark92);
   --foreground: var(--dark0);
   --foreground-soft: var(--dark15);
@@ -55,22 +55,17 @@
   --yellow10: hsl(53, 82%, 96%);
 }
 
-@media print {
-  .fullPageHide {
-    display: none;
-  }
+.updateBadge {
+  border: none;
+  border-spacing: 0;
+  text-indent: 0;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  color: var(--foreground-soft);
+  background-color: var(--background-block);
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 9;
 }
-
-@container receipt (width > 768px) {
-  .fullPageHide {
-    display: none;
-  }
-}
-
-/* @page {
-  size: 8.5in 11in;
-  margin: 0.25in;
-  @bottom-right {
-    content: counter(page) " of " counter(pages);
-  }
-} */

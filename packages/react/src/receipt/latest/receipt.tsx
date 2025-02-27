@@ -29,7 +29,6 @@ import { Payments } from "../../receipt-blocks/payments";
 import { Parties } from "../../receipt-blocks/parties/parties";
 import { usePdfGen } from "../../hooks/usePdfGen";
 import { processHistory } from "../../helpers/updates";
-import { RegisteredReceipt } from "../model";
 
 import { LTS_VERSIONS } from "@versaprotocol/schema";
 import React from "react";
@@ -41,68 +40,13 @@ export function ReceiptLatest({
   history,
   theme,
 }: {
-  receipt: RegisteredReceipt;
+  receipt: Receipt;
   schemaVersion: string;
   merchant: Org;
-  history?: RegisteredReceipt[];
+  history?: Receipt[];
   theme?: string;
 }) {
-  const [currentTransactionEventIndex, setCurrentTransactionEventIndex] =
-    React.useState(receipt.registration.transaction_event_index);
-  const [data, setData] = React.useState(receipt.receipt);
-  const updatesIndicatorRef = React.useRef<HTMLButtonElement>(null);
-  const viewRef = React.useRef<HTMLButtonElement>(null);
-
-  const getUpdateIndicatorText = () => {
-    if (!history) {
-      return "";
-    }
-    const historyLength = history.length;
-    if (currentTransactionEventIndex === history.length) {
-      return `${historyLength} Update${historyLength > 1 ? "s" : ""}`;
-    } else {
-      for (const event of history) {
-        if (
-          event.registration.transaction_event_index ===
-          currentTransactionEventIndex
-        ) {
-          return `Viewing ${formatDateTime(
-            event.registration.registered_at
-          )} Version`;
-        }
-      }
-    }
-  };
-
-  const setReceiptView = (index: number) => {
-    if (index === receipt.registration.transaction_event_index) {
-      setData(receipt.receipt);
-      setCurrentTransactionEventIndex(index);
-      if (updatesIndicatorRef.current) {
-        updatesIndicatorRef.current.focus();
-      }
-      return;
-    }
-    if (!history) {
-      return;
-    }
-    for (const event of history) {
-      if (event.registration.transaction_event_index === index) {
-        setData(event.receipt);
-        setCurrentTransactionEventIndex(index);
-        break;
-      }
-    }
-    if (updatesIndicatorRef.current) {
-      updatesIndicatorRef.current.focus();
-    }
-  };
-
-  const handleUpdateFocus = () => {
-    if (viewRef.current) {
-      viewRef.current.focus();
-    }
-  };
+  const data = receipt;
 
   if (!LTS_VERSIONS.includes(schemaVersion)) {
     return (
@@ -153,24 +97,8 @@ export function ReceiptLatest({
     brandColor: colors.brand,
   });
 
-  const updates = React.useMemo(() => {
-    if (history && history.length) {
-      return processHistory(receipt, history);
-    }
-    return [];
-  }, [receipt, history]);
-
   return (
     <div className={styles.receiptWrap}>
-      {history && !!history.length && (
-        <button
-          ref={updatesIndicatorRef}
-          onClick={handleUpdateFocus}
-          className={styles.updateBadge}
-        >
-          {getUpdateIndicatorText()}
-        </button>
-      )}
       {/* Header */}
 
       <ReceiptHeader
@@ -310,19 +238,6 @@ export function ReceiptLatest({
             <Parties customer={data.header.customer} merchant={merchant} />
           </BlockWrap>
         </div>
-      )}
-
-      {/* Activity */}
-
-      {!!updates?.length && (
-        <BlockWrap>
-          <UpdateBlock
-            currentTransactionEventIndex={currentTransactionEventIndex}
-            updates={updates}
-            viewRef={viewRef}
-            onViewPreviousVersion={setReceiptView}
-          />
-        </BlockWrap>
       )}
 
       {/* Download */}

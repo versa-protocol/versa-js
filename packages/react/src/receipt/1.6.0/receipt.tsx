@@ -22,7 +22,7 @@ import { usePdfGen } from "../../hooks/usePdfGen";
 
 import { LTS_VERSIONS } from "@versaprotocol/schema";
 import { Activity, lts_v1_8_0 } from "@versaprotocol/belt";
-import { RegisteredReceipt } from "../model";
+import { RegisteredReceipt } from "../../receipt-history/model";
 
 const { aggregateAdjustments, aggregateEcommerceItems, aggregateTaxes } =
   lts_v1_8_0;
@@ -34,13 +34,13 @@ export function ReceiptDisplay({
   activities,
   theme,
 }: {
-  receipt: RegisteredReceipt<lts.v1_6_0.Receipt>;
+  receipt: lts.v1_6_0.Receipt;
   schemaVersion: string;
   merchant: Org;
   activities?: Activity[];
   theme?: string;
 }) {
-  const data = receipt.receipt;
+  const data = receipt;
 
   if (!LTS_VERSIONS.includes(schemaVersion)) {
     return (
