@@ -1,23 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 // import { fn } from '@storybook/test';
 import { ReceiptDisplay } from "@versaprotocol/react";
-import { Receipt } from "@versaprotocol/schema";
 import { senders, receipts } from "@versaprotocol/examples";
-
-const packageRegisteredReceipt = (
-  receipt: Receipt,
-  transaction_event_index = 0
-) => {
-  return {
-    registration: {
-      receipt_id: "",
-      transaction_id: "",
-      registered_at: Math.floor(new Date().valueOf() / 1000),
-      transaction_event_index,
-    },
-    receipt,
-  };
-};
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<typeof ReceiptDisplay> = {
