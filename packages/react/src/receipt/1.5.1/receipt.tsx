@@ -34,13 +34,11 @@ export function ReceiptDisplay({
   receipt,
   schemaVersion,
   merchant,
-  activities,
   theme,
 }: {
   receipt: lts.v1_5_1.Receipt;
   schemaVersion: string;
   merchant: Org;
-  activities?: Activity[];
   theme?: string;
 }) {
   const data = receipt;

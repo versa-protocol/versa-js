@@ -1,7 +1,6 @@
 import { Org, Receipt } from "@versaprotocol/schema";
 import {
   ActionBlock,
-  UpdateBlock,
   BlockWrap,
   ExportOptions,
   ItemizedCarRental,
@@ -18,32 +17,26 @@ import {
   Totals,
 } from "../../receipt-blocks";
 import {
-  Activity,
   aggregateAdjustments,
   aggregateEcommerceItems,
   aggregateTaxes,
-  formatDateTime,
 } from "@versaprotocol/belt";
 import styles from "./../base_receipt.module.css";
 import { Payments } from "../../receipt-blocks/payments";
 import { Parties } from "../../receipt-blocks/parties/parties";
 import { usePdfGen } from "../../hooks/usePdfGen";
-import { processHistory } from "../../helpers/updates";
 
 import { LTS_VERSIONS } from "@versaprotocol/schema";
-import React from "react";
 
 export function ReceiptLatest({
   receipt,
   schemaVersion,
   merchant,
-  history,
   theme,
 }: {
   receipt: Receipt;
   schemaVersion: string;
   merchant: Org;
-  history?: Receipt[];
   theme?: string;
 }) {
   const data = receipt;

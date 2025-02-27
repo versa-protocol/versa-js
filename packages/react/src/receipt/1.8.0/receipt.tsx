@@ -20,7 +20,7 @@ import { Parties } from "../../receipt-blocks/parties/parties";
 import { usePdfGen } from "../../hooks/usePdfGen";
 
 import { LTS_VERSIONS } from "@versaprotocol/schema";
-import { Activity, lts_v1_8_0 } from "@versaprotocol/belt";
+import { lts_v1_8_0 } from "@versaprotocol/belt";
 import { ItemizedFlight } from "./receipt-blocks/itemized-flight";
 
 const { aggregateAdjustments, aggregateEcommerceItems, aggregateTaxes } =

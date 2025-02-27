@@ -21,8 +21,7 @@ import { Parties } from "../../receipt-blocks/parties/parties";
 import { usePdfGen } from "../../hooks/usePdfGen";
 
 import { LTS_VERSIONS } from "@versaprotocol/schema";
-import { Activity, lts_v1_8_0 } from "@versaprotocol/belt";
-import { RegisteredReceipt } from "../../receipt-history/model";
+import { lts_v1_8_0 } from "@versaprotocol/belt";
 
 const { aggregateAdjustments, aggregateEcommerceItems, aggregateTaxes } =
   lts_v1_8_0;
@@ -31,13 +30,11 @@ export function ReceiptDisplay({
   receipt,
   schemaVersion,
   merchant,
-  activities,
   theme,
 }: {
   receipt: lts.v1_6_0.Receipt;
   schemaVersion: string;
   merchant: Org;
-  activities?: Activity[];
   theme?: string;
 }) {
   const data = receipt;
