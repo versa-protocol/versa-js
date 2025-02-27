@@ -18,7 +18,7 @@ export function Print({
 }) {
   return (
     <div className={styles.printWrap}>
-      <ReceiptDisplay merchant={data.merchant} receipt={data as any} />
+      <ReceiptDisplay merchant={data.merchant} receipt={data.receipt} />
       <ul className={styles.fullScreenActions}>
         <li>
           <button>Download PDF</button>
