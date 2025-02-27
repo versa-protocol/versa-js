@@ -4,6 +4,21 @@ import { ReceiptDisplay } from "@versaprotocol/react";
 import { Receipt } from "@versaprotocol/schema";
 import { senders, receipts } from "@versaprotocol/examples";
 
+const packageRegisteredReceipt = (
+  receipt: Receipt,
+  transaction_event_index = 0
+) => {
+  return {
+    registration: {
+      receipt_id: "",
+      transaction_id: "",
+      registered_at: Math.floor(new Date().valueOf() / 1000),
+      transaction_event_index,
+    },
+    receipt,
+  };
+};
+
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<typeof ReceiptDisplay> = {
   title: "receipt/ReceiptDisplay",
@@ -34,62 +49,62 @@ type Story = StoryObj<typeof meta>;
 export const Subscription: Story = {
   args: {
     merchant: senders.bend,
-    receipt: receipts.subscription,
+    receipt: packageRegisteredReceipt(receipts.subscription),
   },
 };
 
 export const Flight: Story = {
   args: {
     merchant: senders.jetblue,
-    receipt: receipts.flight,
+    receipt: packageRegisteredReceipt(receipts.flight),
   },
 };
 
 export const Redeye: Story = {
   args: {
     merchant: senders.jetblue,
-    receipt: receipts.redeye,
+    receipt: packageRegisteredReceipt(receipts.redeye),
   },
 };
 export const FlightMultileg: Story = {
   args: {
     merchant: senders.united_airlines,
-    receipt: receipts.flight_multileg,
+    receipt: packageRegisteredReceipt(receipts.flight_multileg),
   },
 };
 
 export const Lodging: Story = {
   args: {
     merchant: senders.sonesta,
-    receipt: receipts.lodging,
+    receipt: packageRegisteredReceipt(receipts.lodging),
   },
 };
 
 export const Car_Rental: Story = {
   args: {
     merchant: senders.sonesta,
-    receipt: receipts.car_rental,
+    receipt: packageRegisteredReceipt(receipts.car_rental),
   },
 };
 
 export const Rideshare: Story = {
   args: {
     merchant: senders.sonesta,
-    receipt: receipts.rideshare,
+    receipt: packageRegisteredReceipt(receipts.rideshare),
   },
 };
 
 export const Ecommerce: Story = {
   args: {
     merchant: senders.amazon,
-    receipt: receipts.ecommerce,
+    receipt: packageRegisteredReceipt(receipts.ecommerce),
   },
 };
 
 export const Rail: Story = {
   args: {
     merchant: senders.sonesta,
-    receipt: receipts.rail,
+    receipt: packageRegisteredReceipt(receipts.rail),
   },
 };
 
@@ -127,8 +142,11 @@ const receiptPriorToPayment: Receipt = {
 export const EcommerceWithHistory: Story = {
   args: {
     merchant: senders.amazon,
-    receipt: receipts.ecommerce,
-    history: [receiptPriorToShipment, receiptPriorToPayment],
+    receipt: packageRegisteredReceipt(receipts.ecommerce, 2),
+    history: [
+      packageRegisteredReceipt(receiptPriorToShipment, 1),
+      packageRegisteredReceipt(receiptPriorToPayment),
+    ],
   },
 };
 
@@ -139,14 +157,14 @@ import { v1_5_1 } from "@versaprotocol/examples";
 export const Lts1_5_1_Flight: Story = {
   args: {
     merchant: senders.jetblue,
-    receipt: v1_5_1.flight as any,
+    receipt: packageRegisteredReceipt(v1_5_1.flight as any),
   },
 };
 
 export const Lts1_5_1_Simple: Story = {
   args: {
     merchant: senders.bend,
-    receipt: v1_5_1.simple as any,
+    receipt: packageRegisteredReceipt(v1_5_1.simple as any),
   },
 };
 
@@ -155,23 +173,22 @@ import { v1_6_0 } from "@versaprotocol/examples";
 export const Lts1_6_0_Flight: Story = {
   args: {
     merchant: senders.jetblue,
-    receipt: v1_6_0.flight as any,
+    receipt: packageRegisteredReceipt(v1_6_0.flight as any),
   },
 };
 
 export const Lts1_6_0_Simple: Story = {
   args: {
     merchant: senders.bend,
-    receipt: v1_6_0.simple as any,
+    receipt: packageRegisteredReceipt(v1_6_0.simple as any),
   },
 };
 
 import { v1_7_0 } from "@versaprotocol/examples";
-import { ActivityType } from "../../../../packages/belt/dist";
 
 export const Lts1_7_0_Flight: Story = {
   args: {
     merchant: senders.jetblue,
-    receipt: v1_7_0.flight as any,
+    receipt: packageRegisteredReceipt(v1_7_0.flight as any),
   },
 };

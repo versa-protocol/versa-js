@@ -22,6 +22,7 @@ import { usePdfGen } from "../../hooks/usePdfGen";
 
 import { LTS_VERSIONS } from "@versaprotocol/schema";
 import { Activity, lts_v1_8_0 } from "@versaprotocol/belt";
+import { RegisteredReceipt } from "../model";
 
 const { aggregateAdjustments, aggregateEcommerceItems, aggregateTaxes } =
   lts_v1_8_0;
@@ -33,13 +34,13 @@ export function ReceiptDisplay({
   activities,
   theme,
 }: {
-  receipt: lts.v1_6_0.Receipt;
+  receipt: RegisteredReceipt<lts.v1_6_0.Receipt>;
   schemaVersion: string;
   merchant: Org;
   activities?: Activity[];
   theme?: string;
 }) {
-  const data = receipt;
+  const data = receipt.receipt;
 
   if (!LTS_VERSIONS.includes(schemaVersion)) {
     return (
@@ -57,11 +58,11 @@ export function ReceiptDisplay({
     brandThemeLight: false,
   };
   if (
-    receipt?.header?.third_party &&
-    receipt?.header?.third_party.make_primary &&
-    receipt?.header?.third_party.merchant.brand_color
+    data?.header?.third_party &&
+    data?.header?.third_party.make_primary &&
+    data?.header?.third_party.merchant.brand_color
   ) {
-    colors.brand = receipt?.header?.third_party.merchant.brand_color;
+    colors.brand = data?.header?.third_party.merchant.brand_color;
   } else {
     colors.brand = merchant?.brand_color || "#000000";
   }
@@ -187,7 +188,7 @@ export function ReceiptDisplay({
       <BlockWrap>
         <Totals
           taxes={aggregateTaxes(data.itemization)}
-          header={receipt.header}
+          header={data.header}
           adjustments={aggregateAdjustments(data.itemization)}
           colors={colors}
         />
