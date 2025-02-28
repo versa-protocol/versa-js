@@ -33,24 +33,21 @@ export function ReceiptWithHistory({
 
   const totalVersions = history.length;
   const totalUpdates = totalVersions - 1;
-  const getUpdateIndicatorText = () => {
+  const isLatest = currentTransactionEventIndex === totalUpdates;
+  const getPreviousVersionHeader = () => {
     if (!history) {
       return "";
     }
-    if (currentTransactionEventIndex === totalUpdates) {
-      return `${totalUpdates} Update${totalUpdates > 1 ? "s" : ""}`;
-    } else {
-      for (const event of history) {
-        if (
-          event.registration.transaction_event_index ===
-          currentTransactionEventIndex
-        ) {
-          return `Viewing Version ${
-            currentTransactionEventIndex + 1
-          } of ${totalVersions} (${formatDateTime(
-            event.registration.registered_at
-          )})`;
-        }
+    for (const event of history) {
+      if (
+        event.registration.transaction_event_index ===
+        currentTransactionEventIndex
+      ) {
+        return `Viewing version ${
+          currentTransactionEventIndex + 1
+        } of ${totalVersions} (${formatDateTime(
+          event.registration.registered_at
+        )})`;
       }
     }
   };
@@ -83,14 +80,29 @@ export function ReceiptWithHistory({
 
   return (
     <div className={styles.receiptHistoryWrap}>
-      {history && !!history.length && (
+      {history && !!history.length && isLatest && (
         <button
           ref={updatesIndicatorRef}
           onClick={handleUpdateFocus}
           className={styles.updateBadge}
         >
-          {getUpdateIndicatorText()}
+          {`${totalUpdates} update${totalUpdates > 1 ? "s" : ""}`}
         </button>
+      )}
+      {!isLatest && (
+        <div className={styles.previousVersionHeader}>
+          <div>{getPreviousVersionHeader()}</div>
+          <div>
+            <button
+              onClick={() => {
+                setReceiptView(history.length - 1);
+              }}
+              className={styles.buttonReset}
+            >
+              Return to latest version
+            </button>
+          </div>
+        </div>
       )}
       <ReceiptDisplay receipt={data} merchant={merchant} theme={theme} />
       {!!updates?.length && (
