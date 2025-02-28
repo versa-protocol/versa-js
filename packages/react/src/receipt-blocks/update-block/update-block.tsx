@@ -35,6 +35,7 @@ export function UpdateBlock({
           ) : (
             <div className={styles.subwayStop}>
               <button
+                ref={viewRef}
                 className={styles.viewButton}
                 onClick={() => onViewPreviousVersion(0)}
               >
@@ -69,12 +70,7 @@ export function UpdateBlock({
             ) : (
               <div className={styles.subwayStop}>
                 <button
-                  ref={
-                    currentTransactionEventIndex !==
-                    currentUpdate.transactionEventIndex
-                      ? viewRef
-                      : null
-                  }
+                  ref={viewRef}
                   className={styles.viewButton}
                   onClick={() =>
                     onViewPreviousVersion(currentUpdate.transactionEventIndex)
