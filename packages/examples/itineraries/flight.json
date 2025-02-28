@@ -1,0 +1,150 @@
+{
+  "schema_version": "1.9.0",
+  "header": {
+    "third_party": null,
+    "customer": null
+  },
+  "itemization": {
+    "lodging": null,
+    "car_rental": null,
+    "transit_route": null,
+    "flight": {
+      "tickets": [
+        {
+          "segments": [
+            {
+              "departure_airport_code": "SEA",
+              "arrival_airport_code": "MSP",
+              "aircraft_type": "B3XM",
+              "departure_at": 1713196492,
+              "arrival_at": 1713197752,
+              "departure_tz": "America/Los_Angeles",
+              "arrival_tz": "America/Chicago",
+              "flight_number": "DL1768",
+              "class_of_service": "k",
+              "seat": "15F",
+              "metadata": []
+            },
+            {
+              "departure_airport_code": "MSP",
+              "arrival_airport_code": "GFK",
+              "aircraft_type": "B39M",
+              "departure_at": 1713206492,
+              "arrival_at": 1713226492,
+              "departure_tz": "America/Chicago",
+              "arrival_tz": "America/Chicago",
+              "flight_number": "DL4656",
+              "class_of_service": "k",
+              "seat": "10A",
+              "metadata": []
+            },
+            {
+              "departure_airport_code": "GFK",
+              "arrival_airport_code": "MSP",
+              "aircraft_type": "B39M",
+              "departure_at": 1713900952,
+              "arrival_at": 1713904000,
+              "departure_tz": "America/Chicago",
+              "arrival_tz": "America/Chicago",
+              "flight_number": "DL4656",
+              "class_of_service": "k",
+              "seat": "17A",
+              "metadata": []
+            },
+            {
+              "departure_airport_code": "MSP",
+              "arrival_airport_code": "SEA",
+              "aircraft_type": "B3XM",
+              "departure_at": 1713905000,
+              "arrival_at": 1713918000,
+              "departure_tz": "America/Chicago",
+              "arrival_tz": "America/Los_Angeles",
+              "flight_number": "DL2536",
+              "class_of_service": "k",
+              "seat": "12B",
+              "metadata": []
+            }
+          ],
+          "number": "0062698215636",
+          "record_locator": "CU9GEF",
+          "passenger": "Susy Smith",
+          "metadata": [
+            {
+              "key": "AAdvantage #",
+              "value": "TH4700"
+            }
+          ]
+        },
+        {
+          "segments": [
+            {
+              "departure_airport_code": "SEA",
+              "arrival_airport_code": "MSP",
+              "aircraft_type": "B3XM",
+              "departure_at": 1713196492,
+              "arrival_at": 1713197752,
+              "departure_tz": "America/Los_Angeles",
+              "arrival_tz": "America/Chicago",
+              "flight_number": "DL1768",
+              "class_of_service": "k",
+              "seat": "14F",
+              "metadata": []
+            },
+            {
+              "departure_airport_code": "MSP",
+              "arrival_airport_code": "GFK",
+              "aircraft_type": "B39M",
+              "departure_at": 1713206492,
+              "arrival_at": 1713226492,
+              "departure_tz": "America/Chicago",
+              "arrival_tz": "America/Chicago",
+              "flight_number": "DL4656",
+              "class_of_service": "k",
+              "seat": "11A",
+              "metadata": []
+            },
+            {
+              "departure_airport_code": "GFK",
+              "arrival_airport_code": "MSP",
+              "aircraft_type": "B39M",
+              "departure_at": 1713900952,
+              "arrival_at": 1713904000,
+              "departure_tz": "America/Chicago",
+              "arrival_tz": "America/Chicago",
+              "flight_number": "DL4656",
+              "class_of_service": "k",
+              "seat": "11A",
+              "metadata": []
+            },
+            {
+              "departure_airport_code": "MSP",
+              "arrival_airport_code": "SEA",
+              "aircraft_type": "B3XM",
+              "departure_at": 1713905000,
+              "arrival_at": 1713918000,
+              "departure_tz": "America/Chicago",
+              "arrival_tz": "America/Los_Angeles",
+              "flight_number": "DL2536",
+              "class_of_service": "k",
+              "seat": "16C",
+              "metadata": []
+            }
+          ],
+          "number": "0062698215637",
+          "record_locator": "CU9GEF",
+          "passenger": "John Smith",
+          "metadata": [
+            {
+              "key": "AAdvantage #",
+              "value": "TH4703"
+            }
+          ]
+        }
+      ],
+      "itinerary_locator": "1122337694093"
+    }
+  },
+  "footer": {
+    "supplemental_text": "You have 24 hours from the time you first buy your ticket to make changes or cancel for a refund if you booked at least 2 days before departure."
+  }
+}

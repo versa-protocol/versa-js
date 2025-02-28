@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.9.0",
+  "header": {
+    "third_party": null,
+    "customer": null
+  },
+  "itemization": {
+    "lodging": {
+      "check_in": 1721667600,
+      "check_out": 1721840400,
+      "room": "0830",
+      "location": {
+        "name": "Courtland Grand Hotel",
+        "address": {
+          "street_address": "165 Courtland Street NE",
+          "city": "Atlanta",
+          "region": "GA",
+          "country": "US",
+          "postal_code": "30303",
+          "lat": null,
+          "lon": null,
+          "tz": null
+        },
+        "phone": "(404) 659-6500",
+        "url": null,
+        "google_place_id": null,
+        "image": null
+      },
+      "items": [
+        {
+          "description": "Room Charge",
+          "quantity": null,
+          "unit": null,
+          "metadata": [],
+          "product_image": null,
+          "date": "2024-07-22",
+          "url": null
+        },
+        {
+          "description": "Room Charge",
+          "quantity": null,
+          "unit": null,
+          "metadata": [],
+          "product_image": null,
+          "date": "2024-07-23",
+          "url": null
+        },
+        {
+          "description": "Room Charge",
+          "quantity": null,
+          "unit": null,
+          "metadata": [],
+          "product_image": null,
+          "date": "2024-07-24",
+          "url": null
+        }
+      ]
+    },
+    "car_rental": null,
+    "transit_route": null,
+    "flight": null
+  },
+  "footer": {}
+}

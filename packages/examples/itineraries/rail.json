@@ -1,0 +1,155 @@
+{
+  "schema_version": "1.9.0",
+  "header": {
+    "third_party": null,
+    "customer": null
+  },
+  "itemization": {
+    "lodging": null,
+    "car_rental": null,
+    "transit_route": {
+      "transit_route_items": [
+        {
+          "departure_location": {
+            "address": {
+              "street_address": "350 W 33 St",
+              "city": "New York",
+              "region": "NY",
+              "country": "US",
+              "postal_code": "10001",
+              "lat": 40.7518924492056,
+              "lon": -73.99572743676399,
+              "tz": null
+            },
+            "name": "Moynihan Train Hall at Penn Sta.",
+            "phone": null,
+            "url": null,
+            "google_place_id": null,
+            "image": null
+          },
+          "arrival_location": {
+            "address": {
+              "street_address": "700 Atlantic Ave",
+              "city": "Boston",
+              "region": "MA",
+              "country": "US",
+              "postal_code": "02110",
+              "lat": 42.3525213445053,
+              "lon": -71.0551130449417,
+              "tz": null
+            },
+            "name": "South Station",
+            "phone": null,
+            "url": null,
+            "google_place_id": null,
+            "image": null
+          },
+          "mode": "rail",
+          "passenger": "Honora Doe",
+          "departure_at": 1726854999,
+          "arrival_at": 1726867959,
+          "polyline": null,
+          "metadata": [
+            { "key": "Ticket", "value": "1210653562276" },
+            { "key": "Class", "value": "Coach" },
+            { "key": "Category", "value": "Adult" }
+          ]
+        },
+        {
+          "departure_location": {
+            "address": {
+              "street_address": "350 W 33 St",
+              "city": "New York",
+              "region": "NY",
+              "country": "US",
+              "postal_code": "10001",
+              "lat": 40.7518924492056,
+              "lon": -73.99572743676399,
+              "tz": null
+            },
+            "name": "Moynihan Train Hall at Penn Sta.",
+            "phone": null,
+            "url": null,
+            "google_place_id": null,
+            "image": null
+          },
+          "arrival_location": {
+            "address": {
+              "street_address": "700 Atlantic Ave",
+              "city": "Boston",
+              "region": "MA",
+              "country": "US",
+              "postal_code": "02110",
+              "lat": 42.3525213445053,
+              "lon": -71.0551130449417,
+              "tz": null
+            },
+            "name": "South Station",
+            "phone": null,
+            "url": null,
+            "google_place_id": null,
+            "image": null
+          },
+          "mode": "rail",
+          "passenger": "Ted Doe",
+          "departure_at": 1726854999,
+          "arrival_at": 1726867959,
+          "polyline": null,
+          "metadata": [
+            { "key": "Ticket", "value": "1210653562276" },
+            { "key": "Class", "value": "Coach" },
+            { "key": "Category", "value": "Adult" }
+          ]
+        },
+        {
+          "departure_location": {
+            "address": {
+              "street_address": "350 W 33 St",
+              "city": "New York",
+              "region": "NY",
+              "country": "US",
+              "postal_code": "10001",
+              "lat": 40.7518924492056,
+              "lon": -73.99572743676399,
+              "tz": null
+            },
+            "name": "Moynihan Train Hall at Penn Sta.",
+            "phone": null,
+            "url": null,
+            "google_place_id": null,
+            "image": null
+          },
+          "arrival_location": {
+            "address": {
+              "street_address": "700 Atlantic Ave",
+              "city": "Boston",
+              "region": "MA",
+              "country": "US",
+              "postal_code": "02110",
+              "lat": 42.3525213445053,
+              "lon": -71.0551130449417,
+              "tz": null
+            },
+            "name": "South Station",
+            "phone": null,
+            "url": null,
+            "google_place_id": null,
+            "image": null
+          },
+          "mode": "rail",
+          "passenger": "Rita Doe",
+          "departure_at": 1726854999,
+          "arrival_at": 1726867959,
+          "polyline": null,
+          "metadata": [
+            { "key": "Ticket", "value": "1210653562276" },
+            { "key": "Class", "value": "Coach" },
+            { "key": "Category", "value": "Child" }
+          ]
+        }
+      ]
+    },
+    "flight": null
+  },
+  "footer": {}
+}

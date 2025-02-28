@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.9.0",
+  "header": {
+    "invoice_number": "IAFO44",
+    "currency": "usd",
+    "total": 4806,
+    "subtotal": 3167,
+    "paid": 4806,
+    "invoiced_at": 1715810036,
+    "mcc": "4121",
+    "third_party": null,
+    "customer": null,
+    "location": null,
+    "invoice_asset_id": null,
+    "receipt_asset_id": null
+  },
+  "itemization": {
+    "general": null,
+    "lodging": null,
+    "ecommerce": null,
+    "car_rental": null,
+    "transit_route": {
+      "transit_route_items": [
+        {
+          "departure_location": {
+            "address": {
+              "street_address": "63 Greenpoint Avenue",
+              "city": "New York",
+              "region": "NY",
+              "country": "US",
+              "postal_code": "11222",
+              "lat": 40.730159936360344,
+              "lon": -73.95787640187818,
+              "tz": null
+            },
+            "name": null,
+            "phone": null,
+            "url": null,
+            "google_place_id": null,
+            "image": null
+          },
+          "arrival_location": {
+            "address": {
+              "street_address": "26 E 63rd St.",
+              "city": "New York",
+              "region": "NY",
+              "country": "US",
+              "postal_code": "10065",
+              "lat": 40.766385855824176,
+              "lon": -73.96931565396591,
+              "tz": null
+            },
+            "name": "Club Macanudo",
+            "phone": null,
+            "url": null,
+            "google_place_id": null,
+            "image": null
+          },
+          "fare": 3167,
+          "mode": "car",
+          "passenger": null,
+          "departure_at": 1715810036,
+          "arrival_at": 1715797931,
+          "polyline": null,
+          "taxes": [
+            {
+              "amount": 694,
+              "rate": null,
+              "name": "Toll"
+            },
+            {
+              "amount": 367,
+              "rate": 0.0875,
+              "name": "Sales Tax"
+            },
+            {
+              "amount": 275,
+              "rate": null,
+              "name": "Congestion Surcharge"
+            },
+            {
+              "amount": 103,
+              "rate": null,
+              "name": "Workers Comp"
+            }
+          ],
+          "metadata": [],
+          "adjustments": []
+        }
+      ],
+      "invoice_level_adjustments": [
+        { "amount": 200, "adjustment_type": "tip", "name": null, "rate": null }
+      ]
+    },
+    "subscription": null,
+    "flight": null
+  },
+  "footer": {
+    "actions": []
+  },
+  "payments": []
+}

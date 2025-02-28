@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.9.0",
+  "header": {
+    "third_party": null,
+    "customer": null
+  },
+  "itemization": {
+    "lodging": null,
+    "car_rental": {
+      "rental_at": 1713196492,
+      "return_at": 1713415500,
+      "rental_location": {
+        "google_place_id": null,
+        "name": "Portland Int. Airport (PDX)",
+        "url": null,
+        "address": {
+          "street_address": "7240 Northeast Airport Way",
+          "city": "Portland",
+          "region": "OR",
+          "country": "US",
+          "postal_code": "97220",
+          "lat": 45.588025310489726,
+          "lon": -122.59212461576227,
+          "tz": null
+        },
+        "phone": "(150) 3528-7900",
+        "image": null
+      },
+      "return_location": {
+        "google_place_id": null,
+        "name": "Portland Int. Airport (PDX)",
+        "url": null,
+        "address": {
+          "street_address": "7240 Northeast Airport Way",
+          "city": "Portland",
+          "region": "OR",
+          "country": "US",
+          "postal_code": "97220",
+          "lat": 45.588025310489726,
+          "lon": -122.59212461576227,
+          "tz": null
+        },
+        "phone": "(150) 3528-7900",
+        "image": null
+      },
+      "vehicle": {
+        "description": "Polestar 2",
+        "image": "https://versa.org/temp_demo_assets/hertz/polestar2.png"
+      },
+      "driver_name": "Henry Ford",
+      "odometer_reading_in": 100,
+      "odometer_reading_out": 210,
+      "metadata": [],
+      "items": [
+        {
+          "quantity": 3,
+          "description": "Daily rate",
+          "unit": "day"
+        },
+        {
+          "quantity": 3,
+          "description": "Child seat daily rate",
+          "unit": "day"
+        }
+      ]
+    },
+    "transit_route": null,
+    "flight": null
+  },
+  "footer": {}
+}
