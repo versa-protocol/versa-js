@@ -1,5 +1,11 @@
 # @versaprotocol/react
 
+## 1.10.0
+
+### Minor Changes
+
+- Added ReceiptWithHistory component
+
 ## 1.9.3
 
 ### Patch Changes
