@@ -90,6 +90,10 @@ export const EcommerceWithHistory: Story = {
 
 const lodgingPriorToCheckin: Receipt = {
   ...receipts.lodging,
+  header: {
+    ...receipts.lodging.header,
+    paid: 0,
+  },
   itemization: {
     ...receipts.lodging.itemization,
     lodging: {
