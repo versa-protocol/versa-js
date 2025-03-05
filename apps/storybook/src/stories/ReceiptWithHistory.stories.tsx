@@ -87,3 +87,24 @@ export const EcommerceWithHistory: Story = {
     ],
   },
 };
+
+const lodgingPriorToCheckin: Receipt = {
+  ...receipts.lodging,
+  itemization: {
+    ...receipts.lodging.itemization,
+    lodging: {
+      ...receipts.lodging.itemization.lodging,
+      items: [],
+    },
+  },
+};
+
+export const LodgingWithHistory: Story = {
+  args: {
+    merchant: senders.ihg,
+    receipts: [
+      packageRegisteredReceipt(receipts.lodging, 1, 1740685304),
+      packageRegisteredReceipt(lodgingPriorToCheckin, 0, 1739685291),
+    ],
+  },
+};

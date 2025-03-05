@@ -159,7 +159,7 @@ import hubli from "./senders/hubli.json";
 import hyatt from "./senders/hyatt.json";
 import iata from "./senders/iata.json";
 import indian_hotels_company_limited from "./senders/indian_hotels_company_limited.json";
-import ihg_hotels_and_resorts from "./senders/ihg_hotels_and_resorts.json";
+import ihg from "./senders/ihg.json";
 import international_sos from "./senders/international_sos.json";
 import island_hospitality_management from "./senders/island_hospitality_management.json";
 import ita_airways from "./senders/ita_airways.json";
@@ -453,7 +453,7 @@ const untypedSenders = {
   hyatt,
   iata,
   indian_hotels_company_limited,
-  ihg_hotels_and_resorts,
+  ihg,
   international_sos,
   island_hospitality_management,
   ita_airways,

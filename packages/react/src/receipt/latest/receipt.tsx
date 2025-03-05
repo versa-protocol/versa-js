@@ -136,14 +136,15 @@ export function ReceiptLatest({
       )}
       {data.itemization.ecommerce && (
         <>
-          {data.itemization.ecommerce.shipments && (
-            <BlockWrap>
-              <Shipment
-                data={data.itemization.ecommerce.shipments}
-                brandColor={colors.brand}
-              />
-            </BlockWrap>
-          )}
+          {data.itemization.ecommerce.shipments &&
+            data.itemization.ecommerce.shipments.length > 0 && (
+              <BlockWrap>
+                <Shipment
+                  data={data.itemization.ecommerce.shipments}
+                  brandColor={colors.brand}
+                />
+              </BlockWrap>
+            )}
           <BlockWrap>
             <LineItems
               items={aggregateEcommerceItems(data.itemization.ecommerce)}
@@ -156,9 +157,12 @@ export function ReceiptLatest({
           <BlockWrap>
             <ItemizedLodging data={data.itemization.lodging} theme={theme} />
           </BlockWrap>
-          <BlockWrap>
-            <LineItems items={data.itemization.lodging.items} />
-          </BlockWrap>
+          {data.itemization.lodging.items &&
+            data.itemization.lodging.items.length > 0 && (
+              <BlockWrap>
+                <LineItems items={data.itemization.lodging.items} />
+              </BlockWrap>
+            )}
         </>
       )}
       {data.itemization.flight && (
