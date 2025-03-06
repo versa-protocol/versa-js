@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 // import { fn } from '@storybook/test';
 import { ReceiptWithHistory } from "@versaprotocol/react";
-import { Receipt } from "@versaprotocol/schema";
+import { Lodging, Receipt } from "@versaprotocol/schema";
 import { senders, receipts } from "@versaprotocol/examples";
 
 const packageRegisteredReceipt = (
@@ -97,7 +97,7 @@ const lodgingPriorToCheckin: Receipt = {
   itemization: {
     ...receipts.lodging.itemization,
     lodging: {
-      ...receipts.lodging.itemization.lodging,
+      ...(receipts.lodging.itemization.lodging as Lodging),
       items: [],
     },
   },
