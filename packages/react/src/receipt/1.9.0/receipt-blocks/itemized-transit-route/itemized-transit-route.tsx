@@ -5,17 +5,19 @@ import {
   sameDay,
 } from "@versaprotocol/belt";
 import styles from "./itemized-transit-route.module.css";
-import { lts, Metadatum } from "@versaprotocol/schema";
+import { Metadatum, TransitRoute } from "@versaprotocol/schema";
 import { organizeTransitRoutes } from "@versaprotocol/belt";
 import { VersaContext } from "../../../../context";
+import { lts } from "@versaprotocol/schema";
+type Receipt = lts.v1_9_0.Receipt;
 
 export function ItemizedTransitRoute({
   transit_route,
   header,
   theme,
 }: {
-  transit_route: lts.v1_5_1.TransitRoute;
-  header: lts.v1_5_1.Receipt["header"];
+  transit_route: TransitRoute;
+  header: Receipt["header"];
   theme: any;
 }) {
   const multi = transit_route.transit_route_items.length > 1;

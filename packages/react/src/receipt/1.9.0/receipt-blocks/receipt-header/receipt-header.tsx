@@ -1,8 +1,10 @@
 import { formatDateTime, formatUSD } from "@versaprotocol/belt";
 import styles from "./receipt-header.module.css";
-import { Org, Receipt } from "@versaprotocol/schema";
-import { Merchant as PlaceholderGraphic } from "../../icons/merchant";
-import { Parties } from "../parties/parties";
+import { Org } from "@versaprotocol/schema";
+import { Merchant as PlaceholderGraphic } from "../../../../icons/merchant";
+import { Parties } from "../../../../receipt-blocks/parties/parties";
+
+import { lts } from "@versaprotocol/schema";
 
 export function ReceiptHeader({
   merchant,
@@ -10,7 +12,7 @@ export function ReceiptHeader({
   brandColor,
 }: {
   merchant: Org;
-  header: Receipt["header"];
+  header: lts.v1_9_0.Receipt["header"];
   brandColor: string;
 }) {
   return (

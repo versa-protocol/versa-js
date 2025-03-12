@@ -3,20 +3,18 @@ import {
   ActionBlock,
   BlockWrap,
   ItemizedCarRental,
+  ItemizedFlight,
   ItemizedLodging,
   ItemizedSubscription,
   LineItems,
   LocalBusiness,
   Shipment,
+  Parties,
 } from "../../receipt-blocks";
-import { ItemizedFlight } from "./receipt-blocks";
 import styles from "./../base_receipt.module.css";
-import { Parties } from "../../receipt-blocks/parties/parties";
 import { usePdfGen } from "../../hooks/usePdfGen";
 
 import { LTS_VERSIONS } from "@versaprotocol/schema";
-import { lts_v1_8_0 } from "@versaprotocol/belt";
-
 import {
   ReceiptHeader,
   ThirdParty,
@@ -24,10 +22,12 @@ import {
   Payments,
   Totals,
   ExportOptions,
-} from "../1.9.0/receipt-blocks";
-
-const { aggregateAdjustments, aggregateEcommerceItems, aggregateTaxes } =
-  lts_v1_8_0;
+} from "./receipt-blocks";
+import {
+  aggregateAdjustments,
+  aggregateEcommerceItems,
+  aggregateTaxes,
+} from "@versaprotocol/belt";
 
 export function ReceiptDisplay({
   receipt,
@@ -35,7 +35,7 @@ export function ReceiptDisplay({
   merchant,
   theme,
 }: {
-  receipt: lts.v1_6_0.Receipt;
+  receipt: lts.v1_9_0.Receipt;
   schemaVersion: string;
   merchant: Org;
   theme?: string;
@@ -58,11 +58,11 @@ export function ReceiptDisplay({
     brandThemeLight: false,
   };
   if (
-    data?.header?.third_party &&
-    data?.header?.third_party.make_primary &&
-    data?.header?.third_party.merchant.brand_color
+    receipt?.header?.third_party &&
+    receipt?.header?.third_party.make_primary &&
+    receipt?.header?.third_party.merchant.brand_color
   ) {
-    colors.brand = data?.header?.third_party.merchant.brand_color;
+    colors.brand = receipt?.header?.third_party.merchant.brand_color;
   } else {
     colors.brand = merchant?.brand_color || "#000000";
   }
@@ -188,7 +188,7 @@ export function ReceiptDisplay({
       <BlockWrap>
         <Totals
           taxes={aggregateTaxes(data.itemization)}
-          header={data.header}
+          header={receipt.header}
           adjustments={aggregateAdjustments(data.itemization)}
           colors={colors}
         />
@@ -196,10 +196,10 @@ export function ReceiptDisplay({
 
       {/* Actions */}
 
-      {data.actions && data.actions.length > 0 && (
+      {data.footer.actions && data.footer.actions.length > 0 && (
         <BlockWrap>
           <ActionBlock
-            actions={data.actions}
+            actions={data.footer.actions}
             brandTheme={colors.brand}
             brandThemeContrastLight={colors.brandThemeLight}
           />
