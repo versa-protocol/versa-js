@@ -59,7 +59,7 @@ export function ReceiptLatest({
   if (
     data?.header?.third_party &&
     data?.header?.third_party.make_primary &&
-    data?.header?.third_party.merchant.brand_color
+    data?.header?.third_party.merchant?.brand_color
   ) {
     colors.brand = data?.header?.third_party.merchant.brand_color;
   } else {

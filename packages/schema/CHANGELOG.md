@@ -1,5 +1,11 @@
 # @versaprotocol/schema
 
+## 1.10.0
+
+### Minor Changes
+
+- Update to schema_version 1.10.0
+
 ## 1.9.0
 
 ### Minor Changes

@@ -48,7 +48,7 @@ export function aggregateTaxes(itemization: Itemization): Tax[] {
   }
   if (itemization.flight) {
     for (const ticket of itemization.flight.tickets) {
-      if (ticket.taxes.length > 0) {
+      if (ticket.taxes?.length > 0) {
         for (const tax of ticket.taxes) {
           if (aggregatedTaxes[tax.name + tax.rate]) {
             aggregatedTaxes[tax.name + tax.rate].amount += tax.amount;

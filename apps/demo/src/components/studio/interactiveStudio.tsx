@@ -288,16 +288,17 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
                                   parsedReceipt.header.third_party
                                     .make_primary &&
                                   parsedReceipt.header.third_party.merchant
-                                    .logo) ||
+                                    ?.logo) ||
                                 parsedMerchant.logo
                               }
                               width={64}
                               height={64}
                               alt={
                                 parsedReceipt.header.third_party &&
-                                parsedReceipt.header.third_party.make_primary
+                                parsedReceipt.header.third_party.make_primary &&
+                                parsedReceipt.header.third_party.merchant?.name
                                   ? parsedReceipt.header.third_party.merchant
-                                      .name
+                                      ?.name
                                   : parsedMerchant.name
                               }
                             />
@@ -305,7 +306,8 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
                         </div>
                         <div className={styles.body}>
                           {parsedReceipt.header.third_party &&
-                          parsedReceipt.header.third_party.make_primary ? (
+                          parsedReceipt.header.third_party.make_primary &&
+                          !!parsedReceipt.header.third_party.merchant ? (
                             <div className={styles.merchantText}>
                               {parsedReceipt.header.third_party.merchant.name}
                             </div>

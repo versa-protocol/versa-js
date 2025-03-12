@@ -24,26 +24,26 @@ export async function Header(
   doc.text("Receipt", margin, margin + 20 / 72);
 
   // Logo
-  let logo = null;
+  let logo: string | null = null;
   if (merchant.logo) {
     logo = merchant.logo;
   }
   if (
     receipt.header.third_party &&
     receipt.header.third_party.make_primary &&
-    receipt.header.third_party.merchant.logo
+    receipt.header.third_party.merchant?.logo
   ) {
     logo = receipt.header.third_party.merchant.logo;
   }
   if (logo) {
     const options = {
-      string: true,
+      string: true, // critical to ensure we get a string and not a Buffer
       headers: {
         "User-Agent": "versa-pdfgen",
       },
     };
     try {
-      const base64Image = await encode(logo, options);
+      const base64Image = (await encode(logo, options)) as string;
       doc.addImage(base64Image, "JPEG", docWidth - margin - 1, margin, 1, 1);
     } catch (e) {
       console.warn("Error fetching and encoding image:", e);
