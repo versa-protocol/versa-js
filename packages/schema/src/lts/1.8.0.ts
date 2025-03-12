@@ -9,15 +9,7 @@ export type SchemaVersion = string;
 /**
  * ISO 4217 currency code
  */
-export type Currency =
-  | "usd"
-  | "eur"
-  | "jpy"
-  | "gbp"
-  | "aud"
-  | "cad"
-  | "chf"
-  | "cnh";
+export type Currency = "usd" | "eur" | "jpy" | "gbp" | "aud" | "cad" | "chf" | "cnh";
 export type AdjustmentType = "discount" | "tip" | "fee" | "other";
 export type SubscriptionType = "one_time" | "recurring";
 export type Interval = "day" | "week" | "month" | "year";
@@ -273,18 +265,7 @@ export interface Payment {
 }
 export interface CardPayment {
   last_four: string;
-  network:
-    | (
-        | "amex"
-        | "diners"
-        | "discover"
-        | "eftpos_au"
-        | "jcb"
-        | "mastercard"
-        | "unionpay"
-        | "visa"
-      )
-    | null;
+  network: ("amex" | "diners" | "discover" | "eftpos_au" | "jcb" | "mastercard" | "unionpay" | "visa") | null;
 }
 export interface AchPayment {
   routing_number: string;

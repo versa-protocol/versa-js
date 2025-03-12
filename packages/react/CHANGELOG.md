@@ -1,5 +1,11 @@
 # @versaprotocol/react
 
+## 1.11.1
+
+### Patch Changes
+
+- c4efcd4: Fix LTS compatibility and test compile
+
 ## 1.11.0
 
 ### Minor Changes

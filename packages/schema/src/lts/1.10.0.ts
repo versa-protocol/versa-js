@@ -9,15 +9,7 @@ export type SchemaVersion = string;
 /**
  * ISO 4217 currency code
  */
-export type Currency =
-  | "usd"
-  | "eur"
-  | "jpy"
-  | "gbp"
-  | "aud"
-  | "cad"
-  | "chf"
-  | "cnh";
+export type Currency = "usd" | "eur" | "jpy" | "gbp" | "aud" | "cad" | "chf" | "cnh";
 export type AdjustmentType = "discount" | "tip" | "fee" | "other";
 export type SubscriptionType = "one_time" | "recurring";
 export type Interval = "day" | "week" | "month" | "year";
@@ -41,13 +33,7 @@ export interface Header {
   invoiced_at: number;
   mcc?: string | null;
   third_party?: {
-    relation:
-      | "bnpl"
-      | "delivery_service"
-      | "marketplace"
-      | "payment_processor"
-      | "platform"
-      | "point_of_sale";
+    relation: "bnpl" | "delivery_service" | "marketplace" | "payment_processor" | "platform" | "point_of_sale";
     /**
      * Determines whether the merchant or third party gets top billing on the receipt
      */
@@ -278,18 +264,7 @@ export interface Payment {
 }
 export interface CardPayment {
   last_four: string;
-  network:
-    | (
-        | "amex"
-        | "diners"
-        | "discover"
-        | "eftpos_au"
-        | "jcb"
-        | "mastercard"
-        | "unionpay"
-        | "visa"
-      )
-    | null;
+  network: ("amex" | "diners" | "discover" | "eftpos_au" | "jcb" | "mastercard" | "unionpay" | "visa") | null;
 }
 export interface AchPayment {
   routing_number: string;
