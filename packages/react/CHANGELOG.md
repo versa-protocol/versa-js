@@ -1,5 +1,15 @@
 # @versaprotocol/react
 
+## 1.11.2
+
+### Patch Changes
+
+- Add support for schema version 1.11.0; warn instead of break on newer schema versions
+- Updated dependencies
+  - @versaprotocol/schema@1.11.0
+  - @versaprotocol/belt@1.10.1
+  - @versaprotocol/pdfgen@1.10.1
+
 ## 1.11.1
 
 ### Patch Changes

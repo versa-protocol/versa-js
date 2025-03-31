@@ -4,6 +4,7 @@ import { ReceiptDisplay as R_1_6_0 } from "./1.6.0/receipt";
 import { ReceiptLatest } from "./latest/receipt";
 
 import { LTS_VERSIONS } from "@versaprotocol/schema";
+import { compareSchemaVersions } from "./schemaVersion";
 
 export function ReceiptDisplay({
   receipt,
@@ -18,12 +19,23 @@ export function ReceiptDisplay({
   const schemaVersion = data.schema_version;
 
   if (!LTS_VERSIONS.includes(schemaVersion)) {
-    return (
-      <div>
-        Receipt schema version {schemaVersion} is not supported by this display
-        library.
-      </div>
-    );
+    if (
+      compareSchemaVersions(
+        LTS_VERSIONS[LTS_VERSIONS.length - 1],
+        schemaVersion
+      ) === 1
+    ) {
+      return (
+        <div>
+          Receipt schema version {schemaVersion} is not supported by this
+          display library.
+        </div>
+      );
+    } else {
+      console.warn(
+        "WARN: Receipt schema version is newer than the latest supported version; update your Versa library at your earliest convenience."
+      );
+    }
   }
 
   if (schemaVersion === "1.5.1") {

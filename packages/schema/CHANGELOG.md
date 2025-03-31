@@ -1,5 +1,11 @@
 # @versaprotocol/schema
 
+## 1.11.0
+
+### Minor Changes
+
+- Add support for 1.11.0
+
 ## 1.10.0
 
 ### Minor Changes
