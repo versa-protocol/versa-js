@@ -13,7 +13,7 @@ export function Payments({
     <div>
       {payments.length == 1 && payments[0].amount == header.total ? (
         <div className={styles.payment}>
-          {payments[0].payment_type == "card" && (
+          {payments[0].payment_type == "card" ? (
             <div className={styles.paymentType}>
               {payments[0].card_payment?.network && (
                 <>{toTitleCase(payments[0].card_payment.network)}</>
@@ -22,6 +22,8 @@ export function Payments({
                 ··· {payments[0].card_payment?.last_four}
               </span>
             </div>
+          ) : (
+            <div className={styles.paymentType}>Payment</div>
           )}
           <div>{formatDateTime(payments[0].paid_at, true, true)}</div>
         </div>
@@ -29,7 +31,7 @@ export function Payments({
         <>
           {payments.map((payment, i) => (
             <div className={styles.payment} key={i}>
-              {payment.payment_type == "card" && (
+              {payment.payment_type == "card" ? (
                 <div className={styles.paymentType}>
                   <div>
                     {payment.card_payment?.network && (
@@ -43,6 +45,8 @@ export function Payments({
                     {formatDateTime(payment.paid_at, true, true)}
                   </div>
                 </div>
+              ) : (
+                <div className={styles.paymentType}>Payment</div>
               )}
               <div>{formatUSD(payment.amount / 100)}</div>
             </div>
