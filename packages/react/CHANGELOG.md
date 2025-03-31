@@ -1,5 +1,12 @@
 # @versaprotocol/react
 
+## 1.11.5
+
+### Patch Changes
+
+- Updated dependencies
+  - @versaprotocol/pdfgen@1.11.1
+
 ## 1.11.4
 
 ### Patch Changes

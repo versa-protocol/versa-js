@@ -1,5 +1,11 @@
 # @versaprotocol/pdfgen
 
+## 1.11.1
+
+### Patch Changes
+
+- Patch vulnerable dependencies
+
 ## 1.11.0
 
 ### Minor Changes

@@ -1,6 +1,6 @@
 {
   "name": "@versaprotocol/pdfgen",
-  "version": "1.11.0",
+  "version": "1.11.1",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -13,10 +13,10 @@
   "dependencies": {
     "@versaprotocol/belt": "workspace:*",
     "@versaprotocol/schema": "workspace:*",
-    "jspdf": "^2.5.2",
-    "jspdf-autotable": "^3.8.4",
+    "jspdf": "^3.0.1",
+    "jspdf-autotable": "^5.0.2",
     "remove-markdown": "^0.5.5",
-    "svg2pdf.js": "^2.2.4"
+    "svg2pdf.js": "^2.5.0"
   },
   "devDependencies": {
     "@types/jest": "^28.1.3",
