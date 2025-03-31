@@ -10,4 +10,7 @@ describe("schema version helper functions", () => {
   it("should tell the same version from the same version", () => {
     expect(compareSchemaVersions("1.2.0", "1.2.0")).toBe(0);
   });
+  it("should treat an empty string as 0", () => {
+    expect(compareSchemaVersions("1.2.0", "1..0")).toBe(1);
+  });
 });

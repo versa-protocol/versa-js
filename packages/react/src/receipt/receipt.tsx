@@ -16,7 +16,7 @@ export function ReceiptDisplay({
   theme?: string;
 }) {
   const data = receipt;
-  const schemaVersion = data.schema_version;
+  let schemaVersion = data.schema_version;
 
   if (!LTS_VERSIONS.includes(schemaVersion)) {
     if (
@@ -33,7 +33,7 @@ export function ReceiptDisplay({
       );
     } else {
       console.warn(
-        "WARN: Receipt schema version is newer than the latest supported version; update your Versa library at your earliest convenience."
+        `WARN: Received schema version that is newer than the latest supported version; update your Versa library at your earliest convenience. (Received version: ${schemaVersion})`
       );
     }
   }

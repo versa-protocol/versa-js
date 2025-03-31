@@ -1,5 +1,11 @@
 # @versaprotocol/react
 
+## 1.11.4
+
+### Patch Changes
+
+- fixed edge-case behavior with schema version parsing; removed duplicate LTS check
+
 ## 1.11.3
 
 ### Patch Changes
