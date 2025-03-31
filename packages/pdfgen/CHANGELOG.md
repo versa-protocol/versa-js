@@ -1,5 +1,16 @@
 # @versaprotocol/pdfgen
 
+## 1.11.0
+
+### Minor Changes
+
+- Bump all downstream package versions to 1.11.0
+
+### Patch Changes
+
+- Updated dependencies
+  - @versaprotocol/belt@1.11.0
+
 ## 1.10.1
 
 ### Patch Changes
