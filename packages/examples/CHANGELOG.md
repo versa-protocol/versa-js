@@ -1,5 +1,11 @@
 # @versaprotocol/examples
 
+## 1.11.1
+
+### Patch Changes
+
+- Update example schema versions
+
 ## 1.11.0
 
 ### Minor Changes
