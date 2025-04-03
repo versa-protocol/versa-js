@@ -21,6 +21,25 @@ export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
       },
     },
   });
+  const aggregatedTaxes: Tax[] = aggregateTaxes(receipt.itemization);
+  if (aggregatedTaxes) {
+    aggregatedTaxes.forEach((t) => {
+      let taxLabel = t.name;
+      if (t.rate) {
+        taxLabel = taxLabel + " (" + t.rate * 100 + "%)";
+      }
+      totalsData.push({
+        description: { content: taxLabel },
+        amount: {
+          content: formatUSD(t.amount / 100),
+          styles: {
+            halign: "right",
+            cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },
+          },
+        },
+      });
+    });
+  }
   const aggregatedAdjustments: Adjustment[] | null = aggregateAdjustments(
     receipt.itemization
   );
@@ -39,25 +58,6 @@ export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
         description: { content: description },
         amount: {
           content: formatUSD(a.amount / 100),
-          styles: {
-            halign: "right",
-            cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },
-          },
-        },
-      });
-    });
-  }
-  const aggregatedTaxes: Tax[] = aggregateTaxes(receipt.itemization);
-  if (aggregatedTaxes) {
-    aggregatedTaxes.forEach((t) => {
-      let taxLabel = t.name;
-      if (t.rate) {
-        taxLabel = taxLabel + " (" + t.rate * 100 + "%)";
-      }
-      totalsData.push({
-        description: { content: taxLabel },
-        amount: {
-          content: formatUSD(t.amount / 100),
           styles: {
             halign: "right",
             cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },

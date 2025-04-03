@@ -30,22 +30,6 @@ export function Totals({
             {formatUSD(header.subtotal / 100)}
           </div>
         </div>
-        {adjustments &&
-          adjustments.map((a: any, index: any) => (
-            <div className={styles.row} key={index}>
-              <div className={styles.blockLabel}>
-                <div>
-                  <span>{a.name ? a.name : a.adjustment_type}</span>{" "}
-                  {a.rate && (
-                    <span className={styles.tax}>({a.rate * 100}%)</span>
-                  )}
-                </div>
-              </div>
-              <div className={styles.blockValue}>
-                {formatUSD(a.amount / 100)}
-              </div>
-            </div>
-          ))}
         {taxes && (
           <>
             {taxes.map((tft: Tax, index: number) => (
@@ -82,6 +66,22 @@ export function Totals({
             )}
           </>
         )}
+        {adjustments &&
+          adjustments.map((a: any, index: any) => (
+            <div className={styles.row} key={index}>
+              <div className={styles.blockLabel}>
+                <div>
+                  <span>{a.name ? a.name : a.adjustment_type}</span>{" "}
+                  {a.rate && (
+                    <span className={styles.tax}>({a.rate * 100}%)</span>
+                  )}
+                </div>
+              </div>
+              <div className={styles.blockValue}>
+                {formatUSD(a.amount / 100)}
+              </div>
+            </div>
+          ))}
         <div className={`${styles.row} ${styles.bottomLine}`}>
           <div className={styles.blockLabel}>Total</div>
           <div className={styles.blockValue}>
