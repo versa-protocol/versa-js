@@ -1,4 +1,4 @@
-import { formatUSD } from "@versaprotocol/belt";
+import { formatTransactionValue, formatUSD } from "@versaprotocol/belt";
 import styles from "./totals.module.css";
 import { ChevronDown } from "react-feather";
 import { Adjustment, Receipt, Tax } from "@versaprotocol/schema";
@@ -27,7 +27,7 @@ export function Totals({
         <div className={styles.row}>
           <div className={styles.blockLabel}>Subtotal</div>
           <div className={styles.blockValue}>
-            {formatUSD(header.subtotal / 100)}
+            {formatTransactionValue(header.subtotal, header.currency)}
           </div>
         </div>
         {taxes && (
@@ -43,7 +43,7 @@ export function Totals({
                   </div>
                 </div>
                 <div className={styles.blockValue}>
-                  {formatUSD(tft.amount / 100)}
+                  {formatTransactionValue(tft.amount, header.currency)}
                 </div>
               </div>
             ))}
@@ -78,14 +78,14 @@ export function Totals({
                 </div>
               </div>
               <div className={styles.blockValue}>
-                {formatUSD(a.amount / 100)}
+                {formatTransactionValue(a.amount, header.currency)}
               </div>
             </div>
           ))}
         <div className={`${styles.row} ${styles.bottomLine}`}>
           <div className={styles.blockLabel}>Total</div>
           <div className={styles.blockValue}>
-            {formatUSD(header.total / 100)}
+            {formatTransactionValue(header.total, header.currency)}
           </div>
         </div>
       </div>

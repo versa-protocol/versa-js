@@ -32,14 +32,31 @@ export function formatUSD(amount: number) {
   return USDFormatter.format(amount);
 }
 
-export function formatTransactionValue(
-  tx: { amount: number; currency_code: string },
-  abs: boolean = false
-) {
-  const signedAmount = abs ? Math.abs(tx.amount) : tx.amount;
-  return tx.currency_code.toUpperCase() === "USD"
-    ? formatUSD(signedAmount / 100)
-    : `${(signedAmount / 100).toFixed(2)} ${tx.currency_code.toUpperCase()}`;
+export function formatTransactionValue(amount: number, currency_code: string) {
+  const supportedCurrencies = [
+    "usd",
+    "eur",
+    "jpy",
+    "gbp",
+    "aud",
+    "cad",
+    "chf",
+    "cny",
+  ];
+  const normalizedCurrency = currency_code.toLowerCase();
+  if (!supportedCurrencies.includes(normalizedCurrency)) {
+    return `${amount} ${currency_code.toUpperCase()}`;
+  }
+  let locale = "en-US";
+  if (navigator.language) {
+    locale = navigator.language;
+  }
+  return new Intl.NumberFormat(locale, {
+    style: "currency",
+    currency: normalizedCurrency.toUpperCase(),
+    minimumFractionDigits: normalizedCurrency === "jpy" ? 0 : 2,
+    maximumFractionDigits: normalizedCurrency === "jpy" ? 0 : 2,
+  }).format(amount / (normalizedCurrency === "jpy" ? 1 : 100));
 }
 
 export function formatDateTime(

@@ -1,6 +1,6 @@
 import styles from "./line-items.module.css";
 import { LineItem } from "./../line-item";
-import { Item } from "@versaprotocol/schema";
+import { Item, Receipt } from "@versaprotocol/schema";
 import {
   groupItems,
   someItemsGrouped,
@@ -9,7 +9,13 @@ import {
 } from "@versaprotocol/belt";
 import React from "react";
 
-export function LineItems({ items }: { items: Item[] }) {
+export function LineItems({
+  items,
+  header,
+}: {
+  items: Item[];
+  header: Receipt["header"];
+}) {
   const hasGroupField = someItemsGrouped(items);
   const groupedItems = groupItems(items);
   const hasDateField = someItemsWithDate(items);
@@ -24,7 +30,7 @@ export function LineItems({ items }: { items: Item[] }) {
                 <React.Fragment key={date}>
                   <div className={styles.groupTitle}>{date}</div>
                   {sortedItemsByDate[date]?.map((li: any, index: number) => (
-                    <LineItem li={li} key={index} />
+                    <LineItem li={li} key={index} header={header} />
                   ))}
                 </React.Fragment>
               ))}
@@ -35,7 +41,7 @@ export function LineItems({ items }: { items: Item[] }) {
                 <React.Fragment key={group}>
                   <div className={styles.groupTitle}>{group}</div>
                   {groupedItems[group]?.map((li: any, index: number) => (
-                    <LineItem li={li} key={index} />
+                    <LineItem li={li} key={index} header={header} />
                   ))}
                 </React.Fragment>
               ))}
@@ -45,7 +51,7 @@ export function LineItems({ items }: { items: Item[] }) {
       ) : (
         <div className={styles.lineItemsInner}>
           {items.map((li: any, index: number) => (
-            <LineItem li={li} key={index} />
+            <LineItem li={li} key={index} header={header} />
           ))}
         </div>
       )}

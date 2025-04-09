@@ -1,8 +1,18 @@
-import { capitalize, formatUSD, netAdjustments } from "@versaprotocol/belt";
+import {
+  capitalize,
+  formatTransactionValue,
+  netAdjustments,
+} from "@versaprotocol/belt";
 import styles from "./line-item.module.css";
-import { Adjustment, Item, Metadatum } from "@versaprotocol/schema";
+import { Adjustment, Item, Metadatum, Receipt } from "@versaprotocol/schema";
 
-export function LineItem({ li }: { li: Item }) {
+export function LineItem({
+  li,
+  header,
+}: {
+  li: Item;
+  header: Receipt["header"];
+}) {
   return (
     <div className={li.unit_cost ? styles.lineItem : styles.lineItemCompact}>
       {li.product_image_asset_id && (
@@ -35,7 +45,7 @@ export function LineItem({ li }: { li: Item }) {
                 <div>
                   {li.quantity}
                   {li.unit && <> {li.unit}s</>} x{" "}
-                  {formatUSD(li.unit_cost / 100)}
+                  {formatTransactionValue(li.unit_cost, header.currency)}
                   {li.unit && <> per {li.unit}</>}
                 </div>
               )}
@@ -47,7 +57,9 @@ export function LineItem({ li }: { li: Item }) {
                       {a.rate ? (
                         <>({a.rate * 100}%)</>
                       ) : (
-                        <>({formatUSD(a.amount / 100)})</>
+                        <>
+                          ({formatTransactionValue(a.amount, header.currency)})
+                        </>
                       )}
                     </div>
                   ))}
@@ -57,13 +69,14 @@ export function LineItem({ li }: { li: Item }) {
             <div className={styles.totalWrap}>
               {li.adjustments && li.adjustments.length > 0 && (
                 <div className={styles.adjustmentCalc}>
-                  {formatUSD(
-                    (li.amount - netAdjustments(li.adjustments)) / 100
+                  {formatTransactionValue(
+                    li.amount - netAdjustments(li.adjustments),
+                    header.currency
                   )}
                 </div>
               )}
               <div className={styles.lineItemTotal}>
-                {formatUSD(li.amount / 100)}
+                {formatTransactionValue(li.amount, header.currency)}
               </div>
             </div>
           </div>
@@ -72,7 +85,7 @@ export function LineItem({ li }: { li: Item }) {
         <div className={styles.lineItemTextSimple}>
           <div className={styles.description}>{li.description}</div>
           <div className={styles.lineItemTotal}>
-            {formatUSD(li.amount / 100)}
+            {formatTransactionValue(li.amount, header.currency)}
           </div>
         </div>
       )}

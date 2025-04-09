@@ -1,10 +1,10 @@
 import {
   formatDateComparison,
   formatDateTime,
-  formatUSD,
+  formatTransactionValue,
 } from "@versaprotocol/belt";
 import styles from "./itemized-flight.module.css";
-import { Flight } from "@versaprotocol/schema";
+import { Flight, Receipt } from "@versaprotocol/schema";
 import { organizeFlightTickets } from "@versaprotocol/belt";
 
 function PlaneIcon() {
@@ -20,7 +20,13 @@ function PlaneIcon() {
   );
 }
 
-export function ItemizedFlight({ flight }: { flight: Flight }) {
+export function ItemizedFlight({
+  flight,
+  header,
+}: {
+  flight: Flight;
+  header: Receipt["header"];
+}) {
   return (
     <>
       {organizeFlightTickets(flight).map((t, index) => (
@@ -144,7 +150,9 @@ export function ItemizedFlight({ flight }: { flight: Flight }) {
               })}
               <div>
                 <div className={styles.key}>Fare</div>
-                <div className={styles.value}>{formatUSD(p.fare / 100)}</div>
+                <div className={styles.value}>
+                  {formatTransactionValue(p.fare, header.currency)}
+                </div>
               </div>
             </div>
           ))}

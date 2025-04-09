@@ -1,4 +1,4 @@
-import { formatDateTime, formatUSD } from "@versaprotocol/belt";
+import { formatDateTime, formatTransactionValue } from "@versaprotocol/belt";
 import styles from "./receipt-header.module.css";
 import { Org, Receipt } from "@versaprotocol/schema";
 import { Merchant as PlaceholderGraphic } from "../../icons/merchant";
@@ -85,7 +85,7 @@ export function ReceiptHeader({
           )}
         </div>
         <div className={styles.headerText}>
-          <h1>{formatUSD(header.total / 100)}</h1>
+          <h1>{formatTransactionValue(header.total, header.currency)}</h1>
           <div className="secondaryText">
             {header.third_party && header.third_party.make_primary ? (
               <>

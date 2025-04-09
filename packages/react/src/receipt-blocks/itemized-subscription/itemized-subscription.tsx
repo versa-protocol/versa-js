@@ -1,4 +1,4 @@
-import { formatDateTime, formatUSD } from "@versaprotocol/belt";
+import { formatDateTime } from "@versaprotocol/belt";
 import styles from "./itemized-subscription.module.css";
 import { Subscription } from "@versaprotocol/schema";
 

@@ -111,6 +111,7 @@ export function ReceiptLatest({
           <BlockWrap>
             <LineItems
               items={data.itemization.subscription.subscription_items}
+              header={data.header}
             />
           </BlockWrap>
         </>
@@ -121,7 +122,10 @@ export function ReceiptLatest({
             <ItemizedCarRental car_rental={data.itemization.car_rental} />
           </BlockWrap>
           <BlockWrap>
-            <LineItems items={data.itemization.car_rental.items} />
+            <LineItems
+              items={data.itemization.car_rental.items}
+              header={data.header}
+            />
           </BlockWrap>
         </>
       )}
@@ -139,6 +143,7 @@ export function ReceiptLatest({
           <BlockWrap>
             <LineItems
               items={aggregateEcommerceItems(data.itemization.ecommerce)}
+              header={data.header}
             />
           </BlockWrap>
         </>
@@ -151,14 +156,20 @@ export function ReceiptLatest({
           {data.itemization.lodging.items &&
             data.itemization.lodging.items.length > 0 && (
               <BlockWrap>
-                <LineItems items={data.itemization.lodging.items} />
+                <LineItems
+                  items={data.itemization.lodging.items}
+                  header={data.header}
+                />
               </BlockWrap>
             )}
         </>
       )}
       {data.itemization.flight && (
         <BlockWrap>
-          <ItemizedFlight flight={data.itemization.flight} />
+          <ItemizedFlight
+            flight={data.itemization.flight}
+            header={data.header}
+          />
         </BlockWrap>
       )}
       {data.itemization.transit_route && (
@@ -172,7 +183,10 @@ export function ReceiptLatest({
       )}
       {data.itemization.general && (
         <BlockWrap>
-          <LineItems items={data.itemization.general.items} />
+          <LineItems
+            items={data.itemization.general.items}
+            header={data.header}
+          />
         </BlockWrap>
       )}
 

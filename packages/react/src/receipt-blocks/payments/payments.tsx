@@ -1,4 +1,4 @@
-import { formatDateTime, formatUSD } from "@versaprotocol/belt";
+import { formatDateTime, formatTransactionValue } from "@versaprotocol/belt";
 import styles from "./payments.module.css";
 import { Payment, Receipt } from "@versaprotocol/schema";
 
@@ -48,7 +48,9 @@ export function Payments({
               ) : (
                 <div className={styles.paymentType}>Payment</div>
               )}
-              <div>{formatUSD(payment.amount / 100)}</div>
+              <div>
+                {formatTransactionValue(payment.amount, header.currency)}
+              </div>
             </div>
           ))}
         </>

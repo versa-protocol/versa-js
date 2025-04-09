@@ -1,4 +1,4 @@
-import { Org, Receipt, lts } from "@versaprotocol/schema";
+import { Header, Org, Receipt, lts } from "@versaprotocol/schema";
 import {
   ActionBlock,
   BlockWrap,
@@ -121,6 +121,7 @@ export function ReceiptDisplay({
           <BlockWrap>
             <LineItems
               items={data.itemization.subscription.subscription_items}
+              header={data.header as unknown as Header}
             />
           </BlockWrap>
         </>
@@ -133,7 +134,10 @@ export function ReceiptDisplay({
             />
           </BlockWrap>
           <BlockWrap>
-            <LineItems items={data.itemization.car_rental.items} />
+            <LineItems
+              items={data.itemization.car_rental.items}
+              header={data.header as unknown as Header}
+            />
           </BlockWrap>
         </>
       )}
@@ -150,6 +154,7 @@ export function ReceiptDisplay({
           <BlockWrap>
             <LineItems
               items={aggregateEcommerceItems(data.itemization.ecommerce)}
+              header={data.header as unknown as Header}
             />
           </BlockWrap>
         </>
@@ -160,13 +165,19 @@ export function ReceiptDisplay({
             <ItemizedLodging data={data.itemization.lodging} theme={theme} />
           </BlockWrap>
           <BlockWrap>
-            <LineItems items={data.itemization.lodging.items} />
+            <LineItems
+              items={data.itemization.lodging.items}
+              header={data.header as unknown as Header}
+            />
           </BlockWrap>
         </>
       )}
       {data.itemization.flight && (
         <BlockWrap>
-          <ItemizedFlight flight={data.itemization.flight} />
+          <ItemizedFlight
+            flight={data.itemization.flight}
+            header={data.header as unknown as Header}
+          />
         </BlockWrap>
       )}
       {data.itemization.transit_route && (
@@ -180,7 +191,10 @@ export function ReceiptDisplay({
       )}
       {data.itemization.general && (
         <BlockWrap>
-          <LineItems items={data.itemization.general.items} />
+          <LineItems
+            items={data.itemization.general.items}
+            header={data.header as unknown as Header}
+          />
         </BlockWrap>
       )}
 

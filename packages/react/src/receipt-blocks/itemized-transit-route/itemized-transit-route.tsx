@@ -1,7 +1,7 @@
 import {
   formatDateTime,
   formatTime,
-  formatUSD,
+  formatTransactionValue,
   sameDay,
 } from "@versaprotocol/belt";
 import styles from "./itemized-transit-route.module.css";
@@ -149,7 +149,10 @@ export function ItemizedTransitRoute({
                       <div className={styles.row}>
                         <div className={styles.key}>Trip Fare</div>
                         <div className={styles.value}>
-                          {formatUSD(item.passengers[0].fare / 100)}
+                          {formatTransactionValue(
+                            item.passengers[0].fare,
+                            header.currency
+                          )}
                         </div>
                       </div>
                     </>
@@ -178,7 +181,7 @@ export function ItemizedTransitRoute({
                         <div className={styles.row}>
                           <div className={styles.key}>Fare</div>
                           <div className={styles.value}>
-                            {formatUSD(item.fare / 100)}
+                            {formatTransactionValue(item.fare, header.currency)}
                           </div>
                         </div>
                       </div>
