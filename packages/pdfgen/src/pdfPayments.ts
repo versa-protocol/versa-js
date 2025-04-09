@@ -1,12 +1,7 @@
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
-import { Payment, Adjustment, Tax } from "@versaprotocol/schema";
-import {
-  aggregateAdjustments,
-  aggregateTaxes,
-  formatDateTime,
-  formatUSD,
-} from "@versaprotocol/belt";
+import { Payment } from "@versaprotocol/schema";
+import { formatDateTime } from "@versaprotocol/belt";
 
 export function Payments(doc: jsPDF, payments: Payment[], margin: number) {
   const docWidth = doc.internal.pageSize.getWidth();

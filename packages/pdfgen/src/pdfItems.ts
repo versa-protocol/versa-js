@@ -12,9 +12,15 @@ export async function Items(
 ) {
   doc.setPage(cursor.page);
   if (receipt.itemization.flight) {
-    await FlightDetails(doc, receipt.itemization.flight, margin, cursor);
+    await FlightDetails(
+      doc,
+      receipt.itemization.flight,
+      receipt.header,
+      margin,
+      cursor
+    );
   } else {
-    const aggregatedItems = aggregateItems(receipt.itemization);
+    const aggregatedItems = aggregateItems(receipt.itemization, receipt.header);
     autoTable(doc, {
       head: [aggregatedItems.head],
       body: aggregatedItems.items,

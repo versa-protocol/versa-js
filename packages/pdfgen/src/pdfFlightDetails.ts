@@ -7,7 +7,7 @@ import {
   aggregateFlight,
   aircraftLookup,
 } from "@versaprotocol/belt";
-import { Flight } from "@versaprotocol/schema";
+import { Flight, Receipt } from "@versaprotocol/schema";
 import { jsPDF } from "jspdf";
 import "svg2pdf.js";
 import autoTable from "jspdf-autotable";
@@ -15,6 +15,7 @@ import autoTable from "jspdf-autotable";
 export async function FlightDetails(
   doc: jsPDF,
   flight: Flight,
+  header: Receipt["header"],
   margin: number,
   cursor: { y: number; page: number }
 ) {
@@ -245,7 +246,7 @@ export async function FlightDetails(
     });
 
     // Ticket Summary
-    const ticketSummary = aggregateFlight(ticketGroup);
+    const ticketSummary = aggregateFlight(ticketGroup, header);
     autoTable(doc, {
       head: [ticketSummary.organized_ticket_head],
       body: ticketSummary.organized_ticket,

@@ -10,15 +10,16 @@ import {
   FlightSegment,
   Adjustment,
   FlightTicket,
+  Receipt,
 } from "@versaprotocol/schema";
 import canonicalize from "canonicalize";
 import {
   formatDateTime,
   formatTimeRange,
-  formatUSD,
   airportLookup,
   flightClass,
   capitalize,
+  formatTransactionValue,
 } from "./format";
 
 export function aggregateTaxes(itemization: Itemization): Tax[] {
@@ -540,7 +541,10 @@ type pdfItem = Record<
   { content: string; styles?: { [key: string]: any } }
 >;
 
-export function aggregateItems(itemization: Itemization) {
+export function aggregateItems(
+  itemization: Itemization,
+  header: Receipt["header"]
+) {
   let items: pdfItem[] = [];
   let head: pdfItem = {};
   head = aggregateItemHeaders(itemization);
@@ -576,7 +580,7 @@ export function aggregateItems(itemization: Itemization) {
           row.arrival = { content: arrivalString };
         } else if (key == "fare") {
           row.fare = {
-            content: formatUSD(i.fare / 100),
+            content: formatTransactionValue(i.fare, header.currency),
             styles: {
               halign: "right",
               cellPadding: { top: 0.125, right: 0, bottom: 0.125, left: 0 },
@@ -605,7 +609,7 @@ export function aggregateItems(itemization: Itemization) {
           row.description = { content: descriptionString };
         } else if (key == "amount") {
           row.amount = {
-            content: formatUSD(i.amount / 100),
+            content: formatTransactionValue(i.amount, header.currency),
             styles: {
               halign: "right",
               cellPadding: { top: 0.125, right: 0, bottom: 0.125, left: 0 },
@@ -619,7 +623,9 @@ export function aggregateItems(itemization: Itemization) {
           };
         } else if (key == "unit_cost") {
           row.unit_cost = {
-            content: i.unit_cost ? formatUSD(i.unit_cost / 100) : "",
+            content: i.unit_cost
+              ? formatTransactionValue(i.unit_cost, header.currency)
+              : "",
             styles: { halign: "right" },
           };
         } else if (key == "taxes") {
@@ -656,7 +662,7 @@ export function aggregateItems(itemization: Itemization) {
         items.push({
           passenger: { content: p.passenger ? p.passenger : "" },
           fare: {
-            content: formatUSD(p.fare / 100),
+            content: formatTransactionValue(p.fare, header.currency),
             styles: {
               halign: "right",
               cellPadding: { top: 0.125, right: 0, bottom: 0.125, left: 0 },
@@ -669,25 +675,30 @@ export function aggregateItems(itemization: Itemization) {
 
   // Car Rental
   if (itemization.car_rental) {
-    items = aggregateGenericItemRows(itemization.car_rental.items, head);
+    items = aggregateGenericItemRows(
+      itemization.car_rental.items,
+      head,
+      header
+    );
   }
 
   // Lodging
   if (itemization.lodging) {
-    items = aggregateGenericItemRows(itemization.lodging.items, head);
+    items = aggregateGenericItemRows(itemization.lodging.items, head, header);
   }
 
   // Ecommerce
   if (itemization.ecommerce) {
     items = aggregateGenericItemRows(
       aggregateEcommerceItems(itemization.ecommerce),
-      head
+      head,
+      header
     );
   }
 
   // General
   if (itemization.general) {
-    items = aggregateGenericItemRows(itemization.general.items, head);
+    items = aggregateGenericItemRows(itemization.general.items, head, header);
   }
 
   // Remove the bottom border from the last item
@@ -843,7 +854,11 @@ function aggregateGenericItemHeaders(rows: Item[]): pdfItem {
   return head;
 }
 
-function aggregateGenericItemRows(rows: Item[], head: pdfItem): pdfItem[] {
+function aggregateGenericItemRows(
+  rows: Item[],
+  head: pdfItem,
+  header: Receipt["header"]
+): pdfItem[] {
   let items: pdfItem[] = [];
   rows.forEach((i) => {
     let row: { [key: string]: any } = {};
@@ -866,7 +881,8 @@ function aggregateGenericItemRows(rows: Item[], head: pdfItem): pdfItem[] {
             if (a.rate) {
               adjustmentString += " (" + a.rate * 100 + "%)";
             } else {
-              adjustmentString += " (" + formatUSD(a.amount / 100) + ")";
+              adjustmentString +=
+                " (" + formatTransactionValue(a.amount, header.currency) + ")";
             }
             descriptionString = descriptionString.concat(
               "\n" + adjustmentString
@@ -876,7 +892,7 @@ function aggregateGenericItemRows(rows: Item[], head: pdfItem): pdfItem[] {
         row.description = { content: descriptionString };
       } else if (key == "amount") {
         row.amount = {
-          content: formatUSD(i.amount / 100),
+          content: formatTransactionValue(i.amount, header.currency),
           styles: {
             halign: "right",
             cellPadding: { top: 0.125, right: 0, bottom: 0.125, left: 0 },
@@ -890,7 +906,9 @@ function aggregateGenericItemRows(rows: Item[], head: pdfItem): pdfItem[] {
         };
       } else if (key == "unit_cost") {
         row.unit_cost = {
-          content: i.unit_cost ? formatUSD(i.unit_cost / 100) : "",
+          content: i.unit_cost
+            ? formatTransactionValue(i.unit_cost, header.currency)
+            : "",
           styles: { halign: "right" },
         };
       } else if (key == "taxes" && i.taxes) {
@@ -960,7 +978,10 @@ function allClassValuesEqual(segments: FlightSegment[]): boolean {
   );
 }
 
-export function aggregateFlight(organizedTicket: OrganizedFlightTicket) {
+export function aggregateFlight(
+  organizedTicket: OrganizedFlightTicket,
+  header: Receipt["header"]
+) {
   let organized_ticket: pdfItem[] = [];
   let organized_ticket_head: pdfItem = {};
   organized_ticket_head = aggregateFlightHeaders(organizedTicket.passengers);
@@ -976,7 +997,7 @@ export function aggregateFlight(organizedTicket: OrganizedFlightTicket) {
       row.ticket_class = { content: p.ticket_class };
     }
     row.fare = {
-      content: formatUSD(p.fare / 100),
+      content: formatTransactionValue(p.fare, header.currency),
       styles: {
         halign: "right",
         cellPadding: { top: 0.125, right: 0, bottom: 0.125, left: 0 },

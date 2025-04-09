@@ -5,7 +5,7 @@ import {
   aggregateAdjustments,
   aggregateTaxes,
   capitalize,
-  formatUSD,
+  formatTransactionValue,
 } from "@versaprotocol/belt";
 
 export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
@@ -14,7 +14,10 @@ export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
   totalsData.push({
     description: { content: "Subtotal" },
     amount: {
-      content: formatUSD(receipt.header.subtotal / 100),
+      content: formatTransactionValue(
+        receipt.header.subtotal,
+        receipt.header.currency
+      ),
       styles: {
         halign: "right",
         cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },
@@ -31,7 +34,7 @@ export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
       totalsData.push({
         description: { content: taxLabel },
         amount: {
-          content: formatUSD(t.amount / 100),
+          content: formatTransactionValue(t.amount, receipt.header.currency),
           styles: {
             halign: "right",
             cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },
@@ -57,7 +60,7 @@ export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
       totalsData.push({
         description: { content: description },
         amount: {
-          content: formatUSD(a.amount / 100),
+          content: formatTransactionValue(a.amount, receipt.header.currency),
           styles: {
             halign: "right",
             cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },
@@ -71,7 +74,10 @@ export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
       content: "Total in " + receipt.header.currency.toUpperCase(),
     },
     amount: {
-      content: formatUSD(receipt.header.total / 100),
+      content: formatTransactionValue(
+        receipt.header.total,
+        receipt.header.currency
+      ),
       styles: {
         halign: "right",
         cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },
@@ -86,7 +92,10 @@ export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
       },
     },
     amount: {
-      content: formatUSD(receipt.header.paid / 100),
+      content: formatTransactionValue(
+        receipt.header.paid,
+        receipt.header.currency
+      ),
       styles: {
         halign: "right",
         fontStyle: "bold",
