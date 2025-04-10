@@ -197,7 +197,20 @@ export function aggregateAdjustments(itemization: Itemization) {
     return itemization.subscription.invoice_level_adjustments;
   }
   if (itemization.flight) {
-    return itemization.flight.invoice_level_adjustments;
+    const adjustments = [...itemization.flight.invoice_level_adjustments];
+    itemization.flight.tickets.forEach((ticket) => {
+      ticket.segments.forEach((segment) => {
+        segment.adjustments.forEach((adj) => {
+          adjustments.push({
+            amount: adj.amount,
+            adjustment_type: adj.adjustment_type,
+            name: `${adj.name} (${segment.departure_airport_code}-${segment.arrival_airport_code})`,
+            rate: adj.rate,
+          });
+        });
+      });
+    });
+    return adjustments;
   }
   if (itemization.car_rental) {
     return itemization.car_rental.invoice_level_adjustments;
