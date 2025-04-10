@@ -21,6 +21,7 @@ import {
   capitalize,
   formatTransactionValue,
 } from "./format";
+import { airports } from "./airports";
 
 export function aggregateTaxes(itemization: Itemization): Tax[] {
   const aggregatedTaxes: Record<string, Tax> = {};
@@ -399,6 +400,14 @@ export interface GroupedItinerary {
   segments: FlightSegment[];
 }
 
+function lookupTimezoneFromAirportCode(airportCode: keyof typeof airports) {
+  const airport = airports[airportCode];
+  return airport?.tz || null;
+}
+
+// Not only does this restructure the flight segments into groups by date and passenger;
+// it also ensures that departure tz and arrival tz are populated on each segment by
+// looking up the tz with the airport code if the tz is null.
 export function organizeSegmentedItineraries(
   segments: FlightSegment[]
 ): GroupedItinerary[] {
@@ -413,6 +422,16 @@ export function organizeSegmentedItineraries(
   let itineraryKey = 0;
   let i = 0;
   for (const segment of sortedSegments) {
+    if (!segment.departure_tz) {
+      segment.departure_tz = lookupTimezoneFromAirportCode(
+        segment.departure_airport_code as keyof typeof airports
+      );
+    }
+    if (!segment.arrival_tz) {
+      segment.arrival_tz = lookupTimezoneFromAirportCode(
+        segment.arrival_airport_code as keyof typeof airports
+      );
+    }
     if (groupedItineraries[itineraryKey]?.segments?.length) {
       const previousSegment =
         groupedItineraries[itineraryKey].segments[
