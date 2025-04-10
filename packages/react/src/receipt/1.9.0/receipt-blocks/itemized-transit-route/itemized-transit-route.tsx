@@ -96,6 +96,10 @@ export function ItemizedTransitRoute({
                           ) : (
                             <div className={styles.datetime}>
                               {formatDateTime(item.departure_at, {
+                                iataTimezone:
+                                  item.departure_location?.address?.tz ||
+                                  header.location?.address?.tz ||
+                                  null,
                                 includeTime: true,
                               })}
                             </div>
@@ -127,6 +131,10 @@ export function ItemizedTransitRoute({
                           ) : (
                             <div className={styles.datetime}>
                               {formatDateTime(item.arrival_at, {
+                                iataTimezone:
+                                  item.arrival_location?.address?.tz ||
+                                  header.location?.address?.tz ||
+                                  null,
                                 includeTime: true,
                               })}
                             </div>

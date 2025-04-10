@@ -1,4 +1,4 @@
-import { Adjustment, lts } from "@versaprotocol/schema";
+import { Adjustment, Header, lts } from "@versaprotocol/schema";
 import canonicalize from "canonicalize";
 import {
   formatDateTime,
@@ -524,7 +524,7 @@ type pdfItem = Record<
   { content: string; styles?: { [key: string]: any } }
 >;
 
-export function aggregateItems(itemization: Itemization) {
+export function aggregateItems(header: Header, itemization: Itemization) {
   let items: pdfItem[] = [];
   let head: pdfItem = {};
   head = aggregateItemHeaders(itemization);
@@ -542,7 +542,13 @@ export function aggregateItems(itemization: Itemization) {
               departureString =
                 departureString +
                 "\n" +
-                formatDateTime(i.departure_at, { includeTime: true });
+                formatDateTime(i.departure_at, {
+                  iataTimezone:
+                    i.departure_location?.address?.tz ||
+                    header.location?.address?.tz ||
+                    null,
+                  includeTime: true,
+                });
             }
           }
           row.departure = { content: departureString };
@@ -554,7 +560,13 @@ export function aggregateItems(itemization: Itemization) {
               arrivalString =
                 arrivalString +
                 "\n" +
-                formatDateTime(i.arrival_at, { includeTime: true });
+                formatDateTime(i.arrival_at, {
+                  iataTimezone:
+                    i.arrival_location?.address?.tz ||
+                    header.location?.address?.tz ||
+                    null,
+                  includeTime: true,
+                });
             }
           }
           row.arrival = { content: arrivalString };

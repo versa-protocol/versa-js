@@ -1,11 +1,20 @@
 import { Circle } from "react-feather";
 import styles from "./shipment.module.css";
 import { formatDateTime } from "@versaprotocol/belt";
+import { Header, Shipment } from "@versaprotocol/schema";
 
-export function Shipment({ data, brandColor }: { data: any; brandColor: any }) {
+export function ShipmentWidget({
+  data,
+  header,
+  brandColor,
+}: {
+  data: Shipment[];
+  header: Header;
+  brandColor: any;
+}) {
   return (
     <div className={styles.shipmentWrap}>
-      {data.map((s: any, index: number) => (
+      {data.map((s, index: number) => (
         <div className={styles.shipmentCard} key={index}>
           <div className={styles.subwayWrap}>
             <div className={styles.subwayGrid}>
@@ -101,20 +110,29 @@ export function Shipment({ data, brandColor }: { data: any; brandColor: any }) {
           </div>
           <div className={styles.keyValuePairs}>
             {s.shipment_status == "delivered" ? (
-              <div className={styles.summary}>
-                Delivered on{" "}
-                {formatDateTime(s.expected_delivery_at, { includeTime: true })}
-              </div>
+              <>
+                {!!s.expected_delivery_at && (
+                  <div className={styles.summary}>
+                    Delivered on{" "}
+                    {formatDateTime(s.expected_delivery_at, {
+                      includeTime: true,
+                      iataTimezone:
+                        s.destination_address?.tz ||
+                        header.location?.address?.tz,
+                    })}
+                  </div>
+                )}
+              </>
             ) : (
               <>
                 <div className={styles.keyValue}>
                   <div className={styles.key}>On it's way</div>
                   <div className={styles.value}>
-                    to {s.destination_address.city},{" "}
-                    {s.destination_address.region}
+                    to {s.destination_address?.city},{" "}
+                    {s.destination_address?.region}
                   </div>
                 </div>
-                {data.tracking_number && (
+                {s.tracking_number && (
                   <div className={styles.keyValue}>
                     <div className={styles.key}>Tracking Number</div>
                     <div className={styles.value}>{s.tracking_number}</div>
@@ -122,9 +140,16 @@ export function Shipment({ data, brandColor }: { data: any; brandColor: any }) {
                 )}
                 <div className={styles.keyValue}>
                   <div className={styles.key}>Expected Delivery</div>
-                  <div className={styles.value}>
-                    {formatDateTime(s.expected_delivery_at)}
-                  </div>
+
+                  {!!s.expected_delivery_at && (
+                    <div className={styles.value}>
+                      {formatDateTime(s.expected_delivery_at, {
+                        iataTimezone:
+                          s.destination_address?.tz ||
+                          header.location?.address?.tz,
+                      })}
+                    </div>
+                  )}
                 </div>
               </>
             )}
@@ -135,7 +160,7 @@ export function Shipment({ data, brandColor }: { data: any; brandColor: any }) {
   );
 }
 
-function statusLevel(status: string) {
+function statusLevel(status: string | null | undefined) {
   let output = 1;
   if (status == "in_transit") {
     output = 2;

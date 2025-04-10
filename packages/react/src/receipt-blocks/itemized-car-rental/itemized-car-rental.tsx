@@ -1,8 +1,14 @@
 import { formatDateTime } from "@versaprotocol/belt";
 import styles from "./itemized-car-rental.module.css";
-import { CarRental } from "@versaprotocol/schema";
+import { CarRental, Header } from "@versaprotocol/schema";
 
-export function ItemizedCarRental({ car_rental }: { car_rental: CarRental }) {
+export function ItemizedCarRental({
+  header,
+  car_rental,
+}: {
+  header: Header;
+  car_rental: CarRental;
+}) {
   return (
     <div className={styles.carRentalWrap}>
       <div className={styles.carGridWrap}>
@@ -28,13 +34,25 @@ export function ItemizedCarRental({ car_rental }: { car_rental: CarRental }) {
           <div className={styles.start}>
             <div>Rental</div>
             <div className={styles.time}>
-              {formatDateTime(car_rental.rental_at, { includeDOW: true })}
+              {formatDateTime(car_rental.rental_at, {
+                includeDOW: true,
+                iataTimezone:
+                  car_rental.rental_location?.address?.tz ||
+                  header.location?.address?.tz ||
+                  null,
+              })}
             </div>
           </div>
           <div className={styles.end}>
             <div>Return</div>
             <div className={styles.time}>
-              {formatDateTime(car_rental.return_at, { includeDOW: true })}
+              {formatDateTime(car_rental.return_at, {
+                includeDOW: true,
+                iataTimezone:
+                  car_rental.return_location?.address?.tz ||
+                  header.location?.address?.tz ||
+                  null,
+              })}
             </div>
           </div>
         </div>

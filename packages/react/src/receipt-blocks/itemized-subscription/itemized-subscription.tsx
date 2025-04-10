@@ -1,11 +1,13 @@
 import { formatDateTime } from "@versaprotocol/belt";
 import styles from "./itemized-subscription.module.css";
-import { Subscription } from "@versaprotocol/schema";
+import { Header, Subscription } from "@versaprotocol/schema";
 
 export function ItemizedSubscription({
   subscription,
+  header,
 }: {
   subscription: Subscription;
+  header: Header;
 }) {
   return (
     <div className={styles.subscriptionWrap}>
@@ -14,7 +16,11 @@ export function ItemizedSubscription({
           {s.subscription_type == "recurring" && (
             <div className={styles.subscriptionNote} key={index}>
               Your subscription was renewed for your team of {s.quantity}. Your
-              next bill will be on {formatDateTime(s.current_period_end)}.
+              next bill will be on{" "}
+              {formatDateTime(s.current_period_end, {
+                iataTimezone: header.location?.address?.tz,
+              })}
+              .
             </div>
           )}
         </>

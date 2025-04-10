@@ -11,7 +11,7 @@ import {
   LineItems,
   LocalBusiness,
   ReceiptHeader,
-  Shipment,
+  ShipmentWidget,
   SupplementalText,
   ThirdParty,
   Totals,
@@ -105,6 +105,7 @@ export function ReceiptLatest({
         <>
           <BlockWrap>
             <ItemizedSubscription
+              header={data.header}
               subscription={data.itemization.subscription}
             />
           </BlockWrap>
@@ -119,7 +120,10 @@ export function ReceiptLatest({
       {data.itemization.car_rental && (
         <>
           <BlockWrap>
-            <ItemizedCarRental car_rental={data.itemization.car_rental} />
+            <ItemizedCarRental
+              car_rental={data.itemization.car_rental}
+              header={data.header}
+            />
           </BlockWrap>
           <BlockWrap>
             <LineItems
@@ -134,8 +138,9 @@ export function ReceiptLatest({
           {data.itemization.ecommerce.shipments &&
             data.itemization.ecommerce.shipments.length > 0 && (
               <BlockWrap>
-                <Shipment
+                <ShipmentWidget
                   data={data.itemization.ecommerce.shipments}
+                  header={data.header}
                   brandColor={colors.brand}
                 />
               </BlockWrap>
@@ -151,7 +156,11 @@ export function ReceiptLatest({
       {data.itemization.lodging && (
         <>
           <BlockWrap>
-            <ItemizedLodging data={data.itemization.lodging} theme={theme} />
+            <ItemizedLodging
+              lodging={data.itemization.lodging}
+              header={data.header}
+              theme={theme}
+            />
           </BlockWrap>
           {data.itemization.lodging.items &&
             data.itemization.lodging.items.length > 0 && (

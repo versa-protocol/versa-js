@@ -594,7 +594,13 @@ export function aggregateItems(
               departureString =
                 departureString +
                 "\n" +
-                formatDateTime(i.departure_at, { includeTime: true });
+                formatDateTime(i.departure_at, {
+                  iataTimezone:
+                    i.departure_location?.address?.tz ||
+                    header.location?.address?.tz ||
+                    null,
+                  includeTime: true,
+                });
             }
           }
           row.departure = { content: departureString };
@@ -606,7 +612,13 @@ export function aggregateItems(
               arrivalString =
                 arrivalString +
                 "\n" +
-                formatDateTime(i.arrival_at, { includeTime: true });
+                formatDateTime(i.arrival_at, {
+                  iataTimezone:
+                    i.arrival_location?.address?.tz ||
+                    header.location?.address?.tz ||
+                    null,
+                  includeTime: true,
+                });
             }
           }
           row.arrival = { content: arrivalString };

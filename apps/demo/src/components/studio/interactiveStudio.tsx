@@ -317,7 +317,11 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
                             </div>
                           )}
                           <div className={styles.dateText}>
-                            {formatDateTime(parsedReceipt.header.invoiced_at)}
+                            {formatDateTime(parsedReceipt.header.invoiced_at, {
+                              iataTimezone:
+                                parsedReceipt.header.location?.address?.tz ||
+                                null,
+                            })}
                           </div>
                         </div>
                         <div className={styles.amountText}>

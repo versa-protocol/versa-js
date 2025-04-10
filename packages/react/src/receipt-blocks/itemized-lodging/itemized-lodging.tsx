@@ -1,13 +1,15 @@
 import { formatDateTime } from "@versaprotocol/belt";
 import styles from "./itemized-lodging.module.css";
 import { VersaContext } from "../../context";
-import { Lodging } from "@versaprotocol/schema";
+import { Header, Lodging } from "@versaprotocol/schema";
 
 export function ItemizedLodging({
-  data,
+  lodging,
+  header,
   theme,
 }: {
-  data: Lodging;
+  lodging: Lodging;
+  header: Header;
   theme: any;
 }) {
   return (
@@ -16,13 +18,13 @@ export function ItemizedLodging({
         <>
           <div className={styles.lodgingWrap}>
             <div className={styles.lodgingBlock}>
-              {data.location.image &&
-                data.location?.address?.lon &&
-                data.location?.address?.lat && (
+              {lodging.location.image &&
+                lodging.location?.address?.lon &&
+                lodging.location?.address?.lat && (
                   <div className={styles.mapWrap}>
                     <div className={styles.photoImage}>
                       <img
-                        src={data.location.image}
+                        src={lodging.location.image}
                         width={200}
                         height={140}
                         alt=""
@@ -33,10 +35,12 @@ export function ItemizedLodging({
                         <img
                           src={`https://api.mapbox.com/styles/v1/mapbox/${
                             theme == "light" ? "light-v11" : "dark-v11"
-                          }/static/pin-s+555555(${data.location.address.lon},${
-                            data.location.address.lat
-                          })/${data.location.address.lon},${
-                            data.location.address.lat
+                          }/static/pin-s+555555(${
+                            lodging.location.address.lon
+                          },${lodging.location.address.lat})/${
+                            lodging.location.address.lon
+                          },${
+                            lodging.location.address.lat
                           },14,0/200x140@2x?logo=false&attribution=false&access_token=${
                             config.mapbox_token
                           }`}
@@ -50,34 +54,48 @@ export function ItemizedLodging({
                 )}
               <div
                 className={
-                  data.location.image &&
-                  data.location?.address?.lon &&
-                  data.location?.address?.lat
+                  lodging.location.image &&
+                  lodging.location?.address?.lon &&
+                  lodging.location?.address?.lat
                     ? styles.localBusinessProfile
                     : styles.localBusinessProfileNoLodgingHeader
                 }
               >
-                <div className={styles.locationName}>{data.location.name}</div>
-                <div>
-                  {data.location?.address?.street_address}
-                  <br />
-                  {data.location?.address?.city},{" "}
-                  {data.location?.address?.region}{" "}
-                  {data.location?.address?.postal_code}
+                <div className={styles.locationName}>
+                  {lodging.location.name}
                 </div>
-                <div>{data.location?.phone}</div>
-                {data.room && <div>Room number: {data.room}</div>}
+                <div>
+                  {lodging.location?.address?.street_address}
+                  <br />
+                  {lodging.location?.address?.city},{" "}
+                  {lodging.location?.address?.region}{" "}
+                  {lodging.location?.address?.postal_code}
+                </div>
+                <div>{lodging.location?.phone}</div>
+                {lodging.room && <div>Room number: {lodging.room}</div>}
                 <div className={styles.dateRange}>
                   <div className={styles.start}>
                     <div className={styles.header}>Check-in</div>
                     <div className={styles.time}>
-                      {formatDateTime(data.check_in, { includeDOW: true })}
+                      {formatDateTime(lodging.check_in, {
+                        includeDOW: true,
+                        iataTimezone:
+                          lodging.location?.address?.tz ||
+                          header.location?.address?.tz ||
+                          null,
+                      })}
                     </div>
                   </div>
                   <div className={styles.end}>
                     <div className={styles.header}>Checkout</div>
                     <div className={styles.time}>
-                      {formatDateTime(data.check_out, { includeDOW: true })}
+                      {formatDateTime(lodging.check_out, {
+                        includeDOW: true,
+                        iataTimezone:
+                          lodging.location?.address?.tz ||
+                          header.location?.address?.tz ||
+                          null,
+                      })}
                     </div>
                   </div>
                 </div>
