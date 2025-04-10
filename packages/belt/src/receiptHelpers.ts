@@ -594,7 +594,7 @@ export function aggregateItems(
               departureString =
                 departureString +
                 "\n" +
-                formatDateTime(i.departure_at, false, true);
+                formatDateTime(i.departure_at, { includeTime: true });
             }
           }
           row.departure = { content: departureString };
@@ -606,7 +606,7 @@ export function aggregateItems(
               arrivalString =
                 arrivalString +
                 "\n" +
-                formatDateTime(i.arrival_at, false, true);
+                formatDateTime(i.arrival_at, { includeTime: true });
             }
           }
           row.arrival = { content: arrivalString };

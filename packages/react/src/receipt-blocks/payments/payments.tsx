@@ -1,13 +1,13 @@
 import { formatDateTime, formatTransactionValue } from "@versaprotocol/belt";
 import styles from "./payments.module.css";
-import { Payment, Receipt } from "@versaprotocol/schema";
+import { Header, Payment } from "@versaprotocol/schema";
 
 export function Payments({
   payments,
   header,
 }: {
   payments: Payment[];
-  header: Receipt["header"];
+  header: Header;
 }) {
   return (
     <div>
@@ -25,7 +25,13 @@ export function Payments({
           ) : (
             <div className={styles.paymentType}>Payment</div>
           )}
-          <div>{formatDateTime(payments[0].paid_at, true, true)}</div>
+          <div>
+            {formatDateTime(payments[0].paid_at, {
+              includeTime: true,
+              iataTimezone: header.location?.address?.tz || null,
+              includeTimezone: true,
+            })}
+          </div>
         </div>
       ) : (
         <>
@@ -42,7 +48,11 @@ export function Payments({
                     </span>
                   </div>
                   <div className={styles.date}>
-                    {formatDateTime(payment.paid_at, true, true)}
+                    {formatDateTime(payment.paid_at, {
+                      includeTime: true,
+                      iataTimezone: header.location?.address?.tz || null,
+                      includeTimezone: true,
+                    })}
                   </div>
                 </div>
               ) : (

@@ -71,13 +71,13 @@ export function ItemizedLodging({
                   <div className={styles.start}>
                     <div className={styles.header}>Check-in</div>
                     <div className={styles.time}>
-                      {formatDateTime(data.check_in, false, false, true)}
+                      {formatDateTime(data.check_in, { includeDOW: true })}
                     </div>
                   </div>
                   <div className={styles.end}>
                     <div className={styles.header}>Checkout</div>
                     <div className={styles.time}>
-                      {formatDateTime(data.check_out, false, false, true)}
+                      {formatDateTime(data.check_out, { includeDOW: true })}
                     </div>
                   </div>
                 </div>

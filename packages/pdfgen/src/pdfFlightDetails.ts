@@ -114,13 +114,10 @@ export async function FlightDetails(
               s.departure_tz
             );
           } else {
-            departureTime = formatDateTime(
-              s.departure_at,
-              false,
-              true,
-              false,
-              s.departure_tz
-            );
+            departureTime = formatDateTime(s.departure_at, {
+              includeTime: true,
+              iataTimezone: s.departure_tz,
+            });
           }
           doc.text(
             departureTime,
@@ -156,13 +153,10 @@ export async function FlightDetails(
               s.arrival_tz
             );
           } else {
-            arrivalTime = formatDateTime(
-              s.arrival_at,
-              false,
-              true,
-              false,
-              s.arrival_tz
-            );
+            arrivalTime = formatDateTime(s.arrival_at, {
+              includeTime: true,
+              iataTimezone: s.arrival_tz,
+            });
           }
           doc.text(
             arrivalTime,

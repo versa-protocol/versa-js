@@ -1,9 +1,14 @@
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
-import { Payment } from "@versaprotocol/schema";
+import { Header, Payment } from "@versaprotocol/schema";
 import { formatDateTime } from "@versaprotocol/belt";
 
-export function Payments(doc: jsPDF, payments: Payment[], margin: number) {
+export function Payments(
+  doc: jsPDF,
+  payments: Payment[],
+  header: Header,
+  margin: number
+) {
   const docWidth = doc.internal.pageSize.getWidth();
   let paymentsData: {}[] = [];
   payments.forEach((p) => {
@@ -17,7 +22,11 @@ export function Payments(doc: jsPDF, payments: Payment[], margin: number) {
     }
     paymentType = paymentType.concat(
       "\n",
-      formatDateTime(p.paid_at, true, true)
+      formatDateTime(p.paid_at, {
+        includeTime: true,
+        iataTimezone: header.location?.address?.tz || null,
+        includeTimezone: true,
+      })
     );
     paymentsData.push({
       label: { content: paymentType },

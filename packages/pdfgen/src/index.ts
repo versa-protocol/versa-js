@@ -49,7 +49,7 @@ export const createReceiptDoc = async ({
 
   // Payments
   if (receipt.payments.length > 1) {
-    Payments(doc, receipt.payments, margin);
+    Payments(doc, receipt.payments, receipt.header, margin);
   }
 
   // Supplemental Text

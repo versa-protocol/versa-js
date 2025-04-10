@@ -74,13 +74,10 @@ export function ItemizedFlight({ flight }: { flight: Flight }) {
                               </>
                             ) : (
                               <>
-                                {formatDateTime(
-                                  s.departure_at,
-                                  false,
-                                  true,
-                                  false,
-                                  s.departure_tz
-                                )}
+                                {formatDateTime(s.departure_at, {
+                                  includeTime: true,
+                                  iataTimezone: s.departure_tz,
+                                })}
                               </>
                             )}
                           </div>
@@ -106,13 +103,10 @@ export function ItemizedFlight({ flight }: { flight: Flight }) {
                               </>
                             ) : (
                               <>
-                                {formatDateTime(
-                                  s.arrival_at,
-                                  false,
-                                  true,
-                                  false,
-                                  s.arrival_tz
-                                )}
+                                {formatDateTime(s.arrival_at, {
+                                  includeTime: true,
+                                  iataTimezone: s.arrival_tz,
+                                })}
                               </>
                             )}
                           </div>

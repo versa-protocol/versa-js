@@ -33,13 +33,9 @@ export function ReceiptHeader({
               )}
               <div>
                 Date:{" "}
-                {formatDateTime(
-                  header.invoiced_at,
-                  false,
-                  false,
-                  false,
-                  header.location?.address?.tz ?? null
-                )}
+                {formatDateTime(header.invoiced_at, {
+                  iataTimezone: header.location?.address?.tz || null,
+                })}
               </div>
             </div>
             {(header.customer || merchant.address) && (
@@ -104,13 +100,9 @@ export function ReceiptHeader({
               <>{merchant.name} </>
             )}
             &nbsp;·&nbsp;{" "}
-            {formatDateTime(
-              header.invoiced_at,
-              false,
-              false,
-              false,
-              header.location?.address?.tz ?? null
-            )}
+            {formatDateTime(header.invoiced_at, {
+              iataTimezone: header.location?.address?.tz || null,
+            })}
           </div>
         </div>
       </div>

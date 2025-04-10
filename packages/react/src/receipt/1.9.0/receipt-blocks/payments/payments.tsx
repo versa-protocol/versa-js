@@ -26,7 +26,13 @@ export function Payments({
               </span>
             </div>
           )}
-          <div>{formatDateTime(payments[0].paid_at, true, true)}</div>
+          <div>
+            {formatDateTime(payments[0].paid_at, {
+              includeTime: true,
+              iataTimezone: header.location?.address?.tz || null,
+              includeTimezone: true,
+            })}
+          </div>
         </div>
       ) : (
         <>
@@ -43,7 +49,11 @@ export function Payments({
                     </span>
                   </div>
                   <div className={styles.date}>
-                    {formatDateTime(payment.paid_at, true, true)}
+                    {formatDateTime(payment.paid_at, {
+                      includeTime: true,
+                      iataTimezone: header.location?.address?.tz || null,
+                      includeTimezone: true,
+                    })}
                   </div>
                 </div>
               )}

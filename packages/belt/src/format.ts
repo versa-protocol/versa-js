@@ -59,14 +59,20 @@ export function formatTransactionValue(amount: number, currency_code: string) {
   }).format(amount / (normalizedCurrency === "jpy" ? 1 : 100));
 }
 
+interface SupportedDateTimeFormatConfig {
+  includeTime?: boolean;
+  includeDOW?: boolean;
+  includeTimezone?: boolean;
+  iataTimezone?: string | null;
+}
+
 export function formatDateTime(
   secondsSinceEpoch: number,
-  utc: boolean = false,
-  includeTime: boolean = false,
-  includeDOW: boolean = false,
-  iataTimezone?: string | null
+  config?: SupportedDateTimeFormatConfig
 ) {
   var d = new Date(secondsSinceEpoch * 1000);
+  const { includeDOW, includeTimezone, includeTime, iataTimezone } =
+    config || {};
   var options: Intl.DateTimeFormatOptions;
   if (d.getFullYear() === new Date().getFullYear()) {
     options = {
@@ -80,19 +86,18 @@ export function formatDateTime(
       day: "numeric",
     };
   }
-  if (utc) {
-    options.timeZone = "UTC";
-  } else if (iataTimezone) {
+  if (iataTimezone) {
     options.timeZone = iataTimezone;
   }
   if (includeTime) {
     options.hour = "numeric";
     options.minute = "numeric";
-    return d.toLocaleString("en-US", options);
+  }
+  if (includeTimezone) {
+    options.timeZoneName = "short";
   }
   if (includeDOW) {
     options.weekday = "short";
-    return d.toLocaleDateString("en-US", options);
   }
   return d.toLocaleDateString("en-US", options);
 }

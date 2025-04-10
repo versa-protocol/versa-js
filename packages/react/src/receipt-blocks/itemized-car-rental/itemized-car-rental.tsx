@@ -28,13 +28,13 @@ export function ItemizedCarRental({ car_rental }: { car_rental: CarRental }) {
           <div className={styles.start}>
             <div>Rental</div>
             <div className={styles.time}>
-              {formatDateTime(car_rental.rental_at, false, false, true)}
+              {formatDateTime(car_rental.rental_at, { includeDOW: true })}
             </div>
           </div>
           <div className={styles.end}>
             <div>Return</div>
             <div className={styles.time}>
-              {formatDateTime(car_rental.return_at, false, false, true)}
+              {formatDateTime(car_rental.return_at, { includeDOW: true })}
             </div>
           </div>
         </div>

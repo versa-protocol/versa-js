@@ -103,7 +103,7 @@ export function Shipment({ data, brandColor }: { data: any; brandColor: any }) {
             {s.shipment_status == "delivered" ? (
               <div className={styles.summary}>
                 Delivered on{" "}
-                {formatDateTime(s.expected_delivery_at, false, true, false)}
+                {formatDateTime(s.expected_delivery_at, { includeTime: true })}
               </div>
             ) : (
               <>

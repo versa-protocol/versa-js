@@ -93,7 +93,9 @@ export function ItemizedTransitRoute({
                             </span>
                           ) : (
                             <div className={styles.datetime}>
-                              {formatDateTime(item.departure_at, false, true)}
+                              {formatDateTime(item.departure_at, {
+                                includeTime: true,
+                              })}
                             </div>
                           )}
                         </>
@@ -122,7 +124,9 @@ export function ItemizedTransitRoute({
                             </span>
                           ) : (
                             <div className={styles.datetime}>
-                              {formatDateTime(item.arrival_at, false, true)}
+                              {formatDateTime(item.arrival_at, {
+                                includeTime: true,
+                              })}
                             </div>
                           )}
                         </>
