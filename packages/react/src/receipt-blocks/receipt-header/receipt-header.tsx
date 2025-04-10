@@ -31,7 +31,16 @@ export function ReceiptHeader({
               {header.invoice_number && (
                 <div>Invoice Number: {header.invoice_number}</div>
               )}
-              <div>Date: {formatDateTime(header.invoiced_at)}</div>
+              <div>
+                Date:{" "}
+                {formatDateTime(
+                  header.invoiced_at,
+                  false,
+                  false,
+                  false,
+                  header.location?.address?.tz ?? null
+                )}
+              </div>
             </div>
             {(header.customer || merchant.address) && (
               <Parties customer={header.customer} merchant={merchant} />
@@ -94,7 +103,14 @@ export function ReceiptHeader({
             ) : (
               <>{merchant.name} </>
             )}
-            &nbsp;·&nbsp; {formatDateTime(header.invoiced_at)}
+            &nbsp;·&nbsp;{" "}
+            {formatDateTime(
+              header.invoiced_at,
+              false,
+              false,
+              false,
+              header.location?.address?.tz ?? null
+            )}
           </div>
         </div>
       </div>

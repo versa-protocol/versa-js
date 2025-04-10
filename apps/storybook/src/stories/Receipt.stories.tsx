@@ -94,43 +94,11 @@ export const Rail: Story = {
 
 /** LTS Stories */
 
-import { v1_5_1 } from "@versaprotocol/examples";
+import { v1_8_0 } from "@versaprotocol/examples";
 
-export const Lts1_5_1_Flight: Story = {
+export const Lts1_8_0_Flight: Story = {
   args: {
     merchant: senders.jetblue,
-    receipt: v1_5_1.flight as any,
-  },
-};
-
-export const Lts1_5_1_Simple: Story = {
-  args: {
-    merchant: senders.bend,
-    receipt: v1_5_1.simple as any,
-  },
-};
-
-import { v1_6_0 } from "@versaprotocol/examples";
-
-export const Lts1_6_0_Flight: Story = {
-  args: {
-    merchant: senders.jetblue,
-    receipt: v1_6_0.flight as any,
-  },
-};
-
-export const Lts1_6_0_Simple: Story = {
-  args: {
-    merchant: senders.bend,
-    receipt: v1_6_0.simple as any,
-  },
-};
-
-import { v1_7_0 } from "@versaprotocol/examples";
-
-export const Lts1_7_0_Flight: Story = {
-  args: {
-    merchant: senders.jetblue,
-    receipt: v1_7_0.flight as any,
+    receipt: v1_8_0.flight as any,
   },
 };

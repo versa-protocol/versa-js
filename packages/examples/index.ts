@@ -615,24 +615,8 @@ export const receipts: Record<keyof typeof untypedReceipts, Receipt> =
 
 /** LTS */
 
-import flight_1_5_1 from "./receipts/1.5.1/flight.json";
-import simple_1_5_1 from "./receipts/1.5.1/simple.json";
+import flight_1_8_0 from "./receipts/1.8.0/flight.json";
 
-export const v1_5_1 = {
-  flight: flight_1_5_1,
-  simple: simple_1_5_1,
-};
-
-import flight_1_6_0 from "./receipts/1.6.0/flight.json";
-import simple_1_6_0 from "./receipts/1.6.0/simple.json";
-
-export const v1_6_0 = {
-  flight: flight_1_6_0,
-  simple: simple_1_6_0,
-};
-
-import flight_1_7_0 from "./receipts/1.7.0/flight.json";
-
-export const v1_7_0 = {
-  flight: flight_1_7_0,
+export const v1_8_0 = {
+  flight: flight_1_8_0,
 };
