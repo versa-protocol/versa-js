@@ -1,5 +1,13 @@
 # @versaprotocol/pdfgen
 
+## 1.11.2
+
+### Patch Changes
+
+- More reliable timezone support across pdf and react rendering
+- Updated dependencies
+  - @versaprotocol/belt@1.11.1
+
 ## 1.11.1
 
 ### Patch Changes

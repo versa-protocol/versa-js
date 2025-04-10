@@ -1,5 +1,11 @@
 # @versaprotocol/belt
 
+## 1.11.1
+
+### Patch Changes
+
+- More reliable timezone support across pdf and react rendering
+
 ## 1.11.0
 
 ### Minor Changes
