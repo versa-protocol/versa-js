@@ -1,5 +1,11 @@
 # @versaprotocol/react
 
+## 1.11.7
+
+### Patch Changes
+
+- Fix broken map display with partial location/address
+
 ## 1.11.6
 
 ### Patch Changes
