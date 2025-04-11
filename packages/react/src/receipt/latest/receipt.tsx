@@ -223,7 +223,7 @@ export function ReceiptLatest({
 
       {/* Local Transaction */}
 
-      {data.header.location && (
+      {data.header.location?.address?.street_address && (
         <BlockWrap>
           <LocalBusiness
             location={data.header.location}
