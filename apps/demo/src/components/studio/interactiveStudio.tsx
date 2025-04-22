@@ -18,7 +18,7 @@ import {
 } from "react-feather";
 import { formatDateTime, formatUSD } from "@versaprotocol/belt";
 import { useValidator } from "./useValidator";
-import { ReceiptDisplay, VersaContext } from "@versaprotocol/react";
+import { Advisory, ReceiptDisplay, VersaContext } from "@versaprotocol/react";
 import { ThemeToggle } from "../theme/themeToggle";
 import { Suspense } from "react";
 
@@ -218,11 +218,6 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
             )}
           </div>
 
-          {!!err && (
-            <div className={styles.error}>
-              <div>{err}</div>
-            </div>
-          )}
           <StudioErrorBoundary bubbleErrorMessage={(e) => setRuntimeError(e)}>
             {!!parsedReceipt && !!parsedMerchant && (
               <div
@@ -350,6 +345,15 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
               </div>
             )}
           </StudioErrorBoundary>
+
+          {!!err && (
+            <div className={styles.error}>
+              <div>{err}</div>
+            </div>
+            // Add advisory thing here
+            // <Advisory errors={[]} warnings={["hi"]} />
+          )}
+
           {!viewCode && viewMode == "context" && (
             <div className={styles.disclaimer}>
               Concept only. Receivers may display itemized receipt data in

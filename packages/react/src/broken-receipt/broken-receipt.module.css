@@ -1,3 +1,30 @@
 .wrap {
-  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  --dark0: white;
+  --dark03: hsl(210, 30%, 97%);
+  --dark08: hsl(210, 20%, 92%);
+  --dark15: hsl(210, 10%, 85%);
+  --dark20: hsl(210, 10%, 80%);
+  --dark25: hsl(210, 10%, 75%);
+  --dark40: hsl(210, 10%, 60%);
+  --dark50: hsl(210, 10%, 50%);
+  --dark60: hsl(210, 10%, 40%);
+  --dark75: hsl(210, 10%, 25%);
+  --dark80: hsl(210, 10%, 20%);
+  --dark85: hsl(210, 10%, 15%);
+  --dark92: hsl(210, 20%, 8%);
+  --dark97: hsl(210, 30%, 3%);
+  --light-stroke: var(--dark15);
+}
+
+[data-theme="dark"] .wrap {
+  --light-stroke: var(--dark80);
+}
+
+.wrap svg {
+  fill: var(--light-stroke);
 }
