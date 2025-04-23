@@ -10,7 +10,16 @@
     "mcc": null,
     "third_party": null,
     "customer": null,
-    "location": null,
+    "location": {
+      "name": null,
+      "address": {
+        "tz": "America/New_York"
+      },
+      "phone": null,
+      "url": null,
+      "google_place_id": null,
+      "image": null
+    },
     "invoice_asset_id": "asset_6dbca44449094eb28aaa6b3c6b2aa4",
     "receipt_asset_id": "asset_6dbca44449094eb28aaa6b3c6b2aa4"
   },
@@ -167,5 +176,13 @@
   "footer": {
     "actions": []
   },
-  "payments": []
+  "payments": [
+    {
+      "amount": 74550,
+      "paid_at": 1713295619,
+      "payment_type": "card",
+      "card_payment": { "last_four": "4886", "network": "mastercard" },
+      "ach_payment": null
+    }
+  ]
 }
