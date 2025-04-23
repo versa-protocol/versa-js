@@ -6,12 +6,19 @@ interface OutputUnit {
   instanceLocation: string;
   error: string;
 }
+
+interface Violation {
+  description: string;
+  rule: string;
+  details: string;
+}
+
 export function Advisory({
   errors,
   warnings,
 }: {
   errors: OutputUnit[];
-  warnings: string[];
+  warnings: Violation[];
 }) {
   return (
     <div>
@@ -28,9 +35,9 @@ export function Advisory({
       {warnings.length > 0 && (
         <ul className={styles.warnings}>
           {warnings.map((w) => (
-            <li>
+            <li key={w.rule}>
               <AlertTriangle size={16} />
-              <div>{w}</div>
+              <div>{w.description}</div>
             </li>
           ))}
         </ul>

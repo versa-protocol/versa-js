@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
+import os from "os";
 
 const nextConfig: NextConfig = {
+  serverExternalPackages: ["@versaprotocol/semval"],
   env: {
     MAPBOX_TOKEN: process.env.MAPBOX_TOKEN,
   },

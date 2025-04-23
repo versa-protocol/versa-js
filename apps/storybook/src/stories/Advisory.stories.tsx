@@ -39,6 +39,9 @@ export const AdvisoryDefault: Story = {
         error: "total is required",
       },
     ],
-    warnings: ["Warning #1", "Warning #2"],
+    warnings: [
+      { rule: "test-rule-1", details: "", description: "Warning #1" },
+      { rule: "test-rule-2", details: "", description: "Warning #2" },
+    ],
   },
 };

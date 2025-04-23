@@ -33,6 +33,7 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
 
   const [clientLoaded, setClientLoaded] = useState(false);
   const [runtimeError, setRuntimeError] = useState<string | null>(null);
+  const [semvalWarnings, setSemvalWarnings] = useState<any[]>([]);
   const [viewMode, setViewMode] = useState("narrow");
   const searchParams = useSearchParams();
 
@@ -116,6 +117,17 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
         }
       });
       setReceiptData(e.currentTarget.value);
+      fetch("/api/semval", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: e.currentTarget.value,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setSemvalWarnings(data.violations);
+        });
     } catch (e: any) {
       setRuntimeError(e.message);
     }
@@ -330,6 +342,9 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
                   )}
                   {!err && (
                     <div className={styles.preview}>
+                      <div>
+                        <Advisory errors={[]} warnings={semvalWarnings} />
+                      </div>
                       <VersaContext.Provider
                         value={{ mapbox_token: process.env.MAPBOX_TOKEN }}
                       >
