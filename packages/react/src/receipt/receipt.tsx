@@ -5,6 +5,35 @@ import { ReceiptLatest } from "./latest/receipt";
 
 import { LTS_VERSIONS } from "@versaprotocol/schema";
 import { compareSchemaVersions } from "./schemaVersion";
+import { BrokenReceipt } from "../broken-receipt";
+import React from "react";
+
+class ErrorBoundary extends React.Component<{
+  receipt: Receipt;
+  children: React.ReactNode;
+}> {
+  state = { hasError: false };
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidUpdate(prevProps: {
+    receipt: Receipt;
+    children: React.ReactNode;
+  }) {
+    if (this.state.hasError && prevProps.receipt !== this.props.receipt) {
+      this.setState({ hasError: false });
+    }
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <BrokenReceipt />;
+    }
+    return this.props.children;
+  }
+}
 
 export function ReceiptDisplay({
   receipt,
@@ -63,11 +92,13 @@ export function ReceiptDisplay({
   // The 1.8.0 react display is compatible with 1.7.0
 
   return (
-    <ReceiptLatest
-      receipt={data}
-      schemaVersion={schemaVersion}
-      merchant={merchant}
-      theme={theme}
-    />
+    <ErrorBoundary receipt={data}>
+      <ReceiptLatest
+        receipt={data}
+        schemaVersion={schemaVersion}
+        merchant={merchant}
+        theme={theme}
+      />
+    </ErrorBoundary>
   );
 }

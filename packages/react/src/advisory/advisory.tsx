@@ -14,22 +14,43 @@ interface Violation {
 }
 
 export function Advisory({
+  breakingError,
   errors,
   warnings,
 }: {
+  breakingError?: string | null;
   errors: OutputUnit[];
   warnings: Violation[];
 }) {
-  return (
-    <div>
-      {errors.length > 0 && (
-        <ul className={styles.errors}>
-          {errors.map((e) => (
+  if (breakingError) {
+    return (
+      <div className={styles.advisory}>
+        <div className={styles.breakingError}>
+          <ul className={styles.errors}>
             <li>
               <XOctagon size={16} />
-              <div>{e.keyword}</div>
+              <div>{breakingError}</div>
             </li>
-          ))}
+          </ul>
+        </div>
+      </div>
+    );
+  }
+  return (
+    <div className={styles.advisory}>
+      {errors.length > 0 && (
+        <ul className={styles.errors}>
+          <li>
+            <XOctagon size={16} />
+            <div>
+              {errors.reduce((msg, e) => {
+                if (msg.length > 0) {
+                  msg += " ";
+                }
+                return (msg += e.error);
+              }, "")}
+            </div>
+          </li>
         </ul>
       )}
       {warnings.length > 0 && (

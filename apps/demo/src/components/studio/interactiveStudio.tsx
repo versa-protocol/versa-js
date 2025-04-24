@@ -18,9 +18,15 @@ import {
 } from "react-feather";
 import { formatDateTime, formatUSD } from "@versaprotocol/belt";
 import { useValidator } from "./useValidator";
-import { Advisory, ReceiptDisplay, VersaContext } from "@versaprotocol/react";
+import {
+  Advisory,
+  BrokenReceipt,
+  ReceiptDisplay,
+  VersaContext,
+} from "@versaprotocol/react";
 import { ThemeToggle } from "../theme/themeToggle";
 import { Suspense } from "react";
+import { OutputUnit } from "@cfworker/json-schema";
 
 interface Receiver {
   name: string;
@@ -33,6 +39,7 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
 
   const [clientLoaded, setClientLoaded] = useState(false);
   const [runtimeError, setRuntimeError] = useState<string | null>(null);
+  const [schemaErrors, setSchemaErrors] = useState<OutputUnit[]>([]);
   const [semvalWarnings, setSemvalWarnings] = useState<any[]>([]);
   const [viewMode, setViewMode] = useState("narrow");
   const searchParams = useSearchParams();
@@ -90,7 +97,7 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
   let parsedReceipt: Receipt | null = null;
   let previousReceiptData: Receipt | null = null;
   let parsedMerchant: Merchant | null = null;
-  let err = runtimeError;
+  let breakingError = runtimeError;
   try {
     parsedReceipt = JSON.parse(receiptData);
     if (previousReceipt) {
@@ -98,7 +105,7 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
     }
     parsedMerchant = JSON.parse(merchantData);
   } catch (e: any) {
-    err = e.message;
+    breakingError = e.message;
   }
 
   if (!clientLoaded) {
@@ -110,10 +117,9 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
     try {
       validate(JSON.parse(e.currentTarget.value)).then((valid) => {
         if (!valid.valid) {
-          setRuntimeError(
-            "Validation errors\n\n" +
-              valid.errors.map((e) => JSON.stringify(e, null, 2)).join("\n")
-          );
+          setSchemaErrors(valid.errors);
+        } else {
+          setSchemaErrors([]);
         }
       });
       setReceiptData(e.currentTarget.value);
@@ -340,11 +346,17 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
                       {skeletonTx}
                     </div>
                   )}
-                  {!err && (
-                    <div className={styles.preview}>
-                      <div>
-                        <Advisory errors={[]} warnings={semvalWarnings} />
-                      </div>
+
+                  <div>
+                    <Advisory
+                      breakingError={breakingError}
+                      errors={schemaErrors}
+                      warnings={semvalWarnings}
+                    />
+                  </div>
+                  <div className={styles.preview}>
+                    {breakingError && <BrokenReceipt />}
+                    {!breakingError && (
                       <VersaContext.Provider
                         value={{ mapbox_token: process.env.MAPBOX_TOKEN }}
                       >
@@ -354,21 +366,12 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
                           theme={simplifiedTheme}
                         />
                       </VersaContext.Provider>
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
               </div>
             )}
           </StudioErrorBoundary>
-
-          {!!err && (
-            <div className={styles.error}>
-              <div>{err}</div>
-            </div>
-            // Add advisory thing here
-            // <Advisory errors={[]} warnings={["hi"]} />
-          )}
-
           {!viewCode && viewMode == "context" && (
             <div className={styles.disclaimer}>
               Concept only. Receivers may display itemized receipt data in

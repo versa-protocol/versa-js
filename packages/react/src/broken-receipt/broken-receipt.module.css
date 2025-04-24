@@ -19,6 +19,7 @@
   --dark92: hsl(210, 20%, 8%);
   --dark97: hsl(210, 30%, 3%);
   --light-stroke: var(--dark15);
+  min-height: 50vh;
 }
 
 [data-theme="dark"] .wrap {

@@ -11,12 +11,31 @@ ul.warnings {
   align-items: center;
   gap: 8px;
   margin: 0.5rem 0;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  background-color: var(--background);
+}
+
+.errors li {
+  border: 1px solid red;
+}
+
+.warnings li {
+  border: 1px solid orange;
 }
 
 .errors svg {
   stroke: red;
+  min-width: 2rem;
 }
 
 .warnings svg {
   stroke: orange;
+  min-width: 2rem;
+}
+
+.advisory {
+  margin-bottom: 1rem;
+  border-left: 0;
+  width: 100%;
 }
