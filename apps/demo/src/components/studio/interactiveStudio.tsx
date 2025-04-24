@@ -21,6 +21,7 @@ import { useValidator } from "./useValidator";
 import {
   Advisory,
   BrokenReceipt,
+  ReceiptErrorBoundary,
   ReceiptDisplay,
   VersaContext,
 } from "@versaprotocol/react";
@@ -346,7 +347,6 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
                       {skeletonTx}
                     </div>
                   )}
-
                   <div>
                     <Advisory
                       breakingError={breakingError}
@@ -355,18 +355,23 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
                     />
                   </div>
                   <div className={styles.preview}>
-                    {breakingError && <BrokenReceipt />}
-                    {!breakingError && (
-                      <VersaContext.Provider
-                        value={{ mapbox_token: process.env.MAPBOX_TOKEN }}
-                      >
-                        <ReceiptDisplay
-                          receipt={parsedReceipt}
-                          merchant={parsedMerchant}
-                          theme={simplifiedTheme}
-                        />
-                      </VersaContext.Provider>
-                    )}
+                    <ReceiptErrorBoundary
+                      receipt={parsedReceipt}
+                      onError={(e) => setRuntimeError(String(e))}
+                    >
+                      {breakingError && <BrokenReceipt />}
+                      {!breakingError && (
+                        <VersaContext.Provider
+                          value={{ mapbox_token: process.env.MAPBOX_TOKEN }}
+                        >
+                          <ReceiptDisplay
+                            receipt={parsedReceipt}
+                            merchant={parsedMerchant}
+                            theme={simplifiedTheme}
+                          />
+                        </VersaContext.Provider>
+                      )}
+                    </ReceiptErrorBoundary>
                   </div>
                 </div>
               </div>

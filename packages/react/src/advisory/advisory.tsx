@@ -58,7 +58,10 @@ export function Advisory({
           {warnings.map((w) => (
             <li key={w.rule}>
               <AlertTriangle size={16} />
-              <div>{w.description}</div>
+              <div>
+                {w.description}
+                {w.details ? ` (${w.details})` : null}
+              </div>
             </li>
           ))}
         </ul>

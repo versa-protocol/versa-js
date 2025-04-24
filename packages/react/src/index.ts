@@ -5,3 +5,4 @@ export * from "./icons";
 export * from "./receipt-blocks";
 export * from "./receipt-history";
 export * from "./receipt";
+export * from "./receipt-error-boundary";
