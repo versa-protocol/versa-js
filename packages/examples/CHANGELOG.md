@@ -1,5 +1,11 @@
 # @versaprotocol/examples
 
+## 1.11.2
+
+### Patch Changes
+
+- adding components for semantic validation; updated examples with v1 semval standards
+
 ## 1.11.1
 
 ### Patch Changes

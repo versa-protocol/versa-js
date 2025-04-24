@@ -1,5 +1,12 @@
 # @versaprotocol/react
 
+## 1.11.8
+
+### Patch Changes
+
+- adding components for semantic validation; updated examples with v1 semval standards
+  - @versaprotocol/belt@1.11.1
+
 ## 1.11.7
 
 ### Patch Changes
