@@ -8,12 +8,20 @@ ul.warnings {
 .errors li,
 .warnings li {
   display: flex;
-  align-items: center;
-  gap: 8px;
+  align-items: flex-start;
+  gap: 0.75rem;
   margin: 0.5rem 0;
   border-radius: 0.5rem;
-  padding: 0.5rem;
+  padding: 0.5rem 0.75rem;
   background-color: var(--background);
+  line-height: 1.25;
+}
+
+.errors svg,
+.warnings svg {
+  min-width: 16px;
+  min-height: 16px;
+  margin-top: 2px;
 }
 
 .errors li {
@@ -26,12 +34,10 @@ ul.warnings {
 
 .errors svg {
   stroke: red;
-  min-width: 2rem;
 }
 
 .warnings svg {
   stroke: orange;
-  min-width: 2rem;
 }
 
 .advisory {
