@@ -1,25 +1,33 @@
 import { AlertTriangle, XOctagon } from "react-feather";
 import styles from "./advisory.module.css";
-interface OutputUnit {
+
+interface SchemaValidationErrorUnit {
   keyword: string;
   keywordLocation: string;
   instanceLocation: string;
   error: string;
 }
 
-interface Violation {
-  description: string;
+export interface Violation {
   rule: string;
-  details: string;
+  description: string;
+  details?: string | null;
+}
+
+export interface MisuseReport {
+  misuseCode: string;
+  misuseText?: string | null;
 }
 
 export function Advisory({
   breakingError,
   errors,
+  misuse,
   warnings,
 }: {
   breakingError?: string | null;
-  errors: OutputUnit[];
+  errors: SchemaValidationErrorUnit[];
+  misuse?: MisuseReport;
   warnings: Violation[];
 }) {
   if (breakingError) {
@@ -33,6 +41,21 @@ export function Advisory({
             </li>
           </ul>
         </div>
+      </div>
+    );
+  }
+  if (misuse) {
+    return (
+      <div className={styles.advisory}>
+        <ul className={styles.warnings}>
+          <li>
+            <AlertTriangle size={16} />
+            <div>
+              Misuse Reported: {misuse.misuseCode}
+              <div>{misuse.misuseText ? `${misuse.misuseText}` : null}</div>
+            </div>
+          </li>
+        </ul>
       </div>
     );
   }

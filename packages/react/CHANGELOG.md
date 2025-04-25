@@ -1,5 +1,11 @@
 # @versaprotocol/react
 
+## 1.11.10
+
+### Patch Changes
+
+- support an optional misuse object in the advisory"
+
 ## 1.11.9
 
 ### Patch Changes

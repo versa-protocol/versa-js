@@ -24,6 +24,7 @@ import {
   ReceiptErrorBoundary,
   ReceiptDisplay,
   VersaContext,
+  Violation,
 } from "@versaprotocol/react";
 import { ThemeToggle } from "../theme/themeToggle";
 import { Suspense } from "react";
@@ -35,7 +36,7 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
   const [clientLoaded, setClientLoaded] = useState(false);
   const [runtimeError, setRuntimeError] = useState<string | null>(null);
   const [schemaErrors, setSchemaErrors] = useState<OutputUnit[]>([]);
-  const [semvalWarnings, setSemvalWarnings] = useState<any[]>([]);
+  const [semvalWarnings, setSemvalWarnings] = useState<Violation[]>([]);
   const [viewMode, setViewMode] = useState("narrow");
   const searchParams = useSearchParams();
 
