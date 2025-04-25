@@ -25,11 +25,9 @@ export function ReceiptDisplay({
         schemaVersion
       ) === 1
     ) {
-      return (
-        <div>
-          Receipt schema version {schemaVersion} is not supported by this
-          display library.
-        </div>
+      // Should possibly 'fall back' to the oldest LTS version component tree? (as opposed to the latest)
+      console.warn(
+        `WARN: Received schema version that has been retired; contact Versa support if this is a recent receipt. (Received version: ${schemaVersion})`
       );
     } else {
       console.warn(

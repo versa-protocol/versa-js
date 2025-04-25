@@ -29,12 +29,6 @@ import { ThemeToggle } from "../theme/themeToggle";
 import { Suspense } from "react";
 import { OutputUnit } from "@cfworker/json-schema";
 
-interface Receiver {
-  name: string;
-  logo: string;
-  logo_dark: string;
-}
-
 const InteractiveStudio = ({ org }: { org?: Org }) => {
   const [viewCode, setViewCode] = useState(true);
 
@@ -347,13 +341,15 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
                       {skeletonTx}
                     </div>
                   )}
-                  <div>
-                    <Advisory
-                      breakingError={breakingError}
-                      errors={schemaErrors}
-                      warnings={semvalWarnings}
-                    />
-                  </div>
+                  {viewCode && (
+                    <div>
+                      <Advisory
+                        breakingError={breakingError}
+                        errors={schemaErrors}
+                        warnings={semvalWarnings}
+                      />
+                    </div>
+                  )}
                   <div className={styles.preview}>
                     <ReceiptErrorBoundary
                       receipt={parsedReceipt}

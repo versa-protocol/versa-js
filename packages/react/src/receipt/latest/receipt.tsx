@@ -26,11 +26,9 @@ import { Payments } from "../../receipt-blocks/payments";
 import { Parties } from "../../receipt-blocks/parties/parties";
 import { usePdfGen } from "../../hooks/usePdfGen";
 
-import { LTS_VERSIONS } from "@versaprotocol/schema";
-
 export function ReceiptLatest({
   receipt,
-  schemaVersion,
+  schemaVersion: _schemaVersion,
   merchant,
   theme,
 }: {

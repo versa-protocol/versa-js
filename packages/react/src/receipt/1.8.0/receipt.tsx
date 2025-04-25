@@ -42,15 +42,6 @@ export function ReceiptDisplay({
 }) {
   const data = receipt;
 
-  if (!LTS_VERSIONS.includes(schemaVersion)) {
-    return (
-      <div>
-        Receipt schema version {schemaVersion} is not supported by this display
-        library.
-      </div>
-    );
-  }
-
   // Theming
   const colors = {
     brand: "",
