@@ -1,5 +1,11 @@
 # @versaprotocol/react
 
+## 1.11.9
+
+### Patch Changes
+
+- always attempt to render receipt data; rely on error boundaries/advisories"
+
 ## 1.11.8
 
 ### Patch Changes
