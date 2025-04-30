@@ -1,5 +1,11 @@
 # @versaprotocol/examples
 
+## 1.11.3
+
+### Patch Changes
+
+- Generalize advisory to expect strings, correct totals in our default flight json example
+
 ## 1.11.2
 
 ### Patch Changes

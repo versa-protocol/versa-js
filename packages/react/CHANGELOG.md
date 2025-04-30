@@ -1,5 +1,12 @@
 # @versaprotocol/react
 
+## 1.11.11
+
+### Patch Changes
+
+- Generalize advisory to expect strings, correct totals in our default flight json example
+  - @versaprotocol/belt@1.11.1
+
 ## 1.11.10
 
 ### Patch Changes
