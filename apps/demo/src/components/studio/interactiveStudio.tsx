@@ -24,11 +24,16 @@ import {
   ReceiptErrorBoundary,
   ReceiptDisplay,
   VersaContext,
-  Violation,
 } from "@versaprotocol/react";
 import { ThemeToggle } from "../theme/themeToggle";
 import { Suspense } from "react";
 import { OutputUnit } from "@cfworker/json-schema";
+
+interface Violation {
+  rule: string;
+  description: string;
+  details?: string | null;
+}
 
 const InteractiveStudio = ({ org }: { org?: Org }) => {
   const [viewCode, setViewCode] = useState(true);
@@ -107,6 +112,24 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
   if (!clientLoaded) {
     return null;
   }
+
+  const advisoryErrors = breakingError ? [breakingError] : [];
+  if (schemaErrors && schemaErrors.length)
+    advisoryErrors.push(
+      schemaErrors.reduce((msg, e) => {
+        if (msg.length > 0) {
+          msg += " ";
+        }
+        return (msg += e.error);
+      }, "")
+    );
+
+  const advisoryWarnings = breakingError
+    ? []
+    : semvalWarnings.map(
+        (w) => `${w.description}
+  ${w.details ? " (" + w.details + ")" : null}`
+      );
 
   const onChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
     setRuntimeError(null);
@@ -345,9 +368,8 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
                   {viewCode && (
                     <div>
                       <Advisory
-                        breakingError={breakingError}
-                        errors={schemaErrors}
-                        warnings={semvalWarnings}
+                        errors={advisoryErrors}
+                        warnings={advisoryWarnings}
                       />
                     </div>
                   )}

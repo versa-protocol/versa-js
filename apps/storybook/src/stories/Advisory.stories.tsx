@@ -31,38 +31,7 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const AdvisoryDefault: Story = {
   args: {
-    errors: [
-      {
-        keyword: "total",
-        keywordLocation: "header",
-        instanceLocation: "",
-        error: "total is required",
-      },
-    ],
-    warnings: [
-      { rule: "test-rule-1", details: "", description: "Warning #1" },
-      { rule: "test-rule-2", details: "", description: "Warning #2" },
-    ],
-  },
-};
-
-export const AdvisoryWithMisuse: Story = {
-  args: {
-    misuse: {
-      misuseCode: "schema_version_invalid",
-      misuseText: 'Schema version is invalid: "4.adlkjg.8"',
-    },
-    errors: [
-      {
-        keyword: "total",
-        keywordLocation: "header",
-        instanceLocation: "",
-        error: "total is required",
-      },
-    ],
-    warnings: [
-      { rule: "test-rule-1", details: "", description: "Warning #1" },
-      { rule: "test-rule-2", details: "", description: "Warning #2" },
-    ],
+    errors: ["total is required"],
+    warnings: ["test-rule-1: Warning #1", "test-rule-2: Warning #2"],
   },
 };
