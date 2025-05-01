@@ -18,3 +18,4 @@ export * from "./supplemental-text";
 export * from "./third-party";
 export * from "./totals";
 export * from "./update-block";
+export * from "./registry-data";

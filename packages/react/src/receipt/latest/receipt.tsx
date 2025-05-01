@@ -15,6 +15,7 @@ import {
   SupplementalText,
   ThirdParty,
   Totals,
+  RegistryData,
 } from "../../receipt-blocks";
 import {
   aggregateAdjustments,
@@ -25,6 +26,25 @@ import styles from "./../base_receipt.module.css";
 import { Payments } from "../../receipt-blocks/payments";
 import { Parties } from "../../receipt-blocks/parties/parties";
 import { usePdfGen } from "../../hooks/usePdfGen";
+
+export const TEST_CHECKOUT = {
+  key: "jZt54/mk2RjP4qtNekQQyamu4qoEaxCE/qk5fhi5LuQ=",
+  receipt_id: "rct_5ed073abbf3a4b49a8c03191f87d8ffe",
+  transaction_id: "txn_5ed073abbf3a4b49a8c03191f87d8ffe",
+  transaction_event_index: 0,
+  registered_at: 1739221813,
+  handles: {
+    customer_email: "joe@acme.com",
+  },
+  sender: {
+    org_id: "org_b6d073a9bf3a4c49a8c03191f87d8ee2",
+    name: "Supplier Co.",
+    legal_name: "Acme Corporation",
+    brand_color: "#f0C14B",
+    logo: "https://static.platform.co/image_url.png",
+    website: "supplier.com",
+  },
+};
 
 export function ReceiptLatest({
   receipt,
@@ -249,19 +269,22 @@ export function ReceiptLatest({
         </div>
       )}
 
-      {/* Download */}
+      {/* Supplemental Text */}
       {!!data.footer.supplemental_text && (
         <BlockWrap>
           <SupplementalText text={data.footer.supplemental_text} />
         </BlockWrap>
       )}
 
-      {/* ExportOptions */}
+      {/* Download */}
       <ExportOptions
         receiptHeader={data.header}
         mapAttribution={mapAttribution}
         downloadReceipt={downloadReceipt}
       />
+
+      {/* Registry Data */}
+      {/* <RegistryData checkout={TEST_CHECKOUT} /> */}
     </div>
   );
 }

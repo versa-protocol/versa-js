@@ -16,6 +16,8 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  overflow: hidden;
+  overflow-y: scroll;
   box-shadow: inset 1px 0 0 0 var(--light-stroke);
   flex-direction: column;
   position: relative;
@@ -167,8 +169,6 @@
 
 .preview {
   position: relative;
-  overflow: hidden;
-  overflow-y: scroll;
   background-color: var(--background);
 }
 
