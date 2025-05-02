@@ -42,7 +42,11 @@ export function RegistryData({ checkout }: { checkout: typeof TEST_CHECKOUT }) {
           </div>
         </div>
       )}
-      <button onClick={() => setIsOpened(true)}>Open Dialog</button>
+      <div className={styles.registryDataBlock}>
+        <button onClick={() => setIsOpened(true)}>
+          Verified Sender: {checkout.sender.website}
+        </button>
+      </div>
     </>
   );
 }
