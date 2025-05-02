@@ -285,7 +285,7 @@ export function ReceiptLatest({
 
       {/* Registry Data */}
       {/* <BlockWrap>
-        <RegistryData checkout={TEST_CHECKOUT} />
+        <RegistryData checkout={TEST_CHECKOUT} receipt={data} />
       </BlockWrap> */}
     </div>
   );

@@ -1,12 +1,42 @@
 import styles from "./registry-data.module.css";
 import { TEST_CHECKOUT } from "../../receipt/latest/receipt";
-import { useState } from "react";
 import { formatDateTime } from "@versaprotocol/belt";
 import { X } from "react-feather";
+import { Receipt } from "@versaprotocol/schema";
+import { useState } from "react";
 
-export function RegistryData({ checkout }: { checkout: typeof TEST_CHECKOUT }) {
+export function RegistryData({
+  checkout,
+  receipt,
+}: {
+  checkout: typeof TEST_CHECKOUT;
+  receipt: Receipt;
+}) {
   const [isOpened, setIsOpened] = useState(false);
 
+  function downloadJsonFile(): void {
+    const jsonString: string = JSON.stringify(receipt, null, 2);
+    const blob: Blob = new Blob([jsonString], { type: "application/json" });
+    const link: HTMLAnchorElement = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download =
+      checkout.sender.name +
+      " Invoice " +
+      epochToISO8601(receipt.header.invoiced_at) +
+      ".json";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(link.href);
+  }
+
+  function epochToISO8601(epochTime: number): string {
+    const date = new Date(epochTime * 1000);
+    const year: number = date.getFullYear();
+    const month: string = String(date.getMonth() + 1).padStart(2, "0");
+    const day: string = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  }
   return (
     <>
       {isOpened && (
@@ -37,6 +67,15 @@ export function RegistryData({ checkout }: { checkout: typeof TEST_CHECKOUT }) {
                 <dd>{checkout.sender.org_id}</dd>
                 <dt>Sender Website</dt>
                 <dd>{checkout.sender.website}</dd>
+                <dt>Source</dt>
+                <dd>
+                  <button
+                    onClick={() => downloadJsonFile()}
+                    className={styles.ddLink}
+                  >
+                    Download JSON
+                  </button>
+                </dd>
               </dl>
             </article>
           </div>
