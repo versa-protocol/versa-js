@@ -68,14 +68,17 @@ export function ReceiptFooter({
           {isOpened && (
             <div className={styles.backdrop}>
               <div className={styles.registryDataDialog}>
-                <header>
-                  <h3>Transaction Details — Versa Registry</h3>
+                <div className={styles.buttons}>
                   <button
                     onClick={() => setIsOpened(false)}
                     className={styles.close}
                   >
                     <X />
                   </button>
+                </div>
+                <header>
+                  <h3>Transaction Details</h3>
+                  <div className={styles.subheader}>Versa Registry</div>
                 </header>
                 <article>
                   <dl>
@@ -85,10 +88,16 @@ export function ReceiptFooter({
                     <dd>{checkout.transaction_id}</dd>
                     <dt>Registered At</dt>
                     <dd>{formatDateTime(checkout.registered_at)}</dd>
-                    <dt>Handle</dt>
-                    <dd>{checkout.handles.customer_email}</dd>
+                    {checkout.handles.customer_email && (
+                      <>
+                        <dt>Handle</dt>
+                        <dd>{checkout.handles.customer_email}</dd>
+                      </>
+                    )}
                     <dt>Sender Name</dt>
-                    <dd>{checkout.sender.legal_name}</dd>
+                    <dd>
+                      {checkout.sender.legal_name || checkout.sender.name}
+                    </dd>
                     <dt>Sender ID</dt>
                     <dd>{checkout.sender.org_id}</dd>
                     <dt>Sender Website</dt>
@@ -99,7 +108,7 @@ export function ReceiptFooter({
                         onClick={() => downloadJsonFile()}
                         className={styles.ddLink}
                       >
-                        Download JSON
+                        Raw JSON
                       </button>
                     </dd>
                   </dl>

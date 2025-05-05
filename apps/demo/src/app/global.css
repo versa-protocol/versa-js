@@ -67,7 +67,7 @@ body {
   --med-stroke: var(--dark20);
   --dark-stroke: var(--dark25);
   --foreground-alpha: 0, 0, 0;
-  --background-alpha-tint: 200, 200, 200;
+  --background-alpha-tint: 240, 240, 240;
   --background-alpha: 255, 255, 255;
   --yellow120: hsl(54, 79%, 42%);
   --yellow10: hsl(53, 82%, 96%);

@@ -106,11 +106,17 @@
   align-items: flex-start;
   justify-content: center;
   z-index: 1000;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+  transition-behavior: allow-discrete;
+  @starting-style {
+    opacity: 0;
+  }
 }
 
 .registryDataDialog {
   background: var(--background);
-  padding: 2rem;
+  padding: 0;
   margin: 1rem;
   width: 100%;
   max-width: 480px;
@@ -118,24 +124,61 @@
   overflow-y: scroll;
   box-shadow: 0 0 0 1px rgba(var(--foreground-alpha), 0.1),
     0 1rem 1rem rgba(var(--foreground-alpha), 0.03);
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition-behavior: allow-discrete;
+  @starting-style {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+.buttons {
+  position: sticky;
+  left: 0;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: end;
 }
 
 .close {
   position: absolute;
-  top: 2rem;
-  right: 2rem;
+  top: 1rem;
+  right: 1rem;
+  border-radius: 1.25rem;
   border: none;
-  background-color: transparent;
-  padding: 0;
+  background-color: var(--background-block);
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.close:hover {
+  background-color: var(--background-block-contrast);
+}
+
+.registryDataDialog header {
+  margin: 2rem;
+  text-align: center;
 }
 
 .registryDataDialog h3 {
-  margin: 0 0 2rem 0;
+  margin: 0;
+  padding: 0;
+}
+
+.registryDataDialog .subheader {
+  color: var(--foreground-secondary);
 }
 
 .registryDataDialog dl {
-  margin: 0;
+  margin: 2rem;
   line-height: 1.375;
+  padding: 0;
 }
 
 .registryDataDialog dt {
@@ -149,7 +192,7 @@
   padding: 0;
 }
 
-.registryDataDialog dd button {
+.registryDataDialog dd > button {
   margin: 0;
   padding: 0;
   text-decoration: underline;
