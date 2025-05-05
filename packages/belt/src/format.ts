@@ -112,6 +112,14 @@ export function formatTime(secondsSinceEpoch: number) {
   return d.toLocaleTimeString("en-US", options);
 }
 
+export function epochToISO8601(epochTime: number): string {
+  const date = new Date(epochTime * 1000);
+  const year: number = date.getFullYear();
+  const month: string = String(date.getMonth() + 1).padStart(2, "0");
+  const day: string = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
 export function sameDay(d1: number, d2: number) {
   const d1_d = new Date(d1 * 1000);
   const d2_d = new Date(d2 * 1000);

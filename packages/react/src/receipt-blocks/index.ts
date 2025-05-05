@@ -2,7 +2,7 @@
 
 export * from "./action-block";
 export * from "./block-wrap";
-export * from "./export-options";
+export * from "./receipt-footer";
 export * from "./itemized-car-rental";
 export * from "./itemized-flight";
 export * from "./itemized-lodging";
@@ -18,4 +18,3 @@ export * from "./supplemental-text";
 export * from "./third-party";
 export * from "./totals";
 export * from "./update-block";
-export * from "./registry-data";

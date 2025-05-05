@@ -2,7 +2,6 @@ import { Org, Receipt } from "@versaprotocol/schema";
 import {
   ActionBlock,
   BlockWrap,
-  ExportOptions,
   ItemizedCarRental,
   ItemizedFlight,
   ItemizedLodging,
@@ -10,12 +9,12 @@ import {
   ItemizedTransitRoute,
   LineItems,
   LocalBusiness,
+  ReceiptFooter,
   ReceiptHeader,
   ShipmentWidget,
   SupplementalText,
   ThirdParty,
   Totals,
-  RegistryData,
 } from "../../receipt-blocks";
 import {
   aggregateAdjustments,
@@ -276,17 +275,13 @@ export function ReceiptLatest({
         </BlockWrap>
       )}
 
-      {/* Download */}
-      <ExportOptions
-        receiptHeader={data.header}
+      {/* Download & Registry Data */}
+      <ReceiptFooter
+        receipt={data}
         mapAttribution={mapAttribution}
         downloadReceipt={downloadReceipt}
+        checkout={TEST_CHECKOUT}
       />
-
-      {/* Registry Data */}
-      {/* <BlockWrap>
-        <RegistryData checkout={TEST_CHECKOUT} receipt={data} />
-      </BlockWrap> */}
     </div>
   );
 }
