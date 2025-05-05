@@ -217,6 +217,7 @@ export function ReceiptLatest({
       )}
 
       {/* Totals: Taxes, Fees, Tip */}
+
       <BlockWrap>
         <Totals
           taxes={aggregateTaxes(data.itemization)}

@@ -205,7 +205,7 @@ export function aggregateAdjustments(itemization: Itemization) {
           adjustments.push({
             amount: adj.amount,
             adjustment_type: adj.adjustment_type,
-            name: `${adj.name} (${segment.departure_airport_code}-${segment.arrival_airport_code})`,
+            name: `${adj.name} (${ticket.passenger} / ${segment.departure_airport_code}-${segment.arrival_airport_code})`,
             rate: adj.rate,
           });
         });
