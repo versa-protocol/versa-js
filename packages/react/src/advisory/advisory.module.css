@@ -25,13 +25,17 @@ ul.warnings {
 }
 
 .errors li {
-  border: 1px solid rgb(from red r g b / 0.25);
-  background-color: rgb(from red r g b / 0.03);
+  /* border: 1px solid rgb(from red r g b / 0.25);
+  background-color: rgb(from red r g b / 0.03); */
+  border: 1px solid color-mix(in srgb, var(--background) 75%, red 25%);
+  background-color: color-mix(in srgb, red 3%, var(--background) 97%);
 }
 
 .warnings li {
-  border: 1px solid rgb(from orange r g b / 0.25);
-  background-color: rgb(from orange r g b / 0.03);
+  /* border: 1px solid rgb(from orange r g b / 0.25);
+  background-color: rgb(from orange r g b / 0.03); */
+  border: 1px solid color-mix(in srgb, var(--background) 75%, orange 25%);
+  background-color: color-mix(in srgb, orange 3%, var(--background) 97%);
 }
 
 .errors svg {
