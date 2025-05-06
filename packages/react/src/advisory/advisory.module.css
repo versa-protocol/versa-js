@@ -11,8 +11,8 @@ ul.warnings {
   align-items: flex-start;
   gap: 0.75rem;
   margin: 0.5rem 0;
-  border-radius: 0.5rem;
-  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  padding: 0.75rem;
   background-color: var(--background);
   line-height: 1.25;
 }
@@ -25,11 +25,13 @@ ul.warnings {
 }
 
 .errors li {
-  border: 1px solid red;
+  border: 1px solid rgb(from red r g b / 0.25);
+  background-color: rgb(from red r g b / 0.03);
 }
 
 .warnings li {
-  border: 1px solid orange;
+  border: 1px solid rgb(from orange r g b / 0.25);
+  background-color: rgb(from orange r g b / 0.03);
 }
 
 .errors svg {
