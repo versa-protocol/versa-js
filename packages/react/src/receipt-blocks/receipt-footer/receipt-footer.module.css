@@ -45,6 +45,29 @@
   margin-bottom: 1.5rem;
 }
 
+.registryBlock {
+  border-top: 1px solid var(--light-stroke);
+  display: flex;
+  padding: 1rem 0 0 0;
+}
+
+.registryBlock > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  text-decoration: none;
+  color: var(--foreground-secondary);
+  flex-grow: 1;
+  background: transparent;
+  border: 0;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+.registryBlock > button:hover {
+  text-decoration: underline;
+}
+
 .downloadBlock > a,
 .downloadBlock > button {
   display: flex;
@@ -57,6 +80,7 @@
   background: transparent;
   border: 0;
   font-size: 1rem;
+  cursor: pointer;
 }
 
 .downloadBlock > a > svg,
@@ -75,7 +99,8 @@
 }
 
 @media print {
-  .downloadBlock {
+  .downloadBlock,
+  .registryBlock {
     display: none;
   }
 }
@@ -172,6 +197,7 @@
 }
 
 .registryDataDialog .subheader {
+  margin-top: 0.25rem;
   color: var(--foreground-secondary);
 }
 

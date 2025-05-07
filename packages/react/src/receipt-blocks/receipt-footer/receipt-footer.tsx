@@ -116,9 +116,9 @@ export function ReceiptFooter({
               </div>
             </div>
           )}
-          <div className={styles.downloadBlock}>
+          <div className={styles.registryBlock}>
             <button onClick={() => setIsOpened(true)}>
-              <div>Sender: {checkout.sender.website}</div>
+              <div>Versa Registry: {checkout.sender.website}</div>
             </button>
           </div>
 
