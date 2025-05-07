@@ -1,30 +1,33 @@
-import { Download, Shield, X } from "react-feather";
+import { Download, X } from "react-feather";
 import styles from "./receipt-footer.module.css";
 import { Receipt } from "@versaprotocol/schema";
-import { TEST_CHECKOUT } from "../../receipt/latest/receipt";
 import { useState } from "react";
 import { epochToISO8601, formatDateTime } from "@versaprotocol/belt";
+import { RegistryData } from "../../model";
 
 export function ReceiptFooter({
   mapAttribution,
   receipt,
   downloadReceipt,
-  checkout,
+  registryData,
 }: {
   mapAttribution: boolean;
   receipt: Receipt;
   downloadReceipt: () => void;
-  checkout: typeof TEST_CHECKOUT;
+  registryData?: RegistryData;
 }) {
   const [isOpened, setIsOpened] = useState(false);
 
   function downloadJsonFile(): void {
+    if (!registryData) {
+      return;
+    }
     const jsonString: string = JSON.stringify(receipt, null, 2);
     const blob: Blob = new Blob([jsonString], { type: "application/json" });
     const link: HTMLAnchorElement = document.createElement("a");
     link.href = URL.createObjectURL(blob);
     link.download =
-      checkout.sender.name +
+      registryData.sender.name +
       " Invoice " +
       epochToISO8601(receipt.header.invoiced_at) +
       ".json";
@@ -65,7 +68,7 @@ export function ReceiptFooter({
             </div>
           )}
 
-          {isOpened && (
+          {isOpened && !!registryData && (
             <div className={styles.backdrop}>
               <div className={styles.registryDataDialog}>
                 <div className={styles.buttons}>
@@ -83,25 +86,26 @@ export function ReceiptFooter({
                 <article>
                   <dl>
                     <dt>Receipt ID</dt>
-                    <dd>{checkout.receipt_id}</dd>
+                    <dd>{registryData.receipt_id}</dd>
                     <dt>Transaction ID</dt>
-                    <dd>{checkout.transaction_id}</dd>
+                    <dd>{registryData.transaction_id}</dd>
                     <dt>Registered At</dt>
-                    <dd>{formatDateTime(checkout.registered_at)}</dd>
-                    {checkout.handles.customer_email && (
+                    <dd>{formatDateTime(registryData.registered_at)}</dd>
+                    {registryData.handles.customer_email && (
                       <>
                         <dt>Handle</dt>
-                        <dd>{checkout.handles.customer_email}</dd>
+                        <dd>{registryData.handles.customer_email}</dd>
                       </>
                     )}
                     <dt>Sender Name</dt>
                     <dd>
-                      {checkout.sender.legal_name || checkout.sender.name}
+                      {registryData.sender.legal_name ||
+                        registryData.sender.name}
                     </dd>
                     <dt>Sender ID</dt>
-                    <dd>{checkout.sender.org_id}</dd>
+                    <dd>{registryData.sender.org_id}</dd>
                     <dt>Sender Website</dt>
-                    <dd>{checkout.sender.website}</dd>
+                    <dd>{registryData.sender.website}</dd>
                     <dt>Source</dt>
                     <dd>
                       <button
@@ -116,11 +120,13 @@ export function ReceiptFooter({
               </div>
             </div>
           )}
-          <div className={styles.registryBlock}>
-            <button onClick={() => setIsOpened(true)}>
-              <div>Versa Registry: {checkout.sender.website}</div>
-            </button>
-          </div>
+          {!!registryData && (
+            <div className={styles.registryBlock}>
+              <button onClick={() => setIsOpened(true)}>
+                <div>Versa Registry: {registryData.sender.website}</div>
+              </button>
+            </div>
+          )}
 
           {/* {mapAttribution && (
         <div className={styles.finePrintContent}>

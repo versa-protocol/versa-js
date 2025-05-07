@@ -19,11 +19,22 @@ export interface TransactionHandles {
 }
 
 export interface Sender {
-  name: string;
-  brand_color?: string | null;
-  legal_name?: string | null;
-  logo?: string | null;
-  website?: string | null;
-  vat_number?: string | null;
   org_id: string;
+  brand_color?: string;
+  legal_name?: string;
+  logo?: string;
+  name: string;
+  vat_number?: string;
+  website: string;
+}
+
+export interface RegistryData {
+  receipt_id: string;
+  receipt_hash: string;
+  schema_version: string;
+  transaction_id: string;
+  sender: Sender;
+  handles: TransactionHandles;
+  registered_at: number;
+  transaction_event_index: number;
 }

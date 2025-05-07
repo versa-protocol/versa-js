@@ -15,6 +15,9 @@ const packageRegisteredReceipt = (
       transaction_id: "",
       registered_at: timestamp,
       transaction_event_index,
+      handles: {
+        customer_email_domain: "versa.org",
+      },
     },
     receipt,
   };

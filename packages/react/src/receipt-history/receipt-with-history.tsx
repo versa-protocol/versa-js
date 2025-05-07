@@ -3,7 +3,7 @@ import { UpdateBlock, BlockWrap } from "../receipt-blocks";
 import { formatDateTime } from "@versaprotocol/belt";
 import styles from "./receipt-with-history.module.css";
 import { processHistory } from "../helpers/updates";
-import { RegisteredReceipt } from "./model";
+import { RegisteredReceipt } from "../model";
 
 import React from "react";
 import { ReceiptDisplay } from "../receipt";

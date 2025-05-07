@@ -5,15 +5,18 @@ import { ReceiptLatest } from "./latest/receipt";
 
 import { LTS_VERSIONS } from "@versaprotocol/schema";
 import { compareSchemaVersions } from "./schemaVersion";
+import { RegistryData } from "../model";
 
 export function ReceiptDisplay({
   receipt,
   merchant,
   theme,
+  registryData,
 }: {
   receipt: Receipt;
   merchant: Org;
   theme?: string;
+  registryData?: RegistryData;
 }) {
   const data = receipt;
   let schemaVersion = data.schema_version;
@@ -66,6 +69,7 @@ export function ReceiptDisplay({
       schemaVersion={schemaVersion}
       merchant={merchant}
       theme={theme}
+      registryData={registryData}
     />
   );
 }
