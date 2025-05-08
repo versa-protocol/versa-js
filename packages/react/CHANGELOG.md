@@ -1,5 +1,11 @@
 # @versaprotocol/react
 
+## 1.11.12
+
+### Patch Changes
+
+- add registry data modal
+
 ## 1.11.11
 
 ### Patch Changes

@@ -19,7 +19,6 @@ const nextConfig: NextConfig = {
       "us-east-1-shared-usea1-02.graphassets.com",
       "imagedelivery.net",
       "v1.spadeapi.com",
-      "logo.clearbit.com",
       "static.v2.spadeapi.com",
       "api.mapbox.com",
       "versa.org",
