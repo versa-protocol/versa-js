@@ -201,7 +201,7 @@
   color: var(--foreground-secondary);
 }
 
-.registryDataDialog dl {
+.finePrintWrap .registryDataDialog dl {
   margin: 2rem;
   line-height: 1.375;
   padding: 0;
