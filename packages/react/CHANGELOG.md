@@ -1,5 +1,11 @@
 # @versaprotocol/react
 
+## 1.11.13
+
+### Patch Changes
+
+- css fix
+
 ## 1.11.12
 
 ### Patch Changes
