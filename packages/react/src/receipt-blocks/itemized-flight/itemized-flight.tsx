@@ -134,6 +134,12 @@ export function ItemizedFlight({
                 <div className={styles.key}>Passenger</div>
                 <div className={styles.value}>{p.passenger}</div>
               </div>
+              {p.record_locator && (
+                <div>
+                  <div className={styles.key}>Confirmation Code</div>
+                  <div className={styles.value}>{p.record_locator}</div>
+                </div>
+              )}
               {p.passenger_metadata.map((m, metadataindex) => {
                 return (
                   <div key={metadataindex}>

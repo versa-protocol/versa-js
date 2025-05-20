@@ -366,6 +366,7 @@ interface OrganizedFlightTicketPassenger {
   ticket_number: string | null | undefined;
   ticket_class: string | null; // only used if all class values are equal for ticket
   passenger_metadata: Metadatum[];
+  record_locator: string | null;
 }
 
 interface OrganizedFlightTicket {
@@ -527,6 +528,7 @@ export function organizeFlightTickets(flight: Flight): OrganizedFlightTicket[] {
         organizedTickets[dedupeKey].passengers.push({
           fare: determineTicketFare(ticket),
           passenger: ticket.passenger,
+          record_locator: ticket.record_locator || null,
           ticket_number: ticket.number,
           ticket_class: allClassValuesEqualForPassenger
             ? segments[0].class_of_service || null
@@ -542,6 +544,7 @@ export function organizeFlightTickets(flight: Flight): OrganizedFlightTicket[] {
           {
             fare: determineTicketFare(ticket),
             passenger: ticket.passenger,
+            record_locator: ticket.record_locator || null,
             ticket_number: ticket.number,
             ticket_class: allClassValuesEqualForPassenger
               ? segments[0].class_of_service || null
@@ -1033,6 +1036,7 @@ export function aggregateFlight(
     let row: { [key: string]: any } = {};
     row.passenger = { content: p.passenger };
     row.ticket_number = { content: p.ticket_number };
+    row.record_locator = { content: p.record_locator };
     if (p.ticket_class && flightClass(p.ticket_class)) {
       const class_string =
         flightClass(p.ticket_class) + " (" + p.ticket_class + ")";
@@ -1070,6 +1074,9 @@ function aggregateFlightHeaders(
   metadata_headers.forEach((header) => {
     ticketSummaryHead[header] = { content: header };
   });
+  if (passengers.some((value) => value.record_locator != null)) {
+    ticketSummaryHead.record_locator = { content: "Confirmation Code" };
+  }
   if (passengers.some((value) => value.ticket_number != null)) {
     ticketSummaryHead.ticket_number = { content: "Ticket" };
   }
