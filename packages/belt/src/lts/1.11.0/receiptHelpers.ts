@@ -1,4 +1,4 @@
-import { Adjustment, Header, lts } from "@versaprotocol/schema";
+import { Adjustment, lts } from "@versaprotocol/schema";
 import canonicalize from "canonicalize";
 import {
   formatDateTime,
@@ -1113,4 +1113,14 @@ export function netAdjustments(adjustments: Adjustment[] | undefined): number {
     });
   }
   return net;
+}
+
+export function aggregateTicketFares(ticket: OrganizedFlightTicket) {
+  let aggregatedTicketFares: number = 0;
+  for (const itinerary of ticket.itineraries) {
+    for (const segment of itinerary.segments) {
+      aggregatedTicketFares += segment.fare || 0;
+    }
+  }
+  return aggregatedTicketFares;
 }

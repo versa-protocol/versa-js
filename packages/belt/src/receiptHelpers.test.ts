@@ -160,11 +160,15 @@ const testData = {
         ],
         number: "0062698215636",
         record_locator: "CU9GEF",
-        passenger: "Jimmy Dean",
+        passenger: {
+          preferred_first_name: "Jimmy",
+          first_name: "James",
+          last_name: "Dean",
+          metadata: [],
+        },
       },
       {
         taxes: [],
-        metadata: [],
         segments: [
           {
             fare: 15233,
@@ -301,7 +305,12 @@ const testData = {
         ],
         number: "0062698215637",
         record_locator: "CU9GEF",
-        passenger: "John Smith",
+        passenger: {
+          preferred_first_name: "John",
+          first_name: "John",
+          last_name: "Smith",
+          metadata: [],
+        },
       },
     ],
     itinerary_locator: "1122337694093",
@@ -357,7 +366,10 @@ describe("organizeTransitRoutes", () => {
 
     expect(reorganizedRoutes[0].passenger_count).toBe(3);
     expect(reorganizedRoutes[0].passengers.length).toBe(3);
-    expect(reorganizedRoutes[0].passengers[0].passenger).toBe("Honora Doe");
+    expect(reorganizedRoutes[0].passengers[0].passenger?.first_name).toBe(
+      "Honora"
+    );
+    expect(reorganizedRoutes[0].passengers[0].passenger?.last_name).toBe("Doe");
     expect(reorganizedRoutes[0].passengers[0].fare).toBe(14500);
     expect(reorganizedRoutes[0].passengers[0].passenger_metadata.length).toBe(
       1
@@ -369,7 +381,10 @@ describe("organizeTransitRoutes", () => {
       "Adult"
     );
 
-    expect(reorganizedRoutes[0].passengers[1].passenger).toBe("Ted Doe");
+    expect(reorganizedRoutes[0].passengers[1].passenger?.first_name).toBe(
+      "Ted"
+    );
+    expect(reorganizedRoutes[0].passengers[1].passenger?.last_name).toBe("Doe");
     expect(reorganizedRoutes[0].passengers[1].fare).toBe(14500);
     expect(reorganizedRoutes[0].passengers[1].passenger_metadata.length).toBe(
       1
@@ -381,7 +396,10 @@ describe("organizeTransitRoutes", () => {
       "Adult"
     );
 
-    expect(reorganizedRoutes[0].passengers[2].passenger).toBe("Rita Doe");
+    expect(reorganizedRoutes[0].passengers[2].passenger?.first_name).toBe(
+      "Rita"
+    );
+    expect(reorganizedRoutes[0].passengers[2].passenger?.last_name).toBe("Doe");
     expect(reorganizedRoutes[0].passengers[2].fare).toBe(7250);
     expect(reorganizedRoutes[0].passengers[2].passenger_metadata.length).toBe(
       1

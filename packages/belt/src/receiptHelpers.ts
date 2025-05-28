@@ -245,7 +245,7 @@ export function aggregateAdjustments(itemization: Itemization) {
 }
 
 interface OrganizedTransitRoutePassenger {
-  passenger: string | Person | null | undefined;
+  passenger: Person | null | undefined;
   fare: number;
   passenger_metadata: Metadatum[];
 }

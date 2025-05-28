@@ -7,9 +7,11 @@ import {
   organizeTransitRoutes,
 } from "./receiptHelpers";
 
-import { receipts } from "@versaprotocol/examples";
+import railReceipt_1_11_0 from "@versaprotocol/examples/receipts/1.11.0/rail.json";
+import flightReceipt_1_11_0 from "@versaprotocol/examples/receipts/1.11.0/flight.json";
 
-const railReceipt = receipts.rail as unknown as lts.v1_8_0.Receipt;
+const railReceipt = railReceipt_1_11_0 as lts.v1_11_0.Receipt;
+const flightReceipt = flightReceipt_1_11_0 as lts.v1_11_0.Receipt;
 
 const testData = {
   general: null,
@@ -382,7 +384,7 @@ describe("organizeTransitRoutes", () => {
 
 describe("organizeSegmentedItineraries", () => {
   it("should organized itineraries into two grouped itineraries for an outgoing itinerary and a return", () => {
-    const receipt = receipts.flight as unknown as lts.v1_8_0.Receipt;
+    const receipt = flightReceipt;
 
     let ticket = receipt?.itemization?.flight?.tickets[0];
     if (!ticket || !ticket.segments) {
