@@ -1,0 +1,48 @@
+.totalsWrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  page-break-inside: avoid;
+}
+
+.row {
+  display: flex;
+  margin-bottom: 0.5rem;
+  align-items: flex-start;
+}
+
+.row:last-child {
+  margin-bottom: 0;
+}
+
+.blockLabel {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  text-transform: capitalize;
+  padding-right: 1rem;
+}
+
+.blockLabel svg {
+  margin-left: 0.25rem;
+}
+
+.bottomLine .blockLabel,
+.bottomLine .blockValue {
+  font-weight: 800;
+}
+
+.tax {
+  color: var(--foreground-secondary);
+}
+
+@media print {
+  .totalsWrap {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@container receipt (width > 768px) {
+  .totalsWrap {
+    grid-template-columns: 1fr 1fr;
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.11.0",
+  "schema_version": "2.0.0",
   "header": {
     "invoice_number": "3kJ9X5Y9L2s8H0kAmN2B7CvW",
     "currency": "usd",
@@ -100,8 +100,15 @@
           ],
           "number": "0087654321098",
           "record_locator": "RED123",
-          "passenger": "Alice Johnson",
-          "metadata": [{ "key": "Frequent Flyer #", "value": "BA1093" }]
+          "passenger": {
+            "first_name": "Alice",
+            "last_name": "Johnson",
+            "preferred_first_name": null,
+            "email": "alice.johnson@example.com",
+            "phone": null,
+            "metadata": [{ "key": "Frequent Flyer #", "value": "BA1093" }]
+          },
+          "metadata": []
         },
         {
           "taxes": [],
@@ -171,8 +178,15 @@
           ],
           "number": "0087654321099",
           "record_locator": "RED124",
-          "passenger": "Bob Johnson",
-          "metadata": [{ "key": "Frequent Flyer #", "value": "BA1094" }]
+          "passenger": {
+            "first_name": "Bob",
+            "last_name": "Johnson",
+            "preferred_first_name": null,
+            "email": "bob.johnson@example.com",
+            "phone": null,
+            "metadata": [{ "key": "Frequent Flyer #", "value": "BA1094" }]
+          },
+          "metadata": []
         }
       ],
       "itinerary_locator": "2233445566778",

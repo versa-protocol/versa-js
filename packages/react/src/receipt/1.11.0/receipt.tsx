@@ -1,4 +1,4 @@
-import { Org, Receipt } from "@versaprotocol/schema";
+import { lts, Receipt } from "@versaprotocol/schema";
 import {
   ActionBlock,
   BlockWrap,
@@ -15,15 +15,11 @@ import {
   SupplementalText,
   ThirdParty,
   Totals,
-} from "../../receipt-blocks";
-import {
-  aggregateAdjustments,
-  aggregateEcommerceItems,
-  aggregateTaxes,
-} from "@versaprotocol/belt";
+} from "./receipt-blocks";
+import { lts_v1_11_0 } from "@versaprotocol/belt";
 import styles from "./../base_receipt.module.css";
-import { Payments } from "../../receipt-blocks/payments";
-import { Parties } from "../../receipt-blocks/parties/parties";
+import { Payments } from "./receipt-blocks/payments/payments";
+import { Parties } from "./receipt-blocks/parties/parties";
 import { usePdfGen } from "../../hooks/usePdfGen";
 import { RegistryData } from "../../model";
 
@@ -34,9 +30,9 @@ export function ReceiptDisplay({
   theme,
   registryData,
 }: {
-  receipt: Receipt;
+  receipt: lts.v1_11_0.Receipt;
   schemaVersion: string;
-  merchant: Org;
+  merchant: lts.v1_11_0.Org;
   theme?: string;
   registryData?: RegistryData;
 }) {
@@ -78,7 +74,7 @@ export function ReceiptDisplay({
 
   const { downloadReceipt } = usePdfGen({
     merchant: merchant,
-    receipt: data,
+    receipt: data as unknown as Receipt,
     brandColor: colors.brand,
   });
 
@@ -148,7 +144,9 @@ export function ReceiptDisplay({
             )}
           <BlockWrap>
             <LineItems
-              items={aggregateEcommerceItems(data.itemization.ecommerce)}
+              items={lts_v1_11_0.aggregateEcommerceItems(
+                data.itemization.ecommerce
+              )}
               header={data.header}
             />
           </BlockWrap>
@@ -204,9 +202,9 @@ export function ReceiptDisplay({
 
       <BlockWrap>
         <Totals
-          taxes={aggregateTaxes(data.itemization)}
+          taxes={lts_v1_11_0.aggregateTaxes(data.itemization)}
           header={data.header}
-          adjustments={aggregateAdjustments(data.itemization)}
+          adjustments={lts_v1_11_0.aggregateAdjustments(data.itemization)}
           colors={colors}
         />
       </BlockWrap>
