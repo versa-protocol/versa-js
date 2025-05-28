@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.11.0",
+  "schema_version": "2.0.0-rc1",
   "header": {
     "invoice_number": "1MzFN1K8F4fqH0lBmFq8CjbU",
     "currency": "usd",
@@ -186,8 +186,14 @@
           ],
           "number": "0062698215636",
           "record_locator": "CU9GEF",
-          "passenger": "Susy Smith",
-          "metadata": [{ "key": "AAdvantage #", "value": "TH4700" }]
+          "passenger": {
+            "first_name": "Susy",
+            "last_name": "Smith",
+            "preferred_first_name": null,
+            "email": "susy.smith@example.com",
+            "phone": null,
+            "metadata": [{ "key": "AAdvantage #", "value": "TH4700" }]
+          }
         },
         {
           "taxes": [],
@@ -343,8 +349,14 @@
           ],
           "number": "0062698215637",
           "record_locator": "CU9GEF",
-          "passenger": "John Smith",
-          "metadata": [{ "key": "AAdvantage #", "value": "TH4703" }]
+          "passenger": {
+            "first_name": "John",
+            "last_name": "Smith",
+            "preferred_first_name": null,
+            "email": "john.smith@example.com",
+            "phone": null,
+            "metadata": [{ "key": "AAdvantage #", "value": "TH4703" }]
+          }
         }
       ],
       "itinerary_locator": "1122337694093",

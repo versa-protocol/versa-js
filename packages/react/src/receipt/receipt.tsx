@@ -1,6 +1,7 @@
 import { lts, Org, Receipt } from "@versaprotocol/schema";
 // import { ReceiptDisplay as R_1_5_1 } from "./1.5.1/receipt";
 // import { ReceiptDisplay as R_1_6_0 } from "./1.6.0/receipt";
+import { ReceiptDisplay as R_1_11_0 } from "./1.11.0/receipt";
 import { ReceiptLatest } from "./latest/receipt";
 
 import { LTS_VERSIONS } from "@versaprotocol/schema";
@@ -61,8 +62,25 @@ export function ReceiptDisplay({
   //   );
   // }
 
-  // The 1.8.0 react display is compatible with 1.7.0
+  // Support for 1.11.0 and earlier versions with string passenger
+  if (
+    schemaVersion === "1.11.0" ||
+    schemaVersion === "1.10.0" ||
+    schemaVersion === "1.9.0" ||
+    schemaVersion === "1.8.0"
+  ) {
+    return (
+      <R_1_11_0
+        receipt={data as unknown as lts.v1_11_0.Receipt}
+        schemaVersion={schemaVersion}
+        merchant={merchant}
+        theme={theme}
+        registryData={registryData}
+      />
+    );
+  }
 
+  // 2.0.0-rc1 and later use the latest component with Person type support
   return (
     <ReceiptLatest
       receipt={data}

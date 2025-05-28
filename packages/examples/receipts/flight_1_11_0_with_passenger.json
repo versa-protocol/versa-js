@@ -1,0 +1,171 @@
+{
+  "schema_version": "1.11.0",
+  "header": {
+    "invoice_number": "1MzFN1K8F4fqH0lBmFq8CjbU",
+    "currency": "usd",
+    "total": 140220,
+    "subtotal": 121862,
+    "paid": 140220,
+    "invoiced_at": 1713295619,
+    "mcc": null,
+    "third_party": null,
+    "customer": {
+      "name": "John Smith",
+      "email": "john.smith@example.com",
+      "address": null,
+      "phone": "+1-555-555-5555",
+      "metadata": []
+    },
+    "location": {
+      "name": null,
+      "address": {
+        "tz": "America/New_York"
+      },
+      "phone": null,
+      "url": null,
+      "google_place_id": null,
+      "image": null
+    },
+    "receipt_asset_id": null,
+    "invoice_asset_id": null
+  },
+  "itemization": {
+    "general": null,
+    "lodging": null,
+    "ecommerce": null,
+    "car_rental": null,
+    "transit_route": null,
+    "subscription": null,
+    "flight": {
+      "tickets": [
+        {
+          "segments": [
+            {
+              "fare": 60931,
+              "departure_airport_code": "JFK",
+              "arrival_airport_code": "LAX",
+              "aircraft_type": "B789",
+              "departure_at": 1713196492,
+              "arrival_at": 1713217492,
+              "departure_tz": "America/New_York",
+              "arrival_tz": "America/Los_Angeles",
+              "flight_number": "AA100",
+              "class_of_service": "Y",
+              "seat": "15F",
+              "taxes": [
+                {
+                  "amount": 4570,
+                  "rate": 0.075,
+                  "name": "US Transportation Tax"
+                },
+                {
+                  "amount": 560,
+                  "rate": null,
+                  "name": "US September 11th Security Fee"
+                },
+                {
+                  "amount": 900,
+                  "rate": null,
+                  "name": "US Passenger Facility Charge"
+                },
+                {
+                  "amount": 400,
+                  "rate": null,
+                  "name": "US Flight Segment Tax"
+                }
+              ],
+              "adjustments": [],
+              "metadata": []
+            }
+          ],
+          "fare": null,
+          "number": "0012345678901",
+          "record_locator": "ABC123",
+          "passenger": "John Smith",
+          "taxes": [],
+          "metadata": [
+            {
+              "key": "Frequent Flyer",
+              "value": "AA123456"
+            }
+          ]
+        },
+        {
+          "segments": [
+            {
+              "fare": 60931,
+              "departure_airport_code": "JFK",
+              "arrival_airport_code": "LAX",
+              "aircraft_type": "B789",
+              "departure_at": 1713196492,
+              "arrival_at": 1713217492,
+              "departure_tz": "America/New_York",
+              "arrival_tz": "America/Los_Angeles",
+              "flight_number": "AA100",
+              "class_of_service": "Y",
+              "seat": "15E",
+              "taxes": [
+                {
+                  "amount": 4570,
+                  "rate": 0.075,
+                  "name": "US Transportation Tax"
+                },
+                {
+                  "amount": 560,
+                  "rate": null,
+                  "name": "US September 11th Security Fee"
+                },
+                {
+                  "amount": 900,
+                  "rate": null,
+                  "name": "US Passenger Facility Charge"
+                },
+                {
+                  "amount": 400,
+                  "rate": null,
+                  "name": "US Flight Segment Tax"
+                }
+              ],
+              "adjustments": [],
+              "metadata": []
+            }
+          ],
+          "fare": null,
+          "number": "0012345678902",
+          "record_locator": "ABC123",
+          "passenger": "Jane Doe",
+          "taxes": [],
+          "metadata": [
+            {
+              "key": "Frequent Flyer",
+              "value": "AA789012"
+            }
+          ]
+        }
+      ],
+      "itinerary_locator": "ABC123",
+      "invoice_level_adjustments": []
+    }
+  },
+  "payments": [
+    {
+      "amount": 140220,
+      "paid_at": 1713295619,
+      "payment_type": "card",
+      "card_payment": {
+        "last_four": "1234",
+        "network": "visa"
+      },
+      "ach_payment": null
+    }
+  ],
+  "footer": {
+    "actions": [
+      {
+        "name": "View Booking",
+        "url": "https://www.aa.com/booking/ABC123"
+      }
+    ],
+    "supplemental_text": "Thank you for flying with American Airlines"
+  }
+}

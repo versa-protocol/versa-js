@@ -5,9 +5,34 @@ import {
   sameDay,
 } from "@versaprotocol/belt";
 import styles from "./itemized-transit-route.module.css";
-import { Metadatum, Receipt, TransitRoute } from "@versaprotocol/schema";
+import {
+  Metadatum,
+  Receipt,
+  TransitRoute,
+  Person,
+} from "@versaprotocol/schema";
 import { organizeTransitRoutes } from "@versaprotocol/belt";
 import { VersaContext } from "../../context";
+
+function formatPassengerName(
+  passenger: string | Person | null | undefined
+): string {
+  if (!passenger) return "";
+  if (typeof passenger === "string") return passenger;
+
+  // Handle Person object
+  const parts = [];
+  if (passenger.preferred_first_name) {
+    parts.push(passenger.preferred_first_name);
+  } else if (passenger.first_name) {
+    parts.push(passenger.first_name);
+  }
+  if (passenger.last_name) {
+    parts.push(passenger.last_name);
+  }
+
+  return parts.join(" ") || passenger.email || "";
+}
 
 export function ItemizedTransitRoute({
   transit_route,
@@ -180,7 +205,9 @@ export function ItemizedTransitRoute({
                         {item.passenger && (
                           <div className={styles.row}>
                             <div className={styles.key}>Passenger</div>
-                            <div className={styles.value}>{item.passenger}</div>
+                            <div className={styles.value}>
+                              {formatPassengerName(item.passenger)}
+                            </div>
                           </div>
                         )}
                         {item.passenger_metadata &&
