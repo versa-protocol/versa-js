@@ -23,11 +23,10 @@ import {
   formatTransactionValue,
 } from "./format";
 import { airports } from "./airports";
+import { Optional } from ".";
 
 // Helper to get a string identifier for a passenger (supports both string and Person types)
-function getPassengerIdentifier(
-  passenger: string | Person | null | undefined
-): string {
+function getPassengerIdentifier(passenger: Optional<Person>): string {
   if (!passenger) return "";
   if (typeof passenger === "string") return passenger;
 
@@ -245,17 +244,17 @@ export function aggregateAdjustments(itemization: Itemization) {
 }
 
 interface OrganizedTransitRoutePassenger {
-  passenger: Person | null | undefined;
+  passenger: Optional<Person>;
   fare: number;
   passenger_metadata: Metadatum[];
 }
 
 interface OrganizedTransitRoute {
-  departure_location: null | Place | undefined;
-  arrival_location: null | Place | undefined;
-  departure_at: number | null | undefined;
-  arrival_at: number | null | undefined;
-  polyline: null | string | undefined;
+  departure_location: Optional<Place>;
+  arrival_location: Optional<Place>;
+  departure_at: Optional<number>;
+  arrival_at: Optional<number>;
+  polyline: Optional<string>;
   shared_metadata: Metadatum[];
   passenger_count: number;
   passengers: OrganizedTransitRoutePassenger[];
@@ -381,7 +380,7 @@ export function organizeTransitRoutes(
 
 interface OrganizedFlightTicketPassenger {
   fare: number;
-  passenger: string | Person | null | undefined;
+  passenger: Person | null | undefined;
   ticket_number: string | null | undefined;
   ticket_class: string | null; // only used if all class values are equal for ticket
   passenger_metadata: Metadatum[];
