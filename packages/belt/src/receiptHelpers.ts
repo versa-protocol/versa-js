@@ -11,6 +11,7 @@ import {
   Adjustment,
   FlightTicket,
   Receipt,
+  Person,
 } from "@versaprotocol/schema";
 import canonicalize from "canonicalize";
 import {
@@ -22,6 +23,20 @@ import {
   formatTransactionValue,
 } from "./format";
 import { airports } from "./airports";
+import { Optional } from ".";
+
+// Helper to get a string identifier for a passenger (supports both string and Person types)
+function getPassengerIdentifier(passenger: Optional<Person>): string {
+  if (!passenger) return "";
+  if (typeof passenger === "string") return passenger;
+
+  // For Person object, create a unique identifier
+  const parts = [];
+  if (passenger.first_name) parts.push(passenger.first_name);
+  if (passenger.last_name) parts.push(passenger.last_name);
+  if (parts.length === 0 && passenger.email) return passenger.email;
+  return parts.join(" ");
+}
 
 export function aggregateTaxes(itemization: Itemization): Tax[] {
   const aggregatedTaxes: Record<string, Tax> = {};
@@ -229,17 +244,17 @@ export function aggregateAdjustments(itemization: Itemization) {
 }
 
 interface OrganizedTransitRoutePassenger {
-  passenger: string | null | undefined;
+  passenger: Optional<Person>;
   fare: number;
   passenger_metadata: Metadatum[];
 }
 
 interface OrganizedTransitRoute {
-  departure_location: null | Place | undefined;
-  arrival_location: null | Place | undefined;
-  departure_at: number | null | undefined;
-  arrival_at: number | null | undefined;
-  polyline: null | string | undefined;
+  departure_location: Optional<Place>;
+  arrival_location: Optional<Place>;
+  departure_at: Optional<number>;
+  arrival_at: Optional<number>;
+  polyline: Optional<string>;
   shared_metadata: Metadatum[];
   passenger_count: number;
   passengers: OrganizedTransitRoutePassenger[];
@@ -278,14 +293,15 @@ export function organizeTransitRoutes(
     if (organizedRoutes[dedupeKey]) {
       organizedRoutes[dedupeKey].passenger_count++;
       if (item.passenger) {
-        allPassengerMetadata[item.passenger] = {};
+        const passengerId = getPassengerIdentifier(item.passenger);
+        allPassengerMetadata[passengerId] = {};
         if (!item.metadata) {
           // if one item is missing metadata, we cannot group by metadata
           doNotShareMetadata = true;
           continue;
         }
         for (const metadata of item.metadata) {
-          allPassengerMetadata[item.passenger][metadata.key] = metadata.value;
+          allPassengerMetadata[passengerId][metadata.key] = metadata.value;
           for (const shared_metadata of organizedRoutes[dedupeKey]
             .shared_metadata) {
             if (metadata.key == shared_metadata.key) {
@@ -306,9 +322,10 @@ export function organizeTransitRoutes(
       }
     } else {
       if (item.passenger && item.metadata) {
-        allPassengerMetadata[item.passenger] = {};
+        const passengerId = getPassengerIdentifier(item.passenger);
+        allPassengerMetadata[passengerId] = {};
         for (const metadata of item.metadata) {
-          allPassengerMetadata[item.passenger][metadata.key] = metadata.value;
+          allPassengerMetadata[passengerId][metadata.key] = metadata.value;
         }
       }
       organizedRoutes[dedupeKey] = {
@@ -344,10 +361,11 @@ export function organizeTransitRoutes(
         if (!passenger.passenger) {
           continue;
         }
-        if (allPassengerMetadata[passenger.passenger]) {
+        const passengerId = getPassengerIdentifier(passenger.passenger);
+        if (allPassengerMetadata[passengerId]) {
           passenger.passenger_metadata.push({
             key,
-            value: allPassengerMetadata[passenger.passenger][key],
+            value: allPassengerMetadata[passengerId][key],
           });
         }
       }
@@ -362,8 +380,8 @@ export function organizeTransitRoutes(
 
 interface OrganizedFlightTicketPassenger {
   fare: number;
-  passenger: string | null | undefined;
-  ticket_number: string | null | undefined;
+  passenger: Optional<Person>;
+  ticket_number: Optional<string>;
   ticket_class: string | null; // only used if all class values are equal for ticket
   passenger_metadata: Metadatum[];
   record_locator: string | null;
@@ -379,7 +397,7 @@ const twentyFourHours = 24 * 60 * 60;
 
 function dateStringFromUnixWithTimezone(
   unix_timestamp: number,
-  tz: string | null | undefined
+  tz: Optional<string>
 ) {
   const utcDate = new Date(unix_timestamp * 1000);
   const timezone = tz || "UTC";
@@ -392,7 +410,7 @@ function dateStringFromUnixWithTimezone(
 }
 
 export interface GroupedItinerary {
-  departure_at: number | null | undefined;
+  departure_at: Optional<number>;
   departure_tz: string | null;
   departure_date: string; // YYYY-MM-DD
   arrival_date: string; // YYYY-MM-DD
@@ -520,7 +538,9 @@ export function organizeFlightTickets(flight: Flight): OrganizedFlightTicket[] {
     const allClassValuesEqualForPassenger = allClassValuesEqual(segments);
 
     const passengerKey =
-      ticket.passenger || ticket.record_locator || ticket.metadata.length;
+      ticket.passenger ||
+      ticket.record_locator ||
+      (ticket as any).metadata?.length;
 
     if (organizedTickets[dedupeKey]) {
       organizedTickets[dedupeKey].passenger_count++;
@@ -533,7 +553,7 @@ export function organizeFlightTickets(flight: Flight): OrganizedFlightTicket[] {
           ticket_class: allClassValuesEqualForPassenger
             ? segments[0].class_of_service || null
             : null,
-          passenger_metadata: ticket.metadata,
+          passenger_metadata: (ticket as any).metadata || [],
         });
       }
     } else {
@@ -549,7 +569,7 @@ export function organizeFlightTickets(flight: Flight): OrganizedFlightTicket[] {
             ticket_class: allClassValuesEqualForPassenger
               ? segments[0].class_of_service || null
               : null,
-            passenger_metadata: ticket.metadata,
+            passenger_metadata: (ticket as any).metadata || [],
           },
         ],
       };
@@ -707,7 +727,9 @@ export function aggregateItems(
     organizedFlightTickets.forEach((t) =>
       t.passengers.forEach((p) =>
         items.push({
-          passenger: { content: p.passenger ? p.passenger : "" },
+          passenger: {
+            content: p.passenger ? getPassengerIdentifier(p.passenger) : "",
+          },
           fare: {
             content: formatTransactionValue(p.fare, header.currency),
             styles: {

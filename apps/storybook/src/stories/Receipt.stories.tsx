@@ -130,3 +130,13 @@ export const ReceiptWithRegistryData: Story = {
     registryData: TEST_CHECKOUT,
   },
 };
+
+// Import the 1.11.0 flight receipt with passenger names
+import flight_1_11_0 from "@versaprotocol/examples/receipts/1.11.0/flight.json";
+
+export const Flight_1_11_0_WithPassenger: Story = {
+  args: {
+    merchant: senders.jetblue,
+    receipt: flight_1_11_0 as any,
+  },
+};

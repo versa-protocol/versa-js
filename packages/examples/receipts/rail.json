@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.11.0",
+  "schema_version": "2.0.0",
   "header": {
     "invoice_number": "IAFO44",
     "currency": "usd",
@@ -67,7 +67,14 @@
           },
           "fare": 14500,
           "mode": "rail",
-          "passenger": "Honora Doe",
+          "passenger": {
+            "first_name": "Honora",
+            "last_name": "Doe",
+            "preferred_first_name": null,
+            "email": "honora.doe@example.com",
+            "phone": null,
+            "metadata": []
+          },
           "departure_at": 1726854999,
           "arrival_at": 1726867959,
           "polyline": null,
@@ -116,7 +123,14 @@
           },
           "fare": 14500,
           "mode": "rail",
-          "passenger": "Ted Doe",
+          "passenger": {
+            "first_name": "Ted",
+            "last_name": "Doe",
+            "preferred_first_name": null,
+            "email": "ted.doe@example.com",
+            "phone": null,
+            "metadata": []
+          },
           "departure_at": 1726854999,
           "arrival_at": 1726867959,
           "polyline": null,
@@ -165,7 +179,14 @@
           },
           "fare": 7250,
           "mode": "rail",
-          "passenger": "Rita Doe",
+          "passenger": {
+            "first_name": "Rita",
+            "last_name": "Doe",
+            "preferred_first_name": null,
+            "email": "rita.doe@example.com",
+            "phone": null,
+            "metadata": []
+          },
           "departure_at": 1726854999,
           "arrival_at": 1726867959,
           "polyline": null,

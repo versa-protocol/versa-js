@@ -18,6 +18,7 @@
     "prepare": "husky",
     "pre-commit": "lint-staged",
     "test": "turbo test",
+    "valjean": "pnpm dlx ts-node --project scripts/tsconfig.json scripts/valjean.ts packages/examples/receipts",
     "publish-packages": "turbo run build lint test --no-cache && changeset version && changeset publish"
   },
   "author": "thomasmost",

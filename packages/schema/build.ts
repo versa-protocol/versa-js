@@ -20,7 +20,7 @@ async function main() {
   }
 
   for (const version of LTS_VERSIONS) {
-    const safeVersion = version.replace(/\./g, "_");
+    const safeVersion = version.replace(/\./g, "_").replace(/-/g, "_");
     await generate(version);
     index += `export * as v${safeVersion} from "./${version}";\n`;
   }

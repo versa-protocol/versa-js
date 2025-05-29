@@ -2,9 +2,10 @@ import {
   formatDateComparison,
   formatDateTime,
   formatTransactionValue,
+  Optional,
 } from "@versaprotocol/belt";
 import styles from "./itemized-flight.module.css";
-import { Flight, Receipt } from "@versaprotocol/schema";
+import { Flight, Receipt, Person } from "@versaprotocol/schema";
 import { organizeFlightTickets } from "@versaprotocol/belt";
 
 function PlaneIcon() {
@@ -18,6 +19,24 @@ function PlaneIcon() {
       <path d="M340-80v-60l80-60v-220L80-320v-80l340-200v-220q0-25 17.5-42.5T480-880q25 0 42.5 17.5T540-820v220l340 200v80L540-420v220l80 60v60l-140-40-140 40z"></path>
     </svg>
   );
+}
+
+function formatPassengerName(passenger: Optional<Person>): string {
+  if (!passenger) return "";
+  if (typeof passenger === "string") return passenger;
+
+  // Handle Person object
+  const parts = [];
+  if (passenger.preferred_first_name) {
+    parts.push(passenger.preferred_first_name);
+  } else if (passenger.first_name) {
+    parts.push(passenger.first_name);
+  }
+  if (passenger.last_name) {
+    parts.push(passenger.last_name);
+  }
+
+  return parts.join(" ") || passenger.email || "";
 }
 
 export function ItemizedFlight({
@@ -132,7 +151,9 @@ export function ItemizedFlight({
             <div key={index} className={styles.passengerKeyValuePairs}>
               <div>
                 <div className={styles.key}>Passenger</div>
-                <div className={styles.value}>{p.passenger}</div>
+                <div className={styles.value}>
+                  {formatPassengerName(p.passenger)}
+                </div>
               </div>
               {p.record_locator && (
                 <div>
