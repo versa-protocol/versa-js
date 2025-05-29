@@ -112,7 +112,7 @@ function paymentMethod(p: Payment) {
     if (p.card_payment?.network) {
       paymentDescription += `capitalize(p.card_payment.network) `;
     }
-    if (p.card_payment.last_four) {
+    if (p.card_payment?.last_four) {
       paymentDescription += `··· ${p.card_payment.last_four}`;
     }
   }
