@@ -276,7 +276,7 @@ function brightnessByColor(color: string) {
     g = "",
     b = "";
   const hasFullSpec = color.length == 7;
-  var m = color.substring(1).match(hasFullSpec ? /(\S{2})/g : /(\S{1})/g);
+  const m = color.substring(1).match(hasFullSpec ? /(\S{2})/g : /(\S{1})/g);
   if (m) {
     r = parseInt(m[0] + (hasFullSpec ? "" : m[0]), 16).toString();
     g = parseInt(m[1] + (hasFullSpec ? "" : m[1]), 16).toString();

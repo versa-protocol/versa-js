@@ -4,7 +4,7 @@ export function Footers(doc: jsPDF, margin: number) {
   const docWidth = doc.internal.pageSize.getWidth();
   const docHeight = doc.internal.pageSize.getHeight();
   const pageCount = doc.getNumberOfPages();
-  for (var i = 1; i <= pageCount; i++) {
+  for (let i = 1; i <= pageCount; i++) {
     doc.setLineWidth((1 / 72) * 0.75);
     doc.setDrawColor(240);
     doc.line(

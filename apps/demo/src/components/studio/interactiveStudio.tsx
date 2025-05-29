@@ -91,7 +91,7 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
   const { validate } = useValidator();
 
   const { systemTheme, theme } = useTheme();
-  var simplifiedTheme = theme;
+  let simplifiedTheme = theme;
   if (simplifiedTheme == "system") {
     simplifiedTheme = systemTheme;
   }

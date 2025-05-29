@@ -97,8 +97,8 @@ function hexToRgb(hex: string): [number, number, number] {
 }
 
 export function formatDate(secondsSinceEpoch: number) {
-  var d = new Date(secondsSinceEpoch * 1000);
-  var options: Intl.DateTimeFormatOptions = {
+  const d = new Date(secondsSinceEpoch * 1000);
+  const options: Intl.DateTimeFormatOptions = {
     year: "numeric",
     month: "short",
     day: "numeric",
