@@ -12,7 +12,7 @@ const getValidator = async (schemaVersion: string) => {
   const schema = await (await fetch(schemaUrl)).text();
   try {
     return new Validator(JSON.parse(schema));
-  } catch (e) {
+  } catch {
     return null;
   }
 };
@@ -23,7 +23,7 @@ export const useValidator = () => {
   >(null);
   const [validator, setValidator] = useState<InitialValidator>(null);
   const validate = async (obj: Receipt) => {
-    let schemaVersion = obj.schema_version;
+    const schemaVersion = obj.schema_version;
     if (schemaVersion === previousSchemaVersion && !!validator) {
       return validator.validate(obj);
     }

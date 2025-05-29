@@ -61,11 +61,11 @@ export function ItemizedFlight({
                 </span>
               </div>
               {itinerary.segments.map((s, index) => {
-                let previousEpoch: number =
+                const previousEpoch: number =
                   itinerary.segments[index - 1]?.arrival_at ||
                   itinerary.departure_at ||
                   0;
-                let previousTz: string =
+                const previousTz: string =
                   itinerary.segments[index - 1]?.arrival_tz ||
                   itinerary.departure_tz ||
                   "";

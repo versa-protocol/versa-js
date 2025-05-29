@@ -1,6 +1,6 @@
 import { SVGProps } from "react";
 
-export const Sustainability = (props: SVGProps<SVGSVGElement>) => (
+export const Sustainability = (_props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={24}

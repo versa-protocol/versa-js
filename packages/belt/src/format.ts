@@ -16,7 +16,7 @@ export const formatTType = (ttype: string) => {
 };
 
 export const formatGracePeriod = (rotation_grace_seconds: number) => {
-  let hours = Math.floor(rotation_grace_seconds / 3600);
+  const hours = Math.floor(rotation_grace_seconds / 3600);
   if (hours > 1) {
     return `${hours} hours`;
   }
@@ -359,12 +359,8 @@ export function formatDateComparison(
   }
 
   // Calculate days difference using the formatted dates to respect timezones
-  const initialDate = new Date(initialDateStr);
   const previousDate = new Date(previousDateStr);
   const targetDate = new Date(targetDateStr);
-  const daysDiff = Math.round(
-    (targetDate.getTime() - initialDate.getTime()) / (1000 * 60 * 60 * 24)
-  );
   const sequentialDiff = Math.round(
     (targetDate.getTime() - previousDate.getTime()) / (1000 * 60 * 60 * 24)
   );

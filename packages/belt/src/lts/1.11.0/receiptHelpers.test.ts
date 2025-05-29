@@ -300,7 +300,7 @@ const testData = {
 
 describe("aggregateTaxes", () => {
   it("should work", () => {
-    let result = aggregateTaxes(testData as any); // TODO
+    const result = aggregateTaxes(testData as any); // TODO
     expect(result[0].name).toBe("US Transportation Tax");
     expect(result[0].amount).toBe(23229);
     expect(result[3].name).toBe("US Flight Segment Tax");
@@ -312,7 +312,7 @@ describe("aggregateTicketFares", () => {
   const organizedTickets = organizeFlightTickets(testData.flight as any); // TODO
   // This is sort of just a reducer but that's fine
   it("should work", () => {
-    let result = aggregateTicketFares(organizedTickets[0]);
+    const result = aggregateTicketFares(organizedTickets[0]);
     expect(result).toBe(60931);
   });
 });
@@ -327,7 +327,7 @@ describe("organizeTransitRoutes", () => {
     ).toBe(3);
 
     // FUNCTION WE'RE TESTING
-    let reorganizedRoutes = organizeTransitRoutes(
+    const reorganizedRoutes = organizeTransitRoutes(
       railReceipt.itemization.transit_route
     );
     expect(reorganizedRoutes.length).toBe(1);
@@ -386,7 +386,7 @@ describe("organizeSegmentedItineraries", () => {
   it("should organized itineraries into two grouped itineraries for an outgoing itinerary and a return", () => {
     const receipt = flightReceipt;
 
-    let ticket = receipt?.itemization?.flight?.tickets[0];
+    const ticket = receipt?.itemization?.flight?.tickets[0];
     if (!ticket || !ticket.segments) {
       throw Error("Bad test data");
     }

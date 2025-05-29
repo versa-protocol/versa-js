@@ -155,7 +155,7 @@ function stringifyAddress(address: Optional<Address>): string {
 }
 
 function getBillTo(header: Receipt["header"]) {
-  let billTo: string[][] = [];
+  const billTo: string[][] = [];
   if (header.customer) {
     if (header.customer.name) {
       billTo.push([header.customer.name]);
@@ -179,7 +179,7 @@ function getBillTo(header: Receipt["header"]) {
 }
 
 function getShipTo(itemization: Receipt["itemization"]) {
-  let shipTo: string[][] = [];
+  const shipTo: string[][] = [];
   if (
     itemization.ecommerce &&
     itemization.ecommerce.shipments &&

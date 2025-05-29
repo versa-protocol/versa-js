@@ -1,6 +1,6 @@
 import { SVGProps } from "react";
 
-export const Visa = (props: SVGProps<SVGSVGElement>) => (
+export const Visa = (_props: SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="60" height="19.4">
     <path
       d="M39.1,0C34.8,0,31,2.2,31,6.3c0,4.7,6.8,5,6.8,7.4

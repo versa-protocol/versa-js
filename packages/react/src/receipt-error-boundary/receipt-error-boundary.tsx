@@ -6,7 +6,7 @@ export class ReceiptErrorBoundary extends React.Component<
   {
     receipt: Receipt;
     children: React.ReactNode;
-    onError?: (error: Error) => void;
+    onError?: (_error: Error) => void;
   },
   { hasError: boolean; error?: Error }
 > {
@@ -25,9 +25,9 @@ export class ReceiptErrorBoundary extends React.Component<
     }
   }
 
-  componentDidCatch(error: Error) {
+  componentDidCatch(_error: Error) {
     if (this.props.onError) {
-      this.props.onError(error);
+      this.props.onError(_error);
     }
   }
 

@@ -10,7 +10,7 @@ export function Payments(
   margin: number
 ) {
   const docWidth = doc.internal.pageSize.getWidth();
-  let paymentsData: {}[] = [];
+  const paymentsData: {}[] = [];
   payments.forEach((p) => {
     let paymentDescription = "";
     let paymentType = "";

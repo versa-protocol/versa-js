@@ -33,7 +33,7 @@ export function LineItem({
             <div className={styles.lineItemMetadata}>
               {li.metadata && li.metadata.length > 0 && (
                 <>
-                  {li.metadata.map((m: Metadatum, index: number) => (
+                  {li.metadata.map((m: Metadatum, _index: number) => (
                     <div className="secondaryText">
                       {m.key && <>{m.key}: </>}
                       {m.value}
@@ -51,7 +51,7 @@ export function LineItem({
               )}
               {li.adjustments && li.adjustments.length > 0 && (
                 <>
-                  {li.adjustments.map((a: Adjustment, index: number) => (
+                  {li.adjustments.map((a: Adjustment, _index: number) => (
                     <div className="secondaryText">
                       {a.name ? a.name : capitalize(a.adjustment_type)}{" "}
                       {a.rate ? (

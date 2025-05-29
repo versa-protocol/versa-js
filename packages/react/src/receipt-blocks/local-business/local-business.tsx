@@ -5,7 +5,7 @@ import { VersaContext } from "../../context";
 export function LocalBusiness({
   location,
   theme,
-  brandColor,
+  brandColor: _brandColor,
 }: {
   location: Place;
   theme: any;
