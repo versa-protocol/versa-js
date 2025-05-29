@@ -7,7 +7,7 @@ type User = {
 };
 
 export const Page: React.FC = () => {
-  const [user, setUser] = React.useState<User>();
+  const [_user, _setUser] = React.useState<User>();
 
   return (
     <article>
