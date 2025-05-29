@@ -17,9 +17,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Validate
-        uses: thomasmost/gha-valjean@main
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
         with:
-          schema-url: https://raw.githubusercontent.com/versa-protocol/schema/1.11.0/data/receipt.schema.json
-          target-dir: packages/examples/receipts
-          all-errors: true
+          version: 9.15.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Validate receipts
+        run: pnpm valjean
