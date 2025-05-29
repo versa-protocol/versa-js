@@ -254,7 +254,7 @@ export function ReceiptDisplay({
 }
 
 function brightnessByColor(color: string) {
-  var r = "",
+  let r = "",
     g = "",
     b = "";
   const hasFullSpec = color.length == 7;
