@@ -13,7 +13,7 @@
     "build-clean": "turbo build --no-cache",
     "dev": "turbo dev --no-cache",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "lint": "turbo run lint",
+    "lint": "turbo lint",
     "preinstall": "npx only-allow pnpm",
     "prepublishOnly": "pnpm build-clean",
     "prepare": "husky",
