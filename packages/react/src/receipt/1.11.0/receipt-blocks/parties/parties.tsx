@@ -44,8 +44,8 @@ export function Parties({
           {customer.metadata.length > 0 && (
             <div className={styles.lineItemMetadata}>
               <>
-                {customer.metadata.map((m: any, _index: number) => (
-                  <div>
+                {customer.metadata.map((m: any, index: number) => (
+                  <div key={index}>
                     {m.key && <>{m.key}: </>}
                     {m.value}
                   </div>
