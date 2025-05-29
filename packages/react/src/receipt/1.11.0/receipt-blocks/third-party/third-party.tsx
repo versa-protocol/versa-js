@@ -1,4 +1,4 @@
-import styles from "./third-party.module.css";
+import styles from "../../../../receipt-blocks/third-party/third-party.module.css";
 import { lts } from "@versaprotocol/schema";
 
 export function ThirdParty({

@@ -1,4 +1,4 @@
-import styles from "./action-block.module.css";
+import styles from "../../../../receipt-blocks/action-block/action-block.module.css";
 import { lts } from "@versaprotocol/schema";
 
 export function ActionBlock({

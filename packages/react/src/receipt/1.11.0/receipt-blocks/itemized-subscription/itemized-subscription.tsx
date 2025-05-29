@@ -1,5 +1,5 @@
 import { formatDateTime } from "@versaprotocol/belt";
-import styles from "./itemized-subscription.module.css";
+import styles from "../../../../receipt-blocks/itemized-subscription/itemized-subscription.module.css";
 import { lts } from "@versaprotocol/schema";
 
 export function ItemizedSubscription({

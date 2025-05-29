@@ -5,7 +5,7 @@ import {
   sameDay,
   lts_v1_11_0,
 } from "@versaprotocol/belt";
-import styles from "./itemized-transit-route.module.css";
+import styles from "../../../../receipt-blocks/itemized-transit-route/itemized-transit-route.module.css";
 import { lts } from "@versaprotocol/schema";
 import { VersaContext } from "../../../../context";
 

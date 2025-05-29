@@ -1,5 +1,5 @@
 import { formatDateTime, formatTransactionValue } from "@versaprotocol/belt";
-import styles from "./payments.module.css";
+import styles from "../../../../receipt-blocks/payments/payments.module.css";
 import { lts } from "@versaprotocol/schema";
 
 export function Payments({

@@ -1,5 +1,5 @@
 import { formatDateTime } from "@versaprotocol/belt";
-import styles from "./itemized-car-rental.module.css";
+import styles from "../../../../receipt-blocks/itemized-car-rental/itemized-car-rental.module.css";
 import { lts } from "@versaprotocol/schema";
 
 export function ItemizedCarRental({

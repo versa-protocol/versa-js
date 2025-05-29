@@ -1,4 +1,4 @@
-import styles from "./local-business.module.css";
+import styles from "../../../../receipt-blocks/local-business/local-business.module.css";
 import { lts } from "@versaprotocol/schema";
 import { VersaContext } from "../../../../context";
 

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import styles from "./supplemental-text.module.css";
+import styles from "../../../../receipt-blocks/supplemental-text/supplemental-text.module.css";
 import Markdown from "react-markdown";
 
 export function SupplementalText({ text }: { text: string }) {

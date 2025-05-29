@@ -1,5 +1,5 @@
 import { formatDateTime } from "@versaprotocol/belt";
-import styles from "./update-block.module.css";
+import styles from "../../../../receipt-blocks/update-block/update-block.module.css";
 import { GroupedUpdate } from "../../../../helpers/updates";
 import React from "react";
 

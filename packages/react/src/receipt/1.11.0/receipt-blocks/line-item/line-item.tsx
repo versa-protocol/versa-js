@@ -3,7 +3,7 @@ import {
   formatTransactionValue,
   netAdjustments,
 } from "@versaprotocol/belt";
-import styles from "./line-item.module.css";
+import styles from "../../../../receipt-blocks/line-item/line-item.module.css";
 import { lts } from "@versaprotocol/schema";
 
 export function LineItem({

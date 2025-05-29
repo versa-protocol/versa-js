@@ -1,9 +1,0 @@
-.groupTitle {
-  font-size: 0.875rem;
-  color: var(--foreground-secondary);
-  margin: 1.5rem 0 0.75rem 0;
-}
-
-.groupTitle:first-child {
-  margin-top: 0;
-}

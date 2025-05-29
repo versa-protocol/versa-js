@@ -1,4 +1,4 @@
-import styles from "./line-items.module.css";
+import styles from "../../../../receipt-blocks/line-items/line-items.module.css";
 import { LineItem } from "./../line-item";
 import { lts } from "@versaprotocol/schema";
 import {

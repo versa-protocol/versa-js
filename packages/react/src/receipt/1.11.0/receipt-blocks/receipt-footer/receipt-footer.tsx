@@ -1,5 +1,5 @@
 import { Download, X } from "react-feather";
-import styles from "./receipt-footer.module.css";
+import styles from "../../../../receipt-blocks/receipt-footer/receipt-footer.module.css";
 import { lts } from "@versaprotocol/schema";
 import { useState } from "react";
 import { epochToISO8601, formatDateTime } from "@versaprotocol/belt";

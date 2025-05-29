@@ -1,5 +1,5 @@
 import { formatDateTime } from "@versaprotocol/belt";
-import styles from "./itemized-lodging.module.css";
+import styles from "../../../../receipt-blocks/itemized-lodging/itemized-lodging.module.css";
 import { VersaContext } from "../../../../context";
 import { lts } from "@versaprotocol/schema";
 

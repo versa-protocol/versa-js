@@ -1,4 +1,4 @@
-import styles from "./parties.module.css";
+import styles from "../../../../receipt-blocks/parties/parties.module.css";
 import { lts } from "@versaprotocol/schema";
 
 export function Parties({

@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import styles from "./block-wrap.module.css";
+import styles from "../../../../receipt-blocks/block-wrap/block-wrap.module.css";
 
 interface BlockWrapProps {
   children: ReactNode;

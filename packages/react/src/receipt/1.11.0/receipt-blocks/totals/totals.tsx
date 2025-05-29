@@ -1,5 +1,5 @@
 import { formatTransactionValue } from "@versaprotocol/belt";
-import styles from "./totals.module.css";
+import styles from "../../../../receipt-blocks/totals/totals.module.css";
 import { ChevronDown } from "react-feather";
 import { lts } from "@versaprotocol/schema";
 
