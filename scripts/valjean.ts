@@ -1,9 +1,46 @@
 import * as fs from "fs";
+import * as path from "path";
 import Ajv2020 from "ajv/dist/2020";
 import addFormats from "ajv-formats";
 
-const schemaUrl =
-  "https://raw.githubusercontent.com/versa-protocol/schema/2.0.0-rc1/data/receipt.schema.json";
+const DEFAULT_SCHEMA_VERSION = "2.0.0-rc1";
+const SCHEMA_BASE_URL =
+  "https://raw.githubusercontent.com/versa-protocol/schema";
+
+/**
+ * Recursively find all JSON files in a directory
+ */
+function findJsonFiles(dir: string, basePath: string = ""): string[] {
+  const files: string[] = [];
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+    const relativePath = path.join(basePath, entry.name);
+
+    if (entry.isDirectory()) {
+      files.push(...findJsonFiles(fullPath, relativePath));
+    } else if (entry.isFile() && entry.name.endsWith(".json")) {
+      files.push(relativePath);
+    }
+  }
+
+  return files;
+}
+
+/**
+ * Extract version from file path if it exists
+ */
+function extractVersionFromPath(filePath: string): string | null {
+  const parts = filePath.split(path.sep);
+  for (const part of parts) {
+    // Check if this part looks like a semantic version
+    if (/^\d+\.\d+\.\d+/.test(part)) {
+      return part;
+    }
+  }
+  return null;
+}
 
 /**
  * The main function for the action.
@@ -13,60 +50,100 @@ async function main(): Promise<void> {
   const targetDir = process.argv[2];
   if (!targetDir) {
     console.error("Must include target directory as first argument");
+    process.exit(1);
   }
-  try {
-    // Fetch the value of the input 'who-to-greet' specified in action.yml
 
+  try {
     const allErrors = true;
     const strict = false;
 
-    const ajv = new Ajv2020({ allErrors, strict });
-    addFormats(ajv);
+    // Find all JSON files in the target directory
+    const jsonFiles = findJsonFiles(targetDir);
 
-    const targetDirs = targetDir.split(",");
+    // Group files by schema version
+    const filesByVersion = new Map<string, string[]>();
 
-    let schema: string;
-    try {
-      schema = await (await fetch(schemaUrl)).text();
-    } catch (e) {
-      console.error("Error fetching schema: ", e);
-      throw e;
+    for (const file of jsonFiles) {
+      const version = extractVersionFromPath(file) || DEFAULT_SCHEMA_VERSION;
+      if (!filesByVersion.has(version)) {
+        filesByVersion.set(version, []);
+      }
+      filesByVersion.get(version)!.push(file);
     }
-    console.log("Validating against schema found at", schemaUrl);
-    const validate = ajv.compile(JSON.parse(schema));
-    for (const targetDir of targetDirs) {
-      const files = fs
-        .readdirSync(targetDir, { withFileTypes: true })
-        .filter((dirent) => dirent.isFile())
-        .map((dirent) => dirent.name);
+
+    console.log(
+      `Found ${jsonFiles.length} JSON files across ${filesByVersion.size} schema versions`
+    );
+
+    // Validate files for each version
+    for (const [version, files] of filesByVersion) {
+      const schemaUrl = `${SCHEMA_BASE_URL}/${version}/data/receipt.schema.json`;
+      console.log(
+        `\nValidating ${files.length} files against schema version ${version}`
+      );
+      console.log(`Schema URL: ${schemaUrl}`);
+
+      const ajv = new Ajv2020({ allErrors, strict });
+      addFormats(ajv);
+
+      let schema: string;
+      try {
+        const response = await fetch(schemaUrl);
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        schema = await response.text();
+      } catch (e) {
+        console.error(`Error fetching schema for version ${version}:`, e);
+        console.error(`Skipping validation for version ${version}`);
+        continue;
+      }
+
+      const validate = ajv.compile(JSON.parse(schema));
+
       for (const file of files) {
-        const content = fs.readFileSync(`${targetDir}/${file}`, "utf-8");
-        process.stdout.write(`Validating ${targetDir}/${file}...`);
-        const valid = validate(JSON.parse(content));
-        if (!valid) {
-          process.stdout.write("\n");
-          console.error(
-            `Validation failed for ${targetDir}/${file} due to errors: ${JSON.stringify(
-              validate.errors,
-              null,
-              2
-            )}`
-          );
-          throw "Invalid schema: " + JSON.stringify(validate.errors);
-        } else {
-          process.stdout.write("\x1b[34mVALID\x1b[89m");
-          process.stdout.write("\x1b[0m");
-          process.stdout.write("\n");
+        const fullPath = path.join(targetDir, file);
+        const content = fs.readFileSync(fullPath, "utf-8");
+        process.stdout.write(`  Validating ${file}...`);
+
+        try {
+          const data = JSON.parse(content);
+          const valid = validate(data);
+
+          if (!valid) {
+            process.stdout.write("\n");
+            console.error(
+              `Validation failed for ${file} due to errors: ${JSON.stringify(
+                validate.errors,
+                null,
+                2
+              )}`
+            );
+            throw new Error(
+              `Invalid schema for ${file}: ${JSON.stringify(validate.errors)}`
+            );
+          } else {
+            process.stdout.write(" \x1b[32m✓ VALID\x1b[0m\n");
+          }
+        } catch (e) {
+          if (e instanceof SyntaxError) {
+            process.stdout.write(" \x1b[31m✗ INVALID JSON\x1b[0m\n");
+            console.error(`Failed to parse JSON in ${file}:`, e.message);
+            throw e;
+          }
+          throw e;
         }
       }
     }
 
-    const time = new Date().toTimeString();
-    process.stdout.write("\n\x1b[34mValidation Completed!\x1b[89m\n");
+    console.log("\n\x1b[32m✓ All validations completed successfully!\x1b[0m");
     process.exit(0);
   } catch (error: any) {
     // Handle errors and indicate failure
-    console.error(`Failed due to validation error:`, error);
+    console.error(
+      `\n\x1b[31m✗ Validation failed:\x1b[0m`,
+      error.message || error
+    );
     process.exit(1);
   }
 }
