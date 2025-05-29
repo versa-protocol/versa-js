@@ -27,7 +27,7 @@ export async function FlightDetails(
   const linePad = margin * 0.1875;
   const bigFontSize = 15;
   const regFontSize = 10;
-  let iconCoordinates: { x: number; y: number; page: number }[] = [];
+  const iconCoordinates: { x: number; y: number; page: number }[] = [];
   organizedFlightTickets.forEach((ticketGroup) => {
     const segmentHeight = getSegmentHeight(
       ticketGroup.itineraries,
@@ -97,11 +97,11 @@ export async function FlightDetails(
             itinerary.departure_tz &&
             s.departure_tz
           ) {
-            let previousEpoch: number =
+            const previousEpoch: number =
               itinerary.segments[index - 1]?.arrival_at ||
               itinerary.departure_at ||
               0;
-            let previousTz: string =
+            const previousTz: string =
               itinerary.segments[index - 1]?.arrival_tz ||
               itinerary.departure_tz ||
               "";
@@ -136,11 +136,11 @@ export async function FlightDetails(
             itinerary.departure_tz &&
             s.arrival_tz
           ) {
-            let previousEpoch: number =
+            const previousEpoch: number =
               itinerary.segments[index - 1]?.arrival_at ||
               itinerary.departure_at ||
               0;
-            let previousTz: string =
+            const previousTz: string =
               itinerary.segments[index - 1]?.arrival_tz ||
               itinerary.departure_tz ||
               "";

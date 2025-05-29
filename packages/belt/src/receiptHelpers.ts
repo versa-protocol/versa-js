@@ -149,7 +149,7 @@ export function aggregateTaxes(itemization: Itemization): Tax[] {
 }
 
 export function aggregateEcommerceItems(ecommerce: Ecommerce) {
-  let aggregatedEcommerceItems: Item[] = [];
+  const aggregatedEcommerceItems: Item[] = [];
   if (ecommerce.invoice_level_line_items.length > 0) {
     for (const item of ecommerce.invoice_level_line_items) {
       aggregatedEcommerceItems.push(item);
@@ -384,7 +384,7 @@ interface OrganizedFlightTicketPassenger {
   ticket_number: Optional<string>;
   ticket_class: string | null; // only used if all class values are equal for ticket
   passenger_metadata: Metadatum[];
-  record_locator: string | null;
+  record_locator: Optional<string>;
 }
 
 interface OrganizedFlightTicket {
@@ -439,7 +439,6 @@ export function organizeSegmentedItineraries(
   // numbered itinerary to departure date mapping
   const itineraryKeys: Record<number, string> = {};
   let itineraryKey = 0;
-  let i = 0;
   for (const segment of sortedSegments) {
     if (!segment.departure_tz) {
       segment.departure_tz = lookupTimezoneFromAirportCode(
@@ -607,7 +606,7 @@ export function aggregateItems(
   // Transit Route
   if (itemization.transit_route) {
     itemization.transit_route.transit_route_items.forEach((i) => {
-      let row: { [key: string]: any } = {};
+      const row: { [key: string]: any } = {};
       Object.keys(head).forEach((key) => {
         if (key == "departure") {
           let departureString = "";
@@ -662,7 +661,7 @@ export function aggregateItems(
   // Subscription
   if (itemization.subscription) {
     itemization.subscription.subscription_items.forEach((i) => {
-      let row: { [key: string]: any } = {};
+      const row: { [key: string]: any } = {};
       Object.keys(head).forEach((key) => {
         if (key == "description") {
           let descriptionString: string = "";
@@ -772,7 +771,7 @@ export function aggregateItems(
 
   // Remove the bottom border from the last item
   for (const key in items[items.length - 1]) {
-    if (items[items.length - 1].hasOwnProperty(key)) {
+    if (Object.prototype.hasOwnProperty.call(items[items.length - 1], key)) {
       const item = items[items.length - 1][key];
       if (item.styles) {
         item.styles.lineWidth = {
@@ -882,7 +881,7 @@ function aggregateItemHeaders(itemization: Itemization): pdfItem {
 }
 
 function aggregateGenericItemHeaders(rows: Item[]): pdfItem {
-  let head: pdfItem = {};
+  const head: pdfItem = {};
   rows.forEach((i) => {
     if (i.date && !head.date) {
       head.date = { content: "Date" };
@@ -928,9 +927,9 @@ function aggregateGenericItemRows(
   head: pdfItem,
   header: Receipt["header"]
 ): pdfItem[] {
-  let items: pdfItem[] = [];
+  const items: pdfItem[] = [];
   rows.forEach((i) => {
-    let row: { [key: string]: any } = {};
+    const row: { [key: string]: any } = {};
     Object.keys(head).forEach((key) => {
       if (key == "date") {
         row.date = {
@@ -1051,11 +1050,11 @@ export function aggregateFlight(
   organizedTicket: OrganizedFlightTicket,
   header: Receipt["header"]
 ) {
-  let organized_ticket: pdfItem[] = [];
+  const organized_ticket: pdfItem[] = [];
   let organized_ticket_head: pdfItem = {};
   organized_ticket_head = aggregateFlightHeaders(organizedTicket.passengers);
   organizedTicket.passengers.forEach((p) => {
-    let row: { [key: string]: any } = {};
+    const row: { [key: string]: any } = {};
     row.passenger = { content: p.passenger };
     row.ticket_number = { content: p.ticket_number };
     row.record_locator = { content: p.record_locator };
@@ -1083,7 +1082,7 @@ export function aggregateFlight(
 function aggregateFlightHeaders(
   passengers: OrganizedFlightTicketPassenger[]
 ): pdfItem {
-  let ticketSummaryHead: pdfItem = {};
+  const ticketSummaryHead: pdfItem = {};
   if (passengers.every((value) => value.passenger != null)) {
     ticketSummaryHead.passenger = { content: "Passenger" };
   }

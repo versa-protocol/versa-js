@@ -14,7 +14,7 @@ import {
 import styles from "./../base_receipt.module.css";
 import { usePdfGen } from "../../hooks/usePdfGen";
 
-import { LTS_VERSIONS } from "@versaprotocol/schema";
+import { LTS_VERSIONS as _LTS_VERSIONS } from "@versaprotocol/schema";
 import {
   ReceiptHeader,
   ThirdParty,
@@ -31,7 +31,7 @@ import {
 
 export function ReceiptDisplay({
   receipt,
-  schemaVersion,
+  schemaVersion: _schemaVersion,
   merchant,
   theme,
 }: {
@@ -76,7 +76,7 @@ export function ReceiptDisplay({
       ? true
       : false;
 
-  const { downloadReceipt, downloadInvoice } = usePdfGen({
+  const { downloadReceipt, downloadInvoice: _downloadInvoice } = usePdfGen({
     merchant: merchant,
     receipt: data as unknown as Receipt,
     brandColor: colors.brand,
@@ -254,15 +254,15 @@ export function ReceiptDisplay({
 }
 
 function brightnessByColor(color: string) {
-  var r = "",
+  let r = "",
     g = "",
     b = "";
   const hasFullSpec = color.length == 7;
-  var m = color.substring(1).match(hasFullSpec ? /(\S{2})/g : /(\S{1})/g);
+  const m = color.substring(1).match(hasFullSpec ? /(\S{2})/g : /(\S{1})/g);
   if (m) {
-    var r = parseInt(m[0] + (hasFullSpec ? "" : m[0]), 16).toString(),
-      g = parseInt(m[1] + (hasFullSpec ? "" : m[1]), 16).toString(),
-      b = parseInt(m[2] + (hasFullSpec ? "" : m[2]), 16).toString();
+    r = parseInt(m[0] + (hasFullSpec ? "" : m[0]), 16).toString();
+    g = parseInt(m[1] + (hasFullSpec ? "" : m[1]), 16).toString();
+    b = parseInt(m[2] + (hasFullSpec ? "" : m[2]), 16).toString();
   }
   if (typeof r != "undefined") {
     return (Number(r) * 299 + Number(g) * 587 + Number(b) * 114) / 1000;

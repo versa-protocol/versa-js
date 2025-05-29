@@ -16,7 +16,7 @@ export const formatTType = (ttype: string) => {
 };
 
 export const formatGracePeriod = (rotation_grace_seconds: number) => {
-  let hours = Math.floor(rotation_grace_seconds / 3600);
+  const hours = Math.floor(rotation_grace_seconds / 3600);
   if (hours > 1) {
     return `${hours} hours`;
   }
@@ -70,10 +70,10 @@ export function formatDateTime(
   secondsSinceEpoch: number,
   config?: SupportedDateTimeFormatConfig
 ) {
-  var d = new Date(secondsSinceEpoch * 1000);
+  const d = new Date(secondsSinceEpoch * 1000);
   const { includeDOW, includeTimezone, includeTime, iataTimezone } =
     config || {};
-  var options: Intl.DateTimeFormatOptions;
+  let options: Intl.DateTimeFormatOptions;
   if (d.getFullYear() === new Date().getFullYear()) {
     options = {
       month: "short",
@@ -103,8 +103,8 @@ export function formatDateTime(
 }
 
 export function formatTime(secondsSinceEpoch: number) {
-  var d = new Date(secondsSinceEpoch * 1000);
-  var options: Intl.DateTimeFormatOptions;
+  const d = new Date(secondsSinceEpoch * 1000);
+  let options: Intl.DateTimeFormatOptions;
   options = {
     hour: "numeric",
     minute: "numeric",
@@ -134,13 +134,13 @@ export function formatTimeRange(
   secondsSinceEpochStart: number,
   secondsSinceEpochEnd: number
 ) {
-  var ds = new Date(secondsSinceEpochStart * 1000);
-  var de = new Date(secondsSinceEpochEnd * 1000);
-  var datesShareYear = ds.getFullYear() === de.getFullYear();
-  var datesShareMonth = ds.getMonth() === de.getMonth();
-  var datesShareDay = ds.getDay() === de.getDay();
-  var firstDateOptions: Intl.DateTimeFormatOptions;
-  var secondDateOptions: Intl.DateTimeFormatOptions;
+  const ds = new Date(secondsSinceEpochStart * 1000);
+  const de = new Date(secondsSinceEpochEnd * 1000);
+  const datesShareYear = ds.getFullYear() === de.getFullYear();
+  const datesShareMonth = ds.getMonth() === de.getMonth();
+  const datesShareDay = ds.getDay() === de.getDay();
+  let firstDateOptions: Intl.DateTimeFormatOptions;
+  let secondDateOptions: Intl.DateTimeFormatOptions;
   if (datesShareYear && datesShareMonth && datesShareDay) {
     if (new Date().getFullYear() === ds.getFullYear()) {
       firstDateOptions = {
@@ -359,12 +359,8 @@ export function formatDateComparison(
   }
 
   // Calculate days difference using the formatted dates to respect timezones
-  const initialDate = new Date(initialDateStr);
   const previousDate = new Date(previousDateStr);
   const targetDate = new Date(targetDateStr);
-  const daysDiff = Math.round(
-    (targetDate.getTime() - initialDate.getTime()) / (1000 * 60 * 60 * 24)
-  );
   const sequentialDiff = Math.round(
     (targetDate.getTime() - previousDate.getTime()) / (1000 * 60 * 60 * 24)
   );

@@ -1,6 +1,6 @@
 import { SVGProps } from "react";
 
-export const TravelLodging = (props: SVGProps<SVGSVGElement>) => (
+export const TravelLodging = (_props: SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24">
     <path
       d="M2,19c-0.3,0-0.5-0.1-0.7-0.3C1.1,18.5,1,18.3,1,18V5c0-0.3,0.1-0.5,0.3-0.7C1.5,4.1,1.7,4,2,4s0.5,0.1,0.7,0.3

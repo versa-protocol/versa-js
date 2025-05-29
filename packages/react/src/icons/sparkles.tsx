@@ -1,6 +1,6 @@
 import { SVGProps } from "react";
 
-export const Sparkles = (props: SVGProps<SVGSVGElement>) => (
+export const Sparkles = (_props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     height="16"

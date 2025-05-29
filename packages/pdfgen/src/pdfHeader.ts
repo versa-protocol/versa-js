@@ -46,6 +46,7 @@ export async function Header(
       const base64Image = (await encode(logo, options)) as string;
       doc.addImage(base64Image, "JPEG", docWidth - margin - 1, margin, 1, 1);
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.warn("Error fetching and encoding image:", e);
     }
   }
@@ -53,7 +54,7 @@ export async function Header(
   doc.rect(docWidth - margin - 1, margin, 1, 1, "S");
 
   // Head Table
-  let headTableData: (string | number)[][] = [];
+  const headTableData: (string | number)[][] = [];
   headTableData.push(["Invoice Date:", formatDate(receipt.header.invoiced_at)]);
   if (receipt.header.invoice_number) {
     headTableData.push(["Invoice Number:", receipt.header.invoice_number]);
@@ -96,8 +97,8 @@ function hexToRgb(hex: string): [number, number, number] {
 }
 
 export function formatDate(secondsSinceEpoch: number) {
-  var d = new Date(secondsSinceEpoch * 1000);
-  var options: Intl.DateTimeFormatOptions = {
+  const d = new Date(secondsSinceEpoch * 1000);
+  const options: Intl.DateTimeFormatOptions = {
     year: "numeric",
     month: "short",
     day: "numeric",

@@ -14,7 +14,7 @@ export function UpdateBlock({
   currentTransactionEventIndex: number;
   updates: GroupedUpdate[];
   viewRef: React.RefObject<HTMLButtonElement>;
-  onViewPreviousVersion: (transactionEventIndex: number) => void;
+  onViewPreviousVersion: (_transactionEventIndex: number) => void;
 }) {
   return (
     <div className={styles.activityBlockWrap}>

@@ -1,2 +1,2 @@
 pnpm pre-commit
-pnpm dlx ts-node --project scripts/tsconfig.json scripts/valjean.ts packages/examples/receipts
+pnpm valjean

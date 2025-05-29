@@ -62,11 +62,12 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
   const merchant = org
     ? org
     : examples.senders[senderKey] || examples.senders.generic;
-  let defaultData = examples.receipts[receipt];
+  const defaultData = examples.receipts[receipt];
 
   const receiver = examples.receivers[receiverKey];
 
   if (!defaultData) {
+    // eslint-disable-next-line no-console
     console.error("Invalid receipt:", receipt);
   }
 
@@ -90,19 +91,19 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
   const { validate } = useValidator();
 
   const { systemTheme, theme } = useTheme();
-  var simplifiedTheme = theme;
+  let simplifiedTheme = theme;
   if (simplifiedTheme == "system") {
     simplifiedTheme = systemTheme;
   }
 
   let parsedReceipt: Receipt | null = null;
-  let previousReceiptData: Receipt | null = null;
+  let _previousReceiptData: Receipt | null = null;
   let parsedMerchant: Merchant | null = null;
   let breakingError = runtimeError;
   try {
     parsedReceipt = JSON.parse(receiptData);
     if (previousReceipt) {
-      previousReceiptData = examples.receipts[previousReceipt];
+      _previousReceiptData = examples.receipts[previousReceipt];
     }
     parsedMerchant = JSON.parse(merchantData);
   } catch (e: any) {

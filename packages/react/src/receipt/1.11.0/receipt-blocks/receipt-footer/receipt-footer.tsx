@@ -6,7 +6,7 @@ import { epochToISO8601, formatDateTime } from "@versaprotocol/belt";
 import { RegistryData } from "../../../../model";
 
 export function ReceiptFooter({
-  mapAttribution,
+  mapAttribution: _mapAttribution,
   receipt,
   downloadReceipt,
   registryData,
@@ -41,9 +41,8 @@ export function ReceiptFooter({
     <>
       {receipt.header.paid > 0 && (
         <div className={styles.finePrintWrap}>
-          {Boolean(
-            receipt.header.invoice_asset_id || receipt.header.receipt_asset_id
-          ) ? (
+          {receipt.header.invoice_asset_id ||
+          receipt.header.receipt_asset_id ? (
             <div className={styles.downloadBlock}>
               {Boolean(receipt.header.invoice_asset_id) && (
                 <a

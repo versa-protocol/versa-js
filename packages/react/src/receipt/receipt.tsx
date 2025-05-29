@@ -20,7 +20,7 @@ export function ReceiptDisplay({
   registryData?: RegistryData;
 }) {
   const data = receipt;
-  let schemaVersion = data.schema_version;
+  const schemaVersion = data.schema_version;
 
   if (!LTS_VERSIONS.includes(schemaVersion)) {
     if (
@@ -30,10 +30,12 @@ export function ReceiptDisplay({
       ) === 1
     ) {
       // Should possibly 'fall back' to the oldest LTS version component tree? (as opposed to the latest)
+      // eslint-disable-next-line no-console
       console.warn(
         `WARN: Received schema version that has been retired; contact Versa support if this is a recent receipt. (Received version: ${schemaVersion})`
       );
     } else {
+      // eslint-disable-next-line no-console
       console.warn(
         `WARN: Received schema version that is newer than the latest supported version; update your Versa library at your earliest convenience. (Received version: ${schemaVersion})`
       );

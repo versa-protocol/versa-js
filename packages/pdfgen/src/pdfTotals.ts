@@ -10,7 +10,7 @@ import {
 
 export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
   const docWidth = doc.internal.pageSize.getWidth();
-  let totalsData: {}[] = [];
+  const totalsData: {}[] = [];
   totalsData.push({
     description: { content: "Subtotal" },
     amount: {

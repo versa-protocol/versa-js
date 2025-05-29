@@ -10,7 +10,7 @@ export function TypeSubHeader(
   cursor: { y: number; page: number }
 ) {
   if (receipt.itemization.car_rental || receipt.itemization.lodging) {
-    let typeSubHeaderData: (string | number)[][] = [];
+    const typeSubHeaderData: (string | number)[][] = [];
 
     // Lodging
     if (receipt.itemization.lodging) {

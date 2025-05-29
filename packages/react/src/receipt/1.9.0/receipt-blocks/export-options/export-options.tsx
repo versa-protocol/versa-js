@@ -4,7 +4,7 @@ import { lts } from "@versaprotocol/schema";
 type Receipt = lts.v1_9_0.Receipt;
 
 export function ExportOptions({
-  mapAttribution,
+  mapAttribution: _mapAttribution,
   receiptHeader,
   downloadReceipt,
 }: {
@@ -16,9 +16,7 @@ export function ExportOptions({
     <>
       {receiptHeader.paid > 0 && (
         <div className={styles.finePrintWrap}>
-          {Boolean(
-            receiptHeader.invoice_asset_id || receiptHeader.receipt_asset_id
-          ) ? (
+          {receiptHeader.invoice_asset_id || receiptHeader.receipt_asset_id ? (
             <div className={styles.downloadBlock}>
               {Boolean(receiptHeader.invoice_asset_id) && (
                 <a

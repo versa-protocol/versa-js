@@ -12,6 +12,7 @@
     "build": "rollup -c",
     "build-clean": "rollup -c release.config.ts --configPlugin typescript",
     "dev": "rollup -c --watch",
+    "lint": "eslint src",
     "test": "jest",
     "prepublish": "pnpm build-clean"
   },

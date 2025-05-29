@@ -272,15 +272,15 @@ export function ReceiptLatest({
 }
 
 function brightnessByColor(color: string) {
-  var r = "",
+  let r = "",
     g = "",
     b = "";
   const hasFullSpec = color.length == 7;
-  var m = color.substring(1).match(hasFullSpec ? /(\S{2})/g : /(\S{1})/g);
+  const m = color.substring(1).match(hasFullSpec ? /(\S{2})/g : /(\S{1})/g);
   if (m) {
-    var r = parseInt(m[0] + (hasFullSpec ? "" : m[0]), 16).toString(),
-      g = parseInt(m[1] + (hasFullSpec ? "" : m[1]), 16).toString(),
-      b = parseInt(m[2] + (hasFullSpec ? "" : m[2]), 16).toString();
+    r = parseInt(m[0] + (hasFullSpec ? "" : m[0]), 16).toString();
+    g = parseInt(m[1] + (hasFullSpec ? "" : m[1]), 16).toString();
+    b = parseInt(m[2] + (hasFullSpec ? "" : m[2]), 16).toString();
   }
   if (typeof r != "undefined") {
     return (Number(r) * 299 + Number(g) * 587 + Number(b) * 114) / 1000;

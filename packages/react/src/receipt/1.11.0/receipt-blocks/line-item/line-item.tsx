@@ -35,7 +35,7 @@ export function LineItem({
                 <>
                   {li.metadata.map(
                     (m: lts.v1_11_0.Metadatum, index: number) => (
-                      <div className="secondaryText">
+                      <div key={index} className="secondaryText">
                         {m.key && <>{m.key}: </>}
                         {m.value}
                       </div>
@@ -55,7 +55,7 @@ export function LineItem({
                 <>
                   {li.adjustments.map(
                     (a: lts.v1_11_0.Adjustment, index: number) => (
-                      <div className="secondaryText">
+                      <div key={index} className="secondaryText">
                         {a.name ? a.name : capitalize(a.adjustment_type)}{" "}
                         {a.rate ? (
                           <>({a.rate * 100}%)</>

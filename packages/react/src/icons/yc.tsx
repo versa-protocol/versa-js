@@ -1,6 +1,6 @@
 import { SVGProps } from "react";
 
-export const YC = (props: SVGProps<SVGSVGElement>) => (
+export const YC = (_props: SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" fill="none">
     <g clipPath="url(#a)">
       <path
