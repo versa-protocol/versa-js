@@ -1,6 +1,7 @@
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 import { Org, Receipt, Address } from "@versaprotocol/schema";
+import { Optional } from "@versaprotocol/belt";
 
 export function Parties(
   doc: jsPDF,
@@ -128,7 +129,7 @@ export function Parties(
   return cursor;
 }
 
-function stringifyAddress(address: Address | null | undefined): string {
+function stringifyAddress(address: Optional<Address>): string {
   let addressString = "";
   if (address) {
     if (address.street_address) {

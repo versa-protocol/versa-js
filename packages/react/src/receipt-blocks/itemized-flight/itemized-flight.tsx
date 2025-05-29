@@ -2,6 +2,7 @@ import {
   formatDateComparison,
   formatDateTime,
   formatTransactionValue,
+  Optional,
 } from "@versaprotocol/belt";
 import styles from "./itemized-flight.module.css";
 import { Flight, Receipt, Person } from "@versaprotocol/schema";
@@ -20,9 +21,7 @@ function PlaneIcon() {
   );
 }
 
-function formatPassengerName(
-  passenger: string | Person | null | undefined
-): string {
+function formatPassengerName(passenger: Optional<Person>): string {
   if (!passenger) return "";
   if (typeof passenger === "string") return passenger;
 

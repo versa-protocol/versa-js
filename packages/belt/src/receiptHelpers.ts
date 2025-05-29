@@ -380,8 +380,8 @@ export function organizeTransitRoutes(
 
 interface OrganizedFlightTicketPassenger {
   fare: number;
-  passenger: Person | null | undefined;
-  ticket_number: string | null | undefined;
+  passenger: Optional<Person>;
+  ticket_number: Optional<string>;
   ticket_class: string | null; // only used if all class values are equal for ticket
   passenger_metadata: Metadatum[];
 }
@@ -396,7 +396,7 @@ const twentyFourHours = 24 * 60 * 60;
 
 function dateStringFromUnixWithTimezone(
   unix_timestamp: number,
-  tz: string | null | undefined
+  tz: Optional<string>
 ) {
   const utcDate = new Date(unix_timestamp * 1000);
   const timezone = tz || "UTC";
@@ -409,7 +409,7 @@ function dateStringFromUnixWithTimezone(
 }
 
 export interface GroupedItinerary {
-  departure_at: number | null | undefined;
+  departure_at: Optional<number>;
   departure_tz: string | null;
   departure_date: string; // YYYY-MM-DD
   arrival_date: string; // YYYY-MM-DD

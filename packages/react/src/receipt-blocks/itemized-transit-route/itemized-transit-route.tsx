@@ -2,6 +2,7 @@ import {
   formatDateTime,
   formatTime,
   formatTransactionValue,
+  Optional,
   sameDay,
 } from "@versaprotocol/belt";
 import styles from "./itemized-transit-route.module.css";
@@ -14,9 +15,7 @@ import {
 import { organizeTransitRoutes } from "@versaprotocol/belt";
 import { VersaContext } from "../../context";
 
-function formatPassengerName(
-  passenger: string | Person | null | undefined
-): string {
+function formatPassengerName(passenger: Optional<Person>): string {
   if (!passenger) return "";
   if (typeof passenger === "string") return passenger;
 

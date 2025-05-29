@@ -1,6 +1,6 @@
 import { Circle } from "react-feather";
 import styles from "./shipment.module.css";
-import { formatDateTime } from "@versaprotocol/belt";
+import { formatDateTime, Optional } from "@versaprotocol/belt";
 import { lts } from "@versaprotocol/schema";
 
 export function ShipmentWidget({
@@ -160,7 +160,7 @@ export function ShipmentWidget({
   );
 }
 
-function statusLevel(status: string | null | undefined) {
+function statusLevel(status: Optional<string>) {
   let output = 1;
   if (status == "in_transit") {
     output = 2;
