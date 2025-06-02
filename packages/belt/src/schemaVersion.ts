@@ -1,7 +1,14 @@
+/**
+ * Compare two schema version strings
+ * Returns:
+ *  -1 if baseVersion < comparisonVersion
+ *   0 if baseVersion === comparisonVersion
+ *   1 if baseVersion > comparisonVersion
+ */
 export const compareSchemaVersions = (
   baseVersion: string,
   comparisonVersion: string
-) => {
+): number => {
   const aParts = baseVersion.split(".").map((x) => {
     if (x === "") {
       return 0;

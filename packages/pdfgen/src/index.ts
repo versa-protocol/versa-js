@@ -1,4 +1,5 @@
 import { Org, Receipt, LTS_VERSIONS, lts } from "@versaprotocol/schema";
+import { compareSchemaVersions } from "@versaprotocol/belt";
 import { jsPDF } from "jspdf";
 import { Header } from "./pdfHeader";
 import { Parties } from "./pdfParties";
@@ -8,7 +9,6 @@ import { Totals } from "./pdfTotals";
 import { Payments } from "./pdfPayments";
 import { Footers } from "./pdfFooters";
 import { SupplementalText } from "./pdfSupplementalText";
-import { compareSchemaVersions } from "./schemaVersion";
 import { createReceiptDoc_v1_11_0 } from "./1.11.0";
 // import jsdom from "jsdom";
 // const { JSDOM } = jsdom

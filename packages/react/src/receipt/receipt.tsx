@@ -5,7 +5,7 @@ import { ReceiptDisplay as R_1_11_0 } from "./1.11.0/receipt";
 import { ReceiptLatest } from "./latest/receipt";
 
 import { LTS_VERSIONS } from "@versaprotocol/schema";
-import { compareSchemaVersions } from "./schemaVersion";
+import { compareSchemaVersions } from "@versaprotocol/belt";
 import { RegistryData } from "../model";
 
 export function ReceiptDisplay({
