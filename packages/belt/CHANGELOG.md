@@ -1,5 +1,11 @@
 # @versaprotocol/belt
 
+## 1.12.1
+
+### Patch Changes
+
+- Bugfix: correctly organize passengers including metadata
+
 ## 1.12.0
 
 ### Minor Changes

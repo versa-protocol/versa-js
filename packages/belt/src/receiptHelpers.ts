@@ -44,6 +44,12 @@ export function formatPassengerName(passenger: Optional<Person>): string {
   return parts.join(" ") || passenger.email || "";
 }
 
+// Helper to safely get passenger metadata (handles both string and Person types)
+function getPassengerMetadata(passenger: any): Metadatum[] {
+  if (!passenger || typeof passenger === "string") return [];
+  return passenger.metadata || [];
+}
+
 // Internal helper function
 function getPassengerIdentifier(passenger: Optional<Person>): string {
   return formatPassengerName(passenger);
@@ -547,10 +553,9 @@ export function organizeFlightTickets(flight: Flight): OrganizedFlightTicket[] {
     ) as string;
     const allClassValuesEqualForPassenger = allClassValuesEqual(segments);
 
+    const passengerMetadata = getPassengerMetadata(ticket.passenger);
     const passengerKey =
-      ticket.passenger ||
-      ticket.record_locator ||
-      (ticket as any).metadata?.length;
+      ticket.passenger || ticket.record_locator || passengerMetadata.length;
 
     if (organizedTickets[dedupeKey]) {
       organizedTickets[dedupeKey].passenger_count++;
@@ -563,7 +568,7 @@ export function organizeFlightTickets(flight: Flight): OrganizedFlightTicket[] {
           ticket_class: allClassValuesEqualForPassenger
             ? segments[0].class_of_service || null
             : null,
-          passenger_metadata: (ticket as any).metadata || [],
+          passenger_metadata: passengerMetadata,
         });
       }
     } else {
@@ -579,7 +584,7 @@ export function organizeFlightTickets(flight: Flight): OrganizedFlightTicket[] {
             ticket_class: allClassValuesEqualForPassenger
               ? segments[0].class_of_service || null
               : null,
-            passenger_metadata: (ticket as any).metadata || [],
+            passenger_metadata: passengerMetadata,
           },
         ],
       };

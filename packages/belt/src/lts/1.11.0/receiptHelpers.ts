@@ -528,9 +528,7 @@ export function organizeFlightTickets(flight: Flight): OrganizedFlightTicket[] {
     const allClassValuesEqualForPassenger = allClassValuesEqual(segments);
 
     const passengerKey =
-      ticket.passenger ||
-      ticket.record_locator ||
-      (ticket as any).metadata?.length;
+      ticket.passenger || ticket.record_locator || ticket.metadata.length;
 
     if (organizedTickets[dedupeKey]) {
       organizedTickets[dedupeKey].passenger_count++;
@@ -542,7 +540,7 @@ export function organizeFlightTickets(flight: Flight): OrganizedFlightTicket[] {
           ticket_class: allClassValuesEqualForPassenger
             ? segments[0].class_of_service || null
             : null,
-          passenger_metadata: (ticket as any).metadata || [],
+          passenger_metadata: ticket.metadata || [],
           record_locator: ticket.record_locator || null,
         });
       }

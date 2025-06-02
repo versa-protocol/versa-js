@@ -1,5 +1,13 @@
 # @versaprotocol/pdfgen
 
+## 1.12.1
+
+### Patch Changes
+
+- Bugfix: correctly organize passengers including metadata
+- Updated dependencies
+  - @versaprotocol/belt@1.12.1
+
 ## 1.12.0
 
 ### Minor Changes
