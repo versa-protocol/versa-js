@@ -110,7 +110,7 @@ function paymentMethod(p: Payment) {
   let paymentDescription = "";
   if (p.payment_type == "card") {
     if (p.card_payment?.network) {
-      paymentDescription += `capitalize(p.card_payment.network) `;
+      paymentDescription += `${capitalize(p.card_payment.network)} `;
     }
     if (p.card_payment?.last_four) {
       paymentDescription += `··· ${p.card_payment.last_four}`;

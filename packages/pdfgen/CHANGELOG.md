@@ -1,5 +1,11 @@
 # @versaprotocol/pdfgen
 
+## 1.12.2
+
+### Patch Changes
+
+- Bugfix: improperly embedded expression in payment method literal
+
 ## 1.12.1
 
 ### Patch Changes

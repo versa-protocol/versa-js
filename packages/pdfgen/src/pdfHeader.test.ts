@@ -152,7 +152,7 @@ describe("PDF Header - Invoice Details Rendering", () => {
     const paymentRow = bodyData.find((row) => row[0] === "Payment Method:");
 
     expect(paymentRow).toBeDefined();
-    expect(paymentRow![1]).toBe("capitalize(p.card_payment.network) ··· 1234");
+    expect(paymentRow![1]).toBe("Visa ··· 1234");
   });
 
   it("should render Mastercard payment with correct format", async () => {
@@ -167,7 +167,7 @@ describe("PDF Header - Invoice Details Rendering", () => {
     const paymentRow = bodyData.find((row) => row[0] === "Payment Method:");
 
     expect(paymentRow).toBeDefined();
-    expect(paymentRow![1]).toBe("capitalize(p.card_payment.network) ··· 5678");
+    expect(paymentRow![1]).toBe("Mastercard ··· 5678");
   });
 
   it("should not render payment method for multiple payments", async () => {
@@ -329,7 +329,7 @@ describe("PDF Header - Invoice Details Rendering", () => {
     const bodyData = autoTableCall[1].body as string[][];
     const paymentRow = bodyData.find((row) => row[0] === "Payment Method:");
 
-    expect(paymentRow![1]).toBe("capitalize(p.card_payment.network) ");
+    expect(paymentRow![1]).toBe("Visa ");
   });
 
   it("should render merchant logo when provided", async () => {
