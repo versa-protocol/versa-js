@@ -33,6 +33,15 @@ jest.mock("./pdfSupplementalText", () => ({
   SupplementalText: jest.fn().mockReturnValue(undefined),
 }));
 
+// Mock 1.11.0 version
+jest.mock("./1.11.0", () => ({
+  createReceiptDoc_v1_11_0: jest.fn().mockResolvedValue({
+    setLineWidth: jest.fn(),
+    save: jest.fn(() => new Blob()),
+    output: jest.fn(() => ""),
+  }),
+}));
+
 describe("PDF Receipt Generation - 2.0 Schema", () => {
   let mockDoc: jest.Mocked<jsPDF>;
 
@@ -72,7 +81,7 @@ describe("PDF Receipt Generation - 2.0 Schema", () => {
     (jsPDF as unknown as jest.Mock).mockImplementation(() => mockDoc);
   });
 
-  it("should create a PDF with flight data", async () => {
+  it("should create a PDF with flight data and Person passenger (v2.0.0)", async () => {
     const testMerchant: Org = {
       name: "Delta Airlines",
       brand_color: "#003366",
@@ -81,7 +90,7 @@ describe("PDF Receipt Generation - 2.0 Schema", () => {
     };
 
     const testReceipt: Receipt = {
-      schema_version: "2.0.0",
+      schema_version: "2.0.0-rc1",
       header: {
         invoice_number: "TEST-123",
         currency: "usd",
@@ -187,7 +196,7 @@ describe("PDF Receipt Generation - 2.0 Schema", () => {
     };
 
     const testReceipt: Receipt = {
-      schema_version: "2.0.0",
+      schema_version: "2.0.0-rc1",
       header: {
         currency: "usd",
         total: 50000,
@@ -257,7 +266,7 @@ describe("PDF Receipt Generation - 2.0 Schema", () => {
     };
 
     const testReceipt: Receipt = {
-      schema_version: "2.0.0",
+      schema_version: "2.0.0-rc1",
       header: {
         currency: "usd",
         total: 10850,
@@ -330,7 +339,7 @@ describe("PDF Receipt Generation - 2.0 Schema", () => {
     };
 
     const testReceipt: Receipt = {
-      schema_version: "2.0.0",
+      schema_version: "2.0.0-rc1",
       header: {
         currency: "usd",
         total: 1000,
@@ -372,7 +381,7 @@ describe("PDF Receipt Generation - 2.0 Schema", () => {
     };
 
     const testReceipt: Receipt = {
-      schema_version: "2.0.0",
+      schema_version: "2.0.0-rc1",
       header: {
         currency: "usd",
         total: 10000,
@@ -424,5 +433,250 @@ describe("PDF Receipt Generation - 2.0 Schema", () => {
 
     // Verify PDF was created
     expect(jsPDF).toHaveBeenCalled();
+  });
+});
+
+describe("PDF Receipt Generation - Version Branching", () => {
+  let mockDoc: jest.Mocked<jsPDF>;
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+
+    // Setup mock jsPDF instance
+    mockDoc = {
+      setLineWidth: jest.fn(),
+      save: jest.fn(() => new Blob()),
+      output: jest.fn(() => ""),
+    } as unknown as jest.Mocked<jsPDF>;
+
+    // Mock jsPDF constructor
+    (jsPDF as unknown as jest.Mock).mockImplementation(() => mockDoc);
+  });
+
+  it("should handle v1.11.0 schema with string passenger", async () => {
+    const testMerchant: Org = {
+      name: "United Airlines",
+      brand_color: "#002F5D",
+      website: "https://united.com",
+    };
+
+    const testReceipt: Receipt = {
+      schema_version: "1.11.0",
+      header: {
+        invoice_number: "UA-789",
+        currency: "usd",
+        total: 32500,
+        subtotal: 30000,
+        paid: 32500,
+        invoiced_at: 1713295619,
+        customer: {
+          name: "Jane Smith",
+          email: "jane@example.com",
+          metadata: [],
+        },
+      },
+      itemization: {
+        flight: {
+          tickets: [
+            {
+              segments: [
+                {
+                  fare: 30000,
+                  departure_airport_code: "SFO",
+                  arrival_airport_code: "ORD",
+                  aircraft_type: "B737",
+                  departure_at: 1713196492,
+                  arrival_at: 1713207292,
+                  departure_tz: "America/Los_Angeles",
+                  arrival_tz: "America/Chicago",
+                  flight_number: "UA123",
+                  class_of_service: "E",
+                  seat: "23B",
+                  taxes: [
+                    {
+                      amount: 2500,
+                      rate: 0.083,
+                      name: "Federal Excise Tax",
+                    },
+                  ],
+                  adjustments: [],
+                  metadata: [],
+                },
+              ],
+              fare: 30000,
+              number: "0987654321012",
+              record_locator: "XYZ789",
+              passenger: "Jane Smith" as any, // String passenger for v1.11.0
+              taxes: [],
+            },
+          ],
+          itinerary_locator: "XYZ789",
+          invoice_level_adjustments: [],
+        },
+      },
+      payments: [
+        {
+          amount: 32500,
+          paid_at: 1713295619,
+          payment_type: "card",
+          card_payment: {
+            last_four: "9876",
+            network: "amex",
+          },
+        },
+      ],
+      footer: {
+        actions: [],
+      },
+    };
+
+    await createReceiptDoc({
+      merchant: testMerchant,
+      receipt: testReceipt,
+      brandColor: "#002F5D",
+    });
+
+    // Verify the v1.11.0 handler was called
+    const { createReceiptDoc_v1_11_0 } = require("./1.11.0");
+    expect(createReceiptDoc_v1_11_0).toHaveBeenCalled();
+  });
+
+  it("should handle v1.10.0 schema (routed to v1.11.0)", async () => {
+    const testMerchant: Org = {
+      name: "Southwest Airlines",
+      brand_color: "#304CB2",
+    };
+
+    const testReceipt: Receipt = {
+      schema_version: "1.10.0",
+      header: {
+        currency: "usd",
+        total: 15000,
+        subtotal: 15000,
+        paid: 15000,
+        invoiced_at: 1713295619,
+      },
+      itemization: {
+        flight: {
+          tickets: [
+            {
+              segments: [
+                {
+                  fare: 15000,
+                  departure_airport_code: "DAL",
+                  arrival_airport_code: "HOU",
+                  departure_at: 1713196492,
+                  arrival_at: 1713200092,
+                  flight_number: "SW456",
+                  taxes: [],
+                  adjustments: [],
+                  metadata: [],
+                },
+              ],
+              fare: 15000,
+              passenger: "John Doe" as any,
+              taxes: [],
+            },
+          ],
+          invoice_level_adjustments: [],
+        },
+      },
+      payments: [],
+      footer: {
+        actions: [],
+      },
+    };
+
+    await createReceiptDoc({
+      merchant: testMerchant,
+      receipt: testReceipt,
+      brandColor: "#304CB2",
+    });
+
+    // Verify the v1.11.0 handler was called
+    const { createReceiptDoc_v1_11_0 } = require("./1.11.0");
+    expect(createReceiptDoc_v1_11_0).toHaveBeenCalled();
+  });
+
+  it("should warn about retired schema versions", async () => {
+    const consoleSpy = jest.spyOn(console, "warn").mockImplementation();
+
+    const testMerchant: Org = {
+      name: "Old Airlines",
+    };
+
+    const testReceipt: Receipt = {
+      schema_version: "1.5.0", // Older than oldest LTS
+      header: {
+        currency: "usd",
+        total: 10000,
+        subtotal: 10000,
+        paid: 10000,
+        invoiced_at: 1713295619,
+      },
+      itemization: {
+        general: {
+          items: [{ description: "Flight", amount: 10000 }],
+          invoice_level_adjustments: [],
+        },
+      },
+      payments: [],
+      footer: { actions: [] },
+    };
+
+    await createReceiptDoc({
+      merchant: testMerchant,
+      receipt: testReceipt,
+      brandColor: "#000000",
+    });
+
+    expect(consoleSpy).toHaveBeenCalledWith(
+      expect.stringContaining(
+        "WARN: Received schema version that has been retired"
+      )
+    );
+
+    consoleSpy.mockRestore();
+  });
+
+  it("should warn about newer schema versions", async () => {
+    const consoleSpy = jest.spyOn(console, "warn").mockImplementation();
+
+    const testMerchant: Org = {
+      name: "Future Airlines",
+    };
+
+    const testReceipt: Receipt = {
+      schema_version: "3.0.0", // Newer than latest
+      header: {
+        currency: "usd",
+        total: 20000,
+        subtotal: 20000,
+        paid: 20000,
+        invoiced_at: 1713295619,
+      },
+      itemization: {
+        general: {
+          items: [{ description: "Flight", amount: 20000 }],
+          invoice_level_adjustments: [],
+        },
+      },
+      payments: [],
+      footer: { actions: [] },
+    };
+
+    await createReceiptDoc({
+      merchant: testMerchant,
+      receipt: testReceipt,
+      brandColor: "#FF00FF",
+    });
+
+    expect(consoleSpy).toHaveBeenCalledWith(
+      expect.stringContaining(
+        "WARN: Received schema version that is newer than the latest supported version"
+      )
+    );
+
+    consoleSpy.mockRestore();
   });
 });

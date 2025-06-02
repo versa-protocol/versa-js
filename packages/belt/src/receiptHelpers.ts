@@ -26,16 +26,27 @@ import { airports } from "./airports";
 import { Optional } from ".";
 
 // Helper to get a string identifier for a passenger (supports both string and Person types)
-function getPassengerIdentifier(passenger: Optional<Person>): string {
+export function formatPassengerName(passenger: Optional<Person>): string {
   if (!passenger) return "";
   if (typeof passenger === "string") return passenger;
 
-  // For Person object, create a unique identifier
+  // Handle Person object - prefer preferred_first_name
   const parts = [];
-  if (passenger.first_name) parts.push(passenger.first_name);
-  if (passenger.last_name) parts.push(passenger.last_name);
-  if (parts.length === 0 && passenger.email) return passenger.email;
-  return parts.join(" ");
+  if (passenger.preferred_first_name) {
+    parts.push(passenger.preferred_first_name);
+  } else if (passenger.first_name) {
+    parts.push(passenger.first_name);
+  }
+  if (passenger.last_name) {
+    parts.push(passenger.last_name);
+  }
+
+  return parts.join(" ") || passenger.email || "";
+}
+
+// Internal helper function
+function getPassengerIdentifier(passenger: Optional<Person>): string {
+  return formatPassengerName(passenger);
 }
 
 export function aggregateTaxes(itemization: Itemization): Tax[] {
@@ -1055,7 +1066,7 @@ export function aggregateFlight(
   organized_ticket_head = aggregateFlightHeaders(organizedTicket.passengers);
   organizedTicket.passengers.forEach((p) => {
     const row: { [key: string]: any } = {};
-    row.passenger = { content: p.passenger };
+    row.passenger = { content: getPassengerIdentifier(p.passenger) };
     row.ticket_number = { content: p.ticket_number };
     row.record_locator = { content: p.record_locator };
     if (p.ticket_class && flightClass(p.ticket_class)) {
