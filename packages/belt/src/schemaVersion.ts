@@ -2,7 +2,7 @@
  * Compare two schema version strings
  * Returns:
  *  -1 if baseVersion < comparisonVersion
- *   0 if baseVersion === comparisonVersion
+ *   0 if baseVersion == comparisonVersion (release candidates are considered equal)
  *   1 if baseVersion > comparisonVersion
  */
 export const compareSchemaVersions = (

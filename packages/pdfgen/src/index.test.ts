@@ -90,7 +90,7 @@ describe("PDF Receipt Generation - 2.0 Schema", () => {
     };
 
     const testReceipt: Receipt = {
-      schema_version: "2.0.0-rc1",
+      schema_version: "2.0.0",
       header: {
         invoice_number: "TEST-123",
         currency: "usd",
@@ -196,7 +196,7 @@ describe("PDF Receipt Generation - 2.0 Schema", () => {
     };
 
     const testReceipt: Receipt = {
-      schema_version: "2.0.0-rc1",
+      schema_version: "2.0.0",
       header: {
         currency: "usd",
         total: 50000,
@@ -266,7 +266,7 @@ describe("PDF Receipt Generation - 2.0 Schema", () => {
     };
 
     const testReceipt: Receipt = {
-      schema_version: "2.0.0-rc1",
+      schema_version: "2.0.0",
       header: {
         currency: "usd",
         total: 10850,
@@ -339,7 +339,7 @@ describe("PDF Receipt Generation - 2.0 Schema", () => {
     };
 
     const testReceipt: Receipt = {
-      schema_version: "2.0.0-rc1",
+      schema_version: "2.0.0",
       header: {
         currency: "usd",
         total: 1000,
@@ -381,7 +381,7 @@ describe("PDF Receipt Generation - 2.0 Schema", () => {
     };
 
     const testReceipt: Receipt = {
-      schema_version: "2.0.0-rc1",
+      schema_version: "2.0.0",
       header: {
         currency: "usd",
         total: 10000,
