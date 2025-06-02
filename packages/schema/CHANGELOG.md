@@ -1,5 +1,11 @@
 # @versaprotocol/schema
 
+## 1.12.0
+
+### Minor Changes
+
+- Preliminary Support for Versa Schema Version 2.0 (rc1)
+
 ## 1.11.0
 
 ### Minor Changes

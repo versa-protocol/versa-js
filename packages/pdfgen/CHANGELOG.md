@@ -1,5 +1,17 @@
 # @versaprotocol/pdfgen
 
+## 1.12.0
+
+### Minor Changes
+
+- Preliminary Support for Versa Schema Version 2.0 (rc1)
+
+### Patch Changes
+
+- Updated dependencies
+  - @versaprotocol/belt@1.12.0
+  - @versaprotocol/schema@1.12.0
+
 ## 1.11.2
 
 ### Patch Changes
