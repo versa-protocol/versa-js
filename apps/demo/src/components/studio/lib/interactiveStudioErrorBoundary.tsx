@@ -1,7 +1,7 @@
 import React from "react";
 
 interface Props {
-  bubbleErrorMessage: (_err: string) => void;
+  bubbleErrorMessage: (err: string) => void;
   children: any;
 }
 
@@ -11,12 +11,12 @@ export class StudioErrorBoundary extends React.Component<Props> {
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(_error: any) {
+  static getDerivedStateFromError(error: any) {
     // Update state so the next render will show the fallback UI.
     return { hasError: true };
   }
 
-  componentDidCatch(error: any, _info: any) {
+  componentDidCatch(error: any, info: any) {
     // Example "componentStack":
     //   in ComponentThatThrows (created by App)
     //   in ErrorBoundary (created by App)

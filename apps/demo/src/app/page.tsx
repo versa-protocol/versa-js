@@ -1,10 +1,10 @@
 import styles from "./page.module.css";
-import { Studio } from "@/components/studio/interactiveStudio";
+import { InteractiveStudio } from "@/components/studio/lib/interactiveStudio";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <Studio />
+    <main>
+      <InteractiveStudio />
     </main>
   );
 }

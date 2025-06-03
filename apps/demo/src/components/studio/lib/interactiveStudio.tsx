@@ -1,7 +1,11 @@
 "use client";
 
+import CodeMirror from "@uiw/react-codemirror";
+import { json } from "@codemirror/lang-json";
+import { EditorView } from "@codemirror/view";
+import { oneDark } from "@codemirror/theme-one-dark";
 import { useTheme } from "next-themes";
-import { ChangeEventHandler, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./interactiveStudio.module.css";
 import { StudioErrorBoundary } from "./interactiveStudioErrorBoundary";
 import { useSearchParams } from "next/navigation";
@@ -9,6 +13,7 @@ import Image from "next/image";
 import * as examples from "@versaprotocol/examples";
 import { Org as Merchant, Org, Receipt } from "@versaprotocol/schema";
 import {
+  ChevronDown,
   Layout,
   Maximize,
   Maximize2,
@@ -17,93 +22,129 @@ import {
   Sidebar,
 } from "react-feather";
 import { formatDateTime, formatUSD } from "@versaprotocol/belt";
-import { useValidator } from "./useValidator";
+import { useValidator } from "../hooks/useValidator";
 import {
   Advisory,
   BrokenReceipt,
-  ReceiptErrorBoundary,
   ReceiptDisplay,
+  ReceiptErrorBoundary,
   VersaContext,
 } from "@versaprotocol/react";
-import { ThemeToggle } from "../theme/themeToggle";
-import { Suspense } from "react";
-import { OutputUnit } from "@cfworker/json-schema";
+import { ThemeToggle } from "@/components/theme/themeToggle";
 
-interface Violation {
-  rule: string;
-  description: string;
-  details?: string | null;
+interface Receiver {
+  name: string;
+  logo: string;
+  logo_dark: string;
+}
+interface OutputUnit {
+  keyword: string;
+  keywordLocation: string;
+  instanceLocation: string;
+  error: string;
 }
 
-const InteractiveStudio = ({ org }: { org?: Org }) => {
+function onBlurFormat(setValue: (value: string) => void) {
+  return EditorView.domEventHandlers({
+    blur: (event, view) => {
+      try {
+        const text = view.state.doc.toString();
+        const parsed = JSON.parse(text);
+        const pretty = JSON.stringify(parsed, null, 2);
+        setValue(pretty);
+      } catch {
+        // ignore if invalid JSON
+      }
+    },
+  });
+}
+
+export const InteractiveStudio = ({ org }: { org?: Org }) => {
   const [viewCode, setViewCode] = useState(true);
 
   const [clientLoaded, setClientLoaded] = useState(false);
   const [runtimeError, setRuntimeError] = useState<string | null>(null);
   const [schemaErrors, setSchemaErrors] = useState<OutputUnit[]>([]);
-  const [semvalWarnings, setSemvalWarnings] = useState<Violation[]>([]);
+  const [semvalWarnings, setSemvalWarnings] = useState<any[]>([]);
   const [viewMode, setViewMode] = useState("narrow");
   const searchParams = useSearchParams();
 
   const receipt = (searchParams.get("receipt") ||
     "simple") as keyof typeof examples.receipts;
-  const previousReceipt = searchParams.get("previousReceipt") as
-    | keyof typeof examples.receipts
-    | undefined;
+  const previousReceipt = searchParams.get(
+    "previousReceipt"
+  ) as keyof typeof examples.receipts;
+  const loadInQuery = searchParams.get(
+    "loadIn"
+  ) as keyof typeof examples.receipts;
   const senderKey = (searchParams.get("sender") ||
     "generic") as keyof typeof examples.senders;
   const receiverKey = (searchParams.get("receiver") ||
     "acme") as keyof typeof examples.receivers;
 
+  const runSemval = (body: string) => {
+    // Note that this requires that the semval module be
+    // deployed at a NextJS API route matching this path.
+    try {
+      fetch("/api/semval", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setSemvalWarnings(data.violations);
+        });
+    } catch (e: any) {
+      setRuntimeError(e.message);
+    }
+  };
+
   useEffect(() => {
     setClientLoaded(true);
-  }, [setClientLoaded]);
+  }, [setClientLoaded, loadInQuery]);
 
-  const merchant = org
-    ? org
-    : examples.senders[senderKey] || examples.senders.generic;
   const defaultData = examples.receipts[receipt];
+  const defaultMerchant = org
+    ? {
+        id: "org_example",
+        name: org.name,
+        brand_color: org.brand_color || "#000000",
+        logo: org.logo,
+      }
+    : examples.senders[senderKey] || examples.senders.generic;
 
-  const receiver = examples.receivers[receiverKey];
+  const receiver: Receiver = examples.receivers[receiverKey];
 
   if (!defaultData) {
-    // eslint-disable-next-line no-console
     console.error("Invalid receipt:", receipt);
   }
 
   const startingReceipt = JSON.stringify(defaultData, undefined, 2);
-  const startingMerchant = JSON.stringify(
-    org
-      ? {
-          // id: org.id,
-          name: org.name,
-          brand_color: org.brand_color || "#000000",
-          logo: org.logo,
-        }
-      : merchant,
-    undefined,
-    2
-  );
+  const startingMerchant = JSON.stringify(defaultMerchant, undefined, 2);
 
   const [receiptData, setReceiptData] = useState<string>(startingReceipt);
   const [merchantData, setMerchantData] = useState<string>(startingMerchant);
+  const [editSender, setEditSender] = useState<boolean>(false);
 
   const { validate } = useValidator();
 
   const { systemTheme, theme } = useTheme();
-  let simplifiedTheme = theme;
+  var simplifiedTheme = theme;
   if (simplifiedTheme == "system") {
     simplifiedTheme = systemTheme;
   }
 
   let parsedReceipt: Receipt | null = null;
-  let _previousReceiptData: Receipt | null = null;
+  let previousReceiptData: Receipt | null = null;
   let parsedMerchant: Merchant | null = null;
   let breakingError = runtimeError;
   try {
     parsedReceipt = JSON.parse(receiptData);
     if (previousReceipt) {
-      _previousReceiptData = examples.receipts[previousReceipt];
+      previousReceiptData = examples.receipts[previousReceipt] as Receipt; // TODO (temporary)
     }
     parsedMerchant = JSON.parse(merchantData);
   } catch (e: any) {
@@ -113,6 +154,28 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
   if (!clientLoaded) {
     return null;
   }
+
+  const onChange = (receiptJson: string) => {
+    setRuntimeError(null);
+    try {
+      validate(JSON.parse(receiptJson)).then((valid) => {
+        if (!valid.valid) {
+          setSchemaErrors(valid.errors);
+        } else {
+          setSchemaErrors([]);
+        }
+      });
+      setReceiptData(receiptJson);
+      runSemval(receiptJson);
+    } catch (e: any) {
+      setRuntimeError(e.message);
+    }
+  };
+
+  const onChangeMerchant = (merchantJson: string) => {
+    setRuntimeError(null);
+    setMerchantData(merchantJson);
+  };
 
   const advisoryErrors = breakingError ? [breakingError] : [];
   if (schemaErrors && schemaErrors.length)
@@ -129,39 +192,8 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
     ? []
     : semvalWarnings.map(
         (w) => `${w.description}
-  ${w.details ? " (" + w.details + ")" : null}`
+  ${w.details ? " (" + w.details + ")" : ""}`
       );
-
-  const onChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
-    setRuntimeError(null);
-    try {
-      validate(JSON.parse(e.currentTarget.value)).then((valid) => {
-        if (!valid.valid) {
-          setSchemaErrors(valid.errors);
-        } else {
-          setSchemaErrors([]);
-        }
-      });
-      setReceiptData(e.currentTarget.value);
-      fetch("/api/semval", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: e.currentTarget.value,
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          setSemvalWarnings(data.violations);
-        });
-    } catch (e: any) {
-      setRuntimeError(e.message);
-    }
-  };
-  const onChangeMerchant: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
-    setRuntimeError(null);
-    setMerchantData(e.currentTarget.value);
-  };
 
   return (
     <div className={styles.styled}>
@@ -173,18 +205,38 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
 
         {viewCode && (
           <div className={styles.editor}>
-            <details>
-              <summary className={styles.sender}>From: {merchant.name}</summary>
-              <textarea
-                defaultValue={merchantData}
-                onChange={onChangeMerchant}
-                className={styles.codeTextarea}
+            <div
+              className={styles.sender}
+              onClick={() => {
+                setEditSender(!editSender);
+              }}
+            >
+              <span className={styles.from}>From:</span>
+              <span className={styles.senderName}>{parsedMerchant?.name}</span>
+              <ChevronDown
+                size={20}
+                className={`${styles.chevron} ${
+                  editSender ? styles.chevronOpen : ""
+                }`}
               />
-            </details>
-            <textarea
-              defaultValue={receiptData}
+            </div>
+            {editSender && (
+              <CodeMirror
+                value={merchantData}
+                onChange={onChangeMerchant}
+                className={styles.codeMerchant}
+                style={{ fontSize: ".875rem" }}
+                theme={simplifiedTheme === "dark" ? oneDark : "light"}
+                extensions={[json()]}
+              />
+            )}
+            <CodeMirror
+              className={styles.codeBody}
+              value={receiptData}
+              style={{ fontSize: ".875rem" }}
+              extensions={[json(), onBlurFormat(setReceiptData)]}
+              theme={simplifiedTheme === "dark" ? oneDark : "light"}
               onChange={onChange}
-              className={styles.codeTextarea}
             />
           </div>
         )}
@@ -256,7 +308,9 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
             )}
           </div>
 
-          <StudioErrorBoundary bubbleErrorMessage={(e) => setRuntimeError(e)}>
+          <StudioErrorBoundary
+            bubbleErrorMessage={(e: string) => setRuntimeError(e)}
+          >
             {!!parsedReceipt && !!parsedMerchant && (
               <div
                 className={
@@ -329,9 +383,9 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
                               alt={
                                 parsedReceipt.header.third_party &&
                                 parsedReceipt.header.third_party.make_primary &&
-                                parsedReceipt.header.third_party.merchant?.name
+                                !!parsedReceipt.header.third_party.merchant
                                   ? parsedReceipt.header.third_party.merchant
-                                      ?.name
+                                      .name
                                   : parsedMerchant.name
                               }
                             />
@@ -350,11 +404,7 @@ const InteractiveStudio = ({ org }: { org?: Org }) => {
                             </div>
                           )}
                           <div className={styles.dateText}>
-                            {formatDateTime(parsedReceipt.header.invoiced_at, {
-                              iataTimezone:
-                                parsedReceipt.header.location?.address?.tz ||
-                                null,
-                            })}
+                            {formatDateTime(parsedReceipt.header.invoiced_at)}
                           </div>
                         </div>
                         <div className={styles.amountText}>
@@ -420,8 +470,4 @@ const skeletonTx = (
   </div>
 );
 
-export const Studio = () => (
-  <Suspense>
-    <InteractiveStudio />
-  </Suspense>
-);
+export default InteractiveStudio;
