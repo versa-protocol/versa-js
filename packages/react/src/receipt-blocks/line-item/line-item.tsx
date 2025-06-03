@@ -53,7 +53,11 @@ export function LineItem({
                 <>
                   {li.adjustments.map((a: Adjustment, index: number) => (
                     <div key={index} className="secondaryText">
-                      {a.name ? a.name : capitalize(a.adjustment_type)}{" "}
+                      {a.name
+                        ? a.name
+                        : capitalize(
+                            a.adjustment_type.replaceAll("_", " ")
+                          )}{" "}
                       {a.rate ? (
                         <>({a.rate * 100}%)</>
                       ) : (

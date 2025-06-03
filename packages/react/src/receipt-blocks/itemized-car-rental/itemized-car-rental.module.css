@@ -16,15 +16,18 @@
 }
 
 .carLabel {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
   background-color: var(--background-block);
   border: 1px solid var(--light-stroke);
   padding: 0.75rem 1rem;
   border-top-left-radius: 0.75rem;
   border-top-right-radius: 0.75rem;
+}
+
+.carLabelRelative {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .rentalReturn {
@@ -37,12 +40,16 @@
   border-bottom-right-radius: 0.75rem;
 }
 
+.keyValueWrap {
+  padding-bottom: 0.25rem;
+  padding-top: 0.25rem;
+}
 .keyValue {
   display: flex;
-  padding: 1rem;
+  margin: 0.5rem 1rem;
 }
 
-.key {
+.keyValue .key {
   flex-grow: 1;
 }
 
