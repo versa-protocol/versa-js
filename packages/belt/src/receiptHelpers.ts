@@ -29,18 +29,15 @@ import { Optional } from ".";
 export function formatPassengerName(passenger: Optional<Person>): string {
   if (!passenger) return "";
   if (typeof passenger === "string") return passenger;
-
-  // Handle Person object - prefer preferred_first_name
   const parts = [];
-  if (passenger.preferred_first_name) {
-    parts.push(passenger.preferred_first_name);
-  } else if (passenger.first_name) {
+  if (passenger.first_name) {
     parts.push(passenger.first_name);
+  } else if (passenger.preferred_first_name) {
+    parts.push(passenger.preferred_first_name);
   }
   if (passenger.last_name) {
     parts.push(passenger.last_name);
   }
-
   return parts.join(" ") || passenger.email || "";
 }
 

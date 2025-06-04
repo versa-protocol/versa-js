@@ -15,6 +15,7 @@ export function Parties({
           <div className={styles.partyHeader}>Bill To</div>
           {customer.name && <div>{customer.name}</div>}
           {customer.email && <div>{customer.email}</div>}
+          {customer.website && <div>{customer.website}</div>}
           {customer.phone && <div>{customer.phone}</div>}
           {customer?.address && (
             <>
