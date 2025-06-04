@@ -1,5 +1,13 @@
 # @versaprotocol/pdfgen
 
+## 1.12.3
+
+### Patch Changes
+
+- fix display bugs with 2.0.0 receipts
+- Updated dependencies
+  - @versaprotocol/belt@1.12.2
+
 ## 1.12.2
 
 ### Patch Changes

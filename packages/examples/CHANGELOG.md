@@ -1,5 +1,11 @@
 # @versaprotocol/examples
 
+## 1.12.1
+
+### Patch Changes
+
+- fix display bugs with 2.0.0 receipts
+
 ## 1.12.0
 
 ### Minor Changes
