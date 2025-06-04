@@ -166,6 +166,9 @@ function getBillTo(header: Receipt["header"]) {
     if (header.customer.email) {
       billTo.push([header.customer.email]);
     }
+    if (header.customer.website) {
+      billTo.push([header.customer.website]);
+    }
     if (header.customer.phone) {
       billTo.push([header.customer.phone]);
     }

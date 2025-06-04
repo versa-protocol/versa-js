@@ -957,7 +957,8 @@ function aggregateGenericItemRows(
             if (a.name) {
               adjustmentString += a.name + " applied";
             } else {
-              adjustmentString += capitalize(a.adjustment_type) + " applied";
+              adjustmentString +=
+                capitalize(a.adjustment_type.replaceAll("_", " ")) + " applied";
             }
             if (a.rate) {
               adjustmentString += " (" + a.rate * 100 + "%)";

@@ -100,10 +100,22 @@ export function TypeSubHeader(
           receipt.itemization.car_rental.driver_name,
         ]);
       }
-      if (receipt.itemization.car_rental.vehicle) {
+      if (receipt.itemization.car_rental.vehicle?.description) {
         typeSubHeaderData.push([
           "Vehicle:",
           receipt.itemization.car_rental.vehicle.description,
+        ]);
+      }
+      if (receipt.itemization.car_rental.vehicle?.license_plate_number) {
+        typeSubHeaderData.push([
+          "License Plate Number:",
+          receipt.itemization.car_rental.vehicle.license_plate_number,
+        ]);
+      }
+      if (receipt.itemization.car_rental.vehicle?.vehicle_class) {
+        typeSubHeaderData.push([
+          "License Plate Number:",
+          receipt.itemization.car_rental.vehicle.vehicle_class,
         ]);
       }
       if (receipt.itemization.car_rental.odometer_reading_in) {

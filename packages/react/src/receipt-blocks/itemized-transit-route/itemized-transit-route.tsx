@@ -191,12 +191,14 @@ export function ItemizedTransitRoute({
                           )}
                         </div>
                       </div>
-                      <div className={styles.row}>
-                        <div className={styles.key}>Passenger</div>
-                        <div className={styles.value}>
-                          {formatPassengerName(item.passengers[0].passenger)}
+                      {item.passengers[0].passenger && (
+                        <div className={styles.row}>
+                          <div className={styles.key}>Passenger</div>
+                          <div className={styles.value}>
+                            {formatPassengerName(item.passengers[0].passenger)}
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </>
                   )}
                 </div>
