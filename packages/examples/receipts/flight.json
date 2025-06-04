@@ -9,7 +9,11 @@
     "invoiced_at": 1713295619,
     "mcc": null,
     "third_party": null,
-    "customer": null,
+    "customer": {
+      "name": "Susy Smith",
+      "website": "example.com",
+      "metadata": []
+    },
     "location": {
       "name": null,
       "address": {
