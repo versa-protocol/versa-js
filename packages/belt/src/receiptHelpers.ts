@@ -234,7 +234,9 @@ export function aggregateAdjustments(itemization: Itemization) {
           adjustments.push({
             amount: adj.amount,
             adjustment_type: adj.adjustment_type,
-            name: `${adj.name} (${ticket.passenger} / ${segment.departure_airport_code}-${segment.arrival_airport_code})`,
+            name: `${adjustmentDescription(adj)} (${ticket.passenger} / ${
+              segment.departure_airport_code
+            }-${segment.arrival_airport_code})`,
             rate: adj.rate,
           });
         });
@@ -1141,4 +1143,11 @@ export function netAdjustments(adjustments: Adjustment[] | undefined): number {
     });
   }
   return net;
+}
+
+function adjustmentDescription(adj: Adjustment) {
+  if (adj.name) {
+    return adj.name;
+  }
+  return capitalize(adj.adjustment_type.replaceAll("_", " "));
 }
