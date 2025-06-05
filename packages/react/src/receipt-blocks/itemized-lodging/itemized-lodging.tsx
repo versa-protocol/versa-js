@@ -1,4 +1,4 @@
-import { formatDateTime } from "@versaprotocol/belt";
+import { formatDateTime, formatPhoneNumber } from "@versaprotocol/belt";
 import styles from "./itemized-lodging.module.css";
 import { VersaContext } from "../../context";
 import { Header, Lodging } from "@versaprotocol/schema";
@@ -71,7 +71,9 @@ export function ItemizedLodging({
                   {lodging.location?.address?.region}{" "}
                   {lodging.location?.address?.postal_code}
                 </div>
-                <div>{lodging.location?.phone}</div>
+                {lodging.location?.phone && (
+                  <div>{formatPhoneNumber(lodging.location.phone)}</div>
+                )}
                 {lodging.room && <div>Room number: {lodging.room}</div>}
                 <div className={styles.dateRange}>
                   <div className={styles.start}>

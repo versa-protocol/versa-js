@@ -24,6 +24,7 @@ import {
 } from "./format";
 import { airports } from "./airports";
 import { Optional } from ".";
+import { parsePhoneNumberFromString } from "libphonenumber-js";
 
 // Helper to get a string identifier for a passenger (supports both string and Person types)
 export function formatPassengerName(passenger: Optional<Person>): string {
@@ -39,6 +40,16 @@ export function formatPassengerName(passenger: Optional<Person>): string {
     parts.push(passenger.last_name);
   }
   return parts.join(" ") || passenger.email || "";
+}
+
+export function formatPhoneNumber(phone_number: string) {
+  const parsedPhoneNumber = parsePhoneNumberFromString(phone_number);
+  if (!parsedPhoneNumber || !parsedPhoneNumber.isValid()) {
+    return phone_number;
+  }
+  return parsedPhoneNumber.country === "US"
+    ? parsedPhoneNumber.formatNational()
+    : parsedPhoneNumber.formatInternational();
 }
 
 // Helper to safely get passenger metadata (handles both string and Person types)

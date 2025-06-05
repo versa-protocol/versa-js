@@ -1,3 +1,4 @@
+import { formatPhoneNumber } from "@versaprotocol/belt";
 import styles from "./parties.module.css";
 import { Org, Receipt } from "@versaprotocol/schema";
 
@@ -16,7 +17,7 @@ export function Parties({
           {customer.name && <div>{customer.name}</div>}
           {customer.email && <div>{customer.email}</div>}
           {customer.website && <div>{customer.website}</div>}
-          {customer.phone && <div>{customer.phone}</div>}
+          {customer.phone && <div>{formatPhoneNumber(customer.phone)}</div>}
           {customer?.address && (
             <>
               {customer.address.street_address && (

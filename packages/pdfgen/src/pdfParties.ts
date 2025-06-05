@@ -1,7 +1,7 @@
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 import { Org, Receipt, Address } from "@versaprotocol/schema";
-import { Optional } from "@versaprotocol/belt";
+import { formatPhoneNumber, Optional } from "@versaprotocol/belt";
 
 export function Parties(
   doc: jsPDF,
@@ -170,7 +170,7 @@ function getBillTo(header: Receipt["header"]) {
       billTo.push([header.customer.website]);
     }
     if (header.customer.phone) {
-      billTo.push([header.customer.phone]);
+      billTo.push([formatPhoneNumber(header.customer.phone)]);
     }
     if (header.customer.metadata.length > 0) {
       header.customer.metadata.forEach((m) => {

@@ -1,6 +1,7 @@
 import styles from "./local-business.module.css";
 import { Place } from "@versaprotocol/schema";
 import { VersaContext } from "../../context";
+import { formatPhoneNumber } from "@versaprotocol/belt";
 
 export function LocalBusiness({
   location,
@@ -47,7 +48,9 @@ export function LocalBusiness({
                       {location.address.postal_code}
                     </div>
                   )}
-                  <div>{location.phone}</div>
+                  {location.phone && (
+                    <div>{formatPhoneNumber(location.phone)}</div>
+                  )}
                   {/* <div>
               <span
                 style={{
