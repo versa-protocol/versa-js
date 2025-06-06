@@ -1,0 +1,16 @@
+{
+  "extends": "tsconfig/base.json",
+  "compilerOptions": {
+    "outDir": "./avaDist/",
+    "noImplicitAny": true,
+    "resolveJsonModule": true,
+    "module": "commonjs",
+    "target": "es2022",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
+  },
+  "include": ["../src/**/*", "./**/*"],
+  "exclude": ["dist", "build", "node_modules"]
+}
