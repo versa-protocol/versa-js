@@ -1,6 +1,4 @@
 import test from "ava";
-// import request from 'supertest';
-// import {app, server} from '../src/index';
 import { receipts } from "@versaprotocol/examples";
 import { Org } from "@versaprotocol/schema";
 import { pdfToText } from "./helpers";

@@ -1,7 +1,6 @@
-// Dynamic imports for ESM module
-type PDFPageProxy = any;
-type TextItem = any;
-type TextMarkedContent = any;
+import { getDocument } from "pdfjs-dist";
+import { PDFPageProxy } from "pdfjs-dist";
+import { TextItem, TextMarkedContent } from "pdfjs-dist/types/src/display/api";
 
 /**
  * Given a PDF, extract and return its text content.
@@ -39,10 +38,6 @@ export async function pdfToPages(
   options?: { nodeSep?: string }
 ): Promise<PageType[]> {
   pdf = normalizeBuffer(pdf);
-
-  // Dynamic import for ESM module - use legacy build for Node.js
-  const { getDocument } = await import("pdfjs-dist/legacy/build/pdf.mjs");
-
   const document = await getDocument({
     data: pdf,
     useWorkerFetch: false,
