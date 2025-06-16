@@ -43,9 +43,8 @@ export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
       });
     });
   }
-  const aggregatedAdjustments: Adjustment[] | null = aggregateAdjustments(
-    receipt.itemization
-  );
+  const aggregatedAdjustments: Adjustment[] | null =
+    aggregateAdjustments(receipt.itemization) || null;
   if (aggregatedAdjustments) {
     aggregatedAdjustments.forEach((a) => {
       let description = "";

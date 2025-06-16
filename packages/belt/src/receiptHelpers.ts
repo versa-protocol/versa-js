@@ -90,7 +90,7 @@ export function aggregateTaxes(itemization: Itemization): Tax[] {
   }
   if (itemization.flight) {
     for (const ticket of itemization.flight.tickets) {
-      if (ticket.taxes?.length > 0) {
+      if (ticket.taxes && ticket.taxes.length > 0) {
         for (const tax of ticket.taxes) {
           if (aggregatedTaxes[tax.name + tax.rate]) {
             aggregatedTaxes[tax.name + tax.rate].amount += tax.amount;
@@ -233,12 +233,14 @@ export function sortItemsByDate(items: Item[]) {
   return sortedItems;
 }
 
-export function aggregateAdjustments(itemization: Itemization) {
+export function aggregateAdjustments(
+  itemization: Itemization
+): Adjustment[] | null {
   if (itemization.transit_route) {
-    return itemization.transit_route.invoice_level_adjustments;
+    return itemization.transit_route.invoice_level_adjustments || null;
   }
   if (itemization.subscription) {
-    return itemization.subscription.invoice_level_adjustments;
+    return itemization.subscription.invoice_level_adjustments || null;
   }
   if (itemization.flight) {
     const adjustments = [
@@ -261,16 +263,16 @@ export function aggregateAdjustments(itemization: Itemization) {
     return adjustments;
   }
   if (itemization.car_rental) {
-    return itemization.car_rental.invoice_level_adjustments;
+    return itemization.car_rental.invoice_level_adjustments || null;
   }
   if (itemization.lodging) {
-    return itemization.lodging.invoice_level_adjustments;
+    return itemization.lodging.invoice_level_adjustments || null;
   }
   if (itemization.ecommerce) {
-    return itemization.ecommerce.invoice_level_adjustments;
+    return itemization.ecommerce.invoice_level_adjustments || null;
   }
   if (itemization.general) {
-    return itemization.general.invoice_level_adjustments;
+    return itemization.general.invoice_level_adjustments || null;
   }
   return null;
 }
@@ -728,7 +730,7 @@ export function aggregateItems(
               : "",
             styles: { halign: "right" },
           };
-        } else if (key == "taxes") {
+        } else if (key == "taxes" && i.taxes) {
           let combinedTaxRate = 0;
           i.taxes.forEach((t) => {
             if (t.rate) {
