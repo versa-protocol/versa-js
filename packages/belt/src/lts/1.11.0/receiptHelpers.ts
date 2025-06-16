@@ -210,7 +210,7 @@ export function aggregateAdjustments(itemization: Itemization) {
     ];
     itemization.flight.tickets.forEach((ticket) => {
       ticket.segments.forEach((segment) => {
-        segment.adjustments.forEach((adj) => {
+        segment.adjustments?.forEach((adj) => {
           adjustments.push({
             amount: adj.amount,
             adjustment_type: adj.adjustment_type,
