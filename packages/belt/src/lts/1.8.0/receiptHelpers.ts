@@ -121,7 +121,10 @@ export function aggregateTaxes(itemization: Itemization): Tax[] {
 
 export function aggregateEcommerceItems(ecommerce: Ecommerce) {
   const aggregatedEcommerceItems: Item[] = [];
-  if (ecommerce.invoice_level_line_items.length > 0) {
+  if (
+    ecommerce.invoice_level_line_items &&
+    ecommerce.invoice_level_line_items.length > 0
+  ) {
     for (const item of ecommerce.invoice_level_line_items) {
       aggregatedEcommerceItems.push(item);
     }

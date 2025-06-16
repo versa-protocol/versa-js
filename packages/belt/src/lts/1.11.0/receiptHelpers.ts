@@ -139,7 +139,10 @@ export function aggregateTaxes(itemization: Itemization): Tax[] {
 
 export function aggregateEcommerceItems(ecommerce: Ecommerce) {
   const aggregatedEcommerceItems: Item[] = [];
-  if (ecommerce.invoice_level_line_items.length > 0) {
+  if (
+    ecommerce.invoice_level_line_items &&
+    ecommerce.invoice_level_line_items.length > 0
+  ) {
     for (const item of ecommerce.invoice_level_line_items) {
       aggregatedEcommerceItems.push(item);
     }
@@ -202,7 +205,9 @@ export function aggregateAdjustments(itemization: Itemization) {
     return itemization.subscription.invoice_level_adjustments;
   }
   if (itemization.flight) {
-    const adjustments = [...itemization.flight.invoice_level_adjustments];
+    const adjustments = [
+      ...(itemization.flight.invoice_level_adjustments || []),
+    ];
     itemization.flight.tickets.forEach((ticket) => {
       ticket.segments.forEach((segment) => {
         segment.adjustments.forEach((adj) => {

@@ -174,15 +174,19 @@ describe("Flight Receipt - 2.0 Schema", () => {
       const segments = flightReceipt.itemization.flight?.tickets[0].segments;
 
       segments?.forEach((segment) => {
-        expect(segment.taxes).toBeInstanceOf(Array);
-        expect(segment.taxes.length).toBeGreaterThan(0);
+        if (segment.taxes) {
+          expect(segment.taxes).toBeInstanceOf(Array);
+          expect(segment.taxes.length).toBeGreaterThan(0);
 
-        // Each tax should have required fields
-        segment.taxes.forEach((tax) => {
-          expect(tax.amount).toBeGreaterThan(0);
-          expect(tax.name).toBeDefined();
-          expect(typeof tax.rate === "number" || tax.rate === null).toBe(true);
-        });
+          // Each tax should have required fields
+          segment.taxes.forEach((tax) => {
+            expect(tax.amount).toBeGreaterThan(0);
+            expect(tax.name).toBeDefined();
+            expect(typeof tax.rate === "number" || tax.rate === null).toBe(
+              true
+            );
+          });
+        }
       });
     });
   });

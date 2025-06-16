@@ -15,7 +15,7 @@ export function Totals({
   adjustments,
   colors,
 }: {
-  taxes: Tax[];
+  taxes: Tax[] | null;
   header: Receipt["header"];
   adjustments: Adjustment[] | null;
   colors: Colors;
@@ -32,7 +32,7 @@ export function Totals({
         </div>
         {taxes && (
           <>
-            {taxes.map((tft: Tax, index: number) => (
+            {taxes?.map((tft: Tax, index: number) => (
               <div key={index} className={styles.row}>
                 <div className={styles.blockLabel}>
                   <div>
@@ -47,7 +47,7 @@ export function Totals({
                 </div>
               </div>
             ))}
-            {taxes.length > 5 && (
+            {taxes && taxes.length > 5 && (
               <div className={styles.row}>
                 <div
                   className={styles.blockLabel}

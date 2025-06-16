@@ -43,7 +43,7 @@ export function Parties({
               )}
             </>
           )}
-          {customer.metadata.length > 0 && (
+          {customer.metadata && customer.metadata.length > 0 && (
             <div className={styles.lineItemMetadata}>
               <>
                 {customer.metadata.map((m: any, index: number) => (

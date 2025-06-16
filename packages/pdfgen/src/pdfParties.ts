@@ -172,7 +172,7 @@ function getBillTo(header: Receipt["header"]) {
     if (header.customer.phone) {
       billTo.push([formatPhoneNumber(header.customer.phone)]);
     }
-    if (header.customer.metadata.length > 0) {
+    if (header.customer.metadata && header.customer.metadata.length > 0) {
       header.customer.metadata.forEach((m) => {
         billTo.push([m.key + ": " + m.value]);
       });
