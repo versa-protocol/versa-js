@@ -41,7 +41,7 @@
           "lon": null,
           "tz": null
         },
-        "phone": "(404) 659-6500",
+        "phone": "+14046596500",
         "url": null,
         "google_place_id": null,
         "image": null
@@ -81,7 +81,6 @@
             }
           ],
           "metadata": [],
-          "product_image": null,
           "date": "2024-07-22",
           "url": null,
           "adjustments": []
@@ -120,7 +119,6 @@
             }
           ],
           "metadata": [],
-          "product_image": null,
           "date": "2024-07-23",
           "url": null,
           "adjustments": []
@@ -159,7 +157,6 @@
             }
           ],
           "metadata": [],
-          "product_image": null,
           "date": "2024-07-24",
           "url": null,
           "adjustments": []

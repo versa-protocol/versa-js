@@ -17,7 +17,7 @@ export function ItemizedSubscription({
             <div className={styles.subscriptionNote} key={index}>
               Your subscription was renewed for your team of {s.quantity}. Your
               next bill will be on{" "}
-              {formatDateTime(s.current_period_end, {
+              {formatDateTime(s.current_period_end_at, {
                 iataTimezone: header.location?.address?.tz,
               })}
               .

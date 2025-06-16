@@ -1,5 +1,15 @@
 # @versaprotocol/react
 
+## 1.12.4
+
+### Patch Changes
+
+- Patch updates for schema version 2.0.0-rc2
+- Updated dependencies
+  - @versaprotocol/pdfgen@1.12.4
+  - @versaprotocol/schema@1.12.1
+  - @versaprotocol/belt@1.12.3
+
 ## 1.12.3
 
 ### Patch Changes

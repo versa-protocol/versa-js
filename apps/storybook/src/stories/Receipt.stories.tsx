@@ -140,3 +140,13 @@ export const Flight_1_11_0_WithPassenger: Story = {
     receipt: flight_1_11_0 as any,
   },
 };
+
+// Import the 1.11.0 flight receipt with passenger names
+import subscription_1_11_0 from "@versaprotocol/examples/receipts/1.11.0/subscription.json";
+
+export const Subscription_1_11_0: Story = {
+  args: {
+    merchant: senders.jetblue,
+    receipt: subscription_1_11_0 as any,
+  },
+};

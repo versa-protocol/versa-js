@@ -2,7 +2,7 @@ import { lts } from "@versaprotocol/schema";
 import { jsPDF } from "jspdf";
 import { Header } from "../pdfHeader";
 import { Parties } from "../pdfParties";
-import { TypeSubHeader } from "../pdfTypeSubHeader";
+import { TypeSubHeader } from "./pdfTypeSubHeader";
 import { Items } from "./pdfItems";
 import { Totals } from "../pdfTotals";
 import { Payments } from "../pdfPayments";

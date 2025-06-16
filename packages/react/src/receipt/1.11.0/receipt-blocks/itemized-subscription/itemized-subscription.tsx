@@ -7,7 +7,7 @@ export function ItemizedSubscription({
   header,
 }: {
   subscription: lts.v1_11_0.Subscription;
-  header: lts.v1_11_0.Receipt["header"];
+  header: lts.v1_11_0.Header;
 }) {
   return (
     <div className={styles.subscriptionWrap}>

@@ -107,8 +107,7 @@
             "email": "alice.johnson@example.com",
             "phone": null,
             "metadata": [{ "key": "Frequent Flyer #", "value": "BA1093" }]
-          },
-          "metadata": []
+          }
         },
         {
           "taxes": [],
@@ -185,8 +184,7 @@
             "email": "bob.johnson@example.com",
             "phone": null,
             "metadata": [{ "key": "Frequent Flyer #", "value": "BA1094" }]
-          },
-          "metadata": []
+          }
         }
       ],
       "itinerary_locator": "2233445566778",

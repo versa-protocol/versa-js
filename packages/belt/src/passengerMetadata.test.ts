@@ -31,7 +31,7 @@ describe("passenger metadata handling", () => {
     expect(organized[0].passengers[0].passenger_metadata).toEqual([]);
   });
 
-  it("should handle v2.0.0-rc1 Person passengers with metadata", () => {
+  it("should handle v2.0.0-rc2 Person passengers with metadata", () => {
     const flight = {
       tickets: [
         {

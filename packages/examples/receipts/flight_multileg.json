@@ -169,8 +169,7 @@
             "email": "alex.smith@example.com",
             "phone": null,
             "metadata": [{ "key": "Frequent Flyer #", "value": "UA3490" }]
-          },
-          "metadata": []
+          }
         },
         {
           "taxes": [],
@@ -309,8 +308,7 @@
             "email": "jamie.lee@example.com",
             "phone": null,
             "metadata": [{ "key": "Frequent Flyer #", "value": "UA3491" }]
-          },
-          "metadata": []
+          }
         }
       ],
       "itinerary_locator": "3344556677889",

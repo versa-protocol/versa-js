@@ -51,7 +51,6 @@
               "unit_cost": 178,
               "amount": 1780,
               "metadata": [{ "key": "SKU", "value": "524959" }],
-              "product_image": "https://versa.org/temp_demo_assets/homedepot/hd1.jpg",
               "taxes": [
                 {
                   "amount": 367,
@@ -66,7 +65,6 @@
               "unit_cost": 267,
               "amount": 801,
               "metadata": [{ "key": "SKU", "value": "941157" }],
-              "product_image": "https://versa.org/temp_demo_assets/homedepot/hd2.jpg",
               "taxes": [
                 {
                   "amount": 367,
@@ -81,7 +79,6 @@
               "unit_cost": 3347,
               "amount": 3347,
               "metadata": [{ "key": "SKU", "value": "165739" }],
-              "product_image": "https://versa.org/temp_demo_assets/homedepot/hd3.jpg",
               "taxes": [
                 {
                   "amount": 367,

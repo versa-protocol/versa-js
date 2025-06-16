@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.0.0",
+  "schema_version": "1.11.0",
   "header": {
     "invoice_number": "auth_1MzFN1K8F4fqH0lBmFq8CjbU",
     "currency": "usd",
@@ -37,8 +37,8 @@
           "amount": 7420,
           "interval": "month",
           "interval_count": 1,
-          "current_period_start_at": 1679609767,
-          "current_period_end_at": 1682288167,
+          "current_period_start": 1679609767,
+          "current_period_end": 1682288167,
           "quantity": 10,
           "unit_cost": 742,
           "taxes": [

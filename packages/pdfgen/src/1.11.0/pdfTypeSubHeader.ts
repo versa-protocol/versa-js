@@ -1,28 +1,11 @@
-import { Person, Receipt } from "@versaprotocol/schema";
+import { lts } from "@versaprotocol/schema";
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 import { stringifyPlace } from "@versaprotocol/belt";
 
-function personToName(person: Person, index: number): string {
-  if (!person.first_name && !person.preferred_first_name) {
-    if (!person.last_name) {
-      return person.email || `Guest ${index + 1}`;
-    }
-    return person.last_name;
-  }
-  if (!person.last_name) {
-    return (
-      person.preferred_first_name || person.first_name || `Guest ${index + 1}`
-    );
-  }
-  return `${person.preferred_first_name || person.first_name} ${
-    person.last_name
-  }`;
-}
-
 export function TypeSubHeader(
   doc: jsPDF,
-  receipt: Receipt,
+  receipt: lts.v1_11_0.Receipt,
   margin: number,
   cursor: { y: number; page: number }
 ) {
@@ -52,10 +35,7 @@ export function TypeSubHeader(
         }),
       ]);
       if (receipt.itemization.lodging.guests) {
-        typeSubHeaderData.push([
-          "Guests:",
-          receipt.itemization.lodging.guests.map(personToName).join(", "),
-        ]);
+        typeSubHeaderData.push(["Guests:", receipt.itemization.lodging.guests]);
       }
       if (receipt.itemization.lodging.room) {
         typeSubHeaderData.push([
@@ -124,18 +104,6 @@ export function TypeSubHeader(
         typeSubHeaderData.push([
           "Vehicle:",
           receipt.itemization.car_rental.vehicle.description,
-        ]);
-      }
-      if (receipt.itemization.car_rental.vehicle?.license_plate_number) {
-        typeSubHeaderData.push([
-          "License Plate Number:",
-          receipt.itemization.car_rental.vehicle.license_plate_number,
-        ]);
-      }
-      if (receipt.itemization.car_rental.vehicle?.vehicle_class) {
-        typeSubHeaderData.push([
-          "License Plate Number:",
-          receipt.itemization.car_rental.vehicle.vehicle_class,
         ]);
       }
       if (receipt.itemization.car_rental.odometer_reading_in) {

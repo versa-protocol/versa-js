@@ -1,5 +1,11 @@
 # @versaprotocol/schema
 
+## 1.12.1
+
+### Patch Changes
+
+- Patch updates for schema version 2.0.0-rc2
+
 ## 1.12.0
 
 ### Minor Changes

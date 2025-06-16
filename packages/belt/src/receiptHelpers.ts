@@ -692,10 +692,13 @@ export function aggregateItems(
         if (key == "description") {
           let descriptionString: string = "";
           descriptionString = i.description;
-          if (i.current_period_start && i.current_period_end) {
+          if (i.current_period_start_at && i.current_period_end_at) {
             descriptionString = descriptionString.concat(
               "\n",
-              formatTimeRange(i.current_period_start, i.current_period_end)
+              formatTimeRange(
+                i.current_period_start_at,
+                i.current_period_end_at
+              )
             );
           }
           row.description = { content: descriptionString };

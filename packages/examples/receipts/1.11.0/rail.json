@@ -178,8 +178,7 @@
           "adjustments": []
         }
       ],
-      "invoice_level_adjustments": [],
-      "tip": null
+      "invoice_level_adjustments": []
     },
     "subscription": null,
     "flight": null

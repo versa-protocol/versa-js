@@ -62,7 +62,7 @@ export const createReceiptDoc = async ({
     });
   }
 
-  // 2.0.0-rc1 and later use the latest implementation
+  // 2.0.0-rc2 and later use the latest implementation
   return createReceiptDocLatest({ merchant, receipt, brandColor });
 };
 

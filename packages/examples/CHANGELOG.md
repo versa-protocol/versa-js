@@ -1,5 +1,13 @@
 # @versaprotocol/examples
 
+## 1.12.2
+
+### Patch Changes
+
+- Patch updates for schema version 2.0.0-rc2
+- Updated dependencies
+  - @versaprotocol/schema@1.12.1
+
 ## 1.12.1
 
 ### Patch Changes
