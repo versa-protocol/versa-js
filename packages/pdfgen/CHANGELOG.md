@@ -1,5 +1,13 @@
 # @versaprotocol/pdfgen
 
+## 1.12.5
+
+### Patch Changes
+
+- patch versions with backwards compatible support for 2.0.0-rc3
+- Updated dependencies
+  - @versaprotocol/belt@1.12.4
+
 ## 1.12.4
 
 ### Patch Changes

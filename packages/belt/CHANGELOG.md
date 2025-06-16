@@ -1,5 +1,11 @@
 # @versaprotocol/belt
 
+## 1.12.4
+
+### Patch Changes
+
+- patch versions with backwards compatible support for 2.0.0-rc3
+
 ## 1.12.3
 
 ### Patch Changes
