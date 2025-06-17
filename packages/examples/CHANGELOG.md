@@ -1,5 +1,16 @@
 # @versaprotocol/examples
 
+## 2.0.0
+
+### Major Changes
+
+- Update for public release of 2.0.0
+
+### Patch Changes
+
+- Updated dependencies
+  - @versaprotocol/schema@2.0.0
+
 ## 1.12.3
 
 ### Patch Changes

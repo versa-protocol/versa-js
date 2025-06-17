@@ -1,5 +1,16 @@
 # @versaprotocol/belt
 
+## 1.13.0
+
+### Minor Changes
+
+- Update for public release of 2.0.0
+
+### Patch Changes
+
+- Updated dependencies
+  - @versaprotocol/schema@2.0.0
+
 ## 1.12.5
 
 ### Patch Changes
