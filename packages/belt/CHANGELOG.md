@@ -1,5 +1,11 @@
 # @versaprotocol/belt
 
+## 1.12.5
+
+### Patch Changes
+
+- fix null-handling of adjustments and taxes; update receipt example
+
 ## 1.12.4
 
 ### Patch Changes

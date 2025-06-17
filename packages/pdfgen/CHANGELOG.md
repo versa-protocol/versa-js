@@ -1,5 +1,13 @@
 # @versaprotocol/pdfgen
 
+## 1.12.6
+
+### Patch Changes
+
+- fix null-handling of adjustments and taxes; update receipt example
+- Updated dependencies
+  - @versaprotocol/belt@1.12.5
+
 ## 1.12.5
 
 ### Patch Changes

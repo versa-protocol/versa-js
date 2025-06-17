@@ -1,5 +1,11 @@
 # @versaprotocol/examples
 
+## 1.12.3
+
+### Patch Changes
+
+- fix null-handling of adjustments and taxes; update receipt example
+
 ## 1.12.2
 
 ### Patch Changes
