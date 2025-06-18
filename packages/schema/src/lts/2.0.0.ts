@@ -263,7 +263,7 @@ export interface FlightTicket {
   number?: null | string;
   record_locator?: null | string;
   passenger?: null | Person;
-  taxes?: Tax[];
+  taxes?: null | Tax[];
 }
 export interface FlightSegment {
   fare?: null | number;

@@ -252,9 +252,11 @@ export function aggregateAdjustments(
           adjustments.push({
             amount: adj.amount,
             adjustment_type: adj.adjustment_type,
-            name: `${adjustmentDescription(adj)} (${ticket.passenger} / ${
-              segment.departure_airport_code
-            }-${segment.arrival_airport_code})`,
+            name: `${adjustmentDescription(adj)} (${formatPassengerName(
+              ticket.passenger
+            )} / ${segment.departure_airport_code}-${
+              segment.arrival_airport_code
+            })`,
             rate: adj.rate,
           });
         });

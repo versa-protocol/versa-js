@@ -1,5 +1,11 @@
 # @versaprotocol/belt
 
+## 1.13.1
+
+### Patch Changes
+
+- fixed bug with adjustment passenger name
+
 ## 1.13.0
 
 ### Minor Changes
