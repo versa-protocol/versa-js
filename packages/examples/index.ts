@@ -615,8 +615,12 @@ export const receipts: Record<keyof typeof untypedReceipts, Receipt> =
 
 /** LTS */
 
-import flight_1_8_0 from "./receipts/1.8.0/flight.json";
+import flight_1_11_0 from "./receipts/1.11.0/flight.json";
+import rail_1_11_0 from "./receipts/1.11.0/rail.json";
+import subscription_1_11_0 from "./receipts/1.11.0/subscription.json";
 
-export const v1_8_0 = {
-  flight: flight_1_8_0,
+export const v1_11_0 = {
+  flight: flight_1_11_0,
+  rail: rail_1_11_0,
+  subscription: subscription_1_11_0,
 };

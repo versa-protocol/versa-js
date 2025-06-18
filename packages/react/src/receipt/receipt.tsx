@@ -42,28 +42,6 @@ export function ReceiptDisplay({
     }
   }
 
-  // if (schemaVersion === "1.5.1") {
-  //   return (
-  //     <R_1_5_1
-  //       receipt={data as unknown as lts.v1_5_1.Receipt}
-  //       schemaVersion={schemaVersion}
-  //       merchant={merchant}
-  //       theme={theme}
-  //     />
-  //   );
-  // }
-
-  // if (schemaVersion === "1.6.0") {
-  //   return (
-  //     <R_1_6_0
-  //       receipt={data as unknown as lts.v1_6_0.Receipt}
-  //       schemaVersion={schemaVersion}
-  //       merchant={merchant}
-  //       theme={theme}
-  //     />
-  //   );
-  // }
-
   // Support for 1.11.0 and earlier versions with string passenger
   if (
     schemaVersion === "1.11.0" ||
