@@ -1,5 +1,11 @@
 # @versaprotocol/examples
 
+## 2.0.1
+
+### Patch Changes
+
+- updated flight receipt to conform closer to previous itinerary
+
 ## 2.0.0
 
 ### Major Changes
