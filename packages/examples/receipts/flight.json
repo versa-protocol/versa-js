@@ -3,9 +3,9 @@
   "header": {
     "invoice_number": "1MzFN1K8F4fqH0lBmFq8CjbU",
     "currency": "usd",
-    "total": 140220,
+    "total": 140040,
     "subtotal": 121862,
-    "paid": 140220,
+    "paid": 140040,
     "invoiced_at": 1713295619,
     "mcc": null,
     "third_party": null,
@@ -373,7 +373,7 @@
   },
   "payments": [
     {
-      "amount": 140220,
+      "amount": 140040,
       "paid_at": 1713295619,
       "payment_type": "card",
       "card_payment": { "last_four": "4886", "network": "mastercard" },

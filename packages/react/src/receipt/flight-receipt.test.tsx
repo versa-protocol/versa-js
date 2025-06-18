@@ -22,8 +22,8 @@ describe("Flight Receipt - 2.0 Schema", () => {
 
     it("should display total amount", () => {
       render(<ReceiptDisplay merchant={merchant} receipt={flightReceipt} />);
-      // Total should be $1,402.20 - look for the formatted amount
-      expect(screen.getAllByText(/\$1,402\.20/)).toHaveLength(2); // Appears in header and totals
+      // Total should be $1,400.40 - look for the formatted amount
+      expect(screen.getAllByText(/\$1,400\.40/)).toHaveLength(2); // Appears in header and totals
     });
 
     it("should display currency as USD", () => {

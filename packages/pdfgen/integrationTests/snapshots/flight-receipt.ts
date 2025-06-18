@@ -119,11 +119,11 @@ US Flight Segment Tax
 $32.00
 Total in USD
  
-$1,402.20
+$1,400.40
 
 Amount Paid
  
-$1,402.20
+$1,400.40
 
 You have 24 hours from the time you first buy your ticket to make changes or cancel for a refund if you booked at least 2
 days before departure.
