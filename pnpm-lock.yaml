@@ -118,8 +118,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/schema
       '@versaprotocol/semval':
-        specifier: ^0.5.7
-        version: 0.5.7
+        specifier: ^0.6.0
+        version: 0.6.0
       next:
         specifier: ^15
         version: 15.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -257,10 +257,10 @@ importers:
         version: link:../examples
       jest:
         specifier: ^28.1.3
-        version: 28.1.3(@types/node@22.15.3)(ts-node@10.9.2(@swc/core@1.11.1(@swc/helpers@0.5.15))(@types/node@22.15.3)(typescript@5.8.3))
+        version: 28.1.3(@types/node@20.14.14)(ts-node@10.9.2(@swc/core@1.11.1(@swc/helpers@0.5.15))(@types/node@20.14.14)(typescript@5.8.3))
       ts-jest:
         specifier: ^28.0.8
-        version: 28.0.8(@babel/core@7.25.7)(@jest/types@28.1.3)(babel-jest@28.1.3(@babel/core@7.25.7))(jest@28.1.3(@types/node@22.15.3)(ts-node@10.9.2(@swc/core@1.11.1(@swc/helpers@0.5.15))(@types/node@22.15.3)(typescript@5.8.3)))(typescript@5.8.3)
+        version: 28.0.8(@babel/core@7.25.2)(@jest/types@28.1.3)(babel-jest@28.1.3(@babel/core@7.25.2))(esbuild@0.23.0)(jest@28.1.3(@types/node@20.14.14)(ts-node@10.9.2(@swc/core@1.11.1(@swc/helpers@0.5.15))(@types/node@20.14.14)(typescript@5.8.3)))(typescript@5.8.3)
       tsconfig:
         specifier: workspace:*
         version: link:../tsconfig
@@ -355,7 +355,7 @@ importers:
         version: 5.3.31
       ts-jest:
         specifier: ^28.0.8
-        version: 28.0.8(@babel/core@7.25.2)(@jest/types@28.1.3)(babel-jest@28.1.3(@babel/core@7.25.2))(esbuild@0.23.0)(jest@28.1.3(@types/node@20.14.14)(ts-node@10.9.2(@swc/core@1.11.1(@swc/helpers@0.5.15))(@types/node@20.14.14)(typescript@5.8.3)))(typescript@5.8.3)
+        version: 28.0.8(@babel/core@7.25.7)(@jest/types@28.1.3)(babel-jest@28.1.3(@babel/core@7.25.7))(jest@28.1.3(@types/node@20.14.14)(ts-node@10.9.2(@swc/core@1.11.1(@swc/helpers@0.5.15))(@types/node@20.14.14)(typescript@5.8.3)))(typescript@5.8.3)
       tsconfig:
         specifier: workspace:*
         version: link:../tsconfig
@@ -2501,85 +2501,85 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  '@versaprotocol/semval-android-arm64@0.5.7':
-    resolution: {integrity: sha512-IQJkB0SDxBoktEoy2F32OvBRrMkoiO8QypT70cKVQoAEY4R0Qi5x7f//hkaKZ8ztokJj546/G/G0CFsU4/rymg==}
+  '@versaprotocol/semval-android-arm64@0.6.0':
+    resolution: {integrity: sha512-JE266XtnHjVXP25/gW+R4LqQeMZly27QHUchVJ3u5Y3LwreP6/0w6kE0EZyTi22Rq5MoD3Z8yWc7xfMr3i5Dug==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [android]
 
-  '@versaprotocol/semval-darwin-arm64@0.5.7':
-    resolution: {integrity: sha512-xWnCmsp5TBGPvJMnI7jwbQRI6P7nqB7yG5yZfxZ9rVW0n2JAjkbCclJgnT86+26HVlBNg7mVz47dYxQpizmMrg==}
+  '@versaprotocol/semval-darwin-arm64@0.6.0':
+    resolution: {integrity: sha512-hyxBRrs6quPO4YSwDRw+8ci42Qmyq7WjXpP1wADU3lVmQKEPdV3UVMTkaKXujv4Bz+F+IKcv241Waxf3JFSoqA==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
 
-  '@versaprotocol/semval-darwin-universal@0.5.7':
-    resolution: {integrity: sha512-YGyzvlAnjLIOtnMr6k1LKlwflCZRrxL6mr63mHmcaq8W6I4TMBQIdp2vEO82sUVBTqj7lnO5JE2HuIO2GCBXxg==}
+  '@versaprotocol/semval-darwin-universal@0.6.0':
+    resolution: {integrity: sha512-0f5tjhvYYcewuDZvDHKvMKMfGvkOXDWHt80tvNGwfQv47uttYqkIfUJFq3IgVI24s8RGavGChxawKDqq3jmNQQ==}
     engines: {node: '>= 10'}
     os: [darwin]
 
-  '@versaprotocol/semval-darwin-x64@0.5.7':
-    resolution: {integrity: sha512-w56hp+M5uVP6FNLRQjFf3mgSHmpSoMxRz7+LtkM3fGeep/C6r995ktTQyyo9fu5pSPsrxabT3t6FROZoPkj6rg==}
+  '@versaprotocol/semval-darwin-x64@0.6.0':
+    resolution: {integrity: sha512-SFbftpEhFPliNFzRvgT6lX3/xvYPdO+ItHqLqE09a9bOBP8mXCtAtfrNTVoAdKiklY74l5k/69c00slLkwUg7A==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
 
-  '@versaprotocol/semval-freebsd-x64@0.5.7':
-    resolution: {integrity: sha512-vetbz9qirqyJSkvk5XA54IdaxH05imPwFQHNjhulISD2HWEtauqr5kMV4Mpg23Bh7YdGhx25jKtMCjDE43bIbA==}
+  '@versaprotocol/semval-freebsd-x64@0.6.0':
+    resolution: {integrity: sha512-xX+uk7Q/TSmVsChFYVd5uZFYqsvO0/t5KTECFtN62zwXtHtYOnIHrcQy8bHm5R5ZHapeBjUVK2DabJ+K0Qsz0w==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [freebsd]
 
-  '@versaprotocol/semval-linux-arm64-gnu@0.5.7':
-    resolution: {integrity: sha512-JP7hsP7p1dKZXJiOaoC+nQwwJTK9dWUjGYvXhwm3tLB+bKuKpmB/KkLNOipV405l9Cf8Yr0uAQL34kJ6iRXYuw==}
+  '@versaprotocol/semval-linux-arm64-gnu@0.6.0':
+    resolution: {integrity: sha512-DC624EZt+elfn3euX2nwV1PFsIAns1Z9COwztQ+bb8ZCWn9LXQbg5ypdgCQl1WMHRwJlHPsgChbvEVKzpYYUOg==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
 
-  '@versaprotocol/semval-linux-arm64-musl@0.5.7':
-    resolution: {integrity: sha512-GTWKMbnAd5uxsCOv0Uj3ZwqsegAzMD0P9xkr2kte0ejQKv5arvY17ynuH7WTjQoilo6fjHwrEmKEpIo4Un6OCA==}
+  '@versaprotocol/semval-linux-arm64-musl@0.6.0':
+    resolution: {integrity: sha512-Eh45z6i/IMJgfigmGPH06xuStGzVB4ElrM+siyBcSgMupg7DBqpxxyCKj/8Tpdv0o2+7oJCFaHA6z640oc0Dag==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
 
-  '@versaprotocol/semval-linux-riscv64-gnu@0.5.7':
-    resolution: {integrity: sha512-eSk8ComxYyCUFOnuMIf9QbkVcbZqgWuzkFZxHB/0hAtjE1mhTeHnTZUs4i9+PqgsvG2Kuc1D3wVXYXs6dlFgBA==}
+  '@versaprotocol/semval-linux-riscv64-gnu@0.6.0':
+    resolution: {integrity: sha512-OZFKa76xaVB4RvTmQ2QP6Ole/F/3UL+GTasWdZ7XdB9TtKz8hjB3SRGwPQT86qY94xfs9e15ds5taTxn6lxrLw==}
     engines: {node: '>= 10'}
     cpu: [riscv64]
     os: [linux]
 
-  '@versaprotocol/semval-linux-x64-gnu@0.5.7':
-    resolution: {integrity: sha512-xmg11GtHoBFzNpxQRNhhnyGFoFdIvFOcd05b/pA7RfCC3j+ivZPla6/jzefjSgqMxIAKAoJOxb9q6oylDtmk+Q==}
+  '@versaprotocol/semval-linux-x64-gnu@0.6.0':
+    resolution: {integrity: sha512-QBNr5LaX5oIZdH4y8QXiyQD4nRilN63mGvNWTqIA3bSmvoa1Jpe6YTxQN0ExhIlCFJIdcdvGq8LbwU2fU6InFw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
 
-  '@versaprotocol/semval-linux-x64-musl@0.5.7':
-    resolution: {integrity: sha512-ASBTL2KXMbu7lmQ4LbazsNP7ZvLFBfVgXuUIKnIx3IARXv6P2a/Yt35mxp4MzIkUXj4PuY5LOZmlNBDurD2IhQ==}
+  '@versaprotocol/semval-linux-x64-musl@0.6.0':
+    resolution: {integrity: sha512-jAbRKc/MVd9euVVYH3MaSj7as2br9GyWVk/cA9RKnngV5Snbhc6hTvvsEN49p7vtQSBYaKjbYz3r3NuoC5QmEg==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
 
-  '@versaprotocol/semval-win32-arm64-msvc@0.5.7':
-    resolution: {integrity: sha512-Uf/CTJAKAWhqKDZG0sdwVyYllR+aaqvRIqGl4acy2lZ+mVaJEbsxZ8yS+ZeUXlBILd9EeauQdXcFnb7nOctFLg==}
+  '@versaprotocol/semval-win32-arm64-msvc@0.6.0':
+    resolution: {integrity: sha512-44Swl6jc45ZdElB0UWf6RlnwM/J51QSqhede1UPgOnMeJtibRq6FNQZdvTqct9BtrUohsFb9lcTO5H+cVtl7fw==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
 
-  '@versaprotocol/semval-win32-ia32-msvc@0.5.7':
-    resolution: {integrity: sha512-ACblHcg1rInjDNwEV17ugAII+6EpnxiNoCBIRyp/kIDdRYi3OIWexhgXjglx2ndJ0pOVbG7w+yJBNj0xxXWhCQ==}
+  '@versaprotocol/semval-win32-ia32-msvc@0.6.0':
+    resolution: {integrity: sha512-GA7NTksqQmnIuxQSvVfzPVWb2uy9eE5IWc8PtnRYsjip4phjwzDtL7okXbzTIeJZxHtBJk72uXwdomhKxBiX7g==}
     engines: {node: '>= 10'}
     cpu: [ia32]
     os: [win32]
 
-  '@versaprotocol/semval-win32-x64-msvc@0.5.7':
-    resolution: {integrity: sha512-nomE/qlY7+lApMk+R6pV95lr4qMeOdaAZM3JyPjUkOPOKqree+C5c1WKg+ESlTxNJ/mI9QQWFA38ndMjE/kOLw==}
+  '@versaprotocol/semval-win32-x64-msvc@0.6.0':
+    resolution: {integrity: sha512-7ZkQcO0SqkAA8Z9BUqtIsY4x0ez6nqUSGbi+/wUMM/JQKEGB7i0/xosKjXrJW6F4535poeVgE20O/nF5ccD0lA==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
 
-  '@versaprotocol/semval@0.5.7':
-    resolution: {integrity: sha512-QJ6Jsoe2s0N7VtNi0bFVEhvLdbSGApaz+iND4i2oC9VOIFWV/BQwJMNljKN5KiYQsO84Uiqb2XWA34STHDwlbg==}
+  '@versaprotocol/semval@0.6.0':
+    resolution: {integrity: sha512-KvfcqdynyMXLhFicrL5g8Ns91BAtMbFpyOYAURnOHVK4clPTmO83SZxqYBiaP2M2O7CExCWOnY6+bf6uHTSaxQ==}
     engines: {node: '>=18.0.0', pnpm: '>=9.0.0'}
 
   '@vitest/expect@3.0.9':
@@ -8646,41 +8646,6 @@ snapshots:
       - supports-color
       - ts-node
 
-  '@jest/core@28.1.3(ts-node@10.9.2(@swc/core@1.11.1(@swc/helpers@0.5.15))(@types/node@22.15.3)(typescript@5.8.3))':
-    dependencies:
-      '@jest/console': 28.1.3
-      '@jest/reporters': 28.1.3
-      '@jest/test-result': 28.1.3
-      '@jest/transform': 28.1.3
-      '@jest/types': 28.1.3
-      '@types/node': 20.14.14
-      ansi-escapes: 4.3.2
-      chalk: 4.1.2
-      ci-info: 3.9.0
-      exit: 0.1.2
-      graceful-fs: 4.2.11
-      jest-changed-files: 28.1.3
-      jest-config: 28.1.3(@types/node@20.14.14)(ts-node@10.9.2(@swc/core@1.11.1(@swc/helpers@0.5.15))(@types/node@22.15.3)(typescript@5.8.3))
-      jest-haste-map: 28.1.3
-      jest-message-util: 28.1.3
-      jest-regex-util: 28.0.2
-      jest-resolve: 28.1.3
-      jest-resolve-dependencies: 28.1.3
-      jest-runner: 28.1.3
-      jest-runtime: 28.1.3
-      jest-snapshot: 28.1.3
-      jest-util: 28.1.3
-      jest-validate: 28.1.3
-      jest-watcher: 28.1.3
-      micromatch: 4.0.8
-      pretty-format: 28.1.3
-      rimraf: 3.0.2
-      slash: 3.0.0
-      strip-ansi: 6.0.1
-    transitivePeerDependencies:
-      - supports-color
-      - ts-node
-
   '@jest/environment@28.1.3':
     dependencies:
       '@jest/fake-timers': 28.1.3
@@ -9930,60 +9895,60 @@ snapshots:
       - rollup
       - supports-color
 
-  '@versaprotocol/semval-android-arm64@0.5.7':
+  '@versaprotocol/semval-android-arm64@0.6.0':
     optional: true
 
-  '@versaprotocol/semval-darwin-arm64@0.5.7':
+  '@versaprotocol/semval-darwin-arm64@0.6.0':
     optional: true
 
-  '@versaprotocol/semval-darwin-universal@0.5.7':
+  '@versaprotocol/semval-darwin-universal@0.6.0':
     optional: true
 
-  '@versaprotocol/semval-darwin-x64@0.5.7':
+  '@versaprotocol/semval-darwin-x64@0.6.0':
     optional: true
 
-  '@versaprotocol/semval-freebsd-x64@0.5.7':
+  '@versaprotocol/semval-freebsd-x64@0.6.0':
     optional: true
 
-  '@versaprotocol/semval-linux-arm64-gnu@0.5.7':
+  '@versaprotocol/semval-linux-arm64-gnu@0.6.0':
     optional: true
 
-  '@versaprotocol/semval-linux-arm64-musl@0.5.7':
+  '@versaprotocol/semval-linux-arm64-musl@0.6.0':
     optional: true
 
-  '@versaprotocol/semval-linux-riscv64-gnu@0.5.7':
+  '@versaprotocol/semval-linux-riscv64-gnu@0.6.0':
     optional: true
 
-  '@versaprotocol/semval-linux-x64-gnu@0.5.7':
+  '@versaprotocol/semval-linux-x64-gnu@0.6.0':
     optional: true
 
-  '@versaprotocol/semval-linux-x64-musl@0.5.7':
+  '@versaprotocol/semval-linux-x64-musl@0.6.0':
     optional: true
 
-  '@versaprotocol/semval-win32-arm64-msvc@0.5.7':
+  '@versaprotocol/semval-win32-arm64-msvc@0.6.0':
     optional: true
 
-  '@versaprotocol/semval-win32-ia32-msvc@0.5.7':
+  '@versaprotocol/semval-win32-ia32-msvc@0.6.0':
     optional: true
 
-  '@versaprotocol/semval-win32-x64-msvc@0.5.7':
+  '@versaprotocol/semval-win32-x64-msvc@0.6.0':
     optional: true
 
-  '@versaprotocol/semval@0.5.7':
+  '@versaprotocol/semval@0.6.0':
     optionalDependencies:
-      '@versaprotocol/semval-android-arm64': 0.5.7
-      '@versaprotocol/semval-darwin-arm64': 0.5.7
-      '@versaprotocol/semval-darwin-universal': 0.5.7
-      '@versaprotocol/semval-darwin-x64': 0.5.7
-      '@versaprotocol/semval-freebsd-x64': 0.5.7
-      '@versaprotocol/semval-linux-arm64-gnu': 0.5.7
-      '@versaprotocol/semval-linux-arm64-musl': 0.5.7
-      '@versaprotocol/semval-linux-riscv64-gnu': 0.5.7
-      '@versaprotocol/semval-linux-x64-gnu': 0.5.7
-      '@versaprotocol/semval-linux-x64-musl': 0.5.7
-      '@versaprotocol/semval-win32-arm64-msvc': 0.5.7
-      '@versaprotocol/semval-win32-ia32-msvc': 0.5.7
-      '@versaprotocol/semval-win32-x64-msvc': 0.5.7
+      '@versaprotocol/semval-android-arm64': 0.6.0
+      '@versaprotocol/semval-darwin-arm64': 0.6.0
+      '@versaprotocol/semval-darwin-universal': 0.6.0
+      '@versaprotocol/semval-darwin-x64': 0.6.0
+      '@versaprotocol/semval-freebsd-x64': 0.6.0
+      '@versaprotocol/semval-linux-arm64-gnu': 0.6.0
+      '@versaprotocol/semval-linux-arm64-musl': 0.6.0
+      '@versaprotocol/semval-linux-riscv64-gnu': 0.6.0
+      '@versaprotocol/semval-linux-x64-gnu': 0.6.0
+      '@versaprotocol/semval-linux-x64-musl': 0.6.0
+      '@versaprotocol/semval-win32-arm64-msvc': 0.6.0
+      '@versaprotocol/semval-win32-ia32-msvc': 0.6.0
+      '@versaprotocol/semval-win32-x64-msvc': 0.6.0
 
   '@vitest/expect@3.0.9':
     dependencies:
@@ -12731,25 +12696,6 @@ snapshots:
       - supports-color
       - ts-node
 
-  jest-cli@28.1.3(@types/node@22.15.3)(ts-node@10.9.2(@swc/core@1.11.1(@swc/helpers@0.5.15))(@types/node@22.15.3)(typescript@5.8.3)):
-    dependencies:
-      '@jest/core': 28.1.3(ts-node@10.9.2(@swc/core@1.11.1(@swc/helpers@0.5.15))(@types/node@22.15.3)(typescript@5.8.3))
-      '@jest/test-result': 28.1.3
-      '@jest/types': 28.1.3
-      chalk: 4.1.2
-      exit: 0.1.2
-      graceful-fs: 4.2.11
-      import-local: 3.2.0
-      jest-config: 28.1.3(@types/node@22.15.3)(ts-node@10.9.2(@swc/core@1.11.1(@swc/helpers@0.5.15))(@types/node@22.15.3)(typescript@5.8.3))
-      jest-util: 28.1.3
-      jest-validate: 28.1.3
-      prompts: 2.4.2
-      yargs: 17.7.2
-    transitivePeerDependencies:
-      - '@types/node'
-      - supports-color
-      - ts-node
-
   jest-config@28.1.3(@types/node@20.14.14)(ts-node@10.9.2(@swc/core@1.11.1(@swc/helpers@0.5.15))(@types/node@20.14.14)(typescript@5.8.3)):
     dependencies:
       '@babel/core': 7.25.2
@@ -12810,36 +12756,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  jest-config@28.1.3(@types/node@20.14.14)(ts-node@10.9.2(@swc/core@1.11.1(@swc/helpers@0.5.15))(@types/node@22.15.3)(typescript@5.8.3)):
-    dependencies:
-      '@babel/core': 7.25.2
-      '@jest/test-sequencer': 28.1.3
-      '@jest/types': 28.1.3
-      babel-jest: 28.1.3(@babel/core@7.25.2)
-      chalk: 4.1.2
-      ci-info: 3.9.0
-      deepmerge: 4.3.1
-      glob: 7.2.3
-      graceful-fs: 4.2.11
-      jest-circus: 28.1.3
-      jest-environment-node: 28.1.3
-      jest-get-type: 28.0.2
-      jest-regex-util: 28.0.2
-      jest-resolve: 28.1.3
-      jest-runner: 28.1.3
-      jest-util: 28.1.3
-      jest-validate: 28.1.3
-      micromatch: 4.0.8
-      parse-json: 5.2.0
-      pretty-format: 28.1.3
-      slash: 3.0.0
-      strip-json-comments: 3.1.1
-    optionalDependencies:
-      '@types/node': 20.14.14
-      ts-node: 10.9.2(@swc/core@1.11.1(@swc/helpers@0.5.15))(@types/node@22.15.3)(typescript@5.8.3)
-    transitivePeerDependencies:
-      - supports-color
-
   jest-config@28.1.3(@types/node@22.1.0)(ts-node@10.9.2(@swc/core@1.11.1(@swc/helpers@0.5.15))(@types/node@22.1.0)(typescript@5.8.3)):
     dependencies:
       '@babel/core': 7.25.2
@@ -12867,36 +12783,6 @@ snapshots:
     optionalDependencies:
       '@types/node': 22.1.0
       ts-node: 10.9.2(@swc/core@1.11.1(@swc/helpers@0.5.15))(@types/node@22.1.0)(typescript@5.8.3)
-    transitivePeerDependencies:
-      - supports-color
-
-  jest-config@28.1.3(@types/node@22.15.3)(ts-node@10.9.2(@swc/core@1.11.1(@swc/helpers@0.5.15))(@types/node@22.15.3)(typescript@5.8.3)):
-    dependencies:
-      '@babel/core': 7.25.2
-      '@jest/test-sequencer': 28.1.3
-      '@jest/types': 28.1.3
-      babel-jest: 28.1.3(@babel/core@7.25.2)
-      chalk: 4.1.2
-      ci-info: 3.9.0
-      deepmerge: 4.3.1
-      glob: 7.2.3
-      graceful-fs: 4.2.11
-      jest-circus: 28.1.3
-      jest-environment-node: 28.1.3
-      jest-get-type: 28.0.2
-      jest-regex-util: 28.0.2
-      jest-resolve: 28.1.3
-      jest-runner: 28.1.3
-      jest-util: 28.1.3
-      jest-validate: 28.1.3
-      micromatch: 4.0.8
-      parse-json: 5.2.0
-      pretty-format: 28.1.3
-      slash: 3.0.0
-      strip-json-comments: 3.1.1
-    optionalDependencies:
-      '@types/node': 22.15.3
-      ts-node: 10.9.2(@swc/core@1.11.1(@swc/helpers@0.5.15))(@types/node@22.15.3)(typescript@5.8.3)
     transitivePeerDependencies:
       - supports-color
 
@@ -13189,17 +13075,6 @@ snapshots:
       '@jest/types': 28.1.3
       import-local: 3.2.0
       jest-cli: 28.1.3(@types/node@22.1.0)(ts-node@10.9.2(@swc/core@1.11.1(@swc/helpers@0.5.15))(@types/node@22.1.0)(typescript@5.8.3))
-    transitivePeerDependencies:
-      - '@types/node'
-      - supports-color
-      - ts-node
-
-  jest@28.1.3(@types/node@22.15.3)(ts-node@10.9.2(@swc/core@1.11.1(@swc/helpers@0.5.15))(@types/node@22.15.3)(typescript@5.8.3)):
-    dependencies:
-      '@jest/core': 28.1.3(ts-node@10.9.2(@swc/core@1.11.1(@swc/helpers@0.5.15))(@types/node@22.15.3)(typescript@5.8.3))
-      '@jest/types': 28.1.3
-      import-local: 3.2.0
-      jest-cli: 28.1.3(@types/node@22.15.3)(ts-node@10.9.2(@swc/core@1.11.1(@swc/helpers@0.5.15))(@types/node@22.15.3)(typescript@5.8.3))
     transitivePeerDependencies:
       - '@types/node'
       - supports-color
@@ -15474,23 +15349,6 @@ snapshots:
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
       jest: 28.1.3(@types/node@22.1.0)(ts-node@10.9.2(@swc/core@1.11.1(@swc/helpers@0.5.15))(@types/node@22.1.0)(typescript@5.8.3))
-      jest-util: 28.1.3
-      json5: 2.2.3
-      lodash.memoize: 4.1.2
-      make-error: 1.3.6
-      semver: 7.6.3
-      typescript: 5.8.3
-      yargs-parser: 21.1.1
-    optionalDependencies:
-      '@babel/core': 7.25.7
-      '@jest/types': 28.1.3
-      babel-jest: 28.1.3(@babel/core@7.25.7)
-
-  ts-jest@28.0.8(@babel/core@7.25.7)(@jest/types@28.1.3)(babel-jest@28.1.3(@babel/core@7.25.7))(jest@28.1.3(@types/node@22.15.3)(ts-node@10.9.2(@swc/core@1.11.1(@swc/helpers@0.5.15))(@types/node@22.15.3)(typescript@5.8.3)))(typescript@5.8.3):
-    dependencies:
-      bs-logger: 0.2.6
-      fast-json-stable-stringify: 2.1.0
-      jest: 28.1.3(@types/node@22.15.3)(ts-node@10.9.2(@swc/core@1.11.1(@swc/helpers@0.5.15))(@types/node@22.15.3)(typescript@5.8.3))
       jest-util: 28.1.3
       json5: 2.2.3
       lodash.memoize: 4.1.2

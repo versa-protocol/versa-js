@@ -102,6 +102,11 @@ export const useValidator = () => {
     setPreviousSchemaVersion(schemaVersion);
     const newValidator = await getValidator(schemaVersion);
     if (!newValidator) {
+      if (validator) {
+        // use previous validator if available
+        // (meaning it was initialized correctly with a previous schema version)
+        return validator.validate(obj);
+      }
       return {
         valid: true,
         errors: [],

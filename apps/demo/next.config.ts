@@ -12,6 +12,10 @@ const nextConfig: NextConfig = {
         source: "/GITHUB_CONTENT_URL/:path*",
         destination: "https://raw.githubusercontent.com/:path*",
       },
+      {
+        source: "/GITHUB_API_URL/:path*",
+        destination: "https://api.github.com/:path*",
+      },
     ];
   },
   images: {
