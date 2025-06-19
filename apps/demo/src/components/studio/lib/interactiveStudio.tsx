@@ -102,10 +102,6 @@ export const InteractiveStudio = ({ org }: { org?: Org }) => {
     }
   };
 
-  useEffect(() => {
-    setClientLoaded(true);
-  }, [setClientLoaded, loadInQuery]);
-
   const defaultData = examples.receipts[receipt];
   const defaultMerchant = org
     ? {
@@ -128,6 +124,19 @@ export const InteractiveStudio = ({ org }: { org?: Org }) => {
   const [receiptData, setReceiptData] = useState<string>(startingReceipt);
   const [merchantData, setMerchantData] = useState<string>(startingMerchant);
   const [editSender, setEditSender] = useState<boolean>(false);
+
+  useEffect(() => {
+    setClientLoaded(true);
+    if (receiptData) {
+      validate(JSON.parse(receiptData)).then((valid) => {
+        if (!valid.valid) {
+          setSchemaErrors(valid.errors);
+        } else {
+          setSchemaErrors([]);
+        }
+      });
+    }
+  }, [setClientLoaded, loadInQuery, receiptData]);
 
   const { validate } = useValidator();
 
@@ -158,13 +167,6 @@ export const InteractiveStudio = ({ org }: { org?: Org }) => {
   const onChange = (receiptJson: string) => {
     setRuntimeError(null);
     try {
-      validate(JSON.parse(receiptJson)).then((valid) => {
-        if (!valid.valid) {
-          setSchemaErrors(valid.errors);
-        } else {
-          setSchemaErrors([]);
-        }
-      });
       setReceiptData(receiptJson);
       runSemval(receiptJson);
     } catch (e: any) {
