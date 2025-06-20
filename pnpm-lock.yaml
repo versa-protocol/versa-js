@@ -118,8 +118,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/schema
       '@versaprotocol/semval':
-        specifier: ^0.6.0
-        version: 0.6.0
+        specifier: ^0.7.0
+        version: 0.7.0
       next:
         specifier: ^15
         version: 15.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -2501,85 +2501,85 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  '@versaprotocol/semval-android-arm64@0.6.0':
-    resolution: {integrity: sha512-JE266XtnHjVXP25/gW+R4LqQeMZly27QHUchVJ3u5Y3LwreP6/0w6kE0EZyTi22Rq5MoD3Z8yWc7xfMr3i5Dug==}
+  '@versaprotocol/semval-android-arm64@0.7.0':
+    resolution: {integrity: sha512-UTPybnQTa2d3P2yrdzI5qKYXjTn+90xn1eUpQ7EOFFm0NTD0liLGlryBRHca8HMPPSaH0d61SjNpLIO7h0MHuA==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [android]
 
-  '@versaprotocol/semval-darwin-arm64@0.6.0':
-    resolution: {integrity: sha512-hyxBRrs6quPO4YSwDRw+8ci42Qmyq7WjXpP1wADU3lVmQKEPdV3UVMTkaKXujv4Bz+F+IKcv241Waxf3JFSoqA==}
+  '@versaprotocol/semval-darwin-arm64@0.7.0':
+    resolution: {integrity: sha512-fJ+HMYwak40HErYE8RE5yx8il9ZB2hnnJz5/ko+L9lNjRIPzps94VYGZTsONzk7ZGlvgQgwVYZnDaSY6ff/nEA==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
 
-  '@versaprotocol/semval-darwin-universal@0.6.0':
-    resolution: {integrity: sha512-0f5tjhvYYcewuDZvDHKvMKMfGvkOXDWHt80tvNGwfQv47uttYqkIfUJFq3IgVI24s8RGavGChxawKDqq3jmNQQ==}
+  '@versaprotocol/semval-darwin-universal@0.7.0':
+    resolution: {integrity: sha512-D23f1EZsPUaSBPOeSce/UtctsQ5QQZxJoGQL+PzInpaKEHXJ5si5R6eiNMLPXt1yxQyOW5i7sRSD+QlTCZgnMw==}
     engines: {node: '>= 10'}
     os: [darwin]
 
-  '@versaprotocol/semval-darwin-x64@0.6.0':
-    resolution: {integrity: sha512-SFbftpEhFPliNFzRvgT6lX3/xvYPdO+ItHqLqE09a9bOBP8mXCtAtfrNTVoAdKiklY74l5k/69c00slLkwUg7A==}
+  '@versaprotocol/semval-darwin-x64@0.7.0':
+    resolution: {integrity: sha512-gw3BzatZ9sVAFgmbUqkMDb7dbUP9W3U0DYcU/JJptymzi0Yi1rKaDCqI/MaVt1u2S/X0sbm6aRx488buVyJp2A==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
 
-  '@versaprotocol/semval-freebsd-x64@0.6.0':
-    resolution: {integrity: sha512-xX+uk7Q/TSmVsChFYVd5uZFYqsvO0/t5KTECFtN62zwXtHtYOnIHrcQy8bHm5R5ZHapeBjUVK2DabJ+K0Qsz0w==}
+  '@versaprotocol/semval-freebsd-x64@0.7.0':
+    resolution: {integrity: sha512-+z3oAEnC16F2xUjsR30RVdeJ95G8LmYhKDpOX7IybiIKZ6qwBxDrB3OllGme8J9+XWTGOMOSGDmwWrBOD6PQUA==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [freebsd]
 
-  '@versaprotocol/semval-linux-arm64-gnu@0.6.0':
-    resolution: {integrity: sha512-DC624EZt+elfn3euX2nwV1PFsIAns1Z9COwztQ+bb8ZCWn9LXQbg5ypdgCQl1WMHRwJlHPsgChbvEVKzpYYUOg==}
+  '@versaprotocol/semval-linux-arm64-gnu@0.7.0':
+    resolution: {integrity: sha512-VgLGXyBpgL02nhM9RB1S8PKJwL3ZRSiC97U9RN5SwwwxGaqsjAbFI3JzP15FNw/8PQxTUkpFy9LJHmfAobsPOQ==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
 
-  '@versaprotocol/semval-linux-arm64-musl@0.6.0':
-    resolution: {integrity: sha512-Eh45z6i/IMJgfigmGPH06xuStGzVB4ElrM+siyBcSgMupg7DBqpxxyCKj/8Tpdv0o2+7oJCFaHA6z640oc0Dag==}
+  '@versaprotocol/semval-linux-arm64-musl@0.7.0':
+    resolution: {integrity: sha512-baxvgrIBjXGSp+9geXlTWp2btLQRXyrD5dnL3hYcVG9r4on1H9pKjP0qyVgQ+9c/SMkJp8s7AkpJrX5xnzjmmA==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
 
-  '@versaprotocol/semval-linux-riscv64-gnu@0.6.0':
-    resolution: {integrity: sha512-OZFKa76xaVB4RvTmQ2QP6Ole/F/3UL+GTasWdZ7XdB9TtKz8hjB3SRGwPQT86qY94xfs9e15ds5taTxn6lxrLw==}
+  '@versaprotocol/semval-linux-riscv64-gnu@0.7.0':
+    resolution: {integrity: sha512-lj0BdWnNe8QiGSa9fVkFRvdaMdMqcq3rhbR3w2DenOw/KI5pISMrHyFLTXoD+SxAla/gV6BOCLaBjrOXsz+24A==}
     engines: {node: '>= 10'}
     cpu: [riscv64]
     os: [linux]
 
-  '@versaprotocol/semval-linux-x64-gnu@0.6.0':
-    resolution: {integrity: sha512-QBNr5LaX5oIZdH4y8QXiyQD4nRilN63mGvNWTqIA3bSmvoa1Jpe6YTxQN0ExhIlCFJIdcdvGq8LbwU2fU6InFw==}
+  '@versaprotocol/semval-linux-x64-gnu@0.7.0':
+    resolution: {integrity: sha512-ioDQ6YVOM791t7i20Kh6gMV4XPAAqs9sRKuvW/jVU12cCsR1EHxU3vj29Zm2bC2DiUEFNHbHZiATBiQJqVCMIw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
 
-  '@versaprotocol/semval-linux-x64-musl@0.6.0':
-    resolution: {integrity: sha512-jAbRKc/MVd9euVVYH3MaSj7as2br9GyWVk/cA9RKnngV5Snbhc6hTvvsEN49p7vtQSBYaKjbYz3r3NuoC5QmEg==}
+  '@versaprotocol/semval-linux-x64-musl@0.7.0':
+    resolution: {integrity: sha512-0TY9d3JK9GMRe6lxWFMB2oBl2E9CC9MM5M1N+/JANFuA11zq2dX/EMcDTyhaFNl9UIsIvq9uPfGNbnsSVKQxIg==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
 
-  '@versaprotocol/semval-win32-arm64-msvc@0.6.0':
-    resolution: {integrity: sha512-44Swl6jc45ZdElB0UWf6RlnwM/J51QSqhede1UPgOnMeJtibRq6FNQZdvTqct9BtrUohsFb9lcTO5H+cVtl7fw==}
+  '@versaprotocol/semval-win32-arm64-msvc@0.7.0':
+    resolution: {integrity: sha512-YujiQktUpiiiLFojjTF+1GvwM5ZE/uRjfDhJuREPVY1mpso0B4bPY1eAZwHN+DUxH0DXW6RGiEm++bbr53Nk3A==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
 
-  '@versaprotocol/semval-win32-ia32-msvc@0.6.0':
-    resolution: {integrity: sha512-GA7NTksqQmnIuxQSvVfzPVWb2uy9eE5IWc8PtnRYsjip4phjwzDtL7okXbzTIeJZxHtBJk72uXwdomhKxBiX7g==}
+  '@versaprotocol/semval-win32-ia32-msvc@0.7.0':
+    resolution: {integrity: sha512-SLQi6cl76jtLyKKMDJvNrKP4lkcCmjapngZU5GQ2QQTYigG2xZRjtnsss0WZEX8FN66S0qAZ0ikuNt5ZfyE0hQ==}
     engines: {node: '>= 10'}
     cpu: [ia32]
     os: [win32]
 
-  '@versaprotocol/semval-win32-x64-msvc@0.6.0':
-    resolution: {integrity: sha512-7ZkQcO0SqkAA8Z9BUqtIsY4x0ez6nqUSGbi+/wUMM/JQKEGB7i0/xosKjXrJW6F4535poeVgE20O/nF5ccD0lA==}
+  '@versaprotocol/semval-win32-x64-msvc@0.7.0':
+    resolution: {integrity: sha512-vmhFg0Rmzmiomy37PYwO1BmVWWaxKvJasdA12vjBLEZ4tPiOIf+SD5I2ilnKALE00Kvir5lUxP3USyTmWj65xg==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
 
-  '@versaprotocol/semval@0.6.0':
-    resolution: {integrity: sha512-KvfcqdynyMXLhFicrL5g8Ns91BAtMbFpyOYAURnOHVK4clPTmO83SZxqYBiaP2M2O7CExCWOnY6+bf6uHTSaxQ==}
+  '@versaprotocol/semval@0.7.0':
+    resolution: {integrity: sha512-QJWzmJRumI15qBZZA5FyM5NlYGaNHIgNBWYc6BgmjiHb1YkIytpt+1i2dBQUSvZgyq3KMC2nZkRwvRsLtbFTUg==}
     engines: {node: '>=18.0.0', pnpm: '>=9.0.0'}
 
   '@vitest/expect@3.0.9':
@@ -9895,60 +9895,60 @@ snapshots:
       - rollup
       - supports-color
 
-  '@versaprotocol/semval-android-arm64@0.6.0':
+  '@versaprotocol/semval-android-arm64@0.7.0':
     optional: true
 
-  '@versaprotocol/semval-darwin-arm64@0.6.0':
+  '@versaprotocol/semval-darwin-arm64@0.7.0':
     optional: true
 
-  '@versaprotocol/semval-darwin-universal@0.6.0':
+  '@versaprotocol/semval-darwin-universal@0.7.0':
     optional: true
 
-  '@versaprotocol/semval-darwin-x64@0.6.0':
+  '@versaprotocol/semval-darwin-x64@0.7.0':
     optional: true
 
-  '@versaprotocol/semval-freebsd-x64@0.6.0':
+  '@versaprotocol/semval-freebsd-x64@0.7.0':
     optional: true
 
-  '@versaprotocol/semval-linux-arm64-gnu@0.6.0':
+  '@versaprotocol/semval-linux-arm64-gnu@0.7.0':
     optional: true
 
-  '@versaprotocol/semval-linux-arm64-musl@0.6.0':
+  '@versaprotocol/semval-linux-arm64-musl@0.7.0':
     optional: true
 
-  '@versaprotocol/semval-linux-riscv64-gnu@0.6.0':
+  '@versaprotocol/semval-linux-riscv64-gnu@0.7.0':
     optional: true
 
-  '@versaprotocol/semval-linux-x64-gnu@0.6.0':
+  '@versaprotocol/semval-linux-x64-gnu@0.7.0':
     optional: true
 
-  '@versaprotocol/semval-linux-x64-musl@0.6.0':
+  '@versaprotocol/semval-linux-x64-musl@0.7.0':
     optional: true
 
-  '@versaprotocol/semval-win32-arm64-msvc@0.6.0':
+  '@versaprotocol/semval-win32-arm64-msvc@0.7.0':
     optional: true
 
-  '@versaprotocol/semval-win32-ia32-msvc@0.6.0':
+  '@versaprotocol/semval-win32-ia32-msvc@0.7.0':
     optional: true
 
-  '@versaprotocol/semval-win32-x64-msvc@0.6.0':
+  '@versaprotocol/semval-win32-x64-msvc@0.7.0':
     optional: true
 
-  '@versaprotocol/semval@0.6.0':
+  '@versaprotocol/semval@0.7.0':
     optionalDependencies:
-      '@versaprotocol/semval-android-arm64': 0.6.0
-      '@versaprotocol/semval-darwin-arm64': 0.6.0
-      '@versaprotocol/semval-darwin-universal': 0.6.0
-      '@versaprotocol/semval-darwin-x64': 0.6.0
-      '@versaprotocol/semval-freebsd-x64': 0.6.0
-      '@versaprotocol/semval-linux-arm64-gnu': 0.6.0
-      '@versaprotocol/semval-linux-arm64-musl': 0.6.0
-      '@versaprotocol/semval-linux-riscv64-gnu': 0.6.0
-      '@versaprotocol/semval-linux-x64-gnu': 0.6.0
-      '@versaprotocol/semval-linux-x64-musl': 0.6.0
-      '@versaprotocol/semval-win32-arm64-msvc': 0.6.0
-      '@versaprotocol/semval-win32-ia32-msvc': 0.6.0
-      '@versaprotocol/semval-win32-x64-msvc': 0.6.0
+      '@versaprotocol/semval-android-arm64': 0.7.0
+      '@versaprotocol/semval-darwin-arm64': 0.7.0
+      '@versaprotocol/semval-darwin-universal': 0.7.0
+      '@versaprotocol/semval-darwin-x64': 0.7.0
+      '@versaprotocol/semval-freebsd-x64': 0.7.0
+      '@versaprotocol/semval-linux-arm64-gnu': 0.7.0
+      '@versaprotocol/semval-linux-arm64-musl': 0.7.0
+      '@versaprotocol/semval-linux-riscv64-gnu': 0.7.0
+      '@versaprotocol/semval-linux-x64-gnu': 0.7.0
+      '@versaprotocol/semval-linux-x64-musl': 0.7.0
+      '@versaprotocol/semval-win32-arm64-msvc': 0.7.0
+      '@versaprotocol/semval-win32-ia32-msvc': 0.7.0
+      '@versaprotocol/semval-win32-x64-msvc': 0.7.0
 
   '@vitest/expect@3.0.9':
     dependencies:
