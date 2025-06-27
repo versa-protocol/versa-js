@@ -29,7 +29,7 @@
 .lineItemPhoto {
   width: 4rem;
   height: 4rem;
-  margin-right: 1.5rem;
+  margin-right: 1rem;
   background-color: var(--light-stroke);
   border-radius: 0.25rem;
   overflow: hidden;
