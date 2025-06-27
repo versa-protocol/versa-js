@@ -135,24 +135,11 @@ export function ReceiptLatest({
         </>
       )}
       {data.itemization.ecommerce && (
-        <>
-          {data.itemization.ecommerce.shipments &&
-            data.itemization.ecommerce.shipments.length > 0 && (
-              <BlockWrap>
-                <ShipmentWidget
-                  data={data.itemization.ecommerce.shipments}
-                  header={data.header}
-                  brandColor={colors.brand}
-                />
-              </BlockWrap>
-            )}
-          <BlockWrap>
-            <LineItems
-              items={aggregateEcommerceItems(data.itemization.ecommerce)}
-              header={data.header}
-            />
-          </BlockWrap>
-        </>
+        <ShipmentWidget
+          data={data.itemization.ecommerce}
+          header={data.header}
+          brandColor={colors.brand}
+        />
       )}
       {data.itemization.lodging && (
         <>
