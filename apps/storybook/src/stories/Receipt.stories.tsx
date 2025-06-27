@@ -94,15 +94,6 @@ export const Rail: Story = {
 
 /** LTS Stories */
 
-import { v1_8_0 } from "@versaprotocol/examples";
-
-export const Lts1_8_0_Flight: Story = {
-  args: {
-    merchant: senders.jetblue,
-    receipt: v1_8_0.flight as any,
-  },
-};
-
 const TEST_CHECKOUT = {
   schema_version: "1.11.0",
   receipt_id: "rct_5ed073abbf3a4b49a8c03191f87d8ffe",
