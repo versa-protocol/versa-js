@@ -1,4 +1,4 @@
-import { Org, Receipt } from "@versaprotocol/schema";
+import { Org, Receipt } from "@versa/schema";
 import { ReceiptDisplay } from "./../receipt";
 import styles from "./print.module.css";
 

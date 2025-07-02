@@ -1,4 +1,4 @@
-import { Receipt } from "@versaprotocol/schema";
+import { Receipt } from "@versa/schema";
 
 export interface Registration {
   receipt_id: string;

@@ -4,7 +4,7 @@ interface DemoReceiver {
   logo_dark: string;
 }
 
-import { Org, Receipt } from "@versaprotocol/schema";
+import { Org, Receipt } from "@versa/schema";
 
 import rocketco from "./senders/rocketco.json";
 

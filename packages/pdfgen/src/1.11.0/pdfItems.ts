@@ -1,5 +1,5 @@
-import { lts_v1_11_0 } from "@versaprotocol/belt";
-import { lts } from "@versaprotocol/schema";
+import { lts_v1_11_0 } from "@versa/belt";
+import { lts } from "@versa/schema";
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 import { FlightDetails } from "./pdfFlightDetails";

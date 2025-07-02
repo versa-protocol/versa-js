@@ -1,7 +1,7 @@
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
-import { Org, Receipt, Payment } from "@versaprotocol/schema";
-import { capitalize } from "@versaprotocol/belt";
+import { Org, Receipt, Payment } from "@versa/schema";
+import { capitalize } from "@versa/belt";
 import { encode } from "./encodeImage";
 
 export async function Header(

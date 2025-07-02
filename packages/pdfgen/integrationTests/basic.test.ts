@@ -1,6 +1,6 @@
 import test from "ava";
-import { receipts } from "@versaprotocol/examples";
-import { Org } from "@versaprotocol/schema";
+import { receipts } from "@versa/examples";
+import { Org } from "@versa/schema";
 import { pdfToText } from "./helpers";
 import { flightSnapshot } from "./snapshots/flight-receipt";
 import { createReceiptDoc } from "../src";

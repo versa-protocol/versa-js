@@ -1,6 +1,6 @@
-import { formatPhoneNumber } from "@versaprotocol/belt";
+import { formatPhoneNumber } from "@versa/belt";
 import styles from "./parties.module.css";
-import { Org, Receipt } from "@versaprotocol/schema";
+import { Org, Receipt } from "@versa/schema";
 
 export function Parties({
   customer,

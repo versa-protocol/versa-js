@@ -1,6 +1,6 @@
-import { formatDateTime, formatTransactionValue } from "@versaprotocol/belt";
+import { formatDateTime, formatTransactionValue } from "@versa/belt";
 import styles from "../../../../receipt-blocks/payments/payments.module.css";
-import { lts } from "@versaprotocol/schema";
+import { lts } from "@versa/schema";
 
 export function Payments({
   payments,

@@ -1,4 +1,4 @@
-import { Receipt } from "@versaprotocol/schema";
+import { Receipt } from "@versa/schema";
 import { BrokenReceipt } from "../broken-receipt";
 import React from "react";
 

@@ -1,6 +1,6 @@
-import { formatDateTime, formatTransactionValue } from "@versaprotocol/belt";
+import { formatDateTime, formatTransactionValue } from "@versa/belt";
 import styles from "./payments.module.css";
-import { Header, Payment } from "@versaprotocol/schema";
+import { Header, Payment } from "@versa/schema";
 
 export function Payments({
   payments,

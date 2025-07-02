@@ -1,12 +1,12 @@
-# @versaprotocol/react
+# @versa/react
 
 ## 1.13.1
 
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/belt@1.13.1
-  - @versaprotocol/pdfgen@1.13.1
+  - @versa/belt@1.13.1
+  - @versa/pdfgen@1.13.1
 
 ## 1.13.0
 
@@ -17,9 +17,9 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/schema@2.0.0
-  - @versaprotocol/belt@1.13.0
-  - @versaprotocol/pdfgen@1.13.0
+  - @versa/schema@2.0.0
+  - @versa/belt@1.13.0
+  - @versa/pdfgen@1.13.0
 
 ## 1.12.6
 
@@ -27,8 +27,8 @@
 
 - fix null-handling of adjustments and taxes; update receipt example
 - Updated dependencies
-  - @versaprotocol/belt@1.12.5
-  - @versaprotocol/pdfgen@1.12.6
+  - @versa/belt@1.12.5
+  - @versa/pdfgen@1.12.6
 
 ## 1.12.5
 
@@ -36,8 +36,8 @@
 
 - patch versions with backwards compatible support for 2.0.0-rc3
 - Updated dependencies
-  - @versaprotocol/belt@1.12.4
-  - @versaprotocol/pdfgen@1.12.5
+  - @versa/belt@1.12.4
+  - @versa/pdfgen@1.12.5
 
 ## 1.12.4
 
@@ -45,9 +45,9 @@
 
 - Patch updates for schema version 2.0.0-rc2
 - Updated dependencies
-  - @versaprotocol/pdfgen@1.12.4
-  - @versaprotocol/schema@1.12.1
-  - @versaprotocol/belt@1.12.3
+  - @versa/pdfgen@1.12.4
+  - @versa/schema@1.12.1
+  - @versa/belt@1.12.3
 
 ## 1.12.3
 
@@ -55,15 +55,15 @@
 
 - fix display bugs with 2.0.0 receipts
 - Updated dependencies
-  - @versaprotocol/belt@1.12.2
-  - @versaprotocol/pdfgen@1.12.3
+  - @versa/belt@1.12.2
+  - @versa/pdfgen@1.12.3
 
 ## 1.12.2
 
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/pdfgen@1.12.2
+  - @versa/pdfgen@1.12.2
 
 ## 1.12.1
 
@@ -71,8 +71,8 @@
 
 - Bugfix: correctly organize passengers including metadata
 - Updated dependencies
-  - @versaprotocol/belt@1.12.1
-  - @versaprotocol/pdfgen@1.12.1
+  - @versa/belt@1.12.1
+  - @versa/pdfgen@1.12.1
 
 ## 1.12.0
 
@@ -83,9 +83,9 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/belt@1.12.0
-  - @versaprotocol/pdfgen@1.12.0
-  - @versaprotocol/schema@1.12.0
+  - @versa/belt@1.12.0
+  - @versa/pdfgen@1.12.0
+  - @versa/schema@1.12.0
 
 ## 1.11.13
 
@@ -104,7 +104,7 @@
 ### Patch Changes
 
 - Generalize advisory to expect strings, correct totals in our default flight json example
-  - @versaprotocol/belt@1.11.1
+  - @versa/belt@1.11.1
 
 ## 1.11.10
 
@@ -123,7 +123,7 @@
 ### Patch Changes
 
 - adding components for semantic validation; updated examples with v1 semval standards
-  - @versaprotocol/belt@1.11.1
+  - @versa/belt@1.11.1
 
 ## 1.11.7
 
@@ -137,15 +137,15 @@
 
 - More reliable timezone support across pdf and react rendering
 - Updated dependencies
-  - @versaprotocol/belt@1.11.1
-  - @versaprotocol/pdfgen@1.11.2
+  - @versa/belt@1.11.1
+  - @versa/pdfgen@1.11.2
 
 ## 1.11.5
 
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/pdfgen@1.11.1
+  - @versa/pdfgen@1.11.1
 
 ## 1.11.4
 
@@ -158,8 +158,8 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/belt@1.11.0
-  - @versaprotocol/pdfgen@1.11.0
+  - @versa/belt@1.11.0
+  - @versa/pdfgen@1.11.0
 
 ## 1.11.2
 
@@ -167,9 +167,9 @@
 
 - Add support for schema version 1.11.0; warn instead of break on newer schema versions
 - Updated dependencies
-  - @versaprotocol/schema@1.11.0
-  - @versaprotocol/belt@1.10.1
-  - @versaprotocol/pdfgen@1.10.1
+  - @versa/schema@1.11.0
+  - @versa/belt@1.10.1
+  - @versa/pdfgen@1.10.1
 
 ## 1.11.1
 
@@ -186,9 +186,9 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/pdfgen@1.10.0
-  - @versaprotocol/schema@1.10.0
-  - @versaprotocol/belt@1.10.0
+  - @versa/pdfgen@1.10.0
+  - @versa/schema@1.10.0
+  - @versa/belt@1.10.0
 
 ## 1.10.0
 
@@ -237,9 +237,9 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/schema@1.9.0
-  - @versaprotocol/belt@1.9.0
-  - @versaprotocol/pdfgen@1.9.0
+  - @versa/schema@1.9.0
+  - @versa/belt@1.9.0
+  - @versa/pdfgen@1.9.0
 
 ## 1.8.7
 
@@ -253,7 +253,7 @@
 
 - Patch bug where pdf generation short circuits on an image fetch error, e.g. CSP violation
 - Updated dependencies
-  - @versaprotocol/pdfgen@1.8.9
+  - @versa/pdfgen@1.8.9
 
 ## 1.8.1
 
@@ -270,15 +270,15 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/belt@1.8.0
-  - @versaprotocol/schema@1.8.0
+  - @versa/belt@1.8.0
+  - @versa/schema@1.8.0
 
 ## 1.7.2
 
 ### Patch Changes
 
 - Minor UI improvements
-  - @versaprotocol/belt@1.7.0
+  - @versa/belt@1.7.0
 
 ## 1.7.1
 
@@ -295,8 +295,8 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/belt@1.7.0
-  - @versaprotocol/schema@1.7.0
+  - @versa/belt@1.7.0
+  - @versa/schema@1.7.0
 
 ## 1.6.2
 
@@ -310,7 +310,7 @@
 
 - Improvements to flight receipt organization and date formatting
 - Updated dependencies
-  - @versaprotocol/belt@1.6.1
+  - @versa/belt@1.6.1
 
 ## 1.6.0
 
@@ -321,8 +321,8 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/belt@1.6.0
-  - @versaprotocol/schema@1.6.0
+  - @versa/belt@1.6.0
+  - @versa/schema@1.6.0
 
 ## 1.5.1
 
@@ -330,7 +330,7 @@
 
 - Use the municipality instead of the airport code for itineray headings in flight receipts
 - Updated dependencies
-  - @versaprotocol/belt@1.5.1
+  - @versa/belt@1.5.1
 
 ## 1.5.0
 
@@ -341,8 +341,8 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/schema@1.5.0
-  - @versaprotocol/belt@1.5.0
+  - @versa/schema@1.5.0
+  - @versa/belt@1.5.0
 
 ## 1.4.1
 
@@ -359,8 +359,8 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/belt@1.4.0
-  - @versaprotocol/schema@1.4.0
+  - @versa/belt@1.4.0
+  - @versa/schema@1.4.0
 
 ## 1.3.4
 
@@ -380,8 +380,8 @@
 
 - Update to schema_version 1.3.0"
 - Updated dependencies
-  - @versaprotocol/belt@1.3.0
-  - @versaprotocol/schema@1.3.0
+  - @versa/belt@1.3.0
+  - @versa/schema@1.3.0
 
 ## 1.3.1
 
@@ -422,8 +422,8 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/schema@1.2.0
-  - @versaprotocol/belt@1.2.0
+  - @versa/schema@1.2.0
+  - @versa/belt@1.2.0
 
 ## 1.1.1
 
@@ -431,8 +431,8 @@
 
 - Corrected the property name of a receipt's "schema_version" (expected "schema_version", not "version"
 - Updated dependencies
-  - @versaprotocol/belt@1.1.1
-  - @versaprotocol/schema@1.1.1
+  - @versa/belt@1.1.1
+  - @versa/schema@1.1.1
 
 ## 1.1.0
 
@@ -443,8 +443,8 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/belt@1.1.0
-  - @versaprotocol/schema@1.1.0
+  - @versa/belt@1.1.0
+  - @versa/schema@1.1.0
 
 ## 1.0.3
 
@@ -452,8 +452,8 @@
 
 - Fix flight passenger display organization
 - Updated dependencies
-  - @versaprotocol/belt@1.0.3
-  - @versaprotocol/schema@1.0.3
+  - @versa/belt@1.0.3
+  - @versa/schema@1.0.3
 
 ## 1.0.2
 
@@ -461,8 +461,8 @@
 
 - Secondary update to padding bug
 - Updated dependencies
-  - @versaprotocol/belt@1.0.2
-  - @versaprotocol/schema@1.0.2
+  - @versa/belt@1.0.2
+  - @versa/schema@1.0.2
 
 ## 1.0.1
 
@@ -470,8 +470,8 @@
 
 - 3454ab2: Bug fix: Unintended padding in flights with single passengers
 - Updated dependencies [3454ab2]
-  - @versaprotocol/belt@1.0.1
-  - @versaprotocol/schema@1.0.1
+  - @versa/belt@1.0.1
+  - @versa/schema@1.0.1
 
 ## 1.0.0
 
@@ -482,8 +482,8 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/belt@1.0.0
-  - @versaprotocol/schema@1.0.0
+  - @versa/belt@1.0.0
+  - @versa/schema@1.0.0
 
 ## 0.3.0
 
@@ -494,7 +494,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/belt@0.3.0
+  - @versa/belt@0.3.0
 
 ## 0.2.0
 
@@ -505,4 +505,4 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/belt@0.2.0
+  - @versa/belt@0.2.0

@@ -6,8 +6,8 @@ import {
   organizeFlightTickets,
   aggregateFlight,
   aircraftLookup,
-} from "@versaprotocol/belt";
-import { Flight, Receipt } from "@versaprotocol/schema";
+} from "@versa/belt";
+import { Flight, Receipt } from "@versa/schema";
 import { jsPDF } from "jspdf";
 import "svg2pdf.js";
 import autoTable from "jspdf-autotable";

@@ -1,7 +1,7 @@
 import styles from "./local-business.module.css";
-import { Place } from "@versaprotocol/schema";
+import { Place } from "@versa/schema";
 import { VersaContext } from "../../context";
-import { formatPhoneNumber } from "@versaprotocol/belt";
+import { formatPhoneNumber } from "@versa/belt";
 
 export function LocalBusiness({
   location,

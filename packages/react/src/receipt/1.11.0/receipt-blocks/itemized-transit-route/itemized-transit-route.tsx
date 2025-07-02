@@ -4,9 +4,9 @@ import {
   formatTransactionValue,
   sameDay,
   lts_v1_11_0,
-} from "@versaprotocol/belt";
+} from "@versa/belt";
 import styles from "../../../../receipt-blocks/itemized-transit-route/itemized-transit-route.module.css";
-import { lts } from "@versaprotocol/schema";
+import { lts } from "@versa/schema";
 import { VersaContext } from "../../../../context";
 
 export function ItemizedTransitRoute({

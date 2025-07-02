@@ -3,9 +3,9 @@ import {
   formatDateTime,
   formatTransactionValue,
   lts_v1_11_0,
-} from "@versaprotocol/belt";
+} from "@versa/belt";
 import styles from "../../../../receipt-blocks/itemized-flight/itemized-flight.module.css";
-import { lts } from "@versaprotocol/schema";
+import { lts } from "@versa/schema";
 
 function PlaneIcon() {
   return (

@@ -1,5 +1,5 @@
 import { createReceiptDoc } from "./index";
-import { Receipt, Org } from "@versaprotocol/schema";
+import { Receipt, Org } from "@versa/schema";
 import { jsPDF } from "jspdf";
 
 // Mock jsPDF

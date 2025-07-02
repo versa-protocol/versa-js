@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Validator } from "@cfworker/json-schema";
-import { Receipt } from "@versaprotocol/schema";
+import { Receipt } from "@versa/schema";
 
 type InitialValidator = null | Validator;
 

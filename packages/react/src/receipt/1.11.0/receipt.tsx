@@ -1,4 +1,4 @@
-import { lts, Receipt } from "@versaprotocol/schema";
+import { lts, Receipt } from "@versa/schema";
 import {
   ActionBlock,
   BlockWrap,
@@ -16,7 +16,7 @@ import {
   ThirdParty,
   Totals,
 } from "./receipt-blocks";
-import { lts_v1_11_0 } from "@versaprotocol/belt";
+import { lts_v1_11_0 } from "@versa/belt";
 import styles from "./../base_receipt.module.css";
 import { Payments } from "./receipt-blocks/payments/payments";
 import { Parties } from "./receipt-blocks/parties/parties";

@@ -1,12 +1,12 @@
 import styles from "./line-items.module.css";
 import { LineItem } from "./../line-item";
-import { Item, Receipt } from "@versaprotocol/schema";
+import { Item, Receipt } from "@versa/schema";
 import {
   groupItems,
   someItemsGrouped,
   someItemsWithDate,
   sortItemsByDate,
-} from "@versaprotocol/belt";
+} from "@versa/belt";
 import React from "react";
 
 export function LineItems({

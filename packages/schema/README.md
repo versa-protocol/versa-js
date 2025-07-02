@@ -7,5 +7,5 @@ This package exports interfaces for the Versa Receipt Schema
 To install the package, run:
 
 ```bash
-    npm i @versaprotocol/schema
+    npm i @versa/schema
 ```

@@ -1,4 +1,4 @@
-# @versaprotocol/belt
+# @versa/belt
 
 ## 1.13.1
 
@@ -15,7 +15,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/schema@2.0.0
+  - @versa/schema@2.0.0
 
 ## 1.12.5
 
@@ -35,7 +35,7 @@
 
 - Patch updates for schema version 2.0.0-rc2
 - Updated dependencies
-  - @versaprotocol/schema@1.12.1
+  - @versa/schema@1.12.1
 
 ## 1.12.2
 
@@ -58,7 +58,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/schema@1.12.0
+  - @versa/schema@1.12.0
 
 ## 1.11.1
 
@@ -77,7 +77,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/schema@1.11.0
+  - @versa/schema@1.11.0
 
 ## 1.10.0
 
@@ -88,7 +88,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/schema@1.10.0
+  - @versa/schema@1.10.0
 
 ## 1.9.0
 
@@ -99,7 +99,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/schema@1.9.0
+  - @versa/schema@1.9.0
 
 ## 1.8.0
 
@@ -110,7 +110,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/schema@1.8.0
+  - @versa/schema@1.8.0
 
 ## 1.7.0
 
@@ -121,7 +121,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/schema@1.7.0
+  - @versa/schema@1.7.0
 
 ## 1.6.1
 
@@ -138,7 +138,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/schema@1.6.0
+  - @versa/schema@1.6.0
 
 ## 1.5.1
 
@@ -155,7 +155,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/schema@1.5.0
+  - @versa/schema@1.5.0
 
 ## 1.4.0
 
@@ -166,7 +166,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/schema@1.4.0
+  - @versa/schema@1.4.0
 
 ## 1.3.0
 
@@ -177,7 +177,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/schema@1.3.0
+  - @versa/schema@1.3.0
 
 ## 1.2.0
 
@@ -188,7 +188,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/schema@1.2.0
+  - @versa/schema@1.2.0
 
 ## 1.1.1
 
@@ -196,7 +196,7 @@
 
 - Corrected the property name of a receipt's "schema_version" (expected "schema_version", not "version"
 - Updated dependencies
-  - @versaprotocol/schema@1.1.1
+  - @versa/schema@1.1.1
 
 ## 1.1.0
 
@@ -207,7 +207,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/schema@1.1.0
+  - @versa/schema@1.1.0
 
 ## 1.0.3
 
@@ -215,7 +215,7 @@
 
 - Fix flight passenger display organization
 - Updated dependencies
-  - @versaprotocol/schema@1.0.3
+  - @versa/schema@1.0.3
 
 ## 1.0.2
 
@@ -223,7 +223,7 @@
 
 - Secondary update to padding bug
 - Updated dependencies
-  - @versaprotocol/schema@1.0.2
+  - @versa/schema@1.0.2
 
 ## 1.0.1
 
@@ -231,7 +231,7 @@
 
 - 3454ab2: Bug fix: Unintended padding in flights with single passengers
 - Updated dependencies [3454ab2]
-  - @versaprotocol/schema@1.0.1
+  - @versa/schema@1.0.1
 
 ## 1.0.0
 
@@ -242,7 +242,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/schema@1.0.0
+  - @versa/schema@1.0.0
 
 ## 0.3.0
 

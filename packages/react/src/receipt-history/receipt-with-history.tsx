@@ -1,6 +1,6 @@
-import { Org } from "@versaprotocol/schema";
+import { Org } from "@versa/schema";
 import { UpdateBlock, BlockWrap } from "../receipt-blocks";
-import { formatDateTime } from "@versaprotocol/belt";
+import { formatDateTime } from "@versa/belt";
 import styles from "./receipt-with-history.module.css";
 import { processHistory } from "../helpers/updates";
 import { RegisteredReceipt } from "../model";

@@ -1,7 +1,7 @@
-import { formatDateTime } from "@versaprotocol/belt";
+import { formatDateTime } from "@versa/belt";
 import styles from "../../../../receipt-blocks/itemized-lodging/itemized-lodging.module.css";
 import { VersaContext } from "../../../../context";
-import { lts } from "@versaprotocol/schema";
+import { lts } from "@versa/schema";
 
 export function ItemizedLodging({
   lodging,

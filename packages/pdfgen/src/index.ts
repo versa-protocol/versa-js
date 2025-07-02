@@ -1,5 +1,5 @@
-import { Org, Receipt, LTS_VERSIONS, lts } from "@versaprotocol/schema";
-import { compareSchemaVersions } from "@versaprotocol/belt";
+import { Org, Receipt, LTS_VERSIONS, lts } from "@versa/schema";
+import { compareSchemaVersions } from "@versa/belt";
 import { jsPDF } from "jspdf";
 import { Header } from "./pdfHeader";
 import { Parties } from "./pdfParties";

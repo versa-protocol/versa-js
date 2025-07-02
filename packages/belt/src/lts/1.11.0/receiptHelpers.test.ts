@@ -1,4 +1,4 @@
-import { lts } from "@versaprotocol/schema";
+import { lts } from "@versa/schema";
 import {
   aggregateTaxes,
   aggregateTicketFares,
@@ -7,8 +7,8 @@ import {
   organizeTransitRoutes,
 } from "./receiptHelpers";
 
-import railReceipt_1_11_0 from "@versaprotocol/examples/receipts/1.11.0/rail.json";
-import flightReceipt_1_11_0 from "@versaprotocol/examples/receipts/1.11.0/flight.json";
+import railReceipt_1_11_0 from "@versa/examples/receipts/1.11.0/rail.json";
+import flightReceipt_1_11_0 from "@versa/examples/receipts/1.11.0/flight.json";
 
 const railReceipt = railReceipt_1_11_0 as lts.v1_11_0.Receipt;
 const flightReceipt = flightReceipt_1_11_0 as lts.v1_11_0.Receipt;

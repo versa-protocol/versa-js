@@ -1,6 +1,6 @@
-import { formatDateTime, formatTransactionValue } from "@versaprotocol/belt";
+import { formatDateTime, formatTransactionValue } from "@versa/belt";
 import styles from "../../../../receipt-blocks/receipt-header/receipt-header.module.css";
-import { lts } from "@versaprotocol/schema";
+import { lts } from "@versa/schema";
 import { Merchant as PlaceholderGraphic } from "../../../../icons/merchant";
 import { Parties } from "../parties/parties";
 

@@ -1,5 +1,5 @@
 import styles from "./third-party.module.css";
-import { Org, Receipt } from "@versaprotocol/schema";
+import { Org, Receipt } from "@versa/schema";
 
 export function ThirdParty({
   third_party,

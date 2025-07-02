@@ -105,16 +105,16 @@ importers:
       '@uiw/react-codemirror':
         specifier: ^4.23.12
         version: 4.23.12(@babel/runtime@7.27.1)(@codemirror/autocomplete@6.18.6)(@codemirror/language@6.11.1)(@codemirror/lint@6.8.5)(@codemirror/search@6.5.11)(@codemirror/state@6.5.2)(@codemirror/theme-one-dark@6.1.2)(@codemirror/view@6.37.1)(codemirror@6.0.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      '@versaprotocol/belt':
+      '@versa/belt':
         specifier: workspace:*
         version: link:../../packages/belt
-      '@versaprotocol/examples':
+      '@versa/examples':
         specifier: workspace:*
         version: link:../../packages/examples
-      '@versaprotocol/react':
+      '@versa/react':
         specifier: workspace:*
         version: link:../../packages/react
-      '@versaprotocol/schema':
+      '@versa/schema':
         specifier: workspace:*
         version: link:../../packages/schema
       '@versaprotocol/semval':
@@ -157,13 +157,13 @@ importers:
 
   apps/storybook:
     dependencies:
-      '@versaprotocol/examples':
+      '@versa/examples':
         specifier: workspace:*
         version: link:../../packages/examples
-      '@versaprotocol/react':
+      '@versa/react':
         specifier: workspace:*
         version: link:../../packages/react
-      '@versaprotocol/schema':
+      '@versa/schema':
         specifier: workspace:*
         version: link:../../packages/schema
       react:
@@ -233,7 +233,7 @@ importers:
       '@cfworker/json-schema':
         specifier: ^1.12.8
         version: 1.12.8
-      '@versaprotocol/schema':
+      '@versa/schema':
         specifier: workspace:*
         version: link:../schema
       canonicalize:
@@ -252,7 +252,7 @@ importers:
       '@types/jest':
         specifier: ^28.1.3
         version: 28.1.8
-      '@versaprotocol/examples':
+      '@versa/examples':
         specifier: workspace:*
         version: link:../examples
       jest:
@@ -270,7 +270,7 @@ importers:
 
   packages/examples:
     dependencies:
-      '@versaprotocol/schema':
+      '@versa/schema':
         specifier: workspace:*
         version: link:../schema
     devDependencies:
@@ -301,10 +301,10 @@ importers:
 
   packages/pdfgen:
     dependencies:
-      '@versaprotocol/belt':
+      '@versa/belt':
         specifier: workspace:*
         version: link:../belt
-      '@versaprotocol/schema':
+      '@versa/schema':
         specifier: workspace:*
         version: link:../schema
       jspdf:
@@ -329,7 +329,7 @@ importers:
       '@types/node':
         specifier: ^20.5.2
         version: 20.14.14
-      '@versaprotocol/examples':
+      '@versa/examples':
         specifier: workspace:*
         version: link:../examples
       ava:
@@ -365,13 +365,13 @@ importers:
 
   packages/react:
     dependencies:
-      '@versaprotocol/belt':
+      '@versa/belt':
         specifier: workspace:*
         version: link:../belt
-      '@versaprotocol/pdfgen':
+      '@versa/pdfgen':
         specifier: workspace:*
         version: link:../pdfgen
-      '@versaprotocol/schema':
+      '@versa/schema':
         specifier: workspace:*
         version: link:../schema
       react:
@@ -420,7 +420,7 @@ importers:
       '@types/rollup-plugin-peer-deps-external':
         specifier: ^2.2.5
         version: 2.2.5
-      '@versaprotocol/examples':
+      '@versa/examples':
         specifier: workspace:*
         version: link:../examples
       canvas:

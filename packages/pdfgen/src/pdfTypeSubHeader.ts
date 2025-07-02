@@ -1,7 +1,7 @@
-import { Person, Receipt } from "@versaprotocol/schema";
+import { Person, Receipt } from "@versa/schema";
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
-import { stringifyPlace } from "@versaprotocol/belt";
+import { stringifyPlace } from "@versa/belt";
 
 function personToName(person: Person, index: number): string {
   if (!person.first_name && !person.preferred_first_name) {

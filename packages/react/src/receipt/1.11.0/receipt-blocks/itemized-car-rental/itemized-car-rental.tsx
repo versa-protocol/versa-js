@@ -1,6 +1,6 @@
-import { formatDateTime } from "@versaprotocol/belt";
+import { formatDateTime } from "@versa/belt";
 import styles from "./itemized-car-rental.module.css";
-import { lts } from "@versaprotocol/schema";
+import { lts } from "@versa/schema";
 
 export function ItemizedCarRental({
   header,

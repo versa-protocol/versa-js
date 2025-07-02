@@ -1,7 +1,7 @@
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
-import { Header, Payment } from "@versaprotocol/schema";
-import { formatDateTime } from "@versaprotocol/belt";
+import { Header, Payment } from "@versa/schema";
+import { formatDateTime } from "@versa/belt";
 
 export function Payments(
   doc: jsPDF,

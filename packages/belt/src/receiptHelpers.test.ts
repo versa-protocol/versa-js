@@ -1,4 +1,4 @@
-import { Receipt } from "@versaprotocol/schema";
+import { Receipt } from "@versa/schema";
 import {
   aggregateTaxes,
   determineTicketFare,
@@ -7,7 +7,7 @@ import {
   organizeTransitRoutes,
 } from "./receiptHelpers";
 
-import { receipts } from "@versaprotocol/examples";
+import { receipts } from "@versa/examples";
 
 const railReceipt = receipts.rail;
 

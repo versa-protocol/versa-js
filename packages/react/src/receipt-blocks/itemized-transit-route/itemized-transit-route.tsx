@@ -4,15 +4,10 @@ import {
   formatTransactionValue,
   Optional,
   sameDay,
-} from "@versaprotocol/belt";
+} from "@versa/belt";
 import styles from "./itemized-transit-route.module.css";
-import {
-  Metadatum,
-  Receipt,
-  TransitRoute,
-  Person,
-} from "@versaprotocol/schema";
-import { organizeTransitRoutes } from "@versaprotocol/belt";
+import { Metadatum, Receipt, TransitRoute, Person } from "@versa/schema";
+import { organizeTransitRoutes } from "@versa/belt";
 import { VersaContext } from "../../context";
 
 function formatPassengerName(passenger: Optional<Person>): string {

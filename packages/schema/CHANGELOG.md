@@ -1,4 +1,4 @@
-# @versaprotocol/schema
+# @versa/schema
 
 ## 2.0.0
 

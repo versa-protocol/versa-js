@@ -1,4 +1,4 @@
-# @versaprotocol/examples
+# @versa/examples
 
 ## 2.0.1
 
@@ -15,7 +15,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/schema@2.0.0
+  - @versa/schema@2.0.0
 
 ## 1.12.3
 
@@ -29,7 +29,7 @@
 
 - Patch updates for schema version 2.0.0-rc2
 - Updated dependencies
-  - @versaprotocol/schema@1.12.1
+  - @versa/schema@1.12.1
 
 ## 1.12.1
 
@@ -46,7 +46,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/schema@1.12.0
+  - @versa/schema@1.12.0
 
 ## 1.11.3
 
@@ -77,7 +77,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/schema@1.11.0
+  - @versa/schema@1.11.0
 
 ## 1.10.0
 
@@ -88,7 +88,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/schema@1.10.0
+  - @versa/schema@1.10.0
 
 ## 1.9.0
 
@@ -99,7 +99,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/schema@1.9.0
+  - @versa/schema@1.9.0
 
 ## 1.8.2
 
@@ -122,7 +122,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/schema@1.8.0
+  - @versa/schema@1.8.0
 
 ## 1.7.2
 
@@ -145,7 +145,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/schema@1.7.0
+  - @versa/schema@1.7.0
 
 ## 1.6.3
 
@@ -174,4 +174,4 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @versaprotocol/schema@1.6.0
+  - @versa/schema@1.6.0

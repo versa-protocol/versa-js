@@ -3,7 +3,7 @@ import { ReceiptDisplay } from "./receipt";
 import "@testing-library/jest-dom/jest-globals";
 import "@testing-library/jest-dom";
 
-import { receipts, senders } from "@versaprotocol/examples";
+import { receipts, senders } from "@versa/examples";
 
 describe("Flight Receipt - 2.0 Schema", () => {
   const flightReceipt = receipts.flight;

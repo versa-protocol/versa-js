@@ -5,8 +5,8 @@ import {
   GroupedItinerary,
   lts_v1_11_0,
   aircraftLookup,
-} from "@versaprotocol/belt";
-import { lts } from "@versaprotocol/schema";
+} from "@versa/belt";
+import { lts } from "@versa/schema";
 import { jsPDF } from "jspdf";
 import "svg2pdf.js";
 import autoTable from "jspdf-autotable";

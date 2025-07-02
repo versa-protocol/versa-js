@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 // import { fn } from 'storybook/test';
-import { ReceiptDisplay } from "@versaprotocol/react";
-import { senders, receipts } from "@versaprotocol/examples";
+import { ReceiptDisplay } from "@versa/react";
+import { senders, receipts } from "@versa/examples";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<typeof ReceiptDisplay> = {
@@ -123,7 +123,7 @@ export const ReceiptWithRegistryData: Story = {
 };
 
 // Import the 1.11.0 flight receipt with passenger names
-import flight_1_11_0 from "@versaprotocol/examples/receipts/1.11.0/flight.json";
+import flight_1_11_0 from "@versa/examples/receipts/1.11.0/flight.json";
 
 export const Flight_1_11_0_WithPassenger: Story = {
   args: {
@@ -133,7 +133,7 @@ export const Flight_1_11_0_WithPassenger: Story = {
 };
 
 // Import the 1.11.0 flight receipt with passenger names
-import subscription_1_11_0 from "@versaprotocol/examples/receipts/1.11.0/subscription.json";
+import subscription_1_11_0 from "@versa/examples/receipts/1.11.0/subscription.json";
 
 export const Subscription_1_11_0: Story = {
   args: {

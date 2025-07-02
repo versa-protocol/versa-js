@@ -2,9 +2,9 @@ import {
   capitalize,
   formatTransactionValue,
   netAdjustments,
-} from "@versaprotocol/belt";
+} from "@versa/belt";
 import styles from "./line-item.module.css";
-import { Adjustment, Item, Metadatum, Receipt } from "@versaprotocol/schema";
+import { Adjustment, Item, Metadatum, Receipt } from "@versa/schema";
 
 export function LineItem({
   li,

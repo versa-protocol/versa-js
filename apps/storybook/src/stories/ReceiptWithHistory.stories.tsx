@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 // import { fn } from 'storybook/test';
-import { ReceiptWithHistory } from "@versaprotocol/react";
-import { Lodging, Receipt } from "@versaprotocol/schema";
-import { senders, receipts } from "@versaprotocol/examples";
+import { ReceiptWithHistory } from "@versa/react";
+import { Lodging, Receipt } from "@versa/schema";
+import { senders, receipts } from "@versa/examples";
 
 const packageRegisteredReceipt = (
   receipt: Receipt,

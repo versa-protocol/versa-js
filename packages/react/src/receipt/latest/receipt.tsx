@@ -1,4 +1,4 @@
-import { Org, Receipt } from "@versaprotocol/schema";
+import { Org, Receipt } from "@versa/schema";
 import {
   ActionBlock,
   BlockWrap,
@@ -20,7 +20,7 @@ import {
   aggregateAdjustments,
   aggregateEcommerceItems,
   aggregateTaxes,
-} from "@versaprotocol/belt";
+} from "@versa/belt";
 import styles from "./../base_receipt.module.css";
 import { Payments } from "../../receipt-blocks/payments";
 import { Parties } from "../../receipt-blocks/parties/parties";

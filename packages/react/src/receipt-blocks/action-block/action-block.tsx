@@ -1,5 +1,5 @@
 import styles from "./action-block.module.css";
-import { Action } from "@versaprotocol/schema";
+import { Action } from "@versa/schema";
 
 export function ActionBlock({
   actions,

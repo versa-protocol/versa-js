@@ -1,12 +1,12 @@
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
-import { Receipt, Adjustment, Tax } from "@versaprotocol/schema";
+import { Receipt, Adjustment, Tax } from "@versa/schema";
 import {
   aggregateAdjustments,
   aggregateTaxes,
   capitalize,
   formatTransactionValue,
-} from "@versaprotocol/belt";
+} from "@versa/belt";
 
 export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
   const docWidth = doc.internal.pageSize.getWidth();

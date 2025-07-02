@@ -1,6 +1,6 @@
-import { formatDateTime } from "@versaprotocol/belt";
+import { formatDateTime } from "@versa/belt";
 import styles from "./itemized-subscription.module.css";
-import { Header, Subscription } from "@versaprotocol/schema";
+import { Header, Subscription } from "@versa/schema";
 
 export function ItemizedSubscription({
   subscription,

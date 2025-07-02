@@ -7,5 +7,5 @@ This package exports helper functions and utilities for working with Versa recei
 To install the package, run:
 
 ```bash
-    npm i @versaprotocol/belt
+    npm i @versa/belt
 ```

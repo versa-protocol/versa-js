@@ -1,7 +1,7 @@
-import { formatTransactionValue } from "@versaprotocol/belt";
+import { formatTransactionValue } from "@versa/belt";
 import styles from "./totals.module.css";
 import { ChevronDown } from "react-feather";
-import { Adjustment, Receipt, Tax } from "@versaprotocol/schema";
+import { Adjustment, Receipt, Tax } from "@versa/schema";
 
 type Colors = {
   brand: string;

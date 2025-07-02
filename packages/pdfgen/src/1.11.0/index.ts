@@ -1,4 +1,4 @@
-import { lts } from "@versaprotocol/schema";
+import { lts } from "@versa/schema";
 import { jsPDF } from "jspdf";
 import { Header } from "../pdfHeader";
 import { Parties } from "../pdfParties";

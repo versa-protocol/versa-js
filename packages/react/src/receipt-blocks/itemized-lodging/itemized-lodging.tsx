@@ -1,7 +1,7 @@
-import { formatDateTime, formatPhoneNumber } from "@versaprotocol/belt";
+import { formatDateTime, formatPhoneNumber } from "@versa/belt";
 import styles from "./itemized-lodging.module.css";
 import { VersaContext } from "../../context";
-import { Header, Lodging } from "@versaprotocol/schema";
+import { Header, Lodging } from "@versa/schema";
 
 export function ItemizedLodging({
   lodging,

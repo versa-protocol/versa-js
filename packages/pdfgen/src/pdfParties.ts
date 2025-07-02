@@ -1,7 +1,7 @@
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
-import { Org, Receipt, Address } from "@versaprotocol/schema";
-import { formatPhoneNumber, Optional } from "@versaprotocol/belt";
+import { Org, Receipt, Address } from "@versa/schema";
+import { formatPhoneNumber, Optional } from "@versa/belt";
 
 export function Parties(
   doc: jsPDF,

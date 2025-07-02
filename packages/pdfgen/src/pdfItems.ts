@@ -1,5 +1,5 @@
-import { aggregateItems } from "@versaprotocol/belt";
-import { Receipt } from "@versaprotocol/schema";
+import { aggregateItems } from "@versa/belt";
+import { Receipt } from "@versa/schema";
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 import { FlightDetails } from "./pdfFlightDetails";

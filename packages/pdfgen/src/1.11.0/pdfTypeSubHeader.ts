@@ -1,7 +1,7 @@
-import { lts } from "@versaprotocol/schema";
+import { lts } from "@versa/schema";
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
-import { stringifyPlace } from "@versaprotocol/belt";
+import { stringifyPlace } from "@versa/belt";
 
 export function TypeSubHeader(
   doc: jsPDF,

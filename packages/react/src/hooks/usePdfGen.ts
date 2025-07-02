@@ -1,6 +1,6 @@
-import { Org, Receipt } from "@versaprotocol/schema";
-import { createReceiptDoc } from "@versaprotocol/pdfgen";
-import { epochToISO8601 } from "@versaprotocol/belt";
+import { Org, Receipt } from "@versa/schema";
+import { createReceiptDoc } from "@versa/pdfgen";
+import { epochToISO8601 } from "@versa/belt";
 
 export const usePdfGen = ({
   merchant,

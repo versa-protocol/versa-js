@@ -12,7 +12,7 @@ import {
   FlightTicket,
   Receipt,
   Person,
-} from "@versaprotocol/schema";
+} from "@versa/schema";
 import canonicalize from "canonicalize";
 import {
   formatDateTime,

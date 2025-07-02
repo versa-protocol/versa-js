@@ -1,6 +1,6 @@
 "use client";
-import { ReceiptDisplay, VersaContext } from "@versaprotocol/react";
-import { receipts, senders } from "@versaprotocol/examples";
+import { ReceiptDisplay, VersaContext } from "@versa/react";
+import { receipts, senders } from "@versa/examples";
 
 export const DemoReceipt = () => {
   return (

@@ -1,7 +1,7 @@
 import { Circle } from "react-feather";
 import styles from "../../../../receipt-blocks/shipment/shipment.module.css";
-import { formatDateTime, Optional } from "@versaprotocol/belt";
-import { lts } from "@versaprotocol/schema";
+import { formatDateTime, Optional } from "@versa/belt";
+import { lts } from "@versa/schema";
 
 export function ShipmentWidget({
   data,

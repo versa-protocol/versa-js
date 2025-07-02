@@ -1,4 +1,4 @@
-import { Receipt } from "@versaprotocol/schema";
+import { Receipt } from "@versa/schema";
 import { compare, compareSeries } from "./receiptComparator";
 
 describe("receiptComparator", () => {

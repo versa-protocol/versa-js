@@ -1,5 +1,5 @@
 import { Header } from "./pdfHeader";
-import { Receipt, Org } from "@versaprotocol/schema";
+import { Receipt, Org } from "@versa/schema";
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 

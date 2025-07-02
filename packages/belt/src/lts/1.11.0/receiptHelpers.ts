@@ -1,4 +1,4 @@
-import { Adjustment, lts } from "@versaprotocol/schema";
+import { Adjustment, lts } from "@versa/schema";
 import canonicalize from "canonicalize";
 import {
   formatDateTime,

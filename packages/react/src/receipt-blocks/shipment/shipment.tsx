@@ -1,7 +1,7 @@
 import { Circle } from "react-feather";
 import styles from "./shipment.module.css";
-import { formatDateTime, Optional } from "@versaprotocol/belt";
-import { Ecommerce, Header, Shipment } from "@versaprotocol/schema";
+import { formatDateTime, Optional } from "@versa/belt";
+import { Ecommerce, Header, Shipment } from "@versa/schema";
 import { BlockWrap } from "../block-wrap";
 import { LineItems } from "../line-items";
 

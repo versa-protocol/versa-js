@@ -1,11 +1,11 @@
-import { lts, Org, Receipt } from "@versaprotocol/schema";
+import { lts, Org, Receipt } from "@versa/schema";
 // import { ReceiptDisplay as R_1_5_1 } from "./1.5.1/receipt";
 // import { ReceiptDisplay as R_1_6_0 } from "./1.6.0/receipt";
 import { ReceiptDisplay as R_1_11_0 } from "./1.11.0/receipt";
 import { ReceiptLatest } from "./latest/receipt";
 
-import { LTS_VERSIONS } from "@versaprotocol/schema";
-import { compareSchemaVersions } from "@versaprotocol/belt";
+import { LTS_VERSIONS } from "@versa/schema";
+import { compareSchemaVersions } from "@versa/belt";
 import { RegistryData } from "../model";
 
 export function ReceiptDisplay({

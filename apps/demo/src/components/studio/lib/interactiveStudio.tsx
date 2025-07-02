@@ -10,8 +10,8 @@ import styles from "./interactiveStudio.module.css";
 import { StudioErrorBoundary } from "./interactiveStudioErrorBoundary";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
-import * as examples from "@versaprotocol/examples";
-import { Org as Merchant, Org, Receipt } from "@versaprotocol/schema";
+import * as examples from "@versa/examples";
+import { Org as Merchant, Org, Receipt } from "@versa/schema";
 import {
   ChevronDown,
   Layout,
@@ -21,7 +21,7 @@ import {
   RotateCw,
   Sidebar,
 } from "react-feather";
-import { formatDateTime, formatUSD } from "@versaprotocol/belt";
+import { formatDateTime, formatUSD } from "@versa/belt";
 import { useValidator } from "../hooks/useValidator";
 import {
   Advisory,
@@ -29,7 +29,7 @@ import {
   ReceiptDisplay,
   ReceiptErrorBoundary,
   VersaContext,
-} from "@versaprotocol/react";
+} from "@versa/react";
 import { ThemeToggle } from "@/components/theme/themeToggle";
 
 interface Receiver {

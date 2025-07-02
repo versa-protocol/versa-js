@@ -1,5 +1,5 @@
 import styles from "../../../../receipt-blocks/third-party/third-party.module.css";
-import { lts } from "@versaprotocol/schema";
+import { lts } from "@versa/schema";
 
 export function ThirdParty({
   third_party,

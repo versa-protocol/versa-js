@@ -1,4 +1,4 @@
-import { formatDateTime } from "@versaprotocol/belt";
+import { formatDateTime } from "@versa/belt";
 import styles from "./update-block.module.css";
 import { GroupedUpdate } from "../../helpers/updates";
 import React from "react";
