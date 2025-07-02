@@ -1,5 +1,5 @@
 {
-  "name": "@versaprotocol/schema",
+  "name": "@versa/schema",
   "version": "2.0.0",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

@@ -1,5 +1,5 @@
 {
-  "name": "@versaprotocol/react",
+  "name": "@versa/react",
   "version": "1.13.1",
   "main": "./dist/index.js",
   "module": "./dist/index.es.js",
@@ -21,9 +21,9 @@
     "react-dom": "^18.3.1"
   },
   "dependencies": {
-    "@versaprotocol/belt": "workspace:*",
-    "@versaprotocol/pdfgen": "workspace:*",
-    "@versaprotocol/schema": "workspace:*",
+    "@versa/belt": "workspace:*",
+    "@versa/pdfgen": "workspace:*",
+    "@versa/schema": "workspace:*",
     "react-feather": "^2.0.10",
     "react-markdown": "^9.0.1"
   },
@@ -39,7 +39,7 @@
     "@types/react": "18.3.12",
     "@types/react-dom": "^18.2.0",
     "@types/rollup-plugin-peer-deps-external": "^2.2.5",
-    "@versaprotocol/examples": "workspace:*",
+    "@versa/examples": "workspace:*",
     "canvas": "^3.1.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^28.1.3",

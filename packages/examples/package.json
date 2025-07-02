@@ -1,5 +1,5 @@
 {
-  "name": "@versaprotocol/examples",
+  "name": "@versa/examples",
   "version": "2.0.1",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -24,6 +24,6 @@
     "tsup": "^8.2.4"
   },
   "dependencies": {
-    "@versaprotocol/schema": "workspace:*"
+    "@versa/schema": "workspace:*"
   }
 }

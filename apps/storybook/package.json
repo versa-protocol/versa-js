@@ -11,9 +11,9 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@versaprotocol/examples": "workspace:*",
-    "@versaprotocol/react": "workspace:*",
-    "@versaprotocol/schema": "workspace:*",
+    "@versa/examples": "workspace:*",
+    "@versa/react": "workspace:*",
+    "@versa/schema": "workspace:*",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
