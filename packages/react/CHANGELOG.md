@@ -1,5 +1,11 @@
 # @versa/react
 
+## 1.13.4
+
+### Patch Changes
+
+- import React where Fragments are used
+
 ## 1.13.3
 
 ### Patch Changes
