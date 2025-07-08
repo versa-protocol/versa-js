@@ -28,9 +28,9 @@ export function ShipmentWidget({
             s.destination_address?.city || s.destination_address?.region
           );
           return (
-            <>
+            <React.Fragment key={index}>
               <BlockWrap>
-                <div className={styles.shipmentCard} key={index}>
+                <div className={styles.shipmentCard}>
                   <div className={styles.subwayWrap}>
                     <div className={styles.subwayGrid}>
                       <div className={styles.status}>
@@ -179,7 +179,7 @@ export function ShipmentWidget({
               <BlockWrap>
                 <LineItems items={s.items} header={header} />
               </BlockWrap>
-            </>
+            </React.Fragment>
           );
         })}
     </>
