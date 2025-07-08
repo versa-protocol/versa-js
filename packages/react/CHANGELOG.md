@@ -1,5 +1,11 @@
 # @versa/react
 
+## 1.13.3
+
+### Patch Changes
+
+- Apply unique keys to React fragments in .map() repeaters instead of on nested divs
+
 ## 1.13.2
 
 ### Patch Changes
