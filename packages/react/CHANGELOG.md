@@ -1,5 +1,11 @@
 # @versa/react
 
+## 1.13.2
+
+### Patch Changes
+
+- fix: don't show broken destination in shipping widget
+
 ## 1.13.1
 
 ### Patch Changes
