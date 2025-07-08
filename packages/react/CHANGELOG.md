@@ -1,5 +1,15 @@
 # @versaprotocol/react
 
+## 1.13.2
+
+### Patch Changes
+
+- Deprecation notice
+- Updated dependencies
+  - @versaprotocol/schema@2.0.1
+  - @versaprotocol/belt@1.13.2
+  - @versaprotocol/pdfgen@1.13.2
+
 ## 1.13.1
 
 ### Patch Changes

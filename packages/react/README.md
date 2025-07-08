@@ -1,3 +1,5 @@
+**⚠️ DEPRECATED: This package has been deprecated and will not receive further updates. Please use [@versa/react](https://www.npmjs.com/package/@versa/react) instead.**
+
 # Versa React Component Library
 
 This package exports React components for displaying decrypted Versa receipts

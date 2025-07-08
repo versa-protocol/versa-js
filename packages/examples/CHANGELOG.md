@@ -1,5 +1,13 @@
 # @versaprotocol/examples
 
+## 2.0.2
+
+### Patch Changes
+
+- Deprecation notice
+- Updated dependencies
+  - @versaprotocol/schema@2.0.1
+
 ## 2.0.1
 
 ### Patch Changes

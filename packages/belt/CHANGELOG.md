@@ -1,5 +1,13 @@
 # @versaprotocol/belt
 
+## 1.13.2
+
+### Patch Changes
+
+- Deprecation notice
+- Updated dependencies
+  - @versaprotocol/schema@2.0.1
+
 ## 1.13.1
 
 ### Patch Changes
