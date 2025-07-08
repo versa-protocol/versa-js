@@ -36,3 +36,6 @@ storybook-static
 
 # Fetched during build
 receipt.schema.json
+
+.claude
+CLAUDE.md
