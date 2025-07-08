@@ -1,6 +1,7 @@
 import { formatDateTime } from "@versa/belt";
 import styles from "./itemized-subscription.module.css";
 import { Header, Subscription } from "@versa/schema";
+import React from "react";
 
 export function ItemizedSubscription({
   subscription,

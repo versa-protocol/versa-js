@@ -4,6 +4,7 @@ import { formatDateTime, Optional } from "@versa/belt";
 import { Ecommerce, Header, Shipment } from "@versa/schema";
 import { BlockWrap } from "../block-wrap";
 import { LineItems } from "../line-items";
+import React from "react";
 
 export function ShipmentWidget({
   data,
