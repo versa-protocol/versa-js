@@ -75,6 +75,20 @@ export function ItemizedLodging({
                   <div>{formatPhoneNumber(lodging.location.phone)}</div>
                 )}
                 {lodging.room && <div>Room number: {lodging.room}</div>}
+                {lodging.guests && lodging.guests.length > 0 && (
+                  <div>
+                    <span>Guests: </span>
+                    {(lodging.guests || []).map((guest, idx) => (
+                      <span key={idx}>
+                        {(guest.first_name || guest.preferred_first_name) && (
+                          <>{guest.first_name || guest.preferred_first_name}</>
+                        )}
+                        {guest.last_name && <> {guest.last_name}</>}
+                        {idx < (lodging.guests?.length || 0) - 1 && ", "}
+                      </span>
+                    ))}
+                  </div>
+                )}
                 <div className={styles.dateRange}>
                   <div className={styles.start}>
                     <div className={styles.header}>Check-in</div>
