@@ -42,14 +42,15 @@ export function ReceiptHeader({
               <Parties customer={header.customer} merchant={merchant} />
             )}
           </div>
-          {merchant.logo && (
+          {!!(merchant.logo || header.third_party?.merchant?.logo) && (
             <div className={styles.logo}>
               <img
                 src={
                   (header.third_party &&
                     header.third_party.make_primary &&
                     header.third_party.merchant?.logo) ||
-                  merchant.logo
+                  merchant.logo ||
+                  undefined
                 }
                 width={96}
                 height={96}
