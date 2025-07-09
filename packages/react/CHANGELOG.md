@@ -1,5 +1,11 @@
 # @versa/react
 
+## 1.13.6
+
+### Patch Changes
+
+- update third party logo logic for compact view
+
 ## 1.13.5
 
 ### Patch Changes

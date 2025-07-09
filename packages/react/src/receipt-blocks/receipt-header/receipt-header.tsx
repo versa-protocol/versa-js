@@ -13,6 +13,10 @@ export function ReceiptHeader({
   header: Receipt["header"];
   brandColor: string;
 }) {
+  const showLogo = !!(
+    merchant.logo ||
+    (header.third_party?.make_primary && header.third_party?.merchant?.logo)
+  );
   return (
     <div className={styles.receiptHeader}>
       {/* Full Page */}
@@ -42,7 +46,7 @@ export function ReceiptHeader({
               <Parties customer={header.customer} merchant={merchant} />
             )}
           </div>
-          {!!(merchant.logo || header.third_party?.merchant?.logo) && (
+          {showLogo && (
             <div className={styles.logo}>
               <img
                 src={
@@ -68,13 +72,14 @@ export function ReceiptHeader({
       {/* Compact */}
       <div className={styles.compact}>
         <div className={styles.logo}>
-          {merchant.logo ? (
+          {showLogo ? (
             <img
               src={
                 (header.third_party &&
                   header.third_party.make_primary &&
                   header.third_party.merchant?.logo) ||
-                merchant.logo
+                merchant.logo ||
+                undefined
               }
               width={64}
               height={64}
