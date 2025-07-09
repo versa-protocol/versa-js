@@ -50,16 +50,6 @@ export function LineItem({
                         <div key={index} className="secondaryText">
                           {m.key && <>{m.key}: </>}
                           {m.value}
-                          {li.metadata && index === li.metadata.length - 1 && (
-                            <button
-                              className={styles.chevronButton}
-                              onClick={() => setShowAllMetadata(false)}
-                              aria-label="Show less metadata"
-                              type="button"
-                            >
-                              <ChevronUp size={14} />
-                            </button>
-                          )}
                         </div>
                       ))}
                     </>
@@ -68,17 +58,20 @@ export function LineItem({
                       <div className="secondaryText">
                         {li.metadata[0].key && <>{li.metadata[0].key}: </>}
                         {li.metadata[0].value}
-                        {li.metadata.length > 1 && (
+                      </div>
+                      {li.metadata.length > 1 && (
+                        <div className="secondaryText">
                           <button
                             className={styles.chevronButton}
                             onClick={() => setShowAllMetadata(true)}
                             aria-label="Show all metadata"
                             type="button"
                           >
+                            <span>More</span>
                             <ChevronDown size={14} />
                           </button>
-                        )}
-                      </div>
+                        </div>
+                      )}
                     </>
                   )}
                 </>

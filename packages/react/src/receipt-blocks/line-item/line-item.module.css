@@ -93,8 +93,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.25rem;
   padding: 0;
   background: none;
   border: none;
-  margin-left: 0.25rem;
+  color: var(--foreground-secondary);
+  font-size: 0.875rem;
+}
+
+.chevronButton:hover {
+  color: var(--foreground);
 }
