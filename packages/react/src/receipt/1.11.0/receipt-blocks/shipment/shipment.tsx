@@ -1,5 +1,5 @@
 import { Circle } from "react-feather";
-import styles from "../../../../receipt-blocks/shipment/shipment.module.css";
+import styles from "./shipment.module.css";
 import { formatDateTime, Optional } from "@versa/belt";
 import { lts } from "@versa/schema";
 

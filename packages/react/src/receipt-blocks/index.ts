@@ -13,7 +13,7 @@ export * from "./line-items";
 export * from "./local-business";
 export * from "./parties";
 export * from "./receipt-header";
-export * from "./shipment";
+export * from "./itemized-ecommerce";
 export * from "./supplemental-text";
 export * from "./third-party";
 export * from "./totals";

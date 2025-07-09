@@ -3,6 +3,7 @@ import {
   ActionBlock,
   BlockWrap,
   ItemizedCarRental,
+  ItemizedEcommerce,
   ItemizedFlight,
   ItemizedLodging,
   ItemizedSubscription,
@@ -11,16 +12,11 @@ import {
   LocalBusiness,
   ReceiptFooter,
   ReceiptHeader,
-  ShipmentWidget,
   SupplementalText,
   ThirdParty,
   Totals,
 } from "../../receipt-blocks";
-import {
-  aggregateAdjustments,
-  aggregateEcommerceItems,
-  aggregateTaxes,
-} from "@versa/belt";
+import { aggregateAdjustments, aggregateTaxes } from "@versa/belt";
 import styles from "./../base_receipt.module.css";
 import { Payments } from "../../receipt-blocks/payments";
 import { Parties } from "../../receipt-blocks/parties/parties";
@@ -135,7 +131,7 @@ export function ReceiptLatest({
         </>
       )}
       {data.itemization.ecommerce && (
-        <ShipmentWidget
+        <ItemizedEcommerce
           data={data.itemization.ecommerce}
           header={data.header}
           brandColor={colors.brand}

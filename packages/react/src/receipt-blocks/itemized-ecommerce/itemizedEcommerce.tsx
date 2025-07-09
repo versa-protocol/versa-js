@@ -1,12 +1,12 @@
 import { Circle } from "react-feather";
-import styles from "./shipment.module.css";
+import styles from "./itemizedEcommerce.module.css";
 import { formatDateTime, Optional } from "@versa/belt";
-import { Ecommerce, Header, Shipment } from "@versa/schema";
+import { Ecommerce, Header } from "@versa/schema";
 import { BlockWrap } from "../block-wrap";
 import { LineItems } from "../line-items";
 import React from "react";
 
-export function ShipmentWidget({
+export function ItemizedEcommerce({
   data,
   header,
   brandColor,
