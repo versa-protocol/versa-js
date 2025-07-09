@@ -28,7 +28,15 @@ export function LineItem({
       (li.metadata && li.metadata.length > 0) ||
       (li.adjustments && li.adjustments.length > 0) ? (
         <div className={styles.lineItemText}>
-          <div>{li.description}</div>
+          <div>
+            {li.url ? (
+              <a href={li.url} target="_blank" rel="noopener noreferrer">
+                {li.description}
+              </a>
+            ) : (
+              li.description
+            )}
+          </div>
           <div className={styles.lineItemDetails}>
             <div className={styles.lineItemMetadata}>
               {li.metadata && li.metadata.length > 0 && (
@@ -87,7 +95,15 @@ export function LineItem({
         </div>
       ) : (
         <div className={styles.lineItemTextSimple}>
-          <div className={styles.description}>{li.description}</div>
+          <div className={styles.description}>
+            {li.url ? (
+              <a href={li.url} target="_blank" rel="noopener noreferrer">
+                {li.description}
+              </a>
+            ) : (
+              li.description
+            )}
+          </div>
           <div className={styles.lineItemTotal}>
             {formatTransactionValue(li.amount, header.currency)}
           </div>

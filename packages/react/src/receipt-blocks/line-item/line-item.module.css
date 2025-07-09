@@ -79,3 +79,9 @@
 .lineItemTextSimple .description {
   flex-grow: 1;
 }
+
+.lineItemTextSimple .description a,
+.lineItemText a {
+  text-decoration: none;
+  color: var(--foreground);
+}

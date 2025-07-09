@@ -30,7 +30,12 @@ export function LineItems({
                 <React.Fragment key={date}>
                   <div className={styles.groupTitle}>{date}</div>
                   {sortedItemsByDate[date]?.map((li: any, index: number) => (
-                    <LineItem li={li} key={index} header={header} />
+                    <LineItem
+                      li={li}
+                      key={index}
+                      header={header}
+                      url={li.url}
+                    />
                   ))}
                 </React.Fragment>
               ))}
@@ -41,7 +46,12 @@ export function LineItems({
                 <React.Fragment key={group}>
                   <div className={styles.groupTitle}>{group}</div>
                   {groupedItems[group]?.map((li: any, index: number) => (
-                    <LineItem li={li} key={index} header={header} />
+                    <LineItem
+                      li={li}
+                      key={index}
+                      header={header}
+                      url={li.url}
+                    />
                   ))}
                 </React.Fragment>
               ))}
@@ -51,7 +61,7 @@ export function LineItems({
       ) : (
         <div className={styles.lineItemsInner}>
           {items.map((li: any, index: number) => (
-            <LineItem li={li} key={index} header={header} />
+            <LineItem li={li} key={index} header={header} url={li.url} />
           ))}
         </div>
       )}
