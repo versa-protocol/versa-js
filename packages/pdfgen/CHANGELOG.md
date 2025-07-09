@@ -1,5 +1,11 @@
 # @versa/pdfgen
 
+## 1.13.2
+
+### Patch Changes
+
+- Display logic fixes for third parties
+
 ## 1.13.1
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @versa/react
 
+## 1.13.5
+
+### Patch Changes
+
+- Display logic fixes for third parties
+- Updated dependencies
+  - @versa/pdfgen@1.13.2
+
 ## 1.13.4
 
 ### Patch Changes

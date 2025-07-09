@@ -1,5 +1,12 @@
 # home
 
+## 0.2.73
+
+### Patch Changes
+
+- Updated dependencies
+  - @versa/react@1.13.5
+
 ## 0.2.72
 
 ### Patch Changes
