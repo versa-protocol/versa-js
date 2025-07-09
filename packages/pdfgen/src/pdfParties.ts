@@ -15,7 +15,15 @@ export function Parties(
     (doc as jsPDF & { lastAutoTable: { finalY: number } }).lastAutoTable
       .finalY + margin;
   const partiesStartPage = doc.getCurrentPageInfo().pageNumber;
-  const sellerTitle = merchant.legal_name ? merchant.legal_name : merchant.name;
+  const header = receipt.header;
+  const primarySeller =
+    header.third_party?.make_primary && !!header.third_party?.merchant
+      ? header.third_party.merchant
+      : merchant;
+  const sellerTitle = primarySeller.legal_name
+    ? primarySeller.legal_name
+    : primarySeller.name;
+
   const sellerAddress = stringifyAddress(merchant.address);
   const billTo: string[][] = getBillTo(receipt.header);
   const shipTo: string[][] = getShipTo(receipt.itemization);
