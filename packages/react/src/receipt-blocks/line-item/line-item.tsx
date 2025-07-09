@@ -5,6 +5,8 @@ import {
 } from "@versa/belt";
 import styles from "./line-item.module.css";
 import { Adjustment, Item, Metadatum, Receipt } from "@versa/schema";
+import React, { useState } from "react";
+import { ChevronDown, ChevronUp } from "react-feather";
 
 export function LineItem({
   li,
@@ -13,6 +15,7 @@ export function LineItem({
   li: Item;
   header: Receipt["header"];
 }) {
+  const [showAllMetadata, setShowAllMetadata] = useState(false);
   return (
     <div className={li.unit_cost ? styles.lineItem : styles.lineItemCompact}>
       {li.product_image_asset_id && (
@@ -41,12 +44,43 @@ export function LineItem({
             <div className={styles.lineItemMetadata}>
               {li.metadata && li.metadata.length > 0 && (
                 <>
-                  {li.metadata.map((m: Metadatum, index: number) => (
-                    <div key={index} className="secondaryText">
-                      {m.key && <>{m.key}: </>}
-                      {m.value}
-                    </div>
-                  ))}
+                  {showAllMetadata ? (
+                    <>
+                      {li.metadata.map((m: Metadatum, index: number) => (
+                        <div key={index} className="secondaryText">
+                          {m.key && <>{m.key}: </>}
+                          {m.value}
+                          {li.metadata && index === li.metadata.length - 1 && (
+                            <button
+                              className={styles.chevronButton}
+                              onClick={() => setShowAllMetadata(false)}
+                              aria-label="Show less metadata"
+                              type="button"
+                            >
+                              <ChevronUp size={14} />
+                            </button>
+                          )}
+                        </div>
+                      ))}
+                    </>
+                  ) : (
+                    <>
+                      <div className="secondaryText">
+                        {li.metadata[0].key && <>{li.metadata[0].key}: </>}
+                        {li.metadata[0].value}
+                        {li.metadata.length > 1 && (
+                          <button
+                            className={styles.chevronButton}
+                            onClick={() => setShowAllMetadata(true)}
+                            aria-label="Show all metadata"
+                            type="button"
+                          >
+                            <ChevronDown size={14} />
+                          </button>
+                        )}
+                      </div>
+                    </>
+                  )}
                 </>
               )}
               {li.unit_cost && (
