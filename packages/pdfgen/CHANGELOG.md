@@ -1,5 +1,11 @@
 # @versa/pdfgen
 
+## 1.13.3
+
+### Patch Changes
+
+- Fix metadata display and product urls
+
 ## 1.13.2
 
 ### Patch Changes

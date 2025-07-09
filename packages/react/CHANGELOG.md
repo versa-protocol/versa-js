@@ -1,5 +1,13 @@
 # @versa/react
 
+## 1.13.7
+
+### Patch Changes
+
+- Fix metadata display and product urls
+- Updated dependencies
+  - @versa/pdfgen@1.13.3
+
 ## 1.13.6
 
 ### Patch Changes
