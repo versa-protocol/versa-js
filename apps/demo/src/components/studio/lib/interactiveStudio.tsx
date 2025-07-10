@@ -128,13 +128,17 @@ export const InteractiveStudio = ({ org }: { org?: Org }) => {
   useEffect(() => {
     setClientLoaded(true);
     if (receiptData) {
-      validate(JSON.parse(receiptData)).then((valid) => {
-        if (!valid.valid) {
-          setSchemaErrors(valid.errors);
-        } else {
-          setSchemaErrors([]);
-        }
-      });
+      try {
+        validate(JSON.parse(receiptData)).then((valid) => {
+          if (!valid.valid) {
+            setSchemaErrors(valid.errors);
+          } else {
+            setSchemaErrors([]);
+          }
+        });
+      } catch (e: any) {
+        setRuntimeError(e.message);
+      }
     }
   }, [setClientLoaded, loadInQuery, receiptData]);
 
