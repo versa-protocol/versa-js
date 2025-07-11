@@ -932,11 +932,16 @@ function aggregateGenericItemHeaders(rows: Item[]): pdfItem {
       head.unit_cost = { content: "Unit Price", styles: { halign: "right" } };
     }
   });
+  // Cap metadata columns to 2
+  const metadataKeys = new Set<string>();
   rows.forEach((i) => {
     if (i.metadata && i.metadata.length > 0) {
       i.metadata.forEach((m) => {
-        if (!head[m.key]) {
-          head[m.key] = { content: m.key };
+        if (metadataKeys.size < 2 && !metadataKeys.has(m.key)) {
+          metadataKeys.add(m.key);
+          if (!head[m.key]) {
+            head[m.key] = { content: m.key };
+          }
         }
       });
     }
