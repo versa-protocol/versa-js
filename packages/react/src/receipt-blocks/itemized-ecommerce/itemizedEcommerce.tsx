@@ -193,7 +193,7 @@ function statusLevel(status: Optional<string>) {
     output = 2;
   }
   if (status == "delivered") {
-    output == 3;
+    output = 3;
   }
   return output;
 }
