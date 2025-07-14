@@ -389,7 +389,7 @@ interface OrganizedFlightTicket {
   passengers: OrganizedFlightTicketPassenger[];
 }
 
-const twentyFourHours = 24 * 60 * 60;
+const maxLayoverLength = 8 * 60 * 60;
 
 function dateStringFromUnixWithTimezone(
   unix_timestamp: number,
@@ -452,7 +452,7 @@ export function organizeSegmentedItineraries(
           groupedItineraries[itineraryKey].segments.length - 1
         ];
       if (
-        (previousSegment.departure_at || 0) + twentyFourHours <
+        (previousSegment.departure_at || 0) + maxLayoverLength <
         (segment.departure_at || 0)
       ) {
         // we've reached the end of one "itinerary"

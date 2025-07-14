@@ -433,6 +433,97 @@ describe("organizeSegmentedItineraries", () => {
     expect(organized[1].departure_city).toBe("Grand Forks");
     expect(organized[1].arrival_city).toBe("Seattle");
   });
+
+  it("should group segments with 6-hour layover into single itinerary", () => {
+    const baseTime = 1713196492; // Base timestamp
+    const sixHoursInSeconds = 6 * 60 * 60; // 6 hours = 21600 seconds
+
+    const segments = [
+      {
+        fare: 15000,
+        metadata: [],
+        departure_airport_code: "LAX",
+        arrival_airport_code: "DEN",
+        departure_at: baseTime,
+        arrival_at: baseTime + 7200, // 2 hour flight
+        departure_tz: "America/Los_Angeles",
+        arrival_tz: "America/Denver",
+        flight_number: "UA 123",
+        class_of_service: "Y",
+        taxes: [],
+        adjustments: [],
+      },
+      {
+        fare: 18000,
+        metadata: [],
+        departure_airport_code: "DEN",
+        arrival_airport_code: "JFK",
+        departure_at: baseTime + 7200 + sixHoursInSeconds, // 6 hour layover
+        arrival_at: baseTime + 7200 + sixHoursInSeconds + 10800, // 3 hour flight
+        departure_tz: "America/Denver",
+        arrival_tz: "America/New_York",
+        flight_number: "UA 456",
+        class_of_service: "Y",
+        taxes: [],
+        adjustments: [],
+      },
+    ];
+
+    const organized = organizeSegmentedItineraries(segments);
+
+    expect(organized).toBeTruthy();
+    expect(organized.length).toBe(1); // Should be grouped into single itinerary
+    expect(organized[0].departure_city).toBe("Los Angeles");
+    expect(organized[0].arrival_city).toBe("New York");
+    expect(organized[0].segments.length).toBe(2);
+  });
+
+  it("should separate segments with 9-hour layover into different itineraries", () => {
+    const baseTime = 1713196492; // Base timestamp
+    const nineHoursInSeconds = 9 * 60 * 60; // 9 hours = 32400 seconds
+
+    const segments = [
+      {
+        fare: 15000,
+        metadata: [],
+        departure_airport_code: "LAX",
+        arrival_airport_code: "DEN",
+        departure_at: baseTime,
+        arrival_at: baseTime + 7200, // 2 hour flight
+        departure_tz: "America/Los_Angeles",
+        arrival_tz: "America/Denver",
+        flight_number: "UA 123",
+        class_of_service: "Y",
+        taxes: [],
+        adjustments: [],
+      },
+      {
+        fare: 18000,
+        metadata: [],
+        departure_airport_code: "DEN",
+        arrival_airport_code: "JFK",
+        departure_at: baseTime + 7200 + nineHoursInSeconds, // 9 hour layover
+        arrival_at: baseTime + 7200 + nineHoursInSeconds + 10800, // 3 hour flight
+        departure_tz: "America/Denver",
+        arrival_tz: "America/New_York",
+        flight_number: "UA 456",
+        class_of_service: "Y",
+        taxes: [],
+        adjustments: [],
+      },
+    ];
+
+    const organized = organizeSegmentedItineraries(segments);
+
+    expect(organized).toBeTruthy();
+    expect(organized.length).toBe(2); // Should be separated into two itineraries
+    expect(organized[0].departure_city).toBe("Los Angeles");
+    expect(organized[0].arrival_city).toBe("Denver");
+    expect(organized[0].segments.length).toBe(1);
+    expect(organized[1].departure_city).toBe("Denver");
+    expect(organized[1].arrival_city).toBe("New York");
+    expect(organized[1].segments.length).toBe(1);
+  });
 });
 
 describe("determineTicketFare", () => {
