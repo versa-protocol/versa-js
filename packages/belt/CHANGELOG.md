@@ -1,5 +1,11 @@
 # @versa/belt
 
+## 1.13.2
+
+### Patch Changes
+
+- Fixed bugs with ecommerce shipment status display; flight itinerary segmentation
+
 ## 1.13.1
 
 ### Patch Changes

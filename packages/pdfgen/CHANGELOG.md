@@ -1,5 +1,13 @@
 # @versa/pdfgen
 
+## 1.13.4
+
+### Patch Changes
+
+- Fixed bugs with ecommerce shipment status display; flight itinerary segmentation
+- Updated dependencies
+  - @versa/belt@1.13.2
+
 ## 1.13.3
 
 ### Patch Changes
