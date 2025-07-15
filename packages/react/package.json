@@ -1,6 +1,6 @@
 {
   "name": "@versa/react",
-  "version": "1.13.8",
+  "version": "1.13.9",
   "main": "./dist/index.js",
   "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",

@@ -1,5 +1,11 @@
 # @versa/react
 
+## 1.13.9
+
+### Patch Changes
+
+- fix ReceiptWithHistory bug showing update badge for single receipt
+
 ## 1.13.8
 
 ### Patch Changes

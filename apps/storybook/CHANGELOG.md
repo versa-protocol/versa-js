@@ -1,5 +1,12 @@
 # versa-storybook
 
+## 0.0.72
+
+### Patch Changes
+
+- Updated dependencies
+  - @versa/react@1.13.9
+
 ## 0.0.71
 
 ### Patch Changes

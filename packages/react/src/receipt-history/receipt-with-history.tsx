@@ -80,7 +80,7 @@ export function ReceiptWithHistory({
 
   return (
     <div className={styles.receiptHistoryWrap}>
-      {history && !!history.length && isLatest && (
+      {history && !!totalUpdates && isLatest && (
         <button
           ref={updatesIndicatorRef}
           onClick={handleUpdateFocus}
