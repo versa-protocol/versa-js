@@ -70,7 +70,7 @@ export function diffReceipts(
               shipment
             )
         );
-      if (newShipment) {
+      if (newShipment && newShipment.items.length > 0) {
         updates.push({
           description: `${newShipment.items.length} items shipped`,
         });
