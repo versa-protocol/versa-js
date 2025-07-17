@@ -1,5 +1,11 @@
 # @versa/react
 
+## 1.13.10
+
+### Patch Changes
+
+- fix: minor display bugs with ecommerce receipts
+
 ## 1.13.9
 
 ### Patch Changes
