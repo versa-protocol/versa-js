@@ -11,6 +11,11 @@
   padding: 0.25rem 0.5rem;
   color: var(--foreground-soft);
   background-color: var(--background);
+  display: none;
+}
+
+.versionWrap:hover .viewButton {
+  display: block;
 }
 
 .updateDescription {
