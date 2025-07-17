@@ -161,7 +161,6 @@ export function ItemizedEcommerce({
                         )}
                         <div className={styles.keyValue}>
                           <div className={styles.key}>Expected Delivery</div>
-
                           {!!s.expected_delivery_at && (
                             <div className={styles.value}>
                               {formatDateTime(s.expected_delivery_at, {
@@ -177,9 +176,11 @@ export function ItemizedEcommerce({
                   </div>
                 </div>
               </BlockWrap>
-              <BlockWrap>
-                <LineItems items={s.items} header={header} />
-              </BlockWrap>
+              {s.items && s.items.length > 0 && (
+                <BlockWrap>
+                  <LineItems items={s.items} header={header} />
+                </BlockWrap>
+              )}
             </React.Fragment>
           );
         })}
