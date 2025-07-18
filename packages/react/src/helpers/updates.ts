@@ -59,22 +59,21 @@ export function diffReceipts(
   }
 
   if (newReceipt.receipt.itemization.ecommerce) {
-    if (
-      newReceipt.receipt.itemization.ecommerce.shipments.length >
-      (oldReceipt.receipt.itemization.ecommerce?.shipments?.length || 0)
-    ) {
-      const newShipment =
-        newReceipt.receipt.itemization.ecommerce.shipments.find(
-          (shipment) =>
-            !oldReceipt.receipt.itemization.ecommerce?.shipments.includes(
-              shipment
-            )
-        );
-      if (newShipment && newShipment.items.length > 0) {
-        updates.push({
-          description: `${newShipment.items.length} items shipped`,
-        });
-      }
+    let oldItemsShipped = 0;
+    let newItemsShipped = 0;
+
+    for (const shipment of oldReceipt.receipt.itemization.ecommerce
+      ?.shipments || []) {
+      oldItemsShipped += shipment.items.length;
+    }
+    for (const shipment of newReceipt.receipt.itemization.ecommerce.shipments) {
+      newItemsShipped += shipment.items.length;
+    }
+    if (newItemsShipped > oldItemsShipped) {
+      const diff = newItemsShipped - oldItemsShipped;
+      updates.push({
+        description: `${diff} item${diff === 1 ? "" : "s"} shipped`,
+      });
     }
   }
 

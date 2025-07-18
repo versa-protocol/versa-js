@@ -1,5 +1,11 @@
 # @versa/react
 
+## 1.13.11
+
+### Patch Changes
+
+- refactor: detect new shipped items by diffing total shipped items
+
 ## 1.13.10
 
 ### Patch Changes
