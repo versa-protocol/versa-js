@@ -9,7 +9,8 @@
     "build": "tsup src/index.ts --format cjs,esm --dts && rm -rf dist/integrationTests",
     "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
     "lint": "eslint src",
-    "test": "jest && pnpm build:ava && ava",
+    "test": "jest && pnpm test:ava",
+    "test:ava": "pnpm build:ava && ava",
     "build:ava": "tsc -p tsconfig.ava.json",
     "prepare": "pnpm build"
   },

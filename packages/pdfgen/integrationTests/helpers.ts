@@ -1,5 +1,5 @@
-import { getDocument } from "pdfjs-dist";
-import { PDFPageProxy } from "pdfjs-dist";
+import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
+import { PDFPageProxy } from "pdfjs-dist/legacy/build/pdf.mjs";
 import { TextItem, TextMarkedContent } from "pdfjs-dist/types/src/display/api";
 
 /**
