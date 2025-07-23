@@ -9,7 +9,8 @@
     "skipLibCheck": true,
     "noImplicitAny": false,
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "resolveJsonModule": true
   },
   "include": ["integrationTests/**/*.ts", "src/**/*.ts"],
   "exclude": ["node_modules", "dist"]

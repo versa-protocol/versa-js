@@ -1,0 +1,47 @@
+{
+  "footer": {
+    "actions": [],
+    "supplemental_text": "Ticket is cancelled."
+  },
+  "header": {
+    "mcc": null,
+    "paid": 0,
+    "total": 0,
+    "currency": "usd",
+    "customer": null,
+    "location": {
+      "url": null,
+      "name": null,
+      "image": null,
+      "phone": null,
+      "address": {
+        "tz": "America/Chicago",
+        "lat": null,
+        "lon": null,
+        "city": null,
+        "region": null,
+        "country": null,
+        "postal_code": null,
+        "street_address": null
+      },
+      "google_place_id": null
+    },
+    "subtotal": 0,
+    "invoiced_at": 1752814800,
+    "third_party": null,
+    "invoice_number": null,
+    "invoice_asset_id": null,
+    "receipt_asset_id": null
+  },
+  "payments": [],
+  "itemization": {
+    "flight": null,
+    "general": null,
+    "lodging": null,
+    "ecommerce": null,
+    "car_rental": null,
+    "subscription": null,
+    "transit_route": null
+  },
+  "schema_version": "1.11.0"
+}
