@@ -100,12 +100,10 @@ export function ReceiptLatest({
       )}
       {data.itemization.subscription && (
         <>
-          <BlockWrap>
-            <ItemizedSubscription
-              header={data.header}
-              subscription={data.itemization.subscription}
-            />
-          </BlockWrap>
+          <ItemizedSubscription
+            header={data.header}
+            subscription={data.itemization.subscription}
+          />
           <BlockWrap>
             <LineItems
               items={data.itemization.subscription.subscription_items}
