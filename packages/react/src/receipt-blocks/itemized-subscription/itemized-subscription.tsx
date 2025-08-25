@@ -37,7 +37,6 @@ export function ItemizedSubscription({
                       <div className={styles.header}>From</div>
                       <div className={styles.time}>
                         {formatDateTime(s.current_period_start_at, {
-                          includeTime: true,
                           iataTimezone: header.location?.address?.tz || null,
                         })}
                       </div>
@@ -46,7 +45,6 @@ export function ItemizedSubscription({
                       <div className={styles.header}>To</div>
                       <div className={styles.time}>
                         {formatDateTime(s.current_period_end_at, {
-                          includeTime: true,
                           iataTimezone: header.location?.address?.tz || null,
                         })}
                       </div>
