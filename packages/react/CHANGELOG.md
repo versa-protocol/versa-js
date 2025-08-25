@@ -1,5 +1,13 @@
 # @versa/react
 
+## 1.13.12
+
+### Patch Changes
+
+- fix: empty-space bug with one_time subscriptions
+- Updated dependencies
+  - @versa/pdfgen@1.13.5
+
 ## 1.13.11
 
 ### Patch Changes

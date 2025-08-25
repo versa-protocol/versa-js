@@ -1,5 +1,11 @@
 # @versa/pdfgen
 
+## 1.13.5
+
+### Patch Changes
+
+- fix: empty-space bug with one_time subscriptions
+
 ## 1.13.4
 
 ### Patch Changes

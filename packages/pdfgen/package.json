@@ -1,6 +1,6 @@
 {
   "name": "@versa/pdfgen",
-  "version": "1.13.4",
+  "version": "1.13.5",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
