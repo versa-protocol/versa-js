@@ -1,5 +1,13 @@
 # @versa/pdfgen
 
+## 1.13.6
+
+### Patch Changes
+
+- fix: formatTransactionValue breaking error on null currency codes
+- Updated dependencies
+  - @versa/belt@1.13.3
+
 ## 1.13.5
 
 ### Patch Changes

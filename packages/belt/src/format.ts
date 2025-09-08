@@ -33,6 +33,9 @@ export function formatUSD(amount: number) {
 }
 
 export function formatTransactionValue(amount: number, currency_code: string) {
+  if (!currency_code) {
+    return "";
+  }
   const supportedCurrencies = [
     "usd",
     "eur",

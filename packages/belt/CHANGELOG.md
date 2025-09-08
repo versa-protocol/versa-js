@@ -1,5 +1,11 @@
 # @versa/belt
 
+## 1.13.3
+
+### Patch Changes
+
+- fix: formatTransactionValue breaking error on null currency codes
+
 ## 1.13.2
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # versa-storybook
 
+## 0.0.76
+
+### Patch Changes
+
+- @versa/react@1.13.13
+
 ## 0.0.75
 
 ### Patch Changes
