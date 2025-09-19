@@ -1,5 +1,12 @@
 # @versa/pdfgen
 
+## 1.13.7
+
+### Patch Changes
+
+- Updated dependencies
+  - @versa/belt@1.13.4
+
 ## 1.13.6
 
 ### Patch Changes

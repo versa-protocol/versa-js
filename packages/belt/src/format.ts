@@ -291,8 +291,9 @@ export function formatDateComparison(
   targetEpoch: number,
   targetTimezone: string
 ): string {
-  if (targetEpoch < originalEpoch || targetEpoch < previousEpoch) {
-    throw new Error("Target date must be after comparison dates");
+  // Allow equal timestamps for cases like same departure times in different classes
+  if (targetEpoch < originalEpoch) {
+    throw new Error("Target date must not be before the original date");
   }
 
   // Create formatters with respective timezones

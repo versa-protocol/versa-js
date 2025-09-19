@@ -1,5 +1,11 @@
 # @versa/belt
 
+## 1.13.4
+
+### Patch Changes
+
+- fix: error on double-booked flight segments e.g. multiple seats booked for one passenger"
+
 ## 1.13.3
 
 ### Patch Changes
