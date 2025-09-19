@@ -16,7 +16,6 @@
     "@uiw/react-codemirror": "^4.23.12",
     "@versa/belt": "workspace:*",
     "@versa/examples": "workspace:*",
-    "@versa/link": "workspace:*",
     "@versa/react": "workspace:*",
     "@versa/schema": "workspace:*",
     "@versaprotocol/semval": "^0.7.2",
