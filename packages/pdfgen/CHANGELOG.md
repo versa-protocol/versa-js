@@ -1,5 +1,11 @@
 # @versa/pdfgen
 
+## 1.13.8
+
+### Patch Changes
+
+- more defensiveness around missing currency
+
 ## 1.13.7
 
 ### Patch Changes
