@@ -15,10 +15,12 @@
 
 .start {
   border-right: 1px solid var(--light-stroke);
+  padding-right: 1rem;
 }
 
 .end {
   text-align: right;
+  padding-left: 1rem;
 }
 
 .header {
