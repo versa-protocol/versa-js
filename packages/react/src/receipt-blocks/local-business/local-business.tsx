@@ -56,10 +56,7 @@ export function LocalBusiness({
     resolvedCoords?.lon ?? (location.address?.lon as number | undefined);
 
   const shouldRenderMap =
-    !!displayLat &&
-    typeof displayLat === "number" &&
-    !!displayLon &&
-    typeof displayLon === "number";
+    typeof displayLat === "number" && typeof displayLon === "number";
 
   return (
     <>
