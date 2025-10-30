@@ -1,5 +1,18 @@
 # @versa/react
 
+## 1.14.0
+
+### Minor Changes
+
+- basic support for schema version 2.1.0; including service itemizations
+
+### Patch Changes
+
+- Updated dependencies
+  - @versa/schema@2.1.0
+  - @versa/belt@1.14.0
+  - @versa/pdfgen@1.14.0
+
 ## 1.13.15
 
 ### Patch Changes

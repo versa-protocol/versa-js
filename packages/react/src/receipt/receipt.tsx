@@ -60,7 +60,7 @@ export function ReceiptDisplay({
     );
   }
 
-  // 2.0.0-rc2 and later use the latest component with Person type support
+  // 2.1.0 and later use the latest component with Person type support
   return (
     <ReceiptLatest
       receipt={data}

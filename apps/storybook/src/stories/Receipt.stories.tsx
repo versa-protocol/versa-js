@@ -85,6 +85,13 @@ export const Ecommerce: Story = {
   },
 };
 
+export const Parking: Story = {
+  args: {
+    merchant: senders.the_parking_spot,
+    receipt: receipts.parking,
+  },
+};
+
 export const Rail: Story = {
   args: {
     merchant: senders.sonesta,
