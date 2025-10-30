@@ -1,5 +1,11 @@
 # @versa/react
 
+## 1.14.2
+
+### Patch Changes
+
+- fix: should show relevant times as well as dates for service periods
+
 ## 1.14.1
 
 ### Patch Changes
