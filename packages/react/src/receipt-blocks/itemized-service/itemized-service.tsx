@@ -37,6 +37,10 @@ export function ItemizedService({
                       <div className={styles.header}>From</div>
                       <div className={styles.time}>
                         {formatDateTime(s.current_period_start_at, {
+                          includeTime:
+                            s.current_period_end_at -
+                              s.current_period_start_at <=
+                            48 * 60 * 60,
                           iataTimezone: header.location?.address?.tz || null,
                         })}
                       </div>
@@ -45,6 +49,10 @@ export function ItemizedService({
                       <div className={styles.header}>To</div>
                       <div className={styles.time}>
                         {formatDateTime(s.current_period_end_at, {
+                          includeTime:
+                            s.current_period_end_at -
+                              s.current_period_start_at <=
+                            48 * 60 * 60,
                           iataTimezone: header.location?.address?.tz || null,
                         })}
                       </div>
