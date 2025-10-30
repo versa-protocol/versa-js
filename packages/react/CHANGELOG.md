@@ -1,5 +1,11 @@
 # @versa/react
 
+## 1.14.1
+
+### Patch Changes
+
+- fix: broken map display
+
 ## 1.14.0
 
 ### Minor Changes
