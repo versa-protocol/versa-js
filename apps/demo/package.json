@@ -18,7 +18,7 @@
     "@versa/examples": "workspace:*",
     "@versa/react": "workspace:*",
     "@versa/schema": "workspace:*",
-    "@versaprotocol/semval": "^0.9.0",
+    "@versaprotocol/semval": "^0.10.0",
     "next": "^15",
     "next-themes": "^0.3.0",
     "react": "^19",
