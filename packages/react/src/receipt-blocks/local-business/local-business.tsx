@@ -55,29 +55,33 @@ export function LocalBusiness({
   const displayLon =
     resolvedCoords?.lon ?? (location.address?.lon as number | undefined);
 
+  const shouldRenderMap =
+    !!displayLat &&
+    typeof displayLat === "number" &&
+    !!displayLon &&
+    typeof displayLon === "number";
+
   return (
     <>
       <div className={styles.localBusinessWrap}>
         <div className={styles.localBusiness}>
           <div>
-            {location.address &&
-              typeof displayLat === "number" &&
-              typeof displayLon === "number" && (
-                <div className={styles.mapWrap}>
-                  {config?.mapbox_token && (
-                    <img
-                      src={`https://api.mapbox.com/styles/v1/mapbox/${
-                        theme == "light" ? "light-v11" : "dark-v11"
-                      }/static/pin-s+555555(${displayLon},${displayLat})/${displayLon},${displayLat},14,0/400x140@2x?logo=false&attribution=false&access_token=${
-                        config.mapbox_token
-                      }`}
-                      width={400}
-                      height={140}
-                      alt=""
-                    />
-                  )}
-                </div>
-              )}
+            {shouldRenderMap && (
+              <div className={styles.mapWrap}>
+                {config?.mapbox_token && (
+                  <img
+                    src={`https://api.mapbox.com/styles/v1/mapbox/${
+                      theme == "light" ? "light-v11" : "dark-v11"
+                    }/static/pin-s+555555(${displayLon},${displayLat})/${displayLon},${displayLat},14,0/400x140@2x?logo=false&attribution=false&access_token=${
+                      config.mapbox_token
+                    }`}
+                    width={400}
+                    height={140}
+                    alt=""
+                  />
+                )}
+              </div>
+            )}
             <div className={styles.localBusinessProfile}>
               {location.address && (
                 <div>
