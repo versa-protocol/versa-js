@@ -6,6 +6,7 @@ export * from "./receipt-footer";
 export * from "./itemized-car-rental";
 export * from "./itemized-flight";
 export * from "./itemized-lodging";
+export * from "./itemized-service";
 export * from "./itemized-subscription";
 export * from "./itemized-transit-route";
 export * from "./line-item";

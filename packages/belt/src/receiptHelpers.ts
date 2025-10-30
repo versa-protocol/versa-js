@@ -76,6 +76,17 @@ export function aggregateTaxes(itemization: Itemization): Tax[] {
       }
     }
   }
+  if (itemization.service) {
+    for (const service_item of itemization.service.service_items) {
+      for (const tax of service_item.taxes || []) {
+        if (aggregatedTaxes[tax.name + tax.rate]) {
+          aggregatedTaxes[tax.name + tax.rate].amount += tax.amount;
+        } else {
+          aggregatedTaxes[tax.name + tax.rate] = { ...tax };
+        }
+      }
+    }
+  }
   if (itemization.subscription) {
     for (const subscription_item of itemization.subscription
       .subscription_items) {
@@ -238,6 +249,9 @@ export function aggregateAdjustments(
 ): Adjustment[] | null {
   if (itemization.transit_route) {
     return itemization.transit_route.invoice_level_adjustments || null;
+  }
+  if (itemization.service) {
+    return itemization.service.invoice_level_adjustments || null;
   }
   if (itemization.subscription) {
     return itemization.subscription.invoice_level_adjustments || null;
@@ -693,6 +707,70 @@ export function aggregateItems(
     });
   }
 
+  // Service
+  if (itemization.service) {
+    itemization.service.service_items.forEach((i) => {
+      const row: { [key: string]: any } = {};
+      Object.keys(head).forEach((key) => {
+        if (key == "description") {
+          let descriptionString: string = "";
+          descriptionString = i.description;
+          if (i.current_period_start_at && i.current_period_end_at) {
+            descriptionString = descriptionString.concat(
+              "\n",
+              formatTimeRange(
+                i.current_period_start_at,
+                i.current_period_end_at
+              )
+            );
+          }
+          row.description = { content: descriptionString };
+        } else if (key == "amount") {
+          row.amount = {
+            content: formatTransactionValue(i.amount, header.currency),
+            styles: {
+              halign: "right",
+              cellPadding: { top: 0.125, right: 0, bottom: 0.125, left: 0 },
+            },
+          };
+          // todo: handle adjustments here
+        } else if (key == "quantity") {
+          row.quantity = {
+            content: i.quantity ? i.quantity.toString() : "",
+            styles: { halign: "right" },
+          };
+        } else if (key == "unit_cost") {
+          row.unit_cost = {
+            content: i.unit_cost
+              ? formatTransactionValue(i.unit_cost, header.currency)
+              : "",
+            styles: { halign: "right" },
+          };
+        } else if (key == "taxes" && i.taxes) {
+          let combinedTaxRate = 0;
+          i.taxes.forEach((t) => {
+            if (t.rate) {
+              combinedTaxRate += t.rate;
+            }
+          });
+          row.taxes = {
+            content: combinedTaxRate * 100 + "%",
+            styles: { halign: "right" },
+          };
+        } else {
+          if (i.metadata && i.metadata.length > 0) {
+            i.metadata.forEach((m) => {
+              if (key == m.key) {
+                row[m.key] = { content: m.value };
+              }
+            });
+          }
+        }
+      });
+      items.push(row);
+    });
+  }
+
   // Subscription
   if (itemization.subscription) {
     itemization.subscription.subscription_items.forEach((i) => {
@@ -837,6 +915,39 @@ function aggregateItemHeaders(itemization: Itemization): pdfItem {
     // todo: handle metadata
     head.fare = {
       content: "Fare",
+      styles: {
+        halign: "right",
+        cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },
+      },
+    };
+  }
+
+  // Service
+  if (itemization.service) {
+    head = { description: { content: "Description" } };
+    itemization.service.service_items.forEach((i) => {
+      if (i.quantity !== null && !head.quantity) {
+        head.quantity = { content: "Qty", styles: { halign: "right" } };
+        head.unit_cost = { content: "Unit Price", styles: { halign: "right" } };
+      }
+    });
+    itemization.service.service_items.forEach((i) => {
+      if (i.metadata && i.metadata.length > 0) {
+        i.metadata.forEach((m) => {
+          if (!head[m.key]) {
+            head[m.key] = { content: m.key };
+          }
+        });
+      }
+    });
+    const allTaxesAreRateBased = itemization.service.service_items.every(
+      (i) => i.taxes && i.taxes.every((t) => t.rate !== null)
+    );
+    if (allTaxesAreRateBased) {
+      head.taxes = { content: "Tax", styles: { halign: "right" } };
+    }
+    head.amount = {
+      content: "Amount",
       styles: {
         halign: "right",
         cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },

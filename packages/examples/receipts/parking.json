@@ -1,0 +1,94 @@
+{
+  "schema_version": "2.1.0",
+  "header": {
+    "invoice_number": "auth_1MzFN1K8F4fqH0lBmFq8CjbU",
+    "currency": "usd",
+    "total": 7255,
+    "subtotal": 7200,
+    "paid": 7255,
+    "invoiced_at": 1713295619,
+    "mcc": null,
+    "third_party": null,
+    "customer": null,
+    "location": {
+      "name": "Cars R Parked",
+      "address": {
+        "street_address": "55500 East 78th Ave",
+        "city": "Denver",
+        "region": "CO",
+        "country": "US",
+        "postal_code": "80249",
+        "lat": 39.83644,
+        "lon": -104.70861,
+        "tz": "America/Denver"
+      },
+      "phone": "+13033420500",
+      "url": null,
+      "google_place_id": null,
+      "image": null
+    },
+    "invoice_asset_id": null,
+    "receipt_asset_id": null
+  },
+  "itemization": {
+    "service": {
+      "service_items": [
+        {
+          "service_location": {
+            "name": "Cars R Parked",
+            "address": {
+              "street_address": "498-512 Rte 1 and 9 S",
+              "city": "Newark",
+              "region": "NJ",
+              "country": "US",
+              "postal_code": "07114",
+              "lat": 40.689435,
+              "lon": -74.192351,
+              "tz": "America/New_York"
+            }
+          },
+          "recurring": false,
+          "description": "Self Park, Uncovered",
+          "amount": 7200,
+          "interval": "month",
+          "interval_count": 1,
+          "current_period_start_at": 1756137600,
+          "current_period_end_at": 1756576800,
+          "quantity": 4,
+          "unit_cost": 1800,
+          "taxes": [
+            {
+              "amount": 55,
+              "rate": null,
+              "name": "Temporary Fuel Surcharge"
+            }
+          ],
+          "metadata": [],
+          "adjustments": []
+        }
+      ],
+      "invoice_level_adjustments": []
+    }
+  },
+  "footer": {
+    "actions": [
+      {
+        "name": "Manage Loyalty Account",
+        "url": "https://versa.org/"
+      }
+    ],
+    "supplemental_text": "**Check-in/Check-out Policy Reservations:** \n\n Upon entry, scan your reservation from your confirmation email or from the Cars R Parked mobile app and follow the on-screen instructions. On exit, scan your reservation again and follow on-screen instructions. If you have stayed past your reservation end date/time, you will be asked to pay the difference at the kiosk before exiting. There are no in-and-out privileges. Every time you enter the facility you will start a new stay."
+  },
+  "payments": [
+    {
+      "paid_at": 1713295619,
+      "payment_type": "card",
+      "amount": 7255,
+      "card_payment": {
+        "last_four": "7806",
+        "network": "mastercard"
+      },
+      "ach_payment": null
+    }
+  ]
+}

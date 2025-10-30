@@ -1,5 +1,11 @@
 # @versa/schema
 
+## 2.1.0
+
+### Minor Changes
+
+- basic support for schema version 2.1.0; including service itemizations
+
 ## 2.0.0
 
 ### Major Changes

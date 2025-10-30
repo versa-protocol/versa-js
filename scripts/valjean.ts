@@ -3,7 +3,7 @@ import * as path from "path";
 import Ajv2020 from "ajv/dist/2020";
 import addFormats from "ajv-formats";
 
-const DEFAULT_SCHEMA_VERSION = "2.0.0";
+const DEFAULT_SCHEMA_VERSION = "2.1.0";
 const SCHEMA_BASE_URL =
   "https://raw.githubusercontent.com/versa-protocol/schema";
 

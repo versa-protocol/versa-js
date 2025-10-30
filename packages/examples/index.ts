@@ -293,6 +293,7 @@ import flight_receipt from "./receipts/flight.json";
 import redeye_receipt from "./receipts/redeye.json";
 import flight_multileg_receipt from "./receipts/flight_multileg.json";
 import subscription_receipt from "./receipts/subscription.json";
+import parking_receipt from "./receipts/parking.json";
 import simple_receipt from "./receipts/simple.json";
 import car_rental_receipt from "./receipts/car_rental.json";
 import ecommerce_receipt from "./receipts/ecommerce.json";
@@ -591,6 +592,7 @@ export const untypedReceipts = {
   redeye: redeye_receipt,
   flight_multileg: flight_multileg_receipt,
   subscription: subscription_receipt,
+  parking: parking_receipt,
   simple: simple_receipt,
   car_rental: car_rental_receipt,
   ecommerce: ecommerce_receipt,

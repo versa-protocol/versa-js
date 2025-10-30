@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.0.0",
+  "schema_version": "2.1.0",
   "header": {
     "invoice_number": "auth_1MzFN1K8F4fqH0lBmFq8CjbU",
     "currency": "usd",
@@ -29,10 +29,10 @@
     "ecommerce": null,
     "car_rental": null,
     "transit_route": null,
-    "subscription": {
-      "subscription_items": [
+    "service": {
+      "service_items": [
         {
-          "subscription_type": "recurring",
+          "recurring": true,
           "description": "Starter monthly plan",
           "amount": 7420,
           "interval": "month",

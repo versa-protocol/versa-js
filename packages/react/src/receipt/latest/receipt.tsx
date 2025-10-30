@@ -6,6 +6,7 @@ import {
   ItemizedEcommerce,
   ItemizedFlight,
   ItemizedLodging,
+  ItemizedService,
   ItemizedSubscription,
   ItemizedTransitRoute,
   LineItems,
@@ -65,6 +66,16 @@ export function ReceiptLatest({
     colors.brandHighContrast = colors.brand;
   }
 
+  let primaryLocation = data.header.location;
+  if (data.itemization.service) {
+    for (const item of data.itemization.service.service_items) {
+      if (item.service_location) {
+        primaryLocation = item.service_location;
+        break;
+      }
+    }
+  }
+
   const mapAttribution =
     data.itemization.lodging ||
     (data.itemization.transit_route &&
@@ -107,6 +118,20 @@ export function ReceiptLatest({
           <BlockWrap>
             <LineItems
               items={data.itemization.subscription.subscription_items}
+              header={data.header}
+            />
+          </BlockWrap>
+        </>
+      )}
+      {data.itemization.service && (
+        <>
+          <ItemizedService
+            header={data.header}
+            service={data.itemization.service}
+          />
+          <BlockWrap>
+            <LineItems
+              items={data.itemization.service.service_items}
               header={data.header}
             />
           </BlockWrap>
@@ -206,10 +231,10 @@ export function ReceiptLatest({
 
       {/* Local Transaction */}
 
-      {data.header.location?.address?.street_address && (
+      {primaryLocation?.address?.street_address && (
         <BlockWrap>
           <LocalBusiness
-            location={data.header.location}
+            location={primaryLocation}
             theme={theme}
             brandColor={colors.brandHighContrast}
           />
