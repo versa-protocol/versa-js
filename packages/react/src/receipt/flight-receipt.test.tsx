@@ -11,7 +11,7 @@ describe("Flight Receipt - 2.0 Schema", () => {
 
   beforeEach(() => {
     // Ensure we're testing the 2.0 schema version
-    expect(flightReceipt.schema_version).toBe("2.0.0");
+    expect(flightReceipt.schema_version).toBe("2.1.0");
   });
 
   describe("Flight Header Information", () => {
