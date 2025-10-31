@@ -28,6 +28,10 @@
   color: var(--foreground-secondary);
 }
 
-.time {
+.datetime {
+  margin-top: 0.25rem;
+}
+
+.datetime :global(.secondaryText) {
   margin-top: 0.25rem;
 }

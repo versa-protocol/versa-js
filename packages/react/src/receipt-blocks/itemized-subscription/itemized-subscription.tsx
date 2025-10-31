@@ -22,7 +22,10 @@ export function ItemizedSubscription({
                   Your subscription was renewed for your team of {s.quantity}.
                   Your next bill will be on{" "}
                   {formatDateTime(s.current_period_end_at, {
-                    iataTimezone: header.location?.address?.tz,
+                    iataTimezone:
+                      (s as any).service_location?.address?.tz ||
+                      header.location?.address?.tz ||
+                      null,
                   })}
                   .
                 </div>
@@ -35,26 +38,52 @@ export function ItemizedSubscription({
                   <div className={styles.dateRange}>
                     <div className={styles.start}>
                       <div className={styles.header}>From</div>
-                      <div className={styles.time}>
-                        {formatDateTime(s.current_period_start_at, {
-                          includeTime:
-                            s.current_period_end_at -
-                              s.current_period_start_at <=
-                            48 * 60 * 60,
-                          iataTimezone: header.location?.address?.tz || null,
-                        })}
+                      <div className={styles.datetime}>
+                        <div>
+                          {formatDateTime(s.current_period_start_at, {
+                            iataTimezone:
+                              (s as any).service_location?.address?.tz ||
+                              header.location?.address?.tz ||
+                              null,
+                          })}
+                        </div>
+                        {s.current_period_end_at - s.current_period_start_at <=
+                          48 * 60 * 60 && (
+                          <div className="secondaryText">
+                            {formatDateTime(s.current_period_start_at, {
+                              timeOnly: true,
+                              iataTimezone:
+                                (s as any).service_location?.address?.tz ||
+                                header.location?.address?.tz ||
+                                null,
+                            })}
+                          </div>
+                        )}
                       </div>
                     </div>
                     <div className={styles.end}>
                       <div className={styles.header}>To</div>
-                      <div className={styles.time}>
-                        {formatDateTime(s.current_period_end_at, {
-                          includeTime:
-                            s.current_period_end_at -
-                              s.current_period_start_at <=
-                            48 * 60 * 60,
-                          iataTimezone: header.location?.address?.tz || null,
-                        })}
+                      <div className={styles.datetime}>
+                        <div>
+                          {formatDateTime(s.current_period_end_at, {
+                            iataTimezone:
+                              (s as any).service_location?.address?.tz ||
+                              header.location?.address?.tz ||
+                              null,
+                          })}
+                        </div>
+                        {s.current_period_end_at - s.current_period_start_at <=
+                          48 * 60 * 60 && (
+                          <div className="secondaryText">
+                            {formatDateTime(s.current_period_end_at, {
+                              timeOnly: true,
+                              iataTimezone:
+                                (s as any).service_location?.address?.tz ||
+                                header.location?.address?.tz ||
+                                null,
+                            })}
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>

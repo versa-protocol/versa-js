@@ -67,6 +67,7 @@ interface SupportedDateTimeFormatConfig {
   includeDOW?: boolean;
   includeTimezone?: boolean;
   iataTimezone?: string | null;
+  timeOnly?: boolean;
 }
 
 export function formatDateTime(
@@ -74,8 +75,22 @@ export function formatDateTime(
   config?: SupportedDateTimeFormatConfig
 ) {
   const d = new Date(secondsSinceEpoch * 1000);
-  const { includeDOW, includeTimezone, includeTime, iataTimezone } =
+  const { includeDOW, includeTimezone, includeTime, iataTimezone, timeOnly } =
     config || {};
+  // If only time is requested, return time string (respect timezone options)
+  if (timeOnly) {
+    const timeOptions: Intl.DateTimeFormatOptions = {
+      hour: "numeric",
+      minute: "numeric",
+    };
+    if (iataTimezone) {
+      timeOptions.timeZone = iataTimezone;
+    }
+    if (includeTimezone) {
+      timeOptions.timeZoneName = "short";
+    }
+    return d.toLocaleTimeString("en-US", timeOptions);
+  }
   let options: Intl.DateTimeFormatOptions;
   if (d.getFullYear() === new Date().getFullYear()) {
     options = {
