@@ -1,5 +1,14 @@
 # @versa/react
 
+## 1.14.4
+
+### Patch Changes
+
+- apply patch for better time handling in service itemizations
+- Updated dependencies
+  - @versa/belt@1.14.1
+  - @versa/pdfgen@1.14.1
+
 ## 1.14.3
 
 ### Patch Changes

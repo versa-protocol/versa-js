@@ -1,5 +1,13 @@
 # @versa/pdfgen
 
+## 1.14.1
+
+### Patch Changes
+
+- apply patch for better time handling in service itemizations
+- Updated dependencies
+  - @versa/belt@1.14.1
+
 ## 1.14.0
 
 ### Minor Changes

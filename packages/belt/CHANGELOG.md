@@ -1,5 +1,11 @@
 # @versa/belt
 
+## 1.14.1
+
+### Patch Changes
+
+- apply patch for better time handling in service itemizations
+
 ## 1.14.0
 
 ### Minor Changes
