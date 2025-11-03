@@ -44,7 +44,6 @@ export function ItemizedLodging({
                           },14,0/200x140@2x?logo=false&attribution=false&access_token=${
                             config.mapbox_token
                           }`}
-                          width={200}
                           height={140}
                           alt=""
                         />

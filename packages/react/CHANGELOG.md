@@ -1,5 +1,11 @@
 # @versa/react
 
+## 1.14.3
+
+### Patch Changes
+
+- fix: maximum width on mapbox images
+
 ## 1.14.2
 
 ### Patch Changes

@@ -72,7 +72,6 @@ export function LocalBusiness({
                     }/static/pin-s+555555(${displayLon},${displayLat})/${displayLon},${displayLat},14,0/400x140@2x?logo=false&attribution=false&access_token=${
                       config.mapbox_token
                     }`}
-                    width={400}
                     height={140}
                     alt=""
                   />

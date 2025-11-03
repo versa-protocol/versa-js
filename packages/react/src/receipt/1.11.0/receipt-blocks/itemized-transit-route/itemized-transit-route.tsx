@@ -67,7 +67,6 @@ export function ItemizedTransitRoute({
                         })/auto/400x200@2x?padding=30&logo=false&attribution=false&access_token=${
                           config.mapbox_token
                         }`}
-                        width={400}
                         height={200}
                         alt=""
                       />
