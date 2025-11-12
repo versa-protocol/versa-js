@@ -36,30 +36,23 @@ export function formatTransactionValue(amount: number, currency_code: string) {
   if (!currency_code) {
     return "";
   }
-  const supportedCurrencies = [
-    "usd",
-    "eur",
-    "jpy",
-    "gbp",
-    "aud",
-    "cad",
-    "chf",
-    "cny",
-  ];
+
   const normalizedCurrency = currency_code.toLowerCase();
-  if (!supportedCurrencies.includes(normalizedCurrency)) {
-    return `${amount} ${currency_code.toUpperCase()}`;
-  }
+
   let locale = "en-US";
-  if (navigator.language) {
+  if (typeof navigator !== "undefined" && navigator.language) {
     locale = navigator.language;
   }
-  return new Intl.NumberFormat(locale, {
+  const currency = normalizedCurrency.toUpperCase();
+  const formatter = new Intl.NumberFormat(locale, {
     style: "currency",
-    currency: normalizedCurrency.toUpperCase(),
-    minimumFractionDigits: normalizedCurrency === "jpy" ? 0 : 2,
-    maximumFractionDigits: normalizedCurrency === "jpy" ? 0 : 2,
-  }).format(amount / (normalizedCurrency === "jpy" ? 1 : 100));
+    currency,
+  });
+  const resolved = formatter.resolvedOptions();
+  const fractionDigits =
+    resolved.maximumFractionDigits ?? resolved.minimumFractionDigits ?? 2;
+  const majorAmount = amount / Math.pow(10, fractionDigits);
+  return formatter.format(majorAmount);
 }
 
 interface SupportedDateTimeFormatConfig {
