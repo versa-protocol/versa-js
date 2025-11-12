@@ -1,5 +1,11 @@
 # @versa/examples
 
+## 2.1.1
+
+### Patch Changes
+
+- fix: currency support for all browser-supported localized currencies
+
 ## 2.1.0
 
 ### Minor Changes

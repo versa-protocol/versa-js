@@ -1,5 +1,11 @@
 # @versa/belt
 
+## 1.14.2
+
+### Patch Changes
+
+- fix: currency support for all browser-supported localized currencies
+
 ## 1.14.1
 
 ### Patch Changes
