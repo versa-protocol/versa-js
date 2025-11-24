@@ -31,6 +31,7 @@ export function LocalBusiness({
                         },14,0/400x140@2x?logo=false&attribution=false&access_token=${
                           config.mapbox_token
                         }`}
+                        width={400}
                         height={140}
                         alt=""
                       />

@@ -6,12 +6,19 @@
 
 .mapWrap {
   position: relative;
-  height: 100px;
+  width: 100%; /* variable */
+  height: 100px; /* fixed */
   overflow: hidden;
 }
 
 .mapWrap img {
-  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  min-width: 400px;
+  height: auto;
+  transform: translate(-50%, calc(-50% + 12px));
 }
 
 .mapWrap::after {
