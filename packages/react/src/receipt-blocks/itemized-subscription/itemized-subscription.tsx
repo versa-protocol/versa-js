@@ -1,4 +1,4 @@
-import { formatDateTime } from "@versa/belt";
+import { formatDateTimeWithPlaces } from "@versa/belt";
 import styles from "./itemized-subscription.module.css";
 import { Header, Subscription } from "@versa/schema";
 import React from "react";
@@ -21,12 +21,12 @@ export function ItemizedSubscription({
                 <div className={styles.subscriptionNote}>
                   Your subscription was renewed for your team of {s.quantity}.
                   Your next bill will be on{" "}
-                  {formatDateTime(s.current_period_end_at, {
-                    iataTimezone:
-                      (s as any).service_location?.address?.tz ||
-                      header.location?.address?.tz ||
-                      null,
-                  })}
+                  {formatDateTimeWithPlaces(
+                    s.current_period_end_at,
+                    [(s as any).service_location, header.location].filter(
+                      (p): p is import("@versa/schema").Place => p != null
+                    )
+                  )}
                   .
                 </div>
               </BlockWrap>
@@ -40,23 +40,33 @@ export function ItemizedSubscription({
                       <div className={styles.header}>From</div>
                       <div className={styles.datetime}>
                         <div>
-                          {formatDateTime(s.current_period_start_at, {
-                            iataTimezone:
-                              (s as any).service_location?.address?.tz ||
-                              header.location?.address?.tz ||
-                              null,
-                          })}
+                          {formatDateTimeWithPlaces(
+                            s.current_period_start_at,
+                            [
+                              (s as any).service_location,
+                              header.location,
+                            ].filter(
+                              (p): p is import("@versa/schema").Place =>
+                                p != null
+                            )
+                          )}
                         </div>
                         {s.current_period_end_at - s.current_period_start_at <=
                           48 * 60 * 60 && (
                           <div className="secondaryText">
-                            {formatDateTime(s.current_period_start_at, {
-                              timeOnly: true,
-                              iataTimezone:
-                                (s as any).service_location?.address?.tz ||
-                                header.location?.address?.tz ||
-                                null,
-                            })}
+                            {formatDateTimeWithPlaces(
+                              s.current_period_start_at,
+                              [
+                                (s as any).service_location,
+                                header.location,
+                              ].filter(
+                                (p): p is import("@versa/schema").Place =>
+                                  p != null
+                              ),
+                              {
+                                timeOnly: true,
+                              }
+                            )}
                           </div>
                         )}
                       </div>
@@ -65,23 +75,33 @@ export function ItemizedSubscription({
                       <div className={styles.header}>To</div>
                       <div className={styles.datetime}>
                         <div>
-                          {formatDateTime(s.current_period_end_at, {
-                            iataTimezone:
-                              (s as any).service_location?.address?.tz ||
-                              header.location?.address?.tz ||
-                              null,
-                          })}
+                          {formatDateTimeWithPlaces(
+                            s.current_period_end_at,
+                            [
+                              (s as any).service_location,
+                              header.location,
+                            ].filter(
+                              (p): p is import("@versa/schema").Place =>
+                                p != null
+                            )
+                          )}
                         </div>
                         {s.current_period_end_at - s.current_period_start_at <=
                           48 * 60 * 60 && (
                           <div className="secondaryText">
-                            {formatDateTime(s.current_period_end_at, {
-                              timeOnly: true,
-                              iataTimezone:
-                                (s as any).service_location?.address?.tz ||
-                                header.location?.address?.tz ||
-                                null,
-                            })}
+                            {formatDateTimeWithPlaces(
+                              s.current_period_end_at,
+                              [
+                                (s as any).service_location,
+                                header.location,
+                              ].filter(
+                                (p): p is import("@versa/schema").Place =>
+                                  p != null
+                              ),
+                              {
+                                timeOnly: true,
+                              }
+                            )}
                           </div>
                         )}
                       </div>

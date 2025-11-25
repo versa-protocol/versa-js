@@ -1,4 +1,4 @@
-import { formatDateTime } from "@versa/belt";
+import { formatDateTimeWithPlaces } from "@versa/belt";
 import styles from "../../../../receipt-blocks/itemized-subscription/itemized-subscription.module.css";
 import { lts } from "@versa/schema";
 import React from "react";
@@ -18,9 +18,9 @@ export function ItemizedSubscription({
             <div className={styles.subscriptionNote}>
               Your subscription was renewed for your team of {s.quantity}. Your
               next bill will be on{" "}
-              {formatDateTime(s.current_period_end, {
-                iataTimezone: header.location?.address?.tz,
-              })}
+              {formatDateTimeWithPlaces(s.current_period_end, [
+                header.location,
+              ])}
               .
             </div>
           )}

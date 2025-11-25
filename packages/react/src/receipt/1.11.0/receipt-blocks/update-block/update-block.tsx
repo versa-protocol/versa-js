@@ -1,4 +1,4 @@
-import { formatDateTime } from "@versa/belt";
+import { formatDateTimeWithPlaces } from "@versa/belt";
 import styles from "../../../../receipt-blocks/update-block/update-block.module.css";
 import { GroupedUpdate } from "../../../../helpers/updates";
 import React from "react";
@@ -23,7 +23,7 @@ export function UpdateBlock({
           <div className={styles.updateContent}>
             <div className={styles.updateDescription}>Initial receipt.</div>
             <div className={styles.timestamp}>
-              {formatDateTime(originalRegistrationTimestamp)}
+              {formatDateTimeWithPlaces(originalRegistrationTimestamp, [])}
             </div>
           </div>
           {currentTransactionEventIndex === 0 ? (
@@ -56,7 +56,7 @@ export function UpdateBlock({
                   </div>
                 ))}
                 <div className={styles.timestamp}>
-                  {formatDateTime(currentUpdate.registeredAt)}
+                  {formatDateTimeWithPlaces(currentUpdate.registeredAt, [])}
                 </div>
               </div>
             </div>

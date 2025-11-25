@@ -1,5 +1,5 @@
 import {
-  formatDateTime,
+  formatDateTimeWithPlaces,
   formatTime,
   formatTransactionValue,
   sameDay,
@@ -96,13 +96,13 @@ export function ItemizedTransitRoute({
                               </span>
                             ) : (
                               <div className={styles.datetime}>
-                                {formatDateTime(item.departure_at, {
-                                  includeTime: true,
-                                  iataTimezone:
-                                    item.departure_location?.address?.tz ||
-                                    header.location?.address?.tz ||
-                                    null,
-                                })}
+                                {formatDateTimeWithPlaces(
+                                  item.departure_at,
+                                  [item.departure_location, header.location],
+                                  {
+                                    includeTime: true,
+                                  }
+                                )}
                               </div>
                             )}
                           </>
@@ -131,13 +131,13 @@ export function ItemizedTransitRoute({
                               </span>
                             ) : (
                               <div className={styles.datetime}>
-                                {formatDateTime(item.arrival_at, {
-                                  includeTime: true,
-                                  iataTimezone:
-                                    item.arrival_location?.address?.tz ||
-                                    header.location?.address?.tz ||
-                                    null,
-                                })}
+                                {formatDateTimeWithPlaces(
+                                  item.arrival_at,
+                                  [item.arrival_location, header.location],
+                                  {
+                                    includeTime: true,
+                                  }
+                                )}
                               </div>
                             )}
                           </>

@@ -1,7 +1,7 @@
 import {
   airportLookup,
   formatDateComparison,
-  formatDateTime,
+  formatDateTimeWithPlaces,
   GroupedItinerary,
   organizeFlightTickets,
   aggregateFlight,
@@ -40,7 +40,11 @@ export async function FlightDetails(
       doc.setPage(cursor.page);
       let itineraryString = "";
       if (itinerary.departure_at) {
-        itineraryString += formatDateTime(itinerary.departure_at) + " - ";
+        // Use header location as fallback for timezone context
+        itineraryString +=
+          formatDateTimeWithPlaces(itinerary.departure_at, [
+            itinerary.departure_tz,
+          ]) + " - ";
       }
       itineraryString +=
         itinerary.departure_city + " to " + itinerary.arrival_city;
@@ -114,10 +118,13 @@ export async function FlightDetails(
               s.departure_tz
             );
           } else {
-            departureTime = formatDateTime(s.departure_at, {
-              includeTime: true,
-              iataTimezone: s.departure_tz,
-            });
+            departureTime = formatDateTimeWithPlaces(
+              s.departure_at,
+              [s.departure_tz],
+              {
+                includeTime: true,
+              }
+            );
           }
           doc.text(
             departureTime,
@@ -153,10 +160,14 @@ export async function FlightDetails(
               s.arrival_tz
             );
           } else {
-            arrivalTime = formatDateTime(s.arrival_at, {
-              includeTime: true,
-              iataTimezone: s.arrival_tz,
-            });
+            // Use header location as fallback for timezone context
+            arrivalTime = formatDateTimeWithPlaces(
+              s.arrival_at,
+              [s.arrival_tz],
+              {
+                includeTime: true,
+              }
+            );
           }
           doc.text(
             arrivalTime,

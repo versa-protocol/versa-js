@@ -21,7 +21,7 @@ import {
   RotateCw,
   Sidebar,
 } from "react-feather";
-import { formatDateTime, formatUSD } from "@versa/belt";
+import { formatDateTimeWithPlaces, formatUSD } from "@versa/belt";
 import { useValidator } from "../hooks/useValidator";
 import {
   Advisory,
@@ -410,7 +410,10 @@ export const InteractiveStudio = ({ org }: { org?: Org }) => {
                             </div>
                           )}
                           <div className={styles.dateText}>
-                            {formatDateTime(parsedReceipt.header.invoiced_at)}
+                            {formatDateTimeWithPlaces(
+                              parsedReceipt.header.invoiced_at,
+                              [parsedReceipt.header.location]
+                            )}
                           </div>
                         </div>
                         <div className={styles.amountText}>

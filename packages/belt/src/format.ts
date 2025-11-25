@@ -59,17 +59,29 @@ interface SupportedDateTimeFormatConfig {
   includeTime?: boolean;
   includeDOW?: boolean;
   includeTimezone?: boolean;
-  iataTimezone?: string | null;
   timeOnly?: boolean;
 }
 
-export function formatDateTime(
+export function formatDateTimeWithPlaces(
   secondsSinceEpoch: number,
+  /* should be an array of IANA timezones or Place objects */
+  rawLocations: (string | Place | undefined | null)[],
   config?: SupportedDateTimeFormatConfig
 ) {
+  // try to determine tz from lat/lon if possible
+  const timezones = rawLocations
+    .filter((p) => !!p)
+    .map((p) => {
+      if (typeof p === "string") {
+        return p;
+      } else {
+        p = ensureTz(p as Place);
+        return p.address?.tz;
+      }
+    });
+  const iataTimezone = timezones.find((t) => !!t);
   const d = new Date(secondsSinceEpoch * 1000);
-  const { includeDOW, includeTimezone, includeTime, iataTimezone, timeOnly } =
-    config || {};
+  const { includeDOW, includeTimezone, includeTime, timeOnly } = config || {};
   // If only time is requested, return time string (respect timezone options)
   if (timeOnly) {
     const timeOptions: Intl.DateTimeFormatOptions = {
@@ -273,6 +285,8 @@ export function airportLookup(iataCode: string) {
 }
 
 import { aircraft } from "./aircraft";
+import { Place } from "@versa/schema";
+import { ensureTz } from "./place";
 
 export function aircraftLookup(icaoCode: string) {
   if (aircraft[icaoCode as keyof typeof aircraft]) {

@@ -1,14 +1,15 @@
 // rollup.config.js
 
 import { bundleStats } from "rollup-plugin-bundle-stats";
+import { RollupOptions } from "rollup";
+import { terser } from "rollup-plugin-terser";
 import commonjs from "@rollup/plugin-commonjs";
 import del from "rollup-plugin-delete";
+import json from "@rollup/plugin-json";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import postcss from "rollup-plugin-postcss";
 import resolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
-import { terser } from "rollup-plugin-terser";
-import { RollupOptions } from "rollup";
 
 const config: RollupOptions = {
   input: "src/index.ts",
@@ -26,6 +27,7 @@ const config: RollupOptions = {
     resolve({
       mainFields: ["module", "main"],
     }),
+    json(),
     typescript({ tsconfig: "tsconfig.build.json" }),
     commonjs({
       include: /node_modules/,

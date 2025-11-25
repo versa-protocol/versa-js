@@ -2,6 +2,7 @@ export * from "./receiptComparator";
 export * from "./receiptHelpers";
 export * from "./ymdToMonth";
 export * from "./schemaVersion";
+export * from "./place";
 
 export * from "./format";
 

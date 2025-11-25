@@ -1,6 +1,6 @@
 import { Org } from "@versa/schema";
 import { UpdateBlock, BlockWrap } from "../receipt-blocks";
-import { formatDateTime } from "@versa/belt";
+import { formatDateTimeWithPlaces } from "@versa/belt";
 import styles from "./receipt-with-history.module.css";
 import { processHistory } from "../helpers/updates";
 import { RegisteredReceipt } from "../model";
@@ -45,8 +45,9 @@ export function ReceiptWithHistory({
       ) {
         return `Viewing version ${
           currentTransactionEventIndex + 1
-        } of ${totalVersions} (${formatDateTime(
-          event.registration.registered_at
+        } of ${totalVersions} (${formatDateTimeWithPlaces(
+          event.registration.registered_at,
+          []
         )})`;
       }
     }

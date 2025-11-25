@@ -1,5 +1,14 @@
 # @versa/react
 
+## 1.14.6
+
+### Patch Changes
+
+- look up timezone based on lat/lon in places
+- Updated dependencies
+  - @versa/belt@1.14.3
+  - @versa/pdfgen@1.14.3
+
 ## 1.14.5
 
 ### Patch Changes

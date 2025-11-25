@@ -1,4 +1,4 @@
-import { formatDateTime } from "@versa/belt";
+import { formatDateTimeWithPlaces } from "@versa/belt";
 import styles from "./itemized-car-rental.module.css";
 import { lts } from "@versa/schema";
 
@@ -34,25 +34,25 @@ export function ItemizedCarRental({
           <div className={styles.start}>
             <div>Rental</div>
             <div className={styles.time}>
-              {formatDateTime(car_rental.rental_at, {
-                includeDOW: true,
-                iataTimezone:
-                  car_rental.rental_location?.address?.tz ||
-                  header.location?.address?.tz ||
-                  null,
-              })}
+              {formatDateTimeWithPlaces(
+                car_rental.rental_at,
+                [car_rental.rental_location, header.location],
+                {
+                  includeDOW: true,
+                }
+              )}
             </div>
           </div>
           <div className={styles.end}>
             <div>Return</div>
             <div className={styles.time}>
-              {formatDateTime(car_rental.return_at, {
-                includeDOW: true,
-                iataTimezone:
-                  car_rental.return_location?.address?.tz ||
-                  header.location?.address?.tz ||
-                  null,
-              })}
+              {formatDateTimeWithPlaces(
+                car_rental.return_at,
+                [car_rental.return_location, header.location],
+                {
+                  includeDOW: true,
+                }
+              )}
             </div>
           </div>
         </div>

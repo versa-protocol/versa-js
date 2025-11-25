@@ -1,5 +1,13 @@
 # home
 
+## 0.2.90
+
+### Patch Changes
+
+- Updated dependencies
+  - @versa/belt@1.14.3
+  - @versa/react@1.14.6
+
 ## 0.2.89
 
 ### Patch Changes

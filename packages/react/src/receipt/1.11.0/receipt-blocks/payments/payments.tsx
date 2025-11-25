@@ -1,4 +1,4 @@
-import { formatDateTime, formatTransactionValue } from "@versa/belt";
+import { formatDateTimeWithPlaces, formatTransactionValue } from "@versa/belt";
 import styles from "../../../../receipt-blocks/payments/payments.module.css";
 import { lts } from "@versa/schema";
 
@@ -26,9 +26,8 @@ export function Payments({
             <div className={styles.paymentType}>Payment</div>
           )}
           <div>
-            {formatDateTime(payments[0].paid_at, {
+            {formatDateTimeWithPlaces(payments[0].paid_at, [header.location], {
               includeTime: true,
-              iataTimezone: header.location?.address?.tz || null,
               includeTimezone: true,
             })}
           </div>
@@ -48,11 +47,14 @@ export function Payments({
                     </span>
                   </div>
                   <div className={styles.date}>
-                    {formatDateTime(payment.paid_at, {
-                      includeTime: true,
-                      iataTimezone: header.location?.address?.tz || null,
-                      includeTimezone: true,
-                    })}
+                    {formatDateTimeWithPlaces(
+                      payment.paid_at,
+                      [header.location],
+                      {
+                        includeTime: true,
+                        includeTimezone: true,
+                      }
+                    )}
                   </div>
                 </div>
               ) : (

@@ -1,4 +1,4 @@
-import { formatDateTime, formatTransactionValue } from "@versa/belt";
+import { formatDateTimeWithPlaces, formatTransactionValue } from "@versa/belt";
 import styles from "../../../../receipt-blocks/receipt-header/receipt-header.module.css";
 import { lts } from "@versa/schema";
 import { Merchant as PlaceholderGraphic } from "../../../../icons/merchant";
@@ -33,9 +33,9 @@ export function ReceiptHeader({
               )}
               <div>
                 Date:{" "}
-                {formatDateTime(header.invoiced_at, {
-                  iataTimezone: header.location?.address?.tz || null,
-                })}
+                {formatDateTimeWithPlaces(header.invoiced_at, [
+                  header.location,
+                ])}
               </div>
             </div>
             {(header.customer || merchant.address) && (
@@ -100,9 +100,7 @@ export function ReceiptHeader({
               <>{merchant.name} </>
             )}
             &nbsp;·&nbsp;{" "}
-            {formatDateTime(header.invoiced_at, {
-              iataTimezone: header.location?.address?.tz || null,
-            })}
+            {formatDateTimeWithPlaces(header.invoiced_at, [header.location])}
           </div>
         </div>
       </div>

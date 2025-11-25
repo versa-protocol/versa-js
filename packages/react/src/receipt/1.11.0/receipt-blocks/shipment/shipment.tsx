@@ -1,6 +1,6 @@
 import { Circle } from "react-feather";
 import styles from "./shipment.module.css";
-import { formatDateTime, Optional } from "@versa/belt";
+import { formatDateTimeWithPlaces, Optional } from "@versa/belt";
 import { lts } from "@versa/schema";
 
 export function ShipmentWidget({
@@ -118,12 +118,13 @@ export function ShipmentWidget({
                   {!!s.expected_delivery_at && (
                     <div className={styles.summary}>
                       Delivered on{" "}
-                      {formatDateTime(s.expected_delivery_at, {
-                        includeTime: true,
-                        iataTimezone:
-                          s.destination_address?.tz ||
-                          header.location?.address?.tz,
-                      })}
+                      {formatDateTimeWithPlaces(
+                        s.expected_delivery_at,
+                        [s.destination_address?.tz, header.location],
+                        {
+                          includeTime: true,
+                        }
+                      )}
                     </div>
                   )}
                 </>
@@ -150,11 +151,10 @@ export function ShipmentWidget({
 
                     {!!s.expected_delivery_at && (
                       <div className={styles.value}>
-                        {formatDateTime(s.expected_delivery_at, {
-                          iataTimezone:
-                            s.destination_address?.tz ||
-                            header.location?.address?.tz,
-                        })}
+                        {formatDateTimeWithPlaces(s.expected_delivery_at, [
+                          s.destination_address?.tz,
+                          header.location,
+                        ])}
                       </div>
                     )}
                   </div>

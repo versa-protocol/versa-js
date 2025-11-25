@@ -1,6 +1,6 @@
 import {
   formatDateComparison,
-  formatDateTime,
+  formatDateTimeWithPlaces,
   formatTransactionValue,
   lts_v1_11_0,
 } from "@versa/belt";
@@ -35,7 +35,13 @@ export function ItemizedFlight({
             <div key={itinerary_index} className={styles.itineraryWrap}>
               <div className={styles.itineraryHead}>
                 {!!itinerary.departure_at && (
-                  <span>{formatDateTime(itinerary.departure_at)} - </span>
+                  <span>
+                    {formatDateTimeWithPlaces(
+                      itinerary.departure_at,
+                      header.location ? [header.location] : []
+                    )}{" "}
+                    -{" "}
+                  </span>
                 )}
                 <span>
                   {itinerary.departure_city} to {itinerary.arrival_city}
@@ -76,10 +82,13 @@ export function ItemizedFlight({
                               </>
                             ) : (
                               <>
-                                {formatDateTime(s.departure_at, {
-                                  includeTime: true,
-                                  iataTimezone: s.departure_tz,
-                                })}
+                                {formatDateTimeWithPlaces(
+                                  s.departure_at,
+                                  [s.departure_tz],
+                                  {
+                                    includeTime: true,
+                                  }
+                                )}
                               </>
                             )}
                           </div>
@@ -105,10 +114,13 @@ export function ItemizedFlight({
                               </>
                             ) : (
                               <>
-                                {formatDateTime(s.arrival_at, {
-                                  includeTime: true,
-                                  iataTimezone: s.arrival_tz,
-                                })}
+                                {formatDateTimeWithPlaces(
+                                  s.arrival_at,
+                                  [header.location],
+                                  {
+                                    includeTime: true,
+                                  }
+                                )}
                               </>
                             )}
                           </div>

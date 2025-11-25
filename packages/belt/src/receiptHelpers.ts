@@ -16,7 +16,7 @@ import {
 } from "@versa/schema";
 import canonicalize from "canonicalize";
 import {
-  formatDateTime,
+  formatDateTimeWithPlaces,
   formatTimeRange,
   airportLookup,
   flightClass,
@@ -26,6 +26,7 @@ import {
 import { airports } from "./airports";
 import { Optional } from ".";
 import { parsePhoneNumberFromString } from "libphonenumber-js";
+import { ensureTz } from "./place";
 
 // Helper to get a string identifier for a passenger (supports both string and Person types)
 export function formatPassengerName(passenger: Optional<Person>): string {
@@ -666,13 +667,13 @@ export function aggregateItems(
               departureString =
                 departureString +
                 "\n" +
-                formatDateTime(i.departure_at, {
-                  iataTimezone:
-                    i.departure_location?.address?.tz ||
-                    header.location?.address?.tz ||
-                    null,
-                  includeTime: true,
-                });
+                formatDateTimeWithPlaces(
+                  i.departure_at,
+                  [i.departure_location, header.location],
+                  {
+                    includeTime: true,
+                  }
+                );
             }
           }
           row.departure = { content: departureString };
@@ -684,13 +685,13 @@ export function aggregateItems(
               arrivalString =
                 arrivalString +
                 "\n" +
-                formatDateTime(i.arrival_at, {
-                  iataTimezone:
-                    i.arrival_location?.address?.tz ||
-                    header.location?.address?.tz ||
-                    null,
-                  includeTime: true,
-                });
+                formatDateTimeWithPlaces(
+                  i.arrival_at,
+                  [i.arrival_location, header.location],
+                  {
+                    includeTime: true,
+                  }
+                );
             }
           }
           row.arrival = { content: arrivalString };

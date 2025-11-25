@@ -1,6 +1,6 @@
 import { Circle } from "react-feather";
 import styles from "./itemizedEcommerce.module.css";
-import { formatDateTime, Optional } from "@versa/belt";
+import { formatDateTimeWithPlaces, Optional } from "@versa/belt";
 import { Ecommerce, Header } from "@versa/schema";
 import { BlockWrap } from "../block-wrap";
 import { LineItems } from "../line-items";
@@ -130,12 +130,13 @@ export function ItemizedEcommerce({
                         {!!s.expected_delivery_at && (
                           <div className={styles.summary}>
                             Delivered on{" "}
-                            {formatDateTime(s.expected_delivery_at, {
-                              includeTime: true,
-                              iataTimezone:
-                                s.destination_address?.tz ||
-                                header.location?.address?.tz,
-                            })}
+                            {formatDateTimeWithPlaces(
+                              s.expected_delivery_at,
+                              [header.location],
+                              {
+                                includeTime: true,
+                              }
+                            )}
                           </div>
                         )}
                       </>
@@ -163,11 +164,10 @@ export function ItemizedEcommerce({
                           <div className={styles.key}>Expected Delivery</div>
                           {!!s.expected_delivery_at && (
                             <div className={styles.value}>
-                              {formatDateTime(s.expected_delivery_at, {
-                                iataTimezone:
-                                  s.destination_address?.tz ||
-                                  header.location?.address?.tz,
-                              })}
+                              {formatDateTimeWithPlaces(
+                                s.expected_delivery_at,
+                                header.location ? [header.location] : []
+                              )}
                             </div>
                           )}
                         </div>

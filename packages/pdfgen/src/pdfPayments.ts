@@ -1,7 +1,7 @@
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 import { Header, Payment } from "@versa/schema";
-import { formatDateTime } from "@versa/belt";
+import { formatDateTimeWithPlaces } from "@versa/belt";
 
 export function Payments(
   doc: jsPDF,
@@ -22,9 +22,8 @@ export function Payments(
     }
     paymentType = paymentType.concat(
       "\n",
-      formatDateTime(p.paid_at, {
+      formatDateTimeWithPlaces(p.paid_at, [header.location], {
         includeTime: true,
-        iataTimezone: header.location?.address?.tz || null,
         includeTimezone: true,
       })
     );

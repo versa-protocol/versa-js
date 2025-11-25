@@ -1,8 +1,9 @@
 {
   "name": "@versa/react",
-  "version": "1.14.5",
+  "version": "1.14.6",
   "main": "./dist/index.js",
   "module": "./dist/index.es.js",
+  "browser": "./dist/index.umd.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
@@ -29,6 +30,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^12.1.1",
     "@testing-library/dom": "^10.1.0",

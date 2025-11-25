@@ -1,4 +1,4 @@
-import { formatDateTime } from "@versa/belt";
+import { formatDateTimeWithPlaces } from "@versa/belt";
 import styles from "../../../../receipt-blocks/itemized-lodging/itemized-lodging.module.css";
 import { VersaContext } from "../../../../context";
 import { lts } from "@versa/schema";
@@ -77,25 +77,25 @@ export function ItemizedLodging({
                   <div className={styles.start}>
                     <div className={styles.header}>Check-in</div>
                     <div className={styles.time}>
-                      {formatDateTime(lodging.check_in, {
-                        includeDOW: true,
-                        iataTimezone:
-                          lodging.location?.address?.tz ||
-                          header.location?.address?.tz ||
-                          null,
-                      })}
+                      {formatDateTimeWithPlaces(
+                        lodging.check_in,
+                        [lodging.location, header.location],
+                        {
+                          includeDOW: true,
+                        }
+                      )}
                     </div>
                   </div>
                   <div className={styles.end}>
                     <div className={styles.header}>Checkout</div>
                     <div className={styles.time}>
-                      {formatDateTime(lodging.check_out, {
-                        includeDOW: true,
-                        iataTimezone:
-                          lodging.location?.address?.tz ||
-                          header.location?.address?.tz ||
-                          null,
-                      })}
+                      {formatDateTimeWithPlaces(
+                        lodging.check_out,
+                        [lodging.location, header.location],
+                        {
+                          includeDOW: true,
+                        }
+                      )}
                     </div>
                   </div>
                 </div>
