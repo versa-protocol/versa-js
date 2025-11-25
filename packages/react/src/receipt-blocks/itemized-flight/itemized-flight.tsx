@@ -132,12 +132,15 @@ export function ItemizedFlight({
           )}
           {t.passengers.map((p, index) => (
             <div key={index} className={styles.passengerKeyValuePairs}>
-              <div>
-                <div className={styles.key}>Passenger</div>
-                <div className={styles.value}>
-                  {formatPassengerName(p.passenger)}
-                </div>
-              </div>
+              {(() => {
+                const passengerName = formatPassengerName(p.passenger);
+                return passengerName ? (
+                  <div>
+                    <div className={styles.key}>Passenger</div>
+                    <div className={styles.value}>{passengerName}</div>
+                  </div>
+                ) : null;
+              })()}
               {p.record_locator && (
                 <div>
                   <div className={styles.key}>Confirmation Code</div>

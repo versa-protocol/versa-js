@@ -185,14 +185,17 @@ export function ItemizedTransitRoute({
                           )}
                         </div>
                       </div>
-                      {item.passengers[0].passenger && (
-                        <div className={styles.row}>
-                          <div className={styles.key}>Passenger</div>
-                          <div className={styles.value}>
-                            {formatPassengerName(item.passengers[0].passenger)}
+                      {(() => {
+                        const name = formatPassengerName(
+                          item.passengers[0].passenger
+                        );
+                        return name ? (
+                          <div className={styles.row}>
+                            <div className={styles.key}>Passenger</div>
+                            <div className={styles.value}>{name}</div>
                           </div>
-                        </div>
-                      )}
+                        ) : null;
+                      })()}
                     </>
                   )}
                 </div>
@@ -203,14 +206,15 @@ export function ItemizedTransitRoute({
                         key={index}
                         className={styles.passengerKeyValuePairs}
                       >
-                        {item.passenger && (
-                          <div className={styles.row}>
-                            <div className={styles.key}>Passenger</div>
-                            <div className={styles.value}>
-                              {formatPassengerName(item.passenger)}
+                        {(() => {
+                          const name = formatPassengerName(item.passenger);
+                          return name ? (
+                            <div className={styles.row}>
+                              <div className={styles.key}>Passenger</div>
+                              <div className={styles.value}>{name}</div>
                             </div>
-                          </div>
-                        )}
+                          ) : null;
+                        })()}
                         {item.passenger_metadata &&
                           item.passenger_metadata.map((m: Metadatum, index) => (
                             <div className={styles.row} key={index}>
