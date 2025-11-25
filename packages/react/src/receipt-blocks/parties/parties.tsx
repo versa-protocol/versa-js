@@ -1,6 +1,7 @@
 import { formatPhoneNumber } from "@versa/belt";
 import styles from "./parties.module.css";
 import { Org, Receipt } from "@versa/schema";
+import { formatAddress } from "@versa/belt";
 
 export function Parties({
   customer,
@@ -23,21 +24,14 @@ export function Parties({
               {customer.address.street_address && (
                 <div>{customer.address.street_address}</div>
               )}
-              {(customer.address.city ||
-                customer.address.region ||
-                customer.address.postal_code) && (
-                <div>
-                  {customer.address.city && (
-                    <span>{customer.address.city}, </span>
-                  )}
-                  {customer.address.region && (
-                    <span>{customer.address.region} </span>
-                  )}
-                  {customer.address.postal_code && (
-                    <span>{customer.address.postal_code}</span>
-                  )}
-                </div>
-              )}
+              {(() => {
+                const line = formatAddress(customer.address, {
+                  includeStreet: false,
+                  includeCountry: false,
+                  includePostalCode: true,
+                });
+                return line ? <div>{line}</div> : null;
+              })()}
               {customer.address.country && (
                 <div>{customer.address.country}</div>
               )}
@@ -63,19 +57,14 @@ export function Parties({
           {merchant.address.street_address && (
             <div>{merchant.address.street_address}</div>
           )}
-          {(merchant.address.city ||
-            merchant.address.region ||
-            merchant.address.postal_code) && (
-            <div>
-              {merchant.address.city && <span>{merchant.address.city}, </span>}
-              {merchant.address.region && (
-                <span>{merchant.address.region} </span>
-              )}
-              {merchant.address.postal_code && (
-                <span>{merchant.address.postal_code}</span>
-              )}
-            </div>
-          )}
+          {(() => {
+            const line = formatAddress(merchant.address, {
+              includeStreet: false,
+              includeCountry: false,
+              includePostalCode: true,
+            });
+            return line ? <div>{line}</div> : null;
+          })()}
           {merchant.address.country && <div>{merchant.address.country}</div>}
         </div>
       )}

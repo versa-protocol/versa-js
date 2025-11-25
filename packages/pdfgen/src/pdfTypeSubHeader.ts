@@ -1,7 +1,7 @@
 import { Person, Receipt } from "@versa/schema";
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
-import { stringifyPlace } from "@versa/belt";
+import { formatPlaceSingleLine } from "@versa/belt";
 
 function personToName(person: Person, index: number): string {
   if (!person.first_name && !person.preferred_first_name) {
@@ -102,16 +102,16 @@ export function TypeSubHeader(
       ) {
         typeSubHeaderData.push([
           "Location:",
-          stringifyPlace(receipt.itemization.car_rental.rental_location),
+          formatPlaceSingleLine(receipt.itemization.car_rental.rental_location),
         ]);
       } else {
         typeSubHeaderData.push([
           "Rental Location:",
-          stringifyPlace(receipt.itemization.car_rental.rental_location),
+          formatPlaceSingleLine(receipt.itemization.car_rental.rental_location),
         ]);
         typeSubHeaderData.push([
           "Return Location:",
-          stringifyPlace(receipt.itemization.car_rental.return_location),
+          formatPlaceSingleLine(receipt.itemization.car_rental.return_location),
         ]);
       }
       if (receipt.itemization.car_rental.driver_name) {

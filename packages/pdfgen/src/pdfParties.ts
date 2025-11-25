@@ -2,6 +2,7 @@ import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 import { Org, Receipt, Address } from "@versa/schema";
 import { formatPhoneNumber, Optional } from "@versa/belt";
+import { formatAddressMultiline } from "@versa/belt";
 
 export function Parties(
   doc: jsPDF,
@@ -138,28 +139,7 @@ export function Parties(
 }
 
 function stringifyAddress(address: Optional<Address>): string {
-  let addressString = "";
-  if (address) {
-    if (address.street_address) {
-      addressString = addressString.concat(address.street_address);
-    }
-    if (address.city || address.region || address.postal_code) {
-      addressString = addressString.concat("\n");
-      if (address.city) {
-        addressString = addressString.concat(address.city);
-      }
-      if (address.region) {
-        addressString = addressString.concat(", ", address.region);
-      }
-      if (address.postal_code) {
-        addressString = addressString.concat(" ", address.postal_code);
-      }
-    }
-    if (address.country) {
-      addressString = addressString.concat("\n", address.country);
-    }
-  }
-  return addressString;
+  return formatAddressMultiline(address || undefined);
 }
 
 function getBillTo(header: Receipt["header"]) {

@@ -9,6 +9,7 @@ import styles from "./itemized-transit-route.module.css";
 import { Metadatum, Receipt, TransitRoute, Person } from "@versa/schema";
 import { organizeTransitRoutes } from "@versa/belt";
 import { VersaContext } from "../../context";
+import { formatAddress } from "@versa/belt";
 
 function formatPassengerName(passenger: Optional<Person>): string {
   if (!passenger) return "";
@@ -98,9 +99,10 @@ export function ItemizedTransitRoute({
                       {item.departure_location?.address &&
                         item.arrival_location?.address && (
                           <>
-                            {item.departure_location.address.street_address},{" "}
-                            {item.departure_location.address.city},{" "}
-                            {item.departure_location.address.region}{" "}
+                            {formatAddress(item.departure_location.address, {
+                              includePostalCode: false,
+                              includeCountry: false,
+                            })}{" "}
                           </>
                         )}
                       {item.departure_at && (
@@ -133,9 +135,10 @@ export function ItemizedTransitRoute({
                       {item.arrival_location?.address &&
                         item.arrival_location?.address && (
                           <>
-                            {item.arrival_location.address.street_address},{" "}
-                            {item.arrival_location.address.city},{" "}
-                            {item.arrival_location.address.region}{" "}
+                            {formatAddress(item.arrival_location.address, {
+                              includePostalCode: false,
+                              includeCountry: false,
+                            })}{" "}
                           </>
                         )}
                       {item.arrival_at && (

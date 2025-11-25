@@ -4,6 +4,7 @@ import {
   Flight,
   Item,
   Ecommerce,
+  Address,
   Place,
   Metadatum,
   TransitRoute,
@@ -1161,27 +1162,109 @@ function aggregateGenericItemRows(
 }
 
 export function stringifyPlace(place: Place): string {
-  let placeString = "";
-  if (place.name) {
-    placeString = place.name;
-  }
-  if (place.name && place.address) {
-    placeString = placeString + ", ";
-  }
-  if (place.address) {
-    if (place.address.street_address) {
-      placeString = placeString + place.address.street_address;
-    }
-    if (place.address.city) {
-      placeString = placeString + ", " + place.address.city;
-    }
-    if (place.address.region) {
-      placeString = placeString + ", " + place.address.region;
-    }
-  }
-  return placeString;
+  return formatPlaceSingleLine(place);
 }
 
+// Address/Place formatting helpers
+export interface FormatAddressOptions {
+  includeStreet?: boolean;
+  includePostalCode?: boolean;
+  includeCountry?: boolean;
+}
+
+function _cleanAddressPart(value?: string | null): string {
+  if (typeof value !== "string") return "";
+  const trimmed = value.trim();
+  return trimmed.length > 0 ? trimmed.replace(/\s+/g, " ") : "";
+}
+
+/**
+ * Returns a single-line, human-friendly address string.
+ * - Skips empty parts to avoid stray commas/spaces
+ * - Formats as: "street, City, Region Postal[, Country?]"
+ * - Country is included by default only if present and not US
+ */
+export function formatAddress(
+  address?: Optional<Address>,
+  options?: FormatAddressOptions
+): string {
+  if (!address) return "";
+
+  const includeStreet = options?.includeStreet !== false;
+  const includePostal = options?.includePostalCode !== false;
+
+  const street = includeStreet ? _cleanAddressPart(address.street_address) : "";
+  const city = _cleanAddressPart(address.city as string | undefined);
+  const region = _cleanAddressPart(address.region as string | undefined);
+  const postal = includePostal
+    ? _cleanAddressPart(address.postal_code as string | undefined)
+    : "";
+  const country = _cleanAddressPart(address.country as string | undefined);
+
+  // City, Region Postal
+  let cityRegionPostal = "";
+  if (city && region) {
+    cityRegionPostal = postal
+      ? `${city}, ${region} ${postal}`
+      : `${city}, ${region}`;
+  } else if (city) {
+    cityRegionPostal = city;
+  } else if (region) {
+    cityRegionPostal = postal ? `${region} ${postal}` : region;
+  } else {
+    cityRegionPostal = postal;
+  }
+
+  const shouldIncludeCountry =
+    options?.includeCountry ?? (country ? !/^US$/i.test(country) : false);
+
+  const parts: string[] = [];
+  if (street) parts.push(street);
+  if (cityRegionPostal) parts.push(cityRegionPostal);
+  if (shouldIncludeCountry && country) parts.push(country);
+
+  return parts.join(", ");
+}
+
+/**
+ * Multi-line address friendly for stacked display:
+ * - Line 1: street (if present)
+ * - Line 2: City, Region Postal (if present)
+ * - Line 3: Country (if present)
+ */
+export function formatAddressMultiline(address?: Optional<Address>): string {
+  if (!address) return "";
+  const lines: string[] = [];
+  const street = _cleanAddressPart(
+    address.street_address as string | undefined
+  );
+  if (street) lines.push(street);
+  const cityRegionPostal = formatAddress(address, {
+    includeStreet: false,
+    includeCountry: false,
+    includePostalCode: true,
+  });
+  if (cityRegionPostal) lines.push(cityRegionPostal);
+  const country = _cleanAddressPart(address.country as string | undefined);
+  if (country) lines.push(country);
+  return lines.join("\n");
+}
+
+/**
+ * Single-line place formatter: "Name, Address"
+ * - Uses address without country and postal code by default for compactness
+ */
+export function formatPlaceSingleLine(place?: Optional<Place>): string {
+  if (!place) return "";
+  const name = _cleanAddressPart(place.name as string | undefined);
+  const addr = formatAddress(place.address, {
+    includeStreet: true,
+    includePostalCode: false,
+    includeCountry: false,
+  });
+  if (name && addr) return `${name}, ${addr}`;
+  return name || addr || "";
+}
 function formatISODate(dateString: string): string {
   const date = new Date(dateString);
   const options: Intl.DateTimeFormatOptions = {
