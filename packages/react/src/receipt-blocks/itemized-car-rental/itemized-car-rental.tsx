@@ -65,9 +65,7 @@ export function ItemizedCarRental({
             <div className={styles.time}>
               {formatDateTimeWithPlaces(
                 car_rental.rental_at,
-                [car_rental.rental_location, header.location].filter(
-                  (p): p is import("@versa/schema").Place => p != null
-                ),
+                [car_rental.rental_location, header.location],
                 {
                   includeDOW: true,
                 }
@@ -79,9 +77,7 @@ export function ItemizedCarRental({
             <div className={styles.time}>
               {formatDateTimeWithPlaces(
                 car_rental.return_at,
-                [car_rental.return_location, header.location].filter(
-                  (p): p is import("@versa/schema").Place => p != null
-                ),
+                [car_rental.return_location, header.location],
                 {
                   includeDOW: true,
                 }

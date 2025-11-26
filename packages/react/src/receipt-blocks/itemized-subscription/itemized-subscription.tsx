@@ -21,12 +21,10 @@ export function ItemizedSubscription({
                 <div className={styles.subscriptionNote}>
                   Your subscription was renewed for your team of {s.quantity}.
                   Your next bill will be on{" "}
-                  {formatDateTimeWithPlaces(
-                    s.current_period_end_at,
-                    [(s as any).service_location, header.location].filter(
-                      (p): p is import("@versa/schema").Place => p != null
-                    )
-                  )}
+                  {formatDateTimeWithPlaces(s.current_period_end_at, [
+                    s.service_location,
+                    header.location,
+                  ])}
                   .
                 </div>
               </BlockWrap>
@@ -40,29 +38,17 @@ export function ItemizedSubscription({
                       <div className={styles.header}>From</div>
                       <div className={styles.datetime}>
                         <div>
-                          {formatDateTimeWithPlaces(
-                            s.current_period_start_at,
-                            [
-                              (s as any).service_location,
-                              header.location,
-                            ].filter(
-                              (p): p is import("@versa/schema").Place =>
-                                p != null
-                            )
-                          )}
+                          {formatDateTimeWithPlaces(s.current_period_start_at, [
+                            s.service_location,
+                            header.location,
+                          ])}
                         </div>
                         {s.current_period_end_at - s.current_period_start_at <=
                           48 * 60 * 60 && (
                           <div className="secondaryText">
                             {formatDateTimeWithPlaces(
                               s.current_period_start_at,
-                              [
-                                (s as any).service_location,
-                                header.location,
-                              ].filter(
-                                (p): p is import("@versa/schema").Place =>
-                                  p != null
-                              ),
+                              [s.service_location, header.location],
                               {
                                 timeOnly: true,
                               }
@@ -75,29 +61,17 @@ export function ItemizedSubscription({
                       <div className={styles.header}>To</div>
                       <div className={styles.datetime}>
                         <div>
-                          {formatDateTimeWithPlaces(
-                            s.current_period_end_at,
-                            [
-                              (s as any).service_location,
-                              header.location,
-                            ].filter(
-                              (p): p is import("@versa/schema").Place =>
-                                p != null
-                            )
-                          )}
+                          {formatDateTimeWithPlaces(s.current_period_end_at, [
+                            s.service_location,
+                            header.location,
+                          ])}
                         </div>
                         {s.current_period_end_at - s.current_period_start_at <=
                           48 * 60 * 60 && (
                           <div className="secondaryText">
                             {formatDateTimeWithPlaces(
                               s.current_period_end_at,
-                              [
-                                (s as any).service_location,
-                                header.location,
-                              ].filter(
-                                (p): p is import("@versa/schema").Place =>
-                                  p != null
-                              ),
+                              [s.service_location, header.location],
                               {
                                 timeOnly: true,
                               }
