@@ -2,7 +2,6 @@
 
 const { bundleStats } = require("rollup-plugin-bundle-stats");
 const commonjs = require("@rollup/plugin-commonjs");
-const json = require("@rollup/plugin-json");
 const peerDepsExternal = require("rollup-plugin-peer-deps-external");
 const postcss = require("rollup-plugin-postcss");
 const resolve = require("@rollup/plugin-node-resolve").default;
@@ -21,7 +20,6 @@ module.exports = [
     plugins: [
       peerDepsExternal(),
       resolve(),
-      json(),
       typescript({ tsconfig: "tsconfig.build.json" }),
       commonjs(),
       postcss({
@@ -50,7 +48,6 @@ module.exports = [
     plugins: [
       peerDepsExternal(),
       resolve(),
-      json(),
       typescript({
         tsconfig: "tsconfig.build.json",
         declaration: false,

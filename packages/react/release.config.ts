@@ -5,7 +5,6 @@ import { RollupOptions } from "rollup";
 import { terser } from "rollup-plugin-terser";
 import commonjs from "@rollup/plugin-commonjs";
 import del from "rollup-plugin-delete";
-import json from "@rollup/plugin-json";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import postcss from "rollup-plugin-postcss";
 import resolve from "@rollup/plugin-node-resolve";
@@ -27,7 +26,6 @@ const config: RollupOptions = {
     resolve({
       mainFields: ["module", "main"],
     }),
-    json(),
     typescript({ tsconfig: "tsconfig.build.json" }),
     commonjs({
       include: /node_modules/,
