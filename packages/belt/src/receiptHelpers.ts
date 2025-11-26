@@ -662,7 +662,7 @@ export function aggregateItems(
         if (key == "departure") {
           let departureString = "";
           if (i.departure_location) {
-            departureString = stringifyPlace(i.departure_location);
+            departureString = formatPlaceSingleLine(i.departure_location);
             if (i.departure_at) {
               departureString =
                 departureString +
@@ -680,7 +680,7 @@ export function aggregateItems(
         } else if (key == "arrival") {
           let arrivalString = "";
           if (i.arrival_location) {
-            arrivalString = stringifyPlace(i.arrival_location);
+            arrivalString = formatPlaceSingleLine(i.arrival_location);
             if (i.arrival_at) {
               arrivalString =
                 arrivalString +
@@ -1162,9 +1162,7 @@ function aggregateGenericItemRows(
   return items;
 }
 
-export function stringifyPlace(place: Place): string {
-  return formatPlaceSingleLine(place);
-}
+// (removed deprecated stringifyPlace)
 
 // Address/Place formatting helpers
 export interface FormatAddressOptions {

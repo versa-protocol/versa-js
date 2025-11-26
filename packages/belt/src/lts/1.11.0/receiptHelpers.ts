@@ -9,6 +9,7 @@ import {
   formatTransactionValue,
 } from "../../format";
 import { airports } from "../../airports";
+import { formatPlaceSingleLine } from "../../receiptHelpers";
 
 type Itemization = lts.v1_11_0.Itemization;
 type Tax = lts.v1_11_0.Tax;
@@ -605,7 +606,9 @@ export function aggregateItems(
         if (key == "departure") {
           let departureString = "";
           if (i.departure_location) {
-            departureString = stringifyPlace(i.departure_location);
+            departureString = formatPlaceSingleLine(
+              i.departure_location as any
+            );
             if (i.departure_at) {
               departureString =
                 departureString +
@@ -623,7 +626,7 @@ export function aggregateItems(
         } else if (key == "arrival") {
           let arrivalString = "";
           if (i.arrival_location) {
-            arrivalString = stringifyPlace(i.arrival_location);
+            arrivalString = formatPlaceSingleLine(i.arrival_location as any);
             if (i.arrival_at) {
               arrivalString =
                 arrivalString +
@@ -999,27 +1002,7 @@ function aggregateGenericItemRows(
   return items;
 }
 
-export function stringifyPlace(place: Place): string {
-  let placeString = "";
-  if (place.name) {
-    placeString = place.name;
-  }
-  if (place.name && place.address) {
-    placeString = placeString + ", ";
-  }
-  if (place.address) {
-    if (place.address.street_address) {
-      placeString = placeString + place.address.street_address;
-    }
-    if (place.address.city) {
-      placeString = placeString + ", " + place.address.city;
-    }
-    if (place.address.region) {
-      placeString = placeString + ", " + place.address.region;
-    }
-  }
-  return placeString;
-}
+// (removed deprecated stringifyPlace)
 
 function formatISODate(dateString: string): string {
   const date = new Date(dateString);
