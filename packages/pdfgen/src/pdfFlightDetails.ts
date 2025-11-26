@@ -40,7 +40,6 @@ export async function FlightDetails(
       doc.setPage(cursor.page);
       let itineraryString = "";
       if (itinerary.departure_at) {
-        // Use header location as fallback for timezone context
         itineraryString +=
           formatDateTimeWithPlaces(itinerary.departure_at, [
             itinerary.departure_tz,
@@ -160,7 +159,6 @@ export async function FlightDetails(
               s.arrival_tz
             );
           } else {
-            // Use header location as fallback for timezone context
             arrivalTime = formatDateTimeWithPlaces(
               s.arrival_at,
               [s.arrival_tz],
