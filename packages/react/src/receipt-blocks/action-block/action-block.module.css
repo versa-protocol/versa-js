@@ -8,12 +8,24 @@
 
 .actionButton {
   margin-bottom: 0.625rem;
-  padding: 0.625rem 1.5rem;
+  padding: 0.625rem 1rem;
   text-align: center;
   border-radius: 0.75rem;
   display: block;
   text-decoration: none;
   position: relative;
+}
+
+.actionButton > span {
+  display: inline-block;
+  max-width: calc(100% - 24px);
+}
+
+.actionIcon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .actionBlock li:last-child .actionButton {
@@ -42,10 +54,21 @@
   .actionButton {
     background-color: transparent !important;
     color: var(--foreground-secondary) !important;
-    display: inline;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     padding: 0;
     font-size: 0.875rem;
     text-decoration: underline;
+  }
+
+  .actionIcon {
+    position: static;
+    transform: none;
+  }
+
+  .actionButton > span {
+    max-width: none;
   }
 
   .actionButton::after {
@@ -64,10 +87,21 @@
   .actionButton {
     background-color: transparent !important;
     color: var(--foreground-secondary) !important;
-    display: inline;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     padding: 0;
     font-size: 0.875rem;
     text-decoration: underline;
+  }
+
+  .actionIcon {
+    position: static;
+    transform: none;
+  }
+
+  .actionButton > span {
+    max-width: none;
   }
 
   .actionButton::after {
