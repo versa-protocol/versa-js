@@ -1,5 +1,15 @@
 # home
 
+## 0.2.91
+
+### Patch Changes
+
+- Updated dependencies
+  - @versa/examples@2.1.2
+  - @versa/schema@2.1.1
+  - @versa/react@1.14.7
+  - @versa/belt@1.14.4
+
 ## 0.2.90
 
 ### Patch Changes

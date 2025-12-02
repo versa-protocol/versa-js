@@ -1,5 +1,13 @@
 # @versa/examples
 
+## 2.1.2
+
+### Patch Changes
+
+- patch update to 2.1.1
+- Updated dependencies
+  - @versa/schema@2.1.1
+
 ## 2.1.1
 
 ### Patch Changes

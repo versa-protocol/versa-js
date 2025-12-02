@@ -1,5 +1,14 @@
 # @versa/pdfgen
 
+## 1.14.4
+
+### Patch Changes
+
+- patch update to 2.1.1
+- Updated dependencies
+  - @versa/schema@2.1.1
+  - @versa/belt@1.14.4
+
 ## 1.14.3
 
 ### Patch Changes

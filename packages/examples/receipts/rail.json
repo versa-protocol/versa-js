@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.1.0",
+  "schema_version": "2.1.1",
   "header": {
     "invoice_number": "IAFO44",
     "currency": "usd",

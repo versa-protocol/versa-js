@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.1.0",
+  "schema_version": "2.1.1",
   "header": {
     "invoice_number": "IAFO44",
     "currency": "usd",
@@ -98,7 +98,12 @@
         }
       ],
       "invoice_level_adjustments": [
-        { "amount": 200, "adjustment_type": "tip", "name": null, "rate": null }
+        {
+          "amount": 200,
+          "adjustment_type": "tip",
+          "name": null,
+          "rate": null
+        }
       ]
     },
     "subscription": null,
@@ -112,7 +117,10 @@
       "amount": 4806,
       "paid_at": 1713295619,
       "payment_type": "card",
-      "card_payment": { "last_four": "4886", "network": "mastercard" },
+      "card_payment": {
+        "last_four": "4886",
+        "network": "mastercard"
+      },
       "ach_payment": null
     }
   ]

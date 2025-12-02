@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.1.0",
+  "schema_version": "2.1.1",
   "header": {
     "invoice_number": "1MzFN1K8F4fqH0lBmFq8CjbU",
     "currency": "usd",
@@ -196,7 +196,12 @@
             "preferred_first_name": null,
             "email": "susy.smith@example.com",
             "phone": null,
-            "metadata": [{ "key": "AAdvantage #", "value": "TH4700" }]
+            "metadata": [
+              {
+                "key": "AAdvantage #",
+                "value": "TH4700"
+              }
+            ]
           }
         },
         {
@@ -359,7 +364,12 @@
             "preferred_first_name": null,
             "email": "john.smith@example.com",
             "phone": null,
-            "metadata": [{ "key": "AAdvantage #", "value": "TH4703" }]
+            "metadata": [
+              {
+                "key": "AAdvantage #",
+                "value": "TH4703"
+              }
+            ]
           }
         }
       ],
@@ -376,7 +386,10 @@
       "amount": 140040,
       "paid_at": 1713295619,
       "payment_type": "card",
-      "card_payment": { "last_four": "4886", "network": "mastercard" },
+      "card_payment": {
+        "last_four": "4886",
+        "network": "mastercard"
+      },
       "ach_payment": null
     }
   ]

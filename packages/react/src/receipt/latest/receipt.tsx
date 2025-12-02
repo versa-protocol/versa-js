@@ -1,7 +1,8 @@
-import { Org, Receipt } from "@versa/schema";
+import { lts, Org, Receipt } from "@versa/schema";
 import {
   ActionBlock,
   BlockWrap,
+  ItemizedCarRental210,
   ItemizedCarRental,
   ItemizedEcommerce,
   ItemizedFlight,
@@ -26,7 +27,7 @@ import { RegistryData } from "../../model";
 
 export function ReceiptLatest({
   receipt,
-  schemaVersion: _schemaVersion,
+  schemaVersion,
   merchant,
   theme,
   registryData,
@@ -140,10 +141,17 @@ export function ReceiptLatest({
       {data.itemization.car_rental && (
         <>
           <BlockWrap>
-            <ItemizedCarRental
-              car_rental={data.itemization.car_rental}
-              header={data.header}
-            />
+            {schemaVersion === "2.1.0" ? (
+              <ItemizedCarRental210
+                car_rental={data.itemization.car_rental as lts.v2_1_0.CarRental}
+                header={data.header}
+              />
+            ) : (
+              <ItemizedCarRental
+                car_rental={data.itemization.car_rental}
+                header={data.header}
+              />
+            )}
           </BlockWrap>
           <BlockWrap>
             <LineItems

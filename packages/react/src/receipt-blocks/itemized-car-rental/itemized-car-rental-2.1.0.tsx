@@ -1,13 +1,13 @@
 import { formatDateTimeWithPlaces } from "@versa/belt";
 import styles from "./itemized-car-rental.module.css";
-import { CarRental, Header } from "@versa/schema";
+import { Header, lts } from "@versa/schema";
 
-export function ItemizedCarRental({
+export function ItemizedCarRental210({
   header,
   car_rental,
 }: {
   header: Header;
-  car_rental: CarRental;
+  car_rental: lts.v2_1_0.CarRental;
 }) {
   return (
     <div className={styles.carRentalWrap}>
@@ -58,16 +58,12 @@ export function ItemizedCarRental({
               </div>
             </div>
           )}
-          {car_rental.drivers &&
-            car_rental.drivers.map((driver) => (
-              <div className={styles.keyValue}>
-                <div className={styles.key}>Driver</div>
-                <div className={styles.value}>
-                  {driver.preferred_first_name || driver.first_name}{" "}
-                  {driver.last_name}
-                </div>
-              </div>
-            ))}
+          {car_rental.driver_name && (
+            <div className={styles.keyValue}>
+              <div className={styles.key}>Driver</div>
+              <div className={styles.value}>{car_rental.driver_name}</div>
+            </div>
+          )}
         </div>
         <div className={styles.dateRange}>
           <div className={styles.start}>

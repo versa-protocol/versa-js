@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.1.0",
+  "schema_version": "2.1.1",
   "header": {
     "invoice_number": "auth_1MzFN1K8F4fqH0lBmFq8CjbU",
     "currency": "usd",
@@ -50,7 +50,12 @@
               "description": "Grip-Rite 1/2 in. x 8 in. Hot Galvanized Anchor Bolt (1-Pack)",
               "unit_cost": 178,
               "amount": 1780,
-              "metadata": [{ "key": "SKU", "value": "524959" }],
+              "metadata": [
+                {
+                  "key": "SKU",
+                  "value": "524959"
+                }
+              ],
               "taxes": [
                 {
                   "amount": 367,
@@ -64,7 +69,12 @@
               "description": "Red Head 1/2 in. x 3 in. Zinc-Plated Steel Hex-Nut-Head Sleeve Anchor",
               "unit_cost": 267,
               "amount": 801,
-              "metadata": [{ "key": "SKU", "value": "941157" }],
+              "metadata": [
+                {
+                  "key": "SKU",
+                  "value": "941157"
+                }
+              ],
               "taxes": [
                 {
                   "amount": 367,
@@ -78,7 +88,12 @@
               "description": "Tapcon 1/4 in. x 2-3/4 in. Hex-Washer-Head Concrete Anchors (75-Pack)",
               "unit_cost": 3347,
               "amount": 3347,
-              "metadata": [{ "key": "SKU", "value": "165739" }],
+              "metadata": [
+                {
+                  "key": "SKU",
+                  "value": "165739"
+                }
+              ],
               "taxes": [
                 {
                   "amount": 367,
@@ -104,7 +119,10 @@
       "amount": 7029,
       "paid_at": 1713295619,
       "payment_type": "card",
-      "card_payment": { "last_four": "4886", "network": "mastercard" },
+      "card_payment": {
+        "last_four": "4886",
+        "network": "mastercard"
+      },
       "ach_payment": null
     }
   ]

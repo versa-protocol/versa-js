@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.1.0",
+  "schema_version": "2.1.1",
   "header": {
     "invoice_number": "4Jk9H2X7L8m2G1nPoK3U1DcQ",
     "currency": "usd",
@@ -168,7 +168,12 @@
             "preferred_first_name": null,
             "email": "alex.smith@example.com",
             "phone": null,
-            "metadata": [{ "key": "Frequent Flyer #", "value": "UA3490" }]
+            "metadata": [
+              {
+                "key": "Frequent Flyer #",
+                "value": "UA3490"
+              }
+            ]
           }
         },
         {
@@ -307,7 +312,12 @@
             "preferred_first_name": null,
             "email": "jamie.lee@example.com",
             "phone": null,
-            "metadata": [{ "key": "Frequent Flyer #", "value": "UA3491" }]
+            "metadata": [
+              {
+                "key": "Frequent Flyer #",
+                "value": "UA3491"
+              }
+            ]
           }
         }
       ],
@@ -323,7 +333,10 @@
       "amount": 117166,
       "paid_at": 1713295619,
       "payment_type": "card",
-      "card_payment": { "last_four": "4886", "network": "mastercard" },
+      "card_payment": {
+        "last_four": "4886",
+        "network": "mastercard"
+      },
       "ach_payment": null
     }
   ]

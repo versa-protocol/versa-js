@@ -114,11 +114,15 @@ export function TypeSubHeader(
           formatPlaceSingleLine(receipt.itemization.car_rental.return_location),
         ]);
       }
-      if (receipt.itemization.car_rental.driver_name) {
-        typeSubHeaderData.push([
-          "Driver:",
-          receipt.itemization.car_rental.driver_name,
-        ]);
+      if (receipt.itemization.car_rental.drivers) {
+        for (const driver of receipt.itemization.car_rental.drivers) {
+          typeSubHeaderData.push([
+            "Driver:",
+            (driver.preferred_first_name || driver.first_name) +
+              " " +
+              driver.last_name,
+          ]);
+        }
       }
       if (receipt.itemization.car_rental.vehicle?.description) {
         typeSubHeaderData.push([

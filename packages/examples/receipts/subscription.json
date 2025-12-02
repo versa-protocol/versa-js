@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.1.0",
+  "schema_version": "2.1.1",
   "header": {
     "invoice_number": "auth_1MzFN1K8F4fqH0lBmFq8CjbU",
     "currency": "usd",
@@ -58,8 +58,14 @@
   },
   "footer": {
     "actions": [
-      { "name": "Manage Subscription", "url": "https://versa.org/" },
-      { "name": "Contact Support", "url": "https://versa.org/" }
+      {
+        "name": "Manage Subscription",
+        "url": "https://versa.org/"
+      },
+      {
+        "name": "Contact Support",
+        "url": "https://versa.org/"
+      }
     ]
   },
   "payments": [
