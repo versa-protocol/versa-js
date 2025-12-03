@@ -1,4 +1,5 @@
 export * from "./entertainment";
+export * from "./externalLink";
 export * from "./facebook";
 export * from "./facilities";
 export * from "./financialServices";

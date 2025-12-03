@@ -1,5 +1,6 @@
 import styles from "./action-block.module.css";
 import { Action } from "@versa/schema";
+import { ExternalLink } from "../../icons/externalLink";
 import { Facebook } from "../../icons/facebook";
 import { Instagram } from "../../icons/instagram";
 import { XIcon } from "../../icons/x";
@@ -106,6 +107,8 @@ export function ActionBlock({
               <li key={index}>
                 <a
                   href={normalizeUrl(a.url)}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={styles.actionButton}
                   style={{
                     backgroundColor: brandTheme,
@@ -116,6 +119,10 @@ export function ActionBlock({
                     <SocialMediaIcon platform={socialMedia.platform} />
                   )}
                   <span>{displayName}</span>
+                  <ExternalLink
+                    className={styles.externalLinkIcon}
+                    style={{ width: 16, height: 16 }}
+                  />
                 </a>
               </li>
             );

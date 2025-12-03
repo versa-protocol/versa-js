@@ -28,6 +28,19 @@
   transform: translateY(-50%);
 }
 
+.externalLinkIcon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.actionButton:hover .externalLinkIcon {
+  opacity: 0.8;
+}
+
 .actionBlock li:last-child .actionButton {
   margin-bottom: 0;
 }
@@ -67,6 +80,16 @@
     transform: none;
   }
 
+  .externalLinkIcon {
+    position: static;
+    transform: none;
+    opacity: 0;
+  }
+
+  .actionButton:hover .externalLinkIcon {
+    opacity: 0.8;
+  }
+
   .actionButton > span {
     max-width: none;
   }
@@ -98,6 +121,16 @@
   .actionIcon {
     position: static;
     transform: none;
+  }
+
+  .externalLinkIcon {
+    position: static;
+    transform: none;
+    opacity: 0;
+  }
+
+  .actionButton:hover .externalLinkIcon {
+    opacity: 0.8;
   }
 
   .actionButton > span {
