@@ -127,8 +127,7 @@ export function formatDateTimeWithPlaces(
 
 export function formatTime(secondsSinceEpoch: number) {
   const d = new Date(secondsSinceEpoch * 1000);
-  let options: Intl.DateTimeFormatOptions;
-  options = {
+  const options: Intl.DateTimeFormatOptions = {
     hour: "numeric",
     minute: "numeric",
   };

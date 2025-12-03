@@ -5,7 +5,7 @@ import {
   formatTransactionValue,
 } from "@versa/belt";
 import styles from "./itemized-flight.module.css";
-import { Flight, Receipt, Person } from "@versa/schema";
+import { Flight, Receipt } from "@versa/schema";
 import { organizeFlightTickets } from "@versa/belt";
 
 function PlaneIcon() {

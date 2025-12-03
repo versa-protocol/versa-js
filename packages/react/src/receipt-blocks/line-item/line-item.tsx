@@ -6,7 +6,7 @@ import {
 import styles from "./line-item.module.css";
 import { Adjustment, Item, Metadatum, Receipt } from "@versa/schema";
 import React, { useState } from "react";
-import { ChevronDown, ChevronUp } from "react-feather";
+import { ChevronDown } from "react-feather";
 
 export function LineItem({
   li,

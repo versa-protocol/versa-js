@@ -1,12 +1,19 @@
-import { SVGProps } from "react";
+import { CSSProperties } from "react";
 
-export const Facebook = (props: SVGProps<SVGSVGElement>) => (
+export const Facebook = ({
+  className,
+  style,
+}: {
+  className?: string;
+  style?: CSSProperties;
+}) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="16"
     height="16"
     viewBox="0 0 500 500"
-    {...props}
+    className={className}
+    style={style}
   >
     <path
       fill="currentColor"
