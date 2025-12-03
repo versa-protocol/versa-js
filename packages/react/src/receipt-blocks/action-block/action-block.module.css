@@ -122,16 +122,18 @@
   .actionIcon {
     position: static;
     transform: none;
+    display: none;
   }
 
   .externalLinkIcon {
     position: static;
     transform: none;
     opacity: 0;
+    display: none;
   }
 
   .actionButton:hover .externalLinkIcon {
-    opacity: 0.8;
+    opacity: 0;
   }
 
   .actionButton > span {
