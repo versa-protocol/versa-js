@@ -65,15 +65,13 @@ function parseSocialMediaUrl(url: string): SocialMediaInfo | null {
 }
 
 function SocialMediaIcon({ platform }: { platform: SocialMediaPlatform }) {
-  const iconStyle = { width: 16, height: 16, opacity: 0.8 };
-
   switch (platform) {
     case "x":
-      return <XIcon className={styles.actionIcon} style={iconStyle} />;
+      return <XIcon className={styles.actionIcon} />;
     case "instagram":
-      return <Instagram className={styles.actionIcon} style={iconStyle} />;
+      return <Instagram className={styles.actionIcon} />;
     case "facebook":
-      return <Facebook className={styles.actionIcon} style={iconStyle} />;
+      return <Facebook className={styles.actionIcon} />;
     default:
       return null;
   }
@@ -119,10 +117,7 @@ export function ActionBlock({
                     <SocialMediaIcon platform={socialMedia.platform} />
                   )}
                   <span>{displayName}</span>
-                  <ExternalLink
-                    className={styles.externalLinkIcon}
-                    style={{ width: 16, height: 16 }}
-                  />
+                  <ExternalLink className={styles.externalLinkIcon} />
                 </a>
               </li>
             );
