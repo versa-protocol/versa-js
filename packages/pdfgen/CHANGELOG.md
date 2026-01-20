@@ -1,5 +1,13 @@
 # @versa/pdfgen
 
+## 1.14.5
+
+### Patch Changes
+
+- fixed tax rate rendering bug; ux improvement for receipt updates
+- Updated dependencies
+  - @versa/belt@1.14.5
+
 ## 1.14.4
 
 ### Patch Changes

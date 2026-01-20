@@ -1,5 +1,11 @@
 # @versa/belt
 
+## 1.14.5
+
+### Patch Changes
+
+- fixed tax rate rendering bug; ux improvement for receipt updates
+
 ## 1.14.4
 
 ### Patch Changes
