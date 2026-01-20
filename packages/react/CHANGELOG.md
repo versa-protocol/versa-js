@@ -1,5 +1,11 @@
 # @versa/react
 
+## 1.14.9
+
+### Patch Changes
+
+- fix: don't mutate props in ReceiptWithHistory
+
 ## 1.14.8
 
 ### Patch Changes
