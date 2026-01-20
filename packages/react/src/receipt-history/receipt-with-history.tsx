@@ -18,14 +18,27 @@ export function ReceiptWithHistory({
   theme?: string;
 }) {
   // First, sort receipts by `registered_at` in reverse-chronological order
-  const history = receipts.sort(
-    (a, b) => b.registration.registered_at - a.registration.registered_at
+  // Use useMemo to avoid re-sorting on every render, and spread to avoid mutating props
+  const history = React.useMemo(
+    () =>
+      [...receipts].sort(
+        (a, b) => b.registration.registered_at - a.registration.registered_at
+      ),
+    [receipts]
   );
 
   // Set the default receipt to the most recent
   const [currentTransactionEventIndex, setCurrentTransactionEventIndex] =
     React.useState(history[0].registration.transaction_event_index);
   const [data, setData] = React.useState(history[0].receipt);
+
+  // Sync state when receipts prop changes
+  React.useEffect(() => {
+    setData(history[0].receipt);
+    setCurrentTransactionEventIndex(
+      history[0].registration.transaction_event_index
+    );
+  }, [history]);
 
   // Configure refs for focus management when user wishes to review past versions
   const updatesIndicatorRef = React.useRef<HTMLButtonElement>(null);
