@@ -45,7 +45,7 @@ export function UpdateBlock({
                 className={styles.viewButton}
                 onClick={() => onViewPreviousVersion(0)}
               >
-                View this version
+                View
               </button>
             </div>
           ) : null}
@@ -87,7 +87,7 @@ export function UpdateBlock({
                       onViewPreviousVersion(currentUpdate.transactionEventIndex)
                     }
                   >
-                    View this version
+                    View
                   </button>
                 </div>
               ) : null}
