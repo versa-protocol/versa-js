@@ -5,7 +5,7 @@ import "@testing-library/jest-dom";
 
 import { senders } from "@versa/examples";
 const carRentalReceiptJson = `{
-  "schema_version": "2.1.1",
+  "schema_version": "2.1.0",
   "header": {
     "invoice_number": "auth_1MzFN1K8F4fqH0lBmFq8CjbU",
     "currency": "usd",
@@ -145,7 +145,7 @@ describe("Receipt UI - Car Rental 2.1.0", () => {
   const carRentalReceipt = JSON.parse(carRentalReceiptJson);
   beforeEach(() => {
     // Ensure we're testing the 2.0 schema version
-    expect(carRentalReceipt.schema_version).toBe("2.1.1");
+    expect(carRentalReceipt.schema_version).toBe("2.1.0");
   });
   it("should display total amount", () => {
     render(
