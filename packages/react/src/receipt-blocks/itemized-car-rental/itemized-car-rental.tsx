@@ -59,8 +59,8 @@ export function ItemizedCarRental({
             </div>
           )}
           {car_rental.drivers &&
-            car_rental.drivers.map((driver) => (
-              <div className={styles.keyValue}>
+            car_rental.drivers.map((driver, index) => (
+              <div className={styles.keyValue} key={`driver-${index}`}>
                 <div className={styles.key}>Driver</div>
                 <div className={styles.value}>
                   {driver.preferred_first_name || driver.first_name}{" "}
