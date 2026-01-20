@@ -145,7 +145,7 @@ describe("Receipt UI - Car Rental 2.1.0", () => {
   const carRentalReceipt = JSON.parse(carRentalReceiptJson);
   beforeEach(() => {
     // Ensure we're testing the 2.0 schema version
-    expect(carRentalReceipt.schema_version).toBe("2.1.0");
+    expect(carRentalReceipt.schema_version).toBe("2.1.1");
   });
   it("should display total amount", () => {
     render(
