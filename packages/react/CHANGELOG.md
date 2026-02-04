@@ -1,5 +1,13 @@
 # @versa/react
 
+## 1.14.10
+
+### Patch Changes
+
+- fix: tax rates present with sensible default precision"
+- Updated dependencies
+  - @versa/pdfgen@1.14.6
+
 ## 1.14.9
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @versa/pdfgen
 
+## 1.14.6
+
+### Patch Changes
+
+- fix: tax rates present with sensible default precision"
+
 ## 1.14.5
 
 ### Patch Changes
