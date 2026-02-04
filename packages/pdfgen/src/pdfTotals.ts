@@ -5,6 +5,7 @@ import {
   aggregateAdjustments,
   aggregateTaxes,
   capitalize,
+  formatPercentage,
   formatTransactionValue,
 } from "@versa/belt";
 
@@ -27,7 +28,7 @@ export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
     aggregatedTaxes.forEach((t) => {
       let taxLabel = t.name;
       if (t.rate) {
-        taxLabel = taxLabel + " (" + t.rate * 100 + "%)";
+        taxLabel = taxLabel + " (" + formatPercentage(t.rate) + "%)";
       }
       totalsData.push({
         description: { content: taxLabel },
@@ -52,7 +53,7 @@ export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
         description = capitalize(a.adjustment_type);
       }
       if (a.rate) {
-        description += " (" + a.rate * 100 + "%)";
+        description += " (" + formatPercentage(a.rate) + "%)";
       }
       totalsData.push({
         description: { content: description },

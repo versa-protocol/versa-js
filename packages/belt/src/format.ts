@@ -404,3 +404,10 @@ export function formatDateComparison(
       : `(${sequentialDiff}d later)`
   }`;
 }
+
+export function formatPercentage(value: number, maxDecimals = 2) {
+  const factor = 10 ** maxDecimals;
+  const rounded = Math.round((value * 100 + Number.EPSILON) * factor) / factor;
+
+  return rounded.toString();
+}

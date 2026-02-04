@@ -22,6 +22,7 @@ import {
   flightClass,
   capitalize,
   formatTransactionValue,
+  formatPercentage,
 } from "./format";
 import { airports } from "./airports";
 import { Optional } from ".";
@@ -755,7 +756,7 @@ export function aggregateItems(
             }
           });
           row.taxes = {
-            content: combinedTaxRate * 100 + "%",
+            content: formatPercentage(combinedTaxRate) + "%",
             styles: { halign: "right" },
           };
         } else {
@@ -819,7 +820,7 @@ export function aggregateItems(
             }
           });
           row.taxes = {
-            content: combinedTaxRate * 100 + "%",
+            content: formatPercentage(combinedTaxRate) + "%",
             styles: { halign: "right" },
           };
         } else {
@@ -1103,7 +1104,7 @@ function aggregateGenericItemRows(
                 capitalize(a.adjustment_type.replaceAll("_", " ")) + " applied";
             }
             if (a.rate) {
-              adjustmentString += " (" + a.rate * 100 + "%)";
+              adjustmentString += " (" + formatPercentage(a.rate) + "%)";
             } else {
               adjustmentString +=
                 " (" + formatTransactionValue(a.amount, header.currency) + ")";
@@ -1143,7 +1144,7 @@ function aggregateGenericItemRows(
           }
         });
         row.taxes = {
-          content: combinedTaxRate * 100 + "%",
+          content: formatPercentage(combinedTaxRate) + "%",
           styles: { halign: "right" },
         };
       } else {

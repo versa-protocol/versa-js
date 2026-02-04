@@ -1,4 +1,4 @@
-import { formatTransactionValue } from "@versa/belt";
+import { formatPercentage, formatTransactionValue } from "@versa/belt";
 import styles from "./totals.module.css";
 import { ChevronDown } from "react-feather";
 import { Adjustment, Receipt, Tax } from "@versa/schema";
@@ -38,7 +38,9 @@ export function Totals({
                   <div>
                     <span>{tft.name}</span>{" "}
                     {tft.rate && (
-                      <span className={styles.tax}>({tft.rate * 100}%)</span>
+                      <span className={styles.tax}>
+                        ({formatPercentage(tft.rate)}%)
+                      </span>
                     )}
                   </div>
                 </div>
@@ -75,7 +77,9 @@ export function Totals({
                     {a.name ? a.name : a.adjustment_type.replaceAll("_", " ")}
                   </span>{" "}
                   {a.rate && (
-                    <span className={styles.tax}>({a.rate * 100}%)</span>
+                    <span className={styles.tax}>
+                      ({formatPercentage(a.rate)}%)
+                    </span>
                   )}
                 </div>
               </div>

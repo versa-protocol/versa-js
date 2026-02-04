@@ -1,5 +1,6 @@
 import {
   capitalize,
+  formatPercentage,
   formatTransactionValue,
   netAdjustments,
 } from "@versa/belt";
@@ -94,7 +95,7 @@ export function LineItem({
                             a.adjustment_type.replaceAll("_", " ")
                           )}{" "}
                       {a.rate ? (
-                        <>({a.rate * 100}%)</>
+                        <>({formatPercentage(a.rate)}%)</>
                       ) : (
                         <>
                           ({formatTransactionValue(a.amount, header.currency)})
