@@ -1,0 +1,178 @@
+{
+  "footer": {
+    "actions": [],
+    "supplemental_text": null
+  },
+  "header": {
+    "mcc": null,
+    "paid": 193153,
+    "total": 193153,
+    "currency": "usd",
+    "customer": {
+      "name": "Food and Nutrition Strategies, LLC",
+      "email": null,
+      "phone": null,
+      "address": null,
+      "website": "https://skysailfoods.com/team",
+      "metadata": null
+    },
+    "location": {
+      "url": null,
+      "name": null,
+      "image": null,
+      "phone": null,
+      "address": {
+        "tz": "America/Chicago",
+        "lat": null,
+        "lon": null,
+        "city": null,
+        "region": null,
+        "country": null,
+        "postal_code": null,
+        "street_address": null
+      },
+      "google_place_id": null
+    },
+    "subtotal": 127200,
+    "invoiced_at": 1772207372,
+    "third_party": null,
+    "invoice_number": null,
+    "invoice_asset_id": null,
+    "receipt_asset_id": null
+  },
+  "payments": [
+    {
+      "amount": 193153,
+      "paid_at": 1772207372,
+      "ach_payment": null,
+      "card_payment": {
+        "network": null,
+        "last_four": "5555"
+      },
+      "payment_type": "card"
+    }
+  ],
+  "itemization": {
+    "flight": {
+      "tickets": [
+        {
+          "fare": 127200,
+          "taxes": [
+            {
+              "name": "Taxes & Fees",
+              "rate": null,
+              "amount": 65953
+            }
+          ],
+          "number": "0012320541641",
+          "segments": [
+            {
+              "fare": null,
+              "seat": null,
+              "taxes": [],
+              "metadata": [],
+              "arrival_at": 1773523740,
+              "arrival_tz": null,
+              "adjustments": [],
+              "departure_at": 1773518520,
+              "departure_tz": null,
+              "aircraft_type": null,
+              "flight_number": "AA4388",
+              "class_of_service": "Q",
+              "arrival_airport_code": "JFK",
+              "departure_airport_code": "BOS"
+            },
+            {
+              "fare": null,
+              "seat": null,
+              "taxes": [],
+              "metadata": [],
+              "arrival_at": 1773583200,
+              "arrival_tz": null,
+              "adjustments": [],
+              "departure_at": 1773538800,
+              "departure_tz": null,
+              "aircraft_type": null,
+              "flight_number": "AA8116",
+              "class_of_service": "Q",
+              "arrival_airport_code": "DOH",
+              "departure_airport_code": "JFK"
+            },
+            {
+              "fare": null,
+              "seat": null,
+              "taxes": [],
+              "metadata": [],
+              "arrival_at": 1773621900,
+              "arrival_tz": null,
+              "adjustments": [],
+              "departure_at": 1773593700,
+              "departure_tz": null,
+              "aircraft_type": null,
+              "flight_number": "AA8206",
+              "class_of_service": "Q",
+              "arrival_airport_code": "SIN",
+              "departure_airport_code": "DOH"
+            },
+            {
+              "fare": null,
+              "seat": null,
+              "taxes": [],
+              "metadata": [],
+              "arrival_at": 1774062900,
+              "arrival_tz": null,
+              "adjustments": [],
+              "departure_at": 1774034100,
+              "departure_tz": null,
+              "aircraft_type": null,
+              "flight_number": "AA8232",
+              "class_of_service": "V",
+              "arrival_airport_code": "DOH",
+              "departure_airport_code": "SIN"
+            },
+            {
+              "fare": null,
+              "seat": null,
+              "taxes": [],
+              "metadata": [],
+              "arrival_at": 1774119300,
+              "arrival_tz": null,
+              "adjustments": [],
+              "departure_at": 1774069800,
+              "departure_tz": null,
+              "aircraft_type": null,
+              "flight_number": "AA8133",
+              "class_of_service": "V",
+              "arrival_airport_code": "BOS",
+              "departure_airport_code": "DOH"
+            }
+          ],
+          "passenger": {
+            "email": "xxxxxxx@gmail.com",
+            "phone": null,
+            "metadata": [
+              {
+                "key": "group",
+                "value": "General"
+              }
+            ],
+            "last_name": "Strange",
+            "first_name": "Jonathan",
+            "preferred_first_name": null
+          },
+          "record_locator": "NPNPNP"
+        }
+      ],
+      "itinerary_locator": null,
+      "invoice_level_adjustments": []
+    },
+    "general": null,
+    "lodging": null,
+    "service": null,
+    "ecommerce": null,
+    "car_rental": null,
+    "subscription": null,
+    "transit_route": null
+  },
+  "schema_version": "2.1.0"
+}

@@ -90,3 +90,59 @@ function getStringOptionOrDefault(
 function normalizeBuffer(buffer: Buffer | Uint8Array) {
   return buffer instanceof Buffer ? new Uint8Array(buffer.buffer) : buffer;
 }
+
+export type TextItemWithPosition = {
+  str: string;
+  x: number;
+  y: number;
+  page: number;
+};
+
+/**
+ * Extract text items with their positions from a PDF.
+ * PDF coordinate system: origin at bottom-left, y increases upward.
+ *
+ * @param pdf A buffer containing the PDF contents.
+ * @returns A flat list of text items with page numbers and x,y positions.
+ */
+export async function pdfToItemsWithPosition(
+  pdf: Buffer | Uint8Array
+): Promise<TextItemWithPosition[]> {
+  pdf = normalizeBuffer(pdf);
+  const document = await getDocument({
+    data: pdf,
+    useWorkerFetch: false,
+    isEvalSupported: false,
+    useSystemFonts: true,
+  }).promise;
+
+  const results: TextItemWithPosition[] = [];
+
+  try {
+    for (let pageNum = 1; pageNum <= document.numPages; pageNum++) {
+      const page = await document.getPage(pageNum);
+      try {
+        const content = await page.getTextContent();
+        const items = getTextItems(content.items);
+        for (const item of items) {
+          const transform = (item as TextItem & { transform?: number[] })
+            .transform;
+          if (transform && transform.length >= 6) {
+            results.push({
+              str: item.str,
+              x: transform[4],
+              y: transform[5],
+              page: pageNum,
+            });
+          }
+        }
+      } finally {
+        page.cleanup();
+      }
+    }
+  } finally {
+    document.destroy();
+  }
+
+  return results;
+}
