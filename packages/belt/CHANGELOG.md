@@ -1,5 +1,11 @@
 # @versa/belt
 
+## 1.14.6
+
+### Patch Changes
+
+- fix: need to ship the formatPercentage helper with the updated utility belt
+
 ## 1.14.5
 
 ### Patch Changes

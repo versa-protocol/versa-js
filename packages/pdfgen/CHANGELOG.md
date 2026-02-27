@@ -1,5 +1,13 @@
 # @versa/pdfgen
 
+## 1.14.8
+
+### Patch Changes
+
+- fix: need to ship the formatPercentage helper with the updated utility belt
+- Updated dependencies
+  - @versa/belt@1.14.6
+
 ## 1.14.7
 
 ### Patch Changes

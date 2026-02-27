@@ -1,5 +1,14 @@
 # @versa/react
 
+## 1.14.12
+
+### Patch Changes
+
+- fix: need to ship the formatPercentage helper with the updated utility belt
+- Updated dependencies
+  - @versa/belt@1.14.6
+  - @versa/pdfgen@1.14.8
+
 ## 1.14.11
 
 ### Patch Changes
