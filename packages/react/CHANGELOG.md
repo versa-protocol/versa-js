@@ -1,5 +1,12 @@
 # @versa/react
 
+## 1.14.11
+
+### Patch Changes
+
+- Updated dependencies
+  - @versa/pdfgen@1.14.7
+
 ## 1.14.10
 
 ### Patch Changes
