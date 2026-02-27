@@ -9,7 +9,12 @@ import {
   formatTransactionValue,
 } from "@versa/belt";
 
-export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
+export function Totals(
+  doc: jsPDF,
+  receipt: Receipt,
+  margin: number,
+  cursor?: { y: number; page: number; startYForTotals?: number }
+) {
   const headerCurrency = receipt.header.currency || "";
   const docWidth = doc.internal.pageSize.getWidth();
   const totalsData: {}[] = [];
@@ -95,11 +100,21 @@ export function Totals(doc: jsPDF, receipt: Receipt, margin: number) {
       },
     },
   });
+  const lastAutoTable = (doc as jsPDF & { lastAutoTable: { finalY: number } })
+    .lastAutoTable;
+
+  let startY: number;
+  if (cursor) {
+    doc.setPage(cursor.page);
+    // Use startYForTotals when provided (from FlightDetails) - it's captured right after
+    // the ticket summary before the SVG loop, so it's always correct.
+    startY = cursor.startYForTotals ?? lastAutoTable.finalY + margin;
+  } else {
+    startY = lastAutoTable.finalY + margin;
+  }
   autoTable(doc, {
     body: totalsData,
-    startY:
-      (doc as jsPDF & { lastAutoTable: { finalY: number } }).lastAutoTable
-        .finalY + margin,
+    startY,
     margin: {
       top: margin,
       right: margin,

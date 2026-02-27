@@ -94,10 +94,10 @@ const createReceiptDocLatest = async ({
   cursor = TypeSubHeader(doc, receipt, margin, cursor);
 
   // Items
-  await Items(doc, receipt, margin, cursor);
+  cursor = await Items(doc, receipt, margin, cursor);
 
   // Totals
-  Totals(doc, receipt, margin);
+  Totals(doc, receipt, margin, cursor);
 
   // Payments
   if (receipt.payments.length > 1) {

@@ -9,7 +9,7 @@ export async function Items(
   receipt: lts.v1_11_0.Receipt,
   margin: number,
   cursor: { y: number; page: number }
-) {
+): Promise<{ y: number; page: number }> {
   doc.setPage(cursor.page);
   if (receipt.itemization.flight) {
     await FlightDetails(
@@ -19,6 +19,7 @@ export async function Items(
       margin,
       cursor
     );
+    return cursor;
   } else {
     const aggregatedItems = lts_v1_11_0.aggregateItems(
       receipt.itemization,
@@ -52,5 +53,10 @@ export async function Items(
         cellPadding: { top: 0.125, right: 0.125, bottom: 0.125, left: 0 },
       },
     });
+    return {
+      y: (doc as jsPDF & { lastAutoTable: { finalY: number } }).lastAutoTable
+        .finalY,
+      page: doc.getCurrentPageInfo().pageNumber,
+    };
   }
 }

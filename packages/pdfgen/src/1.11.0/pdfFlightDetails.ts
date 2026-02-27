@@ -283,11 +283,13 @@ export async function FlightDetails(
       },
     });
 
-    cursor = {
-      y: (doc as jsPDF & { lastAutoTable: { finalY: number } }).lastAutoTable
-        .finalY,
-      page: doc.getCurrentPageInfo().pageNumber,
-    };
+    const ticketSummaryFinalY = (
+      doc as jsPDF & { lastAutoTable: { finalY: number } }
+    ).lastAutoTable.finalY;
+    cursor.y = ticketSummaryFinalY;
+    cursor.page = doc.getCurrentPageInfo().pageNumber;
+    (cursor as Record<string, number>).startYForTotals =
+      ticketSummaryFinalY + margin;
     if (
       cursor.y +
         segmentHeight +
@@ -301,6 +303,7 @@ export async function FlightDetails(
       doc.addPage();
       cursor.y = margin;
       cursor.page = cursor.page + 1;
+      (cursor as Record<string, number>).startYForTotals = margin + margin;
     }
   });
 
@@ -328,6 +331,10 @@ export async function FlightDetails(
       iconCoordinates[i].y + svgLength / 2
     );
   }
+  // Restore doc to the page where content ended (cursor reflects ticket summary
+  // position). The SVG loop above sets doc to each icon's page, which can leave
+  // doc on page 1 when the ticket summary is on page 2.
+  doc.setPage(cursor.page);
 }
 
 // Helpers

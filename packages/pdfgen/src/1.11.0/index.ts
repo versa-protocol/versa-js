@@ -42,10 +42,10 @@ export const createReceiptDoc_v1_11_0 = async ({
   cursor = TypeSubHeader(doc, receiptLatest, margin, cursor);
 
   // Items (using version-specific implementation)
-  await Items(doc, receipt, margin, cursor);
+  cursor = await Items(doc, receipt, margin, cursor);
 
   // Totals
-  Totals(doc, receiptLatest, margin);
+  Totals(doc, receiptLatest, margin, cursor);
 
   // Payments
   if (receipt.payments.length > 1) {
