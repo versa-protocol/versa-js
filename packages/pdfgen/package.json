@@ -17,8 +17,8 @@
   "dependencies": {
     "@versa/belt": "workspace:*",
     "@versa/schema": "workspace:*",
-    "jspdf": "^3.0.1",
-    "jspdf-autotable": "^5.0.2",
+    "jspdf": "^4.2.0",
+    "jspdf-autotable": "^5.0.7",
     "remove-markdown": "^0.5.5",
     "svg2pdf.js": "^2.5.0"
   },
