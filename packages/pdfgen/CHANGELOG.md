@@ -1,5 +1,13 @@
 # @versa/pdfgen
 
+## 1.14.9
+
+### Patch Changes
+
+- update dependencies; including jspdf to remediation for CVE-2025-68428
+- Updated dependencies
+  - @versa/belt@1.14.7
+
 ## 1.14.8
 
 ### Patch Changes
