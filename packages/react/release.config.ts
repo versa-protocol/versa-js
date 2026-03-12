@@ -2,7 +2,7 @@
 
 import { bundleStats } from "rollup-plugin-bundle-stats";
 import { RollupOptions } from "rollup";
-import { terser } from "rollup-plugin-terser";
+import terser from "@rollup/plugin-terser";
 import commonjs from "@rollup/plugin-commonjs";
 import del from "rollup-plugin-delete";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
