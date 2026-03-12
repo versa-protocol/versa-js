@@ -1,4 +1,4 @@
-export const flightSnapshot = `Receipt
+export const flightSnapshot = `Flight Receipt
 
 Invoice Date:
  

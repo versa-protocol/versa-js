@@ -18,10 +18,11 @@ export async function Header(
   doc.rect(0, 0, docWidth, 0.0625, "F");
 
   // Title
+  const title = getDocumentTitle(receipt);
   doc.setFont("helvetica", "bold");
   doc.setLineHeightFactor(1.25);
   doc.setFontSize(20);
-  doc.text("Receipt", margin, margin + 20 / 72);
+  doc.text(title, margin, margin + 20 / 72);
 
   // Logo
   let logo: string | null = null;
@@ -86,6 +87,24 @@ export async function Header(
 }
 
 // Helpers
+
+function getDocumentTitle(receipt: Receipt): string {
+  const isInvoice =
+    receipt.header.paid === 0 &&
+    (!receipt.payments || receipt.payments.length === 0);
+  const docType = isInvoice ? "Invoice" : "Receipt";
+
+  let prefix = "";
+  if (receipt.itemization.flight) {
+    prefix = "Flight ";
+  } else if (receipt.itemization.lodging) {
+    prefix = "Lodging ";
+  } else if (receipt.itemization.car_rental) {
+    prefix = "Car Rental ";
+  }
+
+  return `${prefix}${docType}`;
+}
 
 function hexToRgb(hex: string): [number, number, number] {
   hex = hex.replace(/^#/, "");

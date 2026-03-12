@@ -346,12 +346,122 @@ describe("PDF Header - Invoice Details Rendering", () => {
     );
   });
 
-  it("should render title 'Receipt'", async () => {
+  it("should render title 'Receipt' for general receipt", async () => {
     await Header(mockDoc, testMerchant, testReceipt, 0.375, "#FF0000");
 
     // Check that "Receipt" title was rendered
     expect(mockDoc.text).toHaveBeenCalledWith(
       "Receipt",
+      expect.any(Number),
+      expect.any(Number)
+    );
+  });
+
+  it("should render title 'Flight Receipt' when itemization has flight", async () => {
+    testReceipt.itemization = {
+      ...testReceipt.itemization,
+      flight: {
+        tickets: [
+          {
+            segments: [
+              {
+                departure_airport_code: "JFK",
+                arrival_airport_code: "LAX",
+              },
+            ],
+          },
+        ],
+      },
+    };
+
+    await Header(mockDoc, testMerchant, testReceipt, 0.375, "#FF0000");
+
+    expect(mockDoc.text).toHaveBeenCalledWith(
+      "Flight Receipt",
+      expect.any(Number),
+      expect.any(Number)
+    );
+  });
+
+  it("should render title 'Lodging Receipt' when itemization has lodging", async () => {
+    testReceipt.itemization = {
+      ...testReceipt.itemization,
+      lodging: {
+        check_in: 1705939200,
+        check_out: 1706025600,
+        location: { name: "Test Hotel" },
+        items: [{ description: "Room", amount: 10000 }],
+      },
+    };
+
+    await Header(mockDoc, testMerchant, testReceipt, 0.375, "#FF0000");
+
+    expect(mockDoc.text).toHaveBeenCalledWith(
+      "Lodging Receipt",
+      expect.any(Number),
+      expect.any(Number)
+    );
+  });
+
+  it("should render title 'Car Rental Receipt' when itemization has car_rental", async () => {
+    testReceipt.itemization = {
+      ...testReceipt.itemization,
+      car_rental: {
+        rental_at: 1705939200,
+        return_at: 1706025600,
+        rental_location: { name: "Rental Co" },
+        return_location: { name: "Rental Co" },
+        odometer_reading_in: 1000,
+        odometer_reading_out: 1100,
+        items: [{ description: "Rental", amount: 10000 }],
+      },
+    };
+
+    await Header(mockDoc, testMerchant, testReceipt, 0.375, "#FF0000");
+
+    expect(mockDoc.text).toHaveBeenCalledWith(
+      "Car Rental Receipt",
+      expect.any(Number),
+      expect.any(Number)
+    );
+  });
+
+  it("should render title 'Flight Invoice' when paid is 0 and no payments", async () => {
+    testReceipt.header.paid = 0;
+    testReceipt.payments = [];
+    testReceipt.itemization = {
+      ...testReceipt.itemization,
+      flight: {
+        tickets: [
+          {
+            segments: [
+              {
+                departure_airport_code: "JFK",
+                arrival_airport_code: "LAX",
+              },
+            ],
+          },
+        ],
+      },
+    };
+
+    await Header(mockDoc, testMerchant, testReceipt, 0.375, "#FF0000");
+
+    expect(mockDoc.text).toHaveBeenCalledWith(
+      "Flight Invoice",
+      expect.any(Number),
+      expect.any(Number)
+    );
+  });
+
+  it("should render title 'Invoice' when paid is 0 and payments is empty", async () => {
+    testReceipt.header.paid = 0;
+    testReceipt.payments = [];
+
+    await Header(mockDoc, testMerchant, testReceipt, 0.375, "#FF0000");
+
+    expect(mockDoc.text).toHaveBeenCalledWith(
+      "Invoice",
       expect.any(Number),
       expect.any(Number)
     );
