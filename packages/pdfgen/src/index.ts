@@ -9,6 +9,7 @@ import { Totals } from "./pdfTotals";
 import { Payments } from "./pdfPayments";
 import { Footers } from "./pdfFooters";
 import { SupplementalText } from "./pdfSupplementalText";
+import { ThirdPartyBanner } from "./pdfThirdParty";
 import { createReceiptDoc_v1_11_0 } from "./1.11.0";
 // import jsdom from "jsdom";
 // const { JSDOM } = jsdom
@@ -86,6 +87,11 @@ const createReceiptDocLatest = async ({
 
   // Header
   await Header(doc, merchant, receipt, margin, brandColor);
+
+  // Third Party Banner
+  if (receipt.header.third_party) {
+    await ThirdPartyBanner(doc, merchant, receipt, margin);
+  }
 
   // Parties
   let cursor = Parties(doc, merchant, receipt, margin);

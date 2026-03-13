@@ -90,7 +90,7 @@ export function ReceiptDisplay({
 
       {/* Itemization */}
 
-      {data.header.third_party && !data.header.third_party.make_primary && (
+      {data.header.third_party && (
         <BlockWrap>
           <ThirdParty
             third_party={data.header.third_party}

@@ -92,13 +92,9 @@ export function ReceiptHeader({
         <div className={styles.headerText}>
           <h1>{formatTransactionValue(header.total, header.currency)}</h1>
           <div className="secondaryText">
-            {header.third_party && header.third_party.make_primary ? (
-              <>
-                {header.third_party.merchant?.name} (via {merchant.name}){" "}
-              </>
-            ) : (
-              <>{merchant.name} </>
-            )}
+            {header.third_party && header.third_party.make_primary
+              ? header.third_party.merchant?.name
+              : merchant.name}
             &nbsp;·&nbsp;{" "}
             {formatDateTimeWithPlaces(header.invoiced_at, [header.location])}
           </div>

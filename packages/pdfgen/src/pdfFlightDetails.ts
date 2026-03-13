@@ -47,7 +47,7 @@ export async function FlightDetails(
       }
       itineraryString +=
         itinerary.departure_city + " to " + itinerary.arrival_city;
-      cursor.y += margin / 2;
+      cursor.y += margin;
       doc.setFontSize(regFontSize);
       doc.setFont("helvetica", "normal");
       doc.text(itineraryString, margin, cursor.y);
