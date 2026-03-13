@@ -1228,8 +1228,7 @@ export function formatAddress(
 /**
  * Multi-line address friendly for stacked display:
  * - Line 1: street (if present)
- * - Line 2: City, Region Postal (if present)
- * - Line 3: Country (if present)
+ * - Line 2: City, Region, Postal, Country (comma-separated, if present)
  */
 export function formatAddressMultiline(address?: Optional<Address>): string {
   if (!address) return "";
@@ -1238,14 +1237,18 @@ export function formatAddressMultiline(address?: Optional<Address>): string {
     address.street_address as string | undefined
   );
   if (street) lines.push(street);
-  const cityRegionPostal = formatAddress(address, {
-    includeStreet: false,
-    includeCountry: false,
-    includePostalCode: true,
-  });
-  if (cityRegionPostal) lines.push(cityRegionPostal);
+
+  const secondLineParts: string[] = [];
+  const city = _cleanAddressPart(address.city as string | undefined);
+  const region = _cleanAddressPart(address.region as string | undefined);
+  const postal = _cleanAddressPart(address.postal_code as string | undefined);
   const country = _cleanAddressPart(address.country as string | undefined);
-  if (country) lines.push(country);
+  if (city) secondLineParts.push(city);
+  if (region) secondLineParts.push(region);
+  if (postal) secondLineParts.push(postal);
+  if (country) secondLineParts.push(country);
+  if (secondLineParts.length > 0) lines.push(secondLineParts.join(", "));
+
   return lines.join("\n");
 }
 

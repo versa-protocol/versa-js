@@ -2,7 +2,7 @@ import { formatDateTimeWithPlaces, formatPhoneNumber } from "@versa/belt";
 import styles from "./itemized-lodging.module.css";
 import { VersaContext } from "../../context";
 import { Header, Lodging } from "@versa/schema";
-import { formatAddress } from "@versa/belt";
+import { formatAddressMultiline } from "@versa/belt";
 
 export function ItemizedLodging({
   lodging,
@@ -66,13 +66,14 @@ export function ItemizedLodging({
                   {lodging.location.name}
                 </div>
                 <div>
-                  {lodging.location?.address?.street_address}
-                  <br />
-                  {formatAddress(lodging.location?.address, {
-                    includeStreet: false,
-                    includeCountry: false,
-                    includePostalCode: true,
-                  })}
+                  {formatAddressMultiline(lodging.location?.address)
+                    .split("\n")
+                    .map((line, i) => (
+                      <span key={i}>
+                        {i > 0 && <br />}
+                        {line}
+                      </span>
+                    ))}
                 </div>
                 {lodging.location?.phone && (
                   <div>{formatPhoneNumber(lodging.location.phone)}</div>

@@ -4,7 +4,7 @@ import { VersaContext } from "../../context";
 import { formatPhoneNumber } from "@versa/belt";
 import { useContext, useEffect, useState } from "react";
 import { Coordinates, createMapboxGeocoder } from "../../helpers/geocoding";
-import { formatAddress } from "@versa/belt";
+import { formatAddressMultiline } from "@versa/belt";
 
 export function LocalBusiness({
   location,
@@ -83,13 +83,14 @@ export function LocalBusiness({
             <div className={styles.localBusinessProfile}>
               {location.address && (
                 <div>
-                  {location.address.street_address}
-                  <br />
-                  {formatAddress(location.address, {
-                    includeStreet: false,
-                    includeCountry: false,
-                    includePostalCode: true,
-                  })}
+                  {formatAddressMultiline(location.address)
+                    .split("\n")
+                    .map((line, i) => (
+                      <span key={i}>
+                        {i > 0 && <br />}
+                        {line}
+                      </span>
+                    ))}
                 </div>
               )}
               {location.phone && <div>{formatPhoneNumber(location.phone)}</div>}
