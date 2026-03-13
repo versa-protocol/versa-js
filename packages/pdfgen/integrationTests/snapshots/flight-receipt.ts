@@ -14,7 +14,9 @@ Payment Method:
 Mastercard ··· 4886
 
 Test Merchant
- 
+
+https://example.com
+
 Bill To
 
 Susy Smith

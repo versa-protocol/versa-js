@@ -55,7 +55,7 @@ export async function FlightDetails(
       let segmentCount = 0;
       itinerary.segments.forEach((s, index) => {
         doc.setPage(cursor.page);
-        doc.setDrawColor(210);
+        doc.setDrawColor(230);
         const leftOffset =
           margin +
           ((docWidth - 2 * margin) / 2 + margin / 4) * (segmentCount % 2);

@@ -25,14 +25,15 @@ export function Parties(
     ? primarySeller.legal_name
     : primarySeller.name;
 
-  const sellerAddress = stringifyAddress(merchant.address);
+  const { rows: sellerBody, websiteRows: sellerWebsiteRows } =
+    getSeller(primarySeller);
   const { rows: billTo, websiteRows } = getBillTo(receipt.header);
   const shipTo: string[][] = getShipTo(receipt.itemization);
 
   // Seller
   autoTable(doc, {
     head: [[sellerTitle]],
-    body: [[sellerAddress]],
+    body: sellerBody,
     startY: partiesStartY,
     margin: {
       top: margin,
@@ -50,6 +51,18 @@ export function Parties(
         bottom: 0.0625,
         left: 0,
       },
+    },
+    didParseCell: (data) => {
+      if (data.section === "body" && sellerWebsiteRows.has(data.row.index)) {
+        data.cell.styles.textColor = [37, 99, 235];
+      }
+    },
+    didDrawCell: (data) => {
+      if (data.section === "body" && sellerWebsiteRows.has(data.row.index)) {
+        doc.link(data.cell.x, data.cell.y, data.cell.width, data.cell.height, {
+          url: data.cell.text.join(""),
+        });
+      }
     },
   });
   let cursor = {
@@ -156,6 +169,21 @@ export function Parties(
 
 function stringifyAddress(address: Optional<Address>): string {
   return formatAddressMultiline(address || undefined);
+}
+
+function getSeller(seller: Org): {
+  rows: string[][];
+  websiteRows: Set<number>;
+} {
+  const rows: string[][] = [];
+  const websiteRows = new Set<number>();
+  const address = stringifyAddress(seller.address);
+  if (address) rows.push([address]);
+  if (seller.website) {
+    websiteRows.add(rows.length);
+    rows.push([seller.website]);
+  }
+  return { rows, websiteRows };
 }
 
 function getBillTo(header: Receipt["header"]): {
