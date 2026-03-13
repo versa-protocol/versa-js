@@ -43,7 +43,7 @@ export function Parties(
     theme: "plain",
     showHead: "firstPage",
     styles: {
-      fontSize: 10,
+      fontSize: 9,
       cellPadding: {
         top: 0,
         right: 0.125,
@@ -78,7 +78,7 @@ export function Parties(
       theme: "plain",
       showHead: "firstPage",
       styles: {
-        fontSize: 10,
+        fontSize: 9,
         cellPadding: {
           top: 0,
           right: 0.125,
@@ -133,7 +133,7 @@ export function Parties(
       theme: "plain",
       showHead: "firstPage",
       styles: {
-        fontSize: 10,
+        fontSize: 9,
         cellPadding: {
           top: 0,
           right: 0.125,

@@ -19,6 +19,7 @@ Bill To
 
 Susy Smith
 example.com
+
 Apr 15, 2024 - Seattle to Grand Forks
 
 SEA
@@ -42,6 +43,7 @@ Minneapolis
 7:14 PM
 DL4656 - Boeing 737 MAX 9
 Grand Forks
+
 Apr 23, 2024 - Grand Forks to Seattle
 
 GFK

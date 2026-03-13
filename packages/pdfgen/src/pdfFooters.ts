@@ -15,7 +15,7 @@ export function Footers(doc: jsPDF, margin: number) {
     );
     doc.setPage(i);
     doc.setFont("helvetica", "normal");
-    doc.setFontSize(10);
+    doc.setFontSize(9);
     const text = "Page " + String(i) + " of " + String(pageCount);
     const textWidth = doc.getTextWidth(text);
     doc.text(text, docWidth - textWidth - margin, docHeight - margin);

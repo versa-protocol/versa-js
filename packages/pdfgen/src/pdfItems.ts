@@ -46,7 +46,7 @@ export async function Items(
         lineWidth: {
           bottom: (1 / 72) * 0.75,
         },
-        fontSize: 10,
+        fontSize: 9,
         cellPadding: { top: 0.125, right: 0.125, bottom: 0.125, left: 0 },
       },
     });

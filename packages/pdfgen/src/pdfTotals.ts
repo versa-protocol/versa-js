@@ -127,7 +127,7 @@ export function Totals(
       lineWidth: {
         top: (1 / 72) * 0.75,
       },
-      fontSize: 10,
+      fontSize: 9,
       cellPadding: { top: 0.09375, right: 0.125, bottom: 0.09375, left: 0 },
     },
     pageBreak: "avoid",

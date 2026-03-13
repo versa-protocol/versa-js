@@ -275,7 +275,7 @@ describe("PDF Header - Invoice Details Rendering", () => {
       expect.objectContaining({
         theme: "plain",
         styles: expect.objectContaining({
-          fontSize: 10,
+          fontSize: 9,
           cellPadding: expect.objectContaining({
             top: 0,
             right: 0.125,

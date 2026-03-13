@@ -133,7 +133,7 @@ export function TypeSubHeader(
       theme: "plain",
       tableWidth: "wrap",
       styles: {
-        fontSize: 10,
+        fontSize: 9,
         cellPadding: {
           top: 0,
           right: 0.125,

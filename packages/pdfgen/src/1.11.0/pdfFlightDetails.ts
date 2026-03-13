@@ -77,7 +77,7 @@ export async function FlightDetails(
           cursor.y + segmentTopBottomPad + bigFontSize / 72,
           { align: "right" }
         );
-        doc.setFontSize(10);
+        doc.setFontSize(9);
         if (
           s.departure_airport_code !==
           airportLookup(s.departure_airport_code).municipality
@@ -278,7 +278,7 @@ export async function FlightDetails(
         lineWidth: {
           bottom: (1 / 72) * 0.75,
         },
-        fontSize: 10,
+        fontSize: 9,
         cellPadding: { top: 0.125, right: 0.125, bottom: 0.125, left: 0 },
       },
     });
