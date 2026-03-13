@@ -100,9 +100,7 @@ const createReceiptDocLatest = async ({
   Totals(doc, receipt, margin, cursor);
 
   // Payments
-  if (receipt.payments.length > 1) {
-    Payments(doc, receipt.payments, receipt.header, margin);
-  }
+  Payments(doc, receipt.payments, receipt.header, margin);
 
   // Supplemental Text
   if (receipt.footer.supplemental_text) {

@@ -127,6 +127,10 @@ Amount Paid
  
 $1,400.40
 
+Card Payment
+Apr 16, 2024, 3:26 PM EDT
+Mastercard ··· 4886
+
 You have 24 hours from the time you first buy your ticket to make changes or cancel for a refund if you booked at least 2
 days before departure.
 
