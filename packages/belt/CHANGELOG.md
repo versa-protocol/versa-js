@@ -1,5 +1,11 @@
 # @versa/belt
 
+## 1.14.8
+
+### Patch Changes
+
+- fixed inconsistent third party display
+
 ## 1.14.7
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @versa/pdfgen
 
+## 1.14.10
+
+### Patch Changes
+
+- fixed inconsistent third party display
+- Updated dependencies
+  - @versa/belt@1.14.8
+
 ## 1.14.9
 
 ### Patch Changes
