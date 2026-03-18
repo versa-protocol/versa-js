@@ -119,7 +119,7 @@ const KAYAK_FOR_BUSINESS = {
 };
 
 const thirdPartyFlightReceipt: Receipt = {
-  schema_version: "2.1.1",
+  schema_version: "2.2.0",
   header: {
     invoice_number: "KB-2024-08172934",
     currency: "usd",
