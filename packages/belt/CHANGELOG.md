@@ -1,5 +1,16 @@
 # @versa/belt
 
+## 1.15.0
+
+### Minor Changes
+
+- compatibility update for schema version 2.2.0
+
+### Patch Changes
+
+- Updated dependencies
+  - @versa/schema@2.2.0
+
 ## 1.14.8
 
 ### Patch Changes

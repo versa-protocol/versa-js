@@ -1,5 +1,11 @@
 # @versa/schema
 
+## 2.2.0
+
+### Minor Changes
+
+- compatibility update for schema version 2.2.0
+
 ## 2.1.1
 
 ### Patch Changes

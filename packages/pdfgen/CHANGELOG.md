@@ -1,5 +1,17 @@
 # @versa/pdfgen
 
+## 1.15.0
+
+### Minor Changes
+
+- compatibility update for schema version 2.2.0
+
+### Patch Changes
+
+- Updated dependencies
+  - @versa/belt@1.15.0
+  - @versa/schema@2.2.0
+
 ## 1.14.10
 
 ### Patch Changes
