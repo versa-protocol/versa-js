@@ -129,113 +129,14 @@ describe("PDF Header - Invoice Details Rendering", () => {
     expect(invoiceNumberRow).toBeUndefined();
   });
 
-  it("should render payment method for single payment matching total", async () => {
+  it("should not render payment method in header", async () => {
     await Header(mockDoc, testMerchant, testReceipt, 0.375, "#FF0000");
 
-    // Check that autoTable was called with payment method
-    expect(mockAutoTable).toHaveBeenCalledWith(
-      mockDoc,
-      expect.objectContaining({
-        body: expect.arrayContaining([
-          ["Payment Method:", expect.stringContaining("1234")],
-        ]),
-      })
-    );
-  });
-
-  it("should render Visa card payment with correct format", async () => {
-    await Header(mockDoc, testMerchant, testReceipt, 0.375, "#FF0000");
-
-    // Check that autoTable includes formatted Visa payment
-    const autoTableCall = mockAutoTable.mock.calls[0];
-    const bodyData = autoTableCall[1].body as string[][];
-    const paymentRow = bodyData.find((row) => row[0] === "Payment Method:");
-
-    expect(paymentRow).toBeDefined();
-    expect(paymentRow![1]).toBe("Visa ··· 1234");
-  });
-
-  it("should render Mastercard payment with correct format", async () => {
-    testReceipt.payments[0].card_payment!.network = "mastercard";
-    testReceipt.payments[0].card_payment!.last_four = "5678";
-
-    await Header(mockDoc, testMerchant, testReceipt, 0.375, "#FF0000");
-
-    // Check that autoTable includes formatted Mastercard payment
-    const autoTableCall = mockAutoTable.mock.calls[0];
-    const bodyData = autoTableCall[1].body as string[][];
-    const paymentRow = bodyData.find((row) => row[0] === "Payment Method:");
-
-    expect(paymentRow).toBeDefined();
-    expect(paymentRow![1]).toBe("Mastercard ··· 5678");
-  });
-
-  it("should not render payment method for multiple payments", async () => {
-    // Add second payment
-    testReceipt.payments.push({
-      amount: 5000,
-      paid_at: 1705939200,
-      payment_type: "card",
-      card_payment: {
-        last_four: "9999",
-        network: "amex",
-      },
-    });
-
-    await Header(mockDoc, testMerchant, testReceipt, 0.375, "#FF0000");
-
-    // Check that payment method is not included
     const autoTableCall = mockAutoTable.mock.calls[0];
     const bodyData = autoTableCall[1].body as string[][];
     const paymentRow = bodyData.find((row) => row[0] === "Payment Method:");
 
     expect(paymentRow).toBeUndefined();
-  });
-
-  it("should not render payment method when payment doesn't match total", async () => {
-    testReceipt.payments[0].amount = 5000; // Less than total
-
-    await Header(mockDoc, testMerchant, testReceipt, 0.375, "#FF0000");
-
-    // Check that payment method is not included
-    const autoTableCall = mockAutoTable.mock.calls[0];
-    const bodyData = autoTableCall[1].body as string[][];
-    const paymentRow = bodyData.find((row) => row[0] === "Payment Method:");
-
-    expect(paymentRow).toBeUndefined();
-  });
-
-  it("should handle ACH payment type", async () => {
-    testReceipt.payments[0] = {
-      amount: 10000,
-      paid_at: 1705939200,
-      payment_type: "ach",
-      ach_payment: {
-        routing_number: "123456789",
-      },
-    };
-
-    await Header(mockDoc, testMerchant, testReceipt, 0.375, "#FF0000");
-
-    // ACH payments should not show payment method (as per the paymentMethod function)
-    const autoTableCall = mockAutoTable.mock.calls[0];
-    const bodyData = autoTableCall[1].body as string[][];
-    const paymentRow = bodyData.find((row) => row[0] === "Payment Method:");
-
-    expect(paymentRow![1]).toBe("");
-  });
-
-  it("should handle payment without card details", async () => {
-    testReceipt.payments[0].card_payment = null;
-
-    await Header(mockDoc, testMerchant, testReceipt, 0.375, "#FF0000");
-
-    // Should not crash and payment method should be empty
-    const autoTableCall = mockAutoTable.mock.calls[0];
-    const bodyData = autoTableCall[1].body as string[][];
-    const paymentRow = bodyData.find((row) => row[0] === "Payment Method:");
-
-    expect(paymentRow![1]).toBe("");
   });
 
   it("should format dates correctly for different timestamps", async () => {
@@ -263,7 +164,6 @@ describe("PDF Header - Invoice Details Rendering", () => {
     expect(bodyData[0][0]).toBe("Invoice Date:");
     expect(bodyData[1][0]).toBe("Invoice Number:");
     expect(bodyData[2][0]).toBe("Date Paid:");
-    expect(bodyData[3][0]).toBe("Payment Method:");
   });
 
   it("should set correct table styling", async () => {
@@ -299,24 +199,11 @@ describe("PDF Header - Invoice Details Rendering", () => {
         margin: {
           top: margin,
           right: margin,
-          bottom: 2 * margin,
+          bottom: margin,
           left: margin,
         },
       })
     );
-  });
-
-  it("should handle card payment without network", async () => {
-    testReceipt.payments[0].card_payment!.network = null;
-
-    await Header(mockDoc, testMerchant, testReceipt, 0.375, "#FF0000");
-
-    // Should still show last four digits
-    const autoTableCall = mockAutoTable.mock.calls[0];
-    const bodyData = autoTableCall[1].body as string[][];
-    const paymentRow = bodyData.find((row) => row[0] === "Payment Method:");
-
-    expect(paymentRow![1]).toBe("··· 1234");
   });
 
   it("should handle card payment without last four digits", async () => {
@@ -324,12 +211,10 @@ describe("PDF Header - Invoice Details Rendering", () => {
 
     await Header(mockDoc, testMerchant, testReceipt, 0.375, "#FF0000");
 
-    // Should show network but no last four
     const autoTableCall = mockAutoTable.mock.calls[0];
     const bodyData = autoTableCall[1].body as string[][];
-    const paymentRow = bodyData.find((row) => row[0] === "Payment Method:");
 
-    expect(paymentRow![1]).toBe("Visa ");
+    expect(bodyData).toBeDefined();
   });
 
   it("should render merchant logo when provided", async () => {

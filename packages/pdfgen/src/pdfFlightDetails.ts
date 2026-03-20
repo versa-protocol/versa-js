@@ -26,8 +26,9 @@ export async function FlightDetails(
   const segmentTopBottomPad = margin * 0.375;
   const linePad = margin * 0.1875;
   const bigFontSize = 15;
-  const regFontSize = 10;
+  const regFontSize = 9;
   const iconCoordinates: { x: number; y: number; page: number }[] = [];
+  cursor.y += margin / 2;
   organizedFlightTickets.forEach((ticketGroup) => {
     const segmentHeight = getSegmentHeight(
       ticketGroup.itineraries,
@@ -60,7 +61,14 @@ export async function FlightDetails(
           margin +
           ((docWidth - 2 * margin) / 2 + margin / 4) * (segmentCount % 2);
         const width = (docWidth - 2 * margin) / 2 - margin / 4;
-        doc.rect(leftOffset, cursor.y, width, segmentHeight);
+        doc.roundedRect(
+          leftOffset,
+          cursor.y,
+          width,
+          segmentHeight,
+          3 / 72,
+          3 / 72
+        );
         iconCoordinates.push({
           x: leftOffset + width / 2,
           y: cursor.y + margin * 0.5,

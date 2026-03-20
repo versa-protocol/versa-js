@@ -65,13 +65,12 @@ export async function Header(
     receipt.payments[0].amount == receipt.header.paid
   ) {
     headTableData.push(["Date Paid:", formatDate(receipt.payments[0].paid_at)]);
-    headTableData.push(["Payment Method:", paymentMethod(receipt.payments[0])]);
   }
 
   autoTable(doc, {
     body: headTableData,
     startY: margin + 20 / 72 + margin,
-    margin: { top: margin, right: margin, bottom: 2 * margin, left: margin },
+    margin: { top: margin, right: margin, bottom: margin, left: margin },
     theme: "plain",
     tableWidth: "wrap",
     styles: {

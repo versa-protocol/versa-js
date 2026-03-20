@@ -9,9 +9,6 @@ Invoice Number:
 Date Paid:
  
 Apr 16, 2024
-Payment Method:
- 
-Mastercard ··· 4886
 
 Test Merchant
 
@@ -21,7 +18,6 @@ Bill To
 
 Susy Smith
 example.com
-
 Apr 15, 2024 - Seattle to Grand Forks
 
 SEA
@@ -45,7 +41,6 @@ Minneapolis
 7:14 PM
 DL4656 - Boeing 737 MAX 9
 Grand Forks
-
 Apr 23, 2024 - Grand Forks to Seattle
 
 GFK
@@ -129,9 +124,9 @@ Amount Paid
  
 $1,400.40
 
-Card Payment
-Apr 16, 2024, 3:26 PM EDT
 Mastercard ··· 4886
+ 
+Apr 16, 2024, 3:26 PM EDT
 
 You have 24 hours from the time you first buy your ticket to make changes or cancel for a refund if you booked at least 2
 days before departure.

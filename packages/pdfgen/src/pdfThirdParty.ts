@@ -14,25 +14,18 @@ export async function ThirdPartyBanner(
   const docWidth = doc.internal.pageSize.getWidth();
   const bannerY =
     (doc as jsPDF & { lastAutoTable: { finalY: number } }).lastAutoTable
-      .finalY + margin;
+      .finalY +
+    margin / 2;
 
-  const bannerHeight = 0.5;
-  const bannerWidth = docWidth - 2 * margin;
-
-  doc.setDrawColor(230);
-  doc.setLineWidth((1 / 72) * 0.75);
-  doc.rect(margin, bannerY, bannerWidth, bannerHeight);
-
-  const text = `${tp.merchant?.name || "Third party"} via ${merchant.name}`;
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(9);
-  doc.text(text, margin + 0.125, bannerY + bannerHeight / 2 + 9 / 72 / 3);
+  const logoSize = 0.25;
+  const lineHeight = Math.max(logoSize, 9 / 72);
 
   const boxLogo = tp.make_primary ? merchant.logo : tp.merchant?.logo;
+  let textX = margin;
+
   if (boxLogo) {
-    const logoSize = 0.3;
-    const logoX = margin + bannerWidth - 0.125 - logoSize;
-    const logoY = bannerY + (bannerHeight - logoSize) / 2;
+    const logoX = margin;
+    const logoY = bannerY + (lineHeight - logoSize) / 2;
     const options = {
       string: true,
       headers: { "User-Agent": "versa-pdfgen" },
@@ -40,12 +33,18 @@ export async function ThirdPartyBanner(
     try {
       const base64Image = (await encode(boxLogo, options)) as string;
       doc.addImage(base64Image, "JPEG", logoX, logoY, logoSize, logoSize);
+      textX = margin + logoSize + 0.125;
     } catch (e) {
       // eslint-disable-next-line no-console
       console.warn("Error fetching and encoding third-party logo:", e);
     }
   }
 
+  const text = `${tp.merchant?.name || "Third party"} via ${merchant.name}`;
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(9);
+  doc.text(text, textX, bannerY + lineHeight / 2 + 9 / 72 / 3);
+
   (doc as jsPDF & { lastAutoTable: { finalY: number } }).lastAutoTable.finalY =
-    bannerY + bannerHeight;
+    bannerY + lineHeight;
 }

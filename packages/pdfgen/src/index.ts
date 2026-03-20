@@ -6,7 +6,6 @@ import { Parties } from "./pdfParties";
 import { TypeSubHeader } from "./pdfTypeSubHeader";
 import { Items } from "./pdfItems";
 import { Totals } from "./pdfTotals";
-import { Payments } from "./pdfPayments";
 import { Footers } from "./pdfFooters";
 import { SupplementalText } from "./pdfSupplementalText";
 import { ThirdPartyBanner } from "./pdfThirdParty";
@@ -104,9 +103,6 @@ const createReceiptDocLatest = async ({
 
   // Totals
   Totals(doc, receipt, margin, cursor);
-
-  // Payments
-  Payments(doc, receipt.payments, receipt.header, margin);
 
   // Supplemental Text
   if (receipt.footer.supplemental_text) {

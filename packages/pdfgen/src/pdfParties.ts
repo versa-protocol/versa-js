@@ -25,9 +25,8 @@ export function Parties(
     ? primarySeller.legal_name
     : primarySeller.name;
 
-  const { rows: sellerBody, websiteRows: sellerWebsiteRows } =
-    getSeller(primarySeller);
-  const { rows: billTo, websiteRows } = getBillTo(receipt.header);
+  const sellerBody = getSeller(primarySeller);
+  const billTo: string[][] = getBillTo(receipt.header);
   const shipTo: string[][] = getShipTo(receipt.itemization);
 
   // Seller
@@ -51,18 +50,6 @@ export function Parties(
         bottom: 0.0625,
         left: 0,
       },
-    },
-    didParseCell: (data) => {
-      if (data.section === "body" && sellerWebsiteRows.has(data.row.index)) {
-        data.cell.styles.textColor = [37, 99, 235];
-      }
-    },
-    didDrawCell: (data) => {
-      if (data.section === "body" && sellerWebsiteRows.has(data.row.index)) {
-        doc.link(data.cell.x, data.cell.y, data.cell.width, data.cell.height, {
-          url: data.cell.text.join(""),
-        });
-      }
     },
   });
   let cursor = {
@@ -98,22 +85,6 @@ export function Parties(
           bottom: 0.0625,
           left: 0,
         },
-      },
-      didParseCell: (data) => {
-        if (data.section === "body" && websiteRows.has(data.row.index)) {
-          data.cell.styles.textColor = [37, 99, 235];
-        }
-      },
-      didDrawCell: (data) => {
-        if (data.section === "body" && websiteRows.has(data.row.index)) {
-          doc.link(
-            data.cell.x,
-            data.cell.y,
-            data.cell.width,
-            data.cell.height,
-            { url: data.cell.text.join("") }
-          );
-        }
       },
     });
     cursor = {
@@ -171,51 +142,39 @@ function stringifyAddress(address: Optional<Address>): string {
   return formatAddressMultiline(address || undefined);
 }
 
-function getSeller(seller: Org): {
-  rows: string[][];
-  websiteRows: Set<number>;
-} {
+function getSeller(seller: Org): string[][] {
   const rows: string[][] = [];
-  const websiteRows = new Set<number>();
   const address = stringifyAddress(seller.address);
   if (address) rows.push([address]);
-  if (seller.website) {
-    websiteRows.add(rows.length);
-    rows.push([seller.website]);
-  }
-  return { rows, websiteRows };
+  if (seller.website) rows.push([seller.website]);
+  return rows;
 }
 
-function getBillTo(header: Receipt["header"]): {
-  rows: string[][];
-  websiteRows: Set<number>;
-} {
-  const rows: string[][] = [];
-  const websiteRows = new Set<number>();
+function getBillTo(header: Receipt["header"]): string[][] {
+  const billTo: string[][] = [];
   if (header.customer) {
     if (header.customer.name) {
-      rows.push([header.customer.name]);
+      billTo.push([header.customer.name]);
     }
     if (header.customer.address) {
-      rows.push([stringifyAddress(header.customer?.address)]);
+      billTo.push([stringifyAddress(header.customer?.address)]);
     }
     if (header.customer.email) {
-      rows.push([header.customer.email]);
+      billTo.push([header.customer.email]);
     }
     if (header.customer.website) {
-      websiteRows.add(rows.length);
-      rows.push([header.customer.website]);
+      billTo.push([header.customer.website]);
     }
     if (header.customer.phone) {
-      rows.push([formatPhoneNumber(header.customer.phone)]);
+      billTo.push([formatPhoneNumber(header.customer.phone)]);
     }
     if (header.customer.metadata && header.customer.metadata.length > 0) {
       header.customer.metadata.forEach((m) => {
-        rows.push([m.key + ": " + m.value]);
+        billTo.push([m.key + ": " + m.value]);
       });
     }
   }
-  return { rows, websiteRows };
+  return billTo;
 }
 
 function getShipTo(itemization: Receipt["itemization"]) {

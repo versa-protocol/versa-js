@@ -1,10 +1,11 @@
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
-import { Receipt, Adjustment, Tax } from "@versa/schema";
+import { Receipt, Adjustment, Tax, Payment } from "@versa/schema";
 import {
   aggregateAdjustments,
   aggregateTaxes,
   capitalize,
+  formatDateTimeWithPlaces,
   formatPercentage,
   formatTransactionValue,
 } from "@versa/belt";
@@ -100,6 +101,28 @@ export function Totals(
       },
     },
   });
+
+  receipt.payments.forEach((p) => {
+    const dateTime = formatDateTimeWithPlaces(
+      p.paid_at,
+      [receipt.header.location],
+      {
+        includeTime: true,
+        includeTimezone: true,
+      }
+    );
+    totalsData.push({
+      description: { content: paymentMethod(p) },
+      amount: {
+        content: dateTime,
+        styles: {
+          halign: "right",
+          cellPadding: { top: 0.09375, right: 0, bottom: 0.09375, left: 0 },
+        },
+      },
+    });
+  });
+
   const lastAutoTable = (doc as jsPDF & { lastAutoTable: { finalY: number } })
     .lastAutoTable;
 
@@ -132,4 +155,24 @@ export function Totals(
     },
     pageBreak: "avoid",
   });
+}
+
+function toTitleCase(str: string) {
+  return str.replace(
+    /\w\S*/g,
+    (text) => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
+  );
+}
+
+function paymentMethod(p: Payment) {
+  let description = "";
+  if (p.payment_type === "card") {
+    if (p.card_payment?.network) {
+      description = toTitleCase(p.card_payment.network);
+    }
+    if (p.card_payment?.last_four) {
+      description += " ··· " + p.card_payment.last_four;
+    }
+  }
+  return description;
 }
