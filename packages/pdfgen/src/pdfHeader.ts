@@ -1,8 +1,8 @@
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 import { Org, Receipt, Payment } from "@versa/schema";
-import { capitalize } from "@versa/belt";
 import { encode } from "./encodeImage";
+import { getPlaceholderLogoBase64 } from "./placeholderLogo";
 
 export async function Header(
   doc: jsPDF,
@@ -24,17 +24,13 @@ export async function Header(
   doc.setFontSize(20);
   doc.text(title, margin, margin + 20 / 72);
 
-  // Logo
+  // Logo: when third party is primary, only their logo applies (null → placeholder, not sender logo).
   let logo: string | null = null;
-  if (merchant.logo) {
+  const third = receipt.header.third_party;
+  if (third?.make_primary) {
+    logo = third.merchant?.logo ?? null;
+  } else if (merchant.logo) {
     logo = merchant.logo;
-  }
-  if (
-    receipt.header.third_party &&
-    receipt.header.third_party.make_primary &&
-    receipt.header.third_party.merchant?.logo
-  ) {
-    logo = receipt.header.third_party.merchant.logo;
   }
   if (logo) {
     const options = {
@@ -49,6 +45,11 @@ export async function Header(
     } catch (e) {
       // eslint-disable-next-line no-console
       console.warn("Error fetching and encoding image:", e);
+    }
+  } else {
+    const placeholder = getPlaceholderLogoBase64(receipt);
+    if (placeholder) {
+      doc.addImage(placeholder, "PNG", docWidth - margin - 1, margin, 1, 1);
     }
   }
   doc.setDrawColor(240);
@@ -122,17 +123,4 @@ export function formatDate(secondsSinceEpoch: number) {
     day: "numeric",
   };
   return d.toLocaleDateString("en-US", options);
-}
-
-function paymentMethod(p: Payment) {
-  let paymentDescription = "";
-  if (p.payment_type == "card") {
-    if (p.card_payment?.network) {
-      paymentDescription += `${capitalize(p.card_payment.network)} `;
-    }
-    if (p.card_payment?.last_four) {
-      paymentDescription += `··· ${p.card_payment.last_four}`;
-    }
-  }
-  return paymentDescription;
 }

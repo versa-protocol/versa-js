@@ -1,4 +1,5 @@
 import { Header } from "./pdfHeader";
+import { encode } from "./encodeImage";
 import { Receipt, Org } from "@versa/schema";
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
@@ -224,6 +225,72 @@ describe("PDF Header - Invoice Details Rendering", () => {
     expect(mockDoc.addImage).toHaveBeenCalledWith(
       "data:image/png;base64,mockImageData",
       "JPEG",
+      expect.any(Number),
+      expect.any(Number),
+      expect.any(Number),
+      expect.any(Number)
+    );
+  });
+
+  it("should render placeholder PNG when no logo and itemization is flight", async () => {
+    testMerchant.logo = null;
+    testReceipt.itemization = {
+      flight: {
+        tickets: [
+          {
+            segments: [
+              {
+                departure_airport_code: "JFK",
+                arrival_airport_code: "LAX",
+              },
+            ],
+          },
+        ],
+      },
+    };
+
+    await Header(mockDoc, testMerchant, testReceipt, 0.375, "#FF0000");
+
+    expect(mockDoc.addImage).toHaveBeenCalledWith(
+      expect.any(String),
+      "PNG",
+      expect.any(Number),
+      expect.any(Number),
+      expect.any(Number),
+      expect.any(Number)
+    );
+  });
+
+  it("should use placeholder when primary third party has no logo, not sender logo", async () => {
+    testReceipt.header.third_party = {
+      relation: "marketplace",
+      make_primary: true,
+      merchant: {
+        name: "Pizza Hut",
+        logo: null,
+      },
+    };
+    testReceipt.itemization = {
+      flight: {
+        tickets: [
+          {
+            segments: [
+              {
+                departure_airport_code: "JFK",
+                arrival_airport_code: "LAX",
+              },
+            ],
+          },
+        ],
+      },
+    };
+
+    await Header(mockDoc, testMerchant, testReceipt, 0.375, "#FF0000");
+
+    expect(encode).not.toHaveBeenCalled();
+    expect(mockDoc.addImage).toHaveBeenCalledWith(
+      expect.any(String),
+      "PNG",
       expect.any(Number),
       expect.any(Number),
       expect.any(Number),
