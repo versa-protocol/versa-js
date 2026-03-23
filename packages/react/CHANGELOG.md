@@ -1,5 +1,14 @@
 # @versa/react
 
+## 1.15.1
+
+### Patch Changes
+
+- style: tweak PDF presentation layer
+- Updated dependencies
+  - @versa/belt@1.15.1
+  - @versa/pdfgen@1.15.1
+
 ## 1.15.0
 
 ### Minor Changes
