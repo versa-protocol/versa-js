@@ -189,6 +189,9 @@ export async function FlightDetails(
         if (s.flight_number || s.aircraft_type) {
           let flightDescription = "";
           flightDescription += s.flight_number;
+          if (s.seat) {
+            flightDescription += " · Seat: " + s.seat;
+          }
           if (s.flight_number && s.aircraft_type) {
             flightDescription += " - ";
           }

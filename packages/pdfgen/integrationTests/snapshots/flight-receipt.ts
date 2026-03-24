@@ -28,7 +28,7 @@ Seattle
 8:54 AM
  
 11:15 AM
-DL1768 - Boeing 737 MAX 10
+DL1768 · Seat: 15F - Boeing 737 MAX 10
 Minneapolis
 
 MSP
@@ -39,7 +39,7 @@ Minneapolis
 1:41 PM
  
 7:14 PM
-DL4656 - Boeing 737 MAX 9
+DL4656 · Seat: 10A - Boeing 737 MAX 9
 Grand Forks
 Apr 23, 2024 - Grand Forks to Seattle
 
@@ -51,7 +51,7 @@ Grand Forks
 2:35 PM
  
 3:26 PM
-DL4656 - Boeing 737 MAX 9
+DL4656 · Seat: 17A - Boeing 737 MAX 9
 Minneapolis
 
 MSP
@@ -62,7 +62,7 @@ Minneapolis
 3:43 PM
  
 5:20 PM
-DL2536 - Boeing 737 MAX 10
+DL2536 · Seat: 12B - Boeing 737 MAX 10
 Seattle
 
 Passenger
