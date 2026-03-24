@@ -67,6 +67,12 @@ export async function Header(
   ) {
     headTableData.push(["Date Paid:", formatDate(receipt.payments[0].paid_at)]);
   }
+  if (receipt.itemization.lodging?.confirmation_number) {
+    headTableData.push([
+      "Confirmation Number:",
+      receipt.itemization.lodging.confirmation_number,
+    ]);
+  }
 
   autoTable(doc, {
     body: headTableData,
