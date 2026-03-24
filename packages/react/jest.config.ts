@@ -9,6 +9,7 @@ const config: Config = {
       "<rootDir>/__mocks__/fileMock.js",
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
     "react-markdown": "<rootDir>/mocks/react-markdown.tsx",
+    "remark-breaks": "<rootDir>/mocks/remark-breaks.ts",
   },
   setupFiles: ["<rootDir>/jestSetupEnv.ts", "jest-canvas-mock"],
   // Note that this is no longer bundled in jest

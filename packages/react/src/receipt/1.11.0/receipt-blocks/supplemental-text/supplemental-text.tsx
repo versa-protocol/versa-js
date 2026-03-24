@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "../../../../receipt-blocks/supplemental-text/supplemental-text.module.css";
 import Markdown from "react-markdown";
+import remarkBreaks from "remark-breaks";
 
 export function SupplementalText({ text }: { text: string }) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -24,7 +25,7 @@ export function SupplementalText({ text }: { text: string }) {
       } ${showToggleButton ? styles.fadeOut : ""}`}
     >
       <div ref={contentRef} className={styles.content}>
-        <Markdown>{text}</Markdown>
+        <Markdown remarkPlugins={[remarkBreaks]}>{text}</Markdown>
       </div>
       {showToggleButton && (
         <div className={styles.buttonWrap}>
