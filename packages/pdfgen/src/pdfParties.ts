@@ -1,6 +1,6 @@
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
-import { Org, Receipt, Address } from "@versa/schema";
+import { Org, Receipt, Address, Place } from "@versa/schema";
 import { formatPhoneNumber, Optional } from "@versa/belt";
 import { formatAddressMultiline } from "@versa/belt";
 
@@ -25,7 +25,10 @@ export function Parties(
     ? primarySeller.legal_name
     : primarySeller.name;
 
-  const sellerBody = getSeller(primarySeller);
+  const sellerBody = getSeller(
+    primarySeller,
+    receipt.itemization.lodging?.location
+  );
   const billTo: string[][] = getBillTo(receipt.header);
   const shipTo: string[][] = getShipTo(receipt.itemization);
 
@@ -142,11 +145,17 @@ function stringifyAddress(address: Optional<Address>): string {
   return formatAddressMultiline(address || undefined);
 }
 
-function getSeller(seller: Org): string[][] {
+function getSeller(seller: Org, location?: Place | null): string[][] {
   const rows: string[][] = [];
-  const address = stringifyAddress(seller.address);
-  if (address) rows.push([address]);
-  if (seller.website) rows.push([seller.website]);
+  if (location) {
+    const address = stringifyAddress(location.address);
+    if (address) rows.push([address]);
+    if (location.url) rows.push([location.url]);
+  } else {
+    const address = stringifyAddress(seller.address);
+    if (address) rows.push([address]);
+    if (seller.website) rows.push([seller.website]);
+  }
   return rows;
 }
 

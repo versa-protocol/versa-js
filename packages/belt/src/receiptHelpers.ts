@@ -750,13 +750,15 @@ export function aggregateItems(
           };
         } else if (key == "taxes" && i.taxes) {
           let combinedTaxRate = 0;
+          let hasRate = false;
           i.taxes.forEach((t) => {
-            if (t.rate) {
+            if (t.rate != null) {
               combinedTaxRate += t.rate;
+              hasRate = true;
             }
           });
           row.taxes = {
-            content: formatPercentage(combinedTaxRate) + "%",
+            content: hasRate ? formatPercentage(combinedTaxRate) + "%" : "",
             styles: { halign: "right" },
           };
         } else {
@@ -814,13 +816,15 @@ export function aggregateItems(
           };
         } else if (key == "taxes" && i.taxes) {
           let combinedTaxRate = 0;
+          let hasRate = false;
           i.taxes.forEach((t) => {
-            if (t.rate) {
+            if (t.rate != null) {
               combinedTaxRate += t.rate;
+              hasRate = true;
             }
           });
           row.taxes = {
-            content: formatPercentage(combinedTaxRate) + "%",
+            content: hasRate ? formatPercentage(combinedTaxRate) + "%" : "",
             styles: { halign: "right" },
           };
         } else {
@@ -943,7 +947,7 @@ function aggregateItemHeaders(itemization: Itemization): pdfItem {
       }
     });
     const allTaxesAreRateBased = itemization.service.service_items.every(
-      (i) => i.taxes && i.taxes.every((t) => t.rate !== null)
+      (i) => i.taxes && i.taxes.every((t) => t.rate != null)
     );
     if (allTaxesAreRateBased) {
       head.taxes = { content: "Tax", styles: { halign: "right" } };
@@ -977,7 +981,7 @@ function aggregateItemHeaders(itemization: Itemization): pdfItem {
     });
     const allTaxesAreRateBased =
       itemization.subscription.subscription_items.every(
-        (i) => i.taxes && i.taxes.every((t) => t.rate !== null)
+        (i) => i.taxes && i.taxes.every((t) => t.rate != null)
       );
     if (allTaxesAreRateBased) {
       head.taxes = { content: "Tax", styles: { halign: "right" } };
@@ -1064,7 +1068,7 @@ function aggregateGenericItemHeaders(rows: Item[]): pdfItem {
       head.unspsc = { content: "UNSPSC" };
     }
   });
-  if (rows.every((i) => i.taxes && i.taxes.every((t) => t.rate !== null))) {
+  if (rows.every((i) => i.taxes && i.taxes.every((t) => t.rate != null))) {
     head.taxes = { content: "Tax", styles: { halign: "right" } };
   }
   head.amount = {
@@ -1138,13 +1142,15 @@ function aggregateGenericItemRows(
         };
       } else if (key == "taxes" && i.taxes) {
         let combinedTaxRate = 0;
+        let hasRate = false;
         i.taxes.forEach((t) => {
-          if (t.rate) {
+          if (t.rate != null) {
             combinedTaxRate += t.rate;
+            hasRate = true;
           }
         });
         row.taxes = {
-          content: formatPercentage(combinedTaxRate) + "%",
+          content: hasRate ? formatPercentage(combinedTaxRate) + "%" : "",
           styles: { halign: "right" },
         };
       } else {
