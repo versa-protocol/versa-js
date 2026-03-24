@@ -73,6 +73,12 @@ export async function Header(
       receipt.itemization.lodging.confirmation_number,
     ]);
   }
+  if (receipt.itemization.car_rental?.confirmation_number) {
+    headTableData.push([
+      "Confirmation Number:",
+      receipt.itemization.car_rental.confirmation_number,
+    ]);
+  }
 
   autoTable(doc, {
     body: headTableData,
