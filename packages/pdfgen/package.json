@@ -6,8 +6,8 @@
   "types": "./dist/index.d.ts",
   "license": "MIT",
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts && rm -rf dist/integrationTests",
-    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "build": "tsup && rm -rf dist/integrationTests",
+    "dev": "tsup --watch",
     "lint": "eslint src",
     "test": "jest && pnpm test:ava",
     "test:ava": "pnpm build:ava && ava",
