@@ -105,8 +105,8 @@ const createReceiptDocLatest = async ({
   Totals(doc, receipt, margin, cursor);
 
   // Supplemental Text
-  if (receipt.footer.supplemental_text) {
-    SupplementalText(doc, receipt.footer.supplemental_text, margin);
+  if (receipt.footer?.supplemental_text) {
+    SupplementalText(doc, receipt.footer?.supplemental_text, margin);
   }
 
   // Page number footer

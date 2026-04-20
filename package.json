@@ -46,7 +46,7 @@
     "@commitlint/config-conventional": "^19.8.1",
     "@eslint/js": "^9.39.4",
     "@types/react": "^18.3.28",
-    "@typescript-eslint/parser": "^8.57.0",
+    "@typescript-eslint/parser": "^8.58.1",
     "ajv": "^8.18.0",
     "ajv-formats": "^3.0.1",
     "eslint": "^9.39.4",
@@ -63,9 +63,9 @@
     "ts-node": "^10.9.2",
     "tsconfig": "workspace:*",
     "tsx": "^4.21.0",
-    "turbo": "^2.8.16",
+    "turbo": "^2.9.5",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.57.0"
+    "typescript-eslint": "^8.58.1"
   },
   "pnpm": {
     "overrides": {

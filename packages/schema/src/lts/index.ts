@@ -4,3 +4,4 @@ export * as v2_0_0 from "./2.0.0";
 export * as v2_1_0 from "./2.1.0";
 export * as v2_1_1 from "./2.1.1";
 export * as v2_2_0 from "./2.2.0";
+export * as v2_3_0 from "./2.3.0";

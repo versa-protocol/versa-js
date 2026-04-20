@@ -3,7 +3,7 @@ import * as path from "path";
 import Ajv2020 from "ajv/dist/2020";
 import addFormats from "ajv-formats";
 
-const DEFAULT_SCHEMA_VERSION = "2.2.0";
+const DEFAULT_SCHEMA_VERSION = "2.3.0-rc1";
 const SCHEMA_BASE_URL =
   "https://raw.githubusercontent.com/versa-protocol/schema";
 
@@ -77,10 +77,11 @@ async function main(): Promise<void> {
 
     // Validate files for each version
     for (const [version, files] of filesByVersion) {
-      const schemaUrl = `${SCHEMA_BASE_URL}/${version}/data/receipt.schema.json`;
+      const schemaUrl = `${SCHEMA_BASE_URL}/${version}/events/receipt.schema.json`;
       console.log(
         `\nValidating ${files.length} files against schema version ${version}`
       );
+
       console.log(`Schema URL: ${schemaUrl}`);
 
       const ajv = new Ajv2020({ allErrors, strict });

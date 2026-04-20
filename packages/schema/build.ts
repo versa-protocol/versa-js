@@ -1,4 +1,4 @@
-// curl -o packages/schema/receipt.schema.json 'https://raw.githubusercontent.com/versa-protocol/schema/main/data/receipt.schema.json'
+// curl -o packages/schema/receipt.schema.json 'https://raw.githubusercontent.com/versa-protocol/schema/main/events/receipt.schema.json'
 // pnpm --package=json-schema-to-typescript dlx json2ts packages/schema/receipt.schema.json > packages/schema/src/schema.ts --ignoreMinAndMaxItems --additionalProperties false
 // git add packages/schema/src/schema.ts
 
@@ -6,6 +6,16 @@ const fs = require("fs");
 const { compileFromFile } = require("json-schema-to-typescript");
 
 const LTS_VERSIONS = require("./lts");
+
+function compareVersions(a: string, b: string): number {
+  const pa = a.split(".").map(Number);
+  const pb = b.split(".").map(Number);
+  for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
+    const diff = (pa[i] || 0) - (pb[i] || 0);
+    if (diff !== 0) return diff;
+  }
+  return 0;
+}
 
 async function main() {
   if (LTS_VERSIONS.length === 0) {
@@ -42,8 +52,10 @@ export const LTS_VERSIONS = ${JSON.stringify(LTS_VERSIONS)};
 }
 
 async function generate(schemaVersion: string) {
+  // Schema files moved from /data/ to /events/ in version 2.3.0
+  const dir = compareVersions(schemaVersion, "2.3.0") < 0 ? "data" : "events";
   const res = await fetch(
-    `https://raw.githubusercontent.com/versa-protocol/schema/${schemaVersion}/data/receipt.schema.json`
+    `https://raw.githubusercontent.com/versa-protocol/schema/${schemaVersion}/${dir}/receipt.schema.json`
   );
   const schema = await res.text();
 

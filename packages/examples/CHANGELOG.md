@@ -1,5 +1,16 @@
 # @versa/examples
 
+## 2.3.0
+
+### Minor Changes
+
+- update for schema version 2.3.0
+
+### Patch Changes
+
+- Updated dependencies
+  - @versa/schema@2.3.0
+
 ## 2.2.0
 
 ### Minor Changes

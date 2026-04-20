@@ -78,7 +78,7 @@ const getValidator = async (schemaVersion: string) => {
     );
   }
 
-  const schemaUrl = `/GITHUB_CONTENT_URL/versa-protocol/schema/${versionToUse}/data/receipt.schema.json`;
+  const schemaUrl = `/GITHUB_CONTENT_URL/versa-protocol/schema/${versionToUse}/events/receipt.schema.json`;
   try {
     const response = await fetch(schemaUrl);
     if (!response.ok) return null;
