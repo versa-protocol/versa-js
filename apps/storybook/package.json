@@ -1,7 +1,7 @@
 {
   "name": "versa-storybook",
   "private": true,
-  "version": "0.0.99",
+  "version": "0.0.100",
   "type": "module",
   "scripts": {
     "dev": "storybook dev -p 6006 --no-open",

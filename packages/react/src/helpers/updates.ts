@@ -45,9 +45,11 @@ export function diffReceipts(
   const updates: Update[] = [];
   // based on schema, check if a payment was added
 
-  if (newReceipt.receipt.payments.length > oldReceipt.receipt.payments.length) {
-    const newPayment = newReceipt.receipt.payments.find(
-      (payment) => !oldReceipt.receipt.payments.includes(payment)
+  const newPayments = newReceipt.receipt.payments ?? [];
+  const oldPayments = oldReceipt.receipt.payments ?? [];
+  if (newPayments.length > oldPayments.length) {
+    const newPayment = newPayments.find(
+      (payment) => !oldPayments.includes(payment)
     );
     if (newPayment) {
       updates.push({

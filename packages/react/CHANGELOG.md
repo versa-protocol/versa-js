@@ -1,5 +1,11 @@
 # @versa/react
 
+## 1.16.3
+
+### Patch Changes
+
+- fix: more compatibility ts errors
+
 ## 1.16.2
 
 ### Patch Changes
