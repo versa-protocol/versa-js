@@ -10,7 +10,7 @@ const carRentalReceipt = receipts.car_rental;
 describe("Receipt UI - Car Rental 2.1.1", () => {
   beforeEach(() => {
     // Ensure we're testing the 2.0 schema version
-    expect(carRentalReceipt.schema_version).toBe("2.2.0");
+    expect(carRentalReceipt.schema_version).toBe("2.3.0");
   });
   it("should display total amount", () => {
     render(

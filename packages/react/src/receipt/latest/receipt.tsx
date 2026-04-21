@@ -227,7 +227,7 @@ export function ReceiptLatest({
 
       {/* Actions */}
 
-      {data.footer.actions && data.footer.actions.length > 0 && (
+      {data.footer?.actions && data.footer.actions.length > 0 && (
         <BlockWrap>
           <ActionBlock
             actions={data.footer.actions}
@@ -268,7 +268,7 @@ export function ReceiptLatest({
       )}
 
       {/* Supplemental Text */}
-      {!!data.footer.supplemental_text && (
+      {!!data.footer?.supplemental_text && (
         <BlockWrap>
           <SupplementalText text={data.footer.supplemental_text} />
         </BlockWrap>

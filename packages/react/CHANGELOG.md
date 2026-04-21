@@ -1,5 +1,11 @@
 # @versa/react
 
+## 1.16.2
+
+### Patch Changes
+
+- fix: more schema version compatibility issues
+
 ## 1.16.1
 
 ### Patch Changes
