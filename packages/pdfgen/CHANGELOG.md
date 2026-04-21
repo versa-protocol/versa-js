@@ -1,5 +1,11 @@
 # @versa/pdfgen
 
+## 1.16.1
+
+### Patch Changes
+
+- fix: build error due to missing null-check"
+
 ## 1.16.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # home
 
+## 0.2.103
+
+### Patch Changes
+
+- @versa/react@1.16.1
+
 ## 0.2.102
 
 ### Patch Changes

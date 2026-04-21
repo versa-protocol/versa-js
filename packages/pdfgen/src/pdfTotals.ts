@@ -102,7 +102,7 @@ export function Totals(
     },
   });
 
-  receipt.payments.forEach((p) => {
+  receipt.payments?.forEach((p) => {
     const dateTime = formatDateTimeWithPlaces(
       p.paid_at,
       [receipt.header.location],
