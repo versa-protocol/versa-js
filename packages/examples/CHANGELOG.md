@@ -1,5 +1,11 @@
 # @versa/examples
 
+## 2.3.1
+
+### Patch Changes
+
+- fix: bump schema_version in examples"
+
 ## 2.3.0
 
 ### Minor Changes
