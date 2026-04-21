@@ -62,7 +62,7 @@ export async function Header(
     headTableData.push(["Invoice Number:", receipt.header.invoice_number]);
   }
   if (
-    receipt.payments.length == 1 &&
+    receipt.payments?.length == 1 &&
     receipt.payments[0].amount == receipt.header.paid
   ) {
     headTableData.push(["Date Paid:", formatDate(receipt.payments[0].paid_at)]);

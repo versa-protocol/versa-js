@@ -208,7 +208,7 @@ describe("PDF Header - Invoice Details Rendering", () => {
   });
 
   it("should handle card payment without last four digits", async () => {
-    testReceipt.payments[0].card_payment!.last_four = "";
+    testReceipt.payments![0].card_payment!.last_four = "";
 
     await Header(mockDoc, testMerchant, testReceipt, 0.375, "#FF0000");
 
