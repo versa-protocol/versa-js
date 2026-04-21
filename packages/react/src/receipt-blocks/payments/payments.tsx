@@ -13,14 +13,18 @@ export function Payments({
     <div>
       {payments.length == 1 && payments[0].amount == header.total ? (
         <div className={styles.payment}>
-          {payments[0].payment_type == "card" ? (
+          {payments[0].payment_type == "card" &&
+          (payments[0].card_payment?.network ||
+            payments[0].card_payment?.last_four) ? (
             <div className={styles.paymentType}>
               {payments[0].card_payment?.network && (
                 <>{toTitleCase(payments[0].card_payment.network)}</>
               )}
-              <span className={styles.lastFour}>
-                ··· {payments[0].card_payment?.last_four}
-              </span>
+              {payments[0].card_payment?.last_four && (
+                <span className={styles.lastFour}>
+                  ··· {payments[0].card_payment.last_four}
+                </span>
+              )}
             </div>
           ) : (
             <div className={styles.paymentType}>Payment</div>
@@ -42,11 +46,13 @@ export function Payments({
                     {payment.card_payment?.network && (
                       <>{toTitleCase(payment.card_payment.network)}</>
                     )}
-                    <span className={styles.lastFour}>
-                      ··· {payment.card_payment?.last_four}
-                    </span>
+                    {payment.card_payment?.last_four && (
+                      <span className={styles.lastFour}>
+                        ··· {payment.card_payment.last_four}
+                      </span>
+                    )}
                   </div>
-                  <div className={styles.date}>
+                  <div>
                     {formatDateTimeWithPlaces(
                       payment.paid_at,
                       [header.location],
