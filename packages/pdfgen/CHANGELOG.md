@@ -1,5 +1,11 @@
 # @versa/pdfgen
 
+## 1.16.2
+
+### Patch Changes
+
+- reflect a non-active lifecycle_status in PDF and React view rendering
+
 ## 1.16.1
 
 ### Patch Changes
