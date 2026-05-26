@@ -9,6 +9,7 @@ export * from "./itemized-lodging";
 export * from "./itemized-service";
 export * from "./itemized-subscription";
 export * from "./itemized-transit-route";
+export * from "./lifecycle-status-badge";
 export * from "./line-item";
 export * from "./line-items";
 export * from "./local-business";

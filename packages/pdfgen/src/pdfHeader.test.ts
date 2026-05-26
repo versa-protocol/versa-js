@@ -167,6 +167,58 @@ describe("PDF Header - Invoice Details Rendering", () => {
     expect(bodyData[2][0]).toBe("Date Paid:");
   });
 
+  it("should not render Status row when lifecycle_status is active or absent", async () => {
+    await Header(mockDoc, testMerchant, testReceipt, 0.375, "#FF0000");
+
+    const autoTableCall = mockAutoTable.mock.calls[0];
+    const bodyData = autoTableCall[1].body as Array<Array<unknown>>;
+    const statusRow = bodyData.find((row) => row[0] === "Status:");
+    expect(statusRow).toBeUndefined();
+
+    jest.clearAllMocks();
+    testReceipt.header.lifecycle_status = "active";
+    await Header(mockDoc, testMerchant, testReceipt, 0.375, "#FF0000");
+    const activeCall = mockAutoTable.mock.calls[0];
+    const activeBody = activeCall[1].body as Array<Array<unknown>>;
+    expect(activeBody.find((row) => row[0] === "Status:")).toBeUndefined();
+  });
+
+  it("should render Status row with bold red value when lifecycle_status is canceled", async () => {
+    testReceipt.header.lifecycle_status = "canceled";
+
+    await Header(mockDoc, testMerchant, testReceipt, 0.375, "#FF0000");
+
+    const autoTableCall = mockAutoTable.mock.calls[0];
+    const bodyData = autoTableCall[1].body as Array<Array<unknown>>;
+    const statusRow = bodyData.find((row) => row[0] === "Status:");
+    expect(statusRow).toBeDefined();
+    expect(statusRow![1]).toEqual({
+      content: "Canceled",
+      styles: {
+        fontStyle: "bold",
+        textColor: [200, 30, 30],
+      },
+    });
+  });
+
+  it("should render Status row with bold red value when lifecycle_status is refunded", async () => {
+    testReceipt.header.lifecycle_status = "refunded";
+
+    await Header(mockDoc, testMerchant, testReceipt, 0.375, "#FF0000");
+
+    const autoTableCall = mockAutoTable.mock.calls[0];
+    const bodyData = autoTableCall[1].body as Array<Array<unknown>>;
+    const statusRow = bodyData.find((row) => row[0] === "Status:");
+    expect(statusRow).toBeDefined();
+    expect(statusRow![1]).toEqual({
+      content: "Refunded",
+      styles: {
+        fontStyle: "bold",
+        textColor: [200, 30, 30],
+      },
+    });
+  });
+
   it("should set correct table styling", async () => {
     await Header(mockDoc, testMerchant, testReceipt, 0.375, "#FF0000");
 

@@ -56,7 +56,8 @@ export async function Header(
   doc.rect(docWidth - margin - 1, margin, 1, 1, "S");
 
   // Head Table
-  const headTableData: (string | number)[][] = [];
+  type HeadCell = string | number | { content: string; styles?: object };
+  const headTableData: HeadCell[][] = [];
   headTableData.push(["Invoice Date:", formatDate(receipt.header.invoiced_at)]);
   if (receipt.header.invoice_number) {
     headTableData.push(["Invoice Number:", receipt.header.invoice_number]);
@@ -77,6 +78,19 @@ export async function Header(
     headTableData.push([
       "Confirmation Number:",
       receipt.itemization.car_rental.confirmation_number,
+    ]);
+  }
+  const lifecycleStatus = receipt.header.lifecycle_status;
+  if (lifecycleStatus === "canceled" || lifecycleStatus === "refunded") {
+    headTableData.push([
+      "Status:",
+      {
+        content: lifecycleStatus === "canceled" ? "Canceled" : "Refunded",
+        styles: {
+          fontStyle: "bold",
+          textColor: [200, 30, 30],
+        },
+      },
     ]);
   }
 

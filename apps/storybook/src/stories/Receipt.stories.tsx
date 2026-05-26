@@ -100,6 +100,34 @@ export const Rail: Story = {
   },
 };
 
+/** Lifecycle Status Stories */
+
+export const Canceled: Story = {
+  args: {
+    merchant: senders.bend,
+    receipt: {
+      ...receipts.subscription,
+      header: {
+        ...receipts.subscription.header,
+        lifecycle_status: "canceled",
+      },
+    } as Receipt,
+  },
+};
+
+export const Refunded: Story = {
+  args: {
+    merchant: senders.sonesta,
+    receipt: {
+      ...receipts.lodging,
+      header: {
+        ...receipts.lodging.header,
+        lifecycle_status: "refunded",
+      },
+    } as Receipt,
+  },
+};
+
 /** Third Party Stories */
 
 const KAYAK_FOR_BUSINESS = {

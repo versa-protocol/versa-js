@@ -10,6 +10,7 @@ import {
   ItemizedService,
   ItemizedSubscription,
   ItemizedTransitRoute,
+  LifecycleStatusBadge,
   LineItems,
   LocalBusiness,
   ReceiptFooter,
@@ -92,6 +93,10 @@ export function ReceiptLatest({
 
   return (
     <div className={styles.receiptWrap}>
+      {/* Lifecycle Status Badge */}
+
+      <LifecycleStatusBadge status={data.header.lifecycle_status} />
+
       {/* Header */}
 
       <ReceiptHeader

@@ -1,0 +1,26 @@
+.badge {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 2;
+  transform-origin: center;
+  padding: 0.375rem 0.75rem;
+  border: 2px solid #c81e1e;
+  color: #c81e1e;
+  background-color: rgba(var(--background-alpha), 0.85);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media print {
+  .badge {
+    background-color: transparent;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
