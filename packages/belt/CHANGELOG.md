@@ -1,5 +1,12 @@
 # @versa/belt
 
+## 1.16.1
+
+### Patch Changes
+
+- Updated dependencies
+  - @versa/schema@2.3.1
+
 ## 1.16.0
 
 ### Minor Changes

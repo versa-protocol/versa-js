@@ -8,37 +8,31 @@ export type SchemaVersion = string;
 /**
  * ISO 4217 currency code
  */
-export type Currency =
-  | "usd"
-  | "eur"
-  | "jpy"
-  | "gbp"
-  | "aud"
-  | "cad"
-  | "chf"
-  | "cny";
+export type Currency = string;
+export type LifecycleStatus = "active" | "canceled" | "refunded";
 export type AdjustmentType = "add_on" | "discount" | "fee" | "other" | "tip";
 export type Interval = "day" | "week" | "month" | "year";
 export type SubscriptionType = "one_time" | "recurring";
 export type Interval1 = "day" | "week" | "month" | "year";
 
 /**
- * A Versa itemized receipt
+ * A Versa itemized booking
  */
-export interface Receipt {
+export interface Booking {
   schema_version: SchemaVersion;
   header: Header;
   itemization: Itemization;
-  payments: Payment[];
-  footer: Footer;
+  payments?: null | Payment[];
+  footer?: null | Footer;
 }
 export interface Header {
   invoice_number?: string | null;
   currency: Currency;
   total: number;
-  subtotal: number;
-  paid: number;
-  invoiced_at: number;
+  subtotal?: number | null;
+  paid?: number | null;
+  booked_at?: number | null;
+  invoiced_at?: number | null;
   mcc?: string | null;
   third_party?: {
     relation:
@@ -58,6 +52,8 @@ export interface Header {
   location?: Place | null;
   invoice_asset_id?: string | null;
   receipt_asset_id?: string | null;
+  trip?: null | Trip;
+  lifecycle_status?: null | LifecycleStatus;
 }
 export interface Org {
   name: string;
@@ -88,6 +84,15 @@ export interface Customer {
   website?: string | null;
   address?: null | Address;
   phone?: string | null;
+  booker?: null | Person;
+  metadata?: null | Metadatum[];
+}
+export interface Person {
+  first_name?: string | null;
+  last_name?: string | null;
+  preferred_first_name?: string | null;
+  email?: string | null;
+  phone?: string | null;
   metadata?: null | Metadatum[];
 }
 export interface Metadatum {
@@ -104,6 +109,11 @@ export interface Place {
   url?: null | string;
   google_place_id?: string | null;
   image?: null | string;
+}
+export interface Trip {
+  id?: string | null;
+  name?: string | null;
+  description?: string | null;
 }
 export interface Itemization {
   general?: GeneralItemization | null;
@@ -139,7 +149,7 @@ export interface Item {
 }
 export interface Tax {
   amount: number;
-  rate: number | null;
+  rate?: number | null;
   name: string;
 }
 export interface Adjustment {
@@ -151,23 +161,16 @@ export interface Adjustment {
 export interface Lodging {
   check_in: number;
   check_out: number;
+  confirmation_number?: string | null;
+  chain_code?: string | null;
+  property_id?: string | null;
+  record_locator?: string | null;
   location: Place;
-  /**
-   * @minItems 1
-   */
-  items: Item[];
+  items?: null | Item[];
   room?: null | string;
   guests?: null | Person[];
   metadata?: null | Metadatum[];
   invoice_level_adjustments?: null | Adjustment[];
-}
-export interface Person {
-  first_name?: string | null;
-  last_name?: string | null;
-  preferred_first_name?: string | null;
-  email?: string | null;
-  phone?: string | null;
-  metadata?: null | Metadatum[];
 }
 export interface Ecommerce {
   shipments: Shipment[];
@@ -196,9 +199,12 @@ export interface CarRental {
     vehicle_class?: string | null;
     image?: string | null;
   } | null;
-  driver_name: string;
-  odometer_reading_in: number;
-  odometer_reading_out: number;
+  drivers?: null | Person[];
+  odometer_reading_in?: number | null;
+  odometer_reading_out?: number | null;
+  confirmation_number?: string | null;
+  record_locator?: string | null;
+  vendor_code?: string | null;
   /**
    * @minItems 1
    */

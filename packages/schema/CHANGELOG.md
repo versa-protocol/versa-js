@@ -1,5 +1,11 @@
 # @versa/schema
 
+## 2.3.1
+
+### Patch Changes
+
+- fix: populate alternate event schemas
+
 ## 2.3.0
 
 ### Minor Changes
