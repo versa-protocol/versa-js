@@ -58,11 +58,11 @@ export function ItemizedFlight({
                   "";
                 return (
                   <div className={styles.segmentWrap} key={`segment-${index}`}>
-                    <div className={styles.inAir}>
-                      <div className={styles.line}></div>
-                      <PlaneIcon />
-                    </div>
-                    <div className={styles.segment}>
+                    <div className={styles.segmentInner}>
+                      <div className={styles.inAir}>
+                        <div className={styles.line}></div>
+                        <PlaneIcon />
+                      </div>
                       <div className={styles.location}>
                         <div>{s.departure_airport_code}</div>
                         {s.departure_at && (
@@ -127,6 +127,9 @@ export function ItemizedFlight({
                         )}
                       </div>
                     </div>
+                    {s.flight_number && (
+                      <div className={styles.metadata}>{s.flight_number}</div>
+                    )}
                   </div>
                 );
               })}

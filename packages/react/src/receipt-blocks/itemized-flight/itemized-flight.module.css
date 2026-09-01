@@ -12,7 +12,7 @@
 
 .segmentWrap {
   position: relative;
-  margin: 0 1rem;
+  margin: 1rem;
 }
 
 .inAir {
@@ -42,8 +42,7 @@
   z-index: 1;
 }
 
-.segment {
-  margin: 1rem 0;
+.segmentInner {
   display: flex;
   align-items: center;
   position: relative;
@@ -54,17 +53,23 @@
   text-align: center;
 }
 
-.segment .location:first-child {
+.segmentInner > .location:not(:last-child) {
   padding-right: 1rem;
   text-align: left;
 }
 
-.segment .location:last-child {
+.segmentInner > .location:last-child {
   padding-left: 1rem;
   text-align: right;
 }
 
-.segment .time {
+.segmentInner .time {
+  font-size: 0.875rem;
+  color: var(--foreground-secondary);
+  margin-top: 0.25rem;
+}
+
+.metadata {
   font-size: 0.875rem;
   color: var(--foreground-secondary);
   margin-top: 0.25rem;
